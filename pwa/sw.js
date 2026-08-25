@@ -3,7 +3,7 @@
    1) 导航策略改为「网络优先」——只要联网就取最新页面，彻底解决旧缓存导致的
       按钮/导航失灵（如系统设置跳错、主题切换无反应）等"内容还是旧版"的问题；
    2) 断网时仍可用本地缓存秒开，离线兜底不变。*/
-const CACHE = 'pingwanxiang-v20';
+const CACHE = 'pingwanxiang-v22';
 const CORE = ['./', './index.html', './pwa/manifest.json', './pwa/icon-192.png', './pwa/icon-512.png', './pwa/splash-6.1.png', './pwa/splash-5.8.png', './pwa/splash-4.7.png'];
 
 self.addEventListener('install', (e) => {

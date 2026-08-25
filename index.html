@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0C2E46"/><stop offset="100%" stop-color="#071120"/></linearGradient><radialGradient id="plPearl" cx="40%" cy="32%" r="80%"><stop offset="0%" stop-color="#FFFDF7"/><stop offset="55%" stop-color="#F6E9D2"/><stop offset="100%" stop-color="#BCD9DB"/></radialGradient><linearGradient id="plLine" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F0D9A8"/><stop offset="100%" stop-color="#BFE8DA"/></linearGradient></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0C2E46"/><stop offset="100%" stop-color="#071120"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>平·万象 EQUA·MUNDI · 大学生成长中枢</title>
@@ -788,9 +788,9 @@ strong{font-weight:600}
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(160deg,#0a1b33 0%,#0f2f4d 55%,#0F6E56 130%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
-  <!-- 亲和的品牌启动屏：深蓝渐变 + 柔和光晕 + 呼吸徽记 + 淡出文字 -->
-  <div style="position:absolute;left:50%;top:32%;width:560px;height:560px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(37,99,235,.22),transparent 62%);pointer-events:none;filter:blur(6px)"></div>
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(165deg,#0a1428 0%,#123052 55%,#243048 130%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
+  <!-- 亲和的品牌启动屏：墨蓝渐变 + 暖金光晕 + 呼吸徽记 + 淡出文字 -->
+  <div style="position:absolute;left:50%;top:32%;width:560px;height:560px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(232,179,92,.20),transparent 62%);pointer-events:none;filter:blur(6px)"></div>
   <div style="position:relative;width:118px;height:118px;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:-12px;border-radius:52%;background:radial-gradient(circle,rgba(255,216,160,.55),rgba(255,216,160,0) 68%);filter:blur(6px);animation:brandIn .6s forwards"></div>
   <img src="pwa/icon-512.png" alt="平·万象" draggable="false" style="width:104px;height:104px;border-radius:25px;box-shadow:0 0 0 3px rgba(255,224,176,.22),0 20px 50px rgba(0,0,0,.42);opacity:0;animation:brandIn .7s .12s forwards,brandFloat 3.4s ease-in-out .85s infinite;position:relative"></div>
   <div style="font-size:44px;font-weight:800;color:#fff;letter-spacing:8px;margin-top:22px;opacity:0;animation:brandIn .8s .4s forwards;text-shadow:0 4px 26px rgba(0,0,0,.25)">平·万象</div>
@@ -833,7 +833,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><circle cx="12" cy="10.3" r="5.3" fill="url(#plPearl)"/><circle cx="10.2" cy="8.7" r="1.5" fill="#FFFCF4" opacity="0.9"/><rect x="3.6" y="15.6" width="16.8" height="1.6" rx="0.8" fill="url(#plLine)"/><circle cx="6.2" cy="5.9" r="0.8" fill="#fff" opacity="0.72"/><circle cx="17.4" cy="7.1" r="0.62" fill="#FFDFA6" opacity="0.9"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
+      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><ellipse cx="12" cy="12.5" rx="8.3" ry="9.0" stroke="#E6B35C" stroke-opacity="0.85" stroke-width="0.8" fill="none"/><circle cx="12" cy="8.9" r="4.3" fill="url(#plSun)"/><rect x="4" y="13.2" width="16" height="0.6" rx="0.3" fill="#F4FFE4" opacity="0.55"/><circle cx="10.1" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/><circle cx="12" cy="15.9" r="0.65" fill="#F6CE7A" opacity="0.95"/><circle cx="13.9" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -895,7 +895,7 @@ strong{font-weight:600}
 
     <nav class="sidebar" id="sidebar">
     <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><circle cx="12" cy="10.3" r="5.3" fill="url(#plPearl)"/><circle cx="10.2" cy="8.7" r="1.5" fill="#FFFCF4" opacity="0.9"/><rect x="3.6" y="15.6" width="16.8" height="1.6" rx="0.8" fill="url(#plLine)"/><circle cx="6.2" cy="5.9" r="0.8" fill="#fff" opacity="0.72"/><circle cx="17.4" cy="7.1" r="0.62" fill="#FFDFA6" opacity="0.9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><ellipse cx="12" cy="12.5" rx="8.3" ry="9.0" stroke="#E6B35C" stroke-opacity="0.85" stroke-width="0.8" fill="none"/><circle cx="12" cy="8.9" r="4.3" fill="url(#plSun)"/><rect x="4" y="13.2" width="16" height="0.6" rx="0.3" fill="#F4FFE4" opacity="0.55"/><circle cx="10.1" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/><circle cx="12" cy="15.9" r="0.65" fill="#F6CE7A" opacity="0.95"/><circle cx="13.9" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/></svg>
       平·万象
     </div>
     <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
@@ -9009,20 +9009,32 @@ function calcBmi(){
   var w=document.getElementById('curWeight');
   var g=document.getElementById('goalWeight');
   if(!h||!w)return;
+  var cb=document.getElementById('curBmi');
+  var gbox=document.getElementById('goalBmi');
+  var pb=document.getElementById('weeklyPace');
   var hv=parseFloat(h.textContent);var wv=parseFloat(w.textContent);
-  if(hv>0&&wv>0){
-    var bmi=(wv/((hv/100)*(hv/100))).toFixed(1);
-    var cb=document.getElementById('curBmi');if(cb)cb.textContent='BMI '+bmi;
-    var gv=parseFloat(g?g.textContent:'0');
-    if(gv>0){
-      var gbmi=(gv/((hv/100)*(hv/100))).toFixed(1);
-      var gbox=document.getElementById('goalBmi');if(gbox)gbox.textContent='BMI '+gbmi;
-      var weeksEl=document.getElementById('planWeeks');
-      var weeks=weeksEl?parseInt(weeksEl.textContent)||12:12;
-      var pace=((wv-gv)/weeks).toFixed(2);
-      var pb=document.getElementById('weeklyPace');if(pb)pb.textContent='每周约'+pace+'公斤';
-    }
+  var gv=parseFloat(g?g.textContent:'0');
+  /* 身高或体重被清空 → 相关测算一并复位，不留残留的旧值 */
+  if(!(hv>0)||!(wv>0)){
+    if(cb)cb.textContent='BMI待测算';
+    if(gbox)gbox.textContent='待测算';
+    if(pb)pb.textContent='每周节奏自定';
+    markMetricPlaceholders();
+    return;
   }
+  var bmi=(wv/((hv/100)*(hv/100))).toFixed(1);
+  if(cb)cb.textContent='BMI '+bmi;
+  if(gv>0){
+    var gbmi=(gv/((hv/100)*(hv/100))).toFixed(1);
+    if(gbox)gbox.textContent='BMI '+gbmi;
+    var weeksEl=document.getElementById('planWeeks');
+    var weeks=weeksEl?parseInt(weeksEl.textContent)||12:12;
+    var pace=((wv-gv)/weeks).toFixed(2);
+    if(pb)pb.textContent='每周约'+pace+'公斤';
+  } else {
+    if(gbox)gbox.textContent='待测算';
+  }
+  markMetricPlaceholders();
 }
 document.addEventListener('blur',function(e){
   var id=e.target&&e.target.id;
@@ -9137,6 +9149,19 @@ document.addEventListener('input',function(e){
 document.addEventListener('blur',function(e){
   var tg=e.target;
   if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]'))markMetricPlaceholders();
+},true);
+/* 点开即清占位符：带“点击填写”等占位的可编辑卡，聚焦后自动清空，
+   用户直接输入即可，不必先手动删除占位文字（适用所有同类指标框） */
+document.addEventListener('focusin',function(e){
+  var tg=e.target;
+  if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]')){
+    var t=(tg.textContent||'').trim();
+    if(t===''||t==='点击填写'||t==='—'){
+      tg.textContent='';
+      if(tg.id==='userHeight'||tg.id==='curWeight'||tg.id==='goalWeight'||tg.id==='planWeeks'){calcBmi();}
+    }
+    markMetricPlaceholders();
+  }
 },true);
 try{markMetricPlaceholders();}catch(e){}
 function clearTable(tableId){
