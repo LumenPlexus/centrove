@@ -2,7 +2,7 @@
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>平·万象 · 大学生全能成长工作台</title>
+<title>平·万象 · 大学生成长中枢</title>
   <meta name="theme-color" id="themeColorMeta" content="#0C447C">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -24,7 +24,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825c').then(function(reg){
+          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825e').then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -747,7 +747,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title">平·万象 <span class="tb-badge">大学生全能成长工作台</span></div>
+      <div class="title">平·万象 <span class="tb-badge">大学生成长中枢</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -6686,11 +6686,29 @@ function toggleWorkout(k){
   flash('打卡成功');
 }
 
+function countLen(obj){if(!obj)return 0;try{return Object.keys(obj).length;}catch(e){return 0;}}
+function dataSummary(){
+  var s={
+    '计划任务':countLen(getTasks()),
+    '每日打卡':countLen(getCheckins()),
+    '单词本':countLen(getWords()),
+    '错题本':countLen(getWrongs()),
+    '书单':countLen(getBooks()),
+    '播客':countLen(getPodcasts()),
+    '札记':countLen(getJournals())
+  };
+  var out=[],keys=Object.keys(s);
+  for(var i=0;i<keys.length;i++){if(s[keys[i]]>0)out.push(keys[i]+' '+s[keys[i]]+' 条');}
+  return out.length?out.join(' · '):'（暂无记录）';
+}
 function exportData(){
-  var data={tasks:getTasks(),checkins:getCheckins(),words:getWords(),wrongs:getWrongs(),books:getBooks(),pods:getPodcasts(),journals:getJournals(),exportDate:new Date().toISOString()};
+  var data={tasks:getTasks(),checkins:getCheckins(),words:getWords(),wrongs:getWrongs(),books:getBooks(),pods:getPodcasts(),journals:getJournals(),exportDate:new Date().toISOString(),source:'ping_wan_xiang'};
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='你工作台备份_'+todayKey()+'.json';a.click();
-  flash('数据已导出');
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='平万象数据备份_'+todayKey()+'.json';a.click();
+  setTimeout(function(){URL.revokeObjectURL(url);},1500);
+  /* 让用户直接看到导出了哪些内容 */
+  uiAlert('✅ 已导出你的个人数据备份（JSON 文件已下载）\n\n本次包含：'+dataSummary()+'\n\n请妥善保存此文件。换设备或清缓存后，点「导入数据」即可一键恢复全部内容。');
 }
 function importData(e){
   var f=e.target.files[0];if(!f)return;
@@ -6705,8 +6723,9 @@ function importData(e){
       if(d.books)saveBooks(d.books);
       if(d.pods)savePodcasts(d.pods);
       if(d.journals)saveJournals(d.journals);
-      flash('数据导入成功');renderAll();
-    }catch(err){uiAlert('导入失败：文件格式错误')}
+      renderAll();
+      uiAlert('✅ 数据导入成功\n\n本次导入：'+dataSummary()+'\n\n你的全部内容已恢复，可放心使用。');
+    }catch(err){uiAlert('⚠️ 导入失败\n\n文件格式不正确，请选择由本产品「导出数据备份」生成的 JSON 文件。')}
   };
   r.readAsText(f);
 }
@@ -7323,7 +7342,7 @@ function printTpl(id){
     +'td,th{border:1px solid #ccc;padding:8px;font-size:14px}input,textarea{border:none;outline:none;width:100%;font-size:14px;font-family:inherit}'
     +'textarea{resize:none}.tip{color:#888;font-size:12px}</style></head><body>'
     +'<h2>平·万象 · 学习计划表</h2>'+box.innerHTML
-    +'<p class="tip">由「平·万象 大学生全能成长工作台」生成</p></body></html>';
+    +'<p class="tip">由「平·万象 · 大学生成长中枢」生成</p></body></html>';
   var w=window.open('','_blank');
   w.document.write(html);w.document.close();
   setTimeout(function(){w.print();},300);
@@ -7378,14 +7397,25 @@ function exportCurrentPDF(){
     el.textContent=v;el.removeAttribute('placeholder');
   });
   var style='<style>@page{margin:12mm 10mm}/* ===== 全局基础 ===== */*{box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2c3440;line-height:1.82;font-size:15px;padding:0;margin:0;background:#fafbfc}/* ===== 页面标题区 ===== */.page-head{margin-bottom:20px;padding:18px 20px;background:linear-gradient(135deg,#0F6E56 0%,#0a5543 100%);color:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(15,110,86,.18)}.page-head h1{font-size:23px;margin:0 0 8px;color:#fff;display:flex;align-items:center;gap:9px}.page-head h1 svg{width:26px;height:26px;flex-shrink:0;filter:brightness(0) invert(1)}.page-head p{color:rgba(255,255,255,.78);margin:0;font-size:14.5px;line-height:1.65}/* ===== 网格布局 ===== */.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}/* ===== 卡片容器（每个区块都有边框+圆角+阴影） ===== */.card{border:1.5px solid #dce3ec;border-radius:13px;padding:20px;margin-bottom:18px;break-inside:avoid;background:#fff;box-shadow:0 2px 8px rgba(44,52,64,.05),0 .5px 1px rgba(44,52,64,.03);position:relative;overflow:hidden}.card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#0F6E56,#38b58a);border-radius:13px 0 0 13px}/* ===== 标题 ===== */.card h3{font-size:17.5px;color:#0C447C;margin:0 0 14px;font-weight:700;padding-bottom:10px;border-bottom:1.5px dashed #e8edf4;display:flex;align-items:center;gap:7px}.card h3:first-child{margin-top:0}.card h4{font-size:16px;color:#134a7d;margin:14px 0 10px;font-weight:700}/* ===== 段落与文字 ===== */.card p{font-size:15px;line-height:1.85;margin:10px 0;color:#374151}/* ===== 列表（带装饰性项目符号和分隔线） ===== */.card ul,.card ol{margin:12px 0;padding-left:0;list-style:none}.card ul>li,.card ol>li{position:relative;padding:10px 12px 10px 30px;margin:6px 0;font-size:15px;line-height:1.8;color:#374151;border:1px solid #eef2f7;border-radius:9px;background:#fcfdfd;transition:.15s}.card ul>li::before{content:"";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:#0F6E56;flex-shrink:0}.card ol>li{counter-increment:list-num;padding-left:32px}.card ol>li::before{content:counter(list-num);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:#0F6E56;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}.card ol{counter-reset:list-num}/* ===== 嵌套列表 ===== */.card ul ul,.card ol ol{margin:6px 0 0 12px}.card ul ul>li,.card ol ol>li{padding:7px 10px 7px 24px;margin:4px 0;font-size:14px;border-color:#f0f4f8;background:#fff}/* ===== Callout 提示框（更醒目） ===== */.callout{border-radius:11px;padding:16px 18px;margin-top:14px;font-size:15px;line-height:1.78;background:linear-gradient(135deg,#f0faf6,#e8f5ee);border:1.5px solid #b8dfcc;border-left:5px solid #0F6E56;color:#1a3a2a;box-shadow:0 2px 6px rgba(15,110,86,.08)}/* ===== 标签 ===== */.tag{border:1.5px solid #c9ddf0;border-radius:999px;padding:4px 14px;font-size:13px;color:#0C447C;background:#eaf3fb;font-weight:500;display:inline-block;margin:2px 3px}/* ===== 输入框/文本域 ===== */.textarea,.card textarea{width:100%;border:1.5px solid #dce3ec;border-radius:10px;padding:13px 14px;font-size:15px;line-height:1.75;font-family:inherit;white-space:pre-wrap;min-height:100px;color:#2c3440;background:#f8fafc;transition:.15s}textarea{resize:none}/* ===== 表格（斑马纹+粗表头） ===== */table{border-collapse:separate;border-spacing:0;width:100%;font-size:14px;border:1.5px solid #dce3ec;border-radius:10px;overflow:hidden}.card table{margin:12px 0}th,td{border:1px solid #e3e8ee;padding:10px 8px;text-align:center;line-height:1.55}th{background:linear-gradient(180deg,#0C447C,#0a3a66);color:#fff;font-weight:700;font-size:13.5px;letter-spacing:.3px}tr:nth-child(even) td{background:#f7f9fc}td{color:#374151}/* ===== SVG 图标 ===== */svg{max-width:24px;max-height:24px}/* ===== 分隔线装饰 ===== */hr,.divider{border:none;height:1.5px;background:linear-gradient(90deg,transparent,#dce3ec 20%,#dce3ec 80%,transparent);margin:16px 0}/* ===== 打印隐藏 ===== */@media print{.no-print{display:none!important}}/* ===== 手机端适配 ===== */@media(max-width:600px){body{font-size:15.5px;padding:0 4px}.page-head{padding:14px 16px;border-radius:11px}.page-head h1{font-size:21px}.page-head h1 svg{width:22px;height:22px}.page-head p{font-size:14px}.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px 14px;margin-bottom:14px;border-radius:11px}.card h3{font-size:16.5px;padding-bottom:8px}.card h4{font-size:15.5px}.card p,.card ul>li,.card ol>li,.callout,.textarea,.card textarea{font-size:14.5px}.card ul>li,.card ol>li{padding:9px 10px 9px 26px}.tag{font-size:12.5px;padding:3px 11px}table{font-size:13px}th,td{padding:8px 6px}}</style>';
-  var html='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>'+name+' · 平·万象</title>'+style+'</head><body>'+clone.innerHTML+'<div class="no-print" style="margin-top:24px;padding-top:14px;border-top:1px solid #e3e8ee;font-size:14px;line-height:1.7;color:#5b636c">由「平·万象 · 大学生全能成长工作台」导出 · 在浏览器中按 Ctrl/⌘+P 即可另存为 PDF</div></body></html>';
-  var blob=new Blob([html],{type:'text/html;charset=utf-8'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
-  a.href=url;a.download=name+'_平万象.html';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  setTimeout(function(){URL.revokeObjectURL(url);},1500);
-  flash('已导出「'+name+'」为 HTML 文件，双击用浏览器打开后按 Ctrl/⌘+P 即可存为 PDF');
+  var nowD=new Date(),taskList=document.querySelector('.view.active')?null:'';
+  var ds=(''+nowD.getFullYear())+'-'+('0'+(nowD.getMonth()+1)).slice(-2)+'-'+('0'+nowD.getDate()).slice(-2);
+  var html='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>'+name+' · 平·万象</title>'+style+'</head><body>'
+    +'<div class="pdf-brandbar"><img src="./pwa/icon-512.png" alt=""><b>平·万象 · 大学生成长中枢</b><span>个人资料 · 私密导出</span></div>'
+    +clone.innerHTML
+    +'<div class="no-print" style="margin-top:26px;padding-top:16px;border-top:1px dashed #b9c6d4;font-size:13px;line-height:2;color:#738099;text-align:center">由「平·万象 · 大学生成长中枢」为你生成 · '+ds+'<br>数据仅来自你自己的浏览器，导出后请妥善保管</div>'
+    +'</body></html>';
+  var pamURL=URL.createObjectURL(new Blob([html.replace('</head>','<style>.pdf-brandbar{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#0C447C,#0F6E56);color:#fff;padding:14px 20px;border-radius:12px;margin-bottom:18px}.pdf-brandbar img{width:34px;height:34px;border-radius:8px}.pdf-brandbar b{font-size:16px;letter-spacing:.5px}.pdf-brandbar span{margin-left:auto;font-size:12px;opacity:.85;white-space:nowrap}@page{size:A4;margin:12mm 11mm}body{margin:0}</style></head>')],{type:'text/html;charset=utf-8'}));
+  var pwin=window.open(pamURL,'_blank');
+  if(!pwin){ /* 弹窗被拦截：回退为直接下载 */
+    var a=document.createElement('a');a.href=pamURL;a.download=name+'_平万象.html';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(pamURL);},1500);
+    flash('已生成「'+name+'」报告文件，请打开后按 Ctrl/⌘+P 打印或另存为 PDF');
+    return;
+  }
+  /* 等报告渲染完成后，自动唤起打印对话框（可在其中选「另存为 PDF」） */
+  setTimeout(function(){try{pwin.focus();pwin.print();}catch(e){}},500);
+  flash('正在生成「'+name+'」报告预览，可直接打印或另存为 PDF');
 }
 /* —— 侧边栏板块搜索过滤 —— */
 function filterNav(q){
@@ -8309,7 +8339,7 @@ function exportAll(){
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download='你工作台备份_'+todayKey()+'.json';
+  a.download='平万象数据备份_'+todayKey()+'.json';
   a.click();
   flash('已导出全部数据');
 }
@@ -9993,7 +10023,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     var main=document.querySelector('.main');if(!main||main.querySelector('.pp-credit'))return;
     var f=document.createElement('div');f.className='pp-credit';
     f.style.cssText='text-align:center;padding:16px 12px 6px;font-size:12px;color:var(--hint);line-height:1.95;border-top:1px dashed var(--border);margin-top:22px';
-    f.innerHTML='<div style="font-size:13px">设计 &amp; 开发 · <strong style="color:var(--primary);font-size:14px">尹平平</strong> ｜ 「平·万象 · 大学生全能成长工作台」</div>'+
+    f.innerHTML='<div style="font-size:13px">设计 &amp; 开发 · <strong style="color:var(--primary);font-size:14px">尹平平</strong> ｜ 「平·万象 · 大学生成长中枢」</div>'+
       '<div style="opacity:.82;font-size:11.5px;margin-top:4px">原创作品 · 数据 100% 保存在你自己的浏览器（localStorage）中：无后端、不上传、不收集任何信息，后台与任何人都无法读取你的记录。全程免费、无广告。</div>';
     main.appendChild(f);
   }
@@ -10183,6 +10213,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-cta .b{font-size:clamp(24px,4.6vw,33px);color:#FFFFFF;letter-spacing:.04em;line-height:1.6;font-weight:800}
 .pano-cta .b em{font-style:normal;color:#7EE0B8}
 .pano-cta .p{color:rgba(255,255,255,.86);font-size:14.5px;margin:16px auto 34px;max-width:560px;line-height:2}
+.cta-seal{position:absolute;right:44px;bottom:40px;width:56px;height:56px;border-radius:10px;background:linear-gradient(140deg,#34D399,#0F6E56);opacity:.16;transform:rotate(8deg);box-shadow:0 18px 44px rgba(0,0,0,.3);z-index:0}
+.cta-scene{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto 30px;max-width:560px}
+.cta-scene span{font-size:12.5px;color:#E9F7EF;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:7px 15px;border-radius:999px;backdrop-filter:blur(4px);letter-spacing:.06em}
 .pano-cta .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .pano-cta .btn{padding:15px 36px;font-size:15px;cursor:pointer;pointer-events:auto;min-width:176px;letter-spacing:1px;border-radius:10px}
 .pano-cta .btn.btn-primary{background:linear-gradient(120deg,#7EE0B8,#34D399);color:#073C2E;border:none;box-shadow:0 14px 30px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.4);font-weight:700}
@@ -10350,9 +10383,9 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 封面首屏 (步骤 1) -->
     <section class="pano-hero" data-step="0">
       <div class="glow"></div>
-      <div class="eyebrow">PING·WAN XIANG · 大学生全能成长工作台</div>
+      <div class="eyebrow">PING·WAN XIANG · 大学生成长中枢</div>
       <h1 class="pano-h1">平，万象<span class="thin">：让四年各就各位</span></h1>
-      <p class="dek">这不是又一个工具，而是把你<em style="font-style:normal;color:#fff"><b>学业·目标·时间·金钱·健康·眼界</b></em>放回同一个地方的完整工作台。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 切换的疲惫，一点开就能用，用完即安心。</p>
+      <p class="dek">这不是又一个工具，而是把你<em style="font-style:normal;color:#fff"><b>学业·目标·时间·金钱·健康·眼界</b></em>安放到同一处的成长中枢。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
       <div class="pano-stats">
         <span><b>25+</b> 能力模块</span>
@@ -10366,7 +10399,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <section class="pano-sec pano-sec-ctr" data-step="1">
       <div class="pano-no"><span class="rn">壹</span><span>它为什么无可取代 · 你所得到的</span></div>
       <h2 class="pano-h2">它不是又一个工具，<br>而是把四年过成<em>想要的样子</em>的那个地方</h2>
-      <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座工作台，能同时接住你的<b>学业、目标、时间、金钱、健康与眼界</b>，还让它们互相咬合。平·万象，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
+      <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康与眼界</b>，还让它们互相咬合。平·万象，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
@@ -10488,10 +10521,14 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 收尾 CTA -->
     <div class="pano-cta">
+      <div class="cta-seal" aria-hidden="true"></div>
       <div class="b">这四年只此一遇，<em>值得被认真对待</em></div>
       <div class="p">免费 · 私密 · 即开即用 —— 现在，只差你写下第一件事。</div>
+      <div class="cta-scene">
+        <span>📚 学业</span><span>🎯 目标</span><span>⏳ 时间</span><span>💰 金钱</span><span>🏃 健康</span><span>🌏 眼界</span>
+      </div>
       <div class="btns">
-        <button class="btn btn-primary" data-pano="home">立刻开始，进入工作台</button>
+        <button class="btn btn-primary" data-pano="home">立刻开始 · 安放你的人生</button>
         <button class="pano-btn-ghost" data-pano="about">阅读完整操作说明</button>
       </div>
     </div>
