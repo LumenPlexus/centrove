@@ -849,37 +849,37 @@ strong{font-weight:600}
           <button onclick="var b=document.getElementById('guideBanner');b.style.display='none';try{localStorage.setItem('pp_guide_hide','1')}catch(e){}" style="border:none;background:none;color:var(--hint);font-size:16px;cursor:pointer;line-height:1;flex-shrink:0" title="关闭">×</button>
         </div>
       </div>
-      <!-- 常用板块速达：为新用户提供清晰的入口，降低“无从下手” -->
+      <!-- 常用板块速达：只放每天真正用得到的高频入口，点开即用 -->
       <div id="quickStart" style="margin-bottom:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
-        <div class="card" onclick="switchView('plans')" style="cursor:pointer;padding:14px;background:var(--teal-light,#E1F5EE);border-color:#b6e0cc;margin:0">
+        <div class="card" onclick="switchView('quadrant')" style="cursor:pointer;padding:14px;background:var(--teal-light,#E1F5EE);border-color:#b6e0cc;margin:0">
+          <div style="font-size:20px">🎯</div>
+          <div style="font-weight:600;margin:4px 0 2px;color:var(--teal)">今日四象限</div>
+          <div style="font-size:12px;color:var(--muted)">把今天要事排个优先级</div>
+        </div>
+        <div class="card" onclick="switchView('plans')" style="cursor:pointer;padding:14px;background:var(--primary-light,#E6F1FB);border-color:#c3dcf5;margin:0">
           <div style="font-size:20px">📅</div>
-          <div style="font-weight:600;margin:4px 0 2px;color:var(--teal)">一周时间表</div>
-          <div style="font-size:12px;color:var(--muted)">点色块再点格子，填满这一周</div>
-        </div>
-        <div class="card" onclick="switchView('habits')" style="cursor:pointer;padding:14px;background:var(--primary-light,#E6F1FB);border-color:#c3dcf5;margin:0">
-          <div style="font-size:20px">✅</div>
-          <div style="font-weight:600;margin:4px 0 2px;color:var(--primary)">习惯打卡</div>
-          <div style="font-size:12px;color:var(--muted)">每天 3 秒，养成坚持</div>
-        </div>
-        <div class="card" onclick="switchView('exam')" style="cursor:pointer;padding:14px;background:var(--coral-light,#FAECE7);border-color:#f3cfbd;margin:0">
-          <div style="font-size:20px">⏳</div>
-          <div style="font-weight:600;margin:4px 0 2px;color:var(--coral)">考试倒计时</div>
-          <div style="font-size:12px;color:var(--muted)">四六级/考研/考证一目了然</div>
+          <div style="font-weight:600;margin:4px 0 2px;color:var(--primary)">一周时间表</div>
+          <div style="font-size:12px;color:var(--muted)">排课排事，一眼看整周</div>
         </div>
         <div class="card" onclick="switchView('timer')" style="cursor:pointer;padding:14px;background:#EAF6FF;border-color:#c8e5f8;margin:0">
           <div style="font-size:20px">⏱️</div>
           <div style="font-weight:600;margin:4px 0 2px;color:#185FA5">心流计时</div>
           <div style="font-size:12px;color:var(--muted)">番茄钟，专注学习</div>
         </div>
-        <div class="card" onclick="switchView('contest')" style="cursor:pointer;padding:14px;background:#F3EFFF;border-color:#ddcdf7;margin:0">
-          <div style="font-size:20px">🏆</div>
-          <div style="font-weight:600;margin:4px 0 2px;color:#6B4FA0">竞赛科研</div>
-          <div style="font-size:12px;color:var(--muted)">找比赛、盯报名，攒加分</div>
+        <div class="card" onclick="switchView('habits')" style="cursor:pointer;padding:14px;background:#EFF7FF;border-color:#cfe4f8;margin:0">
+          <div style="font-size:20px">✅</div>
+          <div style="font-weight:600;margin:4px 0 2px;color:#0F6E56">习惯打卡</div>
+          <div style="font-size:12px;color:var(--muted)">每天 3 秒，坚持不断</div>
         </div>
-        <div class="card" onclick="switchView('career')" style="cursor:pointer;padding:14px;background:#FFF7E8;border-color:#f0dfbe;margin:0">
-          <div style="font-size:20px">🚀</div>
-          <div style="font-weight:600;margin:4px 0 2px;color:#B8860B">职业规划</div>
-          <div style="font-size:12px;color:var(--muted)">大四前想清楚，不迷路</div>
+        <div class="card" onclick="switchView('journal')" style="cursor:pointer;padding:14px;background:#FFF7E8;border-color:#f0dfbe;margin:0">
+          <div style="font-size:20px">📓</div>
+          <div style="font-weight:600;margin:4px 0 2px;color:#B8860B">今日复盘</div>
+          <div style="font-size:12px;color:var(--muted)">睡前 2 分钟，记下今天</div>
+        </div>
+        <div class="card" onclick="switchView('goals')" style="cursor:pointer;padding:14px;background:#FAECE7;border-color:#f3cfbd;margin:0">
+          <div style="font-size:20px">🎓</div>
+          <div style="font-weight:600;margin:4px 0 2px;color:var(--coral)">目标拆解</div>
+          <div style="font-size:12px;color:var(--muted)">大目标拆成天天能干</div>
         </div>
       </div>
       <!-- 今日第一目标 + 提醒（执行力弱的同学：目标要放在最前面、最好有提醒） -->
@@ -5433,6 +5433,40 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <li><strong>两分钟规则：</strong>任何习惯不超过2分钟开始成本</li>
         <li><strong>从不间断两次：</strong>错过一次没关系，但绝不错过连续两次</li>
       </ul>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🗓 21 天执行表 · 每天照着做的具体动作</h3>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:8px">别一次定一堆习惯，<strong>一次只驯一个</strong>。把你想养成的习惯套进下面三阶段，每天只需 3-5 分钟，坚持 21 天自然固化。</p>
+      <div class="grid grid-3">
+        <div style="border-left:3px solid var(--coral);padding-left:12px">
+          <h4 style="color:var(--coral)">第1-7天 · 破冰期（关键是"开始"）</h4>
+          <ul style="font-size:12.5px;line-height:1.85">
+            <li><strong>目标缩到足够小：</strong>"背5个单词"而不是"背1章"——目的不是量，是让你毫无压力地开始</li>
+            <li><strong>绑定固定锚点：</strong>写在某个已有动作之后（起床→喝水→背词），形成条件反射</li>
+            <li><strong>提前布置环境：</strong>今晚就把单词书/哑铃放在明天伸手就够得着的地方</li>
+            <li><strong>每天打卡一次：</strong>点上方圆圈即可，看到连续天数会越点越有劲</li>
+          </ul>
+        </div>
+        <div style="border-left:3px solid var(--teal);padding-left:12px">
+          <h4 style="color:var(--teal)">第8-14天 · 巩固期（关键是"稳定"）</h4>
+          <ul style="font-size:12.5px;line-height:1.85">
+            <li><strong>固定时间执行：</strong>尽量每天同一时段做，身体会记住这个节奏</li>
+            <li><strong>抗拒时用两分钟法则：</strong>不想做就只做 2 分钟，90% 会顺势做下去</li>
+            <li><strong>允许一次小失误：</strong>缺一天不补、不自责，第二天继续即可，别让"完美主义"杀死坚持</li>
+            <li><strong>向人公开：</strong>告诉一个室友/发一条动态，让外部期待帮你稳住</li>
+          </ul>
+        </div>
+        <div style="border-left:3px solid var(--primary);padding-left:12px">
+          <h4 style="color:var(--primary)">第15-21天 · 内化期（关键是"自然"）</h4>
+          <ul style="font-size:12.5px;line-height:1.85">
+            <li><strong>稍微加量：</strong>背5个升级到10个，微调量但不换习惯本身</li>
+            <li><strong>观察收益：</strong>记录这 21 天的变化（更专注/体脂降/睡眠好），让好处看得见</li>
+            <li><strong>庆祝一次：</strong>第 21 天给自己一个小奖励（非食物），强化"我做成了"</li>
+            <li><strong>然后驯下一个：</strong>这个固化后再开新习惯，一次一个，稳步叠加</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-ok" style="margin-top:8px"><strong>公式：</strong>微目标 + 固定锚点 + 环境布置 + 每天打卡 = 21 天把"坚持"变成"习惯"。不需要意志力，只需要今天先动 5 分钟。</div>
     </div>
   </section>
 
