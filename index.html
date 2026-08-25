@@ -139,6 +139,8 @@ body,body,input,textarea,select{transition:background-color .28s ease,color .28s
 .metric .label{font-size:11px;color:var(--hint);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
 .metric .value{font-size:24px;font-weight:600;color:var(--primary);line-height:1.2}
 .metric .sub{font-size:11px;color:var(--muted);margin-top:2px}
+/* 可编辑指标占位态：未填写时用浅色小字提示，避免“点击填写”被放大成主数字显得杂乱 */
+.metric .value.ph{font-size:15px;font-weight:500;color:var(--hint,#8a93a2);line-height:1.6}
 
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;border:1px solid var(--border);background:var(--card);color:var(--text);transition:all .15s}
 .btn:hover{border-color:var(--primary-mid);color:var(--primary)}
@@ -363,6 +365,20 @@ strong{font-weight:600}
   .btn,.icon-btn,a[onclick]{display:none !important}
   *{color:#1a1f26 !important;background:#fff !important}
 }
+
+/* ══ 报告全屏预览（导出PDF）：直接在当前页显示结果，不再依赖弹窗打印 ══ */
+#pdfPreview{position:fixed;inset:0;z-index:1400;background:#0f1620;display:none;flex-direction:column;padding-bottom:0}
+#pdfPreview .pp-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(135deg,#0a3a66,#0C447C 50%,#0F6E56);color:#fff;padding:12px 18px;box-shadow:0 4px 18px rgba(0,0,0,.25)}
+#pdfPreview .pp-bar>strong{font-size:15px;letter-spacing:.3px}
+#pdfPreview .pp-tip{font-size:12px;opacity:.82;margin-right:auto}
+#pdfPreview .pp-btns{display:flex;gap:8px}
+#pdfPreview .pp-btn{border:none;cursor:pointer;font-family:inherit;font-size:13.5px;padding:9px 18px;border-radius:999px;transition:.2s}
+#pdfPreview .pp-btn.print{background:#fff;color:#0C447C;font-weight:700;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+#pdfPreview .pp-btn.print:hover{transform:translateY(-1px)}
+#pdfPreview .pp-btn.close{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.25)}
+#pdfPreview .pp-btn.close:hover{background:rgba(255,255,255,.24)}
+#pdfPreview iframe{flex:1;width:100%;height:100%;border:0;background:#fafbfc}
+@media print{#pdfPreview{display:none!important}}
 
 
 /* ════════════════════════════════════════════════════════════
@@ -944,23 +960,29 @@ strong{font-weight:600}
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
         <p>欢迎回到平·万象。今天也要保持平常心，从容向前。</p>
       </div>
-      <!-- 新用户三分钟上手：场景化快速引导（首次打开不迷路，解决“模块多而无从下手”）；已关闭过则不再显示 -->
-      <div id="guideBanner" style="display:none;margin-bottom:16px;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:14px;background:linear-gradient(135deg,#fff,var(--primary-light,#E6F1FB));padding:16px 16px 14px">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
-          <div style="font-size:13px;color:var(--text);line-height:1.85;min-width:0">
-            <b style="color:var(--primary);font-size:15px">🧭 新手 3 分钟上手 · 你当下最想要哪一个？</b>
-            <div style="margin-top:4px;color:var(--muted)">点一下想做的事，直接带你去对应板块；不用时就关掉。</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:12px">
-              <button onclick="switchView('home');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>✅ 今天最重要的事</b><div style="color:var(--hint);margin-top:2px">写下它，今天就开始赢</div></button>
-              <button onclick="switchView('goals');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>🎯 备考 / 考证 / 升学</b><div style="color:var(--hint);margin-top:2px">目标、竞赛、保研考研</div></button>
-              <button onclick="switchView('plans');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>⏳ 管好今天的时间</b><div style="color:var(--hint);margin-top:2px">四象限排优先级</div></button>
-              <button onclick="switchView('finance');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>💰 记账 / 攒钱 / 副业</b><div style="color:var(--hint);margin-top:2px">把钱管明白</div></button>
-              <button onclick="switchView('party');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>🏃 健康 / 运动 / 情绪</b><div style="color:var(--hint);margin-top:2px">照顾好身体和心情</div></button>
-              <button onclick="switchView('tpl');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>📂 各种实用模板</b><div style="color:var(--hint);margin-top:2px">简历、规划一键套用</div></button>
-            </div>
-          </div>
-          <button onclick="var b=document.getElementById('guideBanner');b.style.display='none';try{localStorage.setItem('pp_guide_hide','1')}catch(e){}" style="border:none;background:none;color:var(--hint);font-size:16px;cursor:pointer;line-height:1;flex-shrink:0" title="关闭">×</button>
+      <!-- 轻松上手：你关心哪些方向？（新人校准首页推荐；选中即重排下方推荐卡，不重复） -->
+      <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#EEF6F2,#E9F2FA);border-color:#CDE0DB">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z"></path></svg>轻松上手 · 你关心哪些方向？<span style="font-weight:400;font-size:12px;color:var(--hint)">选完帮你排好，不迷路</span></h3>
+          <button onclick="clearFocus()" style="border:none;background:var(--card);color:var(--hint);font-size:12px;cursor:pointer;padding:4px 8px;border-radius:6px;font-family:inherit" title="清空选择">↺ 重排复位</button>
         </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+          <button class="focus-chip" data-dir="study" onclick="pickFocus('study')">📚 学习考证</button>
+          <button class="focus-chip" data-dir="time" onclick="pickFocus('time')">⏰ 时间效率</button>
+          <button class="focus-chip" data-dir="money" onclick="pickFocus('money')">💰 求职搞钱</button>
+          <button class="focus-chip" data-dir="life" onclick="pickFocus('life')">🌱 成长记录</button>
+          <button class="focus-chip" data-dir="fun" onclick="pickFocus('fun')">🏠 生活休闲</button>
+        </div>
+        <div id="focusStart" style="margin-top:12px"></div>
+      </div>
+      <!-- 首页推荐模块：随「轻松上手」所选方向自动重排优先项（真正需要的入门入口，非底栏简单重复） -->
+      <div id="quickStart" class="grid grid-3" style="margin-bottom:16px">
+        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="quadrant" onclick="switchView('quadrant')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🗂 轻重缓急</div><div style="font-size:12px;color:var(--hint);margin-top:4px">四象限排好今天，忙而不乱</div></div>
+        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="plans" onclick="switchView('plans')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🗓 远见蓝图</div><div style="font-size:12px;color:var(--hint);margin-top:4px">年/月/周/日计划表</div></div>
+        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="goals" onclick="switchView('goals')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🎯 目标拆解</div><div style="font-size:12px;color:var(--hint);margin-top:4px">大目标→今天做什么</div></div>
+        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="habits" onclick="switchView('habits')"><div style="font-size:14px;font-weight:600;color:var(--primary)">✅ 习惯养成</div><div style="font-size:12px;color:var(--hint);margin-top:4px">每日打卡小习惯</div></div>
+        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="timer" onclick="switchView('timer')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🍅 心流计时</div><div style="font-size:12px;color:var(--hint);margin-top:4px">番茄专注进入心流</div></div>
+        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="journal" onclick="switchView('journal')"><div style="font-size:14px;font-weight:600;color:var(--primary)">📖 时光札记</div><div style="font-size:12px;color:var(--hint);margin-top:4px">一篇日记沉淀一天</div></div>
       </div>
       <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
       <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#0F6E56,#0C447C);border:none">
@@ -1884,7 +1906,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <h3>权威资源入口</h3>
           <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">最大中文学术库，学校IP免费下载</div></div><div class="arrow">↗</div></a>
           <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">期刊/学位论文/会议</div></div><div class="arrow">↗</div></a>
-          <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">学业论文/期刊/会议一站式</div></div><div class="arrow">↗</div></a>
           <a class="res-link" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Google Scholar</div><div class="desc">外文文献检索，需科学上网</div></div><div class="arrow">↗</div></a>
         </div>
       <div style="margin-top:16px"></div>
@@ -2634,7 +2655,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p>当前→目标（点击填写） · 可持续跟练 · 饮食红绿灯</p>
       </div>
       <div class="grid grid-3">
-        <div class="metric"><div class="label">身高(cm)</div><div class="value" id="userHeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub">cm</div></div>
+        <div class="metric"><div class="label">身高 (cm)</div><div class="value" id="userHeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub">决定 BMI 基准</div></div>
         <div class="metric"><div class="label">当前体重(kg)</div><div class="value" id="curWeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub" id="curBmi">BMI待测算</div></div>
         <div class="metric"><div class="label">目标体重</div><div class="value" id="goalWeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub" id="goalBmi">待测算</div></div>
         <div class="metric"><div class="label">周期</div><div class="value" id="planWeeks" contenteditable="true" style="cursor:text">点击填写</div><div class="sub" id="weeklyPace">每周节奏自定</div></div>
@@ -7350,7 +7371,7 @@ function exportCurrentPDF(){
     var v=el.value||el.getAttribute('data-init')||'';
     el.textContent=v;el.removeAttribute('placeholder');
   });
-  var style='<style>@page{margin:12mm 10mm}/* ===== 全局基础 ===== */*{box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2c3440;line-height:1.82;font-size:15px;padding:0;margin:0;background:#fafbfc}/* ===== 页面标题区 ===== */.page-head{margin-bottom:20px;padding:18px 20px;background:linear-gradient(135deg,#0F6E56 0%,#0a5543 100%);color:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(15,110,86,.18)}.page-head h1{font-size:23px;margin:0 0 8px;color:#fff;display:flex;align-items:center;gap:9px}.page-head h1 svg{width:26px;height:26px;flex-shrink:0;filter:brightness(0) invert(1)}.page-head p{color:rgba(255,255,255,.78);margin:0;font-size:14.5px;line-height:1.65}/* ===== 网格布局 ===== */.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}/* ===== 卡片容器（每个区块都有边框+圆角+阴影） ===== */.card{border:1.5px solid #dce3ec;border-radius:13px;padding:20px;margin-bottom:18px;break-inside:avoid;background:#fff;box-shadow:0 2px 8px rgba(44,52,64,.05),0 .5px 1px rgba(44,52,64,.03);position:relative;overflow:hidden}.card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#0F6E56,#38b58a);border-radius:13px 0 0 13px}/* ===== 标题 ===== */.card h3{font-size:17.5px;color:#0C447C;margin:0 0 14px;font-weight:700;padding-bottom:10px;border-bottom:1.5px dashed #e8edf4;display:flex;align-items:center;gap:7px}.card h3:first-child{margin-top:0}.card h4{font-size:16px;color:#134a7d;margin:14px 0 10px;font-weight:700}/* ===== 段落与文字 ===== */.card p{font-size:15px;line-height:1.85;margin:10px 0;color:#374151}/* ===== 列表（带装饰性项目符号和分隔线） ===== */.card ul,.card ol{margin:12px 0;padding-left:0;list-style:none}.card ul>li,.card ol>li{position:relative;padding:10px 12px 10px 30px;margin:6px 0;font-size:15px;line-height:1.8;color:#374151;border:1px solid #eef2f7;border-radius:9px;background:#fcfdfd;transition:.15s}.card ul>li::before{content:"";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:#0F6E56;flex-shrink:0}.card ol>li{counter-increment:list-num;padding-left:32px}.card ol>li::before{content:counter(list-num);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:#0F6E56;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}.card ol{counter-reset:list-num}/* ===== 嵌套列表 ===== */.card ul ul,.card ol ol{margin:6px 0 0 12px}.card ul ul>li,.card ol ol>li{padding:7px 10px 7px 24px;margin:4px 0;font-size:14px;border-color:#f0f4f8;background:#fff}/* ===== Callout 提示框（更醒目） ===== */.callout{border-radius:11px;padding:16px 18px;margin-top:14px;font-size:15px;line-height:1.78;background:linear-gradient(135deg,#f0faf6,#e8f5ee);border:1.5px solid #b8dfcc;border-left:5px solid #0F6E56;color:#1a3a2a;box-shadow:0 2px 6px rgba(15,110,86,.08)}/* ===== 标签 ===== */.tag{border:1.5px solid #c9ddf0;border-radius:999px;padding:4px 14px;font-size:13px;color:#0C447C;background:#eaf3fb;font-weight:500;display:inline-block;margin:2px 3px}/* ===== 输入框/文本域 ===== */.textarea,.card textarea{width:100%;border:1.5px solid #dce3ec;border-radius:10px;padding:13px 14px;font-size:15px;line-height:1.75;font-family:inherit;white-space:pre-wrap;min-height:100px;color:#2c3440;background:#f8fafc;transition:.15s}textarea{resize:none}/* ===== 表格（斑马纹+粗表头） ===== */table{border-collapse:separate;border-spacing:0;width:100%;font-size:14px;border:1.5px solid #dce3ec;border-radius:10px;overflow:hidden}.card table{margin:12px 0}th,td{border:1px solid #e3e8ee;padding:10px 8px;text-align:center;line-height:1.55}th{background:linear-gradient(180deg,#0C447C,#0a3a66);color:#fff;font-weight:700;font-size:13.5px;letter-spacing:.3px}tr:nth-child(even) td{background:#f7f9fc}td{color:#374151}/* ===== SVG 图标 ===== */svg{max-width:24px;max-height:24px}/* ===== 分隔线装饰 ===== */hr,.divider{border:none;height:1.5px;background:linear-gradient(90deg,transparent,#dce3ec 20%,#dce3ec 80%,transparent);margin:16px 0}/* ===== 打印隐藏 ===== */@media print{.no-print{display:none!important}}/* ===== 手机端适配 ===== */@media(max-width:600px){body{font-size:15.5px;padding:0 4px}.page-head{padding:14px 16px;border-radius:11px}.page-head h1{font-size:21px}.page-head h1 svg{width:22px;height:22px}.page-head p{font-size:14px}.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px 14px;margin-bottom:14px;border-radius:11px}.card h3{font-size:16.5px;padding-bottom:8px}.card h4{font-size:15.5px}.card p,.card ul>li,.card ol>li,.callout,.textarea,.card textarea{font-size:14.5px}.card ul>li,.card ol>li{padding:9px 10px 9px 26px}.tag{font-size:12.5px;padding:3px 11px}table{font-size:13px}th,td{padding:8px 6px}}</style>';
+  var style='<style>@page{margin:12mm 10mm}/* ===== 全局基础 ===== */*{box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2c3440;line-height:1.82;font-size:15px;padding:0;margin:0;background:#fafbfc}/* ===== 页面标题区 ===== */.page-head{margin-bottom:20px;padding:18px 20px;background:linear-gradient(135deg,#0F6E56 0%,#0a5543 100%);color:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(15,110,86,.18)}.page-head h1{font-size:23px;margin:0 0 8px;color:#fff;display:flex;align-items:center;gap:9px}.page-head h1 svg{width:26px;height:26px;flex-shrink:0;filter:brightness(0) invert(1)}.page-head p{color:rgba(255,255,255,.78);margin:0;font-size:14.5px;line-height:1.65}/* ===== 网格布局 ===== */.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}/* ===== 卡片容器（每个区块都有边框+圆角+阴影） ===== */.card{border:1.5px solid #dce3ec;border-radius:13px;padding:20px;margin-bottom:18px;break-inside:avoid;background:#fff;box-shadow:0 2px 8px rgba(44,52,64,.05),0 .5px 1px rgba(44,52,64,.03);position:relative;overflow:hidden}.card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#0F6E56,#38b58a);border-radius:13px 0 0 13px}/* ===== 标题 ===== */.card h3{font-size:17.5px;color:#0C447C;margin:0 0 14px;font-weight:700;padding-bottom:10px;border-bottom:1.5px dashed #e8edf4;display:flex;align-items:center;gap:7px}.card h3:first-child{margin-top:0}.card h4{font-size:16px;color:#134a7d;margin:14px 0 10px;font-weight:700}/* ===== 段落与文字 ===== */.card p{font-size:15px;line-height:1.85;margin:10px 0;color:#374151}/* ===== 列表（带装饰性项目符号和分隔线） ===== */.card ul,.card ol{margin:12px 0;padding-left:0;list-style:none}.card ul>li,.card ol>li{position:relative;padding:10px 12px 10px 30px;margin:6px 0;font-size:15px;line-height:1.8;color:#374151;border:1px solid #eef2f7;border-radius:9px;background:#fcfdfd;transition:.15s}.card ul>li::before{content:"";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:#0F6E56;flex-shrink:0}.card ol>li{counter-increment:list-num;padding-left:32px}.card ol>li::before{content:counter(list-num);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:#0F6E56;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}.card ol{counter-reset:list-num}/* ===== 嵌套列表 ===== */.card ul ul,.card ol ol{margin:6px 0 0 12px}.card ul ul>li,.card ol ol>li{padding:7px 10px 7px 24px;margin:4px 0;font-size:14px;border-color:#f0f4f8;background:#fff}/* ===== Callout 提示框（更醒目） ===== */.callout{border-radius:11px;padding:16px 18px;margin-top:14px;font-size:15px;line-height:1.78;background:linear-gradient(135deg,#f0faf6,#e8f5ee);border:1.5px solid #b8dfcc;border-left:5px solid #0F6E56;color:#1a3a2a;box-shadow:0 2px 6px rgba(15,110,86,.08)}/* ===== 标签 ===== */.tag{border:1.5px solid #c9ddf0;border-radius:999px;padding:4px 14px;font-size:13px;color:#0C447C;background:#eaf3fb;font-weight:500;display:inline-block;margin:2px 3px}/* ===== 输入框/文本域 ===== */.textarea,.card textarea{width:100%;border:1.5px solid #dce3ec;border-radius:10px;padding:13px 14px;font-size:15px;line-height:1.75;font-family:inherit;white-space:pre-wrap;min-height:100px;color:#2c3440;background:#f8fafc;transition:.15s}textarea{resize:none}/* ===== 表格（斑马纹+粗表头） ===== */table{border-collapse:separate;border-spacing:0;width:100%;font-size:14px;border:1.5px solid #dce3ec;border-radius:10px;overflow:hidden}.card table{margin:12px 0}th,td{border:1px solid #e3e8ee;padding:10px 8px;text-align:center;line-height:1.55}th{background:linear-gradient(180deg,#0C447C,#0a3a66);color:#fff;font-weight:700;font-size:13.5px;letter-spacing:.3px}tr:nth-child(even) td{background:#f7f9fc}td{color:#374151}/* ===== SVG 图标 ===== */svg{max-width:24px;max-height:24px}/* ===== 分隔线装饰 ===== */hr,.divider{border:none;height:1.5px;background:linear-gradient(90deg,transparent,#dce3ec 20%,#dce3ec 80%,transparent);margin:16px 0}/* ===== 报告品牌头/页脚 ===== */.pdf-brandbar{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0a3a66 0%,#0C447C 45%,#0F6E56 100%);color:#fff;padding:16px 22px;border-radius:14px;margin-bottom:22px;box-shadow:0 6px 18px rgba(12,68,124,.22);position:relative;overflow:hidden;page-break-inside:avoid}.pdf-brandbar::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 62%)}.pb-logo{flex-shrink:0;z-index:1}.pb-logo img{width:40px;height:40px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.2)}.pb-info{display:flex;flex-direction:column;min-width:0;z-index:1}.pb-info b{font-size:18px;letter-spacing:.5px}.pb-info span{font-size:12px;opacity:.82;margin-top:3px}.pb-meta{margin-left:auto;text-align:right;z-index:1;display:flex;flex-direction:column;align-items:flex-end;gap:4px}.pb-meta .pb-name{font-size:12.5px;opacity:.92;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:2px 12px;border-radius:999px}.pb-meta .pb-date{font-size:11.5px;opacity:.8}.pdf-footer{margin-top:28px;padding-top:18px;border-top:1.5px dashed #b9c6d4;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;line-height:1.8;color:#738099;text-align:center;page-break-inside:avoid}.pdf-footer div{background:#f2f6fb;border-radius:999px;padding:6px 16px}.pdf-brandbar,.pdf-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:13mm 11mm}/* ===== 打印隐藏 ===== */@media print{.no-print{display:none!important}}/* ===== 手机端适配 ===== */@media(max-width:600px){body{font-size:15.5px;padding:0 4px}.page-head{padding:14px 16px;border-radius:11px}.page-head h1{font-size:21px}.page-head h1 svg{width:22px;height:22px}.page-head p{font-size:14px}.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px 14px;margin-bottom:14px;border-radius:11px}.card h3{font-size:16.5px;padding-bottom:8px}.card h4{font-size:15.5px}.card p,.card ul>li,.card ol>li,.callout,.textarea,.card textarea{font-size:14.5px}.card ul>li,.card ol>li{padding:9px 10px 9px 26px}.tag{font-size:12.5px;padding:3px 11px}table{font-size:13px}th,td{padding:8px 6px}}</style>';
   var nowD=new Date(),taskList=document.querySelector('.view.active')?null:'';
   var ds=(''+nowD.getFullYear())+'-'+('0'+(nowD.getMonth()+1)).slice(-2)+'-'+('0'+nowD.getDate()).slice(-2);
   var html='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>'+name+' · 平·万象</title>'+style+'</head><body>'
@@ -7358,18 +7379,35 @@ function exportCurrentPDF(){
     +clone.innerHTML
     +'<div class="pdf-footer"><div>由「平·万象 · 大学生成长中枢」生成</div><div>个人资料 · 私密导出 · '+ds+'</div></div>'
     +'</body></html>';
-  var pamURL=URL.createObjectURL(new Blob([html.replace('</head>','<style>.pdf-brandbar{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0a3a66 0%,#0C447C 45%,#0F6E56 100%);color:#fff;padding:16px 22px;border-radius:14px;margin-bottom:22px;box-shadow:0 6px 18px rgba(12,68,124,.22);position:relative;overflow:hidden}.pdf-brandbar::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 62%)}.pb-logo{flex-shrink:0;z-index:1}.pb-logo img{width:40px;height:40px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.2)}.pb-info{display:flex;flex-direction:column;min-width:0;z-index:1}.pb-info b{font-size:18px;letter-spacing:.5px}.pb-info span{font-size:12px;opacity:.82;margin-top:3px}.pb-meta{margin-left:auto;text-align:right;z-index:1;display:flex;flex-direction:column;align-items:flex-end;gap:4px}.pb-meta .pb-name{font-size:12.5px;opacity:.92;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:2px 12px;border-radius:999px}.pb-meta .pb-date{font-size:11.5px;opacity:.8}.pdf-footer{margin-top:28px;padding-top:18px;border-top:1.5px dashed #b9c6d4;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;line-height:1.8;color:#738099;text-align:center}.pdf-footer div{background:#f2f6fb;border-radius:999px;padding:6px 16px}.pdf-brandbar,.pdf-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:13mm 11mm}body{margin:0}</style></head>')],{type:'text/html;charset=utf-8'}));
-  var pwin=window.open(pamURL,'_blank');
-  if(!pwin){ /* 弹窗被拦截：回退为直接下载 */
-    var a=document.createElement('a');a.href=pamURL;a.download=name+'_平万象.html';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(function(){URL.revokeObjectURL(pamURL);},1500);
-    flash('已生成「'+name+'」报告文件，请打开后按 Ctrl/⌘+P 打印或另存为 PDF');
-    return;
+  /* 在当前页面打开全屏预览：直接看到结果，不受弹窗拦截影响，可随时打印/另存为 PDF */
+  var ov=document.getElementById('pdfPreview');
+  if(!ov){
+    ov=document.createElement('div');ov.id='pdfPreview';
+    ov.innerHTML='<div class="pp-bar"><strong>🗎 '+name+' · 报告预览</strong><span class="pp-tip">直接查看报告内容，点「打印 / 另存为 PDF」可导出</span><div class="pp-btns"><button class="pp-btn print" onclick="printPreview()">🖨 打印 / 另存为 PDF</button><button class="pp-btn close" onclick="closePreview()">✕ 关闭</button></div></div><iframe id="ppFrame" title="报告预览"></iframe>';
+    document.body.appendChild(ov);
   }
-  /* 等报告渲染完成后，自动唤起打印对话框（可在其中选「另存为 PDF」） */
-  setTimeout(function(){try{pwin.focus();pwin.print();}catch(e){}},500);
-  flash('正在生成「'+name+'」报告预览，可直接打印或另存为 PDF');
+  /* 更新标题栏里的报告名 */
+  var ovStrong=ov.querySelector('.pp-bar>strong');if(ovStrong)ovStrong.textContent='🗎 '+name+' · 报告预览';
+  ov.style.display='flex';
+  var fr=document.getElementById('ppFrame');
+  fr.srcdoc=html;   /* srcdoc 隔离样式，原样渲染 */
+  fr.onload=function(){try{fr.contentDocument.body.classList.add('pp-rendered');}catch(e){}};
+  flash('已生成「'+name+'」报告预览，可直接查看或打印/另存为 PDF');
+}
+/* 打印/另存为PDF：只打印 iframe 里的报告内容 */
+function printPreview(){
+  var fr=document.getElementById('ppFrame');
+  if(!fr)return;
+  try{
+    var w=fr.contentWindow;w.focus();
+    if(w.print)w.print();
+    else if(fr.contentDocument.execCommand){fr.contentDocument.execCommand('print');}
+  }catch(e){alert('打印未成功，请点击报告区域后在浏览器菜单中选择「打印/另存为 PDF」');}
+}
+/* 关闭报告预览 */
+function closePreview(){
+  var ov=document.getElementById('pdfPreview');
+  if(ov){ov.style.display='none';var fr=document.getElementById('ppFrame');if(fr)fr.srcdoc='';}
 }
 /* —— 侧边栏板块搜索过滤 —— */
 function filterNav(q){
@@ -7729,8 +7767,7 @@ function init(){
       if(_sc>0){setTimeout(function(){window.scrollTo(0,_sc);},80);}
     }
   }catch(e){}
-  /* 新用户引导：首次（未关闭过）显示快速上手横幅，已关闭刷新不再打扰 */
-  try{var _g=document.getElementById('guideBanner');if(_g&&localStorage.getItem('pp_guide_hide')!=='1'){_g.style.display='block';}}catch(e){}
+  
   /* 关注方向引导：还原用户上次选的推荐模块 */
   try{renderFocus();}catch(e){}
 }
@@ -9005,6 +9042,22 @@ document.addEventListener('input',function(e){
     },500);
   }
 },true);
+/* 可编辑指标卡：未填写时用浅色小字占位（“点击填写”不再被放大成主数字，观感更整洁） */
+function markMetricPlaceholders(){
+  document.querySelectorAll('.metric .value[contenteditable]').forEach(function(v){
+    var t=(v.textContent||'').trim();
+    v.classList.toggle('ph',t===''||t==='点击填写'||t==='—');
+  });
+}
+document.addEventListener('input',function(e){
+  var tg=e.target;
+  if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]'))markMetricPlaceholders();
+},true);
+document.addEventListener('blur',function(e){
+  var tg=e.target;
+  if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]'))markMetricPlaceholders();
+},true);
+try{markMetricPlaceholders();}catch(e){}
 function clearTable(tableId){
   uiConfirm('确定要清空整张表格吗？此操作不可撤销。',function(){
     var t=document.getElementById(tableId);
@@ -10058,7 +10111,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .mind-refresh.spinning{animation:spinr .45s ease}
 @keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 /* ═══════════ 产品介绍弹窗 · 重构版（现代高级 · 品牌蓝绿 · 系统无衬线字体） ═══════════ */
-.pano-mask{position:fixed;inset:0;background:rgba(10,22,38,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:1300;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.pano-mask{position:fixed;inset:0;background:rgba(12,24,40,.66);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);z-index:1300;opacity:0;pointer-events:none;transition:opacity .35s ease}
 .pano{position:fixed;inset:0;z-index:1301;color:#1c2b3a;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8;
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
   background:
@@ -10068,7 +10121,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     linear-gradient(180deg,#F6F8FB 0%,#FFFFFF 30%,#FBFBFD 62%,#EEF3F7 100%)}
 .pano.show,.pano-mask.show{opacity:1;pointer-events:auto}
 /* ── 封面首屏（轻透高级：留白呼吸·品牌蓝绿点缀，不再一整片蓝） ── */
-.pano-hero{position:relative;min-height:auto;padding:116px 30px 62px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;border-radius:0 0 34px 34px;box-shadow:inset 0 -1px 0 rgba(15,118,92,.08)}
+.pano-hero{position:relative;min-height:auto;padding:26px 30px 58px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;border-radius:0 0 34px 34px;box-shadow:inset 0 -1px 0 rgba(15,118,92,.08)}
 .pano-hero::before{content:"";position:absolute;inset:0;z-index:0;background:
   radial-gradient(720px 380px at 10% -14%,rgba(15,118,92,.16),transparent 62%),
   radial-gradient(680px 400px at 100% -6%,rgba(37,99,235,.13),transparent 60%),
@@ -10077,22 +10130,24 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-hero::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.7),transparent 60%);z-index:0}
 .pano-hero>*{position:relative;z-index:1}
 .pano-hero .glow{position:absolute;left:-70px;bottom:-80px;transform:none;width:360px;height:230px;background:radial-gradient(60% 60% at 50% 50%,rgba(15,118,92,.12),transparent 68%);z-index:0}
-.pano-hero .eyebrow{font-size:12px;letter-spacing:.42em;color:#0F6E56;text-indent:.42em;margin:0 0 22px;opacity:0;animation:panoUp .7s .1s forwards;text-transform:uppercase;background:rgba(15,118,92,.08);border:1px solid rgba(15,118,92,.16);display:inline-block;padding:7px 16px;border-radius:999px}
-.pano-hero h1.pano-h1{margin:0;font-weight:800;font-size:clamp(36px,6.2vw,60px);line-height:1.24;letter-spacing:.03em;color:#0E2A47;opacity:0;animation:panoUp .7s .22s forwards;text-shadow:0 10px 30px rgba(14,42,71,.10)}
+.pano-hero .eyebrow{font-size:12px;letter-spacing:.42em;color:#0F6E56;text-indent:.42em;margin:0 0 22px;animation:panoUp .7s .1s both;text-transform:uppercase;background:rgba(15,118,92,.08);border:1px solid rgba(15,118,92,.16);display:inline-block;padding:7px 16px;border-radius:999px}
+.pano-hero h1.pano-h1{margin:0;font-weight:800;font-size:clamp(36px,6.2vw,60px);line-height:1.24;letter-spacing:.03em;color:#0E2A47;animation:panoUp .7s .22s both;text-shadow:0 10px 30px rgba(14,42,71,.10)}
 .pano-h1 .thin{font-weight:500;color:#0C447C}
-.pano-hero .dek{font-size:clamp(15px,2.4vw,17.5px);color:#42566C;max-width:620px;margin:28px auto 0;line-height:2.1;opacity:0;animation:panoUp .7s .34s forwards}
+.pano-hero .dek{font-size:clamp(15px,2.4vw,17.5px);color:#42566C;max-width:620px;margin:28px auto 0;line-height:2.1;animation:panoUp .7s .34s both}
 .pano-hero .dek b,.pano-hero .dek em{color:#0F6E56;font-weight:700}
-.pano-hero .hr-dot{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;opacity:0;animation:panoUp .7s .46s forwards}
+.pano-hero .hr-dot{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;animation:panoUp .7s .46s both}
 .pano-hero .hr-dot i{width:46px;height:2px;background:linear-gradient(90deg,transparent,#0F6E56);border-radius:2px}
 .pano-hero .hr-dot i.rt{background:linear-gradient(90deg,#0F6E56,transparent)}
 .pano-hero .hr-dot .dm{color:#0F6E56;font-size:12px;letter-spacing:8px;text-indent:8px}
-.pano-stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:42px;opacity:0;animation:panoUp .7s .58s forwards}
-.pano-stats span{display:flex;align-items:baseline;gap:9px;background:rgba(255,255,255,.8);border:1px solid rgba(15,118,92,.18);backdrop-filter:blur(8px);box-shadow:0 8px 22px rgba(14,42,71,.06);padding:13px 24px;border-radius:999px;font-size:12.5px;color:#52606F;letter-spacing:.5px}
+.pano-stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:42px;animation:panoUp .7s .58s both}
+.pano-stats span{display:flex;align-items:baseline;gap:9px;background:rgba(255,255,255,.9);border:1px solid rgba(15,118,92,.18);box-shadow:0 8px 22px rgba(14,42,71,.06);padding:13px 24px;border-radius:999px;font-size:12.5px;color:#52606F;letter-spacing:.5px}
 .pano-stats b{color:#0F6E56;font-size:21px;font-weight:800;letter-spacing:.5px;line-height:1;font-family:Georgia,"Times New Roman",serif}
+/* 导览入场动画：默认可见底色，动画仅作增强；动画不生效时内容也不隐藏 */
+@keyframes panoUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 /* 正文容器 */
 .pano-inner{max-width:980px;margin:0 auto;padding:0 40px 40px;position:relative;z-index:2}
 .pano-sec{padding:64px 0 10px;position:relative}
-.pano-sec>h2,.pano-sec-ctr>h2{opacity:0;animation:panoUp .6s .05s forwards}
+.pano-sec>h2,.pano-sec-ctr>h2{animation:panoUp .6s .05s both}
 /* 章节眉标 */
 .pano-no{display:flex;align-items:center;gap:12px;color:#0C447C;font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:700}
 .pano-no .rn{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:22px;font-weight:700;color:#2563EB;letter-spacing:0}
@@ -10207,7 +10262,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 @media(max-width:560px){.pano-progress{margin:0 -20px 8px;padding:10px 20px 8px}.pano-nav{flex-wrap:wrap}.pano-nav .n-cnt{order:3;flex-basis:100%}.pano-nav button{flex:1}}
 .pano::-webkit-scrollbar{width:10px}
 .pano::-webkit-scrollbar-thumb{background:linear-gradient(#2563EB,#0F6E56);border-radius:5px;border:2px solid transparent;background-clip:padding-box}
-@media (max-width:560px){.pano-hero{padding:90px 22px 54px;min-height:auto}.pano-compare{grid-template-columns:1fr}.pano-inner{padding:0 20px 60px}.pano-cta{padding:48px 22px}.pano-cta .btns{flex-direction:column;align-items:stretch}.pano-cta .btn{min-width:auto}.pano-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pano-hero{padding:20px 22px 50px;min-height:auto}.pano-compare{grid-template-columns:1fr}.pano-inner{padding:0 20px 60px}.pano-cta{padding:48px 22px}.pano-cta .btns{flex-direction:column;align-items:stretch}.pano-cta .btn{min-width:auto}.pano-grid{grid-template-columns:1fr 1fr}}
 [data-theme="dark"] .mind-refresh{background:#1a1d27;color:#93c5fd;border-color:#3d4259}
 [data-theme="dark"] .mind-refresh:hover{background:#232838}
 </style>
