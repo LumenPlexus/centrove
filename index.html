@@ -939,18 +939,45 @@ strong{font-weight:600}
         <div class="metric"><div class="label">今日任务</div><div class="value" id="todayTaskCount">0</div><div class="sub">件待办</div></div>
       </div>
 
-      <!-- 今日金句卡 -->
-      <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#F0F8F4,#EAF4EF);border-color:#B8DFC9">
-        <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M6 3h12v18l-4-2-4 2-4-2z"></path></svg>今日金句 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天一句 · 给自己一点力量</span></h3>
-        <div id="dailyQuoteCard" style="font-size:15px;color:var(--text);line-height:1.9;margin-top:6px">“慢慢来，比较快；认真走，路自宽”</div>
-        <div style="font-size:12px;color:var(--hint);margin-top:6px">在「时光札记」里写下你的今日感悟，日积月累就是力量。</div>
+      <!-- 今日心语 · 每日一句（金句＋鼓励合成一卡，可换新、不重复、按日期自动轮换） -->
+      <div class="card mind-card" style="margin-bottom:16px;background:linear-gradient(135deg,#F0F8F4,#EAF4EF);border-color:#B8DFC9">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 2l2.9 7.5L22 10l-6 5 2 8-6-4-6 4 2-8-6-5 7.1-.5z"></path></svg>今日心语 <span style="font-weight:400;font-size:12px;color:var(--hint)">一句 · 陪你一整天</span></h3>
+          <button class="mind-refresh" onclick="refreshMind(true);spinMindReload()" title="换一句新的（不重复）">🔄 换一句</button>
+        </div>
+        <div id="dailyMind" style="font-size:16.5px;color:var(--text);line-height:1.95;margin-top:12px;font-weight:600">“慢慢来，比较快；认真走，路自宽”</div>
+        <div id="dailyGreeting" style="font-size:13px;color:var(--muted);margin-top:8px"></div>
+        <div style="font-size:12px;color:var(--hint);margin-top:8px">点「换一句」立即更新、每天都不重复；想连下面的「今日知识」一起换，点顶栏「换一批灵感」或下面的「换一批」即可。</div>
       </div>
 
-      <!-- 今日鼓励 + 日期问候 -->
-      <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#FFF8EF,#FDEFE2);border-color:#F2DDB8">
-        <h3 style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 2l2.9 7.5L22 10l-6 5 2 8-6-4-6 4 2-8-6-5 7.1-.5z"></path></svg>今日鼓励 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天一句 · 慢慢来也很好</span></h3>
-        <div id="dailyEncourage" style="font-size:16px;color:var(--text);line-height:1.9;margin-top:6px;font-weight:600"></div>
-        <div id="dailyGreeting" style="font-size:13px;color:var(--muted);margin-top:6px"></div>
+      <!-- 今日知识 · 每天四条（健康 / 认知 / 常识 / 财商），点「换一批」全体换新 -->
+      <div class="card" style="background:linear-gradient(135deg,#F2F6FC,#E9F0FA);border-color:#C9D8EE;margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>今日知识 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天四条 · 不重复 · 换一批</span></h3>
+          <button class="mind-refresh" onclick="refreshHomeDaily();spinInspire()" title="四条一起换一批新的">🔄 换一批</button>
+        </div>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>今日健康小知识</h3>
+          <p style="font-size:13px;color:var(--text)" id="dailyLaw"><strong>午睡时长</strong><br>10-20分钟短时午睡能恢复精力、提升下午专注力；超过30分钟易进入深睡，醒来更昏沉。定好闹钟，别睡过头。<br><span style="font-size:11px;color:var(--hint)">出处：健康小知识</span></p>
+          <div style="margin-top:8px"><span class="tag tag-teal">每日一记</span></div>
+        </div>
+        <div class="card">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>今日认知升级</h3>
+          <p style="font-size:13px;color:var(--text)" id="dailyCognition"><strong>确认偏误</strong><br>人只愿意看支持自己观点的信息，越看越坚定，越坚定越偏激。今天做：主动搜索一个"自己不喜欢"的观点，读完再判断，你会比大多数人清醒。<br><span style="font-size:11px;color:var(--hint)">每天一条思维方法 · 按日期轮换不重复</span></p>
+          <div style="margin-top:8px"><span class="tag tag-blue">思维升级</span></div>
+        </div>
+        <div class="card">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>今日社会常识</h3>
+          <p style="font-size:13px;color:var(--text)" id="dailyLifeTip"><strong>紧急情况处理</strong><br>火警119、急救120、报警110、交通事故122。燃气泄漏：先开窗通风、别开灯别按开关、撤到室外再报警。家用灭火器应放在厨房门口，不是灶台边。今天做：确认家人手机里都存了紧急联系人+报警电话。<br><span style="font-size:11px;color:var(--hint)">每天一条生存常识 · 按日期轮换不重复</span></p>
+          <div style="margin-top:8px"><span class="tag tag-coral">打破信息差</span></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>今日财商知识</h3>
+        <p style="font-size:13px;color:var(--text)" id="dailyFinance"><strong>记账不是为了省，是为了看清</strong><br>不用记到每一分，记大类就行：饮食/交通/学习/娱乐/其他。一个月后你就知道钱去哪了，砍掉哪类最不心疼。今天做：建一个只分 5 类的记账表。<br><span style="font-size:11px;color:var(--hint)">每天一条财商常识 · 按日期轮换不重复</span></p>
+        <div style="margin-top:8px"><span class="tag tag-gold">财商启蒙</span></div>
       </div>
       <!-- 专业倒数日板块（参考市面上倒数日app设计） -->
 <div class="card daily-card" style="margin-bottom:16px">
@@ -1041,30 +1068,7 @@ strong{font-weight:600}
           <button class="btn btn-primary btn-sm" onclick="addTimeBlock()">添加时间块</button>
         </div>
       </div>
-      <div class="grid grid-3" style="margin-top:16px">
-        <div class="card">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>今日健康小知识</h3>
-          <p style="font-size:13px;color:var(--text)" id="dailyLaw"><strong>午睡时长</strong><br>10-20分钟短时午睡能恢复精力、提升下午专注力；超过30分钟易进入深睡，醒来更昏沉。定好闹钟，别睡过头。<br><span style="font-size:11px;color:var(--hint)">出处：健康小知识</span></p>
-          <div style="margin-top:8px"><span class="tag tag-teal">每日一记</span></div>
-        </div>
-        <div class="card">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>今日认知升级</h3>
-          <p style="font-size:13px;color:var(--text)" id="dailyCognition"><strong>确认偏误</strong><br>人只愿意看支持自己观点的信息，越看越坚定，越坚定越偏激。今天做：主动搜索一个"自己不喜欢"的观点，读完再判断，你会比大多数人清醒。<br><span style="font-size:11px;color:var(--hint)">每天一条思维方法 · 按日期轮换不重复</span></p>
-          <div style="margin-top:8px"><span class="tag tag-blue">思维升级</span></div>
-        </div>
-        <div class="card">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>今日社会常识</h3>
-          <p style="font-size:13px;color:var(--text)" id="dailyLifeTip"><strong>紧急情况处理</strong><br>火警119、急救120、报警110、交通事故122。燃气泄漏：先开窗通风、别开灯别按开关、撤到室外再报警。家用灭火器应放在厨房门口，不是灶台边。今天做：确认家人手机里都存了紧急联系人+报警电话。<br><span style="font-size:11px;color:var(--hint)">每天一条生存常识 · 按日期轮换不重复</span></p>
-          <div style="margin-top:8px"><span class="tag tag-coral">打破信息差</span></div>
-        </div>
-      </div>
-      <!-- 今日财商知识（每日随机·不重复·有用，与上方三块知识排版一致） -->
-      <div class="card" style="margin-top:16px">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>今日财商知识</h3>
-        <p style="font-size:13px;color:var(--text)" id="dailyFinance"><strong>记账不是为了省，是为了看清</strong><br>不用记到每一分，记大类就行：饮食/交通/学习/娱乐/其他。一个月后你就知道钱去哪了，砍掉哪类最不心疼。今天做：建一个只分 5 类的记账表。<br><span style="font-size:11px;color:var(--hint)">每天一条财商常识 · 按日期轮换不重复</span></p>
-        <div style="margin-top:8px"><span class="tag tag-gold">财商启蒙</span></div>
-      </div>
-    </section>
+      </section>
 
     <!-- 学业规划 -->
     <section class="view" id="view-study">
@@ -7348,14 +7352,51 @@ function renderDailyEncourage(refresh){
   _curEncIdx=idx;
   var e=document.getElementById('dailyEncourage');
   if(e)e.textContent=ENCOURAGE[idx];
+  renderTodayGreeting();
+}
+/* 日期问候（独立函数，供今日心语与每日刷新共用） */
+function renderTodayGreeting(){
   var g=document.getElementById('dailyGreeting');
-  if(g){
-    var d=new Date();
-    var h=d.getHours();
-    var part=h<6?'夜深了，':(h<11?'早上好，':(h<14?'中午好，':(h<18?'下午好，':'晚上好，')));
-    var wd='日一二三四五六'[d.getDay()];
-    g.textContent=part+'今天是 '+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+wd+'。新的一天，新的可能，加油！';
-  }
+  if(!g)return;
+  var d=new Date();var h=d.getHours();
+  var part=h<6?'夜深了，':(h<11?'早上好，':(h<14?'中午好，':(h<18?'下午好，':'晚上好，')));
+  var wd='日一二三四五六'[d.getDay()];
+  g.textContent=part+'今天是 '+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+wd+'。新的一天，慢慢来，稳稳走。';
+}
+/* ═══════ 今日心语：金句＋鼓励合成一卡（手选 · 按日轮换 · 换一句不重复） ═══════ */
+var MINDS=[
+  '慢慢来，比较快；认真走，路自宽',
+  '把今天过好，就是对未来最好的准备',
+  '不必急着证明什么，你只需要比昨天的自己更懂自己',
+  '那些看似不起波澜的日复一日，会在某天让你看到坚持的意义',
+  '真正的成长，是把「我应该」慢慢换成「我选择」',
+  '允许自己被看见，也允许自己偶尔停下来',
+  '你读过的书、走过的路，都会在恰当的时候派上用场',
+  '专注本身就是一种稀缺的能力，今天练习一次就好',
+  '别把「忙」和「进步」划等号，安静的积累更有力量',
+  '哪怕今天只做了一道题、背了一组词，也已经是在向前',
+  '把焦虑换成行动，把比较换成专注，把自己还给自己',
+  '今天的小步，是明天大步的地基；走稳，就是快',
+  '不必事事都说明白，攒下的力气用来把事做漂亮',
+  '情绪会路过你，但决定整天心情的，是你怎么接住它',
+  '先把手头这一件事做好，世界会慢慢为你让路',
+  '你不需要成为别人，你需要成为更完整的自己',
+  '早睡一小时，胜过深夜的自我感动',
+  '每一个「再做一遍」的耐心，都在悄悄拉开你和过去的距离',
+  '别用「准备不充分」拖延开始，用「先做一点点」代替等待',
+  '今天总有件小事能让你进步，去做它，就赢了今天'
+];
+/* 今日心语渲染：manual=true 手选不重复；false 按日期轮换 */
+function refreshMind(manual){
+  var idx=manual?_unusedIndex(MINDS,'pp_mind_used'):(Math.floor(Date.now()/86400000)%MINDS.length);
+  var m=document.getElementById('dailyMind');
+  if(m&&MINDS[idx]){var t=MINDS[idx];if(t.indexOf('“')!==0)t='“'+t+'”';m.textContent=t;}
+  renderTodayGreeting();
+}
+function spinMindReload(){
+  var b=document.querySelector('.mind-refresh');
+  if(!b)return;
+  b.classList.remove('spinning');void b.offsetWidth;b.classList.add('spinning');
 }
 /* ═══════ 今日财商知识（首页每日随机·不重复·有用） ═══════ */
 var MONEY_TIPS=[
@@ -7477,6 +7518,7 @@ function renderDailyQuoteCard(){
   var el=document.getElementById('dailyQuoteCard');
   if(el&&q)el.innerHTML='“'+q+'”';
   renderDailyEncourage();
+  refreshMind(false);
 }
 
 function init(){
@@ -8192,6 +8234,8 @@ function refreshHomeDaily(){
   var q=QUOTES[qi];
   var dq=document.getElementById('dailyQuote');if(dq)dq.textContent='“'+q+'”';
   var dqc=document.getElementById('dailyQuoteCard');if(dqc)dqc.innerHTML='“'+q+'”';
+  /* 今日心语：同步换新且不重复 */
+  refreshMind(true);
   var law=LAWS[Math.floor(Math.random()*LAWS.length)];
   var dl=document.getElementById('dailyLaw');if(dl)dl.innerHTML='<strong>'+law.t+'</strong><br>'+law.d+'<br><span style="font-size:11px;color:var(--hint)">出处：'+law.src+'</span>';
   var fin=FINANCES[Math.floor(Math.random()*FINANCES.length)];
@@ -9845,6 +9889,174 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   setInterval(fix,3000);
 })();
 </script>
+
+<style>
+/* 今日心语刷新按钮 */
+.mind-refresh{font-size:12.5px;border:1px solid var(--border,#c3dcf5);background:var(--card,#fff);color:var(--primary,#0C447C);padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+.mind-refresh:hover{background:var(--primary-light,#E6F1FB)}
+.mind-refresh.spinning{animation:spinr .45s ease}
+@keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+/* ═══ 产品介绍弹窗 · 平·万象 ═══ */
+.intro-mask{position:fixed;inset:0;background:rgba(12,20,30,.45);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:1200;opacity:0;pointer-events:none;transition:opacity .28s ease}
+.intro-sheet{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);width:min(610px,94vw);max-height:88vh;background:#fff;color:#23303c;border-radius:22px;box-shadow:0 30px 70px rgba(12,30,45,.35);z-index:1201;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.9,.3,1.1);overflow:hidden;border:1px solid rgba(255,255,255,.6);display:flex;flex-direction:column}
+.intro-x{position:absolute;top:14px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.7);color:#0C447C;font-size:15px;cursor:pointer;z-index:3;line-height:1;transition:background .2s}
+.intro-x:hover{background:#fff}
+body.intro-show .intro-mask{opacity:1;pointer-events:auto}
+body.intro-show .intro-sheet{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.intro-scroll{overflow-y:auto;padding:0;overscroll-behavior:contain;flex:1;min-height:0}
+.intro-hero{background:linear-gradient(160deg,#0C447C 0%,#125398 45%,#1677a8 100%);color:#fff;padding:54px 34px 40px;position:relative;text-align:center}
+.intro-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 400px at 20% -20%,rgba(255,255,255,.16),transparent 60%)}
+.intro-seal{width:64px;height:64px;margin:0 auto 18px;border-radius:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#fff;letter-spacing:1px;box-shadow:0 10px 30px rgba(0,0,0,.25);backdrop-filter:blur(4px)}
+.intro-hey{font-size:22px;font-weight:700;letter-spacing:.5px}
+.intro-claim{margin-top:10px;font-size:14px;color:rgba(255,255,255,.85);line-height:1.8}
+.intro-rule{width:52px;height:2px;background:rgba(255,255,255,.55);margin:18px auto 12px;border-radius:2px}
+.intro-name{font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.7)}
+.intro-block{padding:22px 30px 6px}
+.intro-kicker{font-size:12.5px;color:var(--hint,#7a8ba0);margin-bottom:12px;letter-spacing:1px}
+.intro-glyph{font-size:15px;font-weight:700;color:#0C447C;margin:6px 0 12px;letter-spacing:.5px}
+.intro-p{font-size:14px;color:#3a4856;line-height:1.95;margin:0 0 10px}
+.intro-p strong{color:#0C447C}
+.intro-day{background:#F4F9FE;border:1px solid #D8E7F5;border-radius:12px;padding:6px 16px;margin:4px 2px 6px}
+.intro-day-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #DCE9F6;font-size:13.5px;color:#3a4856;line-height:1.7;align-items:flex-start}
+.intro-day-item:last-child{border-bottom:none}
+.intro-day-time{flex-shrink:0;font-weight:700;color:#0C447C;min-width:42px}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:4px 0 6px}
+.intro-chip{background:#F4F9FE;border:1px solid #D8E7F5;border-radius:10px;padding:10px 12px}
+.intro-chip b{display:block;font-size:13px;color:#0C447C;margin-bottom:3px}
+.intro-chip span{font-size:12px;color:#5b6b7a;line-height:1.6}
+.intro-no{background:#FDF3F1;border:1px solid #F3D7D2;border-radius:12px;padding:12px 16px;margin:4px 2px 6px;font-size:13.5px;color:#6b4a45;line-height:2}
+.intro-who{display:grid;gap:10px;margin:4px 0 6px}
+.intro-who-item{display:flex;gap:12px;align-items:flex-start;background:#F7F9FC;border:1px solid #E4EAF2;border-radius:11px;padding:11px 13px}
+.intro-who-item b{flex-shrink:0;min-width:92px;font-size:13.5px;color:#0C447C;padding-top:1px}
+.intro-who-item span{font-size:12.5px;color:#5b6b7a;line-height:1.7}
+.intro-step{background:#F0F7EF;border:1px solid #CFE3CC;border-radius:12px;padding:12px 16px;margin:4px 2px 6px;font-size:13.5px;color:#3c5238;line-height:2.1}
+.intro-step b{color:#2E7D32}
+.intro-note{font-size:12.5px;color:var(--hint,#7a8ba0);margin:12px 2px 4px;line-height:1.8}
+.intro-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 2px 6px}
+.intro-cta .btn{flex:1;min-width:160px;padding:11px 16px;font-size:14px}
+.intro-foot{text-align:center;font-size:12px;color:var(--hint,#7a8ba0);padding:6px 0 26px;letter-spacing:1px}
+.btn-ghost-soft{border:1px solid var(--border-strong,#c9d6e2);background:#fff;color:#0C447C;padding:9px 16px;border-radius:10px;cursor:pointer;font-size:14px;font-family:inherit;transition:background .2s}
+.btn-ghost-soft:hover{background:#F2F7FC}
+[data-theme="dark"] .intro-sheet{background:#161a23;color:#d7dbe4;border-color:#2a3040;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+[data-theme="dark"] .intro-glyph{color:#93c5fd}
+[data-theme="dark"] .intro-p{color:#c3c9d4}
+[data-theme="dark"] .intro-p strong{color:#93c5fd}
+[data-theme="dark"] .intro-day{background:#1a1f2b;border-color:#2c3345}
+[data-theme="dark"] .intro-day-item{color:#c3c9d4;border-color:#263043}
+[data-theme="dark"] .intro-day-time{color:#93c5fd}
+[data-theme="dark"] .intro-chip{background:#1a1f2b;border-color:#2c3345}
+[data-theme="dark"] .intro-chip b{color:#93c5fd}
+[data-theme="dark"] .intro-chip span{color:#9aa3b1}
+[data-theme="dark"] .intro-no{background:#2b1e1c;border-color:#4a2f2b;color:#d9b7b0}
+[data-theme="dark"] .intro-who-item{background:#1a1f2b;border-color:#2c3345}
+[data-theme="dark"] .intro-who-item b{color:#93c5fd}
+[data-theme="dark"] .intro-who-item span{color:#9aa3b1}
+[data-theme="dark"] .intro-step{background:#1c2719;border-color:#33422e;color:#c9d4c4}
+[data-theme="dark"] .intro-step b{color:#8fd18c}
+[data-theme="dark"] .intro-note{color:#6b7684}
+[data-theme="dark"] .intro-foot{color:#6b7684}
+[data-theme="dark"] .btn-ghost-soft{background:#1a1d27;color:#93c5fd;border-color:#3d4259}
+[data-theme="dark"] .btn-ghost-soft:hover{background:#232838}
+[data-theme="dark"] .mind-refresh{background:#1a1d27;color:#93c5fd;border-color:#3d4259}
+[data-theme="dark"] .mind-refresh:hover{background:#232838}
+</style>
+<script>
+/* ═══ 产品介绍弹窗逻辑 ═══ */
+function openIntro(){
+  document.body.classList.add('intro-show');
+  document.body.style.overflow='hidden';
+}
+function closeIntro(){
+  document.body.classList.remove('intro-show');
+  document.body.style.overflow='';
+}
+function closeAndGo(){closeIntro();try{switchView('home')}catch(e){}}
+function introMore(){closeIntro();try{switchView('about')}catch(e){}}
+(function(){
+  var mask=document.getElementById('introMask');
+  if(mask)mask.addEventListener('click',closeIntro);
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeIntro();});
+  try{
+    if(!localStorage.getItem('pp_intro_seen_v1')){setTimeout(openIntro,600);localStorage.setItem('pp_intro_seen_v1','1');}
+  }catch(e){}
+})();
+</script>
+
+<!-- ═════════ 产品介绍弹窗 · 平·万象 ═════════ -->
+<div class="intro-mask" id="introMask"></div>
+<div class="intro-sheet" id="introSheet" role="dialog" aria-modal="true" aria-label="关于平·万象">
+  <button class="intro-x" onclick="closeIntro()" title="关闭">✕</button>
+  <div class="intro-scroll">
+    <div class="intro-hero">
+      <div class="intro-seal">平</div>
+      <div class="intro-hey">你好，我是「平·万象」。</div>
+      <div class="intro-claim">一个安静陪你度过大学四年的网页。<br>不吵、不卖、不偷看你的日记。</div>
+      <div class="intro-rule"></div>
+      <div class="intro-name">平·万象 · 大学生全能成长工作台</div>
+    </div>
+    <div class="intro-block">
+      <div class="intro-kicker">先别急着看功能，花三十秒认识我</div>
+      <div class="intro-glyph">壹 · 我是谁</div>
+      <p class="intro-p">把大学四年过明白，需要的不是一堆 App，而是一个能把「学业、时间、目标、钱、健康、想法」都放得下、还不会弄丢的地方。平·万象就是那个地方——它不是资讯平台，不是社交软件，是一个<strong>只为你自己服务的成长工作台</strong>。</p>
+      <p class="intro-p">它很安静：打开就用，登录都不用。它也很长情：你今天写下的一句话、打下的一个勾，明天、下学期、开学那天，都还在原地等你。</p>
+    </div>
+    <div class="intro-block">
+      <div class="intro-glyph">贰 · 如果愿意，你的一天会是这样的</div>
+      <div class="intro-day">
+        <div class="intro-day-item"><span class="intro-day-time">清晨</span>看到今天最重要的一件事，写下它，心里就有了底；一条「今日心语」陪着你。</div>
+        <div class="intro-day-item"><span class="intro-day-time">白天</span>上课间隙用番茄钟专注 25 分钟，抽一条「今日知识」换换脑子、兜住生活常识。</div>
+        <div class="intro-day-item"><span class="intro-day-time">傍晚</span>用四象限把明天要排的事一件件放好，顺手记一笔今天花在哪。</div>
+        <div class="intro-day-item"><span class="intro-day-time">睡前</span>打上今天的健康卡，在时光札记里写三行复盘。一天，就这样稳稳落下。</div>
+      </div>
+    </div>
+    <div class="intro-block">
+      <div class="intro-glyph">叁 · 说点实在的，我能帮你做这些</div>
+      <div class="intro-grid">
+        <div class="intro-chip"><b>考试</b><span>四六级按日规划、听力精听、作文模板，算好日期自动提醒</span></div>
+        <div class="intro-chip"><b>时间</b><span>四象限、番茄钟、一周时间表，把一天排明白</span></div>
+        <div class="intro-chip"><b>目标</b><span>大目标拆成今天就能做的事，看得见进度</span></div>
+        <div class="intro-chip"><b>金钱</b><span>记账、省钱技巧、副业启蒙，钱花在哪一目了然</span></div>
+        <div class="intro-chip"><b>健康</b><span>运动打卡与热力图、情绪记录，身心一起照顾</span></div>
+        <div class="intro-chip"><b>升学</b><span>学业规划、保研考研路径、竞赛科研、简历面试</span></div>
+        <div class="intro-chip"><b>记录</b><span>时光札记、灵感看板、感恩日记，好想法不会丢</span></div>
+        <div class="intro-chip"><b>成长</b><span>成长档案每周回看，一年后你会谢谢现在写的每一笔</span></div>
+      </div>
+    </div>
+    <div class="intro-block">
+      <div class="intro-glyph">肆 · 有些事，我明确不打算做</div>
+      <div class="intro-no">
+        <div>· 不设会员、不收一分钱，所有功能直接可用</div>
+        <div>· 不打广告，不天天推你「不买就亏」</div>
+        <div>· 不偷看你的数据，你的日记只有你自己能读</div>
+        <div>· 不制造焦虑，不告诉你不优秀就完了</div>
+      </div>
+      <p class="intro-p" style="margin-top:10px">我想成为的，是一本你自己写的、越写越厚的成长相册，而不是一个不停提醒你「别人多厉害」的喇叭。</p>
+    </div>
+    <div class="intro-block">
+      <div class="intro-glyph">伍 · 它可能适合你，如果你…</div>
+      <div class="intro-who">
+        <div class="intro-who-item"><b>准大一新生</b><span>从高中到大学的转身，帮你把迷茫理顺，从填报之后就有章法</span></div>
+        <div class="intro-who-item"><b>大二大三的你</b><span>学业、竞赛、实习、考研/保研压在一起，帮你一件件拆开</span></div>
+        <div class="intro-who-item"><b>决定保研/考研的人</b><span>目标拆解 + 倒数日 + 每日复盘，把漫长的战线过成每天的小事</span></div>
+        <div class="intro-who-item"><b>想管好钱和身体的人</b><span>记账与打卡不是逼你自律，是让你看清，然后自己说了算</span></div>
+      </div>
+    </div>
+    <div class="intro-block">
+      <div class="intro-glyph">陆 · 从最省力的三件事开始</div>
+      <div class="intro-step">
+        <div><b>①</b> 在首页写下「今天最想完成的一件事」</div>
+        <div><b>②</b> 点顶栏「换一批灵感」，看看今天的句子合不合心意</div>
+        <div><b>③</b> 随便点开一个板块逛逛，所有内容都能填、都能改</div>
+      </div>
+      <div class="intro-note">所有数据只存在你自己的设备里，可导出导入随时备份。放心写，没人看得到。</div>
+      <div class="intro-cta">
+        <button class="btn btn-primary" onclick="closeAndGo()">好，一起去逛逛</button>
+        <button class="btn btn-ghost-soft" onclick="introMore()">看更完整操作说明</button>
+      </div>
+      <div class="intro-foot">—— 平·万象 的一点心意，愿它陪你把这四年，过得有掌控感。——</div>
+    </div>
+  </div>
+</div>
 
 </div>
 </body></html>
