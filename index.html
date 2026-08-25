@@ -12,6 +12,9 @@
   <link rel="icon" type="image/png" href="pwa/icon-192.png">
   <link rel="apple-touch-icon" href="pwa/icon-180.png">
   <link rel="apple-touch-icon" sizes="180x180" href="pwa/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     /* 注册 Service Worker：支持安装到桌面 App、离线可用 */
     if ('serviceWorker' in navigator) {
@@ -294,6 +297,31 @@ strong{font-weight:600}
 .icon-btn.btn-inspire svg{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;min-height:16px!important;max-height:16px!important;color:currentColor}
 .icon-btn.btn-inspire.spin svg{animation:spin .6s ease}
 .icon-btn.btn-inspire .btn-inspire-text{display:none!important}
+/* 顶栏「产品导览」按钮：与「换一批灵感」同尺寸同风格（桌面+手机均为图标按钮） */
+.icon-btn.btn-guide{
+  background:linear-gradient(135deg,var(--card),var(--primary-light,#E6F1FB));
+  color:var(--primary-mid);
+  border:1px solid var(--border);
+  box-sizing:border-box;padding:0;border-radius:var(--radius-sm);
+  font-size:0;overflow:hidden;
+}
+.icon-btn.btn-guide:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:none;box-shadow:0 4px 12px rgba(12,68,124,.25)}
+.icon-btn.btn-guide svg{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;min-height:16px!important;max-height:16px!important;color:currentColor}
+.icon-btn.btn-guide .btn-guide-text{display:none!important}
+.tb-more-item.guide-more{color:var(--primary-mid)!important;font-weight:600}
+.tb-more-item.guide-more:hover{background:var(--primary-light,#E6F1FB)!important;color:var(--primary)!important}
+/* 首页「挑选关注方向」引导 */
+#focusCard{transition:box-shadow .25s}
+.focus-chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:13.5px;color:var(--muted);cursor:pointer;transition:all .2s;font-family:inherit;line-height:1.4}
+.focus-chip:hover{border-color:var(--primary-mid);color:var(--primary)}
+.focus-chip.on{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(12,68,124,.28);font-weight:600}
+#focusStart>div>div.card{cursor:pointer;transition:transform .2s,box-shadow .2s}
+#focusStart>div>div.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(12,68,124,.12)}
+[data-theme="dark"] .focus-chip{background:#1a1d27!important;border-color:#3d4259!important;color:#c9d2e0!important}
+[data-theme="dark"] .focus-chip:hover{border-color:#93c5fd!important;color:#fff!important}
+[data-theme="dark"] .focus-chip.on{background:#2f6fd8!important;border-color:#2f6fd8!important;color:#fff!important}
+[data-theme="dark"] #focusStart>div>div.card{background:#171a24!important;border-color:#2c3145!important}
+[data-theme="dark"] #focusCard{background:#151a26!important;border-color:#2c3145!important}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 /* 论文写作左右列表统一样式 */
 .essay-block h4{font-size:14px;color:var(--primary);margin-bottom:8px;font-weight:700}
@@ -696,6 +724,10 @@ strong{font-weight:600}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
         <span class="btn-inspire-text">换一批灵感</span>
       </button>
+      <button class="icon-btn btn-guide" id="btnGuide" onclick="openPano()" title="产品导览 · 了解平·万象能做什么">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+        <span class="btn-guide-text">导览</span>
+      </button>
       <button class="icon-btn tb-share-btn" id="tbShareBtn" onclick="shareProduct()" title="分享给朋友">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
       </button>
@@ -711,6 +743,10 @@ strong{font-weight:600}
         <button class="icon-btn" onclick="toggleTbMore();closeMoreMenu()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <div class="tb-more-label">数据与工具</div>
+          <button class="tb-more-item guide-more" onclick="openPano();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            查看产品导览
+          </button>
           <!-- 手机端在菜单里显示分享和导出 -->
           <button class="tb-more-item mobile-menu-item" onclick="shareProduct();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
@@ -885,6 +921,20 @@ strong{font-weight:600}
           </div>
           <button onclick="var b=document.getElementById('guideBanner');b.style.display='none';try{localStorage.setItem('pp_guide_hide','1')}catch(e){}" style="border:none;background:none;color:var(--hint);font-size:16px;cursor:pointer;line-height:1;flex-shrink:0" title="关闭">×</button>
         </div>
+      </div>
+      <!-- 挑选关注方向：新人先选大方向，首页自动把对应模块排最前，告别“30个板块无从下手” -->
+      <div id="focusCard" class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#F2F6FC,#E9F0FA);border-color:#C9D8EE">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>轻松上手 · 你关心哪些方向？ <span style="font-weight:400;font-size:12px;color:var(--hint)">选完首页帮你排好，不迷路</span></h3>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <button class="focus-chip" data-dir="study" onclick="pickFocus('study')">📚 学习考证</button>
+          <button class="focus-chip" data-dir="time" onclick="pickFocus('time')">⏰ 时间效率</button>
+          <button class="focus-chip" data-dir="money" onclick="pickFocus('money')">💰 求职搞钱</button>
+          <button class="focus-chip" data-dir="life" onclick="pickFocus('life')">🌟 成长记录</button>
+          <button class="focus-chip" data-dir="fun" onclick="pickFocus('fun')">🎪 生活休闲</button>
+        </div>
+        <div id="focusStart" style="margin-top:14px"></div>
       </div>
       <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
       <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#0F6E56,#0C447C);border:none">
@@ -7521,6 +7571,44 @@ function renderDailyQuoteCard(){
   refreshMind(false);
 }
 
+/* ═══════ 首页「关注方向」引导：新人选方向→首页推荐相关模块 ═══════ */
+var PP_DIRS={
+  study:{name:'学习考证',mods:[['study','学业规划'],['exam','考试倒计时'],['contest','竞赛科研'],['paper','论文写作'],['college','大学须知'],['campus-info','大学情报']]},
+  time:{name:'时间效率',mods:[['quadrant','轻重缓急'],['timer','心流计时'],['plans','一周时间表'],['goals','目标拆解'],['habits','习惯养成']]},
+  money:{name:'求职搞钱',mods:[['career','职业发展'],['resume','简历面试'],['finance','理财管理'],['save','省钱技巧'],['earn','搞钱副业'],['growth','个人提升']]},
+  life:{name:'成长记录',mods:[['journal','时光札记'],['stats','成长档案'],['mind','心灵成长'],['creative','灵感看板'],['health','运动健康']]},
+  fun:{name:'生活休闲',mods:[['shelf','书海拾贝'],['podcast','耳畔星河'],['movie','幕间观澜'],['fun','轻松一下'],['party','入团入党']]}
+};
+function getFocus(){try{var v=JSON.parse(localStorage.getItem('pp_focus')||'[]');return Array.isArray(v)?v:[];}catch(e){return [];}}
+function pickFocus(dir){
+  var p=getFocus(),i=p.indexOf(dir);
+  if(i>-1)p.splice(i,1);else{if(p.length>=3){p.shift();}p.push(dir);}
+  try{localStorage.setItem('pp_focus',JSON.stringify(p));}catch(e){}
+  renderFocus();
+}
+function clearFocus(){try{localStorage.removeItem('pp_focus');}catch(e){}renderFocus();}
+function renderFocus(){
+  var cont=document.getElementById('focusStart');if(!cont)return;
+  var picks=getFocus();
+  var chips=document.querySelectorAll('#focusCard .focus-chip');
+  for(var c=0;c<chips.length;c++){chips[c].classList.toggle('on',picks.indexOf(chips[c].getAttribute('data-dir'))>-1);}
+  var list=[],seen={};
+  for(var k=0;k<picks.length;k++){var d=PP_DIRS[picks[k]];if(!d)continue;for(var m=0;m<d.mods.length;m++){if(!seen[d.mods[m][0]]){seen[d.mods[m][0]]=1;list.push(d.mods[m]);}}}
+  if(!picks.length){
+    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">👆 点击上方一排，选 1~3 个你关心的方向。<b style="color:var(--primary)">每次回到今日概览，首页会自动把相关板块替你排到最前</b>，其它板块在左侧或搜索里随时都能进。</div>';
+    cont.style.display='block';
+    return;
+  }
+  var html='<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"><b style="color:var(--primary);font-size:14px">✨ 为你推荐 · 点一下就用</b><button onclick="clearFocus()" style="border:none;background:none;color:var(--hint);font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit">清空重选</button></div>';
+  html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">';
+  for(var j=0;j<list.length;j++){
+    html+='<div class="card" style="cursor:pointer;padding:12px 14px;margin:0;border-left:3px solid var(--primary)" onclick="switchView(\''+list[j][0]+'\')"><div style="font-size:14px;font-weight:600;color:var(--primary)">'+list[j][1]+'</div><div style="font-size:11px;color:var(--hint);margin-top:3px">点开即用 · 自动保存</div></div>';
+  }
+  html+='</div>';
+  cont.innerHTML=html;
+  cont.style.display='block';
+}
+/* ═══════ 首页「关注方向」引导 ═══════ */
 function init(){
 
 
@@ -7585,6 +7673,8 @@ function init(){
   }catch(e){}
   /* 新用户引导：首次（未关闭过）显示快速上手横幅，已关闭刷新不再打扰 */
   try{var _g=document.getElementById('guideBanner');if(_g&&localStorage.getItem('pp_guide_hide')!=='1'){_g.style.display='block';}}catch(e){}
+  /* 关注方向引导：还原用户上次选的推荐模块 */
+  try{renderFocus();}catch(e){}
 }
 /* init() 已移至 <script> 末尾：必须等 BOOKS_LIB / BIGQUOTES / renderPodcasts2 / renderPitfall 等
    全部数据数组与函数定义完毕后再执行，否则 renderShelf/renderBigQuote 会因引用未赋值变量而抛错，
@@ -9897,90 +9987,137 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .mind-refresh.spinning{animation:spinr .45s ease}
 @keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 /* ═══════════ 平·万象 · 全景导览（浅色高级产品介绍页） ═══════════ */
-.pano-mask{position:fixed;inset:0;background:rgba(15,32,54,.5);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:1300;opacity:0;pointer-events:none;transition:opacity .4s ease}
-.pano{position:fixed;inset:0;z-index:1301;background:radial-gradient(1000px 520px at 12% -6%,rgba(45,110,178,.16),transparent 60%),radial-gradient(800px 460px at 96% 18%,rgba(52,173,152,.14),transparent 55%),linear-gradient(180deg,#EDF3FA 0%,#F7F5EF 46%,#F2F6F4 100%);color:#17324F;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.85}
+/* ── 东方编辑部 · 纸本工艺 · 全景导览 ───────────────────────── */
+.pano-mask{position:fixed;inset:0;background:rgba(15,32,54,.52);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);z-index:1300;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.pano{position:fixed;inset:0;z-index:1301;color:#23303f;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.85;
+  background:
+    radial-gradient(900px 520px at 6% -8%,rgba(32,78,128,.10),transparent 58%),
+    radial-gradient(760px 420px at 100% 4%,rgba(167,124,54,.12),transparent 55%),
+    radial-gradient(1000px 620px at 50% 108%,rgba(32,128,102,.10),transparent 55%),
+    repeating-linear-gradient(0deg,transparent 0 3px,rgba(20,40,60,.015) 3px 4px),
+    linear-gradient(180deg,#f2f1ec 0%,#faf8f3 30%,#f6f7f4 62%,#eef1f4 100%)}
+.pano::before{content:"";position:fixed;left:0;top:0;width:6px;height:100%;
+  background:linear-gradient(180deg,#8a6a3a,transparent 22%,transparent 78%,#0F6E56);opacity:.16;pointer-events:none}
+.pano::after{content:"";position:fixed;right:0;top:0;width:6px;height:100%;
+  background:linear-gradient(180deg,#0F6E56,transparent 30%,transparent 76%,#8a6a3a);opacity:.12;pointer-events:none}
 .pano.show,.pano-mask.show{opacity:1;pointer-events:auto}
 .pano::-webkit-scrollbar{width:10px}
-.pano::-webkit-scrollbar-thumb{background:linear-gradient(#C9A063,#B99255);border-radius:5px;border:2px solid #EDF3FA}
-.pano-close{position:sticky;top:20px;margin-left:auto;margin-right:26px;margin-top:20px;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid rgba(23,50,79,.14);box-shadow:0 6px 18px rgba(23,50,79,.12);color:#17324F;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s;z-index:6;pointer-events:auto}
-.pano-close:hover{background:#E7EEF6;transform:rotate(90deg)}
-.pano-inner{max-width:1000px;margin:-80px auto 0;padding:0 32px 110px;position:relative;z-index:1}
-.pano-hero{min-height:74vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 0 60px;text-align:center;align-items:center}
-.pano-hero::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:150px;height:2px;background:linear-gradient(90deg,transparent,#C9A063,transparent)}
-.pano-seal{width:84px;height:84px;border-radius:24px;background:linear-gradient(140deg,#0C447C,#185FA5);box-shadow:0 18px 40px rgba(12,68,124,.28);display:flex;align-items:center;justify-content:center;color:#F4E9C6;font-size:46px;font-weight:700;letter-spacing:3px;margin-top:26px;border:1px solid rgba(255,255,255,.35)}
-.pano-black{font-family:Georgia,'Times New Roman',serif;letter-spacing:12px;font-size:12.5px;color:#B08A43;margin:32px 6px 0 12px;text-transform:uppercase}
-.pano-h1{font-family:Georgia,'Songti SC','SimSun',serif;font-weight:600;font-size:clamp(38px,6.4vw,60px);line-height:1.26;margin:8px 0 0;letter-spacing:2px;color:#0E2A47}
-.pano-h1 .gold{background:linear-gradient(90deg,#C99A4E,#E0B967 45%,#B9864A);-webkit-background-clip:text;background-clip:text;color:transparent}
-.pano-sub{font-size:clamp(14.5px,2.3vw,17px);color:#41556A;max-width:600px;margin:22px auto 0;line-height:2}
+.pano::-webkit-scrollbar-thumb{background:linear-gradient(#C9A063,#B99255);border-radius:5px;border:2px solid transparent;background-clip:padding-box}
+.pano-close{position:sticky;top:20px;margin-left:auto;margin-right:26px;margin-top:20px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.86);backdrop-filter:blur(6px);border:1px solid rgba(23,50,79,.16);box-shadow:0 8px 22px rgba(23,50,79,.14);color:#23303f;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.28s;z-index:6;pointer-events:auto}
+.pano-close:hover{background:#fff;transform:rotate(90deg);color:#0C447C;box-shadow:0 12px 28px rgba(12,68,124,.2)}
+.pano-inner{max-width:980px;margin:-80px auto 0;padding:0 40px 110px;position:relative;z-index:1}
+/* 竖排诗意 & 封面 */
+.pano-verse{position:absolute;right:8px;top:120px;writing-mode:vertical-rl;font-family:'Noto Serif SC','Songti SC',serif;color:rgba(23,50,79,.5);letter-spacing:.42em;font-size:14px;line-height:2.1;z-index:0;pointer-events:none}
+.pano-verse b{color:#A87936;font-weight:600;font-family:'Ma Shan Zheng','Kaiti SC','KaiTi',cursive}
+.pano-hero{min-height:76vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 0 60px;text-align:center;align-items:center}
+.pano-hero::before{content:"◆";font-size:9px;color:#C9A063;position:absolute;top:8px;left:50%;transform:translateX(-50%);letter-spacing:22px;text-indent:22px}
+.pano-hero::after{content:"◆ ◆ ◆";font-size:8px;color:rgba(176,138,67,.6);position:absolute;left:50%;transform:translateX(-50%);bottom:14px;letter-spacing:20px;white-space:nowrap}
+.pano-seal{width:88px;height:88px;border-radius:50%;background:radial-gradient(circle at 30% 26%,#1a5f9e,#0C447C 62%,#082f57);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 18px 44px rgba(12,68,124,.32);display:flex;align-items:center;justify-content:center;color:#F4E9C6;font-size:40px;font-family:'Ma Shan Zheng','Kaiti SC',cursive;font-weight:400;letter-spacing:2px;margin-top:26px;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.pano-seal::after{content:"平";position:absolute;font-size:11px;color:rgba(244,233,198,.6);writing-mode:vertical-rl;letter-spacing:8px;right:14px;top:8px;opacity:.7}/* 印章兽边小落款 */
+.pano-black{font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:.5em;font-size:12px;color:#A87936;margin:34px 4px 0 12px;text-transform:uppercase;font-weight:600;text-indent:.5em}
+.pano-h1{font-family:'ZCOOL XiaoWei','Noto Serif SC','Songti SC',serif;font-weight:400;font-size:clamp(40px,6.6vw,64px);line-height:1.28;margin:10px 0 0;letter-spacing:.04em;color:#0A2440}
+.pano-h1 .gold{font-family:'Ma Shan Zheng','Kaiti SC','KaiTi',cursive;font-weight:400;letter-spacing:.06em;background:linear-gradient(100deg,#9a6b27,#c9a24f 42%,#8a5f1f 72%,#b78b3c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pano-h1 .dot{color:#C9A063}
+.pano-h1 .thin{font-weight:300;color:#3a5774}
+.pano-h1::after{content:"";display:block;width:56px;height:2px;margin:28px auto 0;background:linear-gradient(90deg,transparent,#C9A063 30%,#C9A063 70%,transparent)}
+.pano-sub{font-family:'Noto Serif SC','Songti SC',serif;font-size:clamp(14.5px,2.3vw,16.5px);color:#41556A;max-width:600px;margin:22px auto 0;line-height:2.1;font-weight:400}
 .pano-sub b{color:#0C447C;font-weight:700}
-.pano-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px}
-.pano-stats span{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(23,50,79,.1);box-shadow:0 4px 14px rgba(23,50,79,.06);padding:9px 18px;border-radius:999px;font-size:13px;color:#41556A}
-.pano-stats b{color:#C9A063;font-size:17px;font-weight:700}
-.pano-sec{padding:64px 0 10px}
-.pano-no{font-family:Georgia,serif;font-size:14px;letter-spacing:4px;color:#B08A43;display:flex;align-items:center;gap:16px}
-.pano-no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(176,138,67,.5),transparent)}
+.pano-stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+.pano-stats span{display:flex;align-items:baseline;gap:8px;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid rgba(23,50,79,.12);box-shadow:0 6px 18px rgba(23,50,79,.07);padding:11px 20px;border-radius:2px 14px 2px 14px;font-size:12.5px;color:#41556A;letter-spacing:1px}
+.pano-stats b{font-family:'Cormorant Garamond',Georgia,serif;color:#B08A43;font-size:20px;font-weight:700;letter-spacing:1px;line-height:1}
+.pano-sec{padding:74px 0 8px;position:relative}
+/* 章节眉标：罗马数字 + 发丝线 + 花星 */
+.pano-no{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px;font-weight:600;letter-spacing:.24em;color:#B08A43;display:flex;align-items:center;gap:16px;text-transform:uppercase}
+.pano-no .rn{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:22px;font-weight:600;color:#C9A063;letter-spacing:0;margin-right:2px}
+.pano-no .f{color:#C9A063;font-size:13px;transform:translateY(-1px)}
+.pano-no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(176,138,67,.55),rgba(176,138,67,.05))}
 .pano-sec-ctr{text-align:center}
 .pano-sec-ctr .pano-no{justify-content:center}
 .pano-sec-ctr .pano-no::after{display:none}
-.pano-h2{font-family:Georgia,'Songti SC',serif;font-weight:600;font-size:clamp(22px,3.6vw,30px);margin:16px 0 10px;line-height:1.5;letter-spacing:1px;color:#0E2A47}
-.pano-h2 em{font-style:normal;color:#C9A063}
-.pano-lead{color:#41556A;font-size:14.5px;max-width:680px;line-height:2}
-.pano-lead b,.pano-lead strong{color:#0C447C}
-.pano-quote{margin:80px 0 6px;text-align:center;position:relative;padding:44px 26px;background:linear-gradient(135deg,#fff,#F2F0EA);border:1px solid rgba(176,138,67,.3);border-radius:20px;box-shadow:0 18px 44px rgba(23,50,79,.1)}
-.pano-quote .qmark{font-family:Georgia,serif;font-size:70px;color:#C9A063;line-height:.5;height:30px}
-.pano-quote p{font-family:Georgia,'Songti SC',serif;font-size:clamp(17px,3vw,24px);color:#0E2A47;line-height:1.95;max-width:640px;margin:6px auto 0;letter-spacing:1px}
-.pano-quote .by{display:block;margin-top:16px;color:#8a94a0;font-size:12.5px;letter-spacing:3px}
-.pano-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;margin-top:26px}
-.pano-card{background:#fff;border:1px solid rgba(23,50,79,.09);border-radius:17px;padding:24px 22px 20px;box-shadow:0 8px 26px rgba(23,50,79,.06);transition:.28s;cursor:default;position:relative;overflow:hidden}
-.pano-card::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,#C9A063,#E0B967);opacity:.75;transform:scaleX(0);transform-origin:left;transition:.35s}
-.pano-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(23,50,79,.12)}
-.pano-card:hover::before{transform:scaleX(1)}
-.pano-card .ic{font-size:27px;line-height:1}
-.pano-card .chip{position:absolute;right:14px;top:16px;font-size:10.5px;color:#B08A43;border:1px solid rgba(176,138,67,.4);padding:2px 8px;border-radius:999px;letter-spacing:1px;background:rgba(176,138,67,.05)}
-.pano-card h4{font-size:15.5px;color:#0E2A47;margin:12px 0 7px;font-weight:700;letter-spacing:.5px}
-.pano-card p{font-size:13px;color:#5a6b7c;line-height:1.85;margin:0}
-.pano-compare{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.pano-cp{padding:24px 24px 22px;border-radius:18px;position:relative}
-.pano-cp.no{background:rgba(120,130,138,.06);border:1px solid rgba(120,130,138,.2)}
-.pano-cp.yes{background:linear-gradient(150deg,#0C447C,#185FA5);color:#EDF2F7;box-shadow:0 20px 44px rgba(12,68,124,.28)}
-.pano-cp h4{font-size:15.5px;margin:0 0 4px;font-weight:700}
-.pano-cp .tag{font-size:11px;letter-spacing:2px;color:#B08A43;font-weight:600}
+.pano-h2{font-family:'ZCOOL XiaoWei','Noto Serif SC',serif;font-weight:400;font-size:clamp(23px,3.8vw,31px);margin:18px 0 12px;line-height:1.55;letter-spacing:.05em;color:#0E2A47}
+.pano-h2 em{font-style:normal;color:#B08A43;font-family:'Ma Shan Zheng','Kaiti SC',cursive;font-size:1.12em;letter-spacing:.03em}
+.pano-lead{color:#41556A;font-size:14.5px;max-width:680px;line-height:2.05;font-family:'Noto Serif SC','Songti SC',serif}
+.pano-lead b,.pano-lead strong{color:#0C447C;font-weight:700}
+/* 花星分隔（用于节与节之间的点缀） */
+.pano-rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px 0 0;color:rgba(176,138,67,.7)}
+.pano-rule .ln{flex:0 0 34px;height:1px;background:linear-gradient(90deg,transparent,rgba(176,138,67,.6))}
+.pano-rule .ln.r{background:linear-gradient(90deg,rgba(176,138,67,.6),transparent)}
+.pano-rule .d{font-size:13px;color:#C9A063;letter-spacing:8px;text-indent:8px}
+/* 大引言 */
+.pano-quote{margin:78px 0 4px;text-align:center;position:relative;padding:48px 30px;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(240,236,226,.9));border:1px solid rgba(176,138,67,.28);border-radius:2px 30px 2px 30px;box-shadow:0 20px 48px rgba(23,50,79,.1);overflow:hidden}
+.pano-quote::before{content:"❦";position:absolute;top:12px;left:18px;font-size:16px;color:rgba(176,138,67,.5)}
+.pano-quote::after{content:"❦";position:absolute;bottom:12px;right:18px;font-size:16px;color:rgba(176,138,67,.4)}
+.pano-quote .qmark{font-family:'Cormorant Garamond',Georgia,serif;font-size:88px;line-height:.2;height:34px;color:#C9A063;display:block;font-weight:600}
+.pano-quote p{font-family:'ZCOOL XiaoWei','Noto Serif SC',serif;font-size:clamp(18px,3.2vw,25px);color:#0E2A47;line-height:2;max-width:640px;margin:18px auto 0;letter-spacing:.05em}
+.pano-quote .by{display:block;margin-top:20px;color:#8a94a0;font-size:11.5px;letter-spacing:.4em;text-transform:uppercase}
+/* 八大能力卡片 */
+.pano-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;margin-top:28px}
+.pano-card{background:rgba(255,255,255,.82);backdrop-filter:blur(4px);border:1px solid rgba(23,50,79,.1);border-radius:2px 20px 2px 20px;padding:26px 22px 20px;box-shadow:0 8px 26px rgba(23,50,79,.06);transition:.3s;cursor:default;position:relative;overflow:hidden}
+.pano-card::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,#C9A063,#0F6E56);opacity:0;transition:.4s;transform:translateY(-3px)}
+.pano-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(23,50,79,.13);border-color:rgba(176,138,67,.4)}
+.pano-card:hover::before{opacity:1;transform:translateY(0)}
+.pano-card .ic{width:44px;height:44px;border-radius:50%;background:linear-gradient(140deg,#0C447C,#1a6aa8);box-shadow:0 8px 18px rgba(12,68,124,.26);display:flex;align-items:center;justify-content:center;color:#F0DBA9;font-size:20px;line-height:1}
+.pano-card .chip{position:absolute;right:14px;top:18px;font-size:10px;color:#B08A43;border:1px solid rgba(176,138,67,.4);padding:2px 9px;border-radius:1px 10px 1px 10px;letter-spacing:1px;background:rgba(176,138,67,.05);font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase}
+.pano-card h4{font-family:'ZCOOL XiaoWei','Noto Serif SC',serif;font-size:16px;color:#0E2A47;margin:14px 0 8px;font-weight:400;letter-spacing:.06em}
+.pano-card p{font-size:12.8px;color:#5a6b7c;line-height:1.9;margin:0}
+/* 对比卡片 */
+.pano-compare{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pano-cp{padding:28px 26px 24px;border-radius:2px 22px 2px 22px;position:relative;transition:.3s}
+.pano-cp.no{background:repeating-linear-gradient(0deg,rgba(120,130,138,.035) 0 2px,transparent 2px 4px),rgba(120,130,138,.05);border:1px solid rgba(120,130,138,.24)}
+.pano-cp.yes{background:radial-gradient(120% 120% at 90% 0%,#1a66ae,#0C447C 58%,#113d6b);color:#EDF2F7;box-shadow:0 24px 50px rgba(12,68,124,.32);border:1px solid rgba(255,255,255,.12)}
+.pano-cp h4{font-family:'ZCOOL XiaoWei','Noto Serif SC',serif;font-size:16.5px;margin:6px 0 4px;font-weight:400;letter-spacing:.06em}
+.pano-cp .tag{font-size:10.5px;letter-spacing:.3em;color:#B08A43;font-weight:600;text-transform:uppercase;font-family:'Cormorant Garamond',Georgia,serif}
 .pano-cp.yes .tag{color:#F0DBA9}
-.pano-cp ul{list-style:none;margin:12px 0 0;padding:0;font-size:13.5px;line-height:2}
+.pano-cp ul{list-style:none;margin:14px 0 0;padding:0;font-size:13.5px;line-height:2.05}
 .pano-cp.no ul{color:#6b7684}
-.pano-cp.yes ul{color:#D9E4EF}
-.pano-cp li::before{content:"·";margin-right:8px;color:#C9A063;font-weight:700}
+.pano-cp.yes ul{color:#dce7f1}
+.pano-cp li{padding-left:16px;position:relative}
+.pano-cp li::before{content:"◆";position:absolute;left:0;top:0;font-size:9px;transform:translateY(3px);color:#C9A063}
 .pano-cp.yes li::before{color:#F0DBA9}
-.pano-habit{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.pano-hb{background:#fff;border:1px solid rgba(23,50,79,.09);border-radius:16px;padding:20px 20px 18px;box-shadow:0 8px 24px rgba(23,50,79,.05);text-align:center}
-.pano-hb .medal{width:52px;height:52px;margin:0 auto 10px;border-radius:50%;background:linear-gradient(140deg,#F2E2B6,#E0B967);color:#6b4f16;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 20px rgba(208,158,74,.4)}
-.pano-hb h5{color:#0E2A47;font-size:14.5px;margin:0 0 6px;font-weight:700;letter-spacing:.5px}
-.pano-hb p{color:#5f7080;font-size:12.5px;line-height:1.8;margin:0}
-.pano-nolist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:26px}
-.pano-ni{background:#fff;border:1px solid rgba(120,130,138,.18);border-radius:13px;padding:17px 19px;font-size:13.5px;color:#41556A;line-height:1.8;transition:.25s;cursor:default}
-.pano-ni:hover{border-color:rgba(176,138,67,.5);box-shadow:0 8px 20px rgba(23,50,79,.07)}
-.pano-ni .x{color:#E0A05A;font-weight:800;margin-right:9px}
-.pano-who{display:grid;gap:12px;margin-top:26px}
-.pano-wi{display:flex;gap:18px;align-items:flex-start;background:#fff;border-left:4px solid #C9A063;border-radius:0 15px 15px 0;box-shadow:0 6px 20px rgba(23,50,79,.06);padding:18px 24px;transition:.25s}
-.pano-wi:hover{transform:translateX(3px)}
-.pano-wi b{color:#0C447C;font-size:14.5px;min-width:120px;font-weight:700;letter-spacing:.5px}
-.pano-wi span{color:#5a6b7c;font-size:13.5px;line-height:1.85}
-.pano-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:26px}
-.pano-step{background:#fff;border:1px solid rgba(23,50,79,.09);border-radius:17px;padding:24px 22px;box-shadow:0 8px 24px rgba(23,50,79,.06)}
-.pano-step .num{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#0C447C,#185FA5);color:#F4E9C6;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;box-shadow:0 8px 18px rgba(12,68,124,.28)}
-.pano-step h5{color:#0E2A47;font-size:14.5px;margin:0 0 7px;font-weight:700;letter-spacing:.5px}
-.pano-step p{color:#5f7080;font-size:13px;line-height:1.85;margin:0}
-.pano-cta{margin:84px 0 0;padding:58px 36px;border-radius:26px;background:linear-gradient(140deg,#0C447C 0%,#125398 52%,#0F6E56 140%);position:relative;overflow:hidden;text-align:center;box-shadow:0 26px 60px rgba(12,68,124,.32)}
-.pano-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 85% -20%,rgba(255,255,255,.28),transparent 58%);pointer-events:none}
-.pano-cta::after{content:"";position:absolute;inset:0;background:radial-gradient(500px 260px at 8% 112%,rgba(240,219,169,.22),transparent 55%);pointer-events:none}
+/* 持续回报 */
+.pano-habit{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.pano-hb{background:rgba(255,255,255,.84);border:1px solid rgba(23,50,79,.1);border-radius:2px 18px 2px 18px;padding:24px 20px 20px;box-shadow:0 8px 24px rgba(23,50,79,.05);text-align:center;transition:.28s}
+.pano-hb:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(23,50,79,.1)}
+.pano-hb .medal{width:54px;height:54px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#f4e7c0,#e0b967 54%,#c99b4e);color:#5c4316;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 10px 22px rgba(208,158,74,.4),inset 0 0 0 1px rgba(255,255,255,.5)}
+.pano-hb h5{color:#0E2A47;font-size:14.5px;margin:0 0 7px;font-weight:600;letter-spacing:.5px}
+.pano-hb p{color:#5f7080;font-size:12.5px;line-height:1.85;margin:0}
+/* 原则 */
+.pano-nolist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:28px}
+.pano-ni{background:rgba(255,255,255,.8);border:1px solid rgba(120,130,138,.2);border-radius:2px 14px 2px 14px;padding:18px 20px;font-size:13.5px;color:#41556A;line-height:1.85;transition:.25s;cursor:default}
+.pano-ni:hover{border-color:rgba(176,138,67,.5);box-shadow:0 10px 22px rgba(23,50,79,.08)}
+.pano-ni .x{color:#c78a4a;font-weight:700;margin-right:9px;font-family:'Cormorant Garamond',Georgia,serif}
+/* 适合谁 */
+.pano-who{display:grid;gap:12px;margin-top:28px}
+.pano-wi{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.82);border-left:3px solid #C9A063;border-radius:0 2px 2px 0;box-shadow:0 6px 20px rgba(23,50,79,.06);padding:20px 26px;transition:.25s;position:relative}
+.pano-wi:hover{transform:translateX(4px);border-left-color:#0C447C}
+.pano-wi::before{content:"❦";position:absolute;right:18px;top:16px;font-size:13px;color:rgba(176,138,67,.5)}
+.pano-wi b{color:#0C447C;font-size:14.5px;min-width:132px;font-weight:700;letter-spacing:.5px;font-family:'ZCOOL XiaoWei','Noto Serif SC',serif}
+.pano-wi span{color:#5a6b7c;font-size:13.5px;line-height:1.9}
+/* 时间轴 / 上手步骤 */
+.pano-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:28px}
+.pano-step{background:rgba(255,255,255,.84);border:1px solid rgba(23,50,79,.1);border-radius:2px 18px 2px 18px;padding:26px 24px;box-shadow:0 8px 24px rgba(23,50,79,.06);transition:.28s}
+.pano-step:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(23,50,79,.1)}
+.pano-step .num{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#1a66ae,#0C447C 60%,#0a3260);color:#F0DBA9;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:14px;box-shadow:0 8px 18px rgba(12,68,124,.28)}
+.pano-step h5{color:#0E2A47;font-size:14.5px;margin:0 0 7px;font-weight:600;letter-spacing:.5px}
+.pano-step p{color:#5f7080;font-size:13px;line-height:1.9;margin:0}
+/* 收尾 CTA */
+.pano-cta{margin:86px 0 0;padding:62px 40px;border-radius:2px 34px 2px 34px;background:
+  radial-gradient(120% 140% at 82% -30%,rgba(255,255,255,.22),transparent 52%),
+  radial-gradient(120% 130% at 8% 120%,rgba(240,219,169,.2),transparent 55%),
+  linear-gradient(135deg,#0C447C 0%,#125b9c 48%,#0F6E56 130%);position:relative;overflow:hidden;text-align:center;box-shadow:0 30px 66px rgba(12,68,124,.34)}
+.pano-cta::before{content:"";position:absolute;inset:6px;border:1px solid rgba(255,255,255,.16);border-radius:70px 8px 70px 8px;pointer-events:none}
 .pano-cta>*{position:relative}
-.pano-cta .b{font-family:Georgia,'Songti SC',serif;font-size:clamp(22px,4.2vw,30px);color:#F7F0DC;letter-spacing:2px;line-height:1.5}
-.pano-cta .p{color:rgba(255,255,255,.85);font-size:14px;margin:14px auto 30px;max-width:520px;line-height:1.9}
+.pano-cta .b{font-family:'ZCOOL XiaoWei','Noto Serif SC',serif;font-size:clamp(23px,4.5vw,32px);color:#F7F0DC;letter-spacing:.08em;line-height:1.6;font-weight:400}
+.pano-cta .b em{font-style:normal;font-family:'Ma Shan Zheng','Kaiti SC',cursive;color:#F0DBA9}
+.pano-cta .p{color:rgba(255,255,255,.85);font-size:14px;margin:16px auto 34px;max-width:520px;line-height:2}
 .pano-cta .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.pano-cta .btn{padding:14px 30px;font-size:15px;border-radius:13px;cursor:pointer;pointer-events:auto;min-width:168px}
-.pano-btn-ghost{background:rgba(255,255,255,.12);color:#F7F0DC;border:1px solid rgba(255,255,255,.4);padding:13px 26px;border-radius:13px;cursor:pointer;font-size:14.5px;font-family:inherit;transition:.25s;pointer-events:auto}
-.pano-btn-ghost:hover{background:rgba(255,255,255,.24)}
-.pano-note{text-align:center;color:#93a0ac;font-size:12px;letter-spacing:2px;margin:74px 0 0}
+.pano-cta .btn{padding:15px 34px;font-size:15px;border-radius:2px 14px 2px 14px;cursor:pointer;pointer-events:auto;min-width:170px;letter-spacing:1px}
+.pano-cta .btn.btn-primary{background:linear-gradient(120deg,#eccb83,#c99b4e 70%,#b78b3c);color:#3b2b0d;border-color:transparent;box-shadow:0 12px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.5);font-weight:600}
+.pano-cta .btn.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.5)}
+.pano-btn-ghost{background:rgba(255,255,255,.1);color:#F7F0DC;border:1px solid rgba(255,255,255,.5);padding:14px 28px;border-radius:2px 14px 2px 14px;cursor:pointer;font-size:14px;font-family:inherit;transition:.25s;pointer-events:auto;letter-spacing:1px}
+.pano-btn-ghost:hover{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+.pano-note{text-align:center;color:#93a0ac;font-size:11.5px;letter-spacing:.4em;margin:76px 0 0;text-transform:uppercase}
+@media (max-width:560px){.pano-verse{display:none}.pano-compare{grid-template-columns:1fr}.pano-inner{padding:0 20px 90px}.pano-cta{padding:46px 22px}.pano-cta .btns{flex-direction:column;align-items:stretch}.pano-cta .btn{min-width:auto}.pano-wi{flex-direction:column;gap:8px}.pano-wi b{min-width:0}}
 [data-theme="dark"] .mind-refresh{background:#1a1d27;color:#93c5fd;border-color:#3d4259}
 [data-theme="dark"] .mind-refresh:hover{background:#232838}
 </style>
@@ -10025,7 +10162,8 @@ function panoBoot(){
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePano();});
   panoWire();
   try{
-    if(!localStorage.getItem('pp_pano_seen')){setTimeout(openPano,700);localStorage.setItem('pp_pano_seen','1');}
+    /* 版本化 seen 标记：新版本上线后，老用户也能再看一次升级版导览，之后不再打扰 */
+    if(!localStorage.getItem('pp_pano_v2_seen')){setTimeout(openPano,700);localStorage.setItem('pp_pano_v2_seen','1');}
   }catch(e){}
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
@@ -10040,12 +10178,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 封面首屏 -->
     <section class="pano-hero">
       <div class="pano-seal">平</div>
-      <div class="pano-black">P I N G · W A N &nbsp; X I A N G</div>
-      <h1 class="pano-h1">平·万象<span class="gold"> · 你的大学全景座舱</span></h1>
-      <p class="pano-sub">学业、时间、目标、金钱、健康与眼界——<b>六件事一个座舱装下</b>。不再东奔西跑下十几个 App，你终于有了一个让一切各就各位的地方。</p>
+      <div class="pano-verse">心正则万事平，<b>万象由此而生</b>，愿君日拱一卒功不唐捐</div>
+      <div class="pano-black">PING&nbsp;·&nbsp;WAN&nbsp;XIANG</div>
+      <h1 class="pano-h1">平·万象<span class="dot"> · </span><span class="gold">你的大学全景座舱</span></h1>
+      <p class="pano-sub">学业、时间、目标、金钱、健康与眼界——<b>六件事，一个座舱装下</b>。不再东奔西跑十几个 App，你终于有了一个让一切各就各位的地方。</p>
       <div class="pano-stats">
         <span><b>25+</b> 能力模块</span>
-        <span><b>0</b> 安装 · 0 登录</span>
+        <span><b>0</b> 安装·0登录</span>
         <span><b>100%</b> 本地私密</span>
         <span><b>365</b> 天随时相伴</span>
       </div>
@@ -10053,15 +10192,16 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 定位：价值主张 -->
     <section class="pano-sec pano-sec-ctr">
-      <div class="pano-no">I · WHAT IT IS</div>
-      <h2 class="pano-h2">一个不被定义的成长座舱，<br>只为把四年过成你想要的<em>样子</em></h2>
-      <p class="pano-lead" style="margin:0 auto">「平」是平常心的从容，「万象」是包罗万有的气度。在这里，英语备考与职业规划<b>并立</b>，记账与保研考研同屏，灵感与健康同行——一页之内，万物归位。</p>
+      <div class="pano-no"><span class="rn">I</span><span>WHAT IT&nbsp;IS·它是什么</span></div>
+      <h2 class="pano-h2">它<em>不</em>是一个工具，<br>是把你四年过成<em>想要样子</em>的座舱</h2>
+      <p class="pano-lead" style="margin:0 auto">「平」是平常心的从容，「万象」是包罗万有的气度。英语备考与职业规划<b>并立</b>，记账与保研考研同屏，灵感与健康同行——一页之内，万物归位。</p>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
     <!-- 之前 vs 之后 -->
     <section class="pano-sec">
-      <div class="pano-no">II · WHY IT MATTERS</div>
-      <h2 class="pano-h2">同样是四年，差别从这里开始</h2>
+      <div class="pano-no"><span class="rn">II</span><span>WHY IT&nbsp;MATTERS·它的分量</span></div>
+      <h2 class="pano-h2">同样是四年，<em>差别从这里开始</em></h2>
       <div class="pano-compare">
         <div class="pano-cp no">
           <div class="tag">没有它的日子里</div>
@@ -10079,7 +10219,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
           <h4>渐渐掌控的一年</h4>
           <ul>
             <li>一个座舱装下全部，想找什么都有</li>
-            <li>目标拆到"今天做什么"，每天都推进</li>
+            <li>目标拆到「今天做什么」，每天都推进</li>
             <li>记账一眼看清，时间块排得明明白白</li>
             <li>好想法沉淀成档，随时回看复用</li>
             <li>每天一点小对勾，习惯自然而然地长出来</li>
@@ -10090,78 +10230,82 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 一天时间轴 -->
     <section class="pano-sec">
-      <div class="pano-no">III · A DAY WITH IT</div>
-      <h2 class="pano-h2">它是如何融入你的一天</h2>
+      <div class="pano-no"><span class="rn">III</span><span>A&nbsp;DAY&nbsp;WITH&nbsp;IT·与你同行的一天</span></div>
+      <h2 class="pano-h2">它是如何融入你<em>平淡的一天</em></h2>
       <div class="pano-steps">
         <div class="pano-step"><div class="num">晨</div><h5>自有标的</h5><p>一条今日心语，一句今日任务，让每一个开始都有方向。</p></div>
         <div class="pano-step"><div class="num">昼</div><h5>张弛有度</h5><p>番茄专注、时间块、今日知识，学习和生活各得其所。</p></div>
         <div class="pano-step"><div class="num">暮</div><h5>复盘归位</h5><p>四象限排明日，记账看流向，越用越清爽、越用越省心。</p></div>
       </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
     <!-- 大引言 -->
     <div class="pano-quote">
       <div class="qmark">“</div>
       <p>真正的自由，不是想做什么就做什么，<br>而是拥有让生活各就各位的能力。</p>
-      <span class="by">—— 平·万象 的设计起点</span>
+      <span class="by">— 平·万象 的设计起点 —</span>
     </div>
 
     <!-- 八大能力 -->
     <section class="pano-sec pano-sec-ctr">
-      <div class="pano-no">IV · WHAT IT CAN DO</div>
-      <h2 class="pano-h2">八大支柱，托起大学生活全图景</h2>
+      <div class="pano-no"><span class="rn">IV</span><span>WHAT&nbsp;IT&nbsp;CAN&nbsp;DO·它能做什么</span></div>
+      <h2 class="pano-h2">八大支柱，<em>托起大学生活全图景</em></h2>
       <div class="pano-grid" style="text-align:left">
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">🎓</div><h4>学业规划</h4><p>四六级按日计划、艾宾浩斯复习、听读写模板，备考路径一目了然。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">⏳</div><h4>时间管理</h4><p>四象限轻重缓急、番茄专注、一周时间块，把一天排得明明白白。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">🎯</div><h4>目标拆解</h4><p>大目标→里程碑→今天做什么，三步拆解，每天都能看见进度。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">💼</div><h4>职业与升学</h4><p>保研考研路径、竞赛科研、简历模板、求职渠道，一站式准备好未来。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">💰</div><h4>理财记账</h4><p>记账本、省钱技巧、消费指南、副业启蒙，让每一分钱都知道去向。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">❤️</div><h4>健康管理</h4><p>健康打卡、运动热力图、情绪记录，照顾身体，也照顾好自己。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">💡</div><h4>灵感珍藏</h4><p>灵感看板、决策复盘、人生一百目标，好想法在此沉淀、不轻易丢失。</p></div>
-        <div class="pano-card"><span class="chip">即刻可用</span><div class="ic">🌱</div><h4>自我成长</h4><p>周度档案与全景回看，一年后你会感谢今天认真留下的每一笔。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎓</div><h4>学业规划</h4><p>四六级按日计划、艾宾浩斯复习、听读写模板，备考路径一目了然。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">⏳</div><h4>时间管理</h4><p>四象限轻重缓急、番茄专注、一周时间块，把一天排得明明白白。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎯</div><h4>目标拆解</h4><p>大目标→里程碑→今天做什么，三步拆解，每天都能看见进度。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">💼</div><h4>职业与升学</h4><p>保研考研路径、竞赛科研、简历模板、求职渠道，一站式准备好未来。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">💰</div><h4>理财记账</h4><p>记账本、省钱技巧、消费指南、副业启蒙，让每一分钱都知道去向。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">❤️</div><h4>健康管理</h4><p>健康打卡、运动热力图、情绪记录，照顾身体，也照顾好自己。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">💡</div><h4>灵感珍藏</h4><p>灵感看板、决策复盘、人生一百目标，好想法在此沉淀、不轻易丢失。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🌱</div><h4>自我成长</h4><p>周度档案与全景回看，一年后你会感谢今天认真留下的每一笔。</p></div>
       </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
     <!-- 持续回报：激励持续使用 -->
     <section class="pano-sec pano-sec-ctr">
-      <div class="pano-no">V · IT KEEPS PAYING BACK</div>
-      <h2 class="pano-h2">用得越久，它回报得越多</h2>
+      <div class="pano-no"><span class="rn">V</span><span>IT&nbsp;KEEPS&nbsp;PAYING&nbsp;BACK·回馈逐日累积</span></div>
+      <h2 class="pano-h2">用得越久，它<em>回报得越多</em></h2>
       <div class="pano-habit">
-        <div class="pano-hb"><div class="medal">▪️7</div><h5>连续打卡勋章</h5><p>连续 7 天完成今日任务，点亮第一枚勋章，让你舍不得断。</p></div>
+        <div class="pano-hb"><div class="medal">燃</div><h5>连续打卡勋章</h5><p>连续 7 天完成今日任务，点亮第一枚勋章，让你舍不得断。</p></div>
         <div class="pano-hb"><div class="medal">🔥</div><h5>日拱一卒热力图</h5><p>每天的坚持汇成一片热力图，一年后一块通红，是你自己的成绩单。</p></div>
-        <div class="pano-hb"><div class="medal">📊</div><h5>周度成长档案</h5><p>每周自动汇总你的进度与亮点，复盘不再无从下手。</p></div>
-        <div class="pano-hb"><div class="medal">🏆</div><h5>一周年里程碑</h5><p>累计坚持一年，它会回看你这 365 天的变化——比任何鸡汤都管用。</p></div>
+        <div class="pano-hb"><div class="medal">册</div><h5>周度成长档案</h5><p>每周自动汇总你的进度与亮点，复盘不再无从下手。</p></div>
+        <div class="pano-hb"><div class="medal">冠</div><h5>一周年里程碑</h5><p>累计坚持一年，它会回看你这 365 天的变化——比任何鸡汤都管用。</p></div>
       </div>
     </section>
 
     <!-- 原则 -->
     <section class="pano-sec">
-      <div class="pano-no">VI · WHAT IT WON'T DO</div>
-      <h2 class="pano-h2">有些事，它坚持不做</h2>
+      <div class="pano-no"><span class="rn">VI</span><span>WHAT&nbsp;IT&nbsp;WON'T&nbsp;DO·它的底线</span></div>
+      <h2 class="pano-h2">有些事，它<em>坚持不做</em></h2>
       <div class="pano-nolist">
         <div class="pano-ni"><span class="x">✕</span>不设会员，不收一分钱，所有能力开箱即用</div>
         <div class="pano-ni"><span class="x">✕</span>不打广告，不向你兜售焦虑与「不买就亏」</div>
         <div class="pano-ni"><span class="x">✕</span>不窃取数据，你的内容只存在你自己的设备里</div>
         <div class="pano-ni"><span class="x">✕</span>不故作高深，不强迫你每天点开、制造内耗</div>
       </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
     <!-- 适合谁 -->
     <section class="pano-sec">
-      <div class="pano-no">VII · WHO IT'S FOR</div>
-      <h2 class="pano-h2">它适合此时正在读这段字的你</h2>
+      <div class="pano-no"><span class="rn">VII</span><span>WHO&nbsp;IT'S&nbsp;FOR·写给此时读字的你</span></div>
+      <h2 class="pano-h2">它适合<em>正在读这段字的你</em></h2>
       <div class="pano-who">
         <div class="pano-wi"><b>刚踏入大学</b><span>无需焦虑第一步，从升学规划到每天的第一件事，这里都有章法。</span></div>
         <div class="pano-wi"><b>学业与未来并进</b><span>竞赛、实习、考研保研压在一起时，它是帮你一件件拆开、落地的地图。</span></div>
         <div class="pano-wi"><b>想掌控自己节奏</b><span>管钱、管时间、管身体的工具一身，自律不是被逼，是自己说了算。</span></div>
         <div class="pano-wi"><b>相信长期主义</b><span>愿意把每天的小事做到位，把四年度成一部可以不断回看的作品。</span></div>
       </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
     <!-- 上手 -->
     <section class="pano-sec pano-sec-ctr">
-      <div class="pano-no">VIII · START IN MINUTES</div>
-      <h2 class="pano-h2">从最省力的三件小事开始</h2>
+      <div class="pano-no"><span class="rn">VIII</span><span>START&nbsp;IN&nbsp;MINUTES·三分钟上手</span></div>
+      <h2 class="pano-h2">从最省力的<em>三件小事</em>开始</h2>
       <div class="pano-steps" style="text-align:left">
         <div class="pano-step"><div class="num">1</div><h5>写下今天要做的第一件事</h5><p>在首页任务框里落下一笔，今天就有了锚点。</p></div>
         <div class="pano-step"><div class="num">2</div><h5>放心地逛一圈</h5><p>从侧边栏挑一个感兴趣的模块点进去，所有内容都能改、都能填、都不会丢。</p></div>
@@ -10171,14 +10315,14 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 收尾 CTA -->
     <div class="pano-cta">
-      <div class="b">把大学四年，过成你想要的作品</div>
+      <div class="b">把大学四年，<em>过成你想要的作品</em></div>
       <div class="p">免费 · 私密 · 即开即用 —— 现在，只差你写下第一件事这一步。</div>
       <div class="btns">
         <button class="btn btn-primary" data-pano="home">立刻开始，进入座舱</button>
         <button class="pano-btn-ghost" data-pano="about">阅读完整操作说明</button>
       </div>
     </div>
-    <div class="pano-note">平  ·  万 象  —  愿 你 把 每 一 天 ，都 过 出 掌 控 感</div>
+    <div class="pano-note">平 · 万 象 — 愿 你 把 每 一 天 都 过 出 掌 控 感</div>
 
   </div>
 </div>
