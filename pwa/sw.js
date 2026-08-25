@@ -1,6 +1,9 @@
 /* 平·万象 Service Worker：让网站可安装为桌面 App、并支持断网也能打开 */
-/* v14 · 缓存优先+后台刷新：打开秒开不再卡顿，更新静默完成；换来新的全部板块导览与顶部造型 */
-const CACHE = 'pingwanxiang-v14';
+/* v18 · 关键更新：
+   1) 导航策略改为「网络优先」——只要联网就取最新页面，彻底解决旧缓存导致的
+      按钮/导航失灵（如系统设置跳错、主题切换无反应）等"内容还是旧版"的问题；
+   2) 断网时仍可用本地缓存秒开，离线兜底不变。*/
+const CACHE = 'pingwanxiang-v18';
 const CORE = ['./', './index.html', './pwa/manifest.json', './pwa/icon-192.png', './pwa/icon-512.png', './pwa/splash-6.1.png', './pwa/splash-5.8.png', './pwa/splash-4.7.png'];
 
 self.addEventListener('install', (e) => {
@@ -28,21 +31,20 @@ self.addEventListener('fetch', (e) => {
 
   const isNav = req.mode === 'navigate';
 
-  // 页面导航：缓存优先，立即返回本地内容（秒开），再在后台拉新版本静默更新。
+  // 页面导航：网络优先，其次缓存。
+  // 联网时永远返回最新页面（配合 v17 之前的缓存版本自动作废），
+  // 断网时用最后缓存的页面兜底，保证离线也能打开。
   if (isNav) {
     e.respondWith(
-      caches.match('./index.html').then((hit) => {
-        const network = fetch(req)
-          .then((res) => {
-            if (res && res.ok) {
-              const copy = res.clone();
-              caches.open(CACHE).then((c) => c.put('./index.html', copy)).catch(() => {});
-            }
-            return res;
-          })
-          .catch(() => null);
-        return hit || network;
-      })
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put('./index.html', copy)).catch(() => {});
+          }
+          return res;
+        })
+        .catch(() => caches.match('./index.html'))
     );
     return;
   }
