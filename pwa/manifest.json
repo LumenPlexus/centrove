@@ -1,0 +1,16 @@
+{
+  "name": "平·万象 · 大学生全能成长工作台",
+  "short_name": "平·万象",
+  "description": "大学生全能成长工作台：今日规划、目标拆解、时间管理、记账、打卡、笔记。数据只存在你自己的设备上，私密安全。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0C447C",
+  "theme_color": "#0C447C",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "./pwa/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./pwa/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
