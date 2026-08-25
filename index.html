@@ -3,8 +3,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>平·万象 · 大学生全能成长工作台</title>
-  <meta name="theme-color" content="#0C447C" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" id="themeColorMeta" content="#0C447C">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="平·万象">
@@ -13,10 +12,25 @@
   <link rel="apple-touch-icon" href="pwa/icon-180.png">
   <link rel="apple-touch-icon" sizes="180x180" href="pwa/icon-180.png">
   <script>
-    /* 注册 Service Worker：支持安装到桌面 App、离线可用 */
+    /* 注册 Service Worker：支持安装到桌面 App、离线可用；
+       部署新版后自动接管并刷新一次，用户再次打开链接即看到最新内容 */
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        try { navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825').catch(function () {}); } catch (e) {}
+        try {
+          var _swReloadDone = false;
+          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825b').then(function(reg){
+            reg.addEventListener('updatefound', function(){
+              var nw = reg.installing;
+              if(!nw) return;
+              nw.addEventListener('statechange', function(){
+                if(nw.state === 'activated' && !nw.skipWaiting && !_swReloadDone){
+                  _swReloadDone = true;
+                  try{ window.location.reload(); }catch(e){}
+                }
+              });
+            });
+          }).catch(function(){});
+        } catch (e) {}
       });
     }
   </script>
@@ -349,16 +363,9 @@ strong{font-weight:600}
    平·万象 3.0 升级层 —— 深色模式 / PWA / 底部导航 / 新板块
    ════════════════════════════════════════════════════════════ */
 
-/* ── 深色模式变量覆盖 ── */
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme]){
-    --bg:#0f1117;--card:#1a1d27;--text:#e4e4e7;--muted:#9ca3af;
-    --hint:#9ca3af;--border:#2d3142;--border-strong:#3d4259;
-    --primary:#60a5fa;--primary-light:#1e293b;--primary-mid:#93c5fd;
-    --teal:#2dd4bf;--teal-light:#134e3a;--coral:#ff8a65;--coral-light:#3d1f12;
-    --shadow:0 1px 3px rgba(0,0,0,.3);--shadow-lg:0 4px 16px rgba(0,0,0,.4);
-  }
-}
+/* ── 深色模式变量覆盖 ──
+   默认固定为日间模式，不再自动跟随系统/微信的深色设置；
+   仅当用户手动切换（data-theme="dark"）时才进入夜间模式。 */
 /* 手动切换覆盖 */
 [data-theme="dark"]{
   --bg:#0f1117!important;--card:#1a1d27!important;--text:#e4e4e7!important;
@@ -4859,7 +4866,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </ul>
           </div>
         </div>
-        <div class="callout callout-info" style="margin-top:8px;font-size:12.5px"><strong>微信直开提醒：</strong>把本页链接发给朋友，<strong>在微信里点一下就能直接用</strong>，无需跳转浏览器、无需复制粘贴、无需下载。若想收藏，点右上角「···」选择「在浏览器中打开」后再「添加到主屏幕」体验最佳。</div>
+        <div class="callout callout-info" style="margin-top:8px;font-size:12.5px"><strong>微信直开提醒：</strong>在微信里打开第一次会先看到一条「<em>将要访问 / 非微信官方网页，请确认是否继续访问</em>」，这是<strong>微信平台对所有非官方链接的安全机制</strong>，不是网站本身的问题——点一次<strong>「继续访问」</strong>即可正常进入，微信通常之后就会记住、不再重复弹出。<br>若想收藏成 App 图标：点右上角「···」→「<strong>在浏览器中打开</strong>」，再「添加到主屏幕 / 添加到桌面」体验最佳。</div>
       </div>
       <div class="card" style="margin-top:16px">
         <h3>跨设备同步说明</h3>
@@ -9321,19 +9328,16 @@ function toggleTheme(){
   var cur=document.documentElement.getAttribute('data-theme');
   var next=(cur==='dark')?'light':'dark';
   document.documentElement.setAttribute('data-theme',next);
-  try{localStorage.setItem('pp_theme',next);}catch(e){}
+  try{localStorage.setItem('pp_theme_v2',next);}catch(e){}
   updateThemeIcon();
 }
 function applySavedTheme(){
   var t=null;
-  try{ t=localStorage.getItem('pp_theme'); }catch(e){ t=null; }
-  /* 未保存过时：跟随系统偏好，并【固化】成显式 data-theme，让整套 [data-theme="dark"] 覆盖样式始终生效，
-     避免"系统深色下背景变暗但内容仍是浅色硬编码颜色"的半暗半亮、又太白又看不清的问题 */
-  if(t!=='light' && t!=='dark'){
-    var prefDark=!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
-    t=prefDark?'dark':'light';
-    try{ localStorage.setItem('pp_theme',t); }catch(e){}
-  }
+  try{ t=localStorage.getItem('pp_theme_v2'); }catch(e){ t=null; }
+  /* 默认固定为【日间模式】：只有用户主动切换过夜间才会保存 'dark'。
+     不再跟随系统 / 微信深色，符合「打开即日间，夜间由用户自行切换」的预期。
+     用 v2 键名，让旧的「随系统自动存入的 dark」作废，老用户下次打开也回到日间 */
+  if(t!=='dark'){ t='light'; }
   document.documentElement.setAttribute('data-theme',t);
   updateThemeIcon();
 }
@@ -9344,6 +9348,9 @@ function updateThemeIcon(){
   var moon=document.getElementById('themeIconMoon');
   if(sun)sun.style.setProperty('display', isDark?'inline-block':'none', 'important');
   if(moon)moon.style.setProperty('display', isDark?'none':'inline-block', 'important');
+  /* 同步浏览器地址栏 / 状态栏颜色 */
+  var meta=document.getElementById('themeColorMeta');
+  if(meta)meta.setAttribute('content', isDark?'#1a1a2e':'#0C447C');
 }
 
 /* ── 底部导航激活状态 ── */
@@ -9840,6 +9847,26 @@ init = function(){
 
 
 init();
+
+/* ── 微信首次进入的一次性安抚提示（过了"将要访问"拦截页后马上显示一次） ── */
+(function(){
+  try{
+    if(!/MicroMessenger/i.test(navigator.userAgent||''))return;
+    var k='pp_wx_tip';
+    var shown=localStorage.getItem(k);
+    if(shown)return;
+    try{ localStorage.setItem(k,'1'); }catch(e){}
+    setTimeout(function(){
+      try{
+        var tip=document.getElementById('flashSplash')||document.getElementById('brandSplash');
+        if(tip){ tip.style.display='flex'; }
+        if(window.flash){
+          window.flash('👋 欢迎进入平·万象！刚才那条「非官方网页」提示是微信的安全机制，第一次点「继续访问」即可，以后一般不再弹出。');
+        }
+      }catch(e){}
+    },600);
+  }catch(e){}
+})();
 </script>
 
 
@@ -9912,14 +9939,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 [data-theme="dark"] .bm-qr-note{background:rgba(15,110,86,.15);color:#BFF0DA;border-color:var(--teal-mid)}
 [data-theme="dark"] #privBox{background:rgba(15,110,86,.16)!important;border-color:var(--teal-mid)!important;color:var(--text)!important}
 [data-theme="dark"] #timetablePalette .btn{box-shadow:0 0 0 1px rgba(255,255,255,.06)}
-@media(prefers-color-scheme:dark){
-  :root:not([data-theme]) .card[style*="#F0F8F4"], :root:not([data-theme]) .card[style*="#EAF4EF"], :root:not([data-theme]) .card[style*="#FFF8EF"], :root:not([data-theme]) .card[style*="#FDEFE2"], :root:not([data-theme]) .card[style*="#FFF5F0"], :root:not([data-theme]) .card[style*="#F2F6FC"], :root:not([data-theme]) .card[style*="#E9F0FA"]{background:var(--card)!important;border-color:var(--border)!important}
-  :root:not([data-theme]) .card[style*="#F0F8F4;border-left"]{background:rgba(15,110,86,.12)!important;border-left-color:var(--teal-mid)!important}
-  :root:not([data-theme]) #mobileSidebarHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
-  :root:not([data-theme]) .tag-gold{background:rgba(184,134,11,.18);color:#F0CE6E}
-  :root:not([data-theme]) .tag-gray{background:rgba(95,94,90,.2);color:var(--muted)}
-  :root:not([data-theme]) .bm-qr-note{background:rgba(15,110,86,.15);color:#BFF0DA;border-color:var(--teal-mid)}
-}
+@media(prefers-color-scheme:dark){}
 [data-theme="dark"] .card[style*="135deg"][style*="#0F6E56"]{background:linear-gradient(135deg,#0a3d2e,#0a2a4d)!important}
 </style>
 
