@@ -63,9 +63,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px}
 ::-webkit-scrollbar-track{background:transparent}
-/* 主题切换平滑过渡（不抢在内容动画前，仅颜色部分柔和过渡） */
-body,body,input,textarea,select{transition:background-color .28s ease,color .28s ease,border-color .28s ease}
-.topbar,.sidebar,.card,.page-head,.bottom-nav,.modal{transition:background-color .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease}
+/* 主题切换平滑过渡：只对「当前可见」的容器做短暂柔和过渡；
+   去掉 box-shadow / border-color 等重绘开销高的属性，并限定在活动视图与导航结构上，
+   避免整页几百个元素（含隐藏板块）同时过渡导致的满屏重绘卡顿 */
+body,body input,textarea,select,.topbar,.sidebar,.bottom-nav,.page-head,.modal{transition:background-color .2s ease,color .2s ease}
+.view.active .card{transition:background-color .2s ease,color .2s ease}
+html{-webkit-text-size-adjust:100%}
+.sidebar,.modal,.pano{-webkit-overflow-scrolling:touch}
 
 .app{display:block;min-height:100vh}
 
@@ -94,7 +98,7 @@ body,body,input,textarea,select{transition:background-color .28s ease,color .28s
 .topbar .date{font-size:12px;color:var(--muted)}
 .topbar .quote{flex:1;font-size:12px;color:var(--muted);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-left:8px}
 .topbar .tools{display:flex;gap:8px}
-.icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:all .15s}
+.icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:color .15s,background-color .15s,border-color .15s}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)}
 .icon-btn svg{width:16px;height:16px}
 
@@ -675,7 +679,7 @@ strong{font-weight:600}
 
 /* ── 深色模式切换按钮（太阳/月亮） ── */
 .theme-toggle{display:flex;align-items:center;gap:4px;padding:7px 10px;border-radius:var(--radius-sm);
-  cursor:pointer;color:var(--muted);border:1px solid var(--border);transition:all .12s;font-size:0;user-select:none;touch-action:manipulation;}
+  cursor:pointer;color:var(--muted);border:1px solid var(--border);transition:background-color .12s,color .12s,transform .06s;font-size:0;user-select:none;touch-action:manipulation;}
 .theme-toggle:active{transform:scale(.85);background:var(--primary-light);color:var(--primary);}
 .theme-toggle:hover{background:var(--primary-light);color:var(--primary);}
 .theme-toggle svg{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;min-height:16px!important;max-height:16px!important;display:inline-block!important;}
@@ -10233,7 +10237,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pt-sash::after{content:"";position:absolute;right:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top right,#0F6E56 60%,transparent 60%);}
 .pt-seal{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#7EE0B8,#34D399);color:#073C2E;font-weight:800;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.24)}
 .pt-name{font-weight:700;font-size:12.5px;letter-spacing:.3em;text-indent:.3em;color:#EAF6FF}
-.pt-name-hint{position:relative;z-index:1;font-size:11.5px;letter-spacing:.08em;color:#3c6e5f;margin:-12px 0 4px;font-weight:500;opacity:.9}
+.pt-name-premium{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px 16px;justify-content:center;align-items:center;margin:2px 0 20px;max-width:620px}
+.pm-pair{display:flex;align-items:baseline;gap:8px}
+.pm-pair b{font-family:Georgia,'Times New Roman',serif;font-weight:600;font-size:14px;letter-spacing:.16em;color:#0F6E56}
+.pm-pair i{font-style:normal;font-size:11px;letter-spacing:.16em;text-indent:.16em;color:#5a7a8a}
+.pm-x{color:#C9D6DF;font-family:Georgia,serif;font-size:12px}
+.pm-verse{flex-basis:100%;font-size:12.5px;line-height:1.9;color:#41627a;letter-spacing:.04em;margin-top:2px}
+.pm-verse em{font-style:normal;color:#0F6E56;letter-spacing:.1em}
 .pt-sash i{width:26px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.7),transparent)}
 .pt-deco{position:absolute;z-index:0;border-radius:50%;border:1px solid rgba(15,118,92,.22);pointer-events:none}
 .pt-deco::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px dashed rgba(37,99,235,.22)}
@@ -10268,6 +10278,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-h2{font-weight:800;font-size:clamp(24px,3.9vw,33px);margin:20px 0 16px;line-height:1.5;letter-spacing:.03em;color:#0E2A47}
 .pano-h2 em{font-style:normal;color:#0F6E56}
 .pano-lead{color:#42566C;font-size:15px;max-width:680px;line-height:2.1;margin:0 auto}
+/* 它是什么 · 四重承诺 */
+.pano-feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:14px;margin:36px auto 0;max-width:960px;text-align:left}
+.pano-ft{background:#FFFFFF;border:1px solid #E7ECF3;border-radius:15px;padding:22px 20px 20px;box-shadow:0 10px 26px rgba(14,42,71,.06);transition:.25s}
+.pano-ft:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(14,42,71,.12)}
+.pano-ft .fi{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;background:linear-gradient(140deg,#E9F7EF,#EAF3FC);font-size:19px;margin-bottom:12px}
+.pano-ft b{display:block;color:#0E2A47;font-size:14px;font-weight:800;letter-spacing:.01em;margin-bottom:6px}
+.pano-ft p{color:#5f7080;font-size:12.5px;line-height:1.85;margin:0}
 .pano-lead b,.pano-lead strong{color:#0C447C;font-weight:700}
 /* 分隔线 */
 .pano-rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:38px 0 0;color:#2563EB}
@@ -10311,6 +10328,15 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-hb .medal{width:58px;height:58px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(140deg,#0C447C,#2563EB);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;box-shadow:0 10px 22px rgba(37,99,235,.36)}
 .pano-hb h5{color:#0E2A47;font-size:15.5px;margin:0 0 8px;font-weight:800;letter-spacing:.02em}
 .pano-hb p{color:#5f7080;font-size:12.8px;line-height:1.9;margin:0}
+/* 设计理念 · 平 / 万象 */
+.pano-concept{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px auto 0;max-width:880px;text-align:left}
+.pano-cv{display:flex;gap:16px;align-items:flex-start;background:#FFFFFF;border:1px solid #E7ECF3;border-radius:18px;padding:26px 24px;box-shadow:0 12px 30px rgba(14,42,71,.07);transition:.28s}
+.pano-cv:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(14,42,71,.13)}
+.pano-cv .cv-char{flex:none;display:flex;align-items:center;justify-content:center;width:74px;height:92px;border-radius:16px;background:linear-gradient(150deg,#EAF7F1,#EAF3FC);border:1px solid #DCEEF2;font-family:"Kaiti SC","KaiTi","STKaiti",serif;font-size:34px;font-weight:700;color:#0F6E56;line-height:1;box-shadow:inset 0 1px 0 #fff}
+.pano-cv[data-side="万象"] .cv-char{color:#0C447C}
+.pano-cv .cv-body h5{color:#0E2A47;font-size:15.5px;font-weight:800;letter-spacing:.03em;margin:2px 0 8px}
+.pano-cv .cv-body p{color:#5f7080;font-size:13px;line-height:1.95;margin:0}
+@media (max-width:560px){.pano-concept{grid-template-columns:1fr}.pano-cv .cv-char{width:60px;height:74px;font-size:28px}}
 /* 原则 */
 .pano-nolist{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px;margin-top:32px}
 .pano-ni{background:#FFFFFF;border:1px solid #E7ECF3;border-radius:14px;padding:18px 20px;font-size:13.8px;color:#42566C;line-height:1.85;transition:.25s;cursor:default;box-shadow:0 8px 22px rgba(14,42,71,.05)}
@@ -10441,8 +10467,12 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pt-sash"><span class="pt-seal">平</span><span class="pt-name">EQUA · MUNDI</span><i></i></div>
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
-      <div class="eyebrow">EQUA · MUNDI · 大学生成长中枢</div>
-      <div class="pt-name-hint">EQUA＝平常心&ensp;·&ensp;MUNDI＝万象，合起来即「平·万象」</div>
+      <div class="pt-name-premium">
+        <span class="pm-pair"><b>EQUA</b><i>平常心</i></span>
+        <span class="pm-x">&times;</span>
+        <span class="pm-pair"><b>MUNDI</b><i>大千世界</i></span>
+        <span class="pm-verse">在纷忙的世界里，守住一颗平常心，再把满满的「万象」，逐一过成自己的秩序。<em>—— 故得名 · 平 · 万象</em></span>
+      </div>
       <h1 class="pano-h1">平，万象<span class="thin">：让四年各就各位</span></h1>
       <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>，六条线收拢到一处、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
@@ -10459,6 +10489,12 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-no"><span class="rn">壹</span><span>它为什么无可取代 · 你所得到的</span></div>
       <h2 class="pano-h2">它不是又一个工具，<br>而是把四年过成<em>想要的样子</em>的那个地方</h2>
       <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康与眼界</b>，还让它们互相咬合。平·万象，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
+      <div class="pano-feat">
+        <div class="pano-ft"><span class="fi">⚡</span><b>双击即用 · 零安装零门槛</b><p>一个网页即是全部，点开就能用，不用下载、不用配置。</p></div>
+        <div class="pano-ft"><span class="fi">🔒</span><b>数据留在本机 · 不收集隐私</b><p>不注册、不联网上传，一切只存在你自己的浏览器里。</p></div>
+        <div class="pano-ft"><span class="fi">📱</span><b>手机电脑 · 处处顺手打开</b><p>跨端同页，还能「加到桌面」当 App 全屏使用。</p></div>
+        <div class="pano-ft"><span class="fi">🛡️</span><b>离线能用 · 断网也不丢</b><p>本地即存即用，随时导出备份、自由迁移永不失联。</p></div>
+      </div>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
@@ -10532,7 +10568,23 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <section class="pano-sec pano-sec-ctr" data-step="6">
       <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
       <h2 class="pano-h2">它因一个朴素信念而生：<em>「平」是平常心，「万象」是包罗万有</em></h2>
-      <p class="pano-lead">我们见过太多人被"大学很自由"的美好期待，和"自由反而不知从何下手"的落差困住。长期主义的自律，不该靠意志硬扛，而该靠<b>一套顺手的系统</b>。《大学》里讲"知止而后有定，定而后能静"——先让生活各就各位，心才能安定下来生长。<br><em style="color:#0F6E56;font-style:normal">EQUA（平常心）· MUNDI（万象）——正如它的另一个名字「平·万象」。</em></p>
+      <p class="pano-lead">我们见过太多人被"大学很自由"的美好期待，和"自由反而不知从何下手"的落差困住。长期主义的自律，不该靠意志硬扛，而该靠<b>一套顺手的系统</b>。《大学》里讲"知止而后有定，定而后能静"——先让生活各就各位，心才能安定下来生长。</p>
+      <div class="pano-concept">
+        <div class="pano-cv" data-side="平">
+          <span class="cv-char">平</span>
+          <div class="cv-body">
+            <h5>平常心 · 踏实 · 从容</h5>
+            <p>不焦虑、不攀比，把今天该做的事一件件做好；工具不花哨，但每一个都真正有用；在快节奏里，守住自己的节奏。平凡的日子，也能过得井井有条、自有掌控感。</p>
+          </div>
+        </div>
+        <div class="pano-cv" data-side="万象">
+          <span class="cv-char">万象</span>
+          <div class="cv-body">
+            <h5>包罗万象 · 全场景覆盖</h5>
+            <p>学业、考试、职场、理财、健康、社交、认知、创意……把生活的方方面面装进一个系统。不必在十个软件间来回切换，打开平·万象，就是打开你的整个世界。</p>
+          </div>
+        </div>
+      </div>
       <div class="pano-habit">
         <div class="pano-hb"><div class="medal">燃</div><h5>越用回报越多</h5><p>连续打卡出勋章，坚持汇成热力图，一年后是你自己的成绩单。</p></div>
         <div class="pano-hb"><div class="medal">册</div><h5>周度成长档案</h5><p>每周自动汇总进度与亮点，复盘不再无从下手，看得见自己在长大。</p></div>
