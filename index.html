@@ -827,7 +827,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="1" y="1" width="22" height="22" rx="7" fill="url(#pwLgBg)"/><text x="12" y="14" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-weight="800" font-size="16" fill="#fff">平</text><rect x="4.2" y="18.6" width="15.6" height="1.7" rx="0.85" fill="url(#pwLgLn)"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
+      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="1" y="1" width="22" height="22" rx="7" fill="url(#pwLgBg)"/><circle cx="14.6" cy="10.3" r="3.6" fill="#fff"/><rect x="4.2" y="16.6" width="15.6" height="1.9" rx="0.95" fill="url(#pwLgLn)"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -889,7 +889,7 @@ strong{font-weight:600}
 
     <nav class="sidebar" id="sidebar">
     <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="22" height="22" rx="7" fill="url(#pwLgBg)"/><text x="12" y="14" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-weight="800" font-size="16" fill="#fff">平</text><rect x="4.2" y="18.6" width="15.6" height="1.7" rx="0.85" fill="url(#pwLgLn)"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="22" height="22" rx="7" fill="url(#pwLgBg)"/><circle cx="14.6" cy="10.3" r="3.6" fill="#fff"/><rect x="4.2" y="16.6" width="15.6" height="1.9" rx="0.95" fill="url(#pwLgLn)"/></svg>
       平·万象
     </div>
     <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
@@ -1015,7 +1015,7 @@ strong{font-weight:600}
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
   <main class="main">
-      <div id="mobileSidebarHint" style="display:none;margin:12px 16px 0;padding:10px 14px;border-radius:10px;background:#EAF4EF;border:1px solid #B8DFC9;font-size:13px;color:#145A32;line-height:1.7"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开全部板块</span> <span style="flex-shrink:0;font-size:16px;color:#676760;padding:2px 6px;border-radius:4px;cursor:pointer;float:right" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
+      <div id="mobileSidebarHint" style="display:none;margin:8px 16px;padding:6px 12px;border-radius:9px;background:#EAF4EF;border:1px solid #B8DFC9;font-size:12.5px;color:#145A32;line-height:1.5"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开全部板块</span> <span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#676760;padding:0 4px;border-radius:4px;cursor:pointer" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
 
     <!-- 首页 -->
     <section class="view active" id="view-home">
@@ -7786,7 +7786,7 @@ function init(){
   var d=new Date();
   document.getElementById('todayDate').textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+'日一二三四五六'[d.getDay()];
   var q=QUOTES[(Math.floor(Date.now()/86400000))%QUOTES.length];
-  document.getElementById('dailyQuote').textContent='“'+q+'”';
+  var _dq=document.getElementById('dailyQuote');if(_dq)_dq.textContent='“'+q+'”';
 
   
     
@@ -10122,8 +10122,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 
   /* 首屏一次性：隐私透明 + 多人在线承载说明（用户反馈关切） */
   function priv(){
-    /* 顶部隐私/免费横幅已并入「系统设置·使用与隐私说明」，此处不再重复插入，避免冗余 */
-    return;
+    if(typeof localStorage==='undefined')return;
+    if(localStorage.getItem('pp_priv_ok'))return;
+    var main=document.querySelector('.main');if(!main)return;
+    var box=document.createElement('div');box.id='privBox';
+    box.style.cssText='margin:10px 16px 0;padding:9px 12px;border-radius:10px;background:var(--teal-light);border:1px solid var(--border-strong);color:var(--teal);font-size:12.5px;line-height:1.75';
+    box.innerHTML='🔒 <b>隐私透明：</b>本应用是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span style="cursor:pointer;font-weight:700;text-decoration:underline;white-space:nowrap" onclick="var p=document.getElementById(\'privBox\');if(p)p.remove();localStorage.setItem(\'pp_priv_ok\',\'1\')">知道了 ✕</span>';
+    main.insertBefore(box, main.firstChild);
   }
 
   function init(){footer();priv();}
@@ -10228,6 +10233,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pt-sash::after{content:"";position:absolute;right:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top right,#0F6E56 60%,transparent 60%);}
 .pt-seal{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#7EE0B8,#34D399);color:#073C2E;font-weight:800;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.24)}
 .pt-name{font-weight:700;font-size:12.5px;letter-spacing:.3em;text-indent:.3em;color:#EAF6FF}
+.pt-name-hint{position:relative;z-index:1;font-size:11.5px;letter-spacing:.08em;color:#3c6e5f;margin:-12px 0 4px;font-weight:500;opacity:.9}
 .pt-sash i{width:26px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.7),transparent)}
 .pt-deco{position:absolute;z-index:0;border-radius:50%;border:1px solid rgba(15,118,92,.22);pointer-events:none}
 .pt-deco::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px dashed rgba(37,99,235,.22)}
@@ -10436,6 +10442,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="eyebrow">EQUA · MUNDI · 大学生成长中枢</div>
+      <div class="pt-name-hint">EQUA＝平常心&ensp;·&ensp;MUNDI＝万象，合起来即「平·万象」</div>
       <h1 class="pano-h1">平，万象<span class="thin">：让四年各就各位</span></h1>
       <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>，六条线收拢到一处、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
