@@ -42,6 +42,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px}
 ::-webkit-scrollbar-track{background:transparent}
+/* 主题切换平滑过渡（不抢在内容动画前，仅颜色部分柔和过渡） */
+body,body,input,textarea,select{transition:background-color .28s ease,color .28s ease,border-color .28s ease}
+.topbar,.sidebar,.card,.page-head,.bottom-nav,.modal{transition:background-color .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease}
 
 .app{display:block;min-height:100vh}
 
@@ -322,7 +325,7 @@ strong{font-weight:600}
 
 /* ── 深色模式变量覆盖 ── */
 @media (prefers-color-scheme: dark){
-  :root:not([data-light]){
+  :root:not([data-theme]){
     --bg:#0f1117;--card:#1a1d27;--text:#e4e4e7;--muted:#9ca3af;
     --hint:#9ca3af;--border:#2d3142;--border-strong:#3d4259;
     --primary:#60a5fa;--primary-light:#1e293b;--primary-mid:#93c5fd;
@@ -347,8 +350,10 @@ strong{font-weight:600}
 [data-theme="dark"] td,[data-theme="dark"] th,[data-theme="dark"] table{color:var(--text)!important}
 [data-theme="dark"] .card *:not(a):not(.btn):not(.icon-btn){color:var(--text)}
 [data-theme="dark"] .card h3,[data-theme="dark"] .card h4,[data-theme="dark"] .card strong{color:var(--text)!important}
-[data-theme="dark"] .page-head{background:linear-gradient(135deg,#0F6E56 0%,#0a5543 100%)!important;color:#fff!important;}
-[data-theme="dark"] .page-head h1,[data-theme="dark"] .page-head p{color:#fff!important;}
+[data-theme="dark"] .page-head{background:linear-gradient(120deg,#0e2b22 0%,#0f1a2a 72%)!important;border:1px solid rgba(45,212,191,.20)!important;border-left:4px solid #2dd4bf!important;border-radius:16px!important;padding:16px 20px 14px!important;margin-bottom:22px!important;box-shadow:none!important;color:#e4e4e7!important;}
+[data-theme="dark"] .page-head h1{color:#f2f7f5!important;margin-bottom:3px!important;}
+[data-theme="dark"] .page-head p{color:#9adfce!important;}
+[data-theme="dark"] .page-head h1 svg{color:#2dd4bf!important;}
 [data-theme="dark"] .card h3{color:#e4e4e7!important;}
 [data-theme="dark"] .card h4{color:#c4c4cc!important;}
 [data-theme="dark"] .card p,[data-theme="dark"] .card li,[data-theme="dark"] td{color:#b4b4bc!important;}
@@ -423,6 +428,26 @@ strong{font-weight:600}
 [data-theme="dark"] [style*="background:#FFFFFF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge),
 [data-theme="dark"] [style*="background: #FFFFFF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge),
 [data-theme="dark"] [style*="background:#Fff"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge){background:var(--card)!important;color:var(--text)!important}
+/* 夜间兜底增强：内联浅色背景（#F4F8FB/#FFF8EF/#F0F8F4/#F4F7FB/#EAF6FF 等近白/浅色卡片）统一转暗，消除刺眼光斑（排除语义色板/热力图/徽章） */
+[data-theme="dark"] [style*="background:#F"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge),
+[data-theme="dark"] [style*="background: #F"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge),
+[data-theme="dark"] [style*="background:#EAF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge){background:var(--card)!important;color:var(--text)!important}
+[data-theme="dark"] [style*="background:#F"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge) p,
+[data-theme="dark"] [style*="background:#F"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge) li,
+[data-theme="dark"] [style*="background:#F"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge) span,
+[data-theme="dark"] [style*="background:#EAF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge) p,
+[data-theme="dark"] [style*="background:#EAF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge) li,
+[data-theme="dark"] [style*="background:#EAF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge) span{color:var(--text)!important}
+/* 夜间：表格表头浅底(#F0F8F4)行转暗 */
+[data-theme="dark"] tr[style*="background:#F0F8F4"],tr[style*="background:#f0f8f4"] td,tr[style*="background:#F0F8F4"] th{background:var(--primary-light)!important;color:var(--text)!important}
+/* 夜间：输入框聚焦不再转浅色白底，保持深色 */
+[data-theme="dark"] input:focus,[data-theme="dark"] textarea:focus,[data-theme="dark"] select:focus{background:var(--card)!important;border-color:var(--primary-mid)!important}
+/* 夜间：引导横幅与浅色渐变卡片（gradient 内白底不受上面的 background:#F 兜底覆盖）转暗 */
+[data-theme="dark"] #guideBanner{background:linear-gradient(120deg,#14202c,#102822)!important;border-color:var(--border)!important;border-left-color:var(--primary-mid)!important;color:var(--text)!important}
+[data-theme="dark"] .card[style*="FFF8EF"]{background:linear-gradient(135deg,#2b2517,#272019)!important;border-color:#5f4f22!important}
+/* 夜间：漏网的硬编码彩色文字提亮（浅蓝主色 #185FA5、紫色 #6B4FA0） */
+[data-theme="dark"] [style*="color:#185FA5"],[data-theme="dark"] [style*="color: #185FA5"]{color:var(--primary-mid)!important}
+[data-theme="dark"] [style*="color:#6B4FA0"],[data-theme="dark"] [style*="color: #6B4FA0"]{color:#b794f6!important}
 
 
 
@@ -9065,10 +9090,16 @@ function toggleTheme(){
   updateThemeIcon();
 }
 function applySavedTheme(){
-  try{
-    var t=localStorage.getItem('pp_theme');
-    if(t){document.documentElement.setAttribute('data-theme',t);}
-  }catch(e){}
+  var t=null;
+  try{ t=localStorage.getItem('pp_theme'); }catch(e){ t=null; }
+  /* 未保存过时：跟随系统偏好，并【固化】成显式 data-theme，让整套 [data-theme="dark"] 覆盖样式始终生效，
+     避免"系统深色下背景变暗但内容仍是浅色硬编码颜色"的半暗半亮、又太白又看不清的问题 */
+  if(t!=='light' && t!=='dark'){
+    var prefDark=!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+    t=prefDark?'dark':'light';
+    try{ localStorage.setItem('pp_theme',t); }catch(e){}
+  }
+  document.documentElement.setAttribute('data-theme',t);
   updateThemeIcon();
 }
 function updateThemeIcon(){
@@ -9647,12 +9678,12 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 [data-theme="dark"] #privBox{background:rgba(15,110,86,.16)!important;border-color:var(--teal-mid)!important;color:var(--text)!important}
 [data-theme="dark"] #timetablePalette .btn{box-shadow:0 0 0 1px rgba(255,255,255,.06)}
 @media(prefers-color-scheme:dark){
-  :root:not([data-light]) .card[style*="#F0F8F4"], :root:not([data-light]) .card[style*="#EAF4EF"], :root:not([data-light]) .card[style*="#FFF8EF"], :root:not([data-light]) .card[style*="#FDEFE2"], :root:not([data-light]) .card[style*="#FFF5F0"], :root:not([data-light]) .card[style*="#F2F6FC"], :root:not([data-light]) .card[style*="#E9F0FA"]{background:var(--card)!important;border-color:var(--border)!important}
-  :root:not([data-light]) .card[style*="#F0F8F4;border-left"]{background:rgba(15,110,86,.12)!important;border-left-color:var(--teal-mid)!important}
-  :root:not([data-light]) #mobileSidebarHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
-  :root:not([data-light]) .tag-gold{background:rgba(184,134,11,.18);color:#F0CE6E}
-  :root:not([data-light]) .tag-gray{background:rgba(95,94,90,.2);color:var(--muted)}
-  :root:not([data-light]) .bm-qr-note{background:rgba(15,110,86,.15);color:#BFF0DA;border-color:var(--teal-mid)}
+  :root:not([data-theme]) .card[style*="#F0F8F4"], :root:not([data-theme]) .card[style*="#EAF4EF"], :root:not([data-theme]) .card[style*="#FFF8EF"], :root:not([data-theme]) .card[style*="#FDEFE2"], :root:not([data-theme]) .card[style*="#FFF5F0"], :root:not([data-theme]) .card[style*="#F2F6FC"], :root:not([data-theme]) .card[style*="#E9F0FA"]{background:var(--card)!important;border-color:var(--border)!important}
+  :root:not([data-theme]) .card[style*="#F0F8F4;border-left"]{background:rgba(15,110,86,.12)!important;border-left-color:var(--teal-mid)!important}
+  :root:not([data-theme]) #mobileSidebarHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
+  :root:not([data-theme]) .tag-gold{background:rgba(184,134,11,.18);color:#F0CE6E}
+  :root:not([data-theme]) .tag-gray{background:rgba(95,94,90,.2);color:var(--muted)}
+  :root:not([data-theme]) .bm-qr-note{background:rgba(15,110,86,.15);color:#BFF0DA;border-color:var(--teal-mid)}
 }
 [data-theme="dark"] .card[style*="135deg"][style*="#0F6E56"]{background:linear-gradient(135deg,#0a3d2e,#0a2a4d)!important}
 </style>
