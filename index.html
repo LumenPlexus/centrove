@@ -342,6 +342,28 @@ strong{font-weight:600}
 .focus-chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:13.5px;color:var(--muted);cursor:pointer;transition:all .2s;font-family:inherit;line-height:1.4}
 .focus-chip:hover{border-color:var(--primary-mid);color:var(--primary)}
 .focus-chip.on{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(12,68,124,.28);font-weight:600}
+/* 轻松上手：全部板块一览（可点直达） */
+.focus-sec{font-size:12px;color:var(--hint);letter-spacing:.06em;margin:16px 0 8px;font-weight:600;display:flex;align-items:center;gap:8px}
+.focus-sec::before{content:"";width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,#0F6E56,#0C447C);display:inline-block}
+.focus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:9px}
+.focus-board{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:13px 6px;cursor:pointer;transition:all .16s ease;user-select:none}
+.focus-board:hover{border-color:var(--primary-mid);background:#F3F8FC;transform:translateY(-2px);box-shadow:0 6px 16px rgba(12,68,124,.10)}
+.focus-board:active{transform:scale(.94)}
+.focus-board .fb-ico{font-size:21px;line-height:1}
+.focus-board .fb-na{font-size:12.5px;color:var(--text);font-weight:500;text-align:center;line-height:1.35}
+.focus-board .fb-tag{position:absolute;top:5px;right:5px;font-style:normal;font-size:9px;color:#fff;background:linear-gradient(135deg,#F59E0B,#EF6A3E);padding:1px 5px;border-radius:999px}
+.focus-board.rec{border-color:rgba(239,106,62,.45);background:linear-gradient(180deg,#FFF7EE,#fff)}
+.focus-rec-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.focus-rec-head b{color:var(--primary);font-size:14px}
+.focus-rec-head span{font-size:11.5px;color:var(--hint)}
+/* 全产品按钮统一按压反馈：点一下就看见响应 */
+.icon-btn,.btn,.focus-chip,a{animation:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.icon-btn:active{transform:scale(.88);background:var(--primary-light)}
+.btn:active{transform:scale(.96)}
+.focus-chip:active{transform:scale(.93)}
+.nav-item:active{transform:scale(.98) translateX(2px)}
+.bottom-nav-item:active{transform:scale(.9)}
+.quick-chip:active,.tag:active{transform:scale(.94)}
 #focusStart>div>div.card{cursor:pointer;transition:transform .2s,box-shadow .2s}
 #focusStart>div>div.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(12,68,124,.12)}
 .qs-badge{position:absolute;right:8px;top:8px;font-size:10px;color:#fff;background:linear-gradient(135deg,#f5a524,#ef6820);padding:2px 8px;border-radius:999px;font-weight:700;letter-spacing:.03em;line-height:1.4;box-shadow:0 4px 12px rgba(239,104,32,.34);z-index:2}
@@ -970,19 +992,20 @@ strong{font-weight:600}
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
         <p>欢迎回到平·万象。今天也要保持平常心，从容向前。</p>
       </div>
-      <!-- 轻松上手：你关心哪些方向？（选中方向 → 下方直接给出可点开的模块卡） -->
+      <!-- 轻松上手：包含侧边栏全部板块，一键直达；可选方向做个性化排序 -->
       <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#EEF6F2,#E9F2FA);border-color:#CDE0DB">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">
-          <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z"></path></svg>轻松上手 · 你关心哪些方向？<span style="font-weight:400;font-size:12px;color:var(--hint)">选完下方直接可点</span></h3>
-          <button onclick="clearFocus()" style="border:none;background:var(--card);color:var(--hint);font-size:12px;cursor:pointer;padding:4px 8px;border-radius:6px;font-family:inherit;white-space:nowrap" title="清空选择">↺ 重排复位</button>
+          <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z"></path></svg>轻松上手 · 全部板块</h3>
+          <button onclick="clearFocus()" style="border:none;background:var(--card);color:var(--hint);font-size:12px;cursor:pointer;padding:4px 8px;border-radius:6px;font-family:inherit;white-space:nowrap" title="清空选择">↺ 重置</button>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
-          <button class="focus-chip" data-dir="study" onclick="pickFocus('study')">📚 学习考证</button>
+          <button class="focus-chip" data-dir="study" onclick="pickFocus('study')">📚 学业升学</button>
           <button class="focus-chip" data-dir="time" onclick="pickFocus('time')">⏰ 时间效率</button>
           <button class="focus-chip" data-dir="money" onclick="pickFocus('money')">💰 求职搞钱</button>
-          <button class="focus-chip" data-dir="life" onclick="pickFocus('life')">🌱 成长记录</button>
-          <button class="focus-chip" data-dir="fun" onclick="pickFocus('fun')">🏠 生活休闲</button>
+          <button class="focus-chip" data-dir="life" onclick="pickFocus('life')">🌱 成长生活</button>
+          <button class="focus-chip" data-dir="fun" onclick="pickFocus('fun')">🏠 休闲阅读</button>
         </div>
+        <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(15,110,86,.08);border:1px dashed rgba(15,110,86,.28);color:#53675c;font-size:13px;line-height:1.9"><b style="color:var(--primary)">愿你把它用起来</b>　规划得再好，不动手也只是一张清单。点开上面的任一板块，<b style="color:var(--primary)">只做今天能落地的一小步</b>——真正的改变，从你按下每一步开始。</div>
         <div id="focusStart" style="margin-top:12px"></div>
       </div>
       <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
@@ -7634,53 +7657,79 @@ function renderDailyQuoteCard(){
   refreshMind(false);
 }
 
-/* ═══════ 首页「关注方向」引导：新人选方向 → 直接给出可点开的模块卡，全部可点击直达 ═══════ */
-var PP_DIRS={
-  study:{name:'学习考证',more:[['study','学业规划'],['exam','考试倒计时'],['contest','竞赛科研'],['paper','论文写作']]},
-  time:{name:'时间效率',more:[['quadrant','四象限排单'],['timer','心流计时'],['plans','计划蓝图'],['goals','目标拆解']]},
-  money:{name:'求职搞钱',more:[['career','职业发展'],['resume','简历面试'],['finance','理财管理'],['earn','搞钱副业']]},
-  life:{name:'成长记录',more:[['stats','成长档案'],['mind','心灵成长'],['creative','灵感看板'],['health','运动健康']]},
-  fun:{name:'生活休闲',more:[['shelf','书海拾贝'],['podcast','耳畔星河'],['movie','幕间观澜'],['fun','轻松一下']]}
+/* ═══════ 首页「轻松上手」：包含侧边栏全部板块，可点击直达；可选方向做个性化推荐 ═══════ */
+var NAV_DIRS={
+  study:{name:'学业升学',members:['study','exam','contest','paper','college','campus-info','tpl','campus','party']},
+  time:{name:'时间效率',members:['quadrant','plans','goals','habits','life','timer','tools','ai']},
+  money:{name:'求职搞钱',members:['career','growth','resume','finance','save','earn','shop','stats']},
+  life:{name:'成长生活',members:['journal','stats','health','mind','creative']},
+  fun:{name:'休闲阅读',members:['shelf','podcast','movie','fun','creative']}
 };
+/* 全部板块：与侧边栏一一对应，分组展示、可点直达 */
+var NAV_ALL=[{
+  g:'目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','远见蓝图'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['life','🧭','长期规划']]
+},{
+  g:'学业与升学',items:[['study','📘','学业规划'],['exam','⏳','考试倒计时'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['college','🏫','大学须知'],['campus-info','📢','大学情报'],['tpl','🧩','专项模板'],['campus','🎒','大学生活'],['party','🎖','入团入党']]
+},{
+  g:'职业与技能',items:[['career','💼','职业发展'],['growth','📈','个人提升'],['resume','📄','简历面试']]
+},{
+  g:'记录与成长',items:[['journal','📖','时光札记'],['stats','📊','成长档案']]
+},{
+  g:'生活与健康',items:[['health','💪','运动健康'],['mind','🧠','心灵成长']]
+},{
+  g:'阅读与休闲',items:[['creative','💡','灵感看板'],['shelf','📚','书海拾贝'],['podcast','🎧','耳畔星河'],['movie','🎬','幕间观澜'],['fun','😄','轻松一下']]
+},{
+  g:'理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南']]
+},{
+  g:'效率与工具',items:[['ai','🤖','智造工坊'],['tools','🛠','高效方法'],['timer','🍅','心流计时']]
+},{
+  g:'系统',items:[['about','ℹ️','关于产品'],['settings','⚙️','系统设置']]
+}];
 function getFocus(){try{var v=JSON.parse(localStorage.getItem('pp_focus')||'[]');return Array.isArray(v)?v:[];}catch(e){return [];}}
 function pickFocus(dir){
   var p=getFocus(),i=p.indexOf(dir);
-  if(i>-1)p.splice(i,1);else{if(p.length>=3){p.shift();}p.push(dir);}
+  if(i>-1)p.splice(i,1);else{if(p.length>=5){p.shift();}p.push(dir);}
   try{localStorage.setItem('pp_focus',JSON.stringify(p));}catch(e){}
   renderFocus();
 }
 function clearFocus(){try{localStorage.removeItem('pp_focus');}catch(e){}
   renderFocus();
 }
+function _focusCardHtml(board){
+  return '<div class="focus-board" onclick="switchView(\''+board[0]+'\')" tabindex="0"><span class="fb-ico">'+board[1]+'</span><span class="fb-na">'+board[2]+'</span></div>';
+}
 function renderFocus(){
   var cont=document.getElementById('focusStart');if(!cont)return;
   var picks=getFocus();
   var chips=document.querySelectorAll('#focusCard .focus-chip');
   for(var c=0;c<chips.length;c++){chips[c].classList.toggle('on',picks.indexOf(chips[c].getAttribute('data-dir'))>-1);}
-  if(!picks.length){
-    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">👆 点上面一排，选 1~3 个你关心的方向，下面立刻给你推荐能直接点开的模块。</div>';
-    cont.style.display='block';
-    return;
+  /* 收集所有命中的推荐板块 id（按方向选择顺序去重） */
+  var rec=[],seen={};
+  for(var k=0;k<picks.length;k++){var d=NAV_DIRS[picks[k]];if(!d)continue;for(var m=0;m<d.members.length;m++){if(!seen[d.members[m]]){seen[d.members[m]]=1;rec.push(d.members[m]);}}}
+  var html='';
+  /* 命中推荐：先出一段「为你推荐」 */
+  if(rec.length){
+    html+='<div class="focus-rec-head"><b>✦ 为你推荐</b><span>已选 '+picks.length+' 个方向 · 板块一点点用起来</span></div>';
+    html+='<div class="focus-grid">';
+    for(var r=0;r<rec.length;r++){
+      for(var s=0;s<NAV_ALL.length;s++){for(var i=0;i<NAV_ALL[s].items.length;i++){if(NAV_ALL[s].items[i][0]===rec[r]){html+=_focusCardHtml(NAV_ALL[s].items[i]);}}}
+    }
+    html+='</div>';
   }
-  /* 按选择方向顺序，收集各自的推荐模块卡（去重） */
-  var list=[],seen={};
-  for(var k=0;k<picks.length;k++){var d=PP_DIRS[picks[k]];if(!d)continue;for(var m=0;m<d.more.length;m++){if(!seen[d.more[m][0]]){seen[d.more[m][0]]=1;list.push(d.more[m]);}}}
-  if(!list.length){
-    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">✅ 你选的方向已就位，相关模块可直接点击使用，想去更多地方就到侧边栏逛逛。</div>';
-    cont.style.display='block';
-    return;
+  /* 全部板块（始终展示，分组） */
+  for(var si=0;si<NAV_ALL.length;si++){
+    var sec=NAV_ALL[si];
+    html+='<div class="focus-sec">'+sec.g+'</div><div class="focus-grid">';
+    for(var j=0;j<sec.items.length;j++){
+      var isRec=seen[sec.items[j][0]];
+      html+='<div class="focus-board'+(isRec?' rec':'')+'" onclick="switchView(\''+sec.items[j][0]+'\')" tabindex="0"><span class="fb-ico">'+sec.items[j][1]+'</span><span class="fb-na">'+sec.items[j][2]+'</span>'+(isRec?'<i class="fb-tag">推荐</i>':'')+'</div>';
+    }
+    html+='</div>';
   }
-  var html='<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"><b style="color:var(--primary);font-size:14px">✦ 为你准备的模块 · 点开即用</b><button onclick="clearFocus()" style="border:none;background:none;color:var(--hint);font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit">清空重选</button></div>';
-  html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">';
-  for(var j=0;j<list.length;j++){
-    if(!list[j][1])continue;
-    html+='<div class="card" style="cursor:pointer;padding:12px 14px;margin:0;border-left:3px solid var(--primary)" onclick="switchView(\''+list[j][0]+'\')"><div style="font-size:14px;font-weight:600;color:var(--primary)">'+list[j][1]+'</div><div style="font-size:11px;color:var(--hint);margin-top:3px">点开即用 · 自动保存</div></div>';
-  }
-  html+='</div>';
   cont.innerHTML=html;
   cont.style.display='block';
 }
-/* ═══════ 首页「关注方向」引导 ═══════ */
+/* ═══════ 首页「轻松上手」 ═══════ */
 function init(){
 
 
@@ -9379,6 +9428,7 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme',next);
   try{localStorage.setItem('pp_theme_v2',next);}catch(e){}
   updateThemeIcon();
+  try{if(window.flash)window.flash(next==='dark'?'🌙 已切换夜间模式，护眼不刺眼':'☀️ 已切换日间模式，清爽明亮');}catch(e){}
 }
 function applySavedTheme(){
   var t=null;
@@ -10106,7 +10156,31 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-hero::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.7),transparent 60%);z-index:0}
 .pano-hero>*{position:relative;z-index:1}
 .pano-hero .glow{position:absolute;left:-70px;bottom:-80px;transform:none;width:360px;height:230px;background:radial-gradient(60% 60% at 50% 50%,rgba(15,118,92,.12),transparent 68%);z-index:0}
-.pano-hero .eyebrow{font-size:12px;letter-spacing:.42em;color:#0F6E56;text-indent:.42em;margin:0 0 22px;animation:panoUp .7s .1s both;text-transform:uppercase;background:rgba(15,118,92,.08);border:1px solid rgba(15,118,92,.16);display:inline-block;padding:7px 16px;border-radius:999px}
+.pano-hero .eyebrow{font-size:12px;letter-spacing:.42em;color:#0F6E56;text-indent:.42em;margin:30px 0 22px;animation:panoUp .7s .1s both;text-transform:uppercase;background:rgba(15,118,92,.08);border:1px solid rgba(15,118,92,.16);display:inline-block;padding:7px 16px;border-radius:999px}
+/* ── 封面首屏：创意顶部造型（非单一平直边，垂坠丝带 Logo 印章 + 波浪上沿 + 漂浮装饰） ── */
+.pt-topscallop{position:absolute;top:0;left:0;right:0;height:34px;z-index:0;opacity:.9;background:
+  radial-gradient(26px 20px at 6% 2px,rgba(15,118,92,.14) 49%,transparent 51%),
+  radial-gradient(26px 20px at 16% 2px,rgba(37,99,235,.10) 49%,transparent 51%),
+  radial-gradient(26px 20px at 26% 2px,rgba(15,118,92,.14) 49%,transparent 51%),
+  radial-gradient(26px 20px at 36% 2px,rgba(37,99,235,.10) 49%,transparent 51%),
+  radial-gradient(26px 20px at 46% 2px,rgba(15,118,92,.14) 49%,transparent 51%),
+  radial-gradient(26px 20px at 56% 2px,rgba(37,99,235,.10) 49%,transparent 51%),
+  radial-gradient(26px 20px at 66% 2px,rgba(15,118,92,.14) 49%,transparent 51%),
+  radial-gradient(26px 20px at 76% 2px,rgba(37,99,235,.10) 49%,transparent 51%),
+  radial-gradient(26px 20px at 86% 2px,rgba(15,118,92,.14) 49%,transparent 51%),
+  radial-gradient(26px 20px at 96% 2px,rgba(37,99,235,.10) 49%,transparent 51%)}
+.pt-sash{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;margin:0 auto 22px;background:linear-gradient(120deg,#0B2A5B,#0C447C 60%,#0F6E56);color:#fff;padding:7px 20px 8px 8px;border-radius:0 0 14px 14px;box-shadow:0 10px 24px rgba(12,68,124,.28);animation:panoUp .7s .02s both}
+.pt-sash::before{content:"";position:absolute;left:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top left,#0B2A5B 60%,transparent 60%);}
+.pt-sash::after{content:"";position:absolute;right:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top right,#0F6E56 60%,transparent 60%);}
+.pt-seal{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#7EE0B8,#34D399);color:#073C2E;font-weight:800;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.24)}
+.pt-name{font-weight:700;font-size:12.5px;letter-spacing:.3em;text-indent:.3em;color:#EAF6FF}
+.pt-sash i{width:26px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.7),transparent)}
+.pt-deco{position:absolute;z-index:0;border-radius:50%;border:1px solid rgba(15,118,92,.22);pointer-events:none}
+.pt-deco::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px dashed rgba(37,99,235,.22)}
+.pt-deco.d1{width:46px;height:46px;left:8%;top:34%;animation:panofloat 5s ease-in-out infinite}
+.pt-deco.d2{width:30px;height:30px;right:9%;top:28%;border-color:rgba(37,99,235,.26);animation:panofloat 6s .8s ease-in-out infinite}
+.pt-deco.d3{width:20px;height:20px;left:14%;bottom:26%;border-color:rgba(245,158,11,.3);animation:panofloat 4.6s .4s ease-in-out infinite}
+@keyframes panofloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .pano-hero h1.pano-h1{margin:0;font-weight:800;font-size:clamp(36px,6.2vw,60px);line-height:1.24;letter-spacing:.03em;color:#0E2A47;animation:panoUp .7s .22s both;text-shadow:0 10px 30px rgba(14,42,71,.10)}
 .pano-h1 .thin{font-weight:500;color:#0C447C}
 .pano-hero .dek{font-size:clamp(15px,2.4vw,17.5px);color:#42566C;max-width:620px;margin:28px auto 0;line-height:2.1;animation:panoUp .7s .34s both}
@@ -10303,6 +10377,9 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 封面首屏 (步骤 1) -->
     <section class="pano-hero" data-step="0">
+      <span class="pt-topscallop" aria-hidden="true"></span>
+      <div class="pt-sash"><span class="pt-seal">平</span><span class="pt-name">PING·WAN XIANG</span><i></i></div>
+      <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="eyebrow">PING·WAN XIANG · 大学生成长中枢</div>
       <h1 class="pano-h1">平，万象<span class="thin">：让四年各就各位</span></h1>

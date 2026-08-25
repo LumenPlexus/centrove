@@ -1,6 +1,6 @@
 /* 平·万象 Service Worker：让网站可安装为桌面 App、并支持断网也能打开 */
-/* v13 · 首页改为缓存优先+后台刷新：每次打开秒开不再卡顿，更新静默完成 */
-const CACHE = 'pingwanxiang-v13';
+/* v14 · 缓存优先+后台刷新：打开秒开不再卡顿，更新静默完成；换来新的全部板块导览与顶部造型 */
+const CACHE = 'pingwanxiang-v14';
 const CORE = ['./', './index.html', './pwa/manifest.json', './pwa/icon-192.png', './pwa/icon-512.png', './pwa/splash-6.1.png', './pwa/splash-5.8.png', './pwa/splash-4.7.png'];
 
 self.addEventListener('install', (e) => {
