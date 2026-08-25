@@ -121,6 +121,14 @@ body,body,input,textarea,select{transition:background-color .28s ease,color .28s
 .grid-3{grid-template-columns:repeat(3,1fr)}
 .grid-4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:900px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+/* 移动端：防内容溢出卡片右缘（表格/长列表各自换行，卡片裁掉横向溢出） */
+@media(max-width:640px){
+  td,th{word-break:break-word;overflow-wrap:break-word}
+  .card{overflow:hidden;min-width:0}
+  .card table,table{min-width:0}
+  .card li,.card p,.card h4{word-break:break-word;overflow-wrap:break-word}
+  .card *{max-width:100%}
+}
 /* 运动热力图：用 minmax(0,1fr) 防止窄屏最后一格右移溢出卡片边界 */
 #sportHeatmap{grid-template-columns:repeat(15,minmax(0,1fr));min-width:0;overflow:hidden}
 #sportHeatmap>div{min-width:0;overflow:hidden}
@@ -167,7 +175,7 @@ body,body,input,textarea,select{transition:background-color .28s ease,color .28s
 .res-link .arrow{color:var(--hint)}
 
 table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border)}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);word-break:break-word;overflow-wrap:break-word}
 th{font-size:11px;color:var(--hint);font-weight:600;text-transform:uppercase;letter-spacing:.5px;background:var(--bg)}
 td{color:var(--text)}
 tr:hover td{background:var(--bg)}
@@ -500,10 +508,10 @@ strong{font-weight:600}
 /* 夜间：引导横幅与浅色渐变卡片（gradient 内白底不受上面的 background:#F 兜底覆盖）转暗 */
 [data-theme="dark"] #guideBanner{background:linear-gradient(120deg,#14202c,#102822)!important;border-color:var(--border)!important;border-left-color:var(--primary-mid)!important;color:var(--text)!important}
 [data-theme="dark"] .card[style*="FFF8EF"]{background:linear-gradient(135deg,#2b2517,#272019)!important;border-color:#5f4f22!important}
-/* 夜间：快捷入口（常用板块速达）硬编码浅色背景统一转暗，消除刺眼白卡 */
-[data-theme="dark"] #quickStart .card{background:var(--card)!important;border-color:var(--border)!important}
-[data-theme="dark"] #quickStart .card div{color:var(--text)!important;border-color:var(--border)!important}
-[data-theme="dark"] #quickStart .card div[style*="font-size:20px"]{color:inherit!important}
+/* 夜间：轻松上手方向卡统一转暗，消除刺眼白卡 */
+[data-theme="dark"] #focusCard .card{background:var(--card)!important;border-color:var(--border)!important}
+[data-theme="dark"] #focusCard .card div{color:var(--text)!important}
+[data-theme="dark"] #focusCard .card div[style*="font-size:20px"]{color:inherit!important}
 [data-theme="dark"] .card[style*="gradient(135deg,#F0F8F4"]{background:linear-gradient(135deg,#13201a,#122822)!important;border-color:var(--border)!important}
 [data-theme="dark"] .card.daily-card,[data-theme="dark"] div[style*="background:#FFFFFF"][style*="border-left:4px"]{background:var(--card)!important;color:var(--text)!important}
 [data-theme="dark"] div[style*="background:#F4F8FB"]{background:var(--card)!important;color:var(--text)!important}
@@ -728,30 +736,32 @@ strong{font-weight:600}
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background-image:url('pwa/splash-6.1.png');background-size:cover;background-position:center; display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s; cursor: pointer; opacity: 0;">
-  <!-- 品牌正式启动屏：渐变品牌底 + 居中徽记 -->
-  <img src="pwa/icon-512.png" alt="平·万象" style="width:84px;height:84px;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.3);opacity:0;animation:brandIn .7s .15s forwards">
-  <div style="font-size:42px;font-weight:800;color:#fff;letter-spacing:6px;margin-top:18px;opacity:0;animation:brandIn .7s .35s forwards">平·万象</div>
-  <div style="margin-top:12px;color:rgba(255,255,255,.9);font-size:15px;letter-spacing:3px;opacity:0;animation:brandIn .7s .5s forwards">以一颗平常心，观照世间万象</div>
-  <div style="margin-top:10px;color:rgba(255,255,255,.6);font-size:12px;letter-spacing:1px;opacity:0;animation:brandIn .7s .65s forwards">大学生个人成长中枢 · 数据只存本地 · 私密安全</div>
-  <div style="position:absolute;bottom:44px;color:rgba(255,255,255,.45);font-size:12px">点击任意处进入</div>
-  <style>@keyframes brandIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}</style>
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(160deg,#0a1b33 0%,#0f2f4d 55%,#0F6E56 130%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
+  <!-- 亲和的品牌启动屏：深蓝渐变 + 柔和光晕 + 呼吸徽记 + 淡出文字 -->
+  <div style="position:absolute;left:50%;top:32%;width:560px;height:560px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(37,99,235,.22),transparent 62%);pointer-events:none;filter:blur(6px)"></div>
+  <img src="pwa/icon-512.png" alt="平·万象" style="width:92px;height:92px;border-radius:24px;box-shadow:0 18px 50px rgba(0,0,0,.38);opacity:0;animation:brandIn .8s .15s forwards,brandFloat 3.4s ease-in-out .9s infinite">
+  <div style="font-size:44px;font-weight:800;color:#fff;letter-spacing:8px;margin-top:22px;opacity:0;animation:brandIn .8s .4s forwards;text-shadow:0 4px 26px rgba(0,0,0,.25)">平·万象</div>
+  <div style="margin-top:16px;color:rgba(255,255,255,.9);font-size:16px;letter-spacing:4px;opacity:0;animation:brandIn .8s .6s forwards">以一颗平常心，观照世间万象</div>
+  <div style="margin-top:18px;color:rgba(255,255,255,.72);font-size:13px;letter-spacing:1px;opacity:0;animation:brandIn .8s .8s forwards;max-width:80%;text-align:center;line-height:1.8">学业 · 目标 · 时间 · 金钱 · 健康 · 眼界<br>六条线收拢到一处 · 数据只存本地 · 私密安全</div>
+  <div style="position:absolute;bottom:60px;color:rgba(255,255,255,.55);font-size:13px;letter-spacing:2px;opacity:0;animation:brandIn .8s 1s forwards">轻触任意处 · 进入</div>
+  <style>@keyframes brandIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes brandFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}</style>
 </div>
 <script>
-/* 品牌启动屏：打开时短暂呈现（全新加载 / 独立窗口时），可点击跳过 */
+/* 品牌启动屏：打开时优雅呈现，可轻触跳过；淡出后（首次）自动衔接产品导览 */
 (function(){
   function bs(){var e=document.getElementById('brandSplash');return e||null;}
   function dismiss(e){
     if(!e)return;
     e.style.opacity='0';
-    setTimeout(function(){e.style.display='none';},500);
+    var pb=panoBoot&&typeof panoBoot==='function';
+    setTimeout(function(){e.style.display='none'; /* 导览衔接在下面 panoBoot 统一处理 */},520);
   }
   function show(){
     var e=bs();if(!e)return;
     e.style.display='flex';e.style.opacity='1';
-    e.addEventListener('click',function(){dismiss(e)});
-    /* 打开时短暂呈现 1.4 秒后自动淡出，点击任意处可提前进入 */
-    setTimeout(function(){dismiss(e);},1400);
+    e.addEventListener('click',function(){if(e.getAttribute('data-gone'))return;e.setAttribute('data-gone','1');dismiss(e);});
+    /* 短暂呈现后自动淡出（点击可提前） */
+    setTimeout(function(){if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);}},2000);
   }
   show();
 })();
@@ -960,11 +970,11 @@ strong{font-weight:600}
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
         <p>欢迎回到平·万象。今天也要保持平常心，从容向前。</p>
       </div>
-      <!-- 轻松上手：你关心哪些方向？（新人校准首页推荐；选中即重排下方推荐卡，不重复） -->
+      <!-- 轻松上手：你关心哪些方向？（选中方向 → 下方直接给出可点开的模块卡） -->
       <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#EEF6F2,#E9F2FA);border-color:#CDE0DB">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
-          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z"></path></svg>轻松上手 · 你关心哪些方向？<span style="font-weight:400;font-size:12px;color:var(--hint)">选完帮你排好，不迷路</span></h3>
-          <button onclick="clearFocus()" style="border:none;background:var(--card);color:var(--hint);font-size:12px;cursor:pointer;padding:4px 8px;border-radius:6px;font-family:inherit" title="清空选择">↺ 重排复位</button>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z"></path></svg>轻松上手 · 你关心哪些方向？<span style="font-weight:400;font-size:12px;color:var(--hint)">选完下方直接可点</span></h3>
+          <button onclick="clearFocus()" style="border:none;background:var(--card);color:var(--hint);font-size:12px;cursor:pointer;padding:4px 8px;border-radius:6px;font-family:inherit;white-space:nowrap" title="清空选择">↺ 重排复位</button>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
           <button class="focus-chip" data-dir="study" onclick="pickFocus('study')">📚 学习考证</button>
@@ -974,15 +984,6 @@ strong{font-weight:600}
           <button class="focus-chip" data-dir="fun" onclick="pickFocus('fun')">🏠 生活休闲</button>
         </div>
         <div id="focusStart" style="margin-top:12px"></div>
-      </div>
-      <!-- 首页推荐模块：随「轻松上手」所选方向自动重排优先项（真正需要的入门入口，非底栏简单重复） -->
-      <div id="quickStart" class="grid grid-3" style="margin-bottom:16px">
-        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="quadrant" onclick="switchView('quadrant')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🗂 轻重缓急</div><div style="font-size:12px;color:var(--hint);margin-top:4px">四象限排好今天，忙而不乱</div></div>
-        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="plans" onclick="switchView('plans')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🗓 远见蓝图</div><div style="font-size:12px;color:var(--hint);margin-top:4px">年/月/周/日计划表</div></div>
-        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="goals" onclick="switchView('goals')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🎯 目标拆解</div><div style="font-size:12px;color:var(--hint);margin-top:4px">大目标→今天做什么</div></div>
-        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="habits" onclick="switchView('habits')"><div style="font-size:14px;font-weight:600;color:var(--primary)">✅ 习惯养成</div><div style="font-size:12px;color:var(--hint);margin-top:4px">每日打卡小习惯</div></div>
-        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="timer" onclick="switchView('timer')"><div style="font-size:14px;font-weight:600;color:var(--primary)">🍅 心流计时</div><div style="font-size:12px;color:var(--hint);margin-top:4px">番茄专注进入心流</div></div>
-        <div class="card" style="position:relative;cursor:pointer;margin-bottom:0" data-q="journal" onclick="switchView('journal')"><div style="font-size:14px;font-weight:600;color:var(--primary)">📖 时光札记</div><div style="font-size:12px;color:var(--hint);margin-top:4px">一篇日记沉淀一天</div></div>
       </div>
       <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
       <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#0F6E56,#0C447C);border:none">
@@ -7633,15 +7634,13 @@ function renderDailyQuoteCard(){
   refreshMind(false);
 }
 
-/* ═══════ 首页「关注方向」引导：新人选方向→首页推荐相关模块 ═══════ */
-/* 方向 → 首页六张卡片的优先级（用于重排，不重复新增卡片） */
-var PP_QUICK=['quadrant','plans','timer','habits','journal','goals'];
+/* ═══════ 首页「关注方向」引导：新人选方向 → 直接给出可点开的模块卡，全部可点击直达 ═══════ */
 var PP_DIRS={
-  study:{name:'学习考证',order:['goals','plans','quadrant','journal'],more:[['study','学业规划'],['exam','考试倒计时'],['contest','竞赛科研'],['paper','论文写作']]},
-  time:{name:'时间效率',order:['quadrant','timer','plans','goals','habits'],more:[]},
-  money:{name:'求职搞钱',order:['goals','quadrant','journal'],more:[['career','职业发展'],['resume','简历面试'],['finance','理财管理'],['earn','搞钱副业']]},
-  life:{name:'成长记录',order:['journal','habits','quadrant','goals'],more:[['stats','成长档案'],['mind','心灵成长'],['creative','灵感看板'],['health','运动健康']]},
-  fun:{name:'生活休闲',order:['plans','journal','habits'],more:[['shelf','书海拾贝'],['podcast','耳畔星河'],['movie','幕间观澜'],['fun','轻松一下']]}
+  study:{name:'学习考证',more:[['study','学业规划'],['exam','考试倒计时'],['contest','竞赛科研'],['paper','论文写作']]},
+  time:{name:'时间效率',more:[['quadrant','四象限排单'],['timer','心流计时'],['plans','计划蓝图'],['goals','目标拆解']]},
+  money:{name:'求职搞钱',more:[['career','职业发展'],['resume','简历面试'],['finance','理财管理'],['earn','搞钱副业']]},
+  life:{name:'成长记录',more:[['stats','成长档案'],['mind','心灵成长'],['creative','灵感看板'],['health','运动健康']]},
+  fun:{name:'生活休闲',more:[['shelf','书海拾贝'],['podcast','耳畔星河'],['movie','幕间观澜'],['fun','轻松一下']]}
 };
 function getFocus(){try{var v=JSON.parse(localStorage.getItem('pp_focus')||'[]');return Array.isArray(v)?v:[];}catch(e){return [];}}
 function pickFocus(dir){
@@ -7651,8 +7650,6 @@ function pickFocus(dir){
   renderFocus();
 }
 function clearFocus(){try{localStorage.removeItem('pp_focus');}catch(e){}
-  /* 清空时还原 quickStart 默认顺序与标签 */
-  var box=document.getElementById('quickStart');if(box){var kids=Array.prototype.slice.call(box.children);kids.forEach(function(k){var b=k.querySelector('.qs-badge');if(b)b.remove();});box.append.apply(box,PP_QUICK.map(function(id){for(var i=0;i<kids.length;i++){if(kids[i].getAttribute('data-q')===id)return kids[i];}return null;}).filter(Boolean));}
   renderFocus();
 }
 function renderFocus(){
@@ -7660,41 +7657,20 @@ function renderFocus(){
   var picks=getFocus();
   var chips=document.querySelectorAll('#focusCard .focus-chip');
   for(var c=0;c<chips.length;c++){chips[c].classList.toggle('on',picks.indexOf(chips[c].getAttribute('data-dir'))>-1);}
-  /* 重排首页六卡：所选方向的优先模块顶上来 */
-  var box=document.getElementById('quickStart');
-  if(box){
-    var kids=Array.prototype.slice.call(box.children);
-    /* 每个方向给自己命中的卡加推荐角标 */
-    kids.forEach(function(k){var b=k.querySelector('.qs-badge');if(b)b.remove();});
-    var map={};kids.forEach(function(k){map[k.getAttribute('data-q')]=k;});
-    /* 计算每张卡的总优先级 */
-    var score={};PP_QUICK.forEach(function(id){score[id]=0;});
-    for(var d=0;d<picks.length;d++){
-      var o=PP_DIRS[picks[d]];if(!o)continue;
-      for(var i=0;i<o.order.length;i++){if(score[o.order[i]]!==undefined)score[o.order[i]]-=(o.order.length-i);}
-    }
-    var ranked=PP_QUICK.slice().sort(function(a,b){return (score[a]-score[b])||(PP_QUICK.indexOf(a)-PP_QUICK.indexOf(b));});
-    var frag=document.createDocumentFragment();
-    for(var r=0;r<ranked.length;r++){var node=map[ranked[r]];
-      if(score[node.getAttribute('data-q')]<0&&!node.querySelector('.qs-badge')){var bd=document.createElement('div');bd.className='qs-badge';bd.textContent='★推荐';node.appendChild(bd);}
-      frag.appendChild(node);
-    }
-    box.appendChild(frag); /* 重新排好后已按顺序，无需再操作 */
+  if(!picks.length){
+    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">👆 点上面一排，选 1~3 个你关心的方向，下面立刻给你推荐能直接点开的模块。</div>';
+    cont.style.display='block';
+    return;
   }
+  /* 按选择方向顺序，收集各自的推荐模块卡（去重） */
   var list=[],seen={};
   for(var k=0;k<picks.length;k++){var d=PP_DIRS[picks[k]];if(!d)continue;for(var m=0;m<d.more.length;m++){if(!seen[d.more[m][0]]){seen[d.more[m][0]]=1;list.push(d.more[m]);}}}
-  if(!picks.length){
-    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">👆 点击上方一排，选 1~3 个你关心的方向。<b style="color:var(--primary)">选中的板块会自动排到首页最前</b>，其它板块在侧边栏或搜索里随时都能进。</div>';
-    cont.style.display='block';
-    return;
-  }
-  /* 只补首页没有的延伸模块，避免与上面六卡重复 */
   if(!list.length){
-    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">✅ 你选的方向，首页的推荐板块已自动排到最前了；这些够用，还想看别的就去侧边栏逛逛。</div>';
+    cont.innerHTML='<div style="padding:4px 2px;color:var(--hint);font-size:13px;line-height:1.8">✅ 你选的方向已就位，相关模块可直接点击使用，想去更多地方就到侧边栏逛逛。</div>';
     cont.style.display='block';
     return;
   }
-  var html='<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"><b style="color:var(--primary);font-size:14px">✦ 还想深入这些方向？</b><button onclick="clearFocus()" style="border:none;background:none;color:var(--hint);font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit">清空重选</button></div>';
+  var html='<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"><b style="color:var(--primary);font-size:14px">✦ 为你准备的模块 · 点开即用</b><button onclick="clearFocus()" style="border:none;background:none;color:var(--hint);font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit">清空重选</button></div>';
   html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">';
   for(var j=0;j<list.length;j++){
     if(!list[j][1])continue;
@@ -10309,7 +10285,11 @@ function panoBoot(){
   panoWire();
   try{
     /* 版本化 seen 标记：新版本上线后，老用户也能再看一次升级版导览，之后不再打扰 */
-    if(!localStorage.getItem('pp_pano_v4_seen')){setTimeout(openPano,700);localStorage.setItem('pp_pano_v4_seen','1');}
+    if(!localStorage.getItem('pp_pano_v4_seen')){
+      localStorage.setItem('pp_pano_v4_seen','1');
+      /* 等品牌启动屏淡出后再接出导览（约 2s 呈现 + 0.55s 淡出），首次开窗先见导览→再进产品 */
+      setTimeout(openPano,2600);
+    }
   }catch(e){}
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
@@ -10326,7 +10306,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="glow"></div>
       <div class="eyebrow">PING·WAN XIANG · 大学生成长中枢</div>
       <h1 class="pano-h1">平，万象<span class="thin">：让四年各就各位</span></h1>
-      <p class="dek">这不是又一个工具，而是把你<em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>安放到同一处的成长中枢。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 切换的疲惫，一点开就能用，用完即安心。</p>
+      <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>，六条线收拢到一处、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
       <div class="pano-stats">
         <span><b>25+</b> 能力模块</span>
