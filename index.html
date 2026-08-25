@@ -791,7 +791,8 @@ strong{font-weight:600}
 <div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(160deg,#0a1b33 0%,#0f2f4d 55%,#0F6E56 130%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
   <!-- 亲和的品牌启动屏：深蓝渐变 + 柔和光晕 + 呼吸徽记 + 淡出文字 -->
   <div style="position:absolute;left:50%;top:32%;width:560px;height:560px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(37,99,235,.22),transparent 62%);pointer-events:none;filter:blur(6px)"></div>
-  <img src="pwa/icon-512.png" alt="平·万象" style="width:92px;height:92px;border-radius:24px;box-shadow:0 18px 50px rgba(0,0,0,.38);opacity:0;animation:brandIn .8s .15s forwards,brandFloat 3.4s ease-in-out .9s infinite">
+  <div style="position:relative;width:118px;height:118px;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:-12px;border-radius:52%;background:radial-gradient(circle,rgba(255,216,160,.55),rgba(255,216,160,0) 68%);filter:blur(6px);animation:brandIn .6s forwards"></div>
+  <img src="pwa/icon-512.png" alt="平·万象" draggable="false" style="width:104px;height:104px;border-radius:25px;box-shadow:0 0 0 3px rgba(255,224,176,.22),0 20px 50px rgba(0,0,0,.42);opacity:0;animation:brandIn .7s .12s forwards,brandFloat 3.4s ease-in-out .85s infinite;position:relative"></div>
   <div style="font-size:44px;font-weight:800;color:#fff;letter-spacing:8px;margin-top:22px;opacity:0;animation:brandIn .8s .4s forwards;text-shadow:0 4px 26px rgba(0,0,0,.25)">平·万象</div>
   <div style="margin-top:16px;color:rgba(255,255,255,.9);font-size:16px;letter-spacing:4px;opacity:0;animation:brandIn .8s .6s forwards">以一颗平常心，观照世间万象</div>
   <div style="margin-top:18px;color:rgba(255,255,255,.72);font-size:13px;letter-spacing:1px;opacity:0;animation:brandIn .8s .8s forwards;max-width:80%;text-align:center;line-height:1.8">学业 · 目标 · 时间 · 金钱 · 健康 · 眼界<br>六条线收拢到一处 · 数据只存本地 · 私密安全</div>
@@ -818,8 +819,9 @@ strong{font-weight:600}
     if(!first&&!inShell()){e.style.display='none';return;}
     e.style.display='flex';e.style.opacity='1';
     e.addEventListener('click',function(){dismiss(e);});
-    /* 让开屏快速放完即进入产品：文字分层淡入尽量短，轻触可随时跳过，避免卡顿体感。 */
-    setTimeout(function(){dismiss(e);},first?1100:900);
+    /* 让开屏优雅放完即进入产品：文字分层淡入、轻触可随时跳过；首次展示时长放长，
+       确保「晨珠」图标足够停留、用户能看清品牌印记，再配合柔和淡出，避免一闪即逝。 */
+    setTimeout(function(){dismiss(e);}, first?2400:1500);
   }
   show();
 })();
@@ -10559,7 +10561,6 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <div class="pano-card"><span class="chip">Ready</span><div class="ic">❤️</div><h4>健康管理</h4><p>健康打卡、运动热力图、情绪记录，照顾身体，也照顾好自己。</p></div>
         <div class="pano-card"><span class="chip">Ready</span><div class="ic">💡</div><h4>灵感珍藏</h4><p>灵感看板、决策复盘、人生一百目标，好想法在此沉淀、不轻易丢失。</p></div>
         <div class="pano-card"><span class="chip">Ready</span><div class="ic">🌱</div><h4>自我成长</h4><p>周度档案与全景回看，一年后你会感谢今天认真留下的每一笔。</p></div>
-        <div class="pano-card"><span class="chip">Ready</span><div class="ic">⚖️</div><h4>用心生活</h4><p>入团入党、大学须知、省钱购物、心灵的成长，把四年过成作品。<br>&nbsp;</p></div>
       </div>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
