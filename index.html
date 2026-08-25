@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pwLgBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0E5C9E"/><stop offset="50%" stop-color="#0B3F72"/><stop offset="100%" stop-color="#0A3A36"/></linearGradient><linearGradient id="pwLgLn" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#7CE8BF"/><stop offset="100%" stop-color="#3BC38C"/></linearGradient></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0C2E46"/><stop offset="100%" stop-color="#071120"/></linearGradient><radialGradient id="plPearl" cx="40%" cy="32%" r="80%"><stop offset="0%" stop-color="#FFFDF7"/><stop offset="55%" stop-color="#F6E9D2"/><stop offset="100%" stop-color="#BCD9DB"/></radialGradient><linearGradient id="plLine" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F0D9A8"/><stop offset="100%" stop-color="#BFE8DA"/></linearGradient></defs></svg>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>平·万象 EQUA·MUNDI · 大学生成长中枢</title>
@@ -25,7 +25,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825j').then(function(reg){
+          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825k').then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -833,7 +833,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="1" y="1" width="22" height="22" rx="7" fill="url(#pwLgBg)"/><circle cx="14.6" cy="10.3" r="3.6" fill="#fff"/><rect x="4.2" y="16.6" width="15.6" height="1.9" rx="0.95" fill="url(#pwLgLn)"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
+      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><circle cx="12" cy="10.3" r="5.3" fill="url(#plPearl)"/><circle cx="10.2" cy="8.7" r="1.5" fill="#FFFCF4" opacity="0.9"/><rect x="3.6" y="15.6" width="16.8" height="1.6" rx="0.8" fill="url(#plLine)"/><circle cx="6.2" cy="5.9" r="0.8" fill="#fff" opacity="0.72"/><circle cx="17.4" cy="7.1" r="0.62" fill="#FFDFA6" opacity="0.9"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -895,7 +895,7 @@ strong{font-weight:600}
 
     <nav class="sidebar" id="sidebar">
     <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="22" height="22" rx="7" fill="url(#pwLgBg)"/><circle cx="14.6" cy="10.3" r="3.6" fill="#fff"/><rect x="4.2" y="16.6" width="15.6" height="1.9" rx="0.95" fill="url(#pwLgLn)"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><circle cx="12" cy="10.3" r="5.3" fill="url(#plPearl)"/><circle cx="10.2" cy="8.7" r="1.5" fill="#FFFCF4" opacity="0.9"/><rect x="3.6" y="15.6" width="16.8" height="1.6" rx="0.8" fill="url(#plLine)"/><circle cx="6.2" cy="5.9" r="0.8" fill="#fff" opacity="0.72"/><circle cx="17.4" cy="7.1" r="0.62" fill="#FFDFA6" opacity="0.9"/></svg>
       平·万象
     </div>
     <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
