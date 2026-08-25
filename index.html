@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="ping-wan-xiang" data-author="尹平平" data-ver="2026.08"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="ping-wan-xiang" data-author="尹平平" data-ver="2026.08.2"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 平·万象 EQUA·MUNDI —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0C2E46"/><stop offset="100%" stop-color="#071120"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -5547,6 +5547,22 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <li><strong>距离&lt;1个月：</strong>最后阶段——回顾错题、保持手感、调整心态</li>
       </ul>
     </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🧠 备考效率要点（按考试拆，让规划用起来更有效）</h3>
+      <div style="font-size:12.5px;line-height:1.75;color:var(--ink)">
+        <div style="background:var(--teal-light);border-left:3px solid var(--primary);padding:9px 11px;border-radius:6px;margin-bottom:10px">
+          <strong>普遍规律——倒排＋反馈：</strong>先看"离考试还有几周"，按周拆底线计划而非完美计划；每周末用真题做1次"计时小自测"看真实水平。考证不是拼时长，是拼"有效反馈次数"——刷完不校对＝白刷。
+        </div>
+        <ul style="margin:0;padding-left:18px">
+          <li><strong>四六级：</strong>先攻听力＋阅读（约占70%），写作翻译背模板＋仿写即可、不追生僻词；真题为王，少买海量模拟题。</li>
+          <li><strong>考研：</strong>暑假是分水岭；英语单词每天固定背到考前；数学 > 英语 > 政治 > 专业课的用力顺序要看目标院校题型，别平均用力。</li>
+          <li><strong>法考：</strong>客观题靠刷题带考点、错题反复做；主观题务必计时手写／打字模拟，别只看解析觉得"会了"。</li>
+          <li><strong>教资：</strong>科目一（综合素质）真题重复率高、作文别跑题；科目二（教育知识）背要点＋练单选；面试多录自己试讲回看教态。</li>
+          <li><strong>公考：</strong>行测先保证稳拿的分（资料／言语／判断），数量留着挑简单题；申论练"概括＋对策"固定句式，少写空话。</li>
+        </ul>
+        <div style="margin-top:10px;font-size:11.5px;opacity:.7">以上为通用经验，具体时间、科目规则以当年各官方通知及你所报院校／省公告为准。</div>
+      </div>
+    </div>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
@@ -10170,7 +10186,27 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     main.insertBefore(box, main.firstChild);
   }
 
-  function init(){footer();priv();}
+  /* 新手上手卡片：怕麻烦、不知从哪开始的人，先做3件小事，降低首次使用门槛 */
+  function quickstart(){
+    try{if(typeof localStorage==='undefined'||localStorage.getItem('pp_quickstart_ok'))return;}catch(e){return;}
+    var main=document.querySelector('.main');if(!main)return;
+    if(document.getElementById('qsBox'))return;
+    var box=document.createElement('div');box.id='qsBox';
+    box.style.cssText='position:relative;margin:10px 16px 2px;padding:13px 15px;border-radius:13px;background:linear-gradient(135deg,#EAF6F2,#FFFFFF);border:1px solid var(--border-strong);font-size:13px;line-height:1.7;color:var(--ink)';
+    box.innerHTML=
+      '<div style="font-weight:700;font-size:14.5px">👋 刚进来不知道从哪开始？<span style="font-weight:400;opacity:.8;font-size:12.5px">先花 3 分钟做这 3 件小事</span></div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:9px">'+
+        '<button onclick="qsGo(\'goals\')" style="padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">🎯 定第一个目标</button>'+
+        '<button onclick="qsGo(\'finance\')" style="padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">💰 记第一笔账</button>'+
+        '<button onclick="qsGo(\'habits\')" style="padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">✅ 建第一个习惯</button>'+
+      '</div>'+
+      '<div style="margin-top:9px;opacity:.8;font-size:11.5px">点错没关系，所有内容都能改、都能撤，数据只存在你自己的设备里。先做起来，再慢慢逛。</div>'+
+      '<span style="position:absolute;top:9px;right:13px;cursor:pointer;font-size:11px;opacity:.6;background:none;border:0" onclick="qsGo(\'\')">跳过 ✕</span>';
+    main.insertBefore(box, main.firstChild);
+  }
+  function qsGo(v){try{localStorage.setItem('pp_quickstart_ok','1');}catch(e){}var b=document.getElementById('qsBox');if(b)b.remove();if(v)switchView(v);}
+
+  function init(){footer();priv();quickstart();}
 
   /* ── 防盗用 / 溯源（防止被别人整站复制、套皮、冒名发布）────────────────── */
   (function antiTheft(){
