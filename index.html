@@ -854,7 +854,7 @@ strong{font-weight:600}
       <button class="icon-btn tb-share-btn" id="tbShareBtn" onclick="shareProduct()" title="分享给朋友">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
       </button>
-      <button class="icon-btn tb-export-btn" id="tbExportBtn" onclick="exportData()" title="导出数据备份">
+      <button class="icon-btn tb-export-btn" id="tbExportBtn" onclick="exportAll()" title="导出数据备份（含全部板块）">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
       </button>
       <button type="button" class="icon-btn theme-toggle" id="themeToggleBtn" onpointerdown="event.preventDefault();toggleTheme()" title="切换日间 / 夜间模式" style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent">
@@ -875,7 +875,7 @@ strong{font-weight:600}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
             分享给朋友
           </button>
-          <button class="tb-more-item mobile-menu-item" onclick="exportData();toggleTbMore()">
+          <button class="tb-more-item mobile-menu-item" onclick="exportAll();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             导出数据备份
           </button>
@@ -894,7 +894,7 @@ strong{font-weight:600}
           </button>
         </div>
       </div>
-      <input type="file" id="importFileMenu" accept=".json" style="display:none" onchange="importData(event)">
+      <input type="file" id="importFileMenu" accept=".json" style="display:none" onchange="importAll(event)">
     </div>
   </div>
 
@@ -10153,7 +10153,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     f.style.cssText='text-align:center;padding:16px 12px 6px;font-size:12px;color:var(--hint);line-height:1.95;border-top:1px dashed var(--border);margin-top:22px';
     f.innerHTML='<div style="font-size:13px">设计 &amp; 开发 · <strong style="color:var(--primary);font-size:14px">尹平平</strong> ｜ 「平·万象 · 大学生成长中枢」</div>'+
       '<div style="opacity:.82;font-size:11.5px;margin-top:4px">原创作品 · 数据 100% 保存在你自己的浏览器（localStorage）中：无后端、不上传、不收集任何信息，后台与任何人都无法读取你的记录。全程免费、无广告。</div>'+
-      '<div style="margin-top:2px;font-size:11px;color:#C9A85F;letter-spacing:.5px">© 2026 尹平平 · 平·万象 · 保留所有权利 · 请勿未授权转载／二次开发冒名发布</div>';
+      '<div style="margin-top:2px;font-size:11px;color:#C9A85F;letter-spacing:.5px">© 2026 尹平平 · 平·万象 · 保留所有权利 · 本作品受《中华人民共和国著作权法》保护，未获书面授权，禁止整站复制、搬运、二次开发后冒名发布或用于牟利。</div>'+
+      '<div style="opacity:.7;font-size:10.5px;margin-top:3px">唯一正版：作者仅本人「尹平平」，本文档唯一正式地址即为当前所在链接，其它转载一律请注意甄别。</div>'+
+      '<div style="opacity:.7;font-size:10.5px;margin-top:2px">时效说明：站内考试 / 报名 / 活动 / 政策等，整理核对于 2026-08，实际以各官方当年通知为准。</div>';
     main.appendChild(f);
   }
 
