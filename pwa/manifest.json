@@ -6,8 +6,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0C447C",
-  "theme_color": "#1B2A45",
+  "background_color": "#0F6E56",
+  "theme_color": "#0B5345",
   "lang": "zh-CN",
   "categories": ["productivity", "education", "lifestyle"],
   "shortcuts": [
