@@ -4730,12 +4730,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div><div class="card" style="margin-top:16px">
         <h3>怎么开始用（三步）</h3>
         <ol style="font-size:13.5px;color:var(--muted);line-height:2">
-          <li><strong>在线体验</strong>：点下面「查看产品介绍」打开完整介绍页，或直接在侧边栏逛一圈，先感受。</li>
+          <li><strong>在线体验</strong>：点下方「入座 · 万象」打开全屏全景导览，或直接在侧边栏逛一圈，先感受。</li>
           <li><strong>下载/在线使用</strong>：电脑或手机浏览器打开即用，无需安装。</li>
           <li><strong>按侧边栏开始</strong>：从「今日概览」看起，每天填一点，数据自动保存。</li>
         </ol>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-          <button class="btn btn-primary btn-sm" onclick="copyProductLink()">🔗 复制产品链接</button>
+          <button class="btn btn-primary btn-sm" onclick="openPano()">✦ 入座 · 万象导览</button>
           <button class="btn btn-sm" onclick="shareProduct()">📤 分享给朋友</button>
         </div>
         <p style="font-size:12px;color:var(--hint);margin-top:8px">换设备：设置 → 导出备份 JSON → 新设备导入，数据无缝搬走。</p>
@@ -9896,165 +9896,202 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .mind-refresh:hover{background:var(--primary-light,#E6F1FB)}
 .mind-refresh.spinning{animation:spinr .45s ease}
 @keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-/* ═══ 产品介绍弹窗 · 平·万象 ═══ */
-.intro-mask{position:fixed;inset:0;background:rgba(12,20,30,.45);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:1200;opacity:0;pointer-events:none;transition:opacity .28s ease}
-.intro-sheet{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);width:min(610px,94vw);max-height:88vh;background:#fff;color:#23303c;border-radius:22px;box-shadow:0 30px 70px rgba(12,30,45,.35);z-index:1201;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.9,.3,1.1);overflow:hidden;border:1px solid rgba(255,255,255,.6);display:flex;flex-direction:column}
-.intro-x{position:absolute;top:14px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.7);color:#0C447C;font-size:15px;cursor:pointer;z-index:3;line-height:1;transition:background .2s}
-.intro-x:hover{background:#fff}
-body.intro-show .intro-mask{opacity:1;pointer-events:auto}
-body.intro-show .intro-sheet{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.intro-scroll{overflow-y:auto;padding:0;overscroll-behavior:contain;flex:1;min-height:0}
-.intro-hero{background:linear-gradient(160deg,#0C447C 0%,#125398 45%,#1677a8 100%);color:#fff;padding:54px 34px 40px;position:relative;text-align:center}
-.intro-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 400px at 20% -20%,rgba(255,255,255,.16),transparent 60%)}
-.intro-seal{width:64px;height:64px;margin:0 auto 18px;border-radius:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#fff;letter-spacing:1px;box-shadow:0 10px 30px rgba(0,0,0,.25);backdrop-filter:blur(4px)}
-.intro-hey{font-size:22px;font-weight:700;letter-spacing:.5px}
-.intro-claim{margin-top:10px;font-size:14px;color:rgba(255,255,255,.85);line-height:1.8}
-.intro-rule{width:52px;height:2px;background:rgba(255,255,255,.55);margin:18px auto 12px;border-radius:2px}
-.intro-name{font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.7)}
-.intro-block{padding:22px 30px 6px}
-.intro-kicker{font-size:12.5px;color:var(--hint,#7a8ba0);margin-bottom:12px;letter-spacing:1px}
-.intro-glyph{font-size:15px;font-weight:700;color:#0C447C;margin:6px 0 12px;letter-spacing:.5px}
-.intro-p{font-size:14px;color:#3a4856;line-height:1.95;margin:0 0 10px}
-.intro-p strong{color:#0C447C}
-.intro-day{background:#F4F9FE;border:1px solid #D8E7F5;border-radius:12px;padding:6px 16px;margin:4px 2px 6px}
-.intro-day-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #DCE9F6;font-size:13.5px;color:#3a4856;line-height:1.7;align-items:flex-start}
-.intro-day-item:last-child{border-bottom:none}
-.intro-day-time{flex-shrink:0;font-weight:700;color:#0C447C;min-width:42px}
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:4px 0 6px}
-.intro-chip{background:#F4F9FE;border:1px solid #D8E7F5;border-radius:10px;padding:10px 12px}
-.intro-chip b{display:block;font-size:13px;color:#0C447C;margin-bottom:3px}
-.intro-chip span{font-size:12px;color:#5b6b7a;line-height:1.6}
-.intro-no{background:#FDF3F1;border:1px solid #F3D7D2;border-radius:12px;padding:12px 16px;margin:4px 2px 6px;font-size:13.5px;color:#6b4a45;line-height:2}
-.intro-who{display:grid;gap:10px;margin:4px 0 6px}
-.intro-who-item{display:flex;gap:12px;align-items:flex-start;background:#F7F9FC;border:1px solid #E4EAF2;border-radius:11px;padding:11px 13px}
-.intro-who-item b{flex-shrink:0;min-width:92px;font-size:13.5px;color:#0C447C;padding-top:1px}
-.intro-who-item span{font-size:12.5px;color:#5b6b7a;line-height:1.7}
-.intro-step{background:#F0F7EF;border:1px solid #CFE3CC;border-radius:12px;padding:12px 16px;margin:4px 2px 6px;font-size:13.5px;color:#3c5238;line-height:2.1}
-.intro-step b{color:#2E7D32}
-.intro-note{font-size:12.5px;color:var(--hint,#7a8ba0);margin:12px 2px 4px;line-height:1.8}
-.intro-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 2px 6px}
-.intro-cta .btn{flex:1;min-width:160px;padding:11px 16px;font-size:14px}
-.intro-foot{text-align:center;font-size:12px;color:var(--hint,#7a8ba0);padding:6px 0 26px;letter-spacing:1px}
-.btn-ghost-soft{border:1px solid var(--border-strong,#c9d6e2);background:#fff;color:#0C447C;padding:9px 16px;border-radius:10px;cursor:pointer;font-size:14px;font-family:inherit;transition:background .2s}
-.btn-ghost-soft:hover{background:#F2F7FC}
-[data-theme="dark"] .intro-sheet{background:#161a23;color:#d7dbe4;border-color:#2a3040;box-shadow:0 30px 70px rgba(0,0,0,.6)}
-[data-theme="dark"] .intro-glyph{color:#93c5fd}
-[data-theme="dark"] .intro-p{color:#c3c9d4}
-[data-theme="dark"] .intro-p strong{color:#93c5fd}
-[data-theme="dark"] .intro-day{background:#1a1f2b;border-color:#2c3345}
-[data-theme="dark"] .intro-day-item{color:#c3c9d4;border-color:#263043}
-[data-theme="dark"] .intro-day-time{color:#93c5fd}
-[data-theme="dark"] .intro-chip{background:#1a1f2b;border-color:#2c3345}
-[data-theme="dark"] .intro-chip b{color:#93c5fd}
-[data-theme="dark"] .intro-chip span{color:#9aa3b1}
-[data-theme="dark"] .intro-no{background:#2b1e1c;border-color:#4a2f2b;color:#d9b7b0}
-[data-theme="dark"] .intro-who-item{background:#1a1f2b;border-color:#2c3345}
-[data-theme="dark"] .intro-who-item b{color:#93c5fd}
-[data-theme="dark"] .intro-who-item span{color:#9aa3b1}
-[data-theme="dark"] .intro-step{background:#1c2719;border-color:#33422e;color:#c9d4c4}
-[data-theme="dark"] .intro-step b{color:#8fd18c}
-[data-theme="dark"] .intro-note{color:#6b7684}
-[data-theme="dark"] .intro-foot{color:#6b7684}
-[data-theme="dark"] .btn-ghost-soft{background:#1a1d27;color:#93c5fd;border-color:#3d4259}
-[data-theme="dark"] .btn-ghost-soft:hover{background:#232838}
+/* ═══════════ 平·万象 · 全景导览（全屏高级产品介绍页） ═══════════ */
+.pano-mask{position:fixed;inset:0;background:rgba(6,12,22,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1300;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.pano{position:fixed;inset:0;z-index:1301;background:radial-gradient(1200px 500px at 15% -8%,rgba(24,68,128,.55),transparent 60%),radial-gradient(900px 500px at 95% 30%,rgba(13,148,136,.18),transparent 55%),#0A1424;color:#EDE9DE;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8}
+.pano.show,.pano-mask.show{opacity:1;pointer-events:auto}
+.pano::-webkit-scrollbar{width:9px}
+.pano::-webkit-scrollbar-thumb{background:rgba(201,160,99,.4);border-radius:5px}
+.pano-close{position:sticky;top:22px;margin-left:auto;margin-right:26px;margin-top:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#EDE9DE;font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s;z-index:6}
+.pano-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.pano-inner{max-width:900px;margin:-66px auto 0;padding:0 30px 100px;position:relative;z-index:1}
+.pano-hero{min-height:66vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 0 70px}
+.pano-seal{width:78px;height:78px;border-radius:22px;background:linear-gradient(135deg,#0C447C,#125398);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:#F2E8C9;font-size:42px;font-weight:700;letter-spacing:2px;box-shadow:0 16px 44px rgba(0,0,0,.45);margin-top:34px}
+.pano-black{font-family:Georgia,'Times New Roman',serif;letter-spacing:11px;font-size:13px;color:#C9A063;margin:30px 4px 2px 8px}
+.pano-h1{font-family:Georgia,'Songti SC','SimSun',serif;font-weight:600;font-size:clamp(38px,6.6vw,62px);line-height:1.28;margin:8px 0 0;letter-spacing:2px}
+.pano-h1 .gold{background:linear-gradient(90deg,#E9D9AC,#C99A4E 60%,#B9864A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pano-sub{font-size:clamp(14px,2.3vw,17px);color:#C9CDD6;max-width:560px;margin-top:20px;line-height:1.95}
+.pano-stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:36px;color:#9aa3b1;font-size:13px;letter-spacing:.5px}
+.pano-stats span{display:flex;align-items:center;gap:8px}
+.pano-stats b{color:#E9D9AC;font-size:16px;font-weight:600}
+.pano-sec{padding:64px 0 8px}
+.pano-no{font-family:Georgia,serif;font-size:14px;letter-spacing:4px;color:#C9A063;display:flex;align-items:center;gap:16px}
+.pano-no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,160,99,.45),transparent)}
+.pano-h2{font-family:Georgia,'Songti SC',serif;font-weight:600;font-size:clamp(22px,3.8vw,31px);margin:16px 0 8px;line-height:1.5;letter-spacing:1px}
+.pano-lead{color:#C9CDD6;font-size:14.5px;max-width:660px;line-height:2}
+.pano-quote{margin:84px 0 10px;text-align:center;position:relative;padding:0 20px}
+.pano-quote .qmark{font-family:Georgia,serif;font-size:72px;color:#C9A063;line-height:.6;height:34px}
+.pano-quote p{font-family:Georgia,'Songti SC',serif;font-size:clamp(18px,3.2vw,25px);color:#F1EBDB;line-height:1.95;max-width:660px;margin:4px auto 0;letter-spacing:1px}
+.pano-quote .by{display:block;margin-top:18px;color:#8a94a3;font-size:12.5px;letter-spacing:3px}
+.pano-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px;margin-top:26px}
+.pano-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px 22px 20px;transition:.28s;cursor:default}
+.pano-card:hover{background:rgba(255,255,255,.07);border-color:rgba(201,160,99,.45);transform:translateY(-3px)}
+.pano-card .ic{font-size:25px;line-height:1}
+.pano-card h4{font-size:15px;color:#F2E8C9;margin:12px 0 7px;font-weight:600;letter-spacing:.5px}
+.pano-card p{font-size:13px;color:#a9b0bc;line-height:1.85;margin:0}
+.pano-nolist{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:26px}
+.pano-ni{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:17px 19px;font-size:13.5px;color:#c3c9d2;line-height:1.8;cursor:default;transition:.25s}
+.pano-ni:hover{border-color:rgba(201,160,99,.35);background:rgba(255,255,255,.05)}
+.pano-ni .x{color:#C9A063;font-weight:700;margin-right:9px}
+.pano-who{display:grid;gap:12px;margin-top:26px}
+.pano-wi{display:flex;gap:18px;align-items:flex-start;background:rgba(255,255,255,.035);border-left:3px solid #C9A063;border-radius:0 13px 13px 0;padding:17px 22px;transition:.25s;cursor:default}
+.pano-wi:hover{background:rgba(255,255,255,.06)}
+.pano-wi b{color:#F2E8C9;font-size:14.5px;min-width:116px;font-weight:600;letter-spacing:.5px}
+.pano-wi span{color:#a9b0bc;font-size:13.5px;line-height:1.85}
+.pano-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:14px;margin-top:26px}
+.pano-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px 22px}
+.pano-step .num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0C447C,#125398);color:#F2E8C9;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.pano-step h5{color:#EDE9DE;font-size:14.5px;margin:0 0 7px;font-weight:600;letter-spacing:.5px}
+.pano-step p{color:#a9b0bc;font-size:13px;line-height:1.85;margin:0}
+.pano-cta{margin:78px 0 0;padding:52px 34px;border-radius:24px;background:linear-gradient(135deg,#0C447C 0%,#125398 52%,#0F6E56 135%);position:relative;overflow:hidden;text-align:center;border:1px solid rgba(255,255,255,.09)}
+.pano-cta::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 260px at 82% -18%,rgba(255,255,255,.2),transparent 60%)}
+.pano-cta .b{font-family:Georgia,'Songti SC',serif;font-size:clamp(21px,4vw,29px);color:#F6EFD8;letter-spacing:2px;position:relative}
+.pano-cta .p{color:rgba(255,255,255,.82);font-size:14px;margin:12px 0 26px;position:relative}
+.pano-cta .btns{position:relative;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.pano-cta .btn{min-width:150px}
+.pano-btn-ghost{background:rgba(255,255,255,.1);color:#F6EFD8;border:1px solid rgba(255,255,255,.3);padding:11px 22px;border-radius:12px;cursor:pointer;font-size:14px;font-family:inherit;transition:.25s}
+.pano-btn-ghost:hover{background:rgba(255,255,255,.2)}
+.pano-note{text-align:center;color:#5f6a79;font-size:12px;letter-spacing:1.5px;margin:70px 0 0}
+[data-theme="light"] .pano{background:radial-gradient(1200px 500px at 15% -8%,rgba(24,68,128,.12),transparent 60%),radial-gradient(900px 500px at 95% 30%,rgba(13,148,136,.10),transparent 55%),#0A1424}
 [data-theme="dark"] .mind-refresh{background:#1a1d27;color:#93c5fd;border-color:#3d4259}
 [data-theme="dark"] .mind-refresh:hover{background:#232838}
 </style>
 <script>
-/* ═══ 产品介绍弹窗逻辑 ═══ */
-function openIntro(){
-  document.body.classList.add('intro-show');
+/* ═══════ 平·万象 · 全景导览展示逻辑 ═══════ */
+function openPano(){
+  var p=document.getElementById('pano');if(!p)return;
+  var m=document.getElementById('panoMask');
+  p.classList.add('show');if(m)m.classList.add('show');
   document.body.style.overflow='hidden';
+  p.scrollTop=0;
 }
-function closeIntro(){
-  document.body.classList.remove('intro-show');
+function closePano(){
+  var p=document.getElementById('pano');if(!p)return;
+  var m=document.getElementById('panoMask');
+  p.classList.remove('show');if(m)m.classList.remove('show');
   document.body.style.overflow='';
 }
-function closeAndGo(){closeIntro();try{switchView('home')}catch(e){}}
-function introMore(){closeIntro();try{switchView('about')}catch(e){}}
-(function(){
-  var mask=document.getElementById('introMask');
-  if(mask)mask.addEventListener('click',closeIntro);
-  document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeIntro();});
+function panoHome(){closePano();setTimeout(function(){try{switchView('home')}catch(e){}},80);}
+function panoAbout(){closePano();setTimeout(function(){try{switchView('about')}catch(e){}},80);}
+function panoBoot(){
+  var p=document.getElementById('pano');if(!p)return;
+  var m=document.getElementById('panoMask');
+  if(m)m.addEventListener('click',closePano);
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePano();});
   try{
-    if(!localStorage.getItem('pp_intro_seen_v1')){setTimeout(openIntro,600);localStorage.setItem('pp_intro_seen_v1','1');}
+    if(!localStorage.getItem('pp_pano_seen')){setTimeout(openPano,700);localStorage.setItem('pp_pano_seen','1');}
   }catch(e){}
-})();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
 </script>
 
-<!-- ═════════ 产品介绍弹窗 · 平·万象 ═════════ -->
-<div class="intro-mask" id="introMask"></div>
-<div class="intro-sheet" id="introSheet" role="dialog" aria-modal="true" aria-label="关于平·万象">
-  <button class="intro-x" onclick="closeIntro()" title="关闭">✕</button>
-  <div class="intro-scroll">
-    <div class="intro-hero">
-      <div class="intro-seal">平</div>
-      <div class="intro-hey">你好，我是「平·万象」。</div>
-      <div class="intro-claim">一个安静陪你度过大学四年的网页。<br>不吵、不卖、不偷看你的日记。</div>
-      <div class="intro-rule"></div>
-      <div class="intro-name">平·万象 · 大学生全能成长工作台</div>
+<!-- ═══════════ 平·万象 · 全景导览（全屏产品介绍长页） ═══════════ -->
+<div class="pano-mask" id="panoMask"></div>
+<div class="pano" id="pano" role="dialog" aria-modal="true" aria-label="平·万象全景导览">
+  <button class="pano-close" onclick="closePano()" title="关闭导览">✕</button>
+  <div class="pano-inner">
+
+    <!-- 封面 -->
+    <section class="pano-hero">
+      <div class="pano-seal">平</div>
+      <div class="pano-black">P I N G · W A N   X I A N G</div>
+      <h1 class="pano-h1">平·万象<span class="gold"> · 你的大学全景座舱</span></h1>
+      <p class="pano-sub">把大四年的学业、时间、目标、金钱、健康与眼界，装进一个安静而完整的座舱里。它不是又一个 App，是你<strong style="color:#E9D9AC">随时最能拿得稳的那张底牌</strong>。</p>
+      <div class="pano-stats">
+        <span><b>25+</b> 能力模块</span>
+        <span><b>0</b> 安装 · 0 登录</span>
+        <span><b>100%</b> 本地私密</span>
+        <span><b>∞</b> 同步更新</span>
+      </div>
+    </section>
+
+    <!-- 定位 -->
+    <section class="pano-sec" id="pano-what">
+      <div class="pano-no">I · WHAT IT IS</div>
+      <h2 class="pano-h2">向万物借力，把四年过成你想要的样子</h2>
+      <p class="pano-lead">「平」是平常心的从容，「万象」是包罗万有的气度。在这个座舱里，英语备考与职业规划并立，记账与保研考研同屏，灵感记录与健康管理同行——<strong style="color:#C9A063">你不必再在十几个 App 之间疲于奔命</strong>，一页之内，万物归位。</p>
+    </section>
+
+    <!-- 时间轴 -->
+    <section class="pano-sec">
+      <div class="pano-no">II · A DAY WITH IT</div>
+      <h2 class="pano-h2">它是如何融入你的一天</h2>
+      <div class="pano-steps">
+        <div class="pano-step"><div class="num">晨</div><h5>自有标的</h5><p>一条今日心语，一句今日任务，让每一个开始都有方向。</p></div>
+        <div class="pano-step"><div class="num">昼</div><h5>张弛有度</h5><p>番茄专注、时间块、今日知识，学习和生活都能各得其所。</p></div>
+        <div class="pano-step"><div class="num">暮</div><h5>复盘归位</h5><p>四象限排明日，记账看流向，越用越清爽、越用越省心。</p></div>
+      </div>
+    </section>
+
+    <!-- 大引言 -->
+    <div class="pano-quote">
+      <div class="qmark">“</div>
+      <p>真正的自由，不是想做什么就做什么，<br>而是拥有让生活各就各位的能力。</p>
+      <span class="by">—— 平·万象 的设计起点</span>
     </div>
-    <div class="intro-block">
-      <div class="intro-kicker">先别急着看功能，花三十秒认识我</div>
-      <div class="intro-glyph">壹 · 我是谁</div>
-      <p class="intro-p">把大学四年过明白，需要的不是一堆 App，而是一个能把「学业、时间、目标、钱、健康、想法」都放得下、还不会弄丢的地方。平·万象就是那个地方——它不是资讯平台，不是社交软件，是一个<strong>只为你自己服务的成长工作台</strong>。</p>
-      <p class="intro-p">它很安静：打开就用，登录都不用。它也很长情：你今天写下的一句话、打下的一个勾，明天、下学期、开学那天，都还在原地等你。</p>
-    </div>
-    <div class="intro-block">
-      <div class="intro-glyph">贰 · 如果愿意，你的一天会是这样的</div>
-      <div class="intro-day">
-        <div class="intro-day-item"><span class="intro-day-time">清晨</span>看到今天最重要的一件事，写下它，心里就有了底；一条「今日心语」陪着你。</div>
-        <div class="intro-day-item"><span class="intro-day-time">白天</span>上课间隙用番茄钟专注 25 分钟，抽一条「今日知识」换换脑子、兜住生活常识。</div>
-        <div class="intro-day-item"><span class="intro-day-time">傍晚</span>用四象限把明天要排的事一件件放好，顺手记一笔今天花在哪。</div>
-        <div class="intro-day-item"><span class="intro-day-time">睡前</span>打上今天的健康卡，在时光札记里写三行复盘。一天，就这样稳稳落下。</div>
+
+    <!-- 能力全景 -->
+    <section class="pano-sec">
+      <div class="pano-no">III · WHAT IT CAN DO</div>
+      <h2 class="pano-h2">八大能力支柱，托起大学生活全图景</h2>
+      <div class="pano-grid">
+        <div class="pano-card"><div class="ic">🎓</div><h4>学业规划</h4><p>四六级按日计划、艾宾浩斯复习、听读写模板，备考路径一目了然。</p></div>
+        <div class="pano-card"><div class="ic">⏳</div><h4>时间管理系统</h4><p>四象限轻重缓急、番茄专注、一周时间块，把一天排得明明白白。</p></div>
+        <div class="pano-card"><div class="ic">🎯</div><h4>目标拆解</h4><p>大目标→里程碑→今天做什么，三步拆解法，每天都能看见进度。</p></div>
+        <div class="pano-card"><div class="ic">💼</div><h4>职业与升学</h4><p>保研考研路径、竞赛科研、简历模板、求职渠道，一站式准备好你的未来。</p></div>
+        <div class="pano-card"><div class="ic">💰</div><h4>理财记账</h4><p>记账本、省钱技巧、消费指南、副业启蒙，让每一分钱都知道去向。</p></div>
+        <div class="pano-card"><div class="ic">❤️</div><h4>健康管理</h4><p>健康打卡、运动热力图、情绪记录，照顾身体，也照顾好自己。</p></div>
+        <div class="pano-card"><div class="ic">💡</div><h4>灵感珍藏</h4><p>灵感看板、决策复盘、人生一百目标，好想法在此沉淀、不轻易丢失。</p></div>
+        <div class="pano-card"><div class="ic">🌱</div><h4>自我成长</h4><p>周度档案与全景回看，一年后你会感谢今天认真留下的每一笔。</p></div>
+      </div>
+    </section>
+
+    <!-- 原则 -->
+    <section class="pano-sec">
+      <div class="pano-no">IV · WHAT IT WON'T DO</div>
+      <h2 class="pano-h2">有些事，它坚持不做</h2>
+      <div class="pano-nolist">
+        <div class="pano-ni"><span class="x">✕</span>不设会员，不收一分钱，所有能力开箱即用</div>
+        <div class="pano-ni"><span class="x">✕</span>不打广告，不向你兜售焦虑与「不买就亏」</div>
+        <div class="pano-ni"><span class="x">✕</span>不窃取数据，你的内容只存在你自己的设备里</div>
+        <div class="pano-ni"><span class="x">✕</span>不故作高深，不订阅般强迫你每天点开</div>
+      </div>
+    </section>
+
+    <!-- 适合谁 -->
+    <section class="pano-sec">
+      <div class="pano-no">V · WHO IT'S FOR</div>
+      <h2 class="pano-h2">它适合此时正在读这段字的你</h2>
+      <div class="pano-who">
+        <div class="pano-wi"><b>刚踏入大学</b><span>无需焦虑第一步，从填志愿后的规划到每天的第一件事，这里都有章法。</span></div>
+        <div class="pano-wi"><b>学业与未来并进</b><span>竞赛、实习、考研保研压在一起时，它是帮你一件件拆开、落地的地图。</span></div>
+        <div class="pano-wi"><b>想掌控自己节奏</b><span>管钱、管时间、管身体的全部工具一身，自律不是被逼，是自己说了算。</span></div>
+        <div class="pano-wi"><b>相信长期主义</b><span>愿意把每一天的小事做到位，把四年度成一部可以不断回看的作品。</span></div>
+      </div>
+    </section>
+
+    <!-- 上手 -->
+    <section class="pano-sec">
+      <div class="pano-no">VI · START IN MINUTES</div>
+      <h2 class="pano-h2">从最省力的三件小事开始</h2>
+      <div class="pano-steps">
+        <div class="pano-step"><div class="num">1</div><h5>写下今天要做的第一件事</h5><p>在首页任务框里落下一笔，今天就有了锚点。</p></div>
+        <div class="pano-step"><div class="num">2</div><h5>随意逛一圈</h5><p>从侧边栏挑一个感兴趣的模块点进去，所有内容都能改、都能填。</p></div>
+        <div class="pano-step"><div class="num">3</div><h5>让它每天陪你</h5><p>数据本地自动保存，换设备亦可备份搬走，怎么用都从容。</p></div>
+      </div>
+    </section>
+
+    <!-- 收尾 -->
+    <div class="pano-cta">
+      <div class="b">把大学四年，过成你想要的作品</div>
+      <div class="p">免费 · 私密 · 即开即用 —— 现在就开始，它会在原地等你好用的每一天。</div>
+      <div class="btns">
+        <button class="btn btn-primary" onclick="panoHome()">进入座舱</button>
+        <button class="pano-btn-ghost" onclick="panoAbout()">阅读完整说明</button>
       </div>
     </div>
-    <div class="intro-block">
-      <div class="intro-glyph">叁 · 说点实在的，我能帮你做这些</div>
-      <div class="intro-grid">
-        <div class="intro-chip"><b>考试</b><span>四六级按日规划、听力精听、作文模板，算好日期自动提醒</span></div>
-        <div class="intro-chip"><b>时间</b><span>四象限、番茄钟、一周时间表，把一天排明白</span></div>
-        <div class="intro-chip"><b>目标</b><span>大目标拆成今天就能做的事，看得见进度</span></div>
-        <div class="intro-chip"><b>金钱</b><span>记账、省钱技巧、副业启蒙，钱花在哪一目了然</span></div>
-        <div class="intro-chip"><b>健康</b><span>运动打卡与热力图、情绪记录，身心一起照顾</span></div>
-        <div class="intro-chip"><b>升学</b><span>学业规划、保研考研路径、竞赛科研、简历面试</span></div>
-        <div class="intro-chip"><b>记录</b><span>时光札记、灵感看板、感恩日记，好想法不会丢</span></div>
-        <div class="intro-chip"><b>成长</b><span>成长档案每周回看，一年后你会谢谢现在写的每一笔</span></div>
-      </div>
-    </div>
-    <div class="intro-block">
-      <div class="intro-glyph">肆 · 有些事，我明确不打算做</div>
-      <div class="intro-no">
-        <div>· 不设会员、不收一分钱，所有功能直接可用</div>
-        <div>· 不打广告，不天天推你「不买就亏」</div>
-        <div>· 不偷看你的数据，你的日记只有你自己能读</div>
-        <div>· 不制造焦虑，不告诉你不优秀就完了</div>
-      </div>
-      <p class="intro-p" style="margin-top:10px">我想成为的，是一本你自己写的、越写越厚的成长相册，而不是一个不停提醒你「别人多厉害」的喇叭。</p>
-    </div>
-    <div class="intro-block">
-      <div class="intro-glyph">伍 · 它可能适合你，如果你…</div>
-      <div class="intro-who">
-        <div class="intro-who-item"><b>准大一新生</b><span>从高中到大学的转身，帮你把迷茫理顺，从填报之后就有章法</span></div>
-        <div class="intro-who-item"><b>大二大三的你</b><span>学业、竞赛、实习、考研/保研压在一起，帮你一件件拆开</span></div>
-        <div class="intro-who-item"><b>决定保研/考研的人</b><span>目标拆解 + 倒数日 + 每日复盘，把漫长的战线过成每天的小事</span></div>
-        <div class="intro-who-item"><b>想管好钱和身体的人</b><span>记账与打卡不是逼你自律，是让你看清，然后自己说了算</span></div>
-      </div>
-    </div>
-    <div class="intro-block">
-      <div class="intro-glyph">陆 · 从最省力的三件事开始</div>
-      <div class="intro-step">
-        <div><b>①</b> 在首页写下「今天最想完成的一件事」</div>
-        <div><b>②</b> 点顶栏「换一批灵感」，看看今天的句子合不合心意</div>
-        <div><b>③</b> 随便点开一个板块逛逛，所有内容都能填、都能改</div>
-      </div>
-      <div class="intro-note">所有数据只存在你自己的设备里，可导出导入随时备份。放心写，没人看得到。</div>
-      <div class="intro-cta">
-        <button class="btn btn-primary" onclick="closeAndGo()">好，一起去逛逛</button>
-        <button class="btn btn-ghost-soft" onclick="introMore()">看更完整操作说明</button>
-      </div>
-      <div class="intro-foot">—— 平·万象 的一点心意，愿它陪你把这四年，过得有掌控感。——</div>
-    </div>
+    <div class="pano-note">平  ·  万 象  —  愿 你 把 每 一 天 ，都 过 出 掌 控 感</div>
+
   </div>
 </div>
 
