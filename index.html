@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="ping-wan-xiang" data-author="尹平平" data-ver="2026.08"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 平·万象 EQUA·MUNDI —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0C2E46"/><stop offset="100%" stop-color="#071120"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>平·万象 EQUA·MUNDI · 大学生成长中枢</title>
+  <meta name="author" content="尹平平">
+  <meta name="copyright" content="© 2026 尹平平 · 平·万象 · 保留所有权利">
   <meta name="theme-color" id="themeColorMeta" content="#0C447C">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -5527,7 +5530,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <a class="res-link" href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer">
           <div class="ico">🎓</div><div class="info"><div class="name">研究生招生网</div><div class="desc">yz.chsi.com.cn</div></div><div class="arrow">↗</div>
         </a>
-        <a class="res-link" href="https://ncre.neea.cn/" target="_blank" rel="noopener noreferrer">
+        <a class="res-link" href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
           <div class="ico">💻</div><div class="info"><div class="name">计算机等级考试</div><div class="desc">ncre.neea.cn</div></div><div class="arrow">↗</div>
         </a>
         <a class="res-link" href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
@@ -6963,7 +6966,7 @@ function switchTpl(k){
 
 function shareProduct(){
   var url=location.href.split('#')[0]||location.href;
-  var txt='分享一个我刚用上的大学生成长中枢——「平·万象」。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url;
+  var txt='分享一个我刚用上的大学生成长中枢——「平·万象」。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「平·万象」· © 作者：尹平平';
   var html='<div id="shareMask" style="position:fixed;inset:0;background:rgba(12,68,124,.35);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)document.getElementById(\'shareMask\').remove()">'+
     '<div style="background:#fff;border-radius:14px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;padding:18px 16px;box-sizing:border-box;box-shadow:0 12px 40px rgba(0,0,0,.25)">'+
     '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div style="font-size:16px;font-weight:700;color:#0C447C">分享给朋友</div><button onclick="document.getElementById(\'shareMask\').remove()" style="border:none;background:none;font-size:22px;color:#888;cursor:pointer;line-height:1">×</button></div>'+
@@ -10149,7 +10152,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     var f=document.createElement('div');f.className='pp-credit';
     f.style.cssText='text-align:center;padding:16px 12px 6px;font-size:12px;color:var(--hint);line-height:1.95;border-top:1px dashed var(--border);margin-top:22px';
     f.innerHTML='<div style="font-size:13px">设计 &amp; 开发 · <strong style="color:var(--primary);font-size:14px">尹平平</strong> ｜ 「平·万象 · 大学生成长中枢」</div>'+
-      '<div style="opacity:.82;font-size:11.5px;margin-top:4px">原创作品 · 数据 100% 保存在你自己的浏览器（localStorage）中：无后端、不上传、不收集任何信息，后台与任何人都无法读取你的记录。全程免费、无广告。</div>';
+      '<div style="opacity:.82;font-size:11.5px;margin-top:4px">原创作品 · 数据 100% 保存在你自己的浏览器（localStorage）中：无后端、不上传、不收集任何信息，后台与任何人都无法读取你的记录。全程免费、无广告。</div>'+
+      '<div style="margin-top:2px;font-size:11px;color:#C9A85F;letter-spacing:.5px">© 2026 尹平平 · 平·万象 · 保留所有权利 · 请勿未授权转载／二次开发冒名发布</div>';
     main.appendChild(f);
   }
 
@@ -10165,6 +10169,37 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   }
 
   function init(){footer();priv();}
+
+  /* ── 防盗用 / 溯源（防止被别人整站复制、套皮、冒名发布）────────────────── */
+  (function antiTheft(){
+    try{
+      /* 1) 破框防盗：若本页被人用 iframe 套进“壳”里展示（跨域），主动跳出，避免被拿来当自己的 */
+      if(window.self!==window.top){
+        var blocked=false;
+        try{ blocked=(window.top.location.host!==location.host); }
+        catch(e){ blocked=true; }
+        if(blocked){
+          try{ window.top.location=window.self.location.href; }
+          catch(e2){ try{window.location.href='about:blank';}catch(e3){} }
+        }
+      }
+    }catch(e){}
+    try{
+      /* 2) 溯源指纹：埋一条作者痕迹到 DOM 与 localStorage，判定“是否官方原版”可据此比对 */
+      var tag=document.createElement('div');
+      tag.className='pp-trace';
+      tag.style.cssText='display:none';
+      tag.setAttribute('data-author','尹平平');
+      tag.setAttribute('data-app','ping-wan-xiang');
+      tag.setAttribute('data-copyhost',location.host);
+      tag.setAttribute('data-birth',new Date().toISOString().slice(0,19));
+      document.body.appendChild(tag);
+    }catch(e){}
+    try{
+      /* 3) 控制台声明作者（视觉化的原创印记） */
+      if(window.console&&console.info){console.info('%c平·万象 EQUA·MUNDI %c原创作者：尹平平 · 请尊重原创著作权','color:#0F6E56;font-weight:bold;font-size:14px','color:#C9A85F;font-size:11px');}
+    }catch(e){}
+  })();
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 })();
 </script>
@@ -10205,20 +10240,47 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
         if(h.indexOf('http://')===0){h='https://'+h.slice(7);a.setAttribute('href',h);}
         if(/^https?:\/\//.test(h)){
           a.setAttribute('data-extok','1');
-          a.addEventListener('click',function(ev){
-            if(isWeixin()){
-              ev.preventDefault();ev.stopPropagation();
-              var u=this.getAttribute('href')||'';
-              try{location.href=u;}catch(e){}
-            }
-            /* 非微信端走浏览器默认跳转（新标签），无需任何处理 */
-          },false);
+          /* 外链打开统一由全局安全处理器接管（新窗口/新标签，本应用页始终存活可返回）；
+             不再在此处做 location 整页跳转，避免点击外链后整站退出。 */
         }
       }
     }catch(e){}
   }
   fix();
   setInterval(fix,3000);
+  /* ── 外链安全打开（修复：点外链后整站退出、无法返回）──────────────────────
+     所有对外链接一律走这里：
+     ① 优先新窗口/新标签(noopener,noreferrer)打开，本应用页面始终存活，返回即回到刚才界面；
+     ② 若内置浏览器拦截（如微信/独立窗口），则在应用内弹出提示浮层：复制链接+说明，绝不整页跳走。 */
+  function safeOpenExternal(href){
+    if(!href)return;
+    var w=null;
+    try{w=window.open(href,'_blank','noopener,noreferrer');}catch(e){w=null;}
+    if(w)return;
+    try{
+      var old=document.getElementById('extLinkMask');if(old)old.remove();
+      var box='<div id="extLinkMask" style="position:fixed;inset:0;background:rgba(10,30,40,.42);z-index:99990;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box" onclick="if(event.target===this)this.remove()">'
+        +'<div style="background:#fff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:18px 16px;max-width:400px;width:calc(100% - 24px);box-sizing:border-box">'
+        +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div style="font-size:16px;font-weight:700;color:#0C447C">打开外部网站</div><button onclick="this.closest(\'#extLinkMask\').remove()" style="border:none;background:none;font-size:22px;color:#888;cursor:pointer;line-height:1">×</button></div>'
+        +'<div style="font-size:12.5px;color:#6B7280;line-height:1.7;margin-bottom:10px">本应用会保持在当前界面上、不会退出。请在新窗口或微信内置浏览器的地址栏打开以下链接：</div>'
+        +'<div id="extLinkUrl" style="background:#F4F7FB;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px;font-size:12px;color:#2C3E50;word-break:break-all;overflow-wrap:anywhere;line-height:1.6;margin-bottom:12px">'+href.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>'
+        +'<button onclick="copyText(document.getElementById(\'extLinkUrl\').textContent,\'链接已复制\')" style="width:100%;border:1px solid #185FA5;color:#fff;background:#185FA5;border-radius:8px;padding:11px;font-size:13.5px;cursor:pointer;font-weight:600">复制链接</button>'
+        +'</div></div>';
+      document.body.insertAdjacentHTML('beforeend',box);
+    }catch(e){}
+  }
+  document.addEventListener('click',function(ev){
+    var el=ev.target;
+    var a=(el&&el.closest)?el.closest('a[href]'):null;
+    if(!a)return;
+    var h=(a.getAttribute('href')||'').trim();
+    if(!/^https?:/i.test(h))return;
+    var same=false;
+    try{var u=new URL(h);same=(u.host===location.host&&u.protocol===location.protocol);}catch(e){return;}
+    if(same)return;
+    ev.preventDefault();ev.stopPropagation();
+    safeOpenExternal(h);
+  },true);
 })();
 </script>
 
