@@ -11,6 +11,12 @@
   <link rel="icon" type="image/png" href="pwa/icon-192.png">
   <link rel="apple-touch-icon" href="pwa/icon-180.png">
   <link rel="apple-touch-icon" sizes="180x180" href="pwa/icon-180.png">
+  <!-- iOS 启动图（从主屏幕图标打开时显示品牌启动屏，避免白屏） -->
+  <link rel="apple-touch-startup-image" media="screen and (device-width:430px) and (device-height:932px)" href="pwa/splash-6.1.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width:390px) and (device-height:844px)" href="pwa/splash-6.1.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width:375px) and (device-height:812px)" href="pwa/splash-5.8.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width:414px) and (device-height:736px)" href="pwa/splash-4.7.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width:375px) and (device-height:667px)" href="pwa/splash-4.7.png">
   <script>
     /* 注册 Service Worker：支持安装到桌面 App、离线可用；
        部署新版后自动接管并刷新一次，用户再次打开链接即看到最新内容 */
@@ -18,7 +24,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825b').then(function(reg){
+          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825c').then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -706,12 +712,34 @@ strong{font-weight:600}
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(135deg, rgb(12, 68, 124), rgb(15, 110, 86) 55%, rgb(29, 158, 117)); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s; cursor: pointer; opacity: 0;">
-  <div style="font-size:44px;font-weight:800;color:#fff;letter-spacing:6px">平·万象</div>
-  <div style="margin-top:12px;color:rgba(255,255,255,.88);font-size:15px;letter-spacing:3px">以一颗平常心，观照世间万象</div>
-  <div style="margin-top:8px;color:rgba(255,255,255,.55);font-size:12px;letter-spacing:1px">全能个人成长操作系统 · 单文件 · 双击即用 · 数据只存本地</div>
-  <div style="position:absolute;bottom:44px;color:rgba(255,255,255,.4);font-size:12px">点击任意处跳过</div>
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background-image:url('pwa/splash-6.1.png');background-size:cover;background-position:center; display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s; cursor: pointer; opacity: 0;">
+  <!-- 品牌正式启动屏：渐变品牌底 + 居中徽记 -->
+  <img src="pwa/icon-512.png" alt="平·万象" style="width:84px;height:84px;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.3);opacity:0;animation:brandIn .7s .15s forwards">
+  <div style="font-size:42px;font-weight:800;color:#fff;letter-spacing:6px;margin-top:18px;opacity:0;animation:brandIn .7s .35s forwards">平·万象</div>
+  <div style="margin-top:12px;color:rgba(255,255,255,.9);font-size:15px;letter-spacing:3px;opacity:0;animation:brandIn .7s .5s forwards">以一颗平常心，观照世间万象</div>
+  <div style="margin-top:10px;color:rgba(255,255,255,.6);font-size:12px;letter-spacing:1px;opacity:0;animation:brandIn .7s .65s forwards">全能个人成长操作系统 · 数据只存本地 · 私密安全</div>
+  <div style="position:absolute;bottom:44px;color:rgba(255,255,255,.45);font-size:12px">点击任意处进入</div>
+  <style>@keyframes brandIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}</style>
 </div>
+<script>
+/* 品牌启动屏：打开时短暂呈现（全新加载 / 独立窗口时），可点击跳过 */
+(function(){
+  function bs(){var e=document.getElementById('brandSplash');return e||null;}
+  function dismiss(e){
+    if(!e)return;
+    e.style.opacity='0';
+    setTimeout(function(){e.style.display='none';},500);
+  }
+  function show(){
+    var e=bs();if(!e)return;
+    e.style.display='flex';e.style.opacity='1';
+    e.addEventListener('click',function(){dismiss(e)});
+    /* 打开时短暂呈现 1.4 秒后自动淡出，点击任意处可提前进入 */
+    setTimeout(function(){dismiss(e);},1400);
+  }
+  show();
+})();
+</script>
 <div class="app">
 
     <div class="topbar">
@@ -916,12 +944,20 @@ strong{font-weight:600}
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
         <p>欢迎回到平·万象。今天也要保持平常心，从容向前。</p>
       </div>
-      <!-- 新用户快速上手引导（首次打开不迷路，解决“模块多而无从下手”）；已关闭过则不再显示 -->
-      <div id="guideBanner" style="display:none;margin-bottom:16px;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:12px;background:linear-gradient(135deg,#fff,var(--primary-light,#E6F1FB));padding:14px 16px">
+      <!-- 新用户三分钟上手：场景化快速引导（首次打开不迷路，解决“模块多而无从下手”）；已关闭过则不再显示 -->
+      <div id="guideBanner" style="display:none;margin-bottom:16px;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:14px;background:linear-gradient(135deg,#fff,var(--primary-light,#E6F1FB));padding:16px 16px 14px">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
-          <div style="font-size:13px;color:var(--text);line-height:1.85">
-            <b style="color:var(--primary);font-size:14px">👋 第一次用？跟着这 3 步就够了</b>
-            <div style="margin-top:4px">① 往下填「今天最重要的那件事」 → ② 点右侧「每日打卡」勾完今天 → ③ 有空再逛「学业 / 竞赛 / 副业」慢慢逛。全部内容点一点就能用，填了就自动保存，数据只存你自己设备里。</div>
+          <div style="font-size:13px;color:var(--text);line-height:1.85;min-width:0">
+            <b style="color:var(--primary);font-size:15px">🧭 新手 3 分钟上手 · 你当下最想要哪一个？</b>
+            <div style="margin-top:4px;color:var(--muted)">点一下想做的事，直接带你去对应板块；不用时就关掉。</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:12px">
+              <button onclick="switchView('home');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>✅ 今天最重要的事</b><div style="color:var(--hint);margin-top:2px">写下它，今天就开始赢</div></button>
+              <button onclick="switchView('goals');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>🎯 备考 / 考证 / 升学</b><div style="color:var(--hint);margin-top:2px">目标、竞赛、保研考研</div></button>
+              <button onclick="switchView('plans');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>⏳ 管好今天的时间</b><div style="color:var(--hint);margin-top:2px">四象限排优先级</div></button>
+              <button onclick="switchView('finance');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>💰 记账 / 攒钱 / 副业</b><div style="color:var(--hint);margin-top:2px">把钱管明白</div></button>
+              <button onclick="switchView('party');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>🏃 健康 / 运动 / 情绪</b><div style="color:var(--hint);margin-top:2px">照顾好身体和心情</div></button>
+              <button onclick="switchView('tpl');try{localStorage.setItem('pp_guide_hide','1')}catch(e){}const b=document.getElementById('guideBanner');if(b)b.style.display='none'" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:9px 11px;font-size:12.5px;cursor:pointer;color:var(--text)"><b>📂 各种实用模板</b><div style="color:var(--hint);margin-top:2px">简历、规划一键套用</div></button>
+            </div>
           </div>
           <button onclick="var b=document.getElementById('guideBanner');b.style.display='none';try{localStorage.setItem('pp_guide_hide','1')}catch(e){}" style="border:none;background:none;color:var(--hint);font-size:16px;cursor:pointer;line-height:1;flex-shrink:0" title="关闭">×</button>
         </div>
@@ -10156,6 +10192,28 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-note{text-align:center;color:#7C8DA0;font-size:11.5px;letter-spacing:.36em;margin:72px 0 0;text-transform:uppercase}
 .pano-close{position:sticky;top:20px;margin-left:auto;margin-right:28px;margin-top:20px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border:1px solid rgba(12,68,124,.14);box-shadow:0 8px 24px rgba(14,42,71,.14);color:#1c2b3a;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.28s;z-index:6;pointer-events:auto}
 .pano-close:hover{background:#FFFFFF;transform:rotate(90deg);color:#0C447C;box-shadow:0 12px 28px rgba(12,68,124,.24)}
+/* ── 分步导览顶部进度条 ── */
+.pano-progress{position:sticky;top:-1px;z-index:8;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7ECF3;margin:0 -40px 8px;padding:12px 40px 10px}
+.pano-pp{display:flex;align-items:center;gap:14px;max-width:980px;margin:0 auto}
+.pano-pp .step{flex:1;text-align:center}
+.pano-pp .dots{display:flex;gap:6px;justify-content:center;align-items:center}
+.pano-pp .dot{width:9px;height:9px;border-radius:50%;background:#DDE5EF;cursor:pointer;transition:.3s;border:none;padding:0}
+.pano-pp .dot.on{background:#2563EB;width:26px;border-radius:999px}
+.pano-pp .dot.done{background:#0F6E56}
+.pano-pp .pnum{font-size:12px;color:#42566C;font-weight:700;white-space:nowrap}
+.pano-pp .pnum b{color:#2563EB;font-size:15px;font-family:Georgia,serif}
+.pano-pp .pfrac{height:4px;flex:1;background:#E7ECF3;border-radius:999px;overflow:hidden;max-width:220px}
+.pano-pp .pfill{height:100%;background:linear-gradient(90deg,#2563EB,#0F6E56);border-radius:999px;width:0;transition:width .5s ease}
+/* 底部 ＝上一屏 / 下一屏＝ 导航 */
+.pano-nav{position:sticky;bottom:16px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:880px;margin:44px auto 10px;padding:14px 18px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border:1px solid #E7ECF3;border-radius:16px;box-shadow:0 14px 34px rgba(14,42,71,.14)}
+.pano-nav .n-prev{background:#F1F5FB;color:#42566C;border:1px solid #E7ECF3}
+.pano-nav .n-prev:hover{background:#E6EEF8}
+.pano-nav .n-next{background:linear-gradient(135deg,#0C447C,#2563EB);color:#fff;border:none;box-shadow:0 10px 24px rgba(37,99,235,.3)}
+.pano-nav .n-next:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,99,235,.38)}
+.pano-nav button{cursor:pointer;font-family:inherit;font-size:13.5px;padding:11px 22px;border-radius:10px;transition:.25s;font-weight:700;letter-spacing:.03em}
+.pano-nav .n-cnt{font-size:12.5px;color:#64748B;flex:1;text-align:center}
+.pano-nav .n-cnt b{color:#2563EB}
+@media(max-width:560px){.pano-progress{margin:0 -20px 8px;padding:10px 20px 8px}.pano-nav{flex-wrap:wrap}.pano-nav .n-cnt{order:3;flex-basis:100%}.pano-nav button{flex:1}}
 .pano::-webkit-scrollbar{width:10px}
 .pano::-webkit-scrollbar-thumb{background:linear-gradient(#2563EB,#0F6E56);border-radius:5px;border:2px solid transparent;background-clip:padding-box}
 @media (max-width:560px){.pano-hero{padding:90px 22px 54px;min-height:auto}.pano-compare{grid-template-columns:1fr}.pano-inner{padding:0 20px 60px}.pano-cta{padding:48px 22px}.pano-cta .btns{flex-direction:column;align-items:stretch}.pano-cta .btn{min-width:auto}.pano-grid{grid-template-columns:1fr 1fr}}
@@ -10196,15 +10254,81 @@ function panoWire(){
     else if(act==='home'||act==='about')panoGo(act);
   });
 }
+/* ── 分步导览：上一屏 / 下一屏 / 进度点 ── */
+function panoSteps(){
+  var p=document.getElementById('pano');if(!p)return;
+  var panes=Array.prototype.slice.call(p.querySelectorAll('[data-step]'));
+  if(!panes.length)return;
+  /* 去掉 step 7（原则）与 step 8（适合谁）之间的空档，按出现顺序归一到 0..N */
+  panes.forEach(function(el,i){el.setAttribute('data-idx',i);});
+  var tot=panes.length;
+  var cur=0;
+  var dotsBox=document.getElementById('ppDots');
+  var fill=document.getElementById('ppFill');
+  function label(i){return '屏 '+(i+1);}
+  function render(){
+    var cc=document.getElementById('ppCur');if(cc)cc.textContent=(cur+1);
+    var ctt=document.getElementById('ppTot');if(ctt)ctt.textContent=tot;
+    var ctc=document.getElementById('ppCntTot');if(ctc)ctc.textContent=tot;
+    var pv=document.getElementById('ppPrev');if(pv)pv.disabled=(cur===0);
+    var nx=document.getElementById('ppNext');
+    if(nx){nx.textContent=(cur===tot-1)?'开始使用 ✦':'下一屏 ›';nx.setAttribute('data-finish',(cur===tot-1)?'1':'0');}
+    if(dotsBox){
+      var html='';
+      for(var i=0;i<tot;i++){html+='<button type="button" class="dot'+(i<cur?' done':(i===cur?' on':''))+'"></button>';}
+      dotsBox.innerHTML=html;
+      var ds=dotsBox.querySelectorAll('.dot');
+      for(i=0;i<ds.length;i++){(function(idx){ds[idx].addEventListener('click',function(){goTo(idx);});})(i);}
+    }
+    if(fill){fill.style.width=((cur+1)/tot*100)+'%';}
+  }
+  function goTo(i){
+    if(i<0||i>=tot)return;
+    cur=i;
+    var el=panes[i];
+    var top=el.getBoundingClientRect().top+p.scrollTop-70;
+    p.scrollTo({top:top,behavior:'smooth'});
+    render();
+  }
+  var prev=document.getElementById('ppPrev'),next=document.getElementById('ppNext');
+  if(prev)prev.addEventListener('click',function(){goTo(cur-1);});
+  if(next)next.addEventListener('click',function(){
+    if(cur===tot-1){
+      /* 最后一屏：进入工作台 */
+      panoGo('home');
+      return;
+    }
+    goTo(cur+1);
+  });
+  /* 滚动时同步当前屏 */
+  var ticking=false;
+  p.addEventListener('scroll',function(){
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(function(){
+      ticking=false;
+      var vt=p.scrollTop+90;
+      var best=0,bd=1e9;
+      for(var i=0;i<tot;i++){
+        var top=panes[i].getBoundingClientRect().top+p.scrollTop;
+        var d=Math.abs(top-vt);
+        if(d<bd){bd=d;best=i;}
+      }
+      if(best!==cur){cur=best;render();}
+    });
+  });
+  render();
+}
 function panoBoot(){
   var p=document.getElementById('pano');if(!p)return;
   var m=document.getElementById('panoMask');
   if(m)m.addEventListener('click',closePano);
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePano();});
   panoWire();
+  panoSteps();
   try{
     /* 版本化 seen 标记：新版本上线后，老用户也能再看一次升级版导览，之后不再打扰 */
-    if(!localStorage.getItem('pp_pano_v2_seen')){setTimeout(openPano,700);localStorage.setItem('pp_pano_v2_seen','1');}
+    if(!localStorage.getItem('pp_pano_v3_seen')){setTimeout(openPano,700);localStorage.setItem('pp_pano_v3_seen','1');}
   }catch(e){}
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
@@ -10216,8 +10340,15 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   <button class="pano-close" data-pano="close" title="关闭导览">✕</button>
   <div class="pano-inner">
 
-    <!-- 封面首屏 -->
-    <section class="pano-hero">
+    <!-- 顶部分步进度条 -->
+    <div class="pano-progress"><div class="pano-pp">
+      <div class="pnum"><b id="ppCur">1</b>&nbsp;/&nbsp;<span id="ppTot">8</span>&nbsp;步骤</div>
+      <div class="dots" id="ppDots"></div>
+      <div class="pfrac"><div class="pfill" id="ppFill"></div></div>
+    </div></div>
+
+    <!-- 封面首屏 (步骤 1) -->
+    <section class="pano-hero" data-step="0">
       <div class="glow"></div>
       <div class="eyebrow">PING·WAN XIANG · 大学生全能成长工作台</div>
       <h1 class="pano-h1">平，万象<span class="thin">：让四年各就各位</span></h1>
@@ -10231,16 +10362,16 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       </div>
     </section>
 
-    <!-- 定位：价值主张 -->
-    <section class="pano-sec pano-sec-ctr">
+    <!-- 定位：价值主张 (步骤 2) -->
+    <section class="pano-sec pano-sec-ctr" data-step="1">
       <div class="pano-no"><span class="rn">壹</span><span>它为什么无可取代 · 你所得到的</span></div>
       <h2 class="pano-h2">它不是又一个工具，<br>而是把四年过成<em>想要的样子</em>的那个地方</h2>
       <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座工作台，能同时接住你的<b>学业、目标、时间、金钱、健康与眼界</b>，还让它们互相咬合。平·万象，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
-    <!-- 之前 vs 之后 -->
-    <section class="pano-sec">
+    <!-- 之前 vs 之后 (步骤 3) -->
+    <section class="pano-sec" data-step="2">
       <div class="pano-no"><span class="rn">贰</span><span>没有它 vs 有它 · 两种大学的活法</span></div>
       <h2 class="pano-h2">同样是四年，<em>差距从第一天就拉开</em></h2>
       <div class="pano-compare">
@@ -10269,8 +10400,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       </div>
     </section>
 
-    <!-- 一天时间轴 -->
-    <section class="pano-sec">
+    <!-- 一天时间轴 (步骤 4) -->
+    <section class="pano-sec" data-step="3">
       <div class="pano-no"><span class="rn">叁</span><span>它陪你的这一天 · 具体能做什么</span></div>
       <h2 class="pano-h2">从早到晚，<em>它都有你的位置</em></h2>
       <div class="pano-steps">
@@ -10281,14 +10412,14 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
-    <!-- 大引言 -->
-    <div class="pano-quote">
+    <!-- 大引言 (步骤 5) -->
+    <div class="pano-quote" data-step="4">
       <p>真正的自由，不是想做什么就做什么，<br>而是拥有让生活各就各位的能力。</p>
       <span class="by">— 平·万象 的设计哲学 —</span>
     </div>
 
-    <!-- 八大能力 -->
-    <section class="pano-sec pano-sec-ctr">
+    <!-- 八大能力 (步骤 6) -->
+    <section class="pano-sec pano-sec-ctr" data-step="5">
       <div class="pano-no"><span class="rn">肆</span><span>八大力 · 你能亲手掌握什么</span></div>
       <h2 class="pano-h2">八大支柱，<em>托起你的大学生活</em></h2>
       <div class="pano-grid" style="text-align:left">
@@ -10304,8 +10435,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
-    <!-- 为什么设计它 · 设计理念 -->
-    <section class="pano-sec pano-sec-ctr">
+    <!-- 为什么设计它 · 设计理念 (步骤 7) -->
+    <section class="pano-sec pano-sec-ctr" data-step="6">
       <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
       <h2 class="pano-h2">它因一个朴素信念而生：<em>「平」是平常心，「万象」是包罗万有</em></h2>
       <p class="pano-lead">我们见过太多人被"大学很自由"的美好期待，和"自由反而不知从何下手"的落差困住。长期主义的自律，不该靠意志硬扛，而该靠<b>一套顺手的系统</b>。《大学》里讲"知止而后有定，定而后能静"——先让生活各就各位，心才能安定下来生长。</p>
@@ -10318,8 +10449,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
-    <!-- 原则 -->
-    <section class="pano-sec">
+    <!-- 原则 (步骤 8) -->
+    <section class="pano-sec" data-step="7">
       <div class="pano-no"><span class="rn">陆</span><span>它的底线 · 让你用得安心</span></div>
       <h2 class="pano-h2">有些事，它<em>坚持不做</em></h2>
       <div class="pano-nolist">
@@ -10331,8 +10462,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
-    <!-- 适合谁 -->
-    <section class="pano-sec">
+    <!-- 适合谁 (步骤 9) -->
+    <section class="pano-sec" data-step="8">
       <div class="pano-no"><span class="rn">柒</span><span>写给正在读这段字的你</span></div>
       <h2 class="pano-h2">它为你而造，<em>无论你正处在哪个阶段</em></h2>
       <div class="pano-who">
@@ -10344,8 +10475,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
 
-    <!-- 上手 -->
-    <section class="pano-sec pano-sec-ctr">
+    <!-- 上手 (步骤 10，收尾) -->
+    <section class="pano-sec pano-sec-ctr" data-step="9">
       <div class="pano-no"><span class="rn">捌</span><span>三分钟上手 · 今天就能用</span></div>
       <h2 class="pano-h2">从三件省力的小事，<em>立刻开始</em></h2>
       <div class="pano-steps" style="text-align:left">
@@ -10365,6 +10496,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       </div>
     </div>
     <div class="pano-note">平 · 万 象 —— 愿你把每一天，都过出掌控感</div>
+
+    <!-- 底部 ：上一屏 / 下一屏（分步浏览） -->
+    <div class="pano-nav">
+      <button type="button" class="n-prev" id="ppPrev">‹ 上一屏</button>
+      <div class="n-cnt" id="ppCnt"><b>1</b> / <span id="ppCntTot">10</span> 屏</div>
+      <button type="button" class="n-next" id="ppNext" data-finish="0">下一屏 ›</button>
+    </div>
 
   </div>
 </div>
