@@ -4801,7 +4801,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card" style="margin-top:16px;background:#FFF8EF;border-color:#F2DDB8">
         <h3 style="color:var(--gold)">使用与隐私说明（请阅读）</h3>
         <p style="font-size:12.5px;color:var(--muted);line-height:1.9">
-          <strong>完全免费</strong>：本工作台不收费、无会员、无内购，所有功能直接可用。<br>
+          <strong>完全免费</strong>：本应用不收费、无会员、无内购，所有功能直接可用。<br>
           <strong>持续更新</strong>：新功能、新模板会持续加入。本地版用户重新下载最新文件即可；在线用户刷新即是最新版。<br>
           <strong>数据安全</strong>：你的数据永远存在自己的浏览器里（localStorage 本地存储），<strong>作者/后台完全看不到、也绝不会上传或收集任何信息</strong>。换设备时通过"导出备份→导入"带走，主动权100%在你手里。<br>
           <strong>🔒 隐私透明：</strong>本产品是纯前端单文件应用，没有任何后端数据库。你写下的日记、打卡、目标、单词本，除了你自己，没有任何人能读取。
@@ -9988,7 +9988,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     var main=document.querySelector('.main');if(!main)return;
     var box=document.createElement('div');box.id='privBox';
     box.style.cssText='margin:0 16px 6px;padding:10px 14px;border-radius:10px;background:var(--teal-light);border:1px solid var(--border-strong);color:var(--teal);font-size:12.5px;line-height:1.8';
-    box.innerHTML='🔒 <b>隐私透明：</b>本工作台是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span style="cursor:pointer;font-weight:700;text-decoration:underline" onclick="var p=document.getElementById(\'privBox\');if(p)p.remove();localStorage.setItem(\'pp_priv_ok\',\'1\')">知道了 ✕</span>';
+    box.innerHTML='🔒 <b>隐私透明：</b>本应用是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span style="cursor:pointer;font-weight:700;text-decoration:underline" onclick="var p=document.getElementById(\'privBox\');if(p)p.remove();localStorage.setItem(\'pp_priv_ok\',\'1\')">知道了 ✕</span>';
     var banner=document.getElementById('freeBanner');var mainEl=main;
     main.insertBefore(box, banner&&banner.parentNode===mainEl?banner.nextSibling:mainEl.firstChild);
   }
