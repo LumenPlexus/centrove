@@ -1,5 +1,5 @@
 /* 平·万象 Service Worker：让网站可安装为桌面 App、并支持断网也能打开 */
-const CACHE = 'pingwanxiang-v1';
+const CACHE = 'pingwanxiang-v2';
 const CORE = ['./', './index.html', './pwa/manifest.json', './pwa/icon-192.png', './pwa/icon-512.png'];
 
 self.addEventListener('install', (e) => {
