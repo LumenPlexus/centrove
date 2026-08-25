@@ -685,7 +685,7 @@ strong{font-weight:600}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             导出数据备份
           </button>
-          <button class="tb-more-item" onclick="document.getElementById(&apos;importFile&apos;).click();toggleTbMore()">
+          <button class="tb-more-item" onclick="document.getElementById(&apos;importFileMenu&apos;).click();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
             导入数据
           </button>
@@ -700,7 +700,7 @@ strong{font-weight:600}
           </button>
         </div>
       </div>
-      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+      <input type="file" id="importFileMenu" accept=".json" style="display:none" onchange="importData(event)">
     </div>
   </div>
 
@@ -4739,7 +4739,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="card">
           <h3>导入恢复</h3>
           <p style="font-size:13px;color:var(--muted);margin-bottom:10px">从备份 JSON 恢复数据（会覆盖当前数据）</p>
-          <input type="file" id="importFile" accept=".json" onchange="importAll(event)">
+          <label class="btn btn-primary" style="cursor:pointer">选择备份文件<input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display:none"></label>
         </div>
       </div>
       <div class="card" style="margin-top:16px;background:#FFF5F0;border-color:#F5C6B0">
