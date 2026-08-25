@@ -788,15 +788,17 @@ strong{font-weight:600}
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(165deg,#0a1428 0%,#123052 55%,#243048 130%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
-  <!-- 亲和的品牌启动屏：墨蓝渐变 + 暖金光晕 + 呼吸徽记 + 淡出文字 -->
-  <div style="position:absolute;left:50%;top:32%;width:560px;height:560px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(232,179,92,.20),transparent 62%);pointer-events:none;filter:blur(6px)"></div>
-  <div style="position:relative;width:118px;height:118px;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:-12px;border-radius:52%;background:radial-gradient(circle,rgba(255,216,160,.55),rgba(255,216,160,0) 68%);filter:blur(6px);animation:brandIn .6s forwards"></div>
-  <img src="pwa/icon-512.png" alt="平·万象" draggable="false" style="width:104px;height:104px;border-radius:25px;box-shadow:0 0 0 3px rgba(255,224,176,.22),0 20px 50px rgba(0,0,0,.42);opacity:0;animation:brandIn .7s .12s forwards,brandFloat 3.4s ease-in-out .85s infinite;position:relative"></div>
-  <div style="font-size:44px;font-weight:800;color:#fff;letter-spacing:8px;margin-top:22px;opacity:0;animation:brandIn .8s .4s forwards;text-shadow:0 4px 26px rgba(0,0,0,.25)">平·万象</div>
-  <div style="margin-top:16px;color:rgba(255,255,255,.9);font-size:16px;letter-spacing:4px;opacity:0;animation:brandIn .8s .6s forwards">以一颗平常心，观照世间万象</div>
-  <div style="margin-top:18px;color:rgba(255,255,255,.72);font-size:13px;letter-spacing:1px;opacity:0;animation:brandIn .8s .8s forwards;max-width:80%;text-align:center;line-height:1.8">学业 · 目标 · 时间 · 金钱 · 健康 · 眼界<br>六条线收拢到一处 · 数据只存本地 · 私密安全</div>
-  <div style="position:absolute;bottom:60px;color:rgba(255,255,255,.55);font-size:13px;letter-spacing:2px;opacity:0;animation:brandIn .8s 1s forwards">轻触任意处 · 进入</div>
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: linear-gradient(175deg,#EAF4EF 0%,#F6FAF7 48%,#FFFFFF 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
+  <!-- 亲和的品牌启动屏：浅色·墨蓝×暖金，与白色界面无缝衔接 -->
+  <div style="position:absolute;left:50%;top:30%;width:620px;height:620px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,168,95,.16),transparent 62%);pointer-events:none;filter:blur(8px)"></div>
+  <div style="position:absolute;left:18%;bottom:8%;width:340px;height:300px;background:radial-gradient(circle,rgba(42,88,124,.10),transparent 66%);pointer-events:none;filter:blur(8px)"></div>
+  <div style="position:relative;width:124px;height:124px;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:-12px;border-radius:52%;background:radial-gradient(circle,rgba(201,168,95,.38),rgba(201,168,95,0) 70%);filter:blur(6px);animation:brandIn .6s forwards"></div>
+  <img src="pwa/logo-light.png" alt="平·万象" draggable="false" style="width:112px;height:112px;border-radius:28px;box-shadow:0 0 0 3px rgba(201,168,95,.30),0 20px 50px rgba(31,66,88,.20);opacity:0;animation:brandIn .7s .12s forwards,brandFloat 3.4s ease-in-out .85s infinite;position:relative"></div>
+  <div style="font-size:42px;font-weight:800;color:#0E2E57;letter-spacing:9px;margin-top:26px;opacity:0;animation:brandIn .8s .4s forwards">平·万象</div>
+  <div style="margin-top:18px;height:1px;width:64px;background:linear-gradient(90deg,transparent,#C9A85F,transparent);opacity:0;animation:brandIn .8s .52s forwards"></div>
+  <div style="margin-top:16px;color:#315B6E;font-size:16px;letter-spacing:4px;opacity:0;animation:brandIn .8s .62s forwards">以一颗平常心，观照世间万象</div>
+  <div style="margin-top:18px;color:#7C8FA0;font-size:13px;letter-spacing:1px;opacity:0;animation:brandIn .8s .8s forwards;max-width:80%;text-align:center;line-height:1.8">学业 · 目标 · 时间 · 金钱 · 健康 · 眼界<br>六条线收拢到一处 · 数据只存本地 · 私密安全</div>
+  <div style="position:absolute;bottom:60px;color:#9AA8B6;font-size:13px;letter-spacing:2px;opacity:0;animation:brandIn .8s 1s forwards">轻触任意处 · 进入</div>
   <style>@keyframes brandIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes brandFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}</style>
 </div>
 <script>
@@ -833,7 +835,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;border-radius:7px;flex-shrink:0"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><ellipse cx="12" cy="12.5" rx="8.3" ry="9.0" stroke="#E6B35C" stroke-opacity="0.85" stroke-width="0.8" fill="none"/><circle cx="12" cy="8.9" r="4.3" fill="url(#plSun)"/><rect x="4" y="13.2" width="16" height="0.6" rx="0.3" fill="#F4FFE4" opacity="0.55"/><circle cx="10.1" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/><circle cx="12" cy="15.9" r="0.65" fill="#F6CE7A" opacity="0.95"/><circle cx="13.9" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/></svg>平·万象 <span class="tb-badge">大学生成长中枢</span></div>
+      <div class="title"><img src="pwa/logo-light.png" alt="平·万象" style="width:26px;height:26px;border-radius:7px;flex-shrink:0">平·万象 <span class="tb-badge">大学生成长中枢</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -895,7 +897,7 @@ strong{font-weight:600}
 
     <nav class="sidebar" id="sidebar">
     <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><ellipse cx="12" cy="12.5" rx="8.3" ry="9.0" stroke="#E6B35C" stroke-opacity="0.85" stroke-width="0.8" fill="none"/><circle cx="12" cy="8.9" r="4.3" fill="url(#plSun)"/><rect x="4" y="13.2" width="16" height="0.6" rx="0.3" fill="#F4FFE4" opacity="0.55"/><circle cx="10.1" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/><circle cx="12" cy="15.9" r="0.65" fill="#F6CE7A" opacity="0.95"/><circle cx="13.9" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.9"/></svg>
+      <img src="pwa/logo-light.png" alt="平·万象" style="width:22px;height:22px;border-radius:6px;flex-shrink:0">
       平·万象
     </div>
     <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
@@ -10491,7 +10493,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 封面首屏 (步骤 1) -->
     <section class="pano-hero" data-step="0">
       <span class="pt-topscallop" aria-hidden="true"></span>
-      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;border-radius:7px"><rect x="0.5" y="0.5" width="23" height="23" rx="7" fill="url(#plBg)"/><ellipse cx="12" cy="12.5" rx="8.3" ry="9.0" stroke="#E6B35C" stroke-opacity="0.9" stroke-width="1.1" fill="none"/><circle cx="12" cy="8.9" r="4.3" fill="url(#plSun)"/><rect x="4" y="13.2" width="16" height="0.6" rx="0.3" fill="#F4FFE4" opacity="0.7"/><circle cx="10.1" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.95"/><circle cx="12" cy="15.9" r="0.65" fill="#F6CE7A" opacity="0.95"/><circle cx="13.9" cy="15.5" r="0.5" fill="#F6CE7A" opacity="0.95"/></svg></span><span class="pt-name">EQUA · MUNDI</span><i></i></div>
+      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:24px;height:24px;border-radius:8px;overflow:hidden"><img src="pwa/logo-light.png" alt="平·万象" style="width:24px;height:24px;display:block"></span><span class="pt-name">EQUA · MUNDI</span><i></i></div>
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="pt-name-premium">
