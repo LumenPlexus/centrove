@@ -827,7 +827,7 @@ strong{font-weight:600}
     e.addEventListener('click',function(){dismiss(e);});
     /* 让开屏优雅放完即进入产品：文字分层淡入、轻触可随时跳过；首次展示时长放长，
        确保「晨珠」图标足够停留、用户能看清品牌印记，再配合柔和淡出，避免一闪即逝。 */
-    setTimeout(function(){dismiss(e);}, first?2400:1500);
+    setTimeout(function(){dismiss(e);}, first?3600:2000);
   }
   show();
 })();
@@ -1007,7 +1007,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>购物指南
     </div>
     <div class="nav-item" data-view="perk" onclick="switchView(&#39;perk&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>奖助福利
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>奖助与权益
     </div>
     <div class="nav-section">系统
     </div>
@@ -1194,16 +1194,6 @@ strong{font-weight:600}
         <div style="margin-top:8px;font-size:11px;color:var(--muted)">💡 一天抓住 2-3 段专注就够，不用把整张表排满才叫自律。</div>
       </div>
 
-      <!-- 我的成长档案 · 一键预览成长报告（页面内直接看，不下载文件、不跳软件） -->
-      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#FCF7EF,#F5EFE3);border-color:#E3D3B6">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-          <div style="flex:1;min-width:220px">
-            <h3 style="margin:0;color:#8A6A2D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>我的成长档案 <span style="font-weight:400;font-size:11px;color:#B09870">把你的努力，攒成一份看得见的报告</span></h3>
-            <p style="font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.7">汇总你的任务、专注、习惯、学习、书本与目标——点一下就在<b>页面内直接查看</b>，无需下载、无需切换软件；也可复制全文或打印另存为 PDF。</p>
-          </div>
-          <button class="btn btn-primary btn-sm" style="padding:12px 22px;font-size:14px;background:#8A6A2D;border-color:#8A6A2D" onclick="exportGrowth()">📊 查看我的成长报告</button>
-        </div>
-      </div>
       </section>
 
     <!-- 学业精进 -->
@@ -5112,10 +5102,10 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <div style="margin-bottom:6px"><strong>🛟 自动保存 + 每日自动备份</strong>：输入即存不用手动点；每自然日自动备份一次、保留最近 7 天，误清空也能一键找回。</div>
           <div style="margin-bottom:6px"><strong>📊 成长报告页内直看</strong>：点一下就在页面内预览，不用下载、不用跳软件，还能复制全文 / 打印存 PDF。</div>
           <div style="margin-bottom:6px"><strong>↩️ 返回不迷路</strong>：点链接或刷新后，自动回到你上次停留的板块和位置，不再跳回首页。</div>
-          <div style="margin-bottom:6px"><strong>🎯 奖助福利更清楚</strong>：「家庭经济困难认定」「绿色通道」写明哪些人适合、为什么申请、能得到什么、怎么申请与诚信红线——把资源给真正需要的人，全程正派。</div>
+          <div style="margin-bottom:6px"><strong>🎯 奖助板块更清楚</strong>：「家庭经济困难认定」「绿色通道」写明哪些人适合、为什么申请、能得到什么、怎么申请与诚信红线——把资源给真正需要的人，全程正派。</div>
           <div style="color:var(--primary);font-weight:800;margin:14px 0 6px">📈 从第一版到现在，它是怎么一步步长成「成长中枢」的</div>
           <div style="margin-bottom:6px">· 先立起<strong>四六级 / 学业 / 时间 / 理财 / 健康</strong>的核心规划骨架，一个文件开箱即用。</div>
-          <div style="margin-bottom:6px">· 板块一步步扩展到 <strong>25+ 个</strong>：生涯蓝图、学业精进、备考宝典、奖助福利、反诈「平安护航」、职业发展与简历模板……内容越做越系统、同类持续合并精简。</div>
+          <div style="margin-bottom:6px">· 板块一步步扩展到 <strong>25+ 个</strong>：生涯蓝图、学业精进、备考宝典、奖助与权益、反诈「平安护航」、职业发展与简历模板……内容越做越系统、同类持续合并精简。</div>
           <div style="margin-bottom:6px">· 体验不断打磨：<strong>新手上手卡片三步起步 · 记住你上次停留的标签 · 任务可改可删 · 习惯可补可删</strong>，越用越顺手。</div>
           <div style="margin-bottom:6px">· 始终守住一条底线：<strong>不注册、不联网、不上传，数据 100% 只存你自己的设备</strong>，作者也看不见。</div>
           <div style="opacity:.7;font-size:11.5px">（刷新页面即自动更新到最新版；每一次升级都不会改动你已填写的任何数据。）</div>
@@ -5182,6 +5172,16 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <h3>导入恢复</h3>
           <p style="font-size:13px;color:var(--muted);margin-bottom:10px">从备份 JSON 恢复数据（会覆盖当前数据）</p>
           <label class="btn btn-primary" style="cursor:pointer">选择备份文件<input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display:none"></label>
+        </div>
+      </div>
+      <!-- 我的成长报告 · 页面内一键查看（始终按最新数据实时汇总，无需手动保存） -->
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#FCF7EF,#F5EFE3);border-color:#E3D3B6">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px">
+            <h3 style="margin:0;color:#8A6A2D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>我的成长报告 <span style="font-weight:400;font-size:11px;color:#B09870">把你的努力，攒成一份看得见的存档</span></h3>
+            <p style="font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.7">点一下就在<b>页面内直接查看</b>你的任务、专注、习惯、学习、读书与目标成果，<b>实时同步最新数据</b>，无需下载、无需切换软件；也可复制全文或打印另存为 PDF。</p>
+          </div>
+          <button class="btn btn-primary btn-sm" style="padding:12px 22px;font-size:14px;background:#8A6A2D;border-color:#8A6A2D" onclick="exportGrowth()">📊 查看我的成长报告</button>
         </div>
       </div>
       <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F0FAF4,#E6F4EC);border-color:#BFDFCE">
@@ -5933,30 +5933,31 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
-       奖助福利 (perk) · 学生钱袋子：奖助(挣进) + 学子福利(省下) 合并板块
-       按「该先办什么」排序：保住学籍 → 兜底生活费 → 灵活缺钱 → 成绩兑现 → 能力兑现 → 日常省钱
+       奖助与权益 (perk) · 国家、社会与学校对学子的资助与支持：奖助学金 + 助学贷款 + 困难帮扶 + 学生权益
+       按「所对应的真实需要」引导选择：保住学籍 → 生活保障 → 自食其力 → 学业优秀 → 能力认可 → 日常权益
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-perk">
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>奖助福利</h1>
-      <p>奖学金 · 助学金 · 助学贷款 · 竞赛奖金 · 学生优惠——先看清「标准与门槛」，再按规申请，应得尽得</p>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>奖助与权益</h1>
+      <p>奖助学金 · 助学贷款 · 困难帮扶 · 学生权益——先看清标准与门槛，按真实需求、如实申报；符合就勇敢申请，不符合也不勉强</p>
     </div>
-    <div class="callout callout-info"><strong>先说清楚：</strong>奖助学和帮扶，是国家和社会为<b>真正需要、真正努力</b>的学子准备的保障——适合的人不该因不了解而错过，也不该被不符合条件的人钻空子。所以下面先把「<b>标准、适合谁、凭什么、能得到什么</b>」讲明白，再教你怎么申请，全程正派、没有投机取巧。</div>
+    <div class="callout callout-info"><strong>先说明：</strong>奖学金、助学金、助学贷款与困难帮扶，是国家、社会和学校为<b>符合条件、确有正当需要</b>的学子提供的支持与鼓励。这里的每一项都应<b>如实申报、按需申请</b>：真正需要的人要敢于申请，不必把名额让给别人；不符合条件的人也不必勉强办理。本板块只把「<b>标准、适合谁、如何申请、能得到什么</b>」讲清楚，帮你稳妥地用好应得的支持。</div>
 
     <div class="card">
-      <h3>🎯 优先级总览 · 照着这个顺序办不吃亏</h3>
+      <h3>🗺 从哪个开始？先想清楚你现在需要解决什么</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:8px">不必一次办完所有项目。按你<strong>当前最需要解决的事</strong>挑对应的一项即可，逐条看清标准再申请。金额与名称为全国通用版，具体以本校当年通知为准。</p>
       <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <thead><tr style="background:#F0F8F4"><th style="padding:7px;border:1px solid var(--border)">顺序</th><th style="padding:7px;border:1px solid var(--border)">办什么</th><th style="padding:7px;border:1px solid var(--border)">到手多少</th><th style="padding:7px;border:1px solid var(--border)">为什么排这</th></tr></thead>
+        <thead><tr style="background:#F0F8F4"><th style="padding:7px;border:1px solid var(--border)">你现在需要解决</th><th style="padding:7px;border:1px solid var(--border)">可关注的项目</th><th style="padding:7px;border:1px solid var(--border)">金额参考</th><th style="padding:7px;border:1px solid var(--border)">申请时机</th></tr></thead>
         <tbody>
-          <tr><td style="padding:7px;border:1px solid var(--border)"><b>① 先办</b></td><td style="padding:7px;border:1px solid var(--border)">绿色通道 / 助学贷款</td><td style="padding:7px;border:1px solid var(--border)">本专科最高 2万/年（在校无息）</td><td style="padding:7px;border:1px solid var(--border)">学费不急，先保住学籍是第一前提</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)"><b>② 早点办</b></td><td style="padding:7px;border:1px solid var(--border)">家庭经济困难认定 → 助学金</td><td style="padding:7px;border:1px solid var(--border)">平均 3700/年，多按10个月发放</td><td style="padding:7px;border:1px solid var(--border)">困难认定是很多项目的前提，越早做越好</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)"><b>③ 缺钱就上</b></td><td style="padding:7px;border:1px solid var(--border)">校内勤工助学</td><td style="padding:7px;border:1px solid var(--border)">不低于12元/小时，灵活排班</td><td style="padding:7px;border:1px solid var(--border)">零门槛、无风险，但名额有限要早报名</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)">④ 每学年</td><td style="padding:7px;border:1px solid var(--border)">国家励志 / 国家奖学金</td><td style="padding:7px;border:1px solid var(--border)">励志6000 / 国家1万 等</td><td style="padding:7px;border:1px solid var(--border)">用成绩兑现，报名窗口短，留意学工部通知</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)">⑤ 随时</td><td style="padding:7px;border:1px solid var(--border)">竞赛拿奖金</td><td style="padding:7px;border:1px solid var(--border)">校级到国奖，千元到十万不等</td><td style="padding:7px;border:1px solid var(--border)">拼能力与点子，和成绩互补、还能加分</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)">⑥ 日常顺手</td><td style="padding:7px;border:1px solid var(--border)">学生优惠认证</td><td style="padding:7px;border:1px solid var(--border)">火车票5折起、会员半价等</td><td style="padding:7px;border:1px solid var(--border)">一次性认证，全年持续省</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">一时凑不齐学费，先保住学籍</td><td style="padding:7px;border:1px solid var(--border)">绿色通道 / 国家助学贷款</td><td style="padding:7px;border:1px solid var(--border)">本专科最高 2万/年（贷款在校期间无息）</td><td style="padding:7px;border:1px solid var(--border)">报到时 / 随时可办</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">家庭经济确实困难，需要生活保障</td><td style="padding:7px;border:1px solid var(--border)">家庭经济困难认定 → 国家助学金</td><td style="padding:7px;border:1px solid var(--border)">平均约 3700/年，多按 10 个月发放</td><td style="padding:7px;border:1px solid var(--border)">通常开学初（约 9 月）集中开展</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">生活费紧张，想靠劳动自食其力</td><td style="padding:7px;border:1px solid var(--border)">校内勤工助学</td><td style="padding:7px;border:1px solid var(--border)">不低于 12 元/小时</td><td style="padding:7px;border:1px solid var(--border)">随时（名额有限，建议早报名）</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">学业优秀，希望获得荣誉与鼓励</td><td style="padding:7px;border:1px solid var(--border)">国家励志 / 国家奖学金</td><td style="padding:7px;border:1px solid var(--border)">励志 6000 / 国家 10000 元每年</td><td style="padding:7px;border:1px solid var(--border)">每学年一次（约 9-10 月）</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">参赛获奖，能力得到认可</td><td style="padding:7px;border:1px solid var(--border)">学科竞赛奖励</td><td style="padding:7px;border:1px solid var(--border)">校级到国家级不等</td><td style="padding:7px;border:1px solid var(--border)">按赛事通知</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">日常出行、学习想节省开支</td><td style="padding:7px;border:1px solid var(--border)">学生优惠认证</td><td style="padding:7px;border:1px solid var(--border)">火车票、正版软件、会员等学生价</td><td style="padding:7px;border:1px solid var(--border)">一次认证，逐年续期</td></tr>
         </tbody>
       </table>
-      <div class="callout callout-ok" style="margin-top:10px"><strong>通用口径提醒：</strong>以下金额为<strong>全国通用版</strong>；各省、各校的名额与细则，以<strong>本校学工部 / 资助管理中心</strong>当年通知为准（奖学金、助学金集中通知通常每年 9-10 月发布）。先看本校通知再行动，别因漏看错过截止。</div>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>通用口径：</strong>以下金额与名称为<strong>全国通用版</strong>；各省、各校的名额与细则，以<strong>本校学工部 / 资助管理中心</strong>当年通知为准（奖助学金集中通知通常每年 9-10 月发布）。先看本校通知，再按提示申请。</div>
     </div>
 
     <div class="card" style="margin-top:16px;border-left:4px solid var(--primary-mid)">
@@ -6053,7 +6054,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </ul>
       </div>
       <div class="card">
-        <h3>🛟 其他资助 · 多留意别漏领</h3>
+        <h3>🛟 其他资助 · 值得留意的项目</h3>
         <ul style="font-size:13px;line-height:1.9">
           <li><strong>勤工助学：</strong>校内临时岗位每小时不低于12元（部分高校更高，如成都大学约23元/小时）</li>
           <li><strong>绿色通道：</strong>家庭特困新生可先报到注册，入学后再办贷款 / 缓缴</li>
@@ -6065,7 +6066,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </div>
 
     <div class="card" style="margin-top:16px">
-      <h3>🏆 靠竞赛也能拿钱（奖金参考）</h3>
+      <h3>🏆 学科竞赛 · 获奖是荣誉，也常有奖励</h3>
       <p style="font-size:12.5px;color:var(--muted);line-height:1.7">以 2026 年"挑战杯"揭榜挂帅擂台赛为例：擂主团队税后<b>不低于 10 万元</b>，特等奖不低于2万元、一等奖不低于1万元、二等奖不低于0.5万元、三等奖不低于0.2万元。此外「互联网+」、数模、蓝桥杯等获奖也常带奖级奖金，许多校级竞赛还有评优评先加分。</p>
       <div class="callout callout-warn" style="margin-top:8px"><strong>申请铁律：</strong>先看本校通知（学工部/资助中心/教务处）再行动；材料通常要：成绩单、困难认定、个人事迹、获奖证书、导师/辅导员推荐、感谢信。提前把成绩单和证书扫描件存好（PDF 备份），申请季不慌。</div>
     </div>
@@ -6132,7 +6133,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <tr><td style="padding:7px;border:1px solid var(--border)">地铁/公交学生卡</td><td style="padding:7px;border:1px solid var(--border)">学校证明/学籍办理</td><td style="padding:7px;border:1px solid var(--border)">逐年年检</td></tr>
         </tbody>
       </table>
-      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠是用好你作为学生的正当权益，一次配齐常用平台认证，平时能省下一笔可观的生活费。这条和上面的奖助合起来，就是本台常说的：<b>该省省、该领领，把应得的权益用好，就是最扎实的理财起点</b>。</div>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠是用好你作为学生的正当权益，一次配齐常用平台认证，平时能省下一笔可观的生活费。这条和上面的奖助合起来，就是本台常说的：<b>该省的省、该用的用，把正当的学生权益用好</b>。</div>
     </div>
   </section>
 
@@ -8086,7 +8087,7 @@ var NAV_ALL=[{
 },{
   g:'阅读与休闲',items:[['creative','💡','灵感看板'],['shelf','📚','书海拾贝'],['podcast','🎧','耳畔星河'],['movie','🎬','幕间观澜'],['fun','😄','轻松一下']]
 },{
-  g:'理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','奖助福利']]
+  g:'理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','奖助与权益']]
 },{
   g:'效率与工具',items:[['ai','🤖','智造工坊'],['tools','🛠','高效方法'],['timer','🍅','心流计时']]
 },{
@@ -8989,28 +8990,25 @@ function exportGrowth(){
   var pomoH=pomoTotal*25/60;
   function tick(v){return v>0?(' ✓'):'';}
   var lines=[];
-  lines.push('┌──────────────────────────────┐');
-  lines.push('  平 · 万象 ｜ 我的成长报告');
-  lines.push('  生成时间：'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
-  lines.push('└──────────────────────────────┘');
+  lines.push('我的成长报告 · 平·万象');
+  lines.push('生成时间：'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
   lines.push('');
-  lines.push('📌 这一年里，我认真来过');
-  lines.push('· 完成任务        '+doneTasks+' 件  （共 '+tasks.length+' 件）'+tick(tasks.length));
-  lines.push('· 深度专注        '+pomoTotal+' 个番茄钟（≈'+pomoH.toFixed(1)+' 小时）'+tick(pomoTotal));
-  lines.push('· 坚持习惯        '+habits.length+' 个，最长连续 '+maxStreak+' 天，累计专注 '+habFocus+' 次');
-  lines.push('· 学习积累        单词 '+wordsN+'｜错题 '+wrongsN+' 条'+tick(wordsN+wrongsN));
-  lines.push('· 阅读成长        '+booksN+' 本书｜'+rN+' 条读书/随记'+tick(booksN+rN));
-  lines.push('· 目标兑现        '+goalChecks+' 次目标打卡'+tick(goalChecks));
+  lines.push('📌 这一路，我认真来过');
+  lines.push('· 完成任务：'+doneTasks+' 件（共登记 '+tasks.length+' 件）'+tick(tasks.length));
+  lines.push('· 深度专注：'+pomoTotal+' 个番茄钟（约 '+pomoH.toFixed(1)+' 小时）'+tick(pomoTotal));
+  lines.push('· 坚持习惯：'+habits.length+' 个，最长连续 '+maxStreak+' 天，累计专注 '+habFocus+' 次');
+  lines.push('· 学习积累：单词 '+wordsN+'｜错题 '+wrongsN+' 条'+tick(wordsN+wrongsN));
+  lines.push('· 阅读成长：'+booksN+' 本｜随记 '+rN+' 条'+tick(booksN+rN));
+  lines.push('· 目标兑现：'+goalChecks+' 次目标打卡'+tick(goalChecks));
   lines.push('');
   lines.push('🗓️ 打卡足迹');
-  lines.push('· 今天完成打卡     '+todayDone+' 项');
-  lines.push('· 累计有记录天数   '+recDays+' 天');
+  lines.push('· 今天完成打卡：'+todayDone+' 项');
+  lines.push('· 累计有记录天数：'+recDays+' 天');
   lines.push('');
-  lines.push('💡 我想对自己说： 把四年，过出掌控感。');
-  lines.push('    每一件小事都有迹可循——这份成长存档，');
-  lines.push('    正被我一点一滴写厚。');
+  lines.push('💡 我想对自己说：把四年，过出掌控感。');
+  lines.push('每一件小事都有迹可循，这份成长存档正被我一点一滴写厚。');
   lines.push('');
-  lines.push('—— 数据由「平·万象」自动汇总 · 仅存于你的设备');
+  lines.push('（由「平·万象」自动汇总 · 仅存于你的设备）');
   var text=lines.join('\n');
   /* 生成排版精美的 HTML 报告，在页面内直接预览（不下载文件 → 微信/移动端即开即看，无“暂无可用打开方式”） */
   var esc=function(s){return (s==null?0:s);};
@@ -11324,8 +11322,8 @@ function panoBoot(){
     /* 版本化 seen 标记：新版本上线后，老用户也能再看一次升级版导览，之后不再打扰 */
     if(!localStorage.getItem('pp_pano_v4_seen')){
       localStorage.setItem('pp_pano_v4_seen','1');
-      /* 等品牌启动屏淡出后再接出导览（约 2s 呈现 + 0.55s 淡出），首次开窗先见导览→再进产品 */
-      setTimeout(openPano,2600);
+      /* 等品牌启动屏淡出后再接出导览（首次开窗先见导览→再进产品）；导览需用户手动关闭才结束 */
+      setTimeout(openPano,4000);
     }
   }catch(e){}
 }
