@@ -433,6 +433,7 @@ strong{font-weight:600}
 #pdfPreview .pp-tip{font-size:12px;opacity:.82;margin-right:auto}
 #pdfPreview .pp-btns{display:flex;gap:8px}
 #pdfPreview .pp-btn{border:none;cursor:pointer;font-family:inherit;font-size:13.5px;padding:9px 18px;border-radius:999px;transition:.2s}
+#pdfPreview .pp-btn.copy{background:#fff;color:#0F6E56;font-weight:700;box-shadow:0 3px 10px rgba(0,0,0,.18)}
 #pdfPreview .pp-btn.print{background:#fff;color:#0C447C;font-weight:700;box-shadow:0 3px 10px rgba(0,0,0,.18)}
 #pdfPreview .pp-btn.print:hover{transform:translateY(-1px)}
 #pdfPreview .pp-btn.close{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.25)}
@@ -1058,17 +1059,6 @@ strong{font-weight:600}
         <div class="metric"><div class="label">今日任务</div><div class="value" id="todayTaskCount">0</div><div class="sub">件待办</div></div>
       </div>
 
-      <!-- 成长档案：一键生成可分享的成长报告 -->
-      <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#FCF7EF,#F5EFE3);border-color:#E3D3B6">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-          <div style="flex:1;min-width:220px">
-            <h3 style="margin:0;color:#8A6A2D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>我的成长报告</h3>
-            <p style="font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.7">把你这段时间的任务、番茄、习惯、学习、书本与目标汇总成一份看得见的成长档案，可导出成文、发给自己或好友。</p>
-          </div>
-          <button class="btn btn-primary btn-sm" style="padding:12px 22px;font-size:14px" onclick="exportGrowth()">📄 生成我的成长报告</button>
-        </div>
-      </div>
-
       <!-- 今日心语 · 每日一句（金句＋鼓励合成一卡，可换新、不重复、按日期自动轮换） -->
       <div class="card mind-card" style="margin-bottom:16px;background:linear-gradient(135deg,#F0F8F4,#EAF4EF);border-color:#B8DFC9">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
@@ -1202,6 +1192,17 @@ strong{font-weight:600}
           <button class="btn btn-primary btn-sm" onclick="addTimeBlock()">添加一个时段</button>
         </div>
         <div style="margin-top:8px;font-size:11px;color:var(--muted)">💡 一天抓住 2-3 段专注就够，不用把整张表排满才叫自律。</div>
+      </div>
+
+      <!-- 我的成长档案 · 一键预览成长报告（页面内直接看，不下载文件、不跳软件） -->
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#FCF7EF,#F5EFE3);border-color:#E3D3B6">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px">
+            <h3 style="margin:0;color:#8A6A2D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>我的成长档案 <span style="font-weight:400;font-size:11px;color:#B09870">把你的努力，攒成一份看得见的报告</span></h3>
+            <p style="font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.7">汇总你的任务、专注、习惯、学习、书本与目标——点一下就在<b>页面内直接查看</b>，无需下载、无需切换软件；也可复制全文或打印另存为 PDF。</p>
+          </div>
+          <button class="btn btn-primary btn-sm" style="padding:12px 22px;font-size:14px;background:#8A6A2D;border-color:#8A6A2D" onclick="exportGrowth()">📊 查看我的成长报告</button>
+        </div>
       </div>
       </section>
 
@@ -5108,11 +5109,10 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <h3>🗂️ 最近更新 · 从第一版到现在的成长</h3>
         <div style="font-size:12.5px;color:var(--muted);line-height:1.9">
           <div style="color:var(--primary);font-weight:800;margin-bottom:4px">🎉 本次大更新 · 2026-08</div>
-          <div style="margin-bottom:6px"><strong>🧭 期末冲刺倒计时</strong>：首页顶部一键建档近期考试、自动倒数，心里有数不焦虑。</div>
-          <div style="margin-bottom:6px"><strong>📄 一键成长报告</strong>：把一段时间的专注、运动、打卡、随笔整理成一份可分享的成长报告。</div>
-          <div style="margin-bottom:6px"><strong>↩️ 过去日期补卡</strong>：漏打卡的日子支持回填补记，成长记录不留空白。</div>
-          <div style="margin-bottom:6px"><strong>🍅 番茄钟·习惯联动</strong>：每完成一个专注番茄，自动累进对应习惯进度，坚持看得见。</div>
-          <div style="margin-bottom:6px"><strong>💾 备份升级为「全量快照」</strong>：随笔、心情、祝福、模板、清单、毕业准备、成就……换机恢复，一条不少。</div>
+          <div style="margin-bottom:6px"><strong>🛟 自动保存 + 每日自动备份</strong>：输入即存不用手动点；每自然日自动备份一次、保留最近 7 天，误清空也能一键找回。</div>
+          <div style="margin-bottom:6px"><strong>📊 成长报告页内直看</strong>：点一下就在页面内预览，不用下载、不用跳软件，还能复制全文 / 打印存 PDF。</div>
+          <div style="margin-bottom:6px"><strong>↩️ 返回不迷路</strong>：点链接或刷新后，自动回到你上次停留的板块和位置，不再跳回首页。</div>
+          <div style="margin-bottom:6px"><strong>🎯 奖助福利更清楚</strong>：「家庭经济困难认定」「绿色通道」写明哪些人适合、为什么申请、能得到什么、怎么申请与诚信红线——把资源给真正需要的人，全程正派。</div>
           <div style="color:var(--primary);font-weight:800;margin:14px 0 6px">📈 从第一版到现在，它是怎么一步步长成「成长中枢」的</div>
           <div style="margin-bottom:6px">· 先立起<strong>四六级 / 学业 / 时间 / 理财 / 健康</strong>的核心规划骨架，一个文件开箱即用。</div>
           <div style="margin-bottom:6px">· 板块一步步扩展到 <strong>25+ 个</strong>：生涯蓝图、学业精进、备考宝典、奖助福利、反诈「平安护航」、职业发展与简历模板……内容越做越系统、同类持续合并精简。</div>
@@ -5182,6 +5182,15 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <h3>导入恢复</h3>
           <p style="font-size:13px;color:var(--muted);margin-bottom:10px">从备份 JSON 恢复数据（会覆盖当前数据）</p>
           <label class="btn btn-primary" style="cursor:pointer">选择备份文件<input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display:none"></label>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F0FAF4,#E6F4EC);border-color:#BFDFCE">
+        <h3 style="color:var(--teal)">🛟 自动保存 + 自动备份（防丢失保险）</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.85">你的每次输入都会<b>自动保存到本机</b>，无需手动点保存；同时会<b>每自然日自动备份一次</b>（保留最近 7 天），即使误清空或出现异常也能一键找回来。</p>
+        <div id="autoBackupInfo" style="font-size:12.5px;color:var(--teal);font-weight:600;margin-bottom:10px">正在检查自动备份状态…</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="performAutoBackup(true)">🔁 立即备份一次</button>
+          <button class="btn" style="border-color:var(--teal);color:var(--teal);background:transparent" onclick="restoreAutoBackup()">♻️ 从最近自动备份恢复</button>
         </div>
       </div>
       <div class="card" style="margin-top:16px;background:#FFF5F0;border-color:#F5C6B0">
@@ -5930,9 +5939,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view view-new" id="view-perk">
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>奖助福利</h1>
-      <p>奖学金 · 助学金 · 助学贷款 · 竞赛奖金 · 学生优惠——钱在你的学生证里，别让到手的钱溜走</p>
+      <p>奖学金 · 助学金 · 助学贷款 · 竞赛奖金 · 学生优惠——先看清「标准与门槛」，再按规申请，应得尽得</p>
     </div>
-    <div class="callout callout-info"><strong>一句话：</strong>国家和商家给学生的"钱"，很多不主动发、不主动送——你不申请、不认证，就白白让给别人。下面按 <b>「该先办什么」的优先级</b> 排列：先保住学籍、再兜底生活费、再谈成绩兑现与日常省钱。</div>
+    <div class="callout callout-info"><strong>先说清楚：</strong>奖助学和帮扶，是国家和社会为<b>真正需要、真正努力</b>的学子准备的保障——适合的人不该因不了解而错过，也不该被不符合条件的人钻空子。所以下面先把「<b>标准、适合谁、凭什么、能得到什么</b>」讲明白，再教你怎么申请，全程正派、没有投机取巧。</div>
 
     <div class="card">
       <h3>🎯 优先级总览 · 照着这个顺序办不吃亏</h3>
@@ -5948,6 +5957,65 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </tbody>
       </table>
       <div class="callout callout-ok" style="margin-top:10px"><strong>通用口径提醒：</strong>以下金额为<strong>全国通用版</strong>；各省、各校的名额与细则，以<strong>本校学工部 / 资助管理中心</strong>当年通知为准（奖学金、助学金集中通知通常每年 9-10 月发布）。先看本校通知再行动，别因漏看错过截止。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px;border-left:4px solid var(--primary-mid)">
+      <h3>🎯 家庭经济困难认定 · 很多助学金、励志奖学金、绿色通道的共同前提</h3>
+      <div class="callout callout-info" style="margin-top:4px"><strong>一句话讲清：</strong>家庭经济困难认定是由国家 / 学校组织的家庭经济状况核查。<b>它不是"人人可申请"的普惠项目</b>，而只面向<b>家庭确实存在经济困难</b>的学生——通过认定后，才具备申报国家助学金、国家励志奖学金、学费减免、困难补助等一系列帮扶的资格。</div>
+      <h4 style="margin:12px 0 6px">① 什么人适合申请（认定对象）</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>本人及家庭确实存在经济困难：如父母务农 / 失业 / 重大疾病、家庭受灾、多子女同时就学、单亲或主要劳动力丧失等</li>
+        <li>本人自愿申请、如实申报家庭情况，愿意接受学校核查与评议</li>
+        <li>认定分<b>特别困难、困难、一般困难</b>等级，家庭经济好转后等级可动态调整</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">② 为什么申请（认定的价值）</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>是申报<b>国家助学金、国家励志奖学金、学费减免、困难补助</b>等多项帮扶的共同前提</li>
+        <li>让国家和学校按真实困难程度精准帮扶，把有限的资源给最需要的人</li>
+        <li>诚实申报、按需使用，把名额让给真正困难的同学，本身就是负责任的做法</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">③ 申请能得到什么</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>通过后按困难等级获得对应资格：一般困难 → 可申报国家助学金（平均约 3700 元/年）；特别困难 → 绿色通道、学费缓缴、困难补助等优先</li>
+        <li>认定结果通常<b>一学年有效</b>，次学年需重新申请、动态核查</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">④ 如何申请（流程）</h4>
+      <ol style="font-size:13px;line-height:1.9;margin-left:18px">
+        <li>留意学工部 / 资助管理中心通知，通常开学初（每年 9 月左右）集中开展</li>
+        <li>如实填报《家庭经济困难学生认定申请表》，准备必要佐证材料（家庭情况说明等）</li>
+        <li>经班级评议 → 学院审核 → 学校认定并公示（为保护隐私，公示一般做脱敏处理）</li>
+        <li>公示无异议后入库，正式成为可申报对象</li>
+      </ol>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>诚信红线：</strong>必须<b>如实申报</b>。弄虚作假骗取认定，一经查实将取消资格、追回已获资助，并记入诚信记录——非常不值得。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px;border-left:4px solid var(--primary-mid)">
+      <h3>🟢 绿色通道 · 不让家庭特困新生因暂时凑不齐学费而进不了校门</h3>
+      <div class="callout callout-info" style="margin-top:4px"><strong>一句话讲清：</strong>绿色通道是面向<b>家庭经济特别困难、入学时确实无法一次性缴清学费 / 住宿费</b>的新生的一项保障，让你<b>先入学报到、安顿好，之后再办理助学贷款或缓缴学费</b>。它不是"免学费"，也不是人人可用，有明确的适用对象和后续义务。</div>
+      <h4 style="margin:12px 0 6px">① 什么人适合（适用对象）</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>家庭经济特别困难、入学时确实无法一次缴清学宿费的新生（含已通过家庭经济困难认定者）</li>
+        <li>孤儿、低保、脱贫家庭、残疾学生、家庭突发重大变故等情形优先</li>
+        <li>由新生报到及需补办情况统一经学校学生资助管理中心受理</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">② 为什么申请</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>确保你<b>不会因为缴费问题被拒之门外</b>，先保住学籍、顺利开始大学生活</li>
+        <li>为后续办理助学贷款 / 学费缓缴 / 助学金争取从容时间，而非被迫放弃上学</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">③ 申请能得到什么</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>报到当天"先注册、后缴费"，办理学费缓缴，或现场衔接国家助学贷款（在校期间利息国家承担）</li>
+        <li>同步对接助学金 / 困难补助等，确保基本生活有保障</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">④ 如何申请（流程）</h4>
+      <ol style="font-size:13px;line-height:1.9;margin-left:18px">
+        <li>报到当天到各校"绿色通道"办理点 / 学生资助管理中心说明情况</li>
+        <li>出示家庭经济困难相关材料（认定表、佐证等），填写申请单</li>
+        <li>学校审核后办理缓缴或现场衔接助学贷款，先入校报到</li>
+        <li>入学后按通知补办后续事项（贷款发放 / 分期缴纳等）</li>
+      </ol>
+      <div class="callout callout-info" style="margin-top:8px"><strong>一定要还的：</strong>绿色通道是"缓"不是"免"，学费最终通过助学贷款或分期方式缴清。请按学校约定按时办理，以免影响学籍与征信。</div>
     </div>
 
     <div class="card" style="margin-top:16px">
@@ -6064,7 +6132,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <tr><td style="padding:7px;border:1px solid var(--border)">地铁/公交学生卡</td><td style="padding:7px;border:1px solid var(--border)">学校证明/学籍办理</td><td style="padding:7px;border:1px solid var(--border)">逐年年检</td></tr>
         </tbody>
       </table>
-      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠本质是把你"学生身份"变现，一次配齐常用平台认证，平时能省下可观生活费。这条和上面的奖助合起来，就是本台常说的：<b>会省钱、会领钱，才是最稳的理财起点</b>。</div>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠是用好你作为学生的正当权益，一次配齐常用平台认证，平时能省下一笔可观的生活费。这条和上面的奖助合起来，就是本台常说的：<b>该省省、该领领，把应得的权益用好，就是最扎实的理财起点</b>。</div>
     </div>
   </section>
 
@@ -7718,7 +7786,7 @@ function exportCurrentPDF(){
   var ov=document.getElementById('pdfPreview');
   if(!ov){
     ov=document.createElement('div');ov.id='pdfPreview';
-    ov.innerHTML='<div class="pp-bar"><strong>🗎 '+name+' · 报告预览</strong><span class="pp-tip">直接查看报告内容，点「打印 / 另存为 PDF」可导出</span><div class="pp-btns"><button class="pp-btn print" onclick="printPreview()">🖨 打印 / 另存为 PDF</button><button class="pp-btn close" onclick="closePreview()">✕ 关闭</button></div></div><iframe id="ppFrame" title="报告预览"></iframe>';
+    ov.innerHTML='<div class="pp-bar"><strong>🗎 '+name+' · 报告预览</strong><span class="pp-tip">预览即所见 · 可直接查看，也可「复制全文 / 打印另存为 PDF」</span><div class="pp-btns"><button class="pp-btn copy" id="ppCopyBtn" onclick="copyPreviewText()" style="display:none">📋 复制全文</button><button class="pp-btn print" onclick="printPreview()">🖨 打印 / 另存为 PDF</button><button class="pp-btn close" onclick="closePreview()">✕ 关闭</button></div></div><iframe id="ppFrame" title="报告预览"></iframe>';
     document.body.appendChild(ov);
   }
   /* 更新标题栏里的报告名 */
@@ -7743,6 +7811,41 @@ function printPreview(){
 function closePreview(){
   var ov=document.getElementById('pdfPreview');
   if(ov){ov.style.display='none';var fr=document.getElementById('ppFrame');if(fr)fr.srcdoc='';}
+  var cb=document.getElementById('ppCopyBtn');if(cb)cb.style.display='none';
+  window._ppCopyText=null;
+}
+/* 复制报告全文（微信等内嵌浏览器也能用） */
+function copyPreviewText(){
+  var t=window._ppCopyText;if(!t)return;
+  function fallback(){
+    try{
+      var ta=document.createElement('textarea');ta.value=t;
+      ta.style.position='fixed';ta.style.opacity='0';ta.style.top='-100px';
+      document.body.appendChild(ta);ta.focus();ta.select();
+      var ok=document.execCommand('copy');document.body.removeChild(ta);
+      flash(ok?'已复制全文，可粘贴到微信 / 备忘录':'复制未成功，可长按预览内容手动复制');
+    }catch(e){flash('复制未成功，可长按预览内容手动复制');}
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(function(){flash('已复制全文，可粘贴到微信 / 备忘录');}).catch(fallback);
+  }else{fallback();}
+}
+/* 在页面内直接展示报告预览（不下载文件 → 微信/移动端浏览器也能即开即看） */
+function showPdfReport(name, html, copyText){
+  var ov=document.getElementById('pdfPreview');
+  if(!ov){
+    ov=document.createElement('div');ov.id='pdfPreview';
+    ov.innerHTML='<div class="pp-bar"><strong>🗎 '+name+' · 报告预览</strong><span class="pp-tip">预览即所见 · 可直接查看，也可「复制全文 / 打印另存为 PDF」</span><div class="pp-btns"><button class="pp-btn copy" id="ppCopyBtn" onclick="copyPreviewText()" style="display:none">📋 复制全文</button><button class="pp-btn print" onclick="printPreview()">🖨 打印 / 另存为 PDF</button><button class="pp-btn close" onclick="closePreview()">✕ 关闭</button></div></div><iframe id="ppFrame" title="报告预览"></iframe>';
+    document.body.appendChild(ov);
+  }
+  var ovStrong=ov.querySelector('.pp-bar>strong');if(ovStrong)ovStrong.textContent='🗎 '+name+' · 报告预览';
+  ov.style.display='flex';
+  window._ppCopyText=copyText||null;
+  var cb=document.getElementById('ppCopyBtn');if(cb)cb.style.display=(copyText?'inline-block':'none');
+  var fr=document.getElementById('ppFrame');
+  fr.srcdoc=html;
+  fr.onload=function(){try{fr.contentDocument.body.classList.add('pp-rendered');}catch(e){}};
+  flash('已生成预览，点开即可直接查看「'+name+'」');
 }
 /* —— 侧边栏板块搜索过滤 —— */
 function filterNav(q){
@@ -8080,8 +8183,7 @@ function init(){
   /* 恢复上次所在板块：点外链/刷新/返回后不再跳回主界面 */
   try{
     var _lv=localStorage.getItem('pp_last_view');
-    var _valid=['home','journal','quadrant','plans','timer','creative','study','goals','paper','career','growth','tools','shelf','podcast','movie','fun','health','mind','campus','party','finance','save','earn','shop','life','ai','college','tpl','about','settings','exam','contest','habits','stats'];
-    if(_lv&&_valid.indexOf(_lv)>=0&&document.getElementById('view-'+_lv)){
+    if(_lv&&document.getElementById('view-'+_lv)){
       switchView(_lv);
       var _sc=parseInt(localStorage.getItem('pp_last_scroll')||'0',10);
       if(_sc>0){setTimeout(function(){window.scrollTo(0,_sc);},80);}
@@ -8910,20 +9012,62 @@ function exportGrowth(){
   lines.push('');
   lines.push('—— 数据由「平·万象」自动汇总 · 仅存于你的设备');
   var text=lines.join('\n');
-  /* 下载为 .txt */
-  try{
-    var blob=new Blob(['　'+text],{type:'text/plain;charset=utf-8'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');a.href=url;a.download='我的成长报告-'+today+'.txt';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(function(){URL.revokeObjectURL(url)},800);
-  }catch(e){}
-  /* 尝试写入剪贴板便于直接分享 */
-  var copied=false;
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(function(){copied=true;flash('成长报告已下载，并已复制到剪贴板，可粘贴分享');})
-      .catch(function(){flash('成长报告已下载为文本');});
-  }else{flash('成长报告已下载为文本');}
+  /* 生成排版精美的 HTML 报告，在页面内直接预览（不下载文件 → 微信/移动端即开即看，无“暂无可用打开方式”） */
+  var esc=function(s){return (s==null?0:s);};
+  function pct(a,b){return b>0?Math.round(a/b*100)+'%':'—';}
+  function rrow(label,val,ok){return '<div class="mrow"><span class="ml">'+label+'</span><span class="mv">'+val+'</span></div>';}
+  /* 近 7 天打卡完成率 */
+  var wkDone=0,wkTot=0;
+  for(var wi=-6;wi<=0;wi++){
+    var wd=new Date();wd.setDate(wd.getDate()+wi);
+    var dk=checkins[todayKey(wd)]||{};var keys=Object.keys(dk);
+    wkTot+=keys.length;keys.forEach(function(x){if(dk[x])wkDone++;});
+  }
+  var html=
+  '<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+
+  '<title>我的成长报告</title>'+
+  '<style>'+
+  'body{margin:0;background:#F5F2EA;font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;color:#243142;line-height:1.7}'+
+  '.page{max-width:720px;margin:0 auto;padding:34px 24px 60px}'+
+  '.head{border:1px solid #E3D3B6;border-radius:18px;background:linear-gradient(140deg,#FCF7EF,#F5EFE3);padding:26px 24px;text-align:center}'+
+  '.head .brand{font-size:13px;letter-spacing:2px;color:#8A6A2D;font-weight:600}'+
+  '.head h1{margin:8px 0 4px;font-size:26px;color:#5C4A1E}'+
+  '.head .date{font-size:13px;color:#A08B5F}'+
+  '.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}'+
+  '.kcard{background:#fff;border:1px solid #E7E0D2;border-radius:14px;padding:16px 12px;text-align:center}'+
+  '.kcard b{display:block;font-size:24px;color:#10856B;font-weight:800}.kcard span{font-size:12px;color:#8A8A80}'+
+  '.sec{background:#fff;border:1px solid #E9E2D4;border-radius:14px;padding:18px 20px;margin-top:16px}'+
+  '.sec h2{font-size:15px;color:#5C4A1E;margin:0 0 8px;border-bottom:1px dashed #E9E2D4;padding-bottom:8px}'+
+  '.mrow{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #F2EEE5;font-size:14px}'+
+  '.mrow:last-child{border-bottom:0}.ml{color:#5A6A66}.mv{font-weight:700;color:#243142}'+
+  '.sign{margin-top:22px;text-align:center;font-size:14px;color:#6A7A76;border-top:1px dashed #E0D9C8;padding-top:18px}'+
+  '.foot{text-align:center;font-size:11px;color:#B0A890;margin-top:26px}'+
+  '.ok{color:#10856B;font-weight:700}'+
+  '</style></head><body><div class="page">'+
+    '<div class="head"><div class="brand">平 · 万象 EQVA MUNDI</div><h1>🌱 我的成长报告</h1>'+
+    '<div class="date">'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' · 由你亲手写出的成长</div></div>'+
+    '<div class="kpi">'+
+      '<div class="kcard"><b>'+esc(doneTasks)+'</b><span>完成任务（件）</span></div>'+
+      '<div class="kcard"><b>'+esc(pomoTotal)+'</b><span>深度专注（番茄）</span></div>'+
+      '<div class="kcard"><b>'+esc(recDays)+'</b><span>有记录天数</span></div>'+
+    '</div>'+
+    '<div class="sec"><h2>📌 这一路，我认真来过</h2>'+
+      rrow('完成 / 共登记任务', doneTasks+' / '+tasks.length+' 件', tasks.length)+
+      rrow('深度专注时长', '约 '+pomoH.toFixed(1)+' 小时（'+pomoTotal+' 个番茄）', pomoTotal)+
+      rrow('坚持习惯', habits.length+' 个 · 最长连续 '+maxStreak+' 天', maxStreak)+
+      rrow('习惯累计专注', habFocus+' 次', habFocus)+
+      rrow('学习积累', '单词 '+wordsN+' ｜ 错题 '+wrongsN+' 条', wordsN+wrongsN)+
+      rrow('阅读成长', booksN+' 本 ｜ 随记 '+rN+' 条', booksN+rN)+
+      rrow('目标兑现', goalChecks+' 次目标打卡', goalChecks)+
+    '</div>'+
+    '<div class="sec"><h2>🗓️ 打卡足迹</h2>'+
+      rrow('今天完成打卡', todayDone+' 项', todayDone)+
+      rrow('近 7 天完成率', (wkTot>0?Math.round(wkDone/(wkTot||1)*100):100)+'%（'+wkDone+'/'+wkTot+'）', wkDone)+
+    '</div>'+
+    '<div class="sign">每一件小事都有迹可循。<br><b>把四年，过出掌控感。</b></div>'+
+    '<div class="foot">数据由「平·万象」自动汇总 · 仅存于你的设备</div>'+
+  '</div></body></html>';
+  showPdfReport('我的成长报告', html, text);
 }
 
 /* ═══════════ 每日四象限 ═══════════ */
@@ -10577,6 +10721,80 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       }
     });
   });
+})();
+
+/* ═══════ 定期自动备份 + 一键恢复（防丢失保险） ═══════ */
+(function(){
+  var DAY=function(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
+  /* 快照：把非「界面偏好」的用户数据整体备份 */
+  function snapshotAllData(){
+    var out={};
+    try{
+      var keep=[];
+      try{keep=(window._UI_PRESERVED&&window._UI_PRESERVED())||[];}catch(ke){}
+      for(var i=0;i<localStorage.length;i++){
+        var k=localStorage.key(i);
+        if(keep.indexOf(k)>=0)continue;
+        if(k.indexOf('pp_autobackup')===0)continue;
+        out[k]=localStorage.getItem(k);
+      }
+    }catch(e){}
+    return out;
+  }
+  function label(t){
+    try{return new Date(t).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});}catch(e){return String(t||'');}
+  }
+  function updateInfo(t){
+    var el=document.getElementById('autoBackupInfo');
+    if(el&&t){el.textContent='✓ 最近自动备份：'+label(t)+'　·　保留最近 7 天，可随时一键恢复（本机存储，仅存你设备）';}
+  }
+  /* 执行一次自动备份 */
+  window.performAutoBackup=function(force){
+    if(force===undefined)force=false;
+    var payload=snapshotAllData(),now=new Date();
+    try{localStorage.setItem('pp_autobackup',JSON.stringify({t:now.toISOString(),d:payload}));}catch(e){}
+    try{
+      var hist=[],h=localStorage.getItem('pp_autobackup_history');
+      if(h){try{hist=JSON.parse(h)||[];}catch(e){hist=[];}}
+      hist.push({t:now.toISOString(),d:payload});
+      while(hist.length>7)hist.shift();
+      try{localStorage.setItem('pp_autobackup_history',JSON.stringify(hist));}
+      catch(quotaErr){ /* 空间不足：逐条丢掉最旧的，直到能写入 */
+        while(hist.length>0){hist.shift();try{localStorage.setItem('pp_autobackup_history',JSON.stringify(hist));break;}catch(x){continue;}}
+      }
+    }catch(e){}
+    try{localStorage.setItem('pp_autobackup_last',now.toISOString());}catch(e){}
+    updateInfo(now.toISOString());
+    return true;
+  };
+  /* 从最近自动备份恢复 */
+  window.restoreAutoBackup=function(){
+    var raw=null;try{raw=localStorage.getItem('pp_autobackup');}catch(e){}
+    if(!raw){window.uiAlert&&uiAlert('⚠️ 还没有可用自动备份\n\n只有产生过自动备份后才能恢复。可先点「立即备份一次」创建一个，或用「导出全部数据」手动备份。');return;}
+    var bk=null;try{bk=JSON.parse(raw);}catch(e){}
+    if(!bk||!bk.d||typeof bk.d!=='object'){window.uiAlert&&uiAlert('⚠️ 自动备份文件异常，无法恢复。\n建议改用「导出/导入」的 JSON 完整备份。');return;}
+    function restoreAllData(map){
+      var keep=[];
+      try{keep=(window._UI_PRESERVED&&window._UI_PRESERVED())||[];}catch(ke){}
+      try{
+        var del=[];
+        for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(keep.indexOf(k)>=0)continue;if(k.indexOf('pp_autobackup')===0)continue;del.push(k);}
+        for(var j=0;j<del.length;j++)localStorage.removeItem(del[j]);
+        for(var m in map){if(keep.indexOf(m)<0&&m.indexOf('pp_autobackup')!==0)localStorage.setItem(m,map[m]);}
+      }catch(e){}
+    }
+    if(window.uiConfirm){uiConfirm('确定用『最近自动备份（'+label(bk.t)+'）』覆盖当前数据吗？\n仅恢复你的填写内容与记录，不影响产品框架。',function(){restoreAllData(bk.d);try{location.reload();}catch(e){}});}
+  };
+  /* 启动：同一天已备份则仅更新提示，否则立即自动备份一次 */
+  try{
+    var last=localStorage.getItem('pp_autobackup_last');
+    if(last&&new Date(last).getFullYear()+'-'+String(new Date(last).getMonth()+1).padStart(2,'0')+'-'+String(new Date(last).getDate()).padStart(2,'0')===DAY()){
+      var cur=null;try{var rr=localStorage.getItem('pp_autobackup');if(rr)cur=JSON.parse(rr);}catch(e){}
+      updateInfo(cur&&cur.t?cur.t:last);
+    }else{
+      performAutoBackup(false);
+    }
+  }catch(e){}
 })();
 
 </script>
