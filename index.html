@@ -22,13 +22,14 @@
   <link rel="apple-touch-startup-image" media="screen and (device-width:414px) and (device-height:736px)" href="pwa/splash-4.7.png">
   <link rel="apple-touch-startup-image" media="screen and (device-width:375px) and (device-height:667px)" href="pwa/splash-4.7.png">
   <script>
-    /* 注册 Service Worker：支持安装到桌面 App、离线可用；
-       部署新版后自动接管并刷新一次，用户再次打开链接即看到最新内容 */
+    /* 注册 Service Worker：支持安装到桌面 App；首次联网打开后，在支持
+       Service Worker 的浏览器里可离线打开（见 sw.js 顶部如实说明）。
+       部署新版后自动接管并刷新一次，用户再次打开链接即看到最新内容。 */
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260826a').then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260826', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -2282,24 +2283,23 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p>执行力 · 作息矫正 · 技能成长，平心笃行</p>
       </div>
       <div class="callout callout-warn">
-        <strong>给所有"想太多做得少"的人（写给所有"想太多做得少"的人）：</strong>很多人"查而不做、计划成瘾"的根源是<strong>用"准备"缓解焦虑</strong>。AI一查就有答案，让大脑误以为"查到了=做到了"。底层逻辑：大脑分不清"想象中的进步"和"真实的进步"，每次查资料都给你一滴多巴胺。解法：把"查"和"做"绑定——查一个，立刻做一个5分钟的小动作。
+        <strong>写给所有"想太多做得少"的人：</strong>"查而不做、计划成瘾"的根源，常常是<strong>拿"准备"缓解焦虑</strong>。AI一查就有答案，容易让大脑误以为"查到了=做到了"。解法不是"更努力地查"，而是把"查"和"做"绑在一起——每查到一个方法，就立刻配一个5分钟的小动作，让输入变成输出。
       </div>
       <div class="grid grid-3">
         <div class="card">
           <h3>执行力提升训练</h3>
           <h4>成长环境回顾</h4>
           <ul>
-            <li>身边人状态会影响你→主动选择"学习的场"，去图书馆/自习室</li>
-            <li>解法：物理隔离，去图书馆/自习室，别在客厅学习</li>
-            <li>高中阶段你能坚持高强度学习到深夜，证明你具备自律能力，只是大学环境变了，需要重建系统</li>
+            <li>能坚持到底，靠的常常不是意志力，而是环境。把"学习场"和"休息场"物理分开：白天去图书馆/自习室，回宿舍只休息，切换环境就是切换状态。</li>
+            <li>高中时你能整段自律，不是大学"毁了你"，只是环境变了、没人监督——重建一套自己的系统即可，能力并没有消失。</li>
           </ul>
-          <h4>2分钟启动法</h4>
-          <p>不想学时，告诉自己"只做2分钟"。大脑的抗拒在"开始"那一刻最强，2分钟后惯性会推你继续。</p>
-          <h4>每日任务清单（写在首页）</h4>
-          <p>每天早上写3件最重要的事，完成一件划一件。不超过5件，多了=没重点。</p>
+          <h4>最小可执行动作</h4>
+          <p>大任务先写下"最终交付物"，再倒推拆成能在25分钟内完成的小步（如何拆，见「高效方法」）。拆得越小，启动越容易。</p>
+          <h4>让进展看得见</h4>
+          <p>每完成一步，就在本子上打一个勾或记一笔。大脑需要看见"我做到了"，而不是反复盯着"还没做完"。</p>
         </div>
         <div class="card">
-          <h3>作息矫正（212小时）</h3>
+          <h3>作息矫正（21天）</h3>
           <p>晚睡晚起看似顽固，其实矫正原理很简单：生物钟靠<strong>起床时间</strong>固定，不是靠早睡。</p>
           <table>
             <thead><tr><th>阶段</th><th>起床时间</th><th>关键动作</th></tr></thead>
@@ -2309,32 +2309,84 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <tr><td>第15-21天</td><td>7:00</td><td>睡前1小时不碰手机，改看纸质书</td></tr>
             </tbody>
           </table>
-          <div class="callout callout-ok">环境是习惯的隐形推手：把"学习场"和"休息场"物理分开——去图书馆/自习室学习，回宿舍只休息，切换环境就是切换状态。</div>
+          <div class="callout callout-ok">环境是习惯的隐形推手：把"学习场"和"休息场"分开，去图书馆/自习室学习，回宿舍只休息。</div>
+        </div>
+        <div class="card">
+          <h3>管控分心 · 专注力不是天赋</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>手机放远：</strong>学习时把手机放另一个房间或开专注模式（配合「专注」板块番茄钟）——看不见，才用不着强撑</li>
+            <li><strong>关通知：</strong>关闭非必要App的通知，只在固定时间集中看消息</li>
+            <li><strong>挑环境：</strong>人越静越容易深入，优先选自习室/图书馆</li>
+            <li><strong>记杂念：</strong>专注时脑中浮现的杂事，先写进「灵感」板块的灵感本，做完手头任务再处理——中断是专注的第一大敌</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>意志力是有限资源 · 靠系统不靠硬扛</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>别滥用意志力：</strong>整天做小选择（穿什么、吃什么、刷不刷）会不断消耗你，把容易的事固定成习惯，把意志力留给重要决定</li>
+            <li><strong>环境设计优先：</strong>想少刷手机就别让它在手边，想多喝水就把杯子放桌上——改变环境往往比改变自己更省力</li>
+            <li><strong>让难事变近、懒事变远：</strong>把书摊开放在眼前、把游戏放进更难打开的文件夹，用距离调节行为</li>
+            <li><strong>绑定"查"与"做"：</strong>每查完一个方法，立刻配一个5分钟的小动作，让输入迅速变成输出</li>
+          </ul>
+          <div class="callout callout-ok" style="margin-top:8px">记住：坚持不下去不是人品问题，是系统没搭好。搭好系统的人，看起来都比别人"自律"。</div>
+        </div>
+        <div class="card">
+          <h3>状态管理 · 没劲的时候温柔推进</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>先迈一小步：</strong>状态往往不是等来的，是先做出来的——告诉自己"只做5分钟"，做起来就续上了</li>
+            <li><strong>生理先行：</strong>困了/闷了先起身走走、喝水、晒会儿太阳，身体先动，头脑才会跟上</li>
+            <li><strong>分清"累"与"懒"：</strong>真累了就去休息、好好睡一觉；频繁把"懒"当成"累"，既没真休息也没推进</li>
+            <li><strong>允许低产日：</strong>状态平平也正常，只要这天保留了"最小进度"（比如背10个词、翻两页书），就不算白过</li>
+          </ul>
         </div>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3>🛠 大学四年 · 越早会越赚的技能清单</h3>
+        <h3>把坚持变成复利 · 微习惯</h3>
+        <p>很多人把坚持想成"每天猛干三小时"，其实更可持续的做法恰恰相反：</p>
         <div class="grid grid-2">
           <div>
-            <h4>硬技能（能换钱）</h4>
+            <h4>把习惯缩到"小到不可能失败"</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>目标从"读30页书"降到"读1页"，从"跑5公里"降到"穿上鞋出门"</li>
+              <li>小到几乎不会放弃，你才能真正做到"几乎每天都做"</li>
+              <li>一旦启动，惯性往往会让你多做一点——但今天没多做也没关系</li>
+            </ul>
+          </div>
+          <div>
+            <h4>让记录与锚点帮衬</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><strong>记录可见：</strong>用「习惯打卡」每天打个勾，连续记录本身就是最好的动力</li>
+              <li><strong>挂靠锚点：</strong>把新习惯放在已有习惯之后，如"每晚洗漱后翻一页书"</li>
+              <li>长期做到"每天都做一点"，和"偶尔猛一下"拉开的差距，远比想象中大</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🛠 大学四年 · 越早越受益的技能清单</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>硬技能（能直接兑换）</h4>
             <ul style="font-size:13px;color:var(--muted);line-height:1.9">
               <li><b>Office三件套</b>：PPT排版、Excel函数(VLOOKUP/透视表)、Word长文档排版——简历加分项</li>
-              <li><b>信息检索</b>：用学术搜索引擎、知网、Google Scholar找资料，别只会百度</li>
-              <li><b>一门可接单技能</b>：剪辑/设计/外语/编程/文案，任意一个都能兼职变现</li>
-              <li><b>数据素养</b>：看懂图表、用Excel做基础分析，职场通用</li>
+              <li><b>信息检索</b>：善用学术搜索引擎、知网、Google Scholar找资料，别只会百度</li>
+              <li><b>一门可接单技能</b>：剪辑/设计/外语/编程/文案，任一都能暑期或课余兼职</li>
+              <li><b>数据素养</b>：看懂图表、用Excel做基础分析，各行业通用</li>
             </ul>
           </div>
           <div>
             <h4>软技能（走得远）</h4>
             <ul style="font-size:13px;color:var(--muted);line-height:1.9">
-              <li><b>公众表达</b>：班会/小组汇报敢开口，练3次就不怕了</li>
-              <li><b>时间管理</b>：日历+待办+番茄钟，大学就开始用</li>
-              <li><b>财商</b>：记账、储蓄、识别骗局（见本台「财商」板块）</li>
-              <li><b>自我驱动</b>：没人催你时也能往前走，这是拉开差距的关键</li>
+              <li><b>公众表达</b>：班会/小组汇报敢开口，练几次就不怕了</li>
+              <li><b>时间管理</b>：日历+待办+番茄钟，大学就开始沉淀</li>
+              <li><b>财商</b>：记账、储蓄、识别骗局（见「理财管理」板块）</li>
+              <li><b>自我驱动</b>：没人催你时也能往前走，这是拉开差距的长期优势</li>
             </ul>
           </div>
         </div>
-        <div class="callout callout-ok" style="margin-top:8px">建议：每学期刻意练 1 项硬技能 + 1 项软技能，毕业时你就比同龄人多了 8 张底牌。本台「技能变现」「时间管理」板块可配合练。</div>
+        <div class="callout callout-ok" style="margin-top:8px">建议：每学期刻意练 1 项硬技能 和 1 项软技能，四年下来会积累出差异化的优势。本台「高效方法」「习惯打卡」「专注」板块可配合着用。</div>
       </div>
     </section>
 
@@ -10875,7 +10927,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       '<div style="margin-top:7px;font-size:24px;font-weight:800;letter-spacing:4px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25)">平 · 万象</div>'+
       '<div style="margin:10px auto 6px;font-size:14px;color:#fff;line-height:1.85;max-width:520px">你见过很多工具。<br>但这一页，专为「这四年只此一遇」而造。</div>'+
       '<div style="margin:6px auto 16px;max-width:560px;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:12.5px;color:rgba(255,255,255,.94);line-height:1.7">'+
-        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#BFF0DA">一页收纳，四年不乱</b>——37+ 板块，从入学倒计时到毕业去向，全在这里。</span></div>'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#BFF0DA">一页收纳，四年不乱</b>——33 个板块，从入学倒计时到毕业去向，全在这里。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🔒</span><span><b style="color:#BFF0DA">只存你手，退出即散</b>——无账号、无云端、无后台，关掉页面，谁都不知道你的心事。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">♻️</span><span><b style="color:#BFF0DA">年份在走，信息不陈旧</b>——考试、政策、活动逐年自新，永远跟你学校的年历一起走。</span></div>'+
       '</div>'+
@@ -10909,13 +10961,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     var box=document.createElement('div');box.id='qsBox';
     box.style.cssText='position:relative;margin:10px 16px 2px;padding:13px 15px;border-radius:13px;background:linear-gradient(135deg,#EAF6F2,#FFFFFF);border:1px solid var(--border-strong);font-size:13px;line-height:1.7;color:var(--ink)';
     box.innerHTML=
-      '<div style="font-weight:700;font-size:14.5px">👋 刚进来不知道从哪开始？<span style="font-weight:400;opacity:.8;font-size:12.5px">先做这 3 件小事，立刻感受它的价值</span></div>'+
+      '<div style="font-weight:700;font-size:14.5px">👋 刚进来，别急着逛完<span style="font-weight:400;opacity:.8;font-size:12.5px">——今天只慢慢做成这三件事</span></div>'+
       '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:9px">'+
-        '<button onclick="window.qsGo(\'creative\')" style="padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">💡 记第一条灵感</button>'+
-        '<button onclick="window.qsGo(\'journal\')" style="padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">📝 写下今日复盘</button>'+
-        '<button onclick="window.qsGo(\'timer\')" style="padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">⏱️ 开始一轮专注</button>'+
+        '<button onclick="window.qsGo(\'journal\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">1 · 📝 写下今日复盘</button>'+
+        '<button onclick="window.qsGo(\'timer\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">2 · ⏱️ 专注25分钟</button>'+
+        '<button onclick="window.qsGo(\'creative\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12.5px;cursor:pointer">3 · 💡 记一条灵感</button>'+
       '</div>'+
-      '<div style="margin-top:9px;opacity:.8;font-size:11.5px">点错没关系，所有内容都能改、都能撤，数据只存在你自己的设备里。先做起来，再慢慢逛。</div>'+
+      '<div style="margin-top:9px;opacity:.8;font-size:11.5px">这 3 步够你过好第一天。剩下的 30 多个板块<span style="font-weight:600">不用一次看完</span>——哪天想用了，再从侧边栏按需点开即可，不看也不影响。所有内容都能改、都能撤，数据只存在你自己的设备里。</div>'+
       '<span style="position:absolute;top:9px;right:13px;cursor:pointer;font-size:11px;opacity:.6;background:none;border:0" onclick="window.qsGo(\'\')">跳过 ✕</span>';
     main.insertBefore(box, main.firstChild);
   }
@@ -11394,7 +11446,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <div class="pano-ft"><span class="fi">⚡</span><b>双击即用 · 零安装零门槛</b><p>一个网页即是全部，点开就能用，不用下载、不用配置。</p></div>
         <div class="pano-ft"><span class="fi">🔒</span><b>数据留在本机 · 不收集隐私</b><p>不注册、不联网上传，一切只存在你自己的浏览器里。</p></div>
         <div class="pano-ft"><span class="fi">📱</span><b>手机电脑 · 处处顺手打开</b><p>跨端同页，还能「加到桌面」当 App 全屏使用。</p></div>
-        <div class="pano-ft"><span class="fi">🛡️</span><b>离线能用 · 断网也不丢</b><p>本地即存即用，随时导出备份、自由迁移永不失联。</p></div>
+        <div class="pano-ft"><span class="fi">🛡️</span><b>离线可用 · 首次联网打开后</b><p>在支持此功能的浏览器（Chrome/Edge/Safari 等）里，联网打开过一次后，断网也能继续查看已载入的内容与数据。</p></div>
       </div>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
@@ -11539,7 +11591,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <p class="ct-lead">它不是"又一个工具"——它把<b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b>，收拢进一个只属你的成长中枢。今天记下的一件小事，四年后都有迹可循。</p>
       <div class="ct-vows">
         <div><span class="vt"></span><span>无账号 · 无云端 · 无后台 —— 它不制造记录之外的任何痕迹</span></div>
-        <div><span class="vt"></span><span>断网可用 · 即开即用 —— 它不设门槛，随时就位</span></div>
+        <div><span class="vt"></span><span>离线打开有条件 —— 联网打开过一次后，支持离线查看已用内容</span></div>
         <div><span class="vt"></span><span>永久免费 · 数据只在本机 —— 它只安静陪满这四年</span></div>
       </div>
       <div class="ct-sign"><span class="ln"></span>从写下第一件小事开始，它陪你把大学四年，过成想要的样子<span class="ln"></span></div>
