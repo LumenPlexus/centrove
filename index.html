@@ -5978,8 +5978,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <tr><td><strong>9-11月</strong></td><td>"挑战杯"课外学术科技作品竞赛</td><td>国家级</td><td>学术论文+答辩</td><td>保研顶级加分</td><td><a href="https://www.tiaozhanbei.net/" target="_blank" rel="noopener noreferrer">tiaozhanbei.net ↗</a></td></tr>
           <tr><td><strong>10-12月</strong></td><td>ACM-ICPC国际大学生程序设计竞赛</td><td>国际级</td><td>5小时编程解题</td><td>计算机保研顶级</td><td><a href="https://icpc.global/" target="_blank" rel="noopener noreferrer">icpc.global ↗</a></td></tr>
           <tr><td><strong>11-12月</strong></td><td>全国大学生化学实验竞赛</td><td>国家级</td><td>实验操作+理论</td><td>化学/材料类加分</td><td><a href="https://www.chemsoc.org.cn/" target="_blank" rel="noopener noreferrer">chemsoc.org.cn ↗</a></td></tr>
-          <tr><td><strong>全年</strong></td><td>大学生创新创业训练计划（大创）</td><td>国家级</td><td>申报立项→研究→结题</td><td>保研必拿项</td><td><a href="http://gjcxcy.bjtu.edu.cn/" target="_blank" rel="noopener noreferrer">gjcxcy.bjtu.edu.cn ↗</a></td></tr>
-          <tr><td><strong>全年</strong></td><td>"西门子杯"中国智能制造挑战赛</td><td>国家级</td><td>工程仿真+控制</td><td>工科保研加分</td><td><a href="http://www.cmes.org.cn/" target="_blank" rel="noopener noreferrer">cmes.org.cn ↗</a></td></tr>
+          <tr><td><strong>全年</strong></td><td>大学生创新创业训练计划（大创）</td><td>国家级</td><td>申报立项→研究→结题</td><td>保研必拿项</td><td><a href="https://cn.bing.com/search?q=%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%88%9B%E6%96%B0%E5%88%9B%E4%B8%9A%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92+%E5%AE%98%E7%BD%91" target="_blank" rel="noopener noreferrer">搜索「大创 官网」↗</a></td></tr>
+          <tr><td><strong>全年</strong></td><td>"西门子杯"中国智能制造挑战赛</td><td>国家级</td><td>工程仿真+控制</td><td>工科保研加分</td><td><a href="https://cn.bing.com/search?q=%E8%A5%BF%E9%97%A8%E5%AD%90%E6%9D%AF+%E4%B8%AD%E5%9B%BD%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0%E6%8C%91%E6%88%98%E8%B5%9B+%E5%AE%98%E7%BD%91" target="_blank" rel="noopener noreferrer">搜索「西门子杯 官网」↗</a></td></tr>
         </tbody>
       </table>
       <div class="callout callout-warn" style="margin-top:10px"><strong>策略提示：</strong>大一大二先打基础，大三冲国奖。挑2-3个核心竞赛深耕，比参加10个走马观花强。报名时一定先看校内选拔通知，多数竞赛要先通过学校教务处/学工部报名。</div>
@@ -6524,6 +6524,68 @@ document.addEventListener('click',function(e){
     m.classList.remove('show');
   }
 });
+/* ─────── 外链安全直达 ───────
+   微信/QQ 等内嵌浏览器打开外链(尤其政府/官方站)会白屏或先弹“风险”页，体验差且吓人。
+   做法：在普通浏览器里,外链照常新标签页直接打开；在内嵌浏览器里,弹出友好面板,
+   自动复制官网地址 + 一键搜索直达,避免白屏与风险弹窗,让用户用得放心。           */
+function isInAppBrowser(){
+  var u=(navigator.userAgent||'');
+  return /MicroMessenger|wxwork|QQ\/(\d+\.\d+)|MQQBrowser|UCBrowser|UCWEB|AliApp|AlipayClient|Alipaydef|Baidu|DingTalk|Toutiao|NewsArticle|Sinaweibo|MotoricAPP/i.test(u);
+}
+function showOutlink(url){
+  var host='';
+  try{host=new URL(url).host}catch(e){host=url.replace(/^https?:\/\//,'').split('/')[0]}
+  var overlay=document.createElement('div');
+  overlay.id='extOverlay';
+  overlay.setAttribute('style','position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif');
+  overlay.innerHTML=
+    '<div style="background:#fff;border-radius:18px;padding:26px 22px 20px;max-width:340px;width:100%;text-align:center;box-shadow:0 16px 60px rgba(0,0,0,.4)">'+
+      '<div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(140deg,#E8F6EE,#CFEEDD);display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px">🔒</div>'+
+      '<div style="font-size:17px;font-weight:800;color:#0C447C;letter-spacing:.02em">外链安全直达</div>'+
+      '<div style="font-size:12px;color:#7C8DA0;margin:6px 0 14px">本页在外链跳转前已自动复制官网地址</div>'+
+      '<div style="font-size:12px;font-weight:700;color:#0F6E56;background:#F0F8F4;border:1px solid #CFE5D7;border-radius:10px;padding:8px 10px;margin-bottom:12px;word-break:break-all">'+escapeHtml(host)+'</div>'+
+      '<div style="font-size:12.5px;color:#55616E;line-height:1.8;text-align:left;background:#F7F9FB;border:1px solid #E7EBEF;border-radius:10px;padding:10px 12px;margin-bottom:16px">'+
+        '微信/QQ 内打开官方站常白屏或弹风险页（是站点限制，与本产品无关）。'+
+        '地址号码已复制，建议：<b>①</b> 点下方「搜索直达」在当前页找官方入口；'+
+        '<b>②</b> 或打开手机自带浏览器粘贴打开。'+
+      '</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">'+
+        '<button id="extSearch" style="flex:1;min-width:120px;padding:11px 0;border:none;border-radius:10px;background:linear-gradient(120deg,#7EE0B8,#34D399);color:#063528;font-size:14px;font-weight:700;cursor:pointer">搜索直达</button>'+
+        '<button id="extCopy" style="flex:1;min-width:96px;padding:11px 0;border:1px solid #DCEE3D;background:#fff;color:#0C447C;font-size:14px;border-radius:10px;cursor:pointer">复制链接</button>'+
+        '<button id="extClose" style="width:100%;padding:9px 0;border:none;background:transparent;color:#7C8DA0;font-size:12.5px;margin-top:6px;cursor:pointer">知道了</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(overlay);
+  function copyFallback(){
+    try{var ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);flash('已复制官网地址');}catch(e){flash('请长按网址复制');}
+  }
+  function copyLink(){
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(function(){flash('已复制官网地址')},copyFallback);
+      }else copyFallback();
+    }catch(e){copyFallback()}
+  }
+  function close(){var o=document.getElementById('extOverlay');if(o)o.parentNode&&o.parentNode.removeChild(o);}
+  document.getElementById('extSearch').onclick=function(){
+    close();
+    window.open('https://cn.bing.com/search?q='+encodeURIComponent(host),'_blank','noopener');
+  };
+  document.getElementById('extCopy').onclick=copyLink;
+  document.getElementById('extClose').onclick=close;
+  overlay.addEventListener('click',function(e){if(e.target===overlay)close()});
+  copyLink();
+}
+document.addEventListener('click',function(e){
+  if(e.defaultPrevented)return;
+  var a=e.target&&e.target.closest?e.target.closest('a[target="_blank"]'):null;
+  if(!a)return;
+  var h=a.getAttribute('href')||'';
+  if(!/^https?:/i.test(h))return;   // 站内锚点/其它不受影响
+  if(!isInAppBrowser())return;      // 普通浏览器：默认新标签页直接打开，不拦截
+  e.preventDefault();e.stopPropagation();
+  showOutlink(h);
+});
 /* 切到外链/其它标签页时，记录当前所在板块与滚动位置（返回时自动恢复） */
 document.addEventListener('visibilitychange',function(){
   if(document.hidden){
@@ -6543,6 +6605,7 @@ function saveTasks(t){DB.set('tasks',t)}
 function renderTasks(){
   var ts=getTasks();var today=todayKey();
   var todayTasks=ts.filter(function(t){return t.date===today});
+  refreshHomeStats();
   var box=document.getElementById('todayTasks');
   if(!todayTasks.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">今天还没有任务，添加第一个吧</p>';return}
   box.innerHTML=todayTasks.map(function(t,i){
@@ -6595,10 +6658,33 @@ function renderCheckins(){
       '<button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delCheckinDef('+i+')">删</button>'+
     '</div>'
   }).join('');
-  var done=Object.keys(todayC).filter(function(k){return todayC[k]}).length;
-  var el=document.getElementById('todayCheckin');if(el)el.textContent=done+'/'+defs.length;
-  var streak=calcStreak(defs.length?defs[0].id:'cet');
+  refreshHomeStats();
+}
+/* 首页仪表盘三项统计：今日打卡 / 本周完成率 / 今日任务，全部由真实数据实时算出。
+   每次打卡、加减任务、勾选任务后都会被重新调用，保证数字跟着用户操作自动更新。 */
+function refreshHomeStats(){
+  var c=getCheckins();var defs=getCheckinDefs();var today=todayKey();
+  var n=defs.length;
+  /* 今日打卡 done/n */
+  var tc=c[today]||{};
+  var done=Object.keys(tc).filter(function(k){return tc[k]}).length;
+  var te=document.getElementById('todayCheckin');if(te)te.textContent=done+'/'+n;
+  /* 连续天数 */
+  var streak=calcStreak(n?defs[0].id:'cet');
   var si=document.getElementById('streakInfo');if(si)si.textContent='连续 '+streak+' 天';
+  /* 本周完成率：近7天累计 打卡数/(项目数×7) */
+  var total=n*7,wd=0;
+  for(var i=0;i<7;i++){
+    var d=new Date();d.setDate(d.getDate()-i);
+    var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    var dc=c[key]||{};
+    wd+=Object.keys(dc).filter(function(k){return dc[k]}).length;
+  }
+  var we=document.getElementById('weekCheckinCount');
+  if(we)we.textContent=wd+'/'+total;
+  /* 今日任务：今天的待办件数 */
+  var todayTasks=(getTasks()||[]).filter(function(t){return t.date===today&&!t.done}).length;
+  var tt=document.getElementById('todayTaskCount');if(tt)tt.textContent=todayTasks;
 }
 function saveCheckinName(i,el){
   var d=getCheckinDefs();if(!d[i])return;
