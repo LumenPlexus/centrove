@@ -11618,4 +11618,99 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </div>
 
 </div>
+
+<!-- ═══════ 增量功能 v53：可选云端备份(WebDAV/坚果云) + 每日待办提醒 — 完全隔离，try/catch 兜底，不影响既有功能 ═══════ -->
+<script>
+(function(){
+  function $id(x){return document.getElementById(x)}
+  function boot(){
+    try{var panel=$id('view-settings');if(!panel)return;ensureWDCard(panel);ensureRemindCard(panel);synchState();maybeNotif();}catch(e){}
+  }
+  /* ---- 云端备份卡 ---- */
+  function ensureWDCard(panel){
+    try{
+      if($id('wdCard'))return;
+      var card=document.createElement('div');card.id='wdCard';card.className='card';
+      card.style.marginTop='16px';card.style.background='var(--card)';card.style.borderColor='var(--border)';
+      card.innerHTML=
+        '<h3 style="color:var(--primary)">☁️ 可选云端备份（WebDAV · 坚果云）</h3>'+
+        '<p style="font-size:13px;color:var(--muted);margin:6px 0;line-height:1.85">把整份备份同步到<b>云端</b>，换电脑/手机/清缓存都不丢。完全可选、不强制注册、不接入任何第三方账号体系。<br><span style="opacity:.85">用法：注册<b>免费的坚果云</b>，在「安全选项 → 第三方应用管理」生成一把<b>应用密码</b>，填入下方即可一键上传/恢复。<b>受限提示：</b>只有支持跨域(CORS)的 WebDAV 网盘（如坚果云 dav.jianguoyun.com）能从浏览器直连。</span></p>'+
+        '<div style="display:flex;flex-direction:column;gap:8px;margin:10px 0">'+
+          '<input id="wdUrl" placeholder="WebDAV 地址（默认 dav.jianguoyun.com/dav/）" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+          '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
+            '<input id="wdUser" placeholder="坚果云账号（邮箱）" style="flex:1;min-width:140px;padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+            '<input id="wdPass" type="password" placeholder="应用密码" style="flex:1;min-width:120px;padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+          '</div>'+
+          '<input id="wdDir" placeholder="云端文件夹名（默认 pingwanxiang）" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+        '</div>'+
+        '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
+          '<button class="btn btn-primary" onclick="webdavUpload()">⬆️ 上传备份</button>'+
+          '<button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="webdavDownload()">⬇️ 从云端恢复</button>'+
+          '<button class="btn" style="border-color:#C0392B;color:#C0392B;background:transparent" onclick="if(confirm(\'确认删除云端备份文件？\'))webdavDelete()">🗑️ 清空云端</button>'+
+        '</div>'+
+        '<p style="font-size:11.5px;opacity:.75;margin-top:9px">🔒 你的账号与应用密码只保存在这台设备的浏览器里（等同其它本地数据），也不会被上传到别处；建议在坚果云单独生成"应用密码"，勿用登录密码。</p>';
+      var clearCard=null;panel.querySelectorAll('.card').forEach(function(c){try{if(c.querySelector('h3')&&c.querySelector('h3').textContent.indexOf('危险操作')>-1)clearCard=c;}catch(e){}});
+      if(clearCard)panel.insertBefore(card,clearCard);else panel.appendChild(card);
+      prefill('wdUrl','pp_wd_url',defaultWD());prefill('wdUser','pp_wd_user','');prefill('wdPass','pp_wd_pass','');prefill('wdDir','pp_wd_dir','pingwanxiang');
+      ['wdUrl','wdUser','wdPass','wdDir'].forEach(function(id){$id(id).addEventListener('change',function(){try{DB.set('pp_wd_'+id.slice(2),$id(id).value);}catch(e){}});});
+    }catch(e){}
+  }
+  function remindCard(rc){
+    rc.innerHTML=
+      '<h3 style="color:var(--primary)">🔔 每日待办提醒（页面打开时）</h3>'+
+      '<p style="font-size:13px;color:var(--muted);margin:6px 0;line-height:1.85">到<b>约定时间</b>，弹出一条通知：你还有几条今日待办没完成。<br><span style="opacity:.8">需要<b>页面保持打开 + 允许通知</b>（纯本地网页无法在关闭标签后提醒）；若当天已提示过，不会重复打扰。</span></p>'+
+      '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0">'+
+        '<label style="display:flex;align-items:center;gap:7px;font-size:13.5px;cursor:pointer"><input type="checkbox" id="remindOn" style="width:15px;height:15px" onchange="setRemind(this.checked)"> 开启提醒</label>'+
+        '<label style="display:flex;align-items:center;gap:6px;font-size:13px">每日 <input id="remindTime" type="time" style="padding:5px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:13px" onchange="saveRemindTime()">&nbsp;提醒</label>'+
+        '<button class="btn btn-sm" onclick="testNotif()" style="font-size:11px;padding:4px 9px;border:1px solid var(--border);background:transparent;color:var(--text)">发送测试</button>'+
+      '</div>';
+  }
+  function ensureRemindCard(panel){
+    try{
+      var rc=$id('remindCard');
+      if(!rc){rc=document.createElement('div');rc.id='remindCard';rc.className='card';rc.style.marginTop='16px';rc.style.background='var(--card)';rc.style.borderColor='var(--border)';remindCard(rc);var wd=$id('wdCard');if(wd)wd.parentNode.insertBefore(rc,wd);else panel.appendChild(rc);}
+      else{remindCard(rc);}
+    }catch(e){}
+  }
+  function defaultWD(){try{return location.protocol+'//dav.jianguoyun.com/dav/'}catch(e){return 'https://dav.jianguoyun.com/dav/'}}
+  function prefill(id,key,def){try{var v=DB.get(key,'');$id(id).value=(v===''&&def)?def:v;}catch(e){try{$id(id).value=def;}catch(e2){}}}
+  function cfg(){var g=function(id){try{return ($id(id)&&$id(id).value||'').trim()}catch(e){return ''}};var url=g('wdUrl').replace(/\/+$/,'');if(!url)url=defaultWD().replace(/\/+$/,'');return {url:url+'/',user:g('wdUser'),pass:g('wdPass'),dir:g('wdDir').replace(/^\/+|\/+$/g,'')||'pingwanxiang'};}
+  function remote(){var c=cfg();return c.url+'/'+encodeURIComponent(c.dir)+'/pingwanxiang-backup.json'}
+  function doFetch(method,body){
+    var c=cfg();
+    if(!c.user||!c.pass){uiAlert('请先填写坚果云账号与应用密码（在坚果云「安全选项 → 第三方应用管理」生成）');return Promise.reject(0);}
+    var o={method:method,headers:{'Authorization':'Basic '+btoa(c.user+':'+c.pass)}};
+    if(body!==undefined)o.body=body;
+    return fetch(remote(),o);
+  }
+  function errMsg(label,res){var code=res&&res.status;if(code===401)return label+'失败：账号或应用密码错误';if(code===404)return label+'失败：云端还没有备份文件';if(code===403||code===405)return label+'失败：服务器不允许该操作（可能未开 WebDAV 写权限）';if(!code||code===0)return label+'失败：网络或跨域受限（需支持 CORS 的 WebDAV）';return label+'失败：HTTP '+code;}
+  function buildData(){var d={"_app":"平·万象","_author":"尹平平","_site":"https://lumenplexus.github.io/pingwanxiang/","_v":2,"_exportTime":new Date().toISOString()};if(window._userDataKeyList){try{_userDataKeyList().forEach(function(k){try{d[k]=localStorage.getItem(k);}catch(e){}});}catch(e){}}return d;}
+  window.webdavUpload=function(){try{doFetch('PUT',JSON.stringify(buildData())).then(function(r){if(r.ok){flash('☁️ 已上传到云端');uiAlert('云端备份完成 ✅\n\n整份数据已上传。之后换设备，用它「从云端恢复」即可搬走。');}else uiAlert(errMsg('上传',r));}).catch(function(){uiAlert('上传失败：网络或跨域受限，请确认用的是坚果云 dav.jianguoyun.com');});}catch(e){}}
+  window.webdavDownload=function(){try{doFetch('GET').then(function(r){if(!r.ok){uiAlert(errMsg('恢复',r));return;}return r.text().then(function(txt){try{var d=JSON.parse(txt);if(!d||typeof d!=='object')throw 0;if(d._v===2){Object.keys(d).forEach(function(k){if(k.charAt(0)==='_')return;try{localStorage.setItem(k,d[k]);}catch(e){}});}if(window.renderAll){try{renderAll();}catch(e){}}flash('☁️ 已从云端恢复');uiAlert('云端恢复完成 ✅\n\n已把云端备份写回本机，刷新页面查看全部。');}catch(e){uiAlert('恢复失败：云端文件格式不正确');}});}).catch(function(){uiAlert('恢复失败：网络或跨域受限');});}catch(e){}}
+  window.webdavDelete=function(){try{doFetch('DELETE').then(function(r){if(r.ok){flash('🗑️ 已清空云端');uiAlert('已删除云端备份文件');}else uiAlert(errMsg('删除',r));}).catch(function(){uiAlert('删除失败：网络或跨域受限');});}catch(e){}}
+  /* ---- 每日待办提醒 ---- */
+  function synchState(){try{var on=DB.get('pp_remind_on',0),sw=$id('remindOn');if(sw)sw.checked=!!on;var t=$id('remindTime');if(t){var v=DB.get('pp_remind_time','');t.value=v||'20:00';}}catch(e){}}
+  window.setRemind=function(on){try{if(on){if(!('Notification'in window)){uiAlert('当前浏览器不支持通知');if($id('remindOn'))$id('remindOn').checked=false;return;}Notification.requestPermission().then(function(p){if(p==='granted'){DB.set('pp_remind_on',1);flash('🔔 提醒已开启（页面打开时生效）');}else{DB.set('pp_remind_on',0);if($id('remindOn'))$id('remindOn').checked=false;uiAlert('未获得通知授权，提醒未开启');}});}else{DB.set('pp_remind_on',0);flash('🔕 提醒已关闭');}}catch(e){}}
+  window.saveRemindTime=function(){try{var t=$id('remindTime');if(t)DB.set('pp_remind_time',t.value);}catch(e){}}
+  window.testNotif=function(){try{if(!('Notification'in window)){uiAlert('浏览器不支持通知');return;}Notification.requestPermission().then(function(p){if(p==='granted')new Notification('平·万象',{body:'这是一条测试提醒 ✅ 开启后，每日约定时间会提醒你完成待办。',silent:false});else uiAlert('未获得通知授权');});}catch(e){}}
+  var _hook=null;
+  function maybeNotif(){
+    try{var on=DB.get('pp_remind_on',0);if(!on)return;if(!('Notification'in window)||Notification.permission!=='granted')return;
+      if(_hook)return;var lastDay=null;
+      _hook=setInterval(function(){try{
+        var now=new Date(),hm=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'),day=now.toDateString();
+        var time=(DB.get('pp_remind_time','')||'20:00');if(hm!==time||lastDay===day)return;
+        var tasks=(window.getTasks?getTasks():[])||[],td=typeof todayKey==='function'?todayKey():null;
+        var pending=tasks.filter(function(t){return t&&t.date===td&&!t.done});
+        var body=pending.length?('你还有 '+pending.length+' 条今日待办未完成'):'今日待办已全部完成 ✅';
+        if(document.visibilityState!=='hidden'){new Notification('平·万象 · 待办提醒',{body:body,tag:'pw-remind',silent:false}).onclick=function(){try{window.focus();}catch(e){}};}
+        lastDay=day;
+      }catch(e){}},30000);
+    }catch(e){}
+  }
+  /* 每次切换视图即校准（防渲染重建后卡片/开关丢失） */
+  try{(function(){var sw=window.switchView;window.switchView=function(n){var r=typeof sw==='function'?sw.call(this,n):undefined;try{setTimeout(boot,60);}catch(e){}return r;};})();}catch(e){}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,80);});}else{setTimeout(boot,80);}
+})();
+</script>
 </body></html>
