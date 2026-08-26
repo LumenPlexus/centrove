@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="ping-wan-xiang" data-author="尹平平" data-ver="2026.08.2"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="ping-wan-xiang" data-author="尹平平" data-ver="2026.08.3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 平·万象 EQUA·MUNDI —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0C2E46"/><stop offset="100%" stop-color="#071120"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -952,9 +952,6 @@ strong{font-weight:600}
     <div class="nav-item" data-view="campus" onclick="switchView(&#39;campus&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活
     </div>
-    <div class="nav-item" data-view="scholar" onclick="switchView(&#39;scholar&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>奖助指南
-    </div>
     <div class="nav-section">职业与技能</div>
     <div class="nav-item" data-view="career" onclick="switchView(&#39;career&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展
@@ -1009,7 +1006,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>购物指南
     </div>
     <div class="nav-item" data-view="perk" onclick="switchView(&#39;perk&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>惠学专享
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>奖助福利
     </div>
     <div class="nav-section">系统
     </div>
@@ -6000,63 +5997,86 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
-       新增板块：奖助指南 · 奖学金与资助速查 (scholar)
+       奖助福利 (perk) · 学生钱袋子：奖助(挣进) + 学子福利(省下) 合并板块
+       按「该先办什么」排序：保住学籍 → 兜底生活费 → 灵活缺钱 → 成绩兑现 → 能力兑现 → 日常省钱
        ════════════════════════════════════════════════════════════ -->
-  <section class="view view-new" id="view-scholar">
+  <section class="view view-new" id="view-perk">
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>奖助指南</h1>
-      <p>奖学金 · 助学金 · 助学贷款 · 竞赛奖金 — 别让到手的钱溜走</p>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>奖助福利</h1>
+      <p>奖学金 · 助学金 · 助学贷款 · 竞赛奖金 · 学生优惠——钱在你的学生证里，别让到手的钱溜走</p>
     </div>
-    <div class="callout callout-info"><strong>一句话：</strong>国家的钱，你不申请就无偿让给别人。整理在下面的是<strong>全国通用口径</strong>；各省/本校名额与具体条件以学校学工部、资助管理中心通知为准（发布时间通常每学年9-10月）。</div>
+    <div class="callout callout-info"><strong>一句话：</strong>国家和商家给学生的"钱"，很多不主动发、不主动送——你不申请、不认证，就白白让给别人。下面按 <b>「该先办什么」的优先级</b> 排列：先保住学籍、再兜底生活费、再谈成绩兑现与日常省钱。</div>
+
     <div class="card">
-      <h3>🏅 国家·本专科生（2025-2026现行标准）</h3>
+      <h3>🎯 优先级总览 · 照着这个顺序办不吃亏</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#F0F8F4"><th style="padding:7px;border:1px solid var(--border)">顺序</th><th style="padding:7px;border:1px solid var(--border)">办什么</th><th style="padding:7px;border:1px solid var(--border)">到手多少</th><th style="padding:7px;border:1px solid var(--border)">为什么排这</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>① 先办</b></td><td style="padding:7px;border:1px solid var(--border)">绿色通道 / 助学贷款</td><td style="padding:7px;border:1px solid var(--border)">本专科最高 2万/年（在校无息）</td><td style="padding:7px;border:1px solid var(--border)">学费不急，先保住学籍是第一前提</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>② 早点办</b></td><td style="padding:7px;border:1px solid var(--border)">家庭经济困难认定 → 助学金</td><td style="padding:7px;border:1px solid var(--border)">平均 3700/年，多按10个月发放</td><td style="padding:7px;border:1px solid var(--border)">困难认定是很多项目的前提，越早做越好</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>③ 缺钱就上</b></td><td style="padding:7px;border:1px solid var(--border)">校内勤工助学</td><td style="padding:7px;border:1px solid var(--border)">不低于12元/小时，灵活排班</td><td style="padding:7px;border:1px solid var(--border)">零门槛、无风险，但名额有限要早报名</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">④ 每学年</td><td style="padding:7px;border:1px solid var(--border)">国家励志 / 国家奖学金</td><td style="padding:7px;border:1px solid var(--border)">励志6000 / 国家1万 等</td><td style="padding:7px;border:1px solid var(--border)">用成绩兑现，报名窗口短，留意学工部通知</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">⑤ 随时</td><td style="padding:7px;border:1px solid var(--border)">竞赛拿奖金</td><td style="padding:7px;border:1px solid var(--border)">校级到国奖，千元到十万不等</td><td style="padding:7px;border:1px solid var(--border)">拼能力与点子，和成绩互补、还能加分</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">⑥ 日常顺手</td><td style="padding:7px;border:1px solid var(--border)">学生优惠认证</td><td style="padding:7px;border:1px solid var(--border)">火车票5折起、会员半价等</td><td style="padding:7px;border:1px solid var(--border)">一次性认证，全年持续省</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>通用口径提醒：</strong>以下金额为<strong>全国通用版</strong>；各省、各校的名额与细则，以<strong>本校学工部 / 资助管理中心</strong>当年通知为准（奖学金、助学金集中通知通常每年 9-10 月发布）。先看本校通知再行动，别因漏看错过截止。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>🏅 国家·本专科生奖学金（2025-2026 现行标准）</h3>
       <table style="width:100%;border-collapse:collapse;font-size:13px">
         <thead><tr style="background:#F0F8F4"><th style="padding:7px;border:1px solid var(--border)">项目</th><th style="padding:7px;border:1px solid var(--border)">金额</th><th style="padding:7px;border:1px solid var(--border)">关键条件</th></tr></thead>
         <tbody>
           <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家奖学金</b></td><td style="padding:7px;border:1px solid var(--border)">每生每年 <b>10000 元</b></td><td style="padding:7px;border:1px solid var(--border)">特别优秀，二年级起可申报</td></tr>
           <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家励志奖学金</b></td><td style="padding:7px;border:1px solid var(--border)">每生每年 <b>6000 元</b></td><td style="padding:7px;border:1px solid var(--border)">品学兼优 + 家庭经济困难认定</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家助学金</b></td><td style="padding:7px;border:1px solid var(--border)">平均 <b>3700 元/年</b>（各校可在 2500–5000 内定）</td><td style="padding:7px;border:1px solid var(--border)">家庭经济困难认定，覆盖约20%本科生</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家助学金</b></td><td style="padding:7px;border:1px solid var(--border)">平均 <b>3700 元/年</b>，各校可在 2500–5000 内定，多按10个月发放</td><td style="padding:7px;border:1px solid var(--border)">需家庭经济困难认定，覆盖约20%本科生</td></tr>
         </tbody>
       </table>
-      <div class="callout callout-warn" style="margin-top:10px"><strong>互斥红线：</strong>国家奖学金与国家励志奖学金<strong>不能同年同时获得</strong>；退役士兵学生全部享受国家助学金，且与其他项目规则有别的要看清。</div>
+      <div class="callout callout-warn" style="margin-top:10px"><strong>互斥红线：</strong>国家奖学金与国家励志奖学金<strong>不能同年同时获得</strong>；退役士兵学生全部享受国家助学金。另有校级/院级、社会捐赠类奖学金（各类基金会、企业奖助），名额与金额看本校通知。</div>
     </div>
+
     <div class="card" style="margin-top:16px">
       <h3>🎓 研究生资助（读研别错过）</h3>
       <ul style="font-size:13px;line-height:1.95">
-        <li><strong>研究生国家奖学金：</strong>硕士 <b>2万/年</b>，博士 <b>3万/年</b>（每年奖励硕士7万名、博士2万名）</li>
+        <li><strong>研究生国家奖学金：</strong>硕士 <b>2万/年</b>，博士 <b>3万/年</b>（每年奖励硕士约7万名、博士约2万名）</li>
         <li><strong>研究生国家助学金：</strong>中央高校硕士6000/年、博士1.5万/年，有固定工资收入者除外，无需申请自动发放</li>
-        <li><strong>中央高校学业奖学金：</strong>硕士由8000提高到10000元/年，博士由10000提高到12000元/年（2025年起执行）</li>
+        <li><strong>中央高校学业奖学金：</strong>硕士由8000提高到10000元/年，博士由10000提高到12000元/年（2025 年起执行）</li>
+        <li><strong>直博 / 硕博连读</strong>及各类专项（艰苦行业、军队等）另有标准，同看本校研究生院通知。</li>
       </ul>
     </div>
+
     <div class="grid grid-2" style="margin-top:16px">
       <div class="card">
         <h3>💳 国家助学贷款（在校生利息国家承担）</h3>
         <ul style="font-size:13px;line-height:1.9">
           <li><strong>额度：</strong>本专科最高 <b>2万/年</b>，研究生最高 <b>2.5万/年</b></li>
           <li><strong>期限：</strong>学制+15年，最长不超过22年</li>
-          <li><strong>利率：</strong>同期同档次LPR减70个基点</li>
-          <li><strong>在校期间利息：</strong>国家承担</li>
-          <li><b>方式：</b>生源地信用助学贷款 或 校园地国家助学贷款</li>
+          <li><strong>利率：</strong>同期同档次LPR减70个基点，在校期间利息国家承担</li>
+          <li><b>方式：</b>生源地信用助学贷款（回户籍地办，手续快）或 校园地国家助学贷款</li>
+          <li><strong>提醒：</strong>毕业后主动跟进还款计划，别因忘还而影响个人征信。</li>
         </ul>
       </div>
       <div class="card">
-        <h3>🛟 其他资助 · 多留意</h3>
+        <h3>🛟 其他资助 · 多留意别漏领</h3>
         <ul style="font-size:13px;line-height:1.9">
-          <li><strong>勤工助学：</strong>校内临时岗位每小时不低于12元（部分高校更高，如成都大学23元/小时）</li>
-          <li><strong>绿色通道：</strong>家庭特困新生可先报到注册，入学后再办贷款/缓缴</li>
-          <li><strong>基层就业补偿：</strong>到中西部/艰苦边远地区县以下单位就业满3年，可补偿学费/代偿贷款</li>
-          <li><strong>服兵役资助：</strong>本专科每年最高2万、研究生2.5万</li>
-          <li><strong>滋蕙计划：</strong>中西部生源地特困新生可申请入学路费+短期生活费资助</li>
+          <li><strong>勤工助学：</strong>校内临时岗位每小时不低于12元（部分高校更高，如成都大学约23元/小时）</li>
+          <li><strong>绿色通道：</strong>家庭特困新生可先报到注册，入学后再办贷款 / 缓缴</li>
+          <li><strong>基层就业补偿：</strong>到中西部/艰苦边远地区县以下单位就业满3年，可补偿学费 / 代偿贷款</li>
+          <li><strong>服兵役资助：</strong>本专科每年最高2万、研究生2.5万，另有学费补偿 / 贷款代偿</li>
+          <li><strong>滋蕙计划：</strong>中西部生源地特困新生可申请入学路费 + 短期生活费资助</li>
         </ul>
       </div>
     </div>
+
     <div class="card" style="margin-top:16px">
       <h3>🏆 靠竞赛也能拿钱（奖金参考）</h3>
-      <p style="font-size:12.5px;color:var(--muted)">以2026年"挑战杯"揭榜挂帅擂台赛为例：擂主团队税后<b>不低于10万元</b>，特等奖不低于2万元、一等奖不低于1万元、二等奖不低于0.5万元、三等奖不低于0.2万元。此外互联网+、数模、蓝桥杯等获奖也常带奖级奖金。</p>
-      <div class="callout callout-warn" style="margin-top:8px"><strong>申请铁律：</strong>先看本校通知（学工部/资助中心/教务处）再行动；材料通常要：成绩单、困难认定、个人事迹、获奖证书、导师/辅导员推荐、感谢信。提前把成绩单和证书扫描件存好用（PDF备份），申请季不慌。</div>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.7">以 2026 年"挑战杯"揭榜挂帅擂台赛为例：擂主团队税后<b>不低于 10 万元</b>，特等奖不低于2万元、一等奖不低于1万元、二等奖不低于0.5万元、三等奖不低于0.2万元。此外「互联网+」、数模、蓝桥杯等获奖也常带奖级奖金，许多校级竞赛还有评优评先加分。</p>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>申请铁律：</strong>先看本校通知（学工部/资助中心/教务处）再行动；材料通常要：成绩单、困难认定、个人事迹、获奖证书、导师/辅导员推荐、感谢信。提前把成绩单和证书扫描件存好（PDF 备份），申请季不慌。</div>
     </div>
+
     <div class="card" style="margin-top:16px">
-      <h3>📞 忘带电话？收藏这些求助口</h3>
+      <h3>📞 求助口收藏 · 卡住了就找这里</h3>
       <ul style="font-size:13px;line-height:1.9">
         <li><strong>教育部高校学生资助热线：</strong>010-66097980 / 010-66096590（每年7月-9月，8:00-20:00）</li>
         <li>国家助学贷款咨询：生源地教育局学生资助管理中心 或 就读高校学生资助中心</li>
@@ -6064,68 +6084,60 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <li>买学生火车票遇阻：12306 铁路客服与车站学生资质核验窗口</li>
       </ul>
     </div>
-  </section>
 
-  <!-- ════════════════════════════════════════════════════════════
-       新增板块：学子福利 · 学生专属权益/羊毛地图 (perk)
-       ════════════════════════════════════════════════════════════ -->
-  <section class="view view-new" id="view-perk">
-    <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>学子福利</h1>
-      <p>学生票 · 教育优惠 · 学生会员 · 补贴，一个都不放过</p>
-    </div>
-    <div class="callout callout-warn"><strong>前提醒：</strong>以下优惠多数需要"学生认证"（用学校 .edu 邮箱或学生证/学信网学籍）。认证有效期常为逐年，<strong>过期后重新认证</strong>才能继续享受，建议每学期初检查一遍。</div>
-    <div class="grid grid-2">
-      <div class="card">
-        <h3>🚄 火车票学生优惠</h3>
-        <ul style="font-size:13px;line-height:1.9">
-          <li><strong>优惠区间：</strong>学校至家庭所在地之间，一年内往返次数（2026届毕业生新增2次单程优惠票）</li>
-          <li><strong>资质核验：</strong>先在12306 App验证学生资质（绑定学籍+优惠区间），每年可线上核验</li>
-          <li><strong>优惠标准：</strong>硬座5折、动车/高铁二等座约7.5折（按席别）</li>
-          <li><b>注意：</b>每学年首用前核验一次，别等到车站才发现用不了</li>
-        </ul>
+    <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#0C447C05,#6B21A805);border:1px dashed var(--primary-mid)">
+      <h3>🛡 下半篇：省钱篇 · 学生优惠认证，一次配齐全年省</h3>
+      <div class="callout callout-warn" style="margin-top:4px"><strong>先提醒：</strong>以下优惠多数需要"学生认证"（用学校 .edu 邮箱或学生证 / 学信网学籍）。认证有效期常为逐年，<strong>过期后重新认证</strong>才能继续享受，建议每学期初检查一遍。</div>
+      <div class="grid grid-2" style="margin-top:8px">
+        <div class="card">
+          <h3>🚄 火车票学生优惠</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>优惠区间：</strong>学校至家庭所在地之间，一年内往返次数（毕业生当年还常有额外单程优惠次数）</li>
+            <li><strong>资质核验：</strong>先在 12306 App 验证学生资质（绑定学籍+优惠区间），每年可线上核验</li>
+            <li><strong>优惠标准：</strong>硬座5折、动车/高铁二等座约7.5折（按席别）</li>
+            <li><b>注意：</b>每学年首用前核验一次，别等到车站才发现用不了</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>💻 数码 / 软件教育优惠</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>Apple：</strong>教育商店 Mac/iPad 学生优惠（每年开学季叠加返校季活动）</li>
+            <li><strong>京东校园：</strong>学生认证后可享学生价/专享券，数码、学习用品折扣</li>
+            <li><strong>华为 / 小米 / 联想：</strong>教育认证直降或赠品</li>
+            <li><strong>正版软件：</strong>微软 Office（学校常提供免费）、Adobe 教育版、JetBrains 学生授权免费</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🎬 视频 / 音乐会员学生价</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li>爱奇艺、腾讯视频、优酷、芒果TV、B站大会员等均有学生认证优惠区间</li>
+            <li>QQ音乐、网易云音乐、酷狗等对学生用户有专享价</li>
+            <li><strong>入口：</strong>各App「个人中心-会员-学生优惠」，用学信网 / 校园邮箱认证即可</li>
+            <li>别买"共享号"黑卡，直接官网学生价既安全又划算</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🍔 生活 / 出行学生折扣</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>支付宝：</strong>完成学生验证可享餐饮、出行等专属学生价</li>
+            <li><strong>交通卡：</strong>一线城市地铁/公交有学生卡，办理通常要学校开证明/学籍认证</li>
+            <li><strong>景区/演出：</strong>多数景点、博物馆学生票半价（带学生证/学信网详情），部分免费</li>
+            <li><strong>快递/酒店：</strong>部分平台有学生专享折扣，下单前搜"学生"字眼</li>
+          </ul>
+        </div>
       </div>
-      <div class="card">
-        <h3>💻 数码/软件教育优惠</h3>
-        <ul style="font-size:13px;line-height:1.9">
-          <li><strong>Apple：</strong>Apple教育商店，Mac/iPad 等学生优惠（每年开学季叠加返校季活动）</li>
-          <li><strong>京东校园：</strong>学生认证后可享学生价/专享券，数码、学习用品折扣</li>
-          <li><strong>华为/小米/联想：</strong>教育认证直降或赠品</li>
-          <li><strong>正版软件：</strong>微软 Office（学校常提供免费）、Adobe教育版、JetBrains 学生授权免费</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>🎬 视频/音乐会员学生价</h3>
-        <ul style="font-size:13px;line-height:1.9">
-          <li>爱奇艺、腾讯视频、优酷、芒果TV、B站大会员等均有学生认证半价区间</li>
-          <li>QQ音乐、网易云音乐、酷狗等对学生用户有专享价</li>
-          <li><strong>入口：</strong>各App「个人中心-会员-学生优惠」用学信网/校园邮箱认证即可</li>
-          <li>别买"共享号"黑卡，直接官网学生价既安全又划算</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>🍔 生活/出行学生折扣</h3>
-        <ul style="font-size:13px;line-height:1.9">
-          <li><strong>支付宝：</strong>完成学生验证可享餐饮、出行等专属学生价</li>
-          <li><strong>交通卡：</strong>一线城市地铁/公交有学生卡办理（办理通常要学校开证明/学籍认证）</li>
-          <li><strong>景区/演出：</strong>多数景点、博物馆学生票半价（带学生证/学信网详情），部分免费</li>
-          <li><strong>快递/酒店：</strong>部分平台有学生专享折扣，下单前搜"学生"字眼</li>
-        </ul>
-      </div>
-    </div>
-    <div class="card" style="margin-top:16px">
-      <h3>✅ 校园认证清单 · 照着做一遍</h3>
-      <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <thead><tr style="background:#F0F8F4"><th style="padding:7px;border:1px solid var(--border)">平台</th><th style="padding:7px;border:1px solid var(--border)">认证方式</th><th style="padding:7px;border:1px solid var(--border)">有效期&提醒</th></tr></thead>
+      <h3 style="margin-top:14px">✅ 校园认证清单 · 照着做一遍</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:6px">
+        <thead><tr style="background:#F0F8F4"><th style="padding:7px;border:1px solid var(--border)">平台</th><th style="padding:7px;border:1px solid var(--border)">认证方式</th><th style="padding:7px;border:1px solid var(--border)">有效期 & 提醒</th></tr></thead>
         <tbody>
           <tr><td style="padding:7px;border:1px solid var(--border)">12306 学生资质</td><td style="padding:7px;border:1px solid var(--border)">App内学籍绑定+优惠区间</td><td style="padding:7px;border:1px solid var(--border)">每学年首用前核验</td></tr>
-          <tr><td style="padding:7px;border:1px solid var(--border)">Apple教育/京东校园</td><td style="padding:7px;border:1px solid var(--border)">校园邮箱或学信网详情</td><td style="padding:7px;border:1px solid var(--border)">逐年/按学籍有效期</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">Apple教育 / 京东校园</td><td style="padding:7px;border:1px solid var(--border)">校园邮箱或学信网详情</td><td style="padding:7px;border:1px solid var(--border)">逐年/按学籍有效期</td></tr>
           <tr><td style="padding:7px;border:1px solid var(--border)">支付宝学生价</td><td style="padding:7px;border:1px solid var(--border)">学生验证+校园信息</td><td style="padding:7px;border:1px solid var(--border)">按学籍有效期</td></tr>
           <tr><td style="padding:7px;border:1px solid var(--border)">视频/音乐会员</td><td style="padding:7px;border:1px solid var(--border)">App内教育认证</td><td style="padding:7px;border:1px solid var(--border)">一般1年，需续期</td></tr>
           <tr><td style="padding:7px;border:1px solid var(--border)">地铁/公交学生卡</td><td style="padding:7px;border:1px solid var(--border)">学校证明/学籍办理</td><td style="padding:7px;border:1px solid var(--border)">逐年年检</td></tr>
         </tbody>
       </table>
-      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠本质是把你"学生身份"变现。把常用平台的认证一次性配齐，平时能省下可观的生活费——这就是本台常说的"省钱才是最稳的理财起点"。</div>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠本质是把你"学生身份"变现，一次配齐常用平台认证，平时能省下可观生活费。这条和上面的奖助合起来，就是本台常说的：<b>会省钱、会领钱，才是最稳的理财起点</b>。</div>
     </div>
   </section>
 
@@ -6217,7 +6229,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-stats">
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长数据中心</h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长档案</h1>
       <p>数据不会说谎 · 看见自己的成长轨迹</p>
     </div>
     <div class="grid grid-4" style="margin-bottom:16px">
@@ -8015,7 +8027,7 @@ function renderDailyQuoteCard(){
 var NAV_ALL=[{
   g:'目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','行进罗盘'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['life','🧭','生涯蓝图']]
 },{
-  g:'学业成长',items:[['study','📘','学业精进'],['exam','⏳','备考宝典'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['tpl','🧩','专项模板'],['campus','🎒','校园生活'],['scholar','🏅','奖助指南']]
+  g:'学业成长',items:[['study','📘','学业精进'],['exam','⏳','备考宝典'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['tpl','🧩','专项模板'],['campus','🎒','校园生活']]
 },{
   g:'职业与技能',items:[['career','💼','职业发展'],['growth','📈','个人提升']]
 },{
@@ -8025,7 +8037,7 @@ var NAV_ALL=[{
 },{
   g:'阅读与休闲',items:[['creative','💡','灵感看板'],['shelf','📚','书海拾贝'],['podcast','🎧','耳畔星河'],['movie','🎬','幕间观澜'],['fun','😄','轻松一下']]
 },{
-  g:'理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','学子福利']]
+  g:'理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','奖助福利']]
 },{
   g:'效率与工具',items:[['ai','🤖','智造工坊'],['tools','🛠','高效方法'],['timer','🍅','心流计时']]
 },{
