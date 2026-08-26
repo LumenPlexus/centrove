@@ -1,8 +1,10 @@
 /*
  * 平·万象 Service Worker（根目录版）
- * v51 · 关键修复：把 SW 提升到站点根目录，使 scope 默认覆盖整个站点根
+ * v52 · 关键修复：把 SW 提升到站点根目录，使 scope 默认覆盖整个站点根
  * （含 index.html 主页）。此前 SW 位于 pwa/ 下且未指定 scope，
  * 默认作用域只有 /pwa/，接管不了主页 → 断网即黑屏/加载失败。
+ * 另于 v52 收尾：`关于`新增「版权·许可·信息说明」、修正板块数量表述(25+→33)
+ * 与离线措辞、引导三步改为「先专注→记灵感→做完再复盘」。
  *
  * 离线能力说明（诚实、不夸大）：
  *  - 只在「支持 Service Worker 的浏览器」里生效（Chrome/Edge/Firefox/
@@ -11,7 +13,7 @@
  *    从未开通过的首次断网打开无法生效（还什么缓存都没有）。
  *  - 导航采用「网络优先」，联网取最新、断网用缓存兜底。
  */
-const CACHE = 'pingwanxiang-v51';
+const CACHE = 'pingwanxiang-v52';
 const SCOPE = new URL('./', self.location);          // 站点根目录
 const ROOT  = SCOPE.href;                            // 如 /pingwanxiang/
 const INDEX = new URL('./index.html', SCOPE).href;   // 主页绝对地址
