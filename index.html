@@ -28,7 +28,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260825k').then(function(reg){
+          navigator.serviceWorker.register('pwa/sw.js' + '?v=20260826a').then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -314,7 +314,7 @@ strong{font-weight:600}
 .card p,.card ul li,.card ol li,td{color:#5A5A56}
 .card li strong,.card p strong,td strong{color:#3A3F48;font-weight:600}
 .card ul li{padding:6px 0 6px 18px;line-height:1.75}
-/* 重点板块更柔和：目标拆解/职场进阶/入团入党/理财管理/省钱技巧/购物指南/长期规划/智造工坊/大学须知/系统设置 */
+/* 重点板块更柔和：目标拆解/职场进阶/入团入党/理财管理/省钱技巧/购物指南/生涯蓝图/智造工坊/入学指南/系统设置 */
 #view-goals .card p,#view-goals .card li,#view-party .card p,#view-party .card li,#view-finance .card p,#view-finance .card li,#view-save .card p,#view-save .card li,#view-shop .card p,#view-shop .card li,#view-life .card p,#view-life .card li,#view-ai .card p,#view-ai .card li,#view-college .card p,#view-college .card li,#view-settings .card p,#view-settings .card li{color:#676760;font-size:13.5px}
 #view-goals .card li strong,#view-party .card li strong,#view-finance .card li strong,#view-save .card li strong,#view-shop .card li strong,#view-life .card li strong,#view-ai .card li strong,#view-college .card li strong,#view-settings .card li strong{color:#454A52;font-weight:600}
 #view-goals .card h3,#view-party .card h3,#view-finance .card h3,#view-save .card h3,#view-shop .card h3,#view-life .card h3,#view-ai .card h3,#view-college .card h3,#view-settings .card h3{color:#26354F}
@@ -912,7 +912,7 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急
     </div>
     <div class="nav-item" data-view="plans" onclick="switchView(&#39;plans&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>远见蓝图
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘
     </div>
     <div class="nav-item" data-view="goals" onclick="switchView(&#39;goals&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解
@@ -921,11 +921,11 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>习惯养成
     </div>
     <div class="nav-item" data-view="life" onclick="switchView(&#39;life&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>长期规划
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图
     </div>
     <div class="nav-section">学业与升学</div>
     <div class="nav-item" data-view="study" onclick="switchView(&#39;study&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业规划
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进
     </div>
     <div class="nav-item" data-view="exam" onclick="switchView(&#39;exam&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>考试倒计时
@@ -937,16 +937,19 @@ strong{font-weight:600}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>论文写作
     </div>
     <div class="nav-item" data-view="college" onclick="switchView(&#39;college&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>大学须知
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>入学指南
     </div>
     <div class="nav-item" data-view="tpl" onclick="switchView(&#39;tpl&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>专项模板
     </div>
     <div class="nav-item" data-view="campus" onclick="switchView(&#39;campus&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>大学生活
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活
     </div>
     <div class="nav-item" data-view="party" onclick="switchView(&#39;party&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5"></path></svg>入团入党
+    </div>
+    <div class="nav-item" data-view="safety" onclick="switchView(&#39;safety&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航
     </div>
     <div class="nav-section">职业与技能</div>
     <div class="nav-item" data-view="career" onclick="switchView(&#39;career&#39;)">
@@ -1131,10 +1134,13 @@ strong{font-weight:600}
         <div class="callout callout-info" style="margin-top:10px;font-size:12px"><strong>提示：</strong>双击事件名可改名，点击日期可改日期。所有数据自动保存到本地，换设备需手动迁移。</div>
       </div>
 
-      <!-- 开学准备进度（面向准大一新生 · 可勾选清单 + 自动进度条） -->
-      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F2F6FC,#E9F0FA);border-color:#C9D8EE">
-        <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>开学准备进度 <span style="font-weight:400;font-size:12px;color:var(--hint)">准大一新生 · 勾选已完成项</span></h3>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">离大学报到还有一段时间，把入学前该准备的证件、物资、手续逐项勾掉，看着进度条涨起来，开学不慌。</p>
+      <!-- 开学准备进度（面向准大一新生 · 可勾选清单 + 自动进度条；入学后自动归档收起） -->
+      <div class="card" id="prepareCard" style="margin-top:16px;background:linear-gradient(135deg,#F2F6FC,#E9F0FA);border-color:#C9D8EE">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>开学准备进度 <span style="font-weight:400;font-size:12px;color:var(--hint)">准大一新生 · 勾选已完成项</span></h3>
+          <button class="btn btn-sm" style="color:var(--coral);border:1px solid var(--coral);background:transparent" onclick="archivePrepare(true)">✅ 我已入学 · 收起清单</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:10px 0;line-height:1.7">离大学报到还有一段时间，把证件、物资、到校安排逐项勾掉，进度条涨起来，开学不慌。这些一次性内容在你入学后将<b style="color:var(--coral)">自动归档收起</b>，不占用首页空间。</p>
         <div id="prepareList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px"></div>
         <div style="margin-top:12px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
@@ -1143,7 +1149,7 @@ strong{font-weight:600}
           </div>
           <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div class="bar" id="prepareBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--primary-mid),var(--teal-mid));border-radius:4px;transition:width .3s"></div></div>
         </div>
-        <div style="margin-top:10px;font-size:11px;color:var(--hint)">进度自动保存到本地；点击任意条目即可切换「已完成 / 待办」。</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--hint)">进度自动保存到本地；点击任意条目即可切换「已完成 / 待办」。需要再次查看时，可在「系统设置」里重新开启。</div>
       </div>
 
       <div class="grid grid-2">
@@ -1180,22 +1186,23 @@ strong{font-weight:600}
         </div>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>今日时间块作息表</h3>
-        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">点击时间/任务/标签即可修改并自动保存；右上角 × 删除整块；下方可添加新时间块。</p>
-        <div class="grid grid-4" id="timeBlockGrid" style="gap:8px"><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(0)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="0" onblur="saveTimeBlock(0)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">06:30</div><div contenteditable="true" data-tb="n" data-tb-idx="0" onblur="saveTimeBlock(0)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">起床+喝水+拉伸</div><span contenteditable="true" data-tb="tag" data-tb-idx="0" onblur="saveTimeBlock(0)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">生活</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(1)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="1" onblur="saveTimeBlock(1)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">07:00</div><div contenteditable="true" data-tb="n" data-tb-idx="1" onblur="saveTimeBlock(1)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">早餐+听新闻/播客</div><span contenteditable="true" data-tb="tag" data-tb-idx="1" onblur="saveTimeBlock(1)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">生活</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(2)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="2" onblur="saveTimeBlock(2)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">08:00</div><div contenteditable="true" data-tb="n" data-tb-idx="2" onblur="saveTimeBlock(2)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">核心工作/学习时段（深度专注）</div><span contenteditable="true" data-tb="tag" data-tb-idx="2" onblur="saveTimeBlock(2)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">专注</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(3)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="3" onblur="saveTimeBlock(3)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">10:00</div><div contenteditable="true" data-tb="n" data-tb-idx="3" onblur="saveTimeBlock(3)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">茶歇+走动5分钟</div><span contenteditable="true" data-tb="tag" data-tb-idx="3" onblur="saveTimeBlock(3)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">休息</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(4)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="4" onblur="saveTimeBlock(4)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">10:30</div><div contenteditable="true" data-tb="n" data-tb-idx="4" onblur="saveTimeBlock(4)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">第二段专注：处理难点任务</div><span contenteditable="true" data-tb="tag" data-tb-idx="4" onblur="saveTimeBlock(4)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">专注</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(5)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="5" onblur="saveTimeBlock(5)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">12:00</div><div contenteditable="true" data-tb="n" data-tb-idx="5" onblur="saveTimeBlock(5)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">午餐（七分饱）</div><span contenteditable="true" data-tb="tag" data-tb-idx="5" onblur="saveTimeBlock(5)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">生活</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(6)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="6" onblur="saveTimeBlock(6)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">13:00</div><div contenteditable="true" data-tb="n" data-tb-idx="6" onblur="saveTimeBlock(6)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">午休20-30分钟</div><span contenteditable="true" data-tb="tag" data-tb-idx="6" onblur="saveTimeBlock(6)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">休息</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(7)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="7" onblur="saveTimeBlock(7)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">14:00</div><div contenteditable="true" data-tb="n" data-tb-idx="7" onblur="saveTimeBlock(7)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">下午工作/学习时段</div><span contenteditable="true" data-tb="tag" data-tb-idx="7" onblur="saveTimeBlock(7)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">专注</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(8)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="8" onblur="saveTimeBlock(8)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">17:00</div><div contenteditable="true" data-tb="n" data-tb-idx="8" onblur="saveTimeBlock(8)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">运动30-40分钟</div><span contenteditable="true" data-tb="tag" data-tb-idx="8" onblur="saveTimeBlock(8)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">运动</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(9)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="9" onblur="saveTimeBlock(9)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">18:30</div><div contenteditable="true" data-tb="n" data-tb-idx="9" onblur="saveTimeBlock(9)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">晚餐+散步</div><span contenteditable="true" data-tb="tag" data-tb-idx="9" onblur="saveTimeBlock(9)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">生活</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(10)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="10" onblur="saveTimeBlock(10)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">20:00</div><div contenteditable="true" data-tb="n" data-tb-idx="10" onblur="saveTimeBlock(10)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">阅读/技能充电</div><span contenteditable="true" data-tb="tag" data-tb-idx="10" onblur="saveTimeBlock(10)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">成长</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(11)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="11" onblur="saveTimeBlock(11)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">21:30</div><div contenteditable="true" data-tb="n" data-tb-idx="11" onblur="saveTimeBlock(11)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">自由时间（社交/娱乐）</div><span contenteditable="true" data-tb="tag" data-tb-idx="11" onblur="saveTimeBlock(11)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">放松</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(12)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="12" onblur="saveTimeBlock(12)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">22:30</div><div contenteditable="true" data-tb="n" data-tb-idx="12" onblur="saveTimeBlock(12)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">复盘+列明日计划</div><span contenteditable="true" data-tb="tag" data-tb-idx="12" onblur="saveTimeBlock(12)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">复盘</span></div><div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0"><button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock(13)">×</button><div contenteditable="true" data-tb="t" data-tb-idx="13" onblur="saveTimeBlock(13)" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">23:00</div><div contenteditable="true" data-tb="n" data-tb-idx="13" onblur="saveTimeBlock(13)" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">放下手机准备入睡</div><span contenteditable="true" data-tb="tag" data-tb-idx="13" onblur="saveTimeBlock(13)" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">睡眠</span></div></div>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>今日时间节奏 <span style="font-weight:400;color:var(--hint);font-size:12px">按你的节奏走 · 只填你真正想做的</span></h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">不用把每分每秒排满。只在下方添加对你真正重要的 2-3 个时段块（比如复习、运动、放空），其余时间留白。点击时间/内容可改，右上角 × 删除。</p>
+        <div class="grid grid-4" id="timeBlockGrid" style="gap:8px"></div>
         <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap">
           <input id="tbTime" placeholder="时间，如 08:00" style="width:96px">
-          <input id="tbTask" placeholder="任务内容" style="flex:1;min-width:160px">
+          <input id="tbTask" placeholder="这一刻想做什么" style="flex:1;min-width:160px">
           <input id="tbTag" placeholder="标签" style="width:80px">
-          <button class="btn btn-primary btn-sm" onclick="addTimeBlock()">添加时间块</button>
+          <button class="btn btn-primary btn-sm" onclick="addTimeBlock()">添加一个时段</button>
         </div>
+        <div style="margin-top:8px;font-size:11px;color:var(--muted)">💡 一天抓住 2-3 段专注就够，不用把整张表排满才叫自律。</div>
       </div>
       </section>
 
-    <!-- 学业规划 -->
+    <!-- 学业精进 -->
     <section class="view" id="view-study">
       <div class="page-head">
-        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业规划</h1>
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进</h1>
         <p>四级目标分 · 学业筑基 · 保研或考研，循序渐进</p>
       </div>
       <div class="tabs">
@@ -1745,7 +1752,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <ul style="font-size:13px;line-height:1.9">
                 <li>「！」= 老师说了一个让我没想到的点</li>
                 <li>「？」= 我没听懂（课后必须问）</li>
-                <li>「★」= 这点可能考/会用</li>
+                <li>「☆」= 这点可能考/会用</li>
                 <li>「⇒」= 这个例子让我想到自己经历过的事</li>
               </ul>
             </div>
@@ -1841,29 +1848,10 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <li><strong>大四上：</strong>秋招集中投递（9-11月是黄金期）</li>
             <li><strong>大四下：</strong>春招补录，备考研/考公兜底</li>
           </ul>
-          <h4>简历六原则</h4>
-          <ul>
-            <li><strong>动词开头</strong>：组织/主导/优化/撰写</li>
-            <li><strong>数据量化</strong>：用数字证明贡献</li>
-            <li><strong>结果导向</strong>：写"做到什么"，不只写"做了什么"</li>
-            <li><strong>匹配岗位</strong>：投央国企突出政治面貌，投民企突出项目</li>
-            <li><strong>一页纸</strong>：应届简历不超过1页，HR平均看7秒</li>
-            <li><strong>去AI味</strong>：少用套话，用具体事例代替</li>
-          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>简历怎么写、面试怎么答：</strong>侧边栏「简历面试工作台」已内置简历STAR模板、六个模块、高频面试八问、投递追踪表，一站式搞定，本页聚焦"方向与时机"。</div>
       </div>
 
-      <div class="grid grid-2" style="margin-top:16px">
-        <div class="card">
-          <h3>面试高频问题 · 提前准备不吃亏</h3>
-          <ul style="font-size:13px;line-height:1.9">
-            <li><strong>自我介绍60秒：</strong>我是谁（1句）+最相关的1个成果（用数字）+为什么适合（1句）</li>
-            <li><strong>"你最大的缺点"：</strong>说一个真实的、正在改进的缺点（如"公开表达紧张，正在练演讲"），别说"我太追求完美"</li>
-            <li><strong>"为什么选我们"：</strong>提前查公司3个亮点（业务/文化/发展），结合自己的方向说</li>
-            <li><strong>"职业规划"：</strong>3年视角："我想在XX领域深耕，成为能独立负责XX的人"</li>
-            <li><strong>"还有什么想问的"：</strong>必问："这个岗位3个月做成的样子是什么？"体现结果导向</li>
-          </ul>
-        </div>
-        <div class="card">
+      <div class="card" style="margin-top:16px">
           <h3>谈薪与offer · 别亏待自己</h3>
           <ul style="font-size:13px;line-height:1.9">
             <li><strong>先查行情：</strong>同岗位薪资区间取中位数作底线（猎聘/脉脉/招聘软件）</li>
@@ -1872,7 +1860,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <li><strong>offer对比清单：</strong>薪资/发展/通勤/加班强度/团队氛围，列表打分再决定</li>
             <li><strong>礼貌拒绝法：</strong>"感谢贵司认可，经过慎重考虑，我选择了另一个更契合的方向"——留好口碑</li>
           </ul>
-        </div>
       </div>
             <div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>暑期实习申请全流程 · 步骤拆解 + 避坑</h3>
@@ -1901,17 +1888,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </div>
         </div>
       </div>
-      <div class="card" style="margin-top:16px">
-        <h3>📄 简历经历 · STAR 写法模板（直接套用）</h3>
-        <div style="background:#F4F8FB;border-radius:8px;padding:14px 18px;font-size:13.5px;color:var(--muted);line-height:2">
-          <b>S（情境）</b>：在XX活动中，面临XX情况<br>
-          <b>T（任务）</b>：我的职责是负责XX<br>
-          <b>A（行动）</b>：我做了XX（用动词开头：组织/优化/撰写/协调）<br>
-          <b>R（结果）</b>：最终达成XX，量化成果（效率提升X%/服务X人/节省X元）<br>
-          <span style="font-size:12px;color:var(--hint)">示例："运营社团公众号（S）负责涨粉（T），每周排版3篇+策划2次抽奖（A），3个月粉丝从200涨到1200（R）"</span>
-        </div>
-        <div class="callout callout-warn" style="margin-top:8px"><strong>简历自查清单：</strong>① 每段都有动词+数字？② 一页纸内？③ 没有错别字/语病？④ 联系方式在最显眼处？⑤ PDF命名"姓名-学校-岗位"？五条全过再投。</div>
-      </div>
+      <div class="callout callout-info" style="margin-top:16px"><strong>简历怎么写、面试怎么答：</strong>请移步侧边栏「简历面试工作台」——内置简历STAR模板、六个核心模块、高频面试八问与投递追踪表，一站式搞定，不用在本页重复找。</div>
     </section>
 
     <!-- 论文写作 -->
@@ -3111,9 +3088,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
     </section>
 
-    <!-- 大学生活 -->
+    <!-- 校园生活 -->
     <section class="view" id="view-campus"><div class="page-head">
-        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>大学生活</h1>
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活</h1>
         <p>入学准备 · 课程表 · 社团选择 · 室友公约 · 节假日规划 · 实习日历 · 自动保存</p>
       </div><div class="card" style="margin-bottom:16px">
         <h3>我的大学课程表 · 本周</h3>
@@ -3437,36 +3414,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div contenteditable="true" data-key="rm-extra" style="background:var(--bg);padding:10px;border-radius:8px;min-height:50px;font-size:14px;cursor:text" data-placeholder="双击填写：比如不许养宠物、不许在宿舍吸烟、空调温度26度等"></div>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3>开学季准备清单 <span style="font-weight:400;color:var(--coral);font-size:12px">10月1日后自动清理</span></h3>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">新生/老生通用，过期自动清理，需要可重新启用</p>
-        <div class="grid grid-2">
-          <div>
-            <h4>证件与档案（开学前 1 周备齐）</h4>
-            <ul style="font-size:13px;line-height:1.9">
-              <li>身份证 / 户口本复印件（多份）</li>
-              <li>录取通知书 + 高考/考研准考证</li>
-              <li>一寸/两寸照片（蓝底/白底各 8 张）</li>
-              <li>学籍档案（自带或邮寄）</li>
-              <li>团员证 + 转团组织关系</li>
-              <li>助学贷款回执单（如办理）</li>
-            </ul>
-          </div>
-          <div>
-            <h4>生活与学习用品（提前 3 天）</h4>
-            <ul style="font-size:13px;line-height:1.9">
-              <li>床上四件套（床单/被套/枕套/被子）</li>
-              <li>洗漱用品（牙刷牙膏/毛巾/沐浴露/洗发水）</li>
-              <li>衣架 / 拖鞋 / 脸盆 / 水杯 / 收纳盒</li>
-              <li>充电器 / 充电宝 / 排插</li>
-              <li>文具 / 笔记本 / U 盘</li>
-              <li>常用药（感冒/肠胃/创可贴）</li>
-            </ul>
-          </div>
-        </div>
-        <div class="callout callout-warn" style="margin-top:8px"><strong>避坑：</strong>床上用品学校尺寸不一样，提前查。棉被/枕头嫌麻烦也可到校再买；大件行李建议发快递，到校楼下菜鸟驿站自提更省力。</div>
-      </div>
-      <div class="card" style="margin-top:16px">
-        <h3>快递寄送操作 <span style="font-weight:400;color:var(--coral);font-size:12px">时效卡 · 月底清理</span></h3>
+        <h3>快递寄送操作 <span style="font-weight:400;color:var(--coral);font-size:12px">开学报到前使用</span></h3>
         <div class="grid grid-2">
           <div>
             <h4>寄件平台对比（学生价 5 折起）</h4>
@@ -3495,7 +3443,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="callout callout-info" style="margin-top:8px"><strong>学生优惠：</strong>认证学生身份后，多数平台首单立减 5-15 元，关注公众号即可领取。</div>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3>毕业季时间线 <span style="font-weight:400;color:var(--coral);font-size:12px">6月1日后自动清理</span></h3>
+        <h3>毕业季时间线 <span style="font-weight:400;color:var(--coral);font-size:12px" id="gradSeasonTag">毕业季专属 · 过期自动归档</span></h3>
         <p style="font-size:12px;color:var(--muted);margin-bottom:10px">大四/研三专用，过期自动清理，需要可重新启用</p>
         <table>
           <thead><tr><th>时间</th><th>任务</th><th>产出</th></tr></thead>
@@ -3714,10 +3662,118 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     </section>
 
-    <!-- 大学须知 -->
+    <!-- 平安护航 -->
+    <section class="view" id="view-safety">
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航</h1>
+        <p>防骗反诈 · 人身与财产 · 求助通道——把风险挡在校门之外</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>🛡️ 开学第一件事：装好"防诈三件套"（人人必做）</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="res-link" href="https://www.12321.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <div class="info"><div class="name">12321 网络不良与垃圾信息举报受理中心</div><div class="desc">www.12321.cn · 工信部指导，举报骚扰/诈骗短信电话</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.12377.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <div class="info"><div class="name">12377 网络违法与不良信息举报</div><div class="desc">www.12377.cn · 中央网信办官方举报入口</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.piyao.org.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></div>
+            <div class="info"><div class="name">中国互联网联合辟谣平台</div><div class="desc">www.piyao.org.cn · 查谣言、求证信息真伪</div></div><div class="arrow">↗</div>
+          </a>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><strong>再加三样：</strong>① 手机下载「国家反诈中心 APP」（应用商店搜索、认准公安部官方蓝色盾牌、开启来电预警）；② 记住两个电话：<b>96110</b>（反诈专线，来电务必接）、<b>110</b>（报警）；③ 收到「12381」开头的涉诈预警短信要当真，立即停止转账并核实。</div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>💣 高发电信诈骗套路：看懂话术，一眼识破</h3>
+        <table>
+          <thead><tr><th>套路</th><th>常见话术 / 表现</th><th>怎么识别</th></tr></thead>
+          <tbody>
+            <tr><td><strong>刷单 / 做任务返利</strong></td><td>"动动手指日入几百""先垫付、返本金+佣金"</td><td>凡是先让你掏钱的"外快"都是诈骗；刷单本身违法，还可能涉"帮信罪"</td></tr>
+            <tr><td><strong>冒充客服退款</strong></td><td>"您的快递丢件""商品有质量问题给补偿"，让你开"屏幕共享"、扫不明二维码</td><td>退款只在原平台走官方退款流程；索要验证码、让你共享屏幕的一律是骗子</td></tr>
+            <tr><td><strong>冒充公检法</strong></td><td>"你涉嫌洗钱，配合调查"，要求转到"安全账户"</td><td>公检法不会电话办案、更不存在"安全账户"，直接挂断并拨 110 核实</td></tr>
+            <tr><td><strong>注销校园贷 / 修复征信</strong></td><td>"你的学生贷款影响征信，需清空额度"</td><td>个人征信不对个人收费，任何"帮你修复征信"的都是骗局</td></tr>
+            <tr><td><strong>游戏账号 / 交易"保证金"</strong></td><td>"先交手续费/解冻费才能提现"</td><td>正规交易只走官方交易平台，绕过平台加"客服"即诈骗</td></tr>
+            <tr><td><strong>考试答案 / 论文代写</strong></td><td>"内部答案""包过"；"代写论文保通过"</td><td>没有"内部答案"；代写涉学术不端+可能被二次勒索</td></tr>
+            <tr><td><strong>网恋 / 杀猪盘</strong></td><td>网上"谈对象"后引导你投资、借钱</td><td>只谈感情不谈现实、诱导大额转账的多为杀猪盘</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warn" style="margin-top:12px"><strong>反诈"三不一多"：</strong>不点击不明链接、不轻信"稳赚/高返利"、不透露验证码 / 密码 / 人脸信息；转账汇款前务必多方核实。<b>已经把钱转出去了？</b>别慌，立刻拨 <b>96110 / 110</b> 申请止付，同时联系发卡银行挂失冻结，并截图保留聊天记录、转账凭证。</div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>💳 校园贷 / 网贷：这些坑别踩</h3>
+          <ul style="font-size:13px;line-height:1.95">
+            <li><strong>正规出路只有一条：</strong>确需用钱的助学贷款，走学校学生资助管理中心 / 生源地学生资助部门办理，利率低、官方承办，<b>千万别碰任何私人"校园贷"</b>。</li>
+            <li><strong>三不碰：</strong>不碰学生证抵押贷、不碰"0门槛秒批"的网贷、不碰任何先收"手续费/保证金"的借款。</li>
+            <li><strong>被催收恐吓？</strong>及时告诉辅导员、家长，必要时报警，不要一个人扛着用别的贷款去填窟窿。</li>
+            <li><strong>保管两张卡：</strong>别把自己的银行卡、电话卡出租、出借、出卖给别人，否则可能涉嫌"帮信罪"。断卡行动，丢了责任会很重。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>👷 兼职 & 租房：安全第一</h3>
+          <ul style="font-size:13px;line-height:1.95">
+            <li><strong>找正规渠道：</strong>优先学校学生资助中心 / 勤工助学岗，或大型正规招聘平台。任何"先交押金 / 培训费 / 服装费"的都是骗局。</li>
+            <li><strong>不碰"垫资"：</strong>让你先垫钱、再去高额返利的兼职，本质是刷单诈骗。</li>
+            <li><strong>租房警惕"二房东"：</strong>签合同前核实房东产权与身份，不轻信"先交定金房间被抢"的催促。</li>
+            <li><strong>出行坐正规平台：</strong>用有资质的网约车/出租车，行程分享给亲友，深夜少乘黑车。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>✅ 开学安全自查清单（点一下打勾，自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:8px">把入库要做的安全小事逐项点掉，全绿才算安心入住。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px" id="safetyCheckList">
+          <div data-k="s1" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 已装「国家反诈中心 APP」并开启来电预警</div>
+          <div data-k="s2" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 记住 96110 / 110 两个号码</div>
+          <div data-k="s3" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 已向辅导员存 1 个紧急联系人电话</div>
+          <div data-k="s4" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 身份证 / 学生证 / 银行卡已妥善保管并备份</div>
+          <div data-k="s5" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 宿舍不私拉电线、人走断电</div>
+          <div data-k="s6" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 不把手机验证码告诉任何人</div>
+          <div data-k="s7" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 外出记得锁门、贵重物品随身</div>
+          <div data-k="s8" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 夜晚尽量结伴、返宿准时</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><strong>求助通道速记：</strong><b>110</b> 报警 ｜ <b>96110</b> 反诈专线 ｜ <b>119</b> 火警 ｜ <b>120</b> 急救 ｜ 校内：辅导员（生活/学习/纠纷）→ 学校保卫处（人身财产、门禁监控）→ 校医院（身体不适）→ 学生资助中心（经济困难、助学贷款）。遇到任何拿不准的事，第一时间联系辅导员或家人，别一个人硬扛。</div>
+      </div>
+
+      <script>
+      function ppCheck(el){
+        var k='pp_safety_list';var arr=[];try{arr=JSON.parse(localStorage.getItem(k)||'[]');}catch(e){arr=[];}
+        var id=el.getAttribute('data-k');
+        if(el.classList.contains('done')){
+          el.classList.remove('done');el.style.borderColor='var(--border)';el.style.background='transparent';
+          el.innerHTML='□ '+el.innerHTML.replace(/^[□✓]\s*/,'');
+          arr=arr.filter(function(x){return x!==id;});
+        }else{
+          el.classList.add('done');el.style.borderColor='var(--teal)';el.style.background='var(--teal-light)';
+          el.innerHTML='✓ '+el.innerHTML.replace(/^[□✓]\s*/,'');
+          arr.push(id);
+        }
+        try{localStorage.setItem(k,JSON.stringify(arr));}catch(e){}
+      }
+      function ppInit(){
+        var arr=[];try{arr=JSON.parse(localStorage.getItem('pp_safety_list')||'[]');}catch(e){}
+        document.querySelectorAll('#view-safety [data-k]').forEach(function(el){
+          if(arr.indexOf(el.getAttribute('data-k'))>-1){
+            el.classList.add('done');el.style.borderColor='var(--teal)';el.style.background='var(--teal-light)';
+            el.innerHTML='✓ '+el.innerHTML.replace(/^□ /,'');
+          }
+        });
+      }
+      if(document.readyState!=='loading')ppInit();else document.addEventListener('DOMContentLoaded',ppInit);
+      </script>
+    </section>
+
+    <!-- 入学指南 -->
     <section class="view" id="view-college">
       <div class="page-head">
-        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>大学须知</h1>
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>入学指南</h1>
         <p>从学习方式到人际规则，从绩点到保研，从奖学金到心理调适——所有大学里"高中老师没讲、但必须懂"的事，一次性梳理清楚</p>
       </div>
       <div class="grid grid-2">
@@ -4078,10 +4134,10 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
     </section>
 
-    <!-- 长期规划 -->
+    <!-- 生涯蓝图 -->
     <section class="view" id="view-life">
       <div class="page-head">
-        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>长期规划</h1>
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图</h1>
         <p>证书时间线 · 人生阶段 · 复盘 · 读书 · 播客 · 不设限</p>
       </div>
 
@@ -4914,7 +4970,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
       <div class="card" style="background:linear-gradient(135deg,#0F6E56,#0C447C);border:none">
         <h3 style="color:#fff;font-size:17px">平·万象 <span style="font-weight:300;color:#9fd6c0">· EQUA·MUNDI</span> 大学生成长中枢</h3>
-        <p style="font-size:13.5px;color:rgba(255,255,255,.9);line-height:1.95;margin-top:8px"><strong style="color:#BFF0DA">一个网页，装下你的整个大学生活。</strong><br>四六级备考、学业规划、时间管理、目标拆解、职业发展、理财记账、健康打卡、灵感记录、情绪管理……你需要的工具这里都有，<strong style="color:#BFF0DA">双击即用，零安装，手机电脑都能开，数据只存在你自己的浏览器里</strong>，不联网也能记。</p>
+        <p style="font-size:13.5px;color:rgba(255,255,255,.9);line-height:1.95;margin-top:8px"><strong style="color:#BFF0DA">一个网页，装下你的整个大学生活。</strong><br>四六级备考、学业精进、时间管理、目标拆解、职业发展、理财记账、健康打卡、灵感记录、情绪管理……你需要的工具这里都有，<strong style="color:#BFF0DA">双击即用，零安装，手机电脑都能开，数据只存在你自己的浏览器里</strong>，不联网也能记。</p>
         <div style="font-size:12.5px;color:rgba(255,255,255,.75);margin-top:12px;line-height:1.8">设计理念：「平」是平常心、踏实从容；「万象」是包罗万象。EQUA（平静平稳）· MUNDI（世界万象）——以一颗平常心，把生活安排的井井有条——平凡的日子，也能过出掌控感。</div>
       </div>
 
@@ -5038,6 +5094,11 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <h3 style="color:var(--coral)">清空我的填写数据（危险操作）</h3>
         <p style="font-size:13px;color:var(--muted);margin-bottom:10px">仅删除你填写的内容（任务/打卡/单词/笔记/记录/自定义项等），<strong>产品框架与预置板块全部保留</strong>，刷新后自动恢复默认示例。仍建议先导出备份。</p>
         <button class="btn" style="background:var(--coral-light);color:var(--coral);border-color:var(--coral)" onclick="uiConfirm(&#39;确认清空你填写的数据？产品框架与预置内容会保留，此操作仅删除你的输入记录。&#39;,clearAll)">确认清空</button>
+      </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F2F6FC,#E9F0FA);border-color:#C9D8EE">
+        <h3 style="color:var(--primary)">🎒 开学准备清单设置</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">入学后「开学准备」会自动收起归档。如果误收或还想再查看，点下面按钮重新开启（首页即可见）。</p>
+        <button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="restorePrepare()">重新开启开学准备清单</button>
       </div>
       <div class="card" style="margin-top:16px">
         <h3>📊 周报 PNG 导出</h3>
@@ -5276,7 +5337,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <!-- ═══════ 计划表 ═══════ -->
     <section class="view" id="view-plans">
       <div class="page-head">
-        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>远见蓝图</h1>
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘</h1>
         <p>年 / 月 / 周 / 日 目标拆解 + 一周时间表（可标色）</p>
       </div>
       <div class="grid grid-2">
@@ -6633,19 +6694,28 @@ function importData(e){
 
 function renderAll(){renderTasks();renderCheckins();renderWords();renderWrongs();renderBooks();renderPodcasts();renderCheckinCalendar();renderTimeBlocks();renderPomo();renderInspire();renderDecisions();renderGrateful();renderGoal100();renderShelf();renderBigQuote();renderQuadrant();renderPlans();renderGoals();renderReading();renderCet6Reading();renderEssay();loadEditable();initDefaultCountdowns();renderCountdowns();renderHoliday();renderLifeMeters();renderSportHeatmap();renderMovieQuote();renderMovies();renderPrepareProgress();renderHabits();renderHabitHeatmap();}
 
-/* 开学准备进度（准大一新生专属清单） */
+/* 开学准备进度（准大一新生专属清单 · 已并入原校园生活开学季清单，开学后自动归档清理） */
 var PREPARE_ITEMS=[
+  /* 证件与档案 */
   {k:"id_card",t:"身份证原件及正反面复印件 2 份"},
-  {k:"household",t:"户口本本人页复印件 / 户籍证明"},
+  {k:"household",t:"户口迁移（如需）· 户口本本人页复印件"},
   {k:"admission",t:"录取通知书、准考证、学生档案袋"},
   {k:"photos",t:"一寸/两寸蓝白底证件照各 8 张 + 电子版"},
+  {k:"party_migrate",t:"团员证 + 转团组织关系（学籍档案自带或邮寄）"},
+  {k:"loan_receipt",t:"助学贷款回执单（如已办理）"},
+  /* 缴费与银行卡 */
   {k:"bank_card",t:"用于缴学费的银行卡 / 校园卡关联"},
   {k:"phone_plan",t:"确认手机号归属地、套餐与校园网政策"},
+  /* 生活与学习用品 */
   {k:"luggage",t:"24/26 寸行李箱 + 压缩袋 + 小锁"},
-  {k:"bedding",t:"按学校尺寸准备床垫/被子/枕头（或到校购买）"},
+  {k:"bedding",t:"按学校尺寸准备床垫/被子/枕头（可到校再买）"},
   {k:"stationery",t:"笔记本电脑、U 盘、插线板、台灯"},
-  {k:"daily",t:"洗漱包、拖鞋、衣架、常用药品"},
+  {k:"daily",t:"洗漱用品、拖鞋、衣架、脸盆、水杯、收纳盒"},
+  {k:"charger",t:"充电器 / 充电宝 / 排插"},
+  {k:"medicine",t:"常用药（感冒 / 肠胃 / 创可贴）"},
   {k:"clothes",t:"应季衣物 + 一套正装/白衬衫（社团面试用）"},
+  /* 到校安排 */
+  {k:"express",t:"大件行李发快递到校，预约到校自提"},
   {k:"plan",t:"提前了解专业培养方案与保研/考研路径"}
 ];
 function renderPrepareProgress(){
@@ -6672,6 +6742,32 @@ function togglePrepare(k){
   done[k]=!done[k];
   localStorage.setItem('pp_prepare_done',JSON.stringify(done));
   renderPrepareProgress();
+}
+/* 开学准备：入学后自动归档（一次性内容，避免长期占用首页） */
+function archivePrepare(manual){
+  try{localStorage.setItem('pp_prepare_archived','1');}catch(e){}
+  var card=document.getElementById('prepareCard');
+  if(card){card.style.display='none';}
+  if(manual)uiAlert('✅ 已收起\n\n开学准备清单已归档。数据仍安全保留，随时可在「系统设置→重新开启开学清单」中找回。');
+}
+function restorePrepare(){
+  try{localStorage.removeItem('pp_prepare_archived');}catch(e){}
+  var card=document.getElementById('prepareCard');
+  if(card){card.style.display='';}
+  renderPrepareProgress();
+  uiAlert('已重新开启开学准备清单。');
+}
+function applyPrepareAutoClean(){
+  /* 自动归档：距首次使用超过 2 个学年，或用户主动点名"我已入学"时收起 */
+  var card=document.getElementById('prepareCard');if(!card)return;
+  var archived='1';
+  try{archived=localStorage.getItem('pp_prepare_archived')||'0';}catch(e){}
+  if(archived==='1'){card.style.display='none';return;}
+  try{
+    var first=new Date(localStorage.getItem('pp_firstUseDate')||todayKey());
+    var months=(Date.now()-first.getTime())/86400000/30;
+    if(months>24){card.style.display='none';}
+  }catch(e){}
 }
 
 /* 好物推荐池（必须放在 init 调用前，否则 SHOPS=undefined 导致 init 中断，全部不渲染） */
@@ -7562,9 +7658,9 @@ function renderDailyQuoteCard(){
 /* ═══════ 首页「轻松上手」：分类导航，大板块 → 细分板块 ═══════ */
 /* 全部板块：与侧边栏一一对应，按大板块分组，点击展开进入其细分板块 */
 var NAV_ALL=[{
-  g:'目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','远见蓝图'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['life','🧭','长期规划']]
+  g:'目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','行进罗盘'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['life','🧭','生涯蓝图']]
 },{
-  g:'学业与升学',items:[['study','📘','学业规划'],['exam','⏳','考试倒计时'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['college','🏫','大学须知'],['tpl','🧩','专项模板'],['campus','🎒','大学生活'],['party','🎖','入团入党']]
+  g:'学业与升学',items:[['study','📘','学业精进'],['exam','⏳','考试倒计时'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['college','🏫','入学指南'],['tpl','🧩','专项模板'],['campus','🎒','校园生活'],['party','🎖','入团入党'],['safety','🛡','平安护航']]
 },{
   g:'职业与技能',items:[['career','💼','职业发展'],['growth','📈','个人提升'],['resume','📄','简历面试']]
 },{
@@ -7651,6 +7747,7 @@ function init(){
 
   renderAll();
   applyExpiry();
+  applyPrepareAutoClean();
   renderPodcasts2();
   renderPitfall();
   renderDrivingQ();
@@ -7713,9 +7810,13 @@ var TIME_BLOCKS=[
 ];
 function getTimeBlocks(){
   var d=DB.get('timeBlocks',null);
-  if(!d||!d.length){
-    d=TIME_BLOCKS.map(function(b){return {t:b.t,n:b.n,tag:b.tag,color:b.color}});
-    saveTimeBlocks(d);
+  /* 默认留白：一上来就强行排满一张"作息表"反而让人有压力，绝大多数人做不到。
+     仅当用户自己主动添加时段时才展示。旧版预置的 20 段作息自动不再预填。 */
+  if(!d||!d.length)return [];
+  /* 迁移：若本地仍是旧版预置作息，判定为"未自定义"，改为留白 */
+  if(d.length===TIME_BLOCKS.length&&d.every(function(b,i){return b&&TIME_BLOCKS[i]&&b.t===TIME_BLOCKS[i].t&&b.n===TIME_BLOCKS[i].n;})){
+    saveTimeBlocks([]);
+    return [];
   }
   return d;
 }
@@ -7723,6 +7824,10 @@ function saveTimeBlocks(a){DB.set('timeBlocks',a);}
 function renderTimeBlocks(){
   var box=document.getElementById('timeBlockGrid');if(!box)return;
   var list=getTimeBlocks();
+  if(!list.length){
+    box.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:18px 10px;color:var(--hint);font-size:13px;background:var(--bg);border:1px dashed var(--border);border-radius:10px">今天还没安排时段。想到 1-2 件对你重要的事，就在下方添加，别一次排满。</div>';
+    return;
+  }
   box.innerHTML=list.map(function(b,i){
     return '<div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0">'+
       '<button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock('+i+')">×</button>'+
@@ -9390,7 +9495,12 @@ switchView=function(name){
   /* 切换视图后回到顶部，避免内容停留在视口下方（"内容在下面"问题） */
   try{ window.scrollTo(0,0); }catch(e){}
   var main=document.querySelector('.main'); if(main)main.scrollTop=0;
+  /* 成长档案：每次切进来都即时重算，数据不冻结 */
+  if(name==='stats'){ try{ updateStats(); }catch(e){} }
 };
+/* 成长档案实时刷新：从打开页面起，每分钟自动重算天数/徽章/活跃度，
+   并跨天自动更新"使用天数"，无需刷新页面 */
+setInterval(function(){try{updateStats();}catch(e){}},60000);
 
 /* ── 导航引导常驻逻辑（替代原来的6秒消失） ── */
 function mobileHint(){
@@ -9977,13 +10087,23 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   /* 页脚署名：致敬作者 + 防抄袭明示 + 隐私数据说明 */
   function footer(){
     var main=document.querySelector('.main');if(!main||main.querySelector('.pp-credit'))return;
+    var _n=new Date(),_Y=_n.getFullYear(),_MM=String(_n.getMonth()+1).padStart(2,'0');
     var f=document.createElement('div');f.className='pp-credit';
-    f.style.cssText='text-align:center;padding:16px 12px 6px;font-size:12px;color:var(--hint);line-height:1.95;border-top:1px dashed var(--border);margin-top:22px';
-    f.innerHTML='<div style="font-size:13px">设计 &amp; 开发 · <strong style="color:var(--primary);font-size:14px">尹平平</strong> ｜ 「平·万象 · 大学生成长中枢」</div>'+
-      '<div style="opacity:.82;font-size:11.5px;margin-top:4px">原创作品 · 数据 100% 保存在你自己的浏览器（localStorage）中：无后端、不上传、不收集任何信息，后台与任何人都无法读取你的记录。全程免费、无广告。</div>'+
-      '<div style="margin-top:2px;font-size:11px;color:#C9A85F;letter-spacing:.5px">© 2026 尹平平 · 平·万象 · 保留所有权利 · 本作品受《中华人民共和国著作权法》保护，未获书面授权，禁止整站复制、搬运、二次开发后冒名发布或用于牟利。</div>'+
-      '<div style="opacity:.7;font-size:10.5px;margin-top:3px">唯一正版：作者仅本人「尹平平」，本文档唯一正式地址即为当前所在链接，其它转载一律请注意甄别。</div>'+
-      '<div style="opacity:.7;font-size:10.5px;margin-top:2px">时效说明：站内考试 / 报名 / 活动 / 政策等，整理核对于 2026-08，实际以各官方当年通知为准。</div>';
+    f.style.cssText='position:relative;margin-top:26px;padding:26px 18px 18px;text-align:center;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#0F6E56 0%,#0C447C 100%)';
+    f.innerHTML=
+      '<div style="position:absolute;left:-34px;top:-34px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07)"></div>'+
+      '<div style="position:absolute;right:-46px;bottom:-46px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.05)"></div>'+
+      '<div style="font-size:11px;letter-spacing:5px;color:#9fd6c0;font-weight:400">EQUA · MUNDI</div>'+
+      '<div style="margin-top:7px;font-size:21px;font-weight:800;letter-spacing:3px;color:#fff">平 · 万象</div>'+
+      '<div style="margin:9px auto 14px;font-size:13px;color:rgba(255,255,255,.9);line-height:1.8"><b style="color:#BFF0DA">一个网页，装下你的整个大学生活。</b><br>37+ 个板块、一页藏尽大学四年的学习、规划、成长与生活。</div>'+
+      '<div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:15px">'+
+        '<span style="font-size:11px;padding:3px 11px;border-radius:20px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.95)">无广告 · 无会员 · 全免费</span>'+
+        '<span style="font-size:11px;padding:3px 11px;border-radius:20px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.95)">零登录 · 数据只在你自己设备</span>'+
+        '<span style="font-size:11px;padding:3px 11px;border-radius:20px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.95)">手机 / 电脑通用</span>'+
+      '</div>'+
+      '<div style="font-size:13px;color:rgba(255,255,255,.95)">设计 &amp; 开发 · <b style="font-size:15px;color:#BFF0DA">尹平平</b> ｜ 原创作品</div>'+
+      '<div style="margin-top:11px;padding:10px 13px;border-radius:11px;background:rgba(0,0,0,.18);font-size:11px;color:rgba(255,255,255,.85);line-height:1.75;text-align:left">🔎 <b style="color:#fff">时效说明：</b>站内考试 / 报名 / 活动 / 政策等参考信息，均整理自各官方权威来源，核验于 <b style="color:#fff" id="ppReviewDate">'+_Y+' 年 '+_MM+' 月</b>，本声明随新学年 <b style="color:#fff">自动更新</b>；使用前请以各官方当年最新通知为准。</div>'+
+      '<div style="margin-top:11px;font-size:10.5px;color:rgba(255,255,255,.66);line-height:1.7">© '+_Y+' 尹平平 · 平·万象 · 保留所有权利 · 受《中华人民共和国著作权法》保护，未获书面授权禁止整站复制、搬运或另作商业用途。唯一正版地址即当前链接。</div>';
     main.appendChild(f);
   }
 
@@ -10486,7 +10606,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pano-no"><span class="rn">肆</span><span>八大力 · 你能亲手掌握什么</span></div>
       <h2 class="pano-h2">八大支柱，<em>托起你的大学生活</em></h2>
       <div class="pano-grid" style="text-align:left">
-        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎓</div><h4>学业规划</h4><p>四六级按日计划、艾宾浩斯复习、听读写模板，备考路径一目了然。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎓</div><h4>学业精进</h4><p>四六级按日计划、艾宾浩斯复习、听读写模板，备考路径一目了然。</p></div>
         <div class="pano-card"><span class="chip">Ready</span><div class="ic">⏳</div><h4>时间管理</h4><p>四象限轻重缓急、番茄专注、一周时间块，把一天排得明明白白。</p></div>
         <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎯</div><h4>目标拆解</h4><p>大目标→里程碑→今天做什么，三步拆解，每天都能看见进度。</p></div>
         <div class="pano-card"><span class="chip">Ready</span><div class="ic">💼</div><h4>职业与升学</h4><p>保研考研路径、竞赛科研、简历模板、求职渠道，一站式准备好未来。</p></div>
