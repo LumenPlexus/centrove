@@ -10117,13 +10117,16 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 
   /* 首屏一次性：隐私透明 + 多人在线承载说明（用户反馈关切） */
   function priv(){
-    if(typeof localStorage==='undefined')return;
-    if(localStorage.getItem('pp_priv_ok'))return;
+    /* 改为「每个新会话显示一次」：优先 sessionStorage，并忽略旧版永久关闭标记，确保隐私提示始终能恢复出现 */
+    try{if(typeof sessionStorage==='undefined')return;}catch(e){return;}
+    try{if(sessionStorage.getItem('pp_priv_done'))return;}catch(e){return;}
     var main=document.querySelector('.main');if(!main)return;
     var box=document.createElement('div');box.id='privBox';
     box.style.cssText='margin:10px 16px 0;padding:9px 12px;border-radius:10px;background:var(--teal-light);border:1px solid var(--border-strong);color:var(--teal);font-size:12.5px;line-height:1.75';
-    box.innerHTML='🔒 <b>隐私透明：</b>本应用是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span style="cursor:pointer;font-weight:700;text-decoration:underline;white-space:nowrap" onclick="var p=document.getElementById(\'privBox\');if(p)p.remove();localStorage.setItem(\'pp_priv_ok\',\'1\')">知道了 ✕</span>';
+    box.innerHTML='🔒 <b>隐私透明：</b>本应用是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span id="privDismiss" style="cursor:pointer;font-weight:700;text-decoration:underline;white-space:nowrap">知道了 ✕</span>';
     main.insertBefore(box, main.firstChild);
+    var d=document.getElementById('privDismiss');
+    if(d)d.addEventListener('click',function(){var p=document.getElementById('privBox');if(p)p.remove();try{sessionStorage.setItem('pp_priv_done','1');}catch(e){}});
   }
 
   /* 新手上手卡片：怕麻烦、不知从哪开始的人，先做3件小事，降低首次使用门槛 */
@@ -10148,7 +10151,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   /* 暴露到全局：让“新手上手”3个按钮在行内 onclick 中可直接调用，修复「点了没反应」 */
   window.qsGo=qsGo;
 
-  function init(){footer();priv();quickstart();}
+  function init(){footer();quickstart();priv();}
 
   /* ── 防盗用 / 溯源（防止被别人整站复制、套皮、冒名发布）────────────────── */
   (function antiTheft(){
