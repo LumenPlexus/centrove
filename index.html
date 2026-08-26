@@ -6165,7 +6165,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <div class="card" style="margin-top:16px">
       <h3>📈 打卡热力图 · 近 6 周</h3>
       <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:4px">每个格子代表一天，颜色越深代表当天打卡的好习惯越多。<strong>只要你去「习惯养成」板块打卡，这里的颜色会当天自动变深</strong>；没打卡就是浅灰。坚持越久，整片绿得越亮眼。</p>
-      <div id="habitHeatmap" style="margin-top:10px"></div>
+      <div id="habitTotals" style="display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 10px"></div>
+      <div id="habitHeatmap" style="margin-top:0"></div>
       <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:11px;color:var(--hint)">
         <span>少</span>
         <span style="width:14px;height:14px;border-radius:3px;background:var(--heat-0)"></span>
@@ -6652,28 +6653,30 @@ function renderTasks(){
   if(!todayTasks.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">今天还没有任务，添加第一个吧</p>';return}
   box.innerHTML=todayTasks.map(function(t,i){
     return '<div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--border)">'+
-      '<input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask('+t.id+')" style="width:15px;height:15px;flex-shrink:0">'+
-      '<span style="flex:1;font-size:13px;color:var(--text);'+(t.done?'text-decoration:line-through;color:var(--hint)':'')+';cursor:pointer" onclick="toggleTask('+t.id+')">'+escapeHtml(t.text)+'</span>'+
-      '<button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint);flex-shrink:0" onclick="delTask('+t.id+')" title="删除该任务">删</button>'+
+      '<input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask(\''+t.id+'\')" style="width:15px;height:15px;flex-shrink:0">'+
+      '<span style="flex:1;font-size:13px;color:var(--text);'+(t.done?'text-decoration:line-through;color:var(--hint)':'')+';cursor:pointer" onclick="toggleTask(\''+t.id+'\')">'+escapeHtml(t.text)+'</span>'+
+      '<button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint);flex-shrink:0" onclick="delTask(\''+t.id+'\')" title="删除该任务">删</button>'+
     '</div>'
   }).join('');
 }
 function addTask(){
   var inp=document.getElementById('newTaskInput');var v=inp.value.trim();
   if(!v)return;
-  var ts=getTasks();ts.push({id:Date.now(),text:v,done:false,date:todayKey()});
-  saveTasks(ts);inp.value='';renderTasks();flash('已添加任务');
+  var ts=getTasks();ts.push({id:Date.now()+'_'+Math.random().toString(36).slice(2,7),text:v,done:false,date:todayKey()});
+  saveTasks(ts);inp.value='';renderTasks();refreshHomeStats();flash('已添加任务');
 }
 function toggleTask(id){
-  var ts=getTasks();ts.forEach(function(t){if(t.id===id)t.done=!t.done});saveTasks(ts);renderTasks();
+  var ts=getTasks();
+  ts.forEach(function(t){if(String(t.id)===String(id)){t.done=!t.done;if(t.done)t.doneDate=t.date;else delete t.doneDate;}});
+  saveTasks(ts);renderTasks();refreshHomeStats();
 }
 function delTask(id){
-  var ts=getTasks();ts=ts.filter(function(t){return t.id!==id});saveTasks(ts);renderTasks();
-  flash('已删除该任务');
+  var ts=getTasks();ts=ts.filter(function(t){return String(t.id)!==String(id)});saveTasks(ts);renderTasks();
+  refreshHomeStats();flash('已删除该任务');
 }
 function addPresetTask(text){
-  var ts=getTasks();ts.push({id:Date.now()+Math.random(),text:text,done:false,date:todayKey()});
-  saveTasks(ts);renderTasks();flash('已添加：'+text);
+  var ts=getTasks();ts.push({id:Date.now()+'_'+Math.random().toString(36).slice(2,7),text:text,done:false,date:todayKey()});
+  saveTasks(ts);renderTasks();refreshHomeStats();flash('已添加：'+text);
 }
 
 var CHECKINS=[{k:'cet',n:'四级学习打卡'},{k:'word',n:'背单词25个'},{k:'exercise',n:'运动30分钟'},{k:'journal',n:'今日复盘'},{k:'sleep',n:'11点前睡觉'}];
@@ -6712,7 +6715,8 @@ function refreshHomeStats(){
   var done=Object.keys(tc).filter(function(k){return tc[k]}).length;
   var te=document.getElementById('todayCheckin');if(te)te.textContent=done+'/'+n;
   /* 连续天数 */
-  var streak=calcStreak(n?defs[0].id:'cet');
+  var firstId=(defs&&defs.length&&defs[0].id)?defs[0].id:'cet';
+  var streak=calcStreak(firstId);
   var si=document.getElementById('streakInfo');if(si)si.textContent='连续 '+streak+' 天';
   /* 本周完成率：近7天累计 打卡数/(项目数×7) */
   var total=n*7,wd=0;
@@ -10187,8 +10191,9 @@ function renderHabits(){
     var done=h.records[today]===true;
     return '<div class="habit-item'+(done?' done':'')+'" id="habit-'+i+'">'+
       '<div class="habit-check'+(done?' checked':'')+'" onclick="toggleHabit('+i+')">'+(done?'✓':'')+'</div>'+
-      '<div class="habit-info"><div class="habit-name">'+h.name+'</div>'+
+      '<div class="habit-info"><div class="habit-name">'+escapeHtml(h.name)+'</div>'+
       '<div class="habit-streak">'+(h.streak>0?'🔥 连续 '+h.streak+' 天':'还未开始')+'</div></div>'+
+      '<button class="btn btn-sm habit-del" style="font-size:11px;padding:2px 8px;color:var(--coral);flex-shrink:0;margin-left:auto;background:transparent;border:1px solid var(--border)" onclick="delHabit('+i+')" title="删除该习惯">✕ 删</button>'+
     '</div>';
   }).join('');
 }
@@ -10229,8 +10234,19 @@ function addHabit(){
   if(!n||!n.value.trim()){flash('请输入习惯名称');return;}
   var habits=getHabits();
   habits.push({name:(ic?ic.value:'📖')+' '+n.value.trim(),icon:ic?ic.value:'📖',streak:0,lastDate:'',records:{}});
-  saveHabits(habits);renderHabits();n.value='';
+  saveHabits(habits);renderHabits();renderHabitHeatmap();updateStats();refreshHomeStats();
+  n.value='';
   flash('已添加习惯');
+}
+function delHabit(i){
+  var habits=getHabits();
+  if(!habits[i])return;
+  var name=habits[i].name||'该习惯';
+  uiConfirm('确定删除「'+name+'」吗？已记录的打卡数据也会一并清除。',function(){
+    habits.splice(i,1);
+    saveHabits(habits);renderHabits();renderHabitHeatmap();updateStats();refreshHomeStats();
+    flash('已删除习惯');
+  });
 }
 function renderHabitHeatmap(){
   var habits=getHabits();
@@ -10252,6 +10268,21 @@ function renderHabitHeatmap(){
   box.innerHTML='<div class="heat-grid" style="grid-template-columns:repeat(7,1fr)">'+days.join('')+'</div>'+
     '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--hint)">'+
     '<span>6周前</span><span>今天</span></div>';
+  /* 本周 / 本月坚持概况 */
+  var tbox=document.getElementById('habitTotals');
+  if(tbox&&habits.length){
+    var wk=0,wkT=7*habits.length,mo=0,moT=30*habits.length;
+    for(var w=0;w<7;w++){var wd=new Date();wd.setDate(wd.getDate()-w);wk+=wkHit(habits,wd);}
+    for(var m=0;m<30;m++){var md=new Date();md.setDate(md.getDate()-m);mo+=wkHit(habits,md);}
+    var wkPct=Math.round(wk/wkT*100),moPct=Math.round(mo/moT*100);
+    tbox.innerHTML='<span style="font-size:12px;color:var(--text)">本周坚持率 <b style="color:var(--teal)">'+wkPct+'%</b> <span style="color:var(--hint)">('+wk+'/'+wkT+')</span></span>'+
+      '<span style="font-size:12px;color:var(--muted)">｜</span>'+
+      '<span style="font-size:12px;color:var(--text)">近30天 <b style="color:var(--primary)">'+moPct+'%</b> <span style="color:var(--hint)">('+mo+'/'+moT+')</span></span>';
+  } else if(tbox){tbox.innerHTML='';}
+}
+function wkHit(habits,d){
+  var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  return habits.filter(function(h){return h.records[key]===true;}).length;
 }
 
 /* ── 面试八问 ── */
@@ -10383,7 +10414,7 @@ function renderWeeklyActivity(){
   for(var i=6;i>=0;i--){
     var d=new Date();d.setDate(d.getDate()-i);
     var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-    var dayTasks=tasks.filter(function(t){return t.doneDate===key;}).length;
+    var dayTasks=tasks.filter(function(t){return t.done && (t.doneDate===key||t.date===key);}).length;
     var dayHabits=habits.filter(function(h){return h.records[key]===true;}).length;
     values[6-i]=dayTasks*10+dayHabits*5;
   }
