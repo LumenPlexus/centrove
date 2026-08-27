@@ -706,11 +706,11 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 [data-theme="dark"] .pano-cp.yes .tag{color:#C2A15E!important}
 [data-theme="dark"] .pano-cp.yes ul{color:#C3CDB8!important}
 [data-theme="dark"] .pano-cp.yes li::before{background:#C2A15E!important}
-/* 设计理念 · 序 / 梧 */
-[data-theme="dark"] .pano-cv .cv-char{background:var(--primary-light)!important;border-color:var(--border-strong)!important;color:#9CB39B!important;box-shadow:none!important}
-[data-theme="dark"] .pano-cv[data-side="梧"] .cv-char{color:#C3D9CB!important}
+/* 设计理念 · 栖 / 匣 */
+[data-theme="dark"] .pano-cv .cv-char{background:var(--primary-light)!important;border-color:var(--border-strong)!important;color:#C9A45E!important;box-shadow:none!important}
+[data-theme="dark"] .pano-cv[data-side="匣"] .cv-char{color:#E0C79E!important}
 [data-theme="dark"] .pano-ni .x{background:rgba(194,174,150,.14)!important;color:#B6A995!important}
-[data-theme="dark"] .pano-wi{border-top-color:#7FA993!important}
+[data-theme="dark"] .pano-wi{border-top-color:#C9A45E!important}
 /* 收官 CTA */
 [data-theme="dark"] .pano-cta{color:#EDE7D7!important;background:
   radial-gradient(720px 470px at 88% -16%,rgba(194,174,150,.10),transparent 62%),
@@ -1038,6 +1038,66 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] input:focus,textarea:focus,select:focus{background:var(--card);border-color:var(--primary);box-shadow:0 0 0 3px var(--accent-soft)}
 [data-theme="dark"] #freeBanner{background:linear-gradient(90deg,#3A3126,#4A3A2C);border-color:var(--border);color:var(--ink)}
 [data-theme="dark"] .topbar .tb-badge{background:linear-gradient(135deg,#6E4F37,#8A6A3A);color:#F0E7D8}
+</style>
+<style id="qx-system">
+/* ═══════════ 栖匣 · 系统统一层（令牌/分区/极简模式/移动端触控/长文可读性） ═══════════ */
+/* 统一圆角与阴影：卡片12、按钮10；全部卡片走同一套暖影 */
+.card,.metric,.stat-card,.box,.panel,.progress,.qg-modal{border-radius:12px}
+.btn,.btn-primary,.btn-teal,.btn-white,.nav-item,.section-intro{border-radius:10px}
+/* 长文可读性：正文/要点/单元格行高1.65，段落间距舒展，避免密密麻麻 */
+.view p,.view li,.view td,.view th,.tip,.points p,.gtd-body li,.qg-desc{line-height:1.65}
+.view p{margin:6px 0}
+.view .card{margin-bottom:18px}
+.view{padding-bottom:44px}
+/* 强可读正文默认段距 */
+.card p{font-size:14px;letter-spacing:.2px}
+
+/* ── 分区系统：📖参考资料区(默认折叠) ｜ ✍️我的记录区 ── */
+.ref-zone{border:1px dashed var(--border-strong);border-radius:12px;margin:0 0 20px;background:linear-gradient(180deg,var(--bg),transparent);overflow:hidden}
+.ref-head{display:flex;align-items:center;gap:8px;width:100%;text-align:left;background:var(--bg);border:none;border-bottom:1px solid var(--border);padding:12px 16px;font-family:var(--font-display);font-size:14px;letter-spacing:1px;color:var(--ink-soft);cursor:pointer}
+.ref-head::after{content:"收起 ▲";margin-left:auto;font-size:11px;letter-spacing:.3px;font-family:var(--font-body);color:var(--hint)}
+.ref-zone.collapsed .ref-body{display:none}
+.ref-zone.collapsed .ref-head::after{content:"展开 ▼"}
+.ref-body{padding:12px 16px 14px}
+.note-zone{border:1px solid var(--border);border-top:3px solid var(--primary);border-radius:12px;padding:14px 16px;margin:0 0 22px;background:linear-gradient(180deg,var(--card),var(--bg))}
+.note-head{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:15px;letter-spacing:1px;color:var(--head-deep);margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+/* 通用可折叠参考条（无边框的轻折叠） */
+.qx-collapse{position:relative}
+.qx-coll-h{display:flex;align-items:center;gap:8px;background:none;border:none;border-bottom:1px solid var(--border);width:100%;text-align:left;font-family:var(--font-display);font-size:14px;letter-spacing:1px;color:var(--ink-soft);padding:11px 2px;margin:0 0 10px;cursor:pointer}
+.qx-coll-h::after{content:"▾";margin-left:auto;color:var(--hint);transition:transform .2s}
+.qx-coll-h.open::after{transform:rotate(180deg)}
+.qx-coll-h.open + * {display:block}
+
+/* 空状态友好 */
+.qx-empty{color:var(--hint);font-size:13.5px;text-align:center;padding:26px 12px;line-height:1.8;border:1px dashed var(--border);border-radius:12px;background:var(--bg);margin:4px 0 18px}
+.qx-empty b{color:var(--ink-soft);font-weight:600}
+
+/* ── 极简模式（P人/拖延/轻记录）：只留核心，收起参考与复杂板块 ── */
+[data-mode="min"] .view:not([data-core]){display:none!important}
+[data-mode="min"] .ref-zone{display:none}
+[data-mode="min"] .nav-item[data-more]{display:none}
+[data-mode="min"] .tb-more-item[data-more]{display:none}
+[data-mode="min"] .pack-card,.qx-heavy{opacity:.55;pointer-events:none;user-select:none}
+[data-mode="min"] .sidebar .nav-section{border-top-color:var(--iconfade,var(--border))}
+
+/* ── 资讯板块统一免责小签 ── */
+.qx-disclaim{font-size:12px;line-height:1.7;color:var(--hint);text-align:center;padding:12px 16px;margin:8px 0 26px;border-top:1px dashed var(--border);letter-spacing:.3px}
+
+/* ── 移动端触控与表格提示 ── */
+@media screen and (max-width:768px){
+  button,a.clickable,.nav-item,.bottom-nav-item,input,select,textarea,label[for],.qx-coll-h,.ref-head{min-height:44px}
+  .view table{width:100%}
+  .qx-table-hint{display:block;font-size:11.5px;color:var(--hint);margin-top:6px}
+}
+.qx-table-hint{display:none}
+/* 顶部做移动端快速操作按钮条（新手快速上手） */
+.qx-quick{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+.qx-quick .quick-btn{flex:1 1 130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px 10px;border-radius:12px;background:linear-gradient(180deg,var(--card),var(--bg));border:1px solid var(--border);box-shadow:var(--shadow);cursor:pointer;color:var(--ink-soft);font-size:13px;transition:transform .16s ease,box-shadow .16s ease}
+@media (hover:hover){.qx-quick .quick-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}}
+.qx-quick .quick-btn b{font-size:18px;color:var(--primary);font-family:var(--font-display)}
+[data-theme="dark"] .qx-quick .quick-btn{background:linear-gradient(180deg,var(--card),#262019)}
+[data-theme="dark"] .ref-zone{background:linear-gradient(180deg,#221E18,transparent)}
+[data-theme="dark"] .ref-head,[data-theme="dark"] .qx-coll-h{background:#211C16;color:#B8A68C}
 </style>
 </head>
 <body>
@@ -4764,7 +4824,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </ul>
           </div>
           <div>
-            <h4 style="color:var(--teal)">一定要做（坚持做）</h4>
+            <h4 style="color:var(--teal)">值得长期坚持</h4>
             <ul>
               <li>每学期复盘一次目标偏离度</li>
               <li>维护3-5个高质量深交朋友</li>
@@ -5900,7 +5960,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
         <div class="callout callout-ok" style="margin-top:8px"><strong>记住：</strong>四象限不是把事分四堆，而是教你"把时间花在让你成长的地方"。每天清空 Q1，守护 Q2，人生就不会被琐事推着走。</div>
       </div>
-      <div class="grid grid-2" id="quadrantGrid"><div class="card" style="border-top:3px solid var(--coral)"><h3 style="color:var(--coral)">重要 · 紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">立即做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.1218)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.1218" onblur="editQuad(&#39;q1&#39;,1787374832149.1218,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">今天必须完成的紧急事项</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.1218)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.5122)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.5122" onblur="editQuad(&#39;q1&#39;,1787374832149.5122,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">截止日临近的重要任务</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.5122)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.2058)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.2058" onblur="editQuad(&#39;q1&#39;,1787374832149.2058,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">需要立即回复/处理的消息</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.2058)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q1" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q1&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--teal)"><h3 style="color:var(--teal)">重要 · 不紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">排进日程固定做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.2742)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.2742" onblur="editQuad(&#39;q2&#39;,1787374832149.2742,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">读书 30 分钟并做笔记</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.2742)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.657)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.657" onblur="editQuad(&#39;q2&#39;,1787374832149.657,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">运动 30 分钟</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.657)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.5776)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.5776" onblur="editQuad(&#39;q2&#39;,1787374832149.5776,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">推进本周最重要的一件事</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.5776)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.077)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.077" onblur="editQuad(&#39;q2&#39;,1787374832149.077,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">为下周制定计划</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.077)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q2" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q2&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--primary-mid)"><h3 style="color:var(--primary)">不重要 · 紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">委托 / 批量做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.7273)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.7273" onblur="editQuad(&#39;q3&#39;,1787374832149.7273,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">处理常规邮件/消息</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.7273)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.276)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.276" onblur="editQuad(&#39;q3&#39;,1787374832149.276,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">整理房间或桌面</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.276)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.452)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.452" onblur="editQuad(&#39;q3&#39;,1787374832149.452,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">安排日常琐事（取件/缴费）</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.452)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q3" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q3&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--border-strong)"><h3 style="color:var(--muted)">不重要 · 不紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">尽量少做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q4&#39;,1787374832149.0947)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q4" data-qid="1787374832149.0947" onblur="editQuad(&#39;q4&#39;,1787374832149.0947,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">无目的刷短视频</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q4&#39;,1787374832149.0947)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q4&#39;,1787374832149.4834)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q4" data-qid="1787374832149.4834" onblur="editQuad(&#39;q4&#39;,1787374832149.4834,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">漫无目的逛网购平台</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q4&#39;,1787374832149.4834)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q4" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q4&#39;)">添加</button></div></div></div>
+      <div class="grid grid-2" id="quadrantGrid"><div class="card" style="border-top:3px solid var(--coral)"><h3 style="color:var(--coral)">重要 · 紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">立即做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.1218)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.1218" onblur="editQuad(&#39;q1&#39;,1787374832149.1218,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">今天想优先处理好的紧要事项</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.1218)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.5122)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.5122" onblur="editQuad(&#39;q1&#39;,1787374832149.5122,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">截止日临近的重要任务</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.5122)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.2058)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.2058" onblur="editQuad(&#39;q1&#39;,1787374832149.2058,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">需要立即回复/处理的消息</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.2058)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q1" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q1&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--teal)"><h3 style="color:var(--teal)">重要 · 不紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">排进日程固定做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.2742)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.2742" onblur="editQuad(&#39;q2&#39;,1787374832149.2742,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">读书 30 分钟并做笔记</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.2742)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.657)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.657" onblur="editQuad(&#39;q2&#39;,1787374832149.657,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">运动 30 分钟</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.657)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.5776)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.5776" onblur="editQuad(&#39;q2&#39;,1787374832149.5776,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">推进本周最重要的一件事</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.5776)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.077)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.077" onblur="editQuad(&#39;q2&#39;,1787374832149.077,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">为下周制定计划</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.077)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q2" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q2&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--primary-mid)"><h3 style="color:var(--primary)">不重要 · 紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">委托 / 批量做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.7273)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.7273" onblur="editQuad(&#39;q3&#39;,1787374832149.7273,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">处理常规邮件/消息</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.7273)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.276)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.276" onblur="editQuad(&#39;q3&#39;,1787374832149.276,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">整理房间或桌面</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.276)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.452)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.452" onblur="editQuad(&#39;q3&#39;,1787374832149.452,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">安排日常琐事（取件/缴费）</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.452)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q3" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q3&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--border-strong)"><h3 style="color:var(--muted)">不重要 · 不紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">尽量少做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q4&#39;,1787374832149.0947)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q4" data-qid="1787374832149.0947" onblur="editQuad(&#39;q4&#39;,1787374832149.0947,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">无目的刷短视频</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q4&#39;,1787374832149.0947)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q4&#39;,1787374832149.4834)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q4" data-qid="1787374832149.4834" onblur="editQuad(&#39;q4&#39;,1787374832149.4834,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">漫无目的逛网购平台</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q4&#39;,1787374832149.4834)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q4" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q4&#39;)">添加</button></div></div></div>
     </section>
 
     <!-- ═══════ 计划表 ═══════ -->
@@ -5914,7 +5974,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="card"><h3>年度计划</h3><textarea id="planYear" placeholder="今年最重要的3件事..."></textarea></div>
         <div class="card"><h3>月度计划</h3><textarea id="planMonth" placeholder="本月聚焦..."></textarea></div>
         <div class="card"><h3>周计划</h3><textarea id="planWeek" placeholder="本周三件大事..."></textarea></div>
-        <div class="card"><h3>日计划</h3><textarea id="planDay" placeholder="今天必须完成的..."></textarea></div>
+        <div class="card"><h3>日计划</h3><textarea id="planDay" placeholder="今天想安排处理好的一两件事..."></textarea></div>
       </div>
       <div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>计划黄金法则 · 年→月→周→日这样拆才不落空</h3>
@@ -9588,7 +9648,7 @@ var QUAD_META=[
   {key:'q4',title:'不重要 · 不紧急',hint:'尽量少做',color:'var(--muted)',bg:'#F1EFE8',border:'var(--border-strong)'}
 ];
 var QUAD_SEED={
-  q1:['今天必须完成的紧急事项','截止日临近的重要任务','需要立即回复/处理的消息'],
+  q1:['今天想优先处理好的紧要事项','临近截止、需要推进的任务','需要尽快回复/确认的消息'],
   q2:['读书 30 分钟并做笔记','运动 30 分钟','推进本周最重要的一件事','为下周制定计划'],
   q3:['处理常规邮件/消息','整理房间或桌面','安排日常琐事（取件/缴费）'],
   q4:['无目的刷短视频','漫无目的逛网购平台']
@@ -11722,14 +11782,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-hb .medal{width:58px;height:58px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(140deg,#4A3427,#7A9C84);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;box-shadow:0 10px 22px rgba(46,158,120,.36)}
 .pano-hb h5{color:#33291F;font-size:15.5px;margin:0 0 8px;font-weight:800;letter-spacing:.02em}
 .pano-hb p{color:#67796F;font-size:12.8px;line-height:1.9;margin:0}
-/* 设计理念 · 序 / 梧 */
+/* 设计理念 · 栖 / 匣 */
 .pano-concept{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px auto 0;max-width:880px;text-align:left}
-.pano-cv{display:flex;gap:16px;align-items:flex-start;background:#FFFFFF;border:1px solid #E4EAE2;border-radius:18px;padding:26px 24px;box-shadow:0 12px 30px rgba(23,55,45,.07);transition:.28s}
-.pano-cv:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(23,55,45,.13)}
-.pano-cv .cv-char{flex:none;display:flex;align-items:center;justify-content:center;width:74px;height:92px;border-radius:16px;background:linear-gradient(150deg,#EAF7F1,#E5EBDF);border:1px solid #DDECE3;font-family:"Kaiti SC","KaiTi","STKaiti",serif;font-size:34px;font-weight:700;color:#6E4F37;line-height:1;box-shadow:inset 0 1px 0 #fff}
-.pano-cv[data-side="梧"] .cv-char{color:#4A3427}
+.pano-cv{display:flex;gap:16px;align-items:flex-start;background:#FFFFFF;border:1px solid #E7DED0;border-radius:18px;padding:26px 24px;box-shadow:0 12px 30px rgba(110,79,55,.07);transition:.28s}
+.pano-cv:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(110,79,55,.13)}
+.pano-cv .cv-char{flex:none;display:flex;align-items:center;justify-content:center;width:74px;height:92px;border-radius:16px;background:linear-gradient(150deg,#F4EBDD,#EBE1CE);border:1px solid #E8DCC6;font-family:"Kaiti SC","KaiTi","STKaiti",serif;font-size:34px;font-weight:700;color:#6E4F37;line-height:1;box-shadow:inset 0 1px 0 #fff}
+.pano-cv[data-side="匣"] .cv-char{color:#5C4030;background:linear-gradient(150deg,#F0E4D2,#E7DAC2)}
 .pano-cv .cv-body h5{color:#33291F;font-size:15.5px;font-weight:800;letter-spacing:.03em;margin:2px 0 8px}
-.pano-cv .cv-body p{color:#67796F;font-size:13px;line-height:1.95;margin:0}
+.pano-cv .cv-body p{color:#6E5E4E;font-size:13px;line-height:1.95;margin:0}
 @media (max-width:560px){.pano-concept{grid-template-columns:1fr}.pano-cv .cv-char{width:60px;height:74px;font-size:28px}}
 /* 原则 */
 .pano-nolist{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px;margin-top:32px}
@@ -11917,7 +11977,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="pt-name-premium">
-        <span class="pm-verse">一「序」一「梧」：把日子排成自己的次序，再让它安静地向上生长。<em>—— 栖匣，为每一位大学生而来</em></span>
+        <span class="pm-verse">一「栖」一「匣」：先安放，再生长。把状态收好，而不是时时催促。<em>—— 栖匣，为每一位大学生而来</em></span>
       </div>
       <h1 class="pano-h1">把日子，过成<em class="pano-grow">自己的次序</em><span class="thin">：四年，去有所成，来有所依</span></h1>
       <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>，六条线收拢到一处、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
@@ -12012,21 +12072,21 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 为什么设计它 · 设计理念 (步骤 7) -->
     <section class="pano-sec pano-sec-ctr" data-step="6">
       <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
-      <h2 class="pano-h2">它因一个朴素信念而生：<em>「序」是把日子排成自己的次序，「梧」是梧桐，只待生长</em></h2>
-      <p class="pano-lead">我们见过太多人被"大学很自由"的美好期待，和"自由反而不知从何下手"的落差困住。长期主义的自律，不该靠意志硬扛，而该靠<b>一套顺手的系统</b>。《大学》里讲"知止而后有定，定而后能静"——先把手头的生活捋顺，心中有了条理，人才能真正安定下来、慢慢生长。</p>
+      <h2 class="pano-h2">它因一个朴素信念而生：<em>安放优先于鞭策，先接住，再谈成长</em></h2>
+      <p class="pano-lead">我们见过太多人被"大学很自由"的美好期待，和"自由反而不知从何下手"的落差困住。真正能走远的自律，不该靠意志硬扛、被列表审判，而该靠<b>一处能接住你的地方</b>。《大学》里讲"知止而后有定，定而后能静"——先把状态安放下来、不慌不忙地收好，心中安定，人才能真正从容地找到自己的步调。</p>
       <div class="pano-concept">
-        <div class="pano-cv" data-side="序">
-          <span class="cv-char">序</span>
+        <div class="pano-cv" data-side="栖">
+          <span class="cv-char">栖</span>
           <div class="cv-body">
-            <h5>次序 · 从容 · 主张</h5>
-            <p>不焦虑、不攀比，把今天该做的事一件件做好；在快节奏里守住自己的节奏，把散落的日子，排成有条不紊的次序。平凡的一天，也能自有章法、稳稳向前。</p>
+            <h5>安放 · 接纳 · 不催促</h5>
+            <p>迷茫、停顿、疲惫，都是正常状态，同样值得被好好存放。未完成的计划不是失败，只是一份待续的记录。这里不审判你、不制造内卷焦虑，先把状态妥帖收好，才有余力往前走。</p>
           </div>
         </div>
-        <div class="pano-cv" data-side="梧">
-          <span class="cv-char">梧</span>
+        <div class="pano-cv" data-side="匣">
+          <span class="cv-char">匣</span>
           <div class="cv-body">
-            <h5>梧桐 · 生长 · 引凤</h5>
-            <p>《诗》曰"凤凰鸣矣，于彼高冈；梧桐生矣，于彼朝阳"。学业、目标、时间、金钱、健康、眼界——把六条线收拢到一处，一点一点长成能盛住万般可能性的大树。打开栖匣，就是给未来添一片可生长的树荫。</p>
+            <h5>收纳 · 生长 · 汇成档案</h5>
+            <p>学业、目标、时间、金钱、健康、眼界——把六条线收拢进同一只匣子，互相咬合、日渐积累。一天一天的记录被保存下来，到毕业时，收下完整而真实的青春答卷。</p>
           </div>
         </div>
       </div>
@@ -12288,5 +12348,115 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     setTimeout(function(){var o=document.getElementById('qgOverlay');o.classList.add('show');o.setAttribute('aria-hidden','false');},1200);
   }
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',maybe);}else{setTimeout(maybe,600);}
+})();
+</script>
+<script>
+/* ═══════════ 栖匣 · 运行时系统层：极简模式/分区折叠/全站搜索/存储看护/设置置顶 ═══════════ */
+(function(){
+  var CORE=['home','today','quadrant','plans','goals','habits','timer','journal','creative','settings','about'];
+  var QX_SEARCH={
+    '今天':'home','今日':'home','概览':'home','待办':'home','打卡':'home','习惯':'habits','倒数':'home','倒计时':'home',
+    '目标':'goals','计划':'plans','时间':'timer','专注':'timer','番茄':'timer','钟':'timer','四象限':'quadrant','矩阵':'quadrant',
+    '学业':'study','学习':'study','四级':'study','六级':'study','备考':'exam','考研':'exam','考公':'exam','考编':'exam','保研':'study','绩点':'study',
+    '竞赛':'contest','论文':'paper','简历':'career','求职':'career','职业':'career','奖学金':'perk','助学':'perk','资助':'perk',
+    '记账':'finance','理财':'finance','钱':'finance','省钱':'save','赚钱':'earn','搞钱':'earn','购物':'shop',
+    '健康':'health','运动':'health','健身':'health','心理':'mind','心态':'mind','情绪':'mind','安全':'safety','防骗':'safety',
+    '校园':'campus','入学':'college','新生':'college','证书':'life','证':'life','生涯':'life',
+    '笔记':'journal','日记':'journal','札记':'journal','复盘':'journal','灵感':'creative','收藏':'creative','书':'shelf','读书':'shelf','播客':'podcast','电影':'movie','影':'movie','娱乐':'fun',
+    '模板':'tpl','ai':'ai','设置':'settings','关于':'about','帮助':'about','导览':'about'
+  };
+  function modeNow(){try{return localStorage.getItem('pp_qx_mode')||'full'}catch(e){return 'full'}}
+  function applyCSSMode(m){var b=document.body;if(b)b.setAttribute('data-mode',m==='min'?'min':'full');}
+  function refreshNav(){
+    var items=document.querySelectorAll('#sidebar .nav-item');
+    for(var i=0;i<items.length;i++){var it=items[i];it.removeAttribute('data-more');
+      var v=it.getAttribute('data-view')||'';
+      if(v&&CORE.indexOf(v)<0)it.setAttribute('data-more','1');
+    }
+    // 让只有隐藏项的「参考类分组」标题也收掉，避免空标题
+    var secs=document.querySelectorAll('#sidebar .nav-section');
+    for(var j=0;j<secs.length;j++){var g=secs[j].nextElementSibling;var has=g&&g.querySelector&&g.querySelector('.nav-item:not([data-more])');secs[j].style.display=(document.body&&document.body.getAttribute('data-mode')==='min'&&!has)?'none':'';}
+  }
+  function refreshViews(){
+    var vs=document.querySelectorAll('.view');
+    for(var i=0;i<vs.length;i++){var id=(vs[i].id||'').replace(/^view-/,'');
+      if(CORE.indexOf(id)>=0)vs[i].setAttribute('data-core','1');else vs[i].removeAttribute('data-core');}
+  }
+  function flash2(t){var f=document.getElementById('flash');if(f){f.textContent=t;f.classList.add('show');setTimeout(function(){f.classList.remove('show')},2400);}}
+  window.qxModeSet=function(m){
+    try{localStorage.setItem('pp_qx_mode',m)}catch(e){}
+    applyCSSMode(m);refreshNav();refreshViews();
+    if(m==='min'){var act=document.querySelector('.view.active');var aid=act?(act.id||'').replace(/^view-/,''):'';if(CORE.indexOf(aid)<0&&window.switchView){try{switchView('home')}catch(e){}}}
+    flash2(m==='min'?'已切换极简模式：只留下最重要的几件事，先安放，不用求全。':'已切换完整模式：全部板块与参考攻略已展开，慢慢来。');
+  };
+  function scrollToId(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}}
+  window.qxQuickGo=function(k){
+    if(k==='todo'){switchView('home');setTimeout(function(){scrollToId('todayTasks')},150);}
+    else if(k==='cd'){switchView('home');setTimeout(function(){scrollToId('qxCountdown')},150);}
+    else if(window.switchView)switchView(k);
+    closeSidebar&&closeSidebar();
+  };
+  window.ckClearAll=function(){uiConfirm && uiConfirm('要清空你的全部个人记录吗？将保留产品自带的参考攻略与模板。\n\n建议先「一键导出备份」。',function(){clearAll&&clearAll();});};
+  function qxInit(){
+    applyCSSMode(modeNow());refreshNav();refreshViews();
+    // 分区折叠：📖参考资料区/折叠条 展开收起
+    document.addEventListener('click',function(e){
+      var h=e.target&&e.target.closest?e.target.closest('.ref-head,.qx-coll-h'):null;
+      if(!h)return;
+      if(h.classList.contains('ref-head')){var z=h.parentElement;if(z)z.classList.toggle('collapsed');return;}
+      h.classList.toggle('open');
+      var n=h.nextElementSibling;if(n)n.style.display=(h.classList.contains('open')?'':'none');
+    });
+    // 全站搜索：Enter 命中板块关键词则跳转
+    var ns=document.getElementById('navSearch');
+    if(ns)ns.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){var q=(this.value||'').trim().toLowerCase();if(!q)return;
+        var hit=QX_SEARCH[q];if(hit&&window.switchView){switchView(hit);closeSidebar&&closeSidebar();flash2('已带你到相关板块，找到你要的内容。');}
+      }
+    });
+    // 存储看护：检测损坏JSON，友好提示而非白屏
+    try{
+      var bad=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('pp_')===0){try{JSON.parse(localStorage.getItem(k));}catch(err){bad.push(k);}}}
+      if(bad.length&&!sessionStorage.getItem('qxb_warned')){sessionStorage.setItem('qxb_warned','1');setTimeout(function(){uiAlert&&uiAlert('检测到 '+bad.length+' 个本地记录文件异常。\n\n为避免丢数据，请到「设置 → 🔐 数据安全」用之前导出的备份「导入恢复」；若没有备份，可选择「清空我的全部记录」重新开始。\n\n不会让页面崩溃，请放心。');},1500);}
+    }catch(e){}
+    // 设置页置顶「数据安全」卡
+    try{
+      var sv=document.getElementById('view-settings');
+      if(sv&&!document.getElementById('qxDataCard')){
+        var intro=sv.querySelector('.section-intro');var wrap=document.createElement('div');wrap.id='qxDataCard';
+        wrap.style.cssText='margin-bottom:22px';
+        wrap.innerHTML='<div class="note-zone"><div class="note-head">🔐 数据安全与使用模式</div>'+
+          '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'+
+            '<button class="btn btn-primary" onclick="qxModeSet(\'full\')">📚 完整模式</button>'+
+            '<button class="btn" onclick="qxModeSet(\'min\')">🪶 极简模式</button></div>'+
+          '<p style="font-size:12.5px;color:var(--hint);margin:0 0 8px;line-height:1.7">完整模式＝全部板块与参考攻略；极简模式＝只留几件最重要的事，适合只想安静记录、不想看海量干货的人。</p>'+
+          '<hr style="border:none;border-top:1px solid var(--border);margin:4px 0 14px">'+
+          '<div style="display:flex;flex-wrap:wrap;gap:10px">'+
+            '<button class="btn btn-primary" onclick="exportAll()">⬇️ 一键导出全部数据备份</button>'+
+            '<button class="btn" onclick="document.getElementById(\'qxImportInput\').click()">⬆️ 从备份文件导入恢复</button>'+
+            '<input type="file" id="qxImportInput" accept=".json,.txt" style="display:none" onchange="importAll(event)">'+
+            '<button class="btn" onclick="ckClearAll()" style="border-color:var(--coral);color:var(--coral)">🗑️ 清空我的全部记录（保留参考模板）</button></div>'+
+          '<p style="font-size:12px;color:var(--hint);margin:12px 0 0;line-height:1.7">记录只保存在你的浏览器本地。<b>清理缓存、无痕模式或换设备前，务必先导出备份</b>，否则记录会随浏览器清除。</p></div>';
+        if(intro&&intro.parentNode)intro.parentNode.insertBefore(wrap,intro.nextSibling);
+      }
+    }catch(e){}
+    // 首页新手快速上手卡（不重复插入）
+    try{
+      var hv=document.getElementById('view-home');
+      if(hv&&!document.getElementById('qxQuickBar')){
+        var anchor=document.getElementById('focusCard')||hv.querySelector('.page-head');
+        var bar=document.createElement('div');bar.id='qxQuickBar';bar.className='qx-quick';
+        bar.innerHTML='<div class="quick-btn" onclick="qxQuickGo(\'todo\')"><b>📝</b>今日待办</div>'+
+          '<div class="quick-btn" onclick="qxQuickGo(\'habits\')"><b>☑️</b>习惯打卡</div>'+
+          '<div class="quick-btn" onclick="qxQuickGo(\'cd\')"><b>⏳</b>倒数日</div>'+
+          '<div class="quick-btn" onclick="qxQuickGo(\'timer\')"><b>⏱️</b>专注计时</div>';
+        if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(bar,anchor);
+      }
+    }catch(e){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(qxInit,350);});
+  else setTimeout(qxInit,350);
+  // 切换视图后刷新 core 位
+  try{var _sw=window.switchView&&window.switchView.bind(window);window.switchView=function(n){var r=typeof _sw==='function'?_sw(n):undefined;refreshViews();setTimeout(refreshNav,30);return r;};}catch(e){}
 })();
 </script></body></html>
