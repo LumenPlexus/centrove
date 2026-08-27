@@ -1,19 +1,19 @@
 {
-  "name": "序梧 · 大学生成长中枢",
-  "short_name": "序梧",
-  "description": "大学生成长中枢：今日规划、目标拆解、时间管理、记账、打卡、笔记。数据只存在你自己的设备上，私密安全。",
+  "name": "栖匣 · 大学生四年全能生活中枢工作台",
+  "short_name": "栖匣",
+  "description": "一处安放你整个大学生活的地方：学业备考、长线目标、时间管理、收支账本、健康、情绪与灵感碎片，全部收纳在同一工作台。数据只保存在你自己的设备本地，不上传任何服务器。安放优先于鞭策。",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0E4F3A",
-  "theme_color": "#0E4F3A",
+  "background_color": "#F4EFE6",
+  "theme_color": "#6F5440",
   "lang": "zh-CN",
-  "categories": ["productivity", "education", "lifestyle"],
+  "categories": ["education", "lifestyle", "productivity"],
   "shortcuts": [
-    { "name": "今日 · 今日概览", "short_name": "今日", "url": "./#home", "icons": [{ "src": "./pwa/icon-192.png", "sizes": "192x192" }] },
-    { "name": "目标规划", "short_name": "目标", "url": "./#goals", "icons": [{ "src": "./pwa/icon-192.png", "sizes": "192x192" }] },
-    { "name": "时间管理", "short_name": "专注", "url": "./#timer", "icons": [{ "src": "./pwa/icon-192.png", "sizes": "192x192" }] }
+    { "name": "今日概览", "short_name": "今日", "url": "./#home", "icons": [{ "src": "./pwa/icon-192.png", "sizes": "192x192" }] },
+    { "name": "锚愿匣 · 目标", "short_name": "目标", "url": "./#goals", "icons": [{ "src": "./pwa/icon-192.png", "sizes": "192x192" }] },
+    { "name": "时栖录 · 专注", "short_name": "专注", "url": "./#timer", "icons": [{ "src": "./pwa/icon-192.png", "sizes": "192x192" }] }
   ],
   "icons": [
     { "src": "./pwa/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

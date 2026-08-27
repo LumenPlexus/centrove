@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="xuwu" data-author="尹平平" data-ver="2026.08.6"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 序梧 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
+<html lang="zh-CN" data-app="qixia" data-author="尹平平" data-ver="2026.08.7"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2A3B30"/><stop offset="100%" stop-color="#1D2C23"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>序梧 · 大学生成长中枢</title>
+<title>栖匣 · 大学生四年全能生活中枢工作台</title>
   <meta name="author" content="尹平平">
-  <meta name="copyright" content="© 2026 尹平平 · 序梧 · 保留所有权利">
-  <meta name="theme-color" id="themeColorMeta" content="#2A3B30">
+  <meta name="copyright" content="© 2026 尹平平 · 栖匣 · 保留所有权利">
+  <meta name="theme-color" id="themeColorMeta" content="#6F5440">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="序梧">
+  <meta name="apple-mobile-web-app-title" content="栖匣">
   <link rel="manifest" href="pwa/manifest.json">
   <link rel="icon" type="image/png" href="pwa/icon-192.png">
   <link rel="apple-touch-icon" href="pwa/icon-180.png">
@@ -55,7 +55,7 @@
 
 <style>
 /* ═══════════════════════════════════════════════════════════════════
-   序梧 · Sage & Ink「学院书卷」设计系统 —— 全站唯一数据源
+   栖匣 · Sage & Ink「学院书卷」设计系统 —— 全站唯一数据源
    基底＝暖纸本 / 墨夜；品牌＝松针墨绿；点缀＝赭金；正文＝中性暖墨（不偏绿）。
    规范：日/夜两套，仅靠 [data-theme] 切换变量；不跟随系统深色（避免切换蓝块）。
    ═══════════════════════════════════════════════════════════════════ */
@@ -191,6 +191,9 @@ html{-webkit-text-size-adjust:100%}
 .page-head h1{font-size:23px;font-weight:600;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:10px}
 .page-head h1 svg{width:22px;height:22px;color:var(--coral,#C2A15E)}
 .page-head p{font-size:13px;color:var(--muted)}
+
+/* 栖匣 · 板块导语条：第一视图顶部的一段安放文案 */
+.section-intro{font-size:12.5px;line-height:1.75;color:var(--muted);background:var(--accent-soft, rgba(107,87,71,.08));border-left:3px solid var(--accent,#C2A15E);border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:18px}
 
 .grid{display:grid;gap:16px}
 .grid-2{grid-template-columns:repeat(2,1fr)}
@@ -500,7 +503,7 @@ strong{font-weight:600}
 
 
 /* ════════════════════════════════════════════════════════════
-   序梧 3.0 升级层 —— 深色模式 / PWA / 底部导航 / 新板块
+   栖匣 3.0 升级层 —— 深色模式 / PWA / 底部导航 / 新板块
    ════════════════════════════════════════════════════════════ */
 
 /* ── 深色模式变量覆盖 ──
@@ -659,7 +662,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 [data-theme="dark"] [style*="background:#E6"]:not(.tt-color-btn):not(.heat-cell):not(.achievement-badge) p,
 [data-theme="dark"] [style*="background:#E5"]:not(.tt-color-btn):not(.heat-cell):not(.achievement-badge) p,
 [data-theme="dark"] [style*="background:#EAF4EF"] p{color:var(--text)!important}
-/* ═══ 序梧 · 全景导览（pano）夜间模式 —— 暖色墨夜书卷版 ═══
+/* ═══ 栖匣 · 全景导览（pano）夜间模式 —— 暖色墨夜书卷版 ═══
    首屏封面为深林青金色（两种主题下均保持深色），此处仅把白色卡片与浅色正文
    统一换成暖墨夜色，消除夜间刺眼的整片白底，并与产品内页的暖纸/墨色体系呼应。 */
 [data-theme="dark"] .pano{color:#E6E0D2;background:
@@ -879,6 +882,74 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 .mobile-menu-item{display:none;}
 
 </style>
+<!-- ═══════ 栖匣｜木匣纸上 · 全局设计语言 ═══════
+     概念：一方暖木匣，摊开在老纸桌上的时光。
+     主色换木 · 背景换纸 · 点缀用老化黄铜 · 警示用陶土，一色到底不再彩虹。 -->
+<style id="qixia-theme">
+:root,:root[data-theme="light"]{
+  --primary:#6F5440;--primary-strong:#5B4634;--primary-mid:#4A3A2C;--primary-light:#EDE6DC;
+  --teal:#6E7B62;--teal-mid:#59644F;--teal-light:#ECEEDF;
+  --gold:#9C7A46;--gold-strong:#84662F;--gold-light:#F3EBD7;
+  --coral:#A85E4A;--coral-strong:#8F4C3C;--coral-light:#F4E7E0;
+  --ink:#3A332B;--ink-soft:#6E665C;
+  --bg:#F4EFE6;--card:#FBF7EE;--text:#3A332B;--muted:#6E665C;--hint:#9A9184;
+  --border:#DFD5C2;--border-strong:#C7B79B;
+  --accent:#6F5440;--accent-soft:rgba(111,84,64,.15);
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 1px 2px rgba(74,58,44,.06),0 6px 18px rgba(74,58,44,.07);
+  --shadow-lg:0 14px 34px rgba(74,58,44,.15);
+  --heat-0:#EFE7D7;--heat-1:#E0D2B8;--heat-2:#C3AC85;--heat-3:#97794F;--heat-4:#654A2F;
+  --head:#4A3F32;--head-deep:#34302A;
+}
+:root[data-theme="dark"]{
+  --primary:#C8AE94;--primary-strong:#D6C0A8;--primary-mid:#E0D0BC;--primary-light:#46392E;
+  --teal:#93A184;--teal-mid:#ABB6A0;--teal-light:#33392B;
+  --gold:#C4A05E;--gold-strong:#D4B87E;--gold-light:#453824;
+  --coral:#D08A6E;--coral-strong:#DD9E82;--coral-light:#44322A;
+  --ink:#EDE7DC;--ink-soft:#B7AEA1;
+  --bg:#221F1A;--card:#2D2921;--text:#EDE7DC;--muted:#B7AEA1;--hint:#877E71;
+  --border:#46402F;--border-strong:#57513F;
+  --accent:#C8AE94;--accent-soft:rgba(200,174,148,.18);
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.28);
+  --shadow-lg:0 16px 40px rgba(0,0,0,.45);
+  --heat-0:#2C2820;--heat-1:#3B3526;--heat-2:#5A4B2E;--heat-3:#7A6336;--heat-4:#A07E4A;
+  --head:#D8CBB8;--head-deep:#F0E9DD;
+}
+/* 字：品牌与标题用有温度的中文衬线，正文仍用干净无衬线 */
+:root{
+  --font-display:"Noto Serif CJK SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --line-height-body:1.68;
+}
+body{font-family:var(--font-body);line-height:var(--line-height-body);background-color:var(--bg)}
+/* 纸感：细点粒纹理 + 极淡暖晕，替代死板纯色背景 */
+body{
+  background-image:radial-gradient(circle at 1px 1px, rgba(111,84,64,.045) 1px, transparent 1px);
+  background-size:24px 24px;
+}
+@media (prefers-color-scheme: dark){:root[data-theme="dark"]{}}
+/* 卡片：米纸卡 + 柔和暖影，去荧光感 */
+.card,.panel,.box{background-color:var(--card);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border)}
+/* 品牌字标与页面大标题：衬线、克制的字距 */
+.logo{font-family:var(--font-display);font-weight:700;letter-spacing:3px}
+.page-head h1{font-family:var(--font-display);font-weight:600;letter-spacing:1px}
+.nav-section{letter-spacing:1px}
+.btn,.btn-primary,.btn-secondary{border-radius:10px}
+hr{border-color:var(--border)}
+/* 板块导语：一段安放文字，用竖木纹引条 */
+.section-intro{background:linear-gradient(90deg,var(--accent-soft),transparent 92%);border-left:3px solid var(--accent);}
+/* 消灭旧墨绿残留：标题/按钮/横幅统一到「木匣暖墨」 */
+.page-head h1,.card h3{color:var(--head-deep)}
+#view-goals .card h3,#view-party .card h3,#view-finance .card h3,#view-save .card h3,#view-shop .card h3,#view-life .card h3,#view-ai .card h3,#view-college .card h3,#view-settings .card h3{color:var(--head-deep)}
+:root[data-theme="dark"] .btn-primary,:root[data-theme="dark"] .btn-teal{background:linear-gradient(135deg,#4A3A2C,#3E2F24)!important;border-color:var(--primary)!important;color:#F4EDE3!important;box-shadow:none!important}
+:root[data-theme="dark"] #freeBanner{background:linear-gradient(90deg,#3A3126,#4A3A2C)!important;border-color:var(--border)!important;color:var(--ink)!important}
+/* 移动端：横向表格滚动、触控高度 */
+@media screen and (max-width:768px){
+  table{display:block;overflow-x:auto;white-space:nowrap}
+  button,.clickable-item,input,select,textarea{min-height:44px;font-size:16px}
+}
+</style>
 </head>
 <body>
 <script>
@@ -938,15 +1009,15 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 })();
 </script>
 <div id="brandSplash" style="position: fixed; inset: 0px; z-index: 99999; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#1A2C22 0%,#1E3326 48%,#16241C 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
-  <!-- 序梧启动屏：深松 × 宣纸 × 赭金，生长环推演「六线归一」 -->
+  <!-- 栖匣启动屏：深松 × 宣纸 × 赭金，生长环推演「六线归一」 -->
   <div style="position:absolute;inset:0;opacity:.18;background:radial-gradient(rgba(246,241,226,.06) 1px,transparent 1px);background-size:22px 22px;pointer-events:none"></div>
   <div style="position:relative;width:128px;height:128px;display:flex;align-items:center;justify-content:center">
     <span style="position:absolute;inset:-10px;border:1px solid rgba(201,161,94,.42);border-radius:50%;animation:bins .9s .15s both,srr 3.6s ease-in-out 1s infinite"></span>
     <span style="position:absolute;inset:7px;border:1px dashed rgba(201,161,94,.34);border-radius:50%;animation:bins .9s .28s both,srr 4.6s ease-in-out 1.3s infinite reverse"></span>
     <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,94,.42),rgba(201,161,94,0) 70%);filter:blur(7px);animation:bins .6s both"></div>
-    <img src="pwa/logo.png" alt="序梧" draggable="false" style="width:106px;height:106px;border-radius:28px;box-shadow:0 0 0 3px rgba(201,161,94,.32),0 22px 54px rgba(5,15,10,.5);opacity:0;animation:bins .7s .12s forwards,bf 3.6s ease-in-out 1.2s infinite;position:relative"></div>
-  <div style="font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:46px;font-weight:800;color:#F3EEDF;letter-spacing:12px;margin-top:30px;opacity:0;animation:bins .9s .45s forwards">序梧</div>
-  <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">大学生成长中枢</div>
+    <img src="pwa/logo.png" alt="栖匣" draggable="false" style="width:106px;height:106px;border-radius:28px;box-shadow:0 0 0 3px rgba(201,161,94,.32),0 22px 54px rgba(5,15,10,.5);opacity:0;animation:bins .7s .12s forwards,bf 3.6s ease-in-out 1.2s infinite;position:relative"></div>
+  <div style="font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:46px;font-weight:800;color:#F3EEDF;letter-spacing:12px;margin-top:30px;opacity:0;animation:bins .9s .45s forwards">栖匣</div>
+  <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">大学生四年全能生活中枢工作台</div>
   <div style="margin-top:20px;height:1px;width:60px;background:linear-gradient(90deg,transparent,#E0C48C,transparent);opacity:0;animation:bins .9s .78s forwards"></div>
   <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:rgba(243,238,223,.9);letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">把日子，排布成自己的次序</div>
   <div style="margin-top:22px;display:flex;gap:0;align-items:flex-end;opacity:0;animation:bins .9s 1.08s forwards">
@@ -995,7 +1066,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><img src="pwa/logo.png" alt="序梧" style="width:26px;height:26px;border-radius:7px;flex-shrink:0">序梧 <span class="tb-badge">大学生成长中枢</span></div>
+      <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0">栖匣 <span class="tb-badge">大学生四年全能生活中枢工作台</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -1004,7 +1075,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
         <span class="btn-inspire-text">换一批灵感</span>
       </button>
-      <button class="icon-btn btn-guide" id="btnGuide" onclick="openPano()" title="产品导览 · 了解序梧能做什么">
+      <button class="icon-btn btn-guide" id="btnGuide" onclick="openPano()" title="产品导览 · 了解栖匣能做什么">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
         <span class="btn-guide-text">导览</span>
       </button>
@@ -1057,14 +1128,14 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 
     <nav class="sidebar" id="sidebar">
     <div class="logo">
-      <img src="pwa/logo.png" alt="序梧" style="width:22px;height:22px;border-radius:6px;flex-shrink:0">
-      序梧
+      <img src="pwa/logo.png" alt="栖匣" style="width:22px;height:22px;border-radius:6px;flex-shrink:0">
+      栖匣
     </div>
     <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
     <div class="nav-item" data-view="home" onclick="switchView(&#39;home&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>今日概览
     </div>
-    <div class="nav-section">目标与行动</div>
+    <div class="nav-section">🎯 锚愿匣 · 目标与行动</div>
     <div class="nav-item" data-view="quadrant" onclick="switchView(&#39;quadrant&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急
     </div>
@@ -1080,7 +1151,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
     <div class="nav-item" data-view="life" onclick="switchView(&#39;life&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图
     </div>
-    <div class="nav-section">效率与工具</div>
+    <div class="nav-section">⏱️ 时栖录 · 效率与工具</div>
     <div class="nav-item" data-view="timer" onclick="switchView(&#39;timer&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时
     </div>
@@ -1090,7 +1161,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
     <div class="nav-item" data-view="ai" onclick="switchView(&#39;ai&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>智造工坊
     </div>
-    <div class="nav-section">学业成长</div>
+    <div class="nav-section">📚 学业栖仓 · 学业成长</div>
     <div class="nav-item" data-view="study" onclick="switchView(&#39;study&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进
     </div>
@@ -1109,21 +1180,21 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
     <div class="nav-item" data-view="campus" onclick="switchView(&#39;campus&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活
     </div>
-    <div class="nav-section">职业与技能</div>
+    <div class="nav-section">💼 职途匣 · 职业与技能</div>
     <div class="nav-item" data-view="career" onclick="switchView(&#39;career&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展
     </div>
     <div class="nav-item" data-view="growth" onclick="switchView(&#39;growth&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83.83-2.5 2.5-2.5 4a2.5 2.5 0 1 0 5 0c0-1.5-1.67-3.17-2.5-4z"></path><path d="M12 2v6m0 0L8 4m4 4l4-4"></path></svg>个人提升
     </div>
-    <div class="nav-section">记录与成长</div>
+    <div class="nav-section">📒 时光贮格 · 记录与成长</div>
     <div class="nav-item" data-view="journal" onclick="switchView(&#39;journal&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记
     </div>
     <div class="nav-item" data-view="stats" onclick="switchView(&#39;stats&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长档案
     </div>
-    <div class="nav-section">生活与健康</div>
+    <div class="nav-section">🌿 安养隅 · 生活与健康</div>
     <div class="nav-item" data-view="health" onclick="switchView(&#39;health&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>运动健康
     </div>
@@ -1133,7 +1204,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
     <div class="nav-item" data-view="safety" onclick="switchView(&#39;safety&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航
     </div>
-    <div class="nav-section">阅读与休闲</div>
+    <div class="nav-section">✨ 灵拾槽 · 阅读与休闲</div>
     <div class="nav-item" data-view="creative" onclick="switchView(&#39;creative&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>灵感看板
     </div>
@@ -1149,7 +1220,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
     <div class="nav-item" data-view="fun" onclick="switchView(&#39;fun&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>轻松一下
     </div>
-    <div class="nav-section">理财与副业</div>
+    <div class="nav-section">💰 贮金格 · 理财与副业</div>
     <div class="nav-item" data-view="finance" onclick="switchView(&#39;finance&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>理财管理
     </div>
@@ -1165,7 +1236,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
     <div class="nav-item" data-view="perk" onclick="switchView(&#39;perk&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>助学帮扶
     </div>
-    <div class="nav-section">系统
+    <div class="nav-section">⚙️ 设置 · 栖匣系统
     </div>
     <div class="nav-item" data-view="about" onclick="switchView(&#39;about&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品
@@ -1177,46 +1248,67 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
   <main class="main">
-      <div id="mobileSidebarHint" style="display:none;margin:8px 16px;padding:6px 12px;border-radius:9px;background:#EAF4EF;border:1px solid #CCDACB;font-size:12.5px;color:#145A32;line-height:1.5"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开全部板块</span> <span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#4A5442;padding:0 4px;border-radius:4px;cursor:pointer" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
+      <div id="mobileSidebarHint" style="display:none;margin:8px 16px;padding:6px 12px;border-radius:9px;background:#F1EADE;border:1px solid #D8CBB2;font-size:12.5px;color:#5A4B38;line-height:1.5"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开全部板块</span> <span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#5A4B38;padding:0 4px;border-radius:4px;cursor:pointer" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
 
     <!-- 首页 -->
     <section class="view active" id="view-home">
+      <!-- 栖匣品牌主视觉区 -->
+      <div class="home-hero card" style="margin-bottom:16px;background:linear-gradient(135deg,#6B5747,#8A7360);border:none;color:#FFF8EE">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="pwa/logo.png" alt="栖匣" style="width:46px;height:46px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.2)">
+            <div>
+              <div style="font-size:24px;font-weight:800;letter-spacing:6px;line-height:1.2">栖匣</div>
+              <div style="font-size:13px;color:rgba(255,248,238,.82);margin-top:3px;letter-spacing:1px">安放你四年所有的时光与心事</div>
+            </div>
+          </div>
+          <div style="font-size:11.5px;color:rgba(255,248,238,.8);text-align:right;line-height:1.7">一站式大学生本地工作台 · 零登录 · 数据仅存于本机</div>
+        </div>
+        <p style="margin-top:14px;font-size:13.5px;line-height:1.9;color:rgba(255,248,238,.92)">我们总习惯把待办、备考计划、收支、情绪记录分散存放在十几个软件间来回切换；很多自律工具不断催促你高效前行，却很难接纳疲惫和停顿。栖匣换一种节奏——<b style="color:#fff">先安放，再前行</b>。进步值得被记录，停顿也同样值得被接纳。不必时时紧绷，顺着自己的步调走就好，这里会陪着你走过完整的大学四年。</p>
+      </div>
+
+      <!-- 💡 常驻备份提醒（首页显眼位置，永久展示） -->
+      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:11px 14px;border-radius:12px;background:#FFF6E8;border:1px solid #E8CF9A;color:#8A6A2F;font-size:12.5px;line-height:1.8;box-shadow:0 1px 4px rgba(0,0,0,.04)">
+        <b>💡 重要备份提醒：</b>你的全部记录都存储在浏览器本地。清理浏览器缓存、使用无痕浏览模式会造成记录丢失，请<b>定期导出备份</b>（顶栏「导出数据备份」），以防数据丢失。
+      </div>
+
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
-        <p>欢迎回到序梧。今天也要保持平常心，从容向前。</p>
+        <p>安放优先于鞭策。今天，只需安放好一件最要紧的小事。</p>
       </div>
       <!-- 轻松上手：包含侧边栏全部板块，一键直达；可选方向做个性化排序 -->
-      <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#E9EDE2,#E9EDE2);border-color:#CDE0DB">
+      <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#F1EADE,#F1EADE);border-color:#D8CBB2">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">
           <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3z"></path><rect x="14" y="20" width="7" height="7" rx="1.5" transform="translate(-3 -8)"></rect></svg>轻松上手 · 分类导航</h3>
           <span style="font-size:11.5px;color:var(--hint)">循领域而入 · 逐层抵达你的细分规划</span>
         </div>
-        <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(47,85,66,.08);border:1px dashed rgba(47,85,66,.28);color:#53675c;font-size:13px;line-height:1.9"><b style="color:var(--primary)">愿你今日即上手，从容起步</b>　规划得再好，不动手也只是一张清单。挑一个大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——真正的改变，从你按下每一步开始。</div>
+        <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(111,84,64,.08);border:1px dashed rgba(111,84,64,.28);color:#6E665C;font-size:13px;line-height:1.9"><b style="color:var(--primary)">不必事事求全</b>　挑一个当下最想打理的大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——慢慢来，就很好。</div>
         <div id="focusStart" style="margin-top:12px"></div>
       </div>
       <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
-      <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#3E6B4F,#2A3B30);border:none">
+      <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#5C4634,#3E2F24);border:none">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
           <div style="flex:1;min-width:200px">
-            <div style="font-size:12px;color:rgba(255,255,255,.8)">🎯 今天，你最想完成的一件事</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.9">今日<br>不必给自己安排满满当当的任务。挑好一件今天最要紧的小事，踏实做完，今天便已经足够好了。</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.92);margin-top:8px">🎯 今天，你最想优先完成的一件事</div>
             <input id="todayGoalInput" placeholder="写下来，比如：背完 50 个单词" style="width:100%;margin-top:6px;padding:10px 12px;border:none;border-radius:8px;font-size:15px;color:var(--text);background:var(--card);outline:none" onkeydown="if(event.key===&#39;Enter&#39;)saveTodayGoal()">
           </div>
           <button class="btn btn-white btn-sm" style="font-size:14px;padding:10px 18px" onclick="saveTodayGoal()">定下今天的目标</button>
         </div>
-        <div id="todayGoalShow" style="margin-top:10px;font-size:14px;color:#D7E4D3;display:none"></div>
-        <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.75);line-height:1.7">💡 小提醒：目标别写太多，<b style="color:#fff">只写一件最要紧的</b>。完成它，今天就是赢。</div>
+        <div id="todayGoalShow" style="margin-top:10px;font-size:14px;color:#E7DCCB;display:none"></div>
+        <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.75);line-height:1.7">💡 小提醒：目标别写太多，<b style="color:#fff">只安放一件最要紧的</b>便好。完成了，今天就算安放妥当。</div>
       </div>
       <!-- 删除六个功能直达卡：与底栏/侧边栏重复，全部并入导航，避免冗余 -->
 
       <div class="grid grid-4" style="margin-bottom:16px">
         <div class="metric"><div class="label">距下个倒数日</div><div class="value" id="nextCountdown" style="color:var(--coral)">--</div><div class="sub" id="nextCountdownName">未设置</div></div>
-        <div class="metric"><div class="label">今日打卡</div><div class="value" id="todayCheckin">0/5</div><div class="sub" id="streakInfo">连续 0 天</div></div>
-        <div class="metric"><div class="label">本周完成率</div><div class="value" id="weekCheckinCount">0/35</div><div class="sub">7天打卡</div></div>
+        <div class="metric"><div class="label">今日安放</div><div class="value" id="todayCheckin">0/5</div><div class="sub" id="streakInfo">连续 0 天</div></div>
+        <div class="metric"><div class="label">本周小结</div><div class="value" id="weekCheckinCount">0/35</div><div class="sub">7天便签</div></div>
         <div class="metric"><div class="label">今日任务</div><div class="value" id="todayTaskCount">0</div><div class="sub">件待办</div></div>
       </div>
 
       <!-- 今日心语 · 每日一句（金句＋鼓励合成一卡，可换新、不重复、按日期自动轮换） -->
-      <div class="card mind-card" style="margin-bottom:16px;background:linear-gradient(135deg,#E9EDE2,#EAF4EF);border-color:#CCDACB">
+      <div class="card mind-card" style="margin-bottom:16px;background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
           <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 2l2.9 7.5L22 10l-6 5 2 8-6-4-6 4 2-8-6-5 7.1-.5z"></path></svg>今日心语 <span style="font-weight:400;font-size:12px;color:var(--hint)">一句 · 陪你一整天</span></h3>
           <button class="mind-refresh" onclick="refreshMind(true);spinMindReload()" title="换一句新的（不重复）">🔄 换一句</button>
@@ -1227,7 +1319,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
       </div>
 
       <!-- 今日知识 · 每天四条（健康 / 认知 / 常识 / 财商），点「换一批」全体换新 -->
-      <div class="card" style="background:linear-gradient(135deg,#E9EDE2,#E9EDE1);border-color:#CFC9B8;margin-bottom:14px">
+      <div class="card" style="background:linear-gradient(135deg,#F1EADE,#EFE8D8);border-color:#D8CBB2;margin-bottom:14px">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
           <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>今日知识 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天四条 · 不重复 · 换一批</span></h3>
           <button class="mind-refresh" onclick="refreshHomeDaily();spinInspire()" title="四条一起换一批新的">🔄 换一批</button>
@@ -1354,6 +1446,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 
     <!-- 学业精进 -->
     <section class="view" id="view-study">
+<div class="section-intro">课程进度、绩点追踪、四六级、保研、考研、法考、各类学科竞赛相关规划，都可以放在这里。踏实走好求学路上的每一小步，慢慢沉淀你的学业成果。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进</h1>
         <p>绩点 · 英语 · 数学 · 专业课 · 保研考研，循序渐进、学有章法</p>
@@ -1947,6 +2040,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 职业发展 -->
     <section class="view" id="view-career">
+<div class="section-intro">实习投递、简历打磨、技能学习、行业方向探索。提前一点点布局，慢慢搭建属于自己未来的职业竞争力。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展</h1>
         <p>方向 · 简历 · 面试 · 投递 · 谈薪，一站到底</p>
@@ -2184,6 +2278,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 论文写作 -->
     <section class="view" id="view-paper">
+<div class="section-intro">论文与写作不必一次求成。把选题、框架、素材一步步收好，落笔会顺畅很多。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>论文写作</h1>
         <p>从读到写 · 大学论文全流程 · 学业论文专项</p>
@@ -2299,6 +2394,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 搞钱启蒙 -->
     <section class="view" id="view-earn">
+<div class="section-intro">副业信息仅供参考，请以官方平台与学校政策为准。先看风险，再谈回报。精力和学业永远优先。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="18"></line></svg>搞钱启蒙</h1>
         <p>适合学生的合法赚钱途径 · 网购平台省钱心法</p>
@@ -2432,6 +2528,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 个人提升 -->
     <section class="view" id="view-growth">
+<div class="section-intro">技能与认知的提升，比任何速成都结实。把每一次练习、每一份反思都收进这里，日积月累看得见。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83.83-2.5 2.5-2.5 4a2.5 2.5 0 1 0 5 0c0-1.5-1.67-3.17-2.5-4z"></path><path d="M12 2v6m0 0L8 4m4 4l4-4"></path></svg>个人提升</h1>
         <p>执行力 · 作息矫正 · 技能成长，平心笃行</p>
@@ -2545,7 +2642,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <!-- 时间管理方法 -->
-    <section class="view" id="view-tools"><div class="page-head">
+    <section class="view" id="view-tools">
+<div class="section-intro">拿来即用的效率方法，省去你重复摸索的时间。</div><div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>高效方法</h1>
         <p>14 大高效工作法 · 选 1-2 个先练起来，专治"效率低、总拖延"</p>
       </div>
@@ -2638,6 +2736,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 理财管理 -->
     <section class="view" id="view-finance">
+<div class="section-intro">收支记账、存款规划、省钱方案、副业信息参考。慢慢建立适合大学生自己的金钱管理习惯。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>理财管理</h1>
         <p>资金配置 · 不亏损优先 · 财富自由测算</p>
@@ -2759,6 +2858,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 省钱技巧 -->
     <section class="view" id="view-save">
+<div class="section-intro">省钱不是抠门，是更清醒地知道钱花在了哪里。把方法一条条收好，慢慢变成习惯。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>省钱技巧</h1>
         <p>学生党月省500+ · 不降低生活质量 · 12个实用渠道</p>
@@ -2989,6 +3089,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 运动健康 -->
     <section class="view" id="view-health">
+<div class="section-intro">作息、运动、身心状态，生活琐事清单。关照好自己的身体与情绪，经营一份松弛稳定的校园日常。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>运动健康</h1>
         <p>当前→目标（点击填写） · 可持续跟练 · 饮食红绿灯</p>
@@ -3295,6 +3396,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 购物指南 -->
     <section class="view" id="view-shop">
+<div class="section-intro">购物前多看一眼，把钱花在真正需要的地方。资讯仅供参考。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>购物指南</h1>
         <p>每日推荐 · 平台对比 · 选购决策树 · 售后维权</p>
@@ -3395,7 +3497,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <!-- 校园生活 -->
-    <section class="view" id="view-campus"><div class="page-head">
+    <section class="view" id="view-campus">
+<div class="section-intro">课程、社团、校园手续、生活琐事，都收在这里，不用再来回找。个别政策类资讯仅供参考，请以学校与国家官方最新通知为准。</div><div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活</h1>
         <p>入学准备 · 课程表 · 社团选择 · 室友公约 · 节假日规划 · 实习日历 · 自动保存</p>
       </div><div class="card" style="margin-bottom:16px">
@@ -3765,7 +3868,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </section>
 
     <!-- AI工具选型 -->
-    <section class="view" id="view-ai">      <div class="page-head">
+    <section class="view" id="view-ai">
+<div class="section-intro">用合适的工具，把重复的活儿交出去，把精力留给真正重要的事。</div>      <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>智造工坊</h1>
         <p>不是"哪个最强"，而是"哪个帮我把事做成" · 步骤 + 场景 + 提示词，照抄就能用</p>
       </div>
@@ -3970,6 +4074,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 平安护航 -->
     <section class="view" id="view-safety">
+<div class="section-intro">把出行、财产、健康防护这些底线的知识收好，安心生活。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航</h1>
         <p>防骗反诈 · 人身与财产 · 求助通道——把风险挡在校门之外</p>
@@ -4427,7 +4532,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </ul>
           </div>
         </div>
-        <div class="callout callout-info" style="margin-top:8px"><strong>工具在精不在多：</strong>先用熟序梧，比囤20个App更有用。</div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>工具在精不在多：</strong>先用熟栖匣，比囤20个App更有用。</div>
       </div>
       <div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>校园防骗手册 · 大学生必看的诈骗识别清单</h3>
@@ -4465,6 +4570,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 生涯蓝图 -->
     <section class="view" id="view-life">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图</h1>
         <p>证书时间线 · 人生阶段 · 复盘 · 读书 · 播客 · 不设限</p>
@@ -4618,6 +4724,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 播客精读 -->
     <section class="view" id="view-podcast">
+<div class="section-intro">把听过的声音、记下的观点留存下来，时间久了自有回甘。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path></svg>耳畔星河</h1>
         <p>一档节目一档笔记 · 四栏笔记法 · 带示范笔记</p>
@@ -4721,6 +4828,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 番茄专注 -->
     <section class="view" id="view-timer">
+<div class="section-intro">专注不用靠硬撑，用对节奏即可。时间是你自己的，慢慢用。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时</h1>
         <p>25 分钟深度专注 + 5 分钟休息 · 中断原因记录生成饼图 · 今日累计番茄数</p>
@@ -4774,6 +4882,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 灵感看板 -->
     <section class="view" id="view-creative">
+<div class="section-intro">读书笔记、碎片灵感、兴趣收获、休闲时刻的所思所想。把一闪而过、不想遗失的想法妥善留存下来。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path></svg>灵感看板</h1>
         <p>灵感收集器 · 决策日记 · 感恩日记 · 人生100个目标</p>
@@ -4837,6 +4946,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 书海·金句笔记 -->
     <section class="view" id="view-shelf">
+<div class="section-intro">把读过的书、想读的书、触动你的句子都收进来，慢慢攒成你自己的书房。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>书海拾贝</h1>
         <p>精选书库 · 点击封面看金句和读书笔记 · 今日金句 · 可自主添加</p>
@@ -4935,6 +5045,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <!-- 数据设置 -->
 
     <section class="view" id="view-tpl">
+<div class="section-intro">拿来即用的专项模板，省去你重复制作表格的时间。直接填、随时改，都是你自己的积累。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>专项模板</h1>
         <p>考研 / 考公 / 法考 · 阶段计划 + 每日任务 + 复盘表</p>
@@ -5289,15 +5400,34 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <section class="view" id="view-about">
+<div class="section-intro">数据备份导入、主题切换、项目介绍、各项系统设置。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品</h1>
         <p>它是什么 · 能帮你什么 · 怎么用</p>
       </div>
 
-      <div class="card about-hero" style="background:linear-gradient(135deg,#366349,#2A3B30);border:none">
-        <h3 style="color:#fff;font-size:17px">序梧 大学生成长中枢</h3>
-        <p style="font-size:13.5px;color:rgba(255,255,255,.9);line-height:1.95;margin-top:8px"><strong style="color:#D7E4D3">一个网页，装下你的整个大学生活。</strong><br>学业精进、目标拆解、时间管理、职业发展、理财记账、健康打卡、灵感记录、情绪管理……你需要的工具这里都有，<strong style="color:#D7E4D3">双击即用，零安装，手机电脑都能开，数据只存在你自己的浏览器里</strong>；首次联网打开过一次后，在支持的浏览器里还能离线使用。</p>
-        <div style="font-size:12.5px;color:rgba(255,255,255,.75);margin-top:12px;line-height:1.8">设计理念：「序」是把你最要紧的日子排布成自己的次序；「梧」是梧桐，成大器、引得金凤来栖——把学业与生活，安放成一座可生长的秩序——平凡的日子，也能稳稳地长成想要的样子。</div>
+      <div class="card about-hero" style="background:linear-gradient(135deg,#6B5747,#8A7360);border:none">
+        <h3 style="color:#FFF8EE;font-size:17px">栖匣 · 安放你的四年</h3>
+        <p style="font-size:13.5px;color:rgba(255,248,238,.92);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:#fff">完全本地运行</b>的大学生一站式网页工作台：不下载 App、不注册账号、打开浏览器即用，离线也能正常工作。<br>很多在读大学生都会遇到同一个难题——学习规划、待办清单、记账、情绪随笔散落在十几个软件间来回切换；而市面上的打卡自律工具，总在推着你向前，一旦没按时完成，容易陷入自我否定与内耗。<b style="color:#fff">栖匣选择一条不一样的路线：安放优先于鞭策。</b></p>
+        <div style="font-size:12.5px;color:rgba(255,248,238,.82);margin-top:12px;line-height:1.9">学业备考、长线目标、时间管理、收支账本、健康、灵感、情绪——全部收纳进同一个工作台。工具不会审判你，只会妥帖存放你大学路上大大小小的片段，陪伴你从大一到大四，沉淀一份完整的成长档案。<b style="color:#fff">设计者：尹平平</b>　© 2026 栖匣</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>核心特点</h3>
+        <div class="grid grid-2" style="margin-top:8px">
+          <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 零安装 · 零登录 · 网页直接打开</strong><br><strong>✅ 数据全在本机</strong>——不上传服务器，隐私由你掌握，请定期自行导出备份<br><strong>✅ 一站式覆盖</strong>：学业、备考、求职、理财、健康、情绪、灵感全套模板与干货</p>
+          <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 高度自定义</strong>——自由填写、修改、新增自己的记录<br><strong>✅ 不制造内卷焦虑</strong>，接纳状态起伏，允许慢节奏前行<br><strong>✅ 离线可用</strong>　<span style="font-size:11.5px;color:var(--hint)">提示：考试/奖学金/竞赛/政策资讯仅供参考，以学校与国家官方最新通知为准</span></p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>适合使用栖匣的同学</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:2;margin-top:6px">
+          · 有保研、升学长线规划，事务繁多、需要统一管理的本科生<br>
+          · 容易计划落空、产生内耗，反感严苛打卡工具、想要温和陪伴式工具的同学<br>
+          · 学习、生活、金钱、情绪分散管理，不想来回切换多款 App 的同学<br>
+          · 希望留存完整成长记录，毕业回看自己一路变化的同学
+        </p>
       </div>
 
       <div class="card" style="margin-top:16px">
@@ -5334,7 +5464,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <div class="card" style="margin-top:16px">
         <h3>✍️ 创作者的话</h3>
         <p style="font-size:13px;color:var(--muted);line-height:1.9">
-          你好，我是序梧的创作者<b>尹平平</b>，一个<b>准大一新生</b>。<br><br>
+          你好，我是栖匣的创作者<b>尹平平</b>，一个<b>准大一新生</b>。<br><br>
           2026 年 8 月 15 号，我在手机应用商店偶然刷到 WorkBuddy，刚下载也没怎么用。后来看网上很多人用它搭属于自己的「工作台」，我才来了兴趣——8 月 17 号正式上手，一口气试搭了十几个页面，最后挑出一个最合我心意的当底子，把十几个产品的精华一点点揉进去，一版一版地磨，前前后后改了 1000 多次。<br><br>
           那几天我几乎把所有时间都花在这上面，别的都没心思做，最长一次连着 24 小时没合眼，整个人一直很亢奋，凌晨还在调排版。中间出过一次状况：我让 Agent 帮我改个东西，结果整页一下子变白了，偏偏那会儿积分刚好用完，我只好换了个新的 Agent，可它不了解我之前做过什么，我讲了好几遍它也不太明白，当时是真以为要全部重来了。我不死心，就把之前那个显示空白的页面文件发给它，问它能不能帮我恢复，没想到它真的帮我弄了回来——其实文件一直都在，只是页面没显示出来，也算是有惊无险。好在我平时习惯了给文件留备份，东西一直好好地在，心里也算是有底。<br><br>
           最早这个作品是在 WorkBuddy 上搭的，但每次改动都要扣积分，积分用完了就改不了，这点我一直不太安心。后来我就干脆自己建了一个独立网站，把它搬了过去，这样就没这些限制了，想什么时候改、想改多少次都行，能一直把它慢慢打磨下去。<br><br>
@@ -5367,12 +5497,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <div class="card" style="margin-top:16px">
         <h3>怎么开始用（三步）</h3>
         <ol style="font-size:13.5px;color:var(--muted);line-height:2">
-          <li><strong>在线体验</strong>：点下方「入座 · 序梧」打开全屏全景导览，或直接在侧边栏逛一圈，先感受。</li>
+          <li><strong>在线体验</strong>：点下方「入座 · 栖匣」打开全屏全景导览，或直接在侧边栏逛一圈，先感受。</li>
           <li><strong>下载/在线使用</strong>：电脑或手机浏览器打开即用，无需安装。</li>
           <li><strong>按侧边栏开始</strong>：从「今日概览」看起，每天填一点，数据自动保存。</li>
         </ol>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-          <button class="btn btn-primary btn-sm" onclick="openPano()">✦ 入座 · 序梧导览</button>
+          <button class="btn btn-primary btn-sm" onclick="openPano()">✦ 入座 · 栖匣导览</button>
           <button class="btn btn-sm" onclick="shareProduct()">📤 分享给朋友</button>
         </div>
         <p style="font-size:12px;color:var(--hint);margin-top:8px">换设备：设置 → 导出备份 JSON → 新设备导入，数据无缝搬走。</p>
@@ -5404,7 +5534,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card" style="margin-top:16px;background:#E9EDE2;border-color:#DDD4BA">
         <h3>版权 · 许可 · 信息说明（诚实声明）</h3>
         <p style="font-size:12.5px;color:var(--muted);line-height:1.9">
-          <strong>© 2026 尹平平 · 序梧，保留所有权利。</strong>本项目为原创作品，整体架构、界面与内容受《中华人民共和国著作权法》保护；未获作者书面授权，请勿整站搬用、二次开发后冒名发布或用于牟利。<br>
+          <strong>© 2026 尹平平 · 栖匣，保留所有权利。</strong>本项目为原创作品，整体架构、界面与内容受《中华人民共和国著作权法》保护；未获作者书面授权，请勿整站搬用、二次开发后冒名发布或用于牟利。<br>
           <strong>公开许可：</strong>源码以 CC BY-NC-ND 4.0（署名—非商业性使用—禁止演绎）公开：你可以自由 <u>分享</u>（需注明出处、原作者与许可证），但不可 <u>商用</u>、不可 <u>改动后再分发</u>。详细条文见仓库 `LICENSE`。<br>
           <strong>信息核验：</strong>站内涉及就业行情、保研政策、考试日程、助学标准等<span style="font-weight:600">时效性内容</span>，来源可能有变化，请以官方最新发布为准；引用外部观点仅作参考，作者不担保绝对正确，重要决策请再核实。
         </p>
@@ -5412,6 +5542,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <section class="view" id="view-settings">
+<div class="section-intro">数据备份导入、主题切换、项目介绍、各项系统设置。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置</h1>
         <p>数据导出/导入/清空 · 跨设备同步说明</p>
@@ -5560,6 +5691,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 每日记录 -->
     <section class="view" id="view-journal">
+<div class="section-intro">写下日常的感悟、成长当中的得失，记录一路的变化。这里没有评判标准，你可以安心记录所有真实的心情。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记</h1>
         <p>复盘 · 随笔 · 随想，所有记录云端保存可回看</p>
@@ -5614,6 +5746,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 每日四象限 ═══════ -->
     <section class="view" id="view-quadrant">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好，随时回头都能看见自己走过的轨迹。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急</h1>
         <p>重要·紧急矩阵 — 把精力放在「重要不紧急」（Q2）才是长期赢家</p>
@@ -5683,6 +5816,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 计划表 ═══════ -->
     <section class="view" id="view-plans">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘</h1>
         <p>年 / 月 / 周 / 日 目标拆解 + 一周时间表（可标色）</p>
@@ -5732,6 +5866,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 目标拆解 ═══════ -->
     <section class="view" id="view-goals">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解</h1>
         <p>人生目标 · 里程碑进度可视化，勾选即更新进度条</p>
@@ -5775,6 +5910,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 影视·观世界（全年龄通用） ═══════ -->
     <section class="view" id="view-movie">
+<div class="section-intro">把看过的影剧与当时的感想收好，它们也是成长的一部分。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>幕间观澜</h1>
         <p>电影电视剧里的人生智慧 · 每日影视金句 · 示范笔记 · 我的观影笔记</p>
@@ -5827,6 +5963,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
     </section>
     <section class="view" id="view-fun">
+<div class="section-intro">轻松一下，不必愧疚。适度的放松也是一种储备。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>轻松一下</h1>
         <p>学累了就喘口气 · 这里不教你变强，只陪你放松</p>
@@ -5905,6 +6042,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 心灵成长（全年龄通用） ═══════ -->
     <section class="view" id="view-mind">
+<div class="section-intro">情绪和心态没有对错。把起伏如实记下，照顾好自己，比什么都重要。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>心灵成长</h1>
         <p>情绪管理 · 压力缓解 · 自我关怀 · 关系沟通 · 心理急救箱</p>
@@ -6036,6 +6174,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        新增板块：蟾宫折桂 (exam)
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-exam">
+<div class="section-intro">四六级、考研、法考、教资、各类证书的备考都在这里留档。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>备考宝典</h1>
       <p>四六级 / 考研 / 法考 / 教资 / 公考 — 赶考日历 + 备考兵法，逢考不慌</p>
@@ -6125,6 +6264,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        新增板块：竞赛科研日历 (contest)
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-contest">
+<div class="section-intro">竞赛与科研可以慢慢来：先摸清门槛，再顺着一份省心的清单推进，少走弯路即是积累。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>竞赛科研日历</h1>
       <p>挑战杯 / 大创 / 数模 / 互联网+ / 电赛 — 全年节点一览</p>
@@ -6181,6 +6321,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        按「所对应的真实需要」引导选择：保住学籍 → 生活保障 → 自食其力 → 学业优秀 → 能力认可 → 日常权益
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-perk">
+<div class="section-intro">助学帮扶信息仅供参考，请以学校与国家官方最新通知为准。该申请的帮助，别不好意思要。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>助学帮扶</h1>
       <p>奖助学金 · 助学贷款 · 困难帮扶 · 学生权益——先看清标准与门槛，按真实需求、如实申报；符合就勇敢申请，不符合也不勉强</p>
@@ -6385,6 +6526,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        新增板块：习惯养成实验室 (habits)
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-habits">
+<div class="section-intro">把事情拆小，顺着自己的节奏慢慢攒，偶尔停下、回落，也都算数。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>习惯养成实验室</h1>
       <p>21天养成一个习惯 · 打卡追踪 · 可视化曲线</p>
@@ -6469,6 +6611,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        新增板块：成长档案 (stats)
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-stats">
+<div class="section-intro">把散落的日子串成一份成长档案。回看时你会发现，原来一路走了这么远。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长档案</h1>
       <p>数据不会说谎 · 看见自己的成长轨迹</p>
@@ -6897,7 +7040,7 @@ function addTask(){
   var inp=document.getElementById('newTaskInput');var v=inp.value.trim();
   if(!v)return;
   var ts=getTasks();ts.push({id:Date.now()+'_'+Math.random().toString(36).slice(2,7),text:v,done:false,date:todayKey()});
-  saveTasks(ts);inp.value='';renderTasks();refreshHomeStats();flash('已添加任务');
+  saveTasks(ts);inp.value='';renderTasks();refreshHomeStats();flash('已将这件小事收进匣中');
 }
 function toggleTask(id){
   var ts=getTasks();
@@ -6906,7 +7049,7 @@ function toggleTask(id){
 }
 function delTask(id){
   var ts=getTasks();ts=ts.filter(function(t){return String(t.id)!==String(id)});saveTasks(ts);renderTasks();
-  refreshHomeStats();flash('已删除该任务');
+  refreshHomeStats();flash('该任务已移除');
 }
 function addPresetTask(text){
   var ts=getTasks();ts.push({id:Date.now()+'_'+Math.random().toString(36).slice(2,7),text:text,done:false,date:todayKey()});
@@ -6972,7 +7115,7 @@ function saveCheckinName(i,el){
   saveCheckinDefs(d);
 }
 function delCheckinDef(i){
-  uiConfirm('删除这个打卡项？',function(){
+  uiConfirm('要移除这条打卡记录吗？',function(){
     var d=getCheckinDefs();d.splice(i,1);saveCheckinDefs(d);renderCheckins();
   });
 }
@@ -7259,7 +7402,7 @@ function saveJournal(){
   document.getElementById('journalSaveHint').textContent='已保存 '+new Date().toLocaleTimeString();
   renderJournalHistory();
   var c=getCheckins();if(!c[today])c[today]={};c[today].journal=true;saveCheckins(c);renderCheckins();
-  flash('今日记录已保存');
+  flash('已将今日这段时光收进匣中');
 }
 function renderJournalHistory(){
   var js=getJournals();
@@ -7280,7 +7423,7 @@ function toggleWorkout(k){
   saveCheckins(c);
   var s=calcStreak('exercise');
   document.getElementById('workoutStreak').innerHTML='<span class="streak">连续 '+s+' 天运动</span>';
-  flash('打卡成功');
+  flash('又一段旅途，妥帖收存');
 }
 
 function countLen(obj){if(!obj)return 0;try{return Object.keys(obj).length;}catch(e){return 0;}}
@@ -7299,10 +7442,10 @@ function dataSummary(){
   return out.length?out.join(' · '):'（暂无记录）';
 }
 function exportData(){
-  var data={app:'序梧',author:'尹平平',site:'https://lumenplexus.github.io/pingwanxiang/',tasks:getTasks(),checkins:getCheckins(),words:getWords(),wrongs:getWrongs(),books:getBooks(),pods:getPodcasts(),journals:getJournals(),exportDate:new Date().toISOString(),source:'ping_wan_xiang'};
+  var data={app:'栖匣',author:'尹平平',site:'https://lumenplexus.github.io/pingwanxiang/',tasks:getTasks(),checkins:getCheckins(),words:getWords(),wrongs:getWrongs(),books:getBooks(),pods:getPodcasts(),journals:getJournals(),exportDate:new Date().toISOString(),source:'ping_wan_xiang'};
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');a.href=url;a.download='序梧数据备份_'+todayKey()+'.json';a.click();
+  var a=document.createElement('a');a.href=url;a.download='栖匣数据备份_'+todayKey()+'.json';a.click();
   setTimeout(function(){URL.revokeObjectURL(url);},1500);
   /* 让用户直接看到导出了哪些内容 */
   uiAlert('✅ 已导出你的个人数据备份（JSON 文件已下载）\n\n本次包含：'+dataSummary()+'\n\n请妥善保存此文件。换设备或清缓存后，点「导入数据」即可一键恢复全部内容。');
@@ -7472,7 +7615,7 @@ function sendFeedback(){
       fetch('https://formsubmit.co/ajax/'+AUTHOR_EMAIL,{
         method:'POST',
         headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({_subject:'【序梧】用户反馈',类型:ty,内容:t,联系方式:c||'未留',时间:time})
+        body:JSON.stringify({_subject:'【栖匣】用户反馈',类型:ty,内容:t,联系方式:c||'未留',时间:time})
       }).then(function(r){return r.json()}).then(function(){sent=true;done();}).catch(function(){done();});
     }catch(e){done();}
     function done(){
@@ -7491,7 +7634,7 @@ function copyFeedback(){
   var contact=document.getElementById('fbContact');var c=contact?contact.value.trim():'';
   var typeSel=document.getElementById('fbType');var ty=typeSel?typeSel.value:'建议';
   if(!t){flash('请先写下反馈内容再复制');return;}
-  var text='【序梧 用户反馈】\n类型：'+ty+'\n内容：'+t+(c?'\n联系方式：'+c:'')+'\n时间：'+new Date().toLocaleString();
+  var text='【栖匣 用户反馈】\n类型：'+ty+'\n内容：'+t+(c?'\n联系方式：'+c:'')+'\n时间：'+new Date().toLocaleString();
   navigator.clipboard.writeText(text).then(function(){flash('已复制，可直接发给作者');},function(){
     var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);flash('已复制，可直接发给作者');
   });
@@ -7525,7 +7668,7 @@ function switchTpl(k){
 
 function shareProduct(){
   var url=location.href.split('#')[0]||location.href;
-  var txt='分享一个我刚用上的大学生成长中枢——「序梧」。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「序梧」· © 作者：尹平平';
+  var txt='分享一个我刚用上的大学生四年全能生活中枢工作台——「栖匣」。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「栖匣」· © 作者：尹平平';
   var html='<div id="shareMask" style="position:fixed;inset:0;background:rgba(6,14,10,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)document.getElementById(\'shareMask\').remove()">'+
     '<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;padding:18px 16px;box-sizing:border-box;box-shadow:0 12px 40px rgba(0,0,0,.35)">'+
     '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div style="font-size:16px;font-weight:700;color:var(--text)">分享给朋友</div><button onclick="document.getElementById(\'shareMask\').remove()" style="border:none;background:none;font-size:22px;color:var(--hint);cursor:pointer;line-height:1">×</button></div>'+
@@ -7739,7 +7882,7 @@ function renderBlessHistory(){
 function delBless(d){
   try{localStorage.removeItem('pp_bless_'+d);}catch(e){}
   renderBlessHistory();renderBlessStreak();
-  flash('已删除 '+d+' 的记录');
+  flash('已移除 '+d+' 的记录');
 }
 
 /* —— 3. 声景：WebAudio 合成，不联网 —— */
@@ -7953,7 +8096,7 @@ function saveTplForm(id){
     if(el.id)vals[el.id]=el.value;
   });
   try{localStorage.setItem('pp_tpl_'+id,JSON.stringify(vals));}catch(e){}
-  flash('已保存，下次打开还在 ✏️');
+  flash('已妥善收入匣中，下次打开还在 ✏️');
 }
 function loadTplForm(id){
   var box=document.getElementById(id);
@@ -7973,8 +8116,8 @@ function printTpl(id){
     +'h2{color:#3E6B4F}table{width:100%;border-collapse:collapse;margin:10px 0}'
     +'td,th{border:1px solid #ccc;padding:8px;font-size:14px}input,textarea{border:none;outline:none;width:100%;font-size:14px;font-family:inherit}'
     +'textarea{resize:none}.tip{color:#888;font-size:12px}</style></head><body>'
-    +'<h2>序梧 · 学习计划表</h2>'+box.innerHTML
-    +'<p class="tip">由「序梧 · 大学生成长中枢」生成</p></body></html>';
+    +'<h2>栖匣 · 学习计划表</h2>'+box.innerHTML
+    +'<p class="tip">由「栖匣 · 大学生四年全能生活中枢工作台」生成</p></body></html>';
   var w=window.open('','_blank');
   w.document.write(html);w.document.close();
   setTimeout(function(){w.print();},300);
@@ -8016,7 +8159,7 @@ function exportCurrentPDF(){
   var active=document.querySelector('.view.active');
   if(!active){flash('没有可导出的内容');return;}
   var head=active.querySelector('.page-head h1');
-  var name=head?head.textContent.replace(/[^一-龥A-Za-z0-9 ]/g,'').trim():'序梧';
+  var name=head?head.textContent.replace(/[^一-龥A-Za-z0-9 ]/g,'').trim():'栖匣';
   var clone=active.cloneNode(true);
   clone.className='view active';
   clone.style.display='block';
@@ -8031,10 +8174,10 @@ function exportCurrentPDF(){
   var style='<style>@page{margin:12mm 10mm}/* ===== 全局基础 ===== */*{box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2c3440;line-height:1.82;font-size:15px;padding:0;margin:0;background:#FCF8EC}/* ===== 页面标题区 ===== */.page-head{margin-bottom:20px;padding:18px 20px;background:linear-gradient(135deg,#3E6B4F 0%,#2A3B30 100%);color:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(47,85,66,.18)}.page-head h1{font-size:23px;margin:0 0 8px;color:#fff;display:flex;align-items:center;gap:9px}.page-head h1 svg{width:26px;height:26px;flex-shrink:0;filter:brightness(0) invert(1)}.page-head p{color:rgba(255,255,255,.78);margin:0;font-size:14.5px;line-height:1.65}/* ===== 网格布局 ===== */.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}/* ===== 卡片容器（每个区块都有边框+圆角+阴影） ===== */.card{border:1.5px solid #DAD5C6;border-radius:13px;padding:20px;margin-bottom:18px;break-inside:avoid;background:#fff;box-shadow:0 2px 8px rgba(44,52,64,.05),0 .5px 1px rgba(44,52,64,.03);position:relative;overflow:hidden}.card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#3E6B4F,#6A9C82);border-radius:13px 0 0 13px}/* ===== 标题 ===== */.card h3{font-size:17.5px;color:#2A3B30;margin:0 0 14px;font-weight:700;padding-bottom:10px;border-bottom:1.5px dashed #E9EDE1;display:flex;align-items:center;gap:7px}.card h3:first-child{margin-top:0}.card h4{font-size:16px;color:#2A3B30;margin:14px 0 10px;font-weight:700}/* ===== 段落与文字 ===== */.card p{font-size:15px;line-height:1.85;margin:10px 0;color:#3A4038}/* ===== 列表（带装饰性项目符号和分隔线） ===== */.card ul,.card ol{margin:12px 0;padding-left:0;list-style:none}.card ul>li,.card ol>li{position:relative;padding:10px 12px 10px 30px;margin:6px 0;font-size:15px;line-height:1.8;color:#3A4038;border:1px solid #E9EDE2;border-radius:9px;background:#FCF8EC;transition:.15s}.card ul>li::before{content:"";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:#3E6B4F;flex-shrink:0}.card ol>li{counter-increment:list-num;padding-left:32px}.card ol>li::before{content:counter(list-num);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:#3E6B4F;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}.card ol{counter-reset:list-num}/* ===== 嵌套列表 ===== */.card ul ul,.card ol ol{margin:6px 0 0 12px}.card ul ul>li,.card ol ol>li{padding:7px 10px 7px 24px;margin:4px 0;font-size:14px;border-color:#E9EDE2;background:#fff}/* ===== Callout 提示框（更醒目） ===== */.callout{border-radius:11px;padding:16px 18px;margin-top:14px;font-size:15px;line-height:1.78;background:linear-gradient(135deg,#E9EDE2,#E7ECE1);border:1.5px solid #D7E4D3;border-left:5px solid #3E6B4F;color:#1a3a2a;box-shadow:0 2px 6px rgba(47,85,66,.08)}/* ===== 标签 ===== */.tag{border:1.5px solid #D2CCBC;border-radius:999px;padding:4px 14px;font-size:13px;color:#2A3B30;background:#E6ECE2;font-weight:500;display:inline-block;margin:2px 3px}/* ===== 输入框/文本域 ===== */.textarea,.card textarea{width:100%;border:1.5px solid #DAD5C6;border-radius:10px;padding:13px 14px;font-size:15px;line-height:1.75;font-family:inherit;white-space:pre-wrap;min-height:100px;color:#2c3440;background:#f8fafc;transition:.15s}textarea{resize:none}/* ===== 表格（斑马纹+粗表头） ===== */table{border-collapse:separate;border-spacing:0;width:100%;font-size:14px;border:1.5px solid #DAD5C6;border-radius:10px;overflow:hidden}.card table{margin:12px 0}th,td{border:1px solid #E1DCCE;padding:10px 8px;text-align:center;line-height:1.55}th{background:linear-gradient(180deg,#2A3B30,#2A3B30);color:#fff;font-weight:700;font-size:13.5px;letter-spacing:.3px}tr:nth-child(even) td{background:#E9EDE2}td{color:#3A4038}/* ===== SVG 图标 ===== */svg{max-width:24px;max-height:24px}/* ===== 分隔线装饰 ===== */hr,.divider{border:none;height:1.5px;background:linear-gradient(90deg,transparent,#DAD5C6 20%,#DAD5C6 80%,transparent);margin:16px 0}/* ===== 报告品牌头/页脚 ===== */.pdf-brandbar{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#2A3B30 0%,#2A3B30 45%,#3E6B4F 100%);color:#fff;padding:16px 22px;border-radius:14px;margin-bottom:22px;box-shadow:0 6px 18px rgba(30,69,52,.22);position:relative;overflow:hidden;page-break-inside:avoid}.pdf-brandbar::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 62%)}.pb-logo{flex-shrink:0;z-index:1}.pb-logo img{width:40px;height:40px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.2)}.pb-info{display:flex;flex-direction:column;min-width:0;z-index:1}.pb-info b{font-size:18px;letter-spacing:.5px}.pb-info span{font-size:12px;opacity:.82;margin-top:3px}.pb-meta{margin-left:auto;text-align:right;z-index:1;display:flex;flex-direction:column;align-items:flex-end;gap:4px}.pb-meta .pb-name{font-size:12.5px;opacity:.92;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:2px 12px;border-radius:999px}.pb-meta .pb-date{font-size:11.5px;opacity:.8}.pdf-footer{margin-top:28px;padding-top:18px;border-top:1.5px dashed #BAB5A6;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;line-height:1.8;color:#738099;text-align:center;page-break-inside:avoid}.pdf-footer div{background:#E9EDE2;border-radius:999px;padding:6px 16px}.pdf-brandbar,.pdf-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:13mm 11mm}/* ===== 打印隐藏 ===== */@media print{.no-print{display:none!important}}/* ===== 手机端适配 ===== */@media(max-width:600px){body{font-size:15.5px;padding:0 4px}.page-head{padding:14px 16px;border-radius:11px}.page-head h1{font-size:21px}.page-head h1 svg{width:22px;height:22px}.page-head p{font-size:14px}.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px 14px;margin-bottom:14px;border-radius:11px}.card h3{font-size:16.5px;padding-bottom:8px}.card h4{font-size:15.5px}.card p,.card ul>li,.card ol>li,.callout,.textarea,.card textarea{font-size:14.5px}.card ul>li,.card ol>li{padding:9px 10px 9px 26px}.tag{font-size:12.5px;padding:3px 11px}table{font-size:13px}th,td{padding:8px 6px}}</style>';
   var nowD=new Date(),taskList=document.querySelector('.view.active')?null:'';
   var ds=(''+nowD.getFullYear())+'-'+('0'+(nowD.getMonth()+1)).slice(-2)+'-'+('0'+nowD.getDate()).slice(-2);
-  var html='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>'+name+' · 序梧</title>'+style+'</head><body>'
-    +'<div class="pdf-brandbar"><div class="pb-logo"><img src="./pwa/icon-512.png" alt=""></div><div class="pb-info"><b>序梧 · 大学生成长中枢</b><span>个人成长报告 · 数据仅存于你的设备</span></div><div class="pb-meta"><span class="pb-name">'+name+'</span><span class="pb-date">导出于 '+ds+'</span></div></div>'
+  var html='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>'+name+' · 栖匣</title>'+style+'</head><body>'
+    +'<div class="pdf-brandbar"><div class="pb-logo"><img src="./pwa/icon-512.png" alt=""></div><div class="pb-info"><b>栖匣 · 大学生四年全能生活中枢工作台</b><span>个人成长报告 · 数据仅存于你的设备</span></div><div class="pb-meta"><span class="pb-name">'+name+'</span><span class="pb-date">导出于 '+ds+'</span></div></div>'
     +clone.innerHTML
-    +'<div class="pdf-footer"><div>由「序梧 · 大学生成长中枢」生成</div><div>个人资料 · 私密导出 · '+ds+'</div></div>'
+    +'<div class="pdf-footer"><div>由「栖匣 · 大学生四年全能生活中枢工作台」生成</div><div>个人资料 · 私密导出 · '+ds+'</div></div>'
     +'</body></html>';
   /* 在当前页面打开全屏预览：直接看到结果，不受弹窗拦截影响，可随时打印/另存为 PDF */
   var ov=document.getElementById('pdfPreview');
@@ -8291,7 +8434,7 @@ function exportWeekPNG(){
   var g=ctx.createLinearGradient(0,0,0,1100);g.addColorStop(0,'#2A3B30');g.addColorStop(1,'#3E6B4F');
   ctx.fillStyle=g;ctx.fillRect(0,0,900,1100);
   ctx.fillStyle='#fff';ctx.font='bold 44px sans-serif';ctx.textAlign='center';
-  ctx.fillText('序梧 · 本周报告',450,90);
+  ctx.fillText('栖匣 · 本周报告',450,90);
   ctx.font='26px sans-serif';ctx.fillStyle='rgba(255,255,255,.8)';
   ctx.fillText(label,450,140);
   /* 统计卡 */
@@ -8323,7 +8466,7 @@ function exportWeekPNG(){
   /* 下载 */
   var a=document.createElement('a');
   a.href=cw.toDataURL('image/png');
-  a.download='序梧-本周报告-'+todayKey()+'.png';
+  a.download='栖匣-本周报告-'+todayKey()+'.png';
   document.body.appendChild(a);a.click();document.body.removeChild(a);
   flash('周报 PNG 已导出，可在下载文件夹查看');
 }
@@ -8344,23 +8487,23 @@ function renderDailyQuoteCard(){
 /* ═══════ 首页「轻松上手」：分类导航，大板块 → 细分板块 ═══════ */
 /* 全部板块：与侧边栏一一对应，按大板块分组，点击展开进入其细分板块 */
 var NAV_ALL=[{
-  g:'目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','行进罗盘'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['life','🧭','生涯蓝图']]
+  g:'🎯 锚愿匣 · 目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','行进罗盘'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['life','🧭','生涯蓝图']]
 },{
-  g:'学业成长',items:[['study','📘','学业精进'],['exam','⏳','备考宝典'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['tpl','🧩','专项模板'],['campus','🎒','校园生活']]
+  g:'📚 学业栖仓 · 学业成长',items:[['study','📘','学业精进'],['exam','⏳','备考宝典'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['tpl','🧩','专项模板'],['campus','🎒','校园生活']]
 },{
-  g:'职业与技能',items:[['career','💼','职业发展'],['growth','📈','个人提升']]
+  g:'💼 职途匣 · 职业与技能',items:[['career','💼','职业发展'],['growth','📈','个人提升']]
 },{
-  g:'记录与成长',items:[['journal','📖','时光札记'],['stats','📊','成长档案']]
+  g:'📒 时光贮格 · 记录与成长',items:[['journal','📖','时光札记'],['stats','📊','成长档案']]
 },{
-  g:'生活与健康',items:[['health','💪','运动健康'],['mind','🧠','心灵成长'],['safety','🛡','平安护航']]
+  g:'🌿 安养隅 · 生活与健康',items:[['health','💪','运动健康'],['mind','🧠','心灵成长'],['safety','🛡','平安护航']]
 },{
-  g:'阅读与休闲',items:[['creative','💡','灵感看板'],['shelf','📚','书海拾贝'],['podcast','🎧','耳畔星河'],['movie','🎬','幕间观澜'],['fun','😄','轻松一下']]
+  g:'✨ 灵拾槽 · 阅读与休闲',items:[['creative','💡','灵感看板'],['shelf','📚','书海拾贝'],['podcast','🎧','耳畔星河'],['movie','🎬','幕间观澜'],['fun','😄','轻松一下']]
 },{
-  g:'理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','助学帮扶']]
+  g:'💰 贮金格 · 理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','助学帮扶']]
 },{
-  g:'效率与工具',items:[['ai','🤖','智造工坊'],['tools','🛠','高效方法'],['timer','🍅','心流计时']]
+  g:'⏱️ 时栖录 · 效率与工具',items:[['ai','🤖','智造工坊'],['tools','🛠','高效方法'],['timer','🍅','心流计时']]
 },{
-  g:'系统',items:[['about','ℹ️','关于产品'],['settings','⚙️','系统设置']]
+  g:'⚙️ 设置 · 栖匣系统',items:[['about','ℹ️','关于产品'],['settings','⚙️','系统设置']]
 }];
 function renderFocus(){
   var cont=document.getElementById('focusStart');if(!cont)return;
@@ -8460,6 +8603,13 @@ function init(){
     }
   }catch(e){}
   
+  /* 栖匣 · 返回用户轻提示 */
+  try{
+    if(localStorage.getItem('pp_last_view')){
+      setTimeout(function(){try{if(typeof flash==='function')flash('欢迎回到你的栖匣。');}catch(e){}},260);
+    }
+  }catch(e){}
+  
   /* 关注方向引导：还原用户上次选的推荐模块 */
   try{renderFocus();}catch(e){}
   /* 支出记账本 */
@@ -8531,7 +8681,7 @@ function saveTimeBlock(i){
   saveTimeBlocks(list);
 }
 function delTimeBlock(i){
-  uiConfirm('删除这个时间段？',function(){
+  uiConfirm('要移除这个时间段吗？',function(){
     var list=getTimeBlocks();list.splice(i,1);saveTimeBlocks(list);renderTimeBlocks();
   });
 }
@@ -8741,7 +8891,7 @@ function pomoDelBreak(reason){
   Object.keys(br).forEach(function(k){ if(!br[k]||br[k]<=0) delete br[k]; });
   DB.set('pomoBreaks',br);
   renderPomo();
-  flash('已彻底删除「'+reason+'」中断记录');
+  flash('已移除「'+reason+'」中断记录');
 }
 function pomoClearBreaks(){
   DB.set('pomoBreaks',{});
@@ -9079,13 +9229,13 @@ function _userDataKeyList(){
   return keys;
 }
 function exportAll(){
-  var data={"_app":"序梧","_author":"尹平平","_site":"https://lumenplexus.github.io/pingwanxiang/","_v":2,"_exportTime":new Date().toISOString()};
+  var data={"_app":"栖匣","_author":"尹平平","_site":"https://lumenplexus.github.io/pingwanxiang/","_v":2,"_exportTime":new Date().toISOString()};
   /* 以“原样字符串快照”导出全部用户数据，杜绝白名单漏项 */
   _userDataKeyList().forEach(function(k){try{data[k]=localStorage.getItem(k);}catch(e){}});
   var blob=new Blob([JSON.stringify(data)],{type:'application/json'});
   var a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download='序梧数据备份_'+todayKey()+'.json';
+  a.download='栖匣数据备份_'+todayKey()+'.json';
   a.click();
   flash('已导出全部数据（含随笔/心情/祝福/模板/成就等）');
 }
@@ -9263,7 +9413,7 @@ function exportGrowth(){
   var pomoH=pomoTotal*25/60;
   function tick(v){return v>0?(' ✓'):'';}
   var lines=[];
-  lines.push('我的成长报告 · 序梧');
+  lines.push('我的成长报告 · 栖匣');
   lines.push('生成时间：'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
   lines.push('');
   lines.push('📌 这一路，我认真来过');
@@ -9281,7 +9431,7 @@ function exportGrowth(){
   lines.push('💡 我想对自己说：把四年，过出掌控感。');
   lines.push('每一件小事都有迹可循，这份成长存档正被我一点一滴写厚。');
   lines.push('');
-  lines.push('（由「序梧」自动汇总 · 仅存于你的设备）');
+  lines.push('（由「栖匣」自动汇总 · 仅存于你的设备）');
   var text=lines.join('\n');
   /* 生成排版精美的 HTML 报告，在页面内直接预览（不下载文件 → 微信/移动端即开即看，无“暂无可用打开方式”） */
   var esc=function(s){return (s==null?0:s);};
@@ -9315,7 +9465,7 @@ function exportGrowth(){
   '.foot{text-align:center;font-size:11px;color:#B0A890;margin-top:26px}'+
   '.ok{color:#3E6B4F;font-weight:700}'+
   '</style></head><body><div class="page">'+
-    '<div class="head"><div class="brand">序梧</div><h1>🌱 我的成长报告</h1>'+
+    '<div class="head"><div class="brand">栖匣</div><h1>🌱 我的成长报告</h1>'+
     '<div class="date">'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' · 由你亲手写出的成长</div></div>'+
     '<div class="kpi">'+
       '<div class="kcard"><b>'+esc(doneTasks)+'</b><span>完成任务（件）</span></div>'+
@@ -9336,7 +9486,7 @@ function exportGrowth(){
       rrow('近 7 天完成率', (wkTot>0?Math.round(wkDone/(wkTot||1)*100):100)+'%（'+wkDone+'/'+wkTot+'）', wkDone)+
     '</div>'+
     '<div class="sign">每一件小事都有迹可循。<br><b>把四年，过出掌控感。</b></div>'+
-    '<div class="foot">数据由「序梧」自动汇总 · 仅存于你的设备</div>'+
+    '<div class="foot">数据由「栖匣」自动汇总 · 仅存于你的设备</div>'+
   '</div></body></html>';
   showPdfReport('我的成长报告', html, text);
 }
@@ -9572,7 +9722,7 @@ function addGoal(){
   renderGoals();
 }
 function delGoal(i){
-  uiConfirm('删除这个目标？',function(){
+  uiConfirm('要移除这个目标吗？',function(){
     var g=getGoalDefs();if(!g[i])return;
     var gc=getGoalChecks();delete gc[g[i].id];saveGoalChecks(gc);
     g.splice(i,1);saveGoalDefs(g);renderGoals();
@@ -10081,10 +10231,10 @@ function addCountdown(){
   saveCountdowns(arr);
   renderCountdowns();
   nameInput.value='';dateInput.value='';
-  flash('已添加倒数日');
+  flash('这个日子已收进匣中');
 }
 function delCountdown(i){
-  uiConfirm('删除这个倒数日？',function(){
+  uiConfirm('要移除这个倒数日吗？',function(){
     var arr=getCountdowns();arr.splice(i,1);saveCountdowns(arr);renderCountdowns();
   });
 }
@@ -10125,7 +10275,7 @@ function logSport(intensity){
   log[key]={intensity:intensity,time:Date.now()};
   saveSportLog(log);
   renderSportHeatmap();
-  flash('已记录今日运动');
+  flash('又一段旅途，妥帖收存');
 }
 function clearSportLog(){
   uiConfirm('清空所有运动记录？',function(){
@@ -10308,7 +10458,7 @@ function addExpense(){
 function delExpense(idx){
   var list=getExpenses();
   if(idx<0||idx>=list.length)return;
-  var it=list[idx];list.splice(idx,1);saveExpenses(list);renderExpenses();flash('已删除「'+it.name+'」');
+  var it=list[idx];list.splice(idx,1);saveExpenses(list);renderExpenses();flash('已移除「'+it.name+'」');
 }
 function renderExpenses(){
   var list=getExpenses();
@@ -10348,7 +10498,7 @@ function renderExpenses(){
 
 
 /* ════════════════════════════════════════════════════════════
-   序梧 3.0 升级 JS 层
+   栖匣 3.0 升级 JS 层
    ════════════════════════════════════════════════════════════ */
 
 /* ── 深色模式切换（太阳 / 月亮） ── */
@@ -10567,7 +10717,7 @@ function addExamCountdown(){
   list.push({name:n.value.trim(),date:d.value,color:c?c.value:'#2A3B30'});
   saveExams(list);renderExamCountdowns();
   n.value='';d.value='';
-  flash('已添加考试 · 已加入备考宝典');
+  flash('已添加考试，已收进备考宝典');
 }
 function editExamName(i,name){
   var list=getExams();
@@ -10575,7 +10725,7 @@ function editExamName(i,name){
   saveExams(list);
 }
 function removeExam(i){
-  uiConfirm('删除这个考试？',function(){
+  uiConfirm('要移除这场考试吗？',function(){
     var list=getExams();list.splice(i,1);saveExams(list);renderExamCountdowns();
   });
 }
@@ -10753,10 +10903,10 @@ function delHabit(i){
   var habits=getHabits();
   if(!habits[i])return;
   var name=habits[i].name||'该习惯';
-  uiConfirm('确定删除「'+name+'」吗？已记录的打卡数据也会一并清除。',function(){
+  uiConfirm('要移除「'+name+'」吗？已记录的打卡数据也会一并清走。',function(){
     habits.splice(i,1);
     saveHabits(habits);renderHabits();renderHabitHeatmap();updateStats();refreshHomeStats();refreshPomoHabitOpts();
-    flash('已删除习惯');
+    flash('该条习惯已移除');
   });
 }
 function renderHabitHeatmap(){
@@ -10882,7 +11032,7 @@ function setEl(id,val){var el=document.getElementById(id);if(el)el.textContent=v
 
 /* ── 成就徽章 ── */
 var ACHIEVEMENTS=[
-  {id:'first_day',name:'🌱 初次见面',desc:'第一天使用序梧',check:function(s){return s.days>=1}},
+  {id:'first_day',name:'🌱 初次见面',desc:'第一天使用栖匣',check:function(s){return s.days>=1}},
   {id:'week_streak',name:'🔥 七天连续',desc:'任意习惯连续打卡7天',check:function(s){return s.maxStreak>=7}},
   {id:'tasks_10',name:'✅ 任务达人',desc:'累计完成10个任务',check:function(s){return s.tasksDone>=10}},
   {id:'pomo_50',name:'🍅 番茄大师',desc:'累计完成50个番茄',check:function(s){return s.pomos>=50}},
@@ -10944,7 +11094,7 @@ function renderGrowthInsight(days,tasks,pomos,streak){
   var box=document.getElementById('growthInsight');
   if(!box)return;
   var insights=[];
-  if(days>=1&&days<7)insights.push('🎉 你刚开始使用序梧！坚持一周就能看到变化。建议先从<strong>每日打卡</strong>和<strong>番茄专注</strong>两个功能开始。');
+  if(days>=1&&days<7)insights.push('🎉 你刚开始使用栖匣！坚持一周就能看到变化。建议先从<strong>每日打卡</strong>和<strong>番茄专注</strong>两个功能开始。');
   if(days>=7)insights.push('📅 你已经坚持使用 <strong>'+days+'</strong> 天了！超过80%的人会在第一周放弃，你已经超越了他们。');
   if(tasks>=10)insights.push('✅ 已完成 <strong>'+tasks+'</strong> 个任务！执行力在稳步提升。继续保持"今日只定一件事"的习惯。');
   if(pomos>=10)insights.push('🍅 累计 <strong>'+pomos+'</strong> 个番茄钟！深度专注是最好的投资。');
@@ -10992,7 +11142,7 @@ init();
         var tip=document.getElementById('flashSplash')||document.getElementById('brandSplash');
         if(tip){ tip.style.display='flex'; }
         if(window.flash){
-          window.flash('👋 欢迎进入序梧！刚才那条「非官方网页」提示是微信的安全机制，第一次点「继续访问」即可，以后一般不再弹出。');
+          window.flash('👋 欢迎进入栖匣！刚才那条「非官方网页」提示是微信的安全机制，第一次点「继续访问」即可，以后一般不再弹出。');
         }
       }catch(e){}
     },600);
@@ -11177,9 +11327,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
         '<span style="font-size:11px;letter-spacing:3px;color:#B9CDB7">把日子，排布成自己的次序</span>'+
       '</div>'+
       '<div style="position:relative;margin:14px auto 0;width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(191,240,218,.85);background:rgba(255,255,255,.10);box-shadow:0 0 0 6px rgba(255,255,255,.06);overflow:hidden">'+
-        '<img src="pwa/logo.png" alt="序梧" style="width:60px;height:60px;border-radius:50%;display:block">'+
+        '<img src="pwa/logo.png" alt="栖匣" style="width:60px;height:60px;border-radius:50%;display:block">'+
       '</div>'+
-      '<div style="margin-top:13px;font-size:22px;font-weight:800;letter-spacing:4px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25)">序梧<span style="font-size:12.5px;letter-spacing:3px;font-weight:400;color:#B9CDB7"> · 大学生成长中枢</span></div>'+
+      '<div style="margin-top:13px;font-size:22px;font-weight:800;letter-spacing:4px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25)">栖匣<span style="font-size:12.5px;letter-spacing:3px;font-weight:400;color:#B9CDB7"> · 大学生四年全能生活中枢工作台</span></div>'+
       '<div style="margin:10px auto 6px;font-size:14px;color:#fff;line-height:1.85;max-width:520px">你见过很多工具。<br>但这一页，专为你的这四年而造。</div>'+
       '<div style="margin:6px auto 16px;max-width:560px;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:12.5px;color:rgba(255,255,255,.94);line-height:1.7">'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#D7E4D3">一页收纳，四年不乱</b>——33 个板块，从入学规划到毕业去向，全在这里。</span></div>'+
@@ -11190,7 +11340,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       '<div style="margin:16px auto;width:60%;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0))"></div>'+
       '<div style="font-size:12.5px;color:rgba(255,255,255,.92);font-style:italic;letter-spacing:1px">愿你把最要紧的四年，过成自己想要的样子。</div>'+
       '<div style="padding:11px 14px;border-radius:12px;background:rgba(0,0,0,.20);font-size:11px;color:rgba(255,255,255,.88);line-height:1.8;text-align:left;border:1px solid rgba(255,255,255,.08);margin-top:14px">🔎 <b style="color:#fff">时效说明：</b>站内考试 / 报名 / 活动 / 政策等参考信息，均整理自各官方权威来源，核验于 <b style="color:#D7E4D3" id="ppReviewDate">'+_Y+' 年 '+_MM+' 月</b>，本声明随新学年 <b style="color:#fff">自动更新</b>；使用前请以各官方当年最新通知为准。</div>'+
-      '<div style="margin-top:13px;font-size:10.5px;color:rgba(255,255,255,.60);line-height:1.7">© '+_Y+' 尹平平 · 序梧 · 保留所有权利 · 受《中华人民共和国著作权法》保护，未获书面授权禁止整站复制、搬运或另作商业用途。唯一正版地址即当前链接。</div>';
+      '<div style="margin-top:13px;font-size:10.5px;color:rgba(255,255,255,.60);line-height:1.7">© '+_Y+' 尹平平 · 栖匣 · 保留所有权利 · 受《中华人民共和国著作权法》保护，未获书面授权禁止整站复制、搬运或另作商业用途。唯一正版地址即当前链接。</div>';
     main.appendChild(f);
   }
 
@@ -11265,7 +11415,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     }catch(e){}
     try{
       /* 3) 控制台声明作者（视觉化的原创印记） */
-      if(window.console&&console.info){console.info('%c序梧 %c原创作者：尹平平 · 请尊重原创著作权','color:#3E6B4F;font-weight:bold;font-size:14px','color:#C2A15E;font-size:11px');}
+      if(window.console&&console.info){console.info('%c栖匣 %c原创作者：尹平平 · 请尊重原创著作权','color:#3E6B4F;font-weight:bold;font-size:14px','color:#C2A15E;font-size:11px');}
     }catch(e){}
   })();
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
@@ -11510,8 +11660,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .pano-step .num{width:44px;height:44px;border-radius:11px;background:linear-gradient(140deg,#2A3B30,#7A9C84);color:#FFFFFF;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:16px;box-shadow:0 10px 20px rgba(46,158,120,.3)}
 .pano-step h5{color:#1D2C23;font-size:15.5px;margin:0 0 8px;font-weight:800;letter-spacing:.02em}
 .pano-step p{color:#67796F;font-size:13px;line-height:1.95;margin:0}
-/* ── 收官 CTA · 回到产品本身「序梧」 —— 去掉外物化的朱印/书/档案叙事，以品牌印记 + 青绿×留白×精排收束，
-     落脚点回归：这是把六条线收拢到一处、只存你本机的"大学生成长中枢"。 ── */
+/* ── 收官 CTA · 回到产品本身「栖匣」 —— 去掉外物化的朱印/书/档案叙事，以品牌印记 + 青绿×留白×精排收束，
+     落脚点回归：这是把六条线收拢到一处、只存你本机的"大学生四年全能生活中枢工作台"。 ── */
 .pano-cta{margin:84px 0 0;padding:78px 40px 64px;border-radius:30px;position:relative;overflow:hidden;text-align:center;color:#20303F;
   background:
     radial-gradient(720px 470px at 88% -16%,rgba(46,158,120,.08),transparent 62%),
@@ -11528,7 +11678,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   background:linear-gradient(90deg,transparent,rgba(47,85,66,.85),rgba(47,85,66,.25),rgba(47,85,66,.85),transparent);z-index:2}
 .pano-cta>*{position:relative;z-index:2;max-width:760px;margin-left:auto;margin-right:auto}
 
-/* 品牌印记：用序梧标准 logo 取代朱印，锚定"这是产品本身"而非一本书 */
+/* 品牌印记：用栖匣标准 logo 取代朱印，锚定"这是产品本身"而非一本书 */
 .ct-mark img{width:74px;height:74px;border-radius:22px;display:block;margin:0 auto 24px;
   box-shadow:0 14px 30px rgba(23,55,45,.16),0 0 0 1px rgba(47,85,66,.18)}
 
@@ -11613,7 +11763,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 [data-theme="dark"] .mind-refresh:hover{background:#28332A}
 </style>
 <script>
-/* ═══════ 序梧 · 全景导览展示逻辑 ═══════ */
+/* ═══════ 栖匣 · 全景导览展示逻辑 ═══════ */
 function openPano(){
   var p=document.getElementById('pano');if(!p)return;
   var m=document.getElementById('panoMask');
@@ -11665,20 +11815,20 @@ function panoBoot(){
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
 </script>
 
-<!-- ═══════════ 序梧 · 全景导览（浅色高级产品介绍长页） ═══════════ -->
+<!-- ═══════════ 栖匣 · 全景导览（浅色高级产品介绍长页） ═══════════ -->
 <div class="pano-mask" id="panoMask"></div>
-<div class="pano" id="pano" role="dialog" aria-modal="true" aria-label="序梧全景导览">
+<div class="pano" id="pano" role="dialog" aria-modal="true" aria-label="栖匣全景导览">
   <button class="pano-close" data-pano="close" title="关闭导览">✕</button>
   <div class="pano-inner">
 
     <!-- 封面首屏 (步骤 1) -->
     <section class="pano-hero" data-step="0">
       <span class="pt-topscallop" aria-hidden="true"></span>
-      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:24px;height:24px;border-radius:8px;overflow:hidden"><img src="pwa/logo.png" alt="序梧" style="width:24px;height:24px;display:block"></span><span class="pt-name">序梧</span><i></i></div>
+      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:24px;height:24px;border-radius:8px;overflow:hidden"><img src="pwa/logo.png" alt="栖匣" style="width:24px;height:24px;display:block"></span><span class="pt-name">栖匣</span><i></i></div>
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="pt-name-premium">
-        <span class="pm-verse">一「序」一「梧」：把日子排成自己的次序，再让它安静地向上生长。<em>—— 序梧，为每一位大学生而来</em></span>
+        <span class="pm-verse">一「序」一「梧」：把日子排成自己的次序，再让它安静地向上生长。<em>—— 栖匣，为每一位大学生而来</em></span>
       </div>
       <h1 class="pano-h1">把日子，过成<em class="pano-grow">自己的次序</em><span class="thin">：四年，去有所成，来有所依</span></h1>
       <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>，六条线收拢到一处、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
@@ -11695,7 +11845,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <section class="pano-sec pano-sec-ctr" data-step="1">
       <div class="pano-no"><span class="rn">壹</span><span>它为什么无可取代 · 你所得到的</span></div>
       <h2 class="pano-h2">它不是又一个工具，<br>而是把四年过成<em>想要的样子</em>的那个地方</h2>
-      <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康与眼界</b>，还让它们互相咬合。序梧，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
+      <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康与眼界</b>，还让它们互相咬合。栖匣，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
       <div class="pano-feat">
         <div class="pano-ft"><span class="fi">⚡</span><b>双击即用 · 零安装零门槛</b><p>一个网页即是全部，点开就能用，不用下载、不用配置。</p></div>
         <div class="pano-ft"><span class="fi">🔒</span><b>数据留在本机 · 不收集隐私</b><p>不注册、不联网上传，一切只存在你自己的浏览器里。</p></div>
@@ -11750,7 +11900,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 大引言 (步骤 5) -->
     <div class="pano-quote" data-step="4">
       <p>真正的自由，不是想做什么就做什么，<br>而是能把四年的每一天，都落在实处、握在自己手里。</p>
-      <span class="by">— 序梧 的设计哲学 —</span>
+      <span class="by">— 栖匣 的设计哲学 —</span>
     </div>
 
     <!-- 八大能力 (步骤 6) -->
@@ -11787,7 +11937,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
           <span class="cv-char">梧</span>
           <div class="cv-body">
             <h5>梧桐 · 生长 · 引凤</h5>
-            <p>《诗》曰"凤凰鸣矣，于彼高冈；梧桐生矣，于彼朝阳"。学业、目标、时间、金钱、健康、眼界——把六条线收拢到一处，一点一点长成能盛住万般可能性的大树。打开序梧，就是给未来添一片可生长的树荫。</p>
+            <p>《诗》曰"凤凰鸣矣，于彼高冈；梧桐生矣，于彼朝阳"。学业、目标、时间、金钱、健康、眼界——把六条线收拢到一处，一点一点长成能盛住万般可能性的大树。打开栖匣，就是给未来添一片可生长的树荫。</p>
           </div>
         </div>
       </div>
@@ -11837,9 +11987,9 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       </div>
     </section>
 
-    <!-- 收官 CTA · 回到「序梧」产品本身：以品牌印记 + 青绿留白 + 精排收束，收拢"六条线的成长中枢"，去书/印外显 -->
+    <!-- 收官 CTA · 回到「栖匣」产品本身：以品牌印记 + 青绿留白 + 精排收束，收拢"六条线的成长中枢"，去书/印外显 -->
     <div class="pano-cta">
-      <div class="ct-mark" aria-hidden="true"><img src="pwa/logo.png" alt="序梧" draggable="false"></div>
+      <div class="ct-mark" aria-hidden="true"><img src="pwa/logo.png" alt="栖匣" draggable="false"></div>
       <div class="ct-eyebrow">终章 · 从此刻开始</div>
       <h2 class="ct-title">把四年，<em>过出掌控感</em></h2>
       <p class="ct-lead">它不是"又一个工具"——它把<b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b>，收拢进一个只属你的成长中枢。今天记下的一件小事，四年后都有迹可循。</p>
@@ -11854,7 +12004,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <button class="pano-btn-ghost" data-pano="about">再逛逛导览</button>
       </div>
     </div>
-    <div class="pano-note">序梧 —— 愿你把每一天，都过出掌控感</div>
+    <div class="pano-note">栖匣 —— 愿你把每一天，都过出掌控感</div>
 
   </div>
 </div>
@@ -11926,7 +12076,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     return fetch(remote(),o);
   }
   function errMsg(label,res){var code=res&&res.status;if(code===401)return label+'失败：账号或应用密码错误';if(code===404)return label+'失败：云端还没有备份文件';if(code===403||code===405)return label+'失败：服务器不允许该操作（可能未开 WebDAV 写权限）';if(!code||code===0)return label+'失败：网络或跨域受限（需支持 CORS 的 WebDAV）';return label+'失败：HTTP '+code;}
-  function buildData(){var d={"_app":"序梧","_author":"尹平平","_site":"https://lumenplexus.github.io/pingwanxiang/","_v":2,"_exportTime":new Date().toISOString()};if(window._userDataKeyList){try{_userDataKeyList().forEach(function(k){try{d[k]=localStorage.getItem(k);}catch(e){}});}catch(e){}}return d;}
+  function buildData(){var d={"_app":"栖匣","_author":"尹平平","_site":"https://lumenplexus.github.io/pingwanxiang/","_v":2,"_exportTime":new Date().toISOString()};if(window._userDataKeyList){try{_userDataKeyList().forEach(function(k){try{d[k]=localStorage.getItem(k);}catch(e){}});}catch(e){}}return d;}
   window.webdavUpload=function(){try{doFetch('PUT',JSON.stringify(buildData())).then(function(r){if(r.ok){flash('☁️ 已上传到云端');uiAlert('云端备份完成 ✅\n\n整份数据已上传。之后换设备，用它「从云端恢复」即可搬走。');}else uiAlert(errMsg('上传',r));}).catch(function(){uiAlert('上传失败：网络或跨域受限，请确认用的是坚果云 dav.jianguoyun.com');});}catch(e){}}
   window.webdavDownload=function(){try{doFetch('GET').then(function(r){if(!r.ok){uiAlert(errMsg('恢复',r));return;}return r.text().then(function(txt){try{var d=JSON.parse(txt);if(!d||typeof d!=='object')throw 0;if(d._v===2){Object.keys(d).forEach(function(k){if(k.charAt(0)==='_')return;try{localStorage.setItem(k,d[k]);}catch(e){}});}if(window.renderAll){try{renderAll();}catch(e){}}flash('☁️ 已从云端恢复');uiAlert('云端恢复完成 ✅\n\n已把云端备份写回本机，刷新页面查看全部。');}catch(e){uiAlert('恢复失败：云端文件格式不正确');}});}).catch(function(){uiAlert('恢复失败：网络或跨域受限');});}catch(e){}}
   window.webdavDelete=function(){try{doFetch('DELETE').then(function(r){if(r.ok){flash('🗑️ 已清空云端');uiAlert('已删除云端备份文件');}else uiAlert(errMsg('删除',r));}).catch(function(){uiAlert('删除失败：网络或跨域受限');});}catch(e){}}
@@ -11934,7 +12084,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function synchState(){try{var on=DB.get('pp_remind_on',0),sw=$id('remindOn');if(sw)sw.checked=!!on;var t=$id('remindTime');if(t){var v=DB.get('pp_remind_time','');t.value=v||'20:00';}}catch(e){}}
   window.setRemind=function(on){try{if(on){if(!('Notification'in window)){uiAlert('当前浏览器不支持通知');if($id('remindOn'))$id('remindOn').checked=false;return;}Notification.requestPermission().then(function(p){if(p==='granted'){DB.set('pp_remind_on',1);flash('🔔 提醒已开启（页面打开时生效）');}else{DB.set('pp_remind_on',0);if($id('remindOn'))$id('remindOn').checked=false;uiAlert('未获得通知授权，提醒未开启');}});}else{DB.set('pp_remind_on',0);flash('🔕 提醒已关闭');}}catch(e){}}
   window.saveRemindTime=function(){try{var t=$id('remindTime');if(t)DB.set('pp_remind_time',t.value);}catch(e){}}
-  window.testNotif=function(){try{if(!('Notification'in window)){uiAlert('浏览器不支持通知');return;}Notification.requestPermission().then(function(p){if(p==='granted')new Notification('序梧',{body:'这是一条测试提醒 ✅ 开启后，每日约定时间会提醒你完成待办。',silent:false});else uiAlert('未获得通知授权');});}catch(e){}}
+  window.testNotif=function(){try{if(!('Notification'in window)){uiAlert('浏览器不支持通知');return;}Notification.requestPermission().then(function(p){if(p==='granted')new Notification('栖匣',{body:'这是一条测试提醒 ✅ 开启后，每日约定时间会提醒你完成待办。',silent:false});else uiAlert('未获得通知授权');});}catch(e){}}
   var _hook=null;
   function maybeNotif(){
     try{var on=DB.get('pp_remind_on',0);if(!on)return;if(!('Notification'in window)||Notification.permission!=='granted')return;
@@ -11945,7 +12095,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         var tasks=(window.getTasks?getTasks():[])||[],td=typeof todayKey==='function'?todayKey():null;
         var pending=tasks.filter(function(t){return t&&t.date===td&&!t.done});
         var body=pending.length?('你还有 '+pending.length+' 条今日待办未完成'):'今日待办已全部完成 ✅';
-        if(document.visibilityState!=='hidden'){new Notification('序梧 · 待办提醒',{body:body,tag:'pw-remind',silent:false}).onclick=function(){try{window.focus();}catch(e){}};}
+        if(document.visibilityState!=='hidden'){new Notification('栖匣 · 待办提醒',{body:body,tag:'pw-remind',silent:false}).onclick=function(){try{window.focus();}catch(e){}};}
         lastDay=day;
       }catch(e){}},30000);
     }catch(e){}
@@ -11955,4 +12105,92 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,80);});}else{setTimeout(boot,80);}
 })();
 </script>
-</body></html>
+
+<!-- ═══════ 栖匣 · 首次访问新手导览 ═══════ -->
+<div class="qg-overlay" id="qgOverlay" aria-hidden="true">
+  <div class="qg-modal" role="dialog" aria-modal="true" aria-label="栖匣新手导览">
+    <button class="qg-close" onclick="qgClose()" title="跳过导览">✕ 跳过</button>
+    <div class="qg-body">
+      <div class="qg-slide active">
+        <div class="qg-icon">🏮</div>
+        <div class="qg-title">欢迎来到栖匣</div>
+        <div class="qg-desc">一处安放你整个大学生活的收纳中枢。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-icon">📦</div>
+        <div class="qg-title">一站式收纳你的全部生活</div>
+        <div class="qg-desc">学业 · 考级 · 目标 · 记账 · 健康 · 灵感 · 情绪<br>所有板块汇聚于此，告别十几个来回切换的软件。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-icon">🤍</div>
+        <div class="qg-title">安放优先于鞭策</div>
+        <div class="qg-desc">栖匣不会催促你每时每刻都必须高效。<br>疲惫、停顿、低落，同样值得被好好存放。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-icon">📜</div>
+        <div class="qg-title">四年成长档案</div>
+        <div class="qg-desc">从大一到大四，你的全部记录长期沉淀，<br>毕业之时收获一份完整的青春答卷。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-icon">🔒</div>
+        <div class="qg-title">本地存储 · 隐私安全</div>
+        <div class="qg-desc">所有记录保存在你的浏览器本地，不上传服务器。<br>💡 记得定期导出备份，避免清理缓存丢失数据。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-icon">🎒</div>
+        <div class="qg-title">准备就绪</div>
+        <div class="qg-desc">开启你的栖匣旅程，把大学四年安放成想要的样子。</div>
+      </div>
+    </div>
+    <div class="qg-foot">
+      <button class="qg-prev" id="qgPrev" onclick="qgGo(-1)">上一步</button>
+      <div class="qg-dots" id="qgDots"></div>
+      <button class="qg-next" id="qgNext" onclick="qgGo(1)">下一步</button>
+    </div>
+  </div>
+</div>
+<style>
+.qg-overlay{position:fixed;inset:0;z-index:99999;background:rgba(20,16,12,.55);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.qg-overlay.show{opacity:1;pointer-events:auto}
+.qg-modal{width:100%;max-width:430px;background:var(--card,#FDFBF7);color:var(--text,#38342F);border-radius:18px;padding:26px 22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35);position:relative;text-align:center}
+.qg-close{position:absolute;top:12px;right:14px;border:none;background:transparent;color:var(--hint,#A29B92);font-size:13px;cursor:pointer}
+.qg-body{min-height:230px;display:flex}
+.qg-slide{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center}
+.qg-slide.active{display:flex}
+.qg-icon{font-size:46px;line-height:1;margin-bottom:16px}
+.qg-title{font-size:19px;font-weight:800;letter-spacing:2px;color:var(--primary,#6B5747);margin-bottom:12px}
+.qg-desc{font-size:14px;line-height:2;color:var(--muted,#746F68)}
+.qg-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.qg-prev{border:1px solid var(--border,#E2DCD2);background:transparent;color:var(--text,#38342F);border-radius:10px;padding:9px 18px;font-size:14px;cursor:pointer;visibility:hidden}
+.qg-prev.on{visibility:visible}
+.qg-next{border:none;background:var(--primary,#6B5747);color:#fff;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:600;cursor:pointer}
+.qg-next:hover{opacity:.9}
+.qg-dots{display:flex;gap:6px}
+.qg-dots i{width:7px;height:7px;border-radius:50%;background:var(--border,#E2DCD2);transition:all .25s}
+.qg-dots i.on{background:var(--primary,#6B5747);width:18px;border-radius:4px}
+</style>
+<script>
+(function(){
+  var K='qixia_toured_v1';
+  function go(i){
+    var slides=document.querySelectorAll('.qg-slide'),dots=document.querySelectorAll('#qgDots i');
+    var cur=0,j;for(j=0;j<slides.length;j++){if(slides[j].classList.contains('active')){cur=j;break;}}
+    var next=cur+i;
+    if(next>=slides.length){ if(i>0){close();} return; }
+    if(next<0)return;
+    slides[cur].classList.remove('active');slides[next].classList.add('active');
+    dots[cur].classList.remove('on');dots[next].classList.add('on');
+    var prev=document.getElementById('qgPrev'),nx=document.getElementById('qgNext');
+    prev.classList.toggle('on',next>0); nx.textContent=(next===slides.length-1)?'开始使用':'下一步';
+  }
+  function close(){var o=document.getElementById('qgOverlay');o.classList.remove('show');o.setAttribute('aria-hidden','true');try{localStorage.setItem(K,'1');}catch(e){}}
+  window.qgGo=function(i){go(i);};
+  window.qgClose=function(){close();};
+  function buildDots(){var dots=document.getElementById('qgDots'),n=document.querySelectorAll('.qg-slide').length,d='';for(var k=0;k<n;k++)d+='<i class="'+(k===0?'on':'')+'"></i>';dots.innerHTML=d;}
+  function maybe(){try{if(localStorage.getItem(K))return;}catch(e){return;}
+    document.getElementById('qgSlides')||buildDots();
+    setTimeout(function(){var o=document.getElementById('qgOverlay');o.classList.add('show');o.setAttribute('aria-hidden','false');},1200);
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',maybe);}else{setTimeout(maybe,600);}
+})();
+</script></body></html>
