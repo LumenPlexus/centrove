@@ -1,4 +1,4 @@
-# 「栖榫」GitHub Pages 发布说明
+# 「平·万象」GitHub Pages 发布说明
 
 这是一键发布的最终成品包，包含全部修复后的主站 `index.html` 和“装桌面当 App”所需的 PWA 文件（清单、图标、离线脚本）。
 

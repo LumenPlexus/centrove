@@ -1,5 +1,5 @@
 /*
- * 栖榫 Service Worker（根目录版）
+ * 平·万象 Service Worker（根目录版）
  * v52 · 关键修复：把 SW 提升到站点根目录，使 scope 默认覆盖整个站点根
  * （含 index.html 主页）。此前 SW 位于 pwa/ 下且未指定 scope，
  * 默认作用域只有 /pwa/，接管不了主页 → 断网即黑屏/加载失败。
