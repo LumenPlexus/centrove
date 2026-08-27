@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="qixia" data-author="尹平平" data-ver="2026.08.28"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="qixia" data-author="尹平平" data-ver="2026.08.29"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -36,7 +36,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260828', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260829', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -1106,7 +1106,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,94,.42),rgba(201,161,94,0) 70%);filter:blur(7px);animation:bins .6s both"></div>
     <img src="pwa/logo.png" alt="栖匣" draggable="false" style="width:106px;height:106px;border-radius:28px;box-shadow:0 0 0 3px rgba(201,161,94,.32),0 22px 54px rgba(5,15,10,.5);opacity:0;animation:bins .7s .12s forwards,bf 3.6s ease-in-out 1.2s infinite;position:relative"></div>
   <div style="font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:46px;font-weight:800;color:#F3EEDF;letter-spacing:12px;margin-top:30px;opacity:0;animation:bins .9s .45s forwards">栖匣</div>
-  <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">大学生四年全能生活中枢工作台</div>
+  <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">一只匣 · 安放四年</div>
   <div style="margin-top:20px;height:1px;width:60px;background:linear-gradient(90deg,transparent,#E0C48C,transparent);opacity:0;animation:bins .9s .78s forwards"></div>
   <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:rgba(243,238,223,.9);letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">把日子，排布成自己的次序</div>
   <div style="margin-top:22px;display:flex;gap:0;align-items:flex-end;opacity:0;animation:bins .9s 1.08s forwards">
@@ -1155,7 +1155,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0">栖匣 <span class="tb-badge">大学生四年全能生活中枢工作台</span></div>
+      <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0">栖匣 <span class="tb-badge">一只匣 · 安放四年</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
@@ -12201,38 +12201,38 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <button class="qg-close" onclick="qgClose()" title="跳过导览">✕ 跳过</button>
     <div class="qg-body">
       <div class="qg-slide active">
-        <div class="qg-icon">🏮</div>
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="21" width="28" height="18" rx="3"></rect><rect class="d" x="7" y="14" width="34" height="6" rx="2.5"></rect></svg></div>
         <div class="qg-title">欢迎来到栖匣</div>
-        <div class="qg-desc">一处安放你整个大学生活的收纳中枢。</div>
+        <div class="qg-desc">一只安放你大学四年的匣子，静置在本机浏览器里。</div>
       </div>
       <div class="qg-slide">
-        <div class="qg-icon">📦</div>
-        <div class="qg-title">一站式收纳你的全部生活</div>
-        <div class="qg-desc">学业 · 考级 · 目标 · 记账 · 健康 · 灵感 · 情绪<br>所有板块汇聚于此，告别十几个来回切换的软件。</div>
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="22" width="28" height="16" rx="3"></rect><line x1="19.4" y1="22" x2="19.4" y2="38"></line><line x1="28.6" y1="22" x2="28.6" y2="38"></line><rect x="10" y="16" width="28" height="6" rx="2"></rect></svg></div>
+        <div class="qg-title">一格，装一种生活</div>
+        <div class="qg-desc">学业、考证、目标、记账、健康、灵感、情绪——想存下的都收得进来。</div>
       </div>
       <div class="qg-slide">
-        <div class="qg-icon">🤍</div>
-        <div class="qg-title">安放优先于鞭策</div>
-        <div class="qg-desc">栖匣不会催促你每时每刻都必须高效。<br>疲惫、停顿、低落，同样值得被好好存放。</div>
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="t" d="M24 9c-4.8-3.8-11.6-.8-11.6 5.2.2 6.6 8.6 12.4 11.6 14.4 3-2 11.4-7.8 11.6-14.4C35.6 8.2 28.8 5.2 24 9z"></path><rect x="12" y="29" width="24" height="11" rx="3"></rect></svg></div>
+        <div class="qg-title">安放，不催促</div>
+        <div class="qg-desc">迷茫、停顿、累的时候，也值得被好好存放，不必时时高效。</div>
       </div>
       <div class="qg-slide">
-        <div class="qg-icon">📜</div>
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 16h12l4 5h12v15H10z" stroke-linejoin="round"></path><line x1="16" y1="29" x2="32" y2="29"></line><line x1="16" y1="33.5" x2="32" y2="33.5"></line></svg></div>
         <div class="qg-title">四年成长档案</div>
-        <div class="qg-desc">从大一到大四，你的全部记录长期沉淀，<br>毕业之时收获一份完整的青春答卷。</div>
+        <div class="qg-desc">从大一到大四一路沉淀，毕业时收下完整的青春答卷。</div>
       </div>
       <div class="qg-slide">
-        <div class="qg-icon">🔒</div>
-        <div class="qg-title">本地存储 · 隐私安全</div>
-        <div class="qg-desc">所有记录保存在你的浏览器本地，不上传服务器。<br>💡 记得定期导出备份，避免清理缓存丢失数据。</div>
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="22" width="20" height="15" rx="3"></rect><path d="M19 22v-4a5 5 0 0110 0v4"></path><circle class="d" cx="24" cy="29" r="2.3"></circle><line x1="24" y1="29" x2="24" y2="31.4"></line></svg></div>
+        <div class="qg-title">只存在你这里</div>
+        <div class="qg-desc">记录一律保存在本机，不上传服务器；记得定期导出备份。</div>
       </div>
       <div class="qg-slide">
-        <div class="qg-icon">🎒</div>
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="g" d="M16 18.5l4 4 9-10"></path><rect x="10" y="23" width="28" height="16" rx="3"></rect></svg></div>
         <div class="qg-title">准备就绪</div>
-        <div class="qg-desc">开启你的栖匣旅程，把大学四年安放成想要的样子。</div>
+        <div class="qg-desc">把大学四年，安放成你想要的样子。开始吧。</div>
       </div>
     </div>
     <div class="qg-foot">
-      <button class="qg-prev" id="qgPrev" onclick="qgGo(-1)">上一步</button>
+      <button class="qg-prev" id="qgPrev" onclick="qgGo(-1)">返回</button>
       <div class="qg-dots" id="qgDots"></div>
       <button class="qg-next" id="qgNext" onclick="qgGo(1)">下一步</button>
     </div>
@@ -12243,11 +12243,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 .qg-overlay.show{opacity:1;pointer-events:auto}
 .qg-modal{width:100%;max-width:430px;background:var(--card,#FDFBF7);color:var(--text,#38342F);border-radius:18px;padding:26px 22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35);position:relative;text-align:center}
 .qg-close{position:absolute;top:12px;right:14px;border:none;background:transparent;color:var(--hint,#A29B92);font-size:13px;cursor:pointer}
-.qg-body{min-height:230px;display:flex}
-.qg-slide{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center}
+.qg-body{min-height:252px;display:flex}
+.qg-slide{display:none;flex:1;flex-direction:column;align-items:center;justify-content:flex-start}
 .qg-slide.active{display:flex}
-.qg-icon{font-size:46px;line-height:1;margin-bottom:16px}
-.qg-title{font-size:19px;font-weight:800;letter-spacing:2px;color:var(--primary,#6B5747);margin-bottom:12px}
+:root,:root[data-theme="light"]{--gui-ink:#6B4F37;--gui-accent:#A0803C;--gui-warm:#B0613E}
+[data-theme="dark"]{--gui-ink:#D3B893;--gui-accent:#C9A45E;--gui-warm:#D28862}
+.qg-ico{width:72px;height:72px;border-radius:20px;margin:6px 0 20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--card,#FDFBF7),var(--bg,#F5EFE2));border:1px solid var(--border,#E2DCD2);box-shadow:var(--shadow,0 6px 18px rgba(74,58,40,.1));color:var(--gui-ink)}
+.qg-ico svg{width:42px;height:42px}
+.qg-ico svg :is(rect,path,line,circle){stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.9}
+.qg-ico .d{fill:currentColor;stroke:none}
+.qg-ico .g{fill:var(--gui-accent);stroke:none}
+.qg-ico .t{fill:var(--gui-warm);stroke:none}
+.qg-title{font-size:19px;font-weight:800;letter-spacing:2px;color:var(--head-deep,var(--primary,#6B5747));margin-bottom:12px}
 .qg-desc{font-size:14px;line-height:2;color:var(--muted,#746F68)}
 .qg-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
 .qg-prev{border:1px solid var(--border,#E2DCD2);background:transparent;color:var(--text,#38342F);border-radius:10px;padding:9px 18px;font-size:14px;cursor:pointer;visibility:hidden}
@@ -12270,7 +12277,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     slides[cur].classList.remove('active');slides[next].classList.add('active');
     dots[cur].classList.remove('on');dots[next].classList.add('on');
     var prev=document.getElementById('qgPrev'),nx=document.getElementById('qgNext');
-    prev.classList.toggle('on',next>0); nx.textContent=(next===slides.length-1)?'开始使用':'下一步';
+    prev.classList.toggle('on',next>0); nx.textContent=(next===slides.length-1)?'开始吧':'下一步';
   }
   function close(){var o=document.getElementById('qgOverlay');o.classList.remove('show');o.setAttribute('aria-hidden','true');try{localStorage.setItem(K,'1');}catch(e){}}
   window.qgGo=function(i){go(i);};
