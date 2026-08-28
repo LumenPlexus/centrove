@@ -1168,7 +1168,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <div style="font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:46px;font-weight:800;color:#F3EEDF;letter-spacing:12px;margin-top:30px;opacity:0;animation:bins .9s .45s forwards">栖匣</div>
   <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">一只匣 · 安放四年</div>
   <div style="margin-top:20px;height:1px;width:60px;background:linear-gradient(90deg,transparent,#E0C48C,transparent);opacity:0;animation:bins .9s .78s forwards"></div>
-  <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:rgba(243,238,223,.9);letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">把日子，排布成自己的次序</div>
+  <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:rgba(243,238,223,.9);letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">先安放，再生长</div>
   <div style="margin-top:22px;display:flex;gap:0;align-items:flex-end;opacity:0;animation:bins .9s 1.08s forwards">
     <span style="display:flex;gap:7px;align-items:flex-end">
       <span style="width:14px;height:26px;border-radius:4px;background:#6E4F37"></span>
@@ -1197,13 +1197,14 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     var e=bs();if(!e)return;
     var first=false;
     try{first=localStorage.getItem('pp_splash_seen')!=='1';if(first)localStorage.setItem('pp_splash_seen','1');}catch(err){}
-    /* 老用户 & 非外壳环境：直接跳过启动屏，页面前台内容立即呈现，不再强制等待 */
-    if(!first&&!inShell()){e.style.display='none';return;}
+    /* 启动屏只对「全新首次进入」展示一次；此后无论微信/安卓外壳还是常规浏览器，
+       一律直接跳过，不再强制等待、不再遮挡首屏交互（避免用户点主题/导航无反应的体感） */
+    if(!first){e.style.display='none';return;}
     e.style.display='flex';e.style.opacity='1';
     e.addEventListener('click',function(){dismiss(e);});
-    /* 让开屏优雅放完即进入产品：文字分层淡入、轻触可随时跳过；首次展示时长放长，
-       确保「晨珠」图标足够停留、用户能看清品牌印记，再配合柔和淡出，避免一闪即逝。 */
-    setTimeout(function(){dismiss(e);}, first?3600:2000);
+    /* 开屏放完即进入产品：文字分层淡入、轻触可随时跳过；首屏时长缩短到 2 秒内，
+       友好淡出后立刻让位给真实工具，不喧宾夺主。 */
+    setTimeout(function(){dismiss(e);},1900);
   }
   show();
 })();
@@ -11473,7 +11474,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       '<div style="position:absolute;left:-40px;top:-46px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(191,240,218,.16),rgba(255,255,255,0) 70%)"></div>'+
       '<div style="position:absolute;right:-56px;bottom:-56px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,94,.20),rgba(255,255,255,0) 70%)"></div>'+
       '<div style="position:absolute;top:12px;left:16px">'+
-        '<span style="font-size:11px;letter-spacing:3px;color:#B6A995">把日子，排布成自己的次序</span>'+
+        '<span style="font-size:11px;letter-spacing:3px;color:#B6A995">先安放，再生长 · 你的四年有处安放</span>'+
       '</div>'+
       '<div style="position:relative;margin:14px auto 0;width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(191,240,218,.85);background:rgba(255,255,255,.10);box-shadow:0 0 0 6px rgba(255,255,255,.06);overflow:hidden">'+
         '<img src="pwa/logo.png" alt="栖匣" style="width:60px;height:60px;border-radius:50%;display:block">'+
@@ -11952,14 +11953,9 @@ function panoBoot(){
   if(m)m.addEventListener('click',closePano);
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePano();});
   panoWire();
-  try{
-    /* 版本化 seen 标记：新版本上线后，老用户也能再看一次升级版导览，之后不再打扰 */
-    if(!localStorage.getItem('pp_pano_v4_seen')){
-      localStorage.setItem('pp_pano_v4_seen','1');
-      /* 等品牌启动屏淡出后再接出导览（首次开窗先见导览→再进产品）；导览需用户手动关闭才结束 */
-      setTimeout(openPano,4000);
-    }
-  }catch(e){}
+  /* 全景导览改为「按需进入」：不再首次打开时抢占全屏、不再遮挡首屏交互。
+     想了解产品的人随时点顶栏「导览」或菜单「查看产品导览」进入；
+     首次开窗由轻量的内页欢迎引导承接，避免被全屏长页打断。 */
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
 </script>
@@ -11979,7 +11975,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="pt-name-premium">
         <span class="pm-verse">一「栖」一「匣」：先安放，再生长。把状态收好，而不是时时催促。<em>—— 栖匣，为每一位大学生而来</em></span>
       </div>
-      <h1 class="pano-h1">把日子，过成<em class="pano-grow">自己的次序</em><span class="thin">：四年，去有所成，来有所依</span></h1>
+      <h1 class="pano-h1">把每一天，好好<em class="pano-grow">安放</em><span class="thin">：四年，去有所成，来有所栖</span></h1>
       <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康 · 眼界</b></em>，六条线收拢到一处、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
       <div class="pano-stats">
