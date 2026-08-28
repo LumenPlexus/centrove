@@ -24,24 +24,24 @@ p.sub{color:#8A6A3A;margin:0 0 30px;font-size:14px;line-height:1.8}
 <h1>栖匣 · 图标选样</h1>
 <p class="sub">点击任意一款可放大细看。我已去掉全部植物/鸟巢/手绘感，四款皆为「匣」的高端意象，配产品文案「匣纳成长 · 心有所栖」。凭眼缘挑一款，回复编号即可（如：图A），我来定稿接入。</p>
 <div class="grid">
-  <div class="card" onclick="zoom('option_B')" data-opt="B"><i class="num">B</i><span class="rec">推荐</span>
-    <img src="option_B.jpg" alt="B"><h2>双匣相合 · 铜木对映</h2>
+  <div class="card" onclick="zoom('B')" data-opt="B"><i class="num">B</i><span class="rec">推荐</span>
+    <img src="icon_option_B.jpg" alt="B"><h2>双匣相合 · 铜木对映</h2>
     <p>核桃木外框内嵌暖青铜，一明一暗、一匣一匣，美术馆级克制奢华。最稳、最耐看，不像 AI 产物。</p><span class="badge">美术馆级 · 首推</span></div>
-  <div class="card" onclick="zoom('option_E')" data-opt="E"><i class="num">E</i>
-    <img src="option_E.jpg" alt="E"><h2>书脊匣影 · 珍匣</h2>
+  <div class="card" onclick="zoom('E')" data-opt="E"><i class="num">E</i>
+    <img src="icon_option_E.jpg" alt="E"><h2>书脊匣影 · 珍匣</h2>
     <p>核桃木纹理 + 黄铜包边 + 隐现的书脊，像博物馆装订珍匣，材质叙事完整。</p><span class="badge">珍匣收藏感</span></div>
-  <div class="card" onclick="zoom('option_D')" data-opt="D"><i class="num">D</i>
-    <img src="option_D.jpg" alt="D"><h2>抽屉书匣 · 一线暖光</h2>
+  <div class="card" onclick="zoom('D')" data-opt="D"><i class="num">D</i>
+    <img src="icon_option_D.jpg" alt="D"><h2>抽屉书匣 · 一线暖光</h2>
     <p>单线勾边、一格抽屉抽出，露出一线细暖金。极简精确，留白多，小尺寸特别清晰。</p><span class="badge">极简精确</span></div>
-  <div class="card" onclick="zoom('option_A')" data-opt="A"><i class="num">A</i>
-    <img src="option_A.jpg" alt="A"><h2>极简开合匣</h2>
+  <div class="card" onclick="zoom('A')" data-opt="A"><i class="num">A</i>
+    <img src="icon_option_A.jpg" alt="A"><h2>极简开合匣</h2>
     <p>单一线条的开合匣，盒口一处金色点睛。干净现代，最接近品牌 logo 的线条感。</p><span class="badge">最像品牌标</span></div>
 </div>
 <div class="foot">看不清就点图放大。回复「图A / 图B / 图D / 图E」即可，我据此生成应用图标全套尺寸并接入。</div>
 </div>
 <div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lbImg" src="" alt="放大预览"></div>
 <script>
-var MAP={option_B:'option_B.jpg',option_E:'option_E.jpg',option_D:'option_D.jpg',option_A:'option_A.jpg'};
+var MAP={B:'icon_option_B.jpg',E:'icon_option_E.jpg',D:'icon_option_D.jpg',A:'icon_option_A.jpg'};
 function zoom(k){var img=document.getElementById('lbImg');img.src=MAP[k];document.getElementById('lb').style.display='flex';}
 </script>
 </body></html>
