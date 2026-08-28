@@ -60,57 +60,57 @@
    规范：日/夜两套，仅靠 [data-theme] 切换变量；不跟随系统深色（避免切换蓝块）。
    ═══════════════════════════════════════════════════════════════════ */
 :root,:root[data-theme="light"]{
-  /* 栖匣 · 「暖木匣纸」单一权威配色 —— 核桃木 / 陈年纸 / 老黄铜 / 陶土，删净一切墨绿 */
-  --primary:#6E4F37;         /* 核桃木·品牌主 CTA/激活            */
-  --primary-strong:#5C4030;  /* 核桃木·按下加深                    */
-  --primary-mid:#4A3427;     /* 深胡桃·链接/标题                  */
-  --primary-light:#EDE3D4;   /* 米纸水洗·浅底/悬浮                */
-  --teal:#9A7348;            /* 褐茶·完成/正向/心流(暖,非绿)      */
-  --teal-mid:#7C5B38;--teal-light:#F0E6D2;
-  --gold:#A0803C;            /* 老黄铜·点缀(数值/徽标/装饰)      */
-  --gold-strong:#806129;--gold-light:#F3E8CF;
-  --coral:#B0613E;--coral-strong:#96482C;--coral-light:#F6E5DC; /* 陶土(警示/强调) */
-  --ink:#403830;             /* 暖墨·正文                        */
-  --ink-soft:#7A6E60;
-  --bg:#F6F1E6;              /* 陈年纸本背景                     */
-  --card:#FCF8EE;            /* 米纸卡片                         */
-  --text:#3E372E;--muted:#7A6E60;--hint:#A89B88;
-  --border:#DFD3BD;--border-strong:#C5B393;
-  --radius:14px;--radius-sm:9px;
-  --accent:#6E4F37;          /* 选中/焦点·核桃木(根治系统蓝环)   */
-  --accent-soft:rgba(110,79,55,.16);
-  --shadow:0 1px 2px rgba(74,58,40,.05),0 5px 14px rgba(74,58,40,.07);
-  --shadow-lg:0 12px 28px rgba(74,58,40,.15);
-  --heat-0:#F0E7D6;--heat-1:#E0CDAE;--heat-2:#C4A87E;--heat-3:#9A784C;--heat-4:#6E4F37;
-  --head:#463A2D;            /* 正文暖墨                          */
-  --head-deep:#33291F;       /* 标题深胡桃                        */
+  /* 栖匣 · 「大地薄荷」统一权威色板 —— 薄荷深绿 / 米白 / 暖棕点缀，根治黄绿白割裂 */
+  --primary:#3D5F4E;         /* 主色·薄荷深绿(标题/按钮/图标/强调)   */
+  --primary-strong:#31513F;  /* 薄荷深绿·按下加深                    */
+  --primary-mid:#34584A;     /* 深薄荷·链接/标题                    */
+  --primary-light:#E3ECE6;   /* 浅薄荷·浅底/悬浮                    */
+  --teal:#709482;            /* 辅助浅绿·次要强调/边框              */
+  --teal-mid:#5C7F6D;--teal-light:#E6EEE9;
+  --gold:#805E3C;            /* 高亮暖棕·点缀(数值/标语/装饰,少量)  */
+  --gold-strong:#6B4E31;--gold-light:#F0E7DB;
+  --coral:#A06A55;--coral-strong:#83523D;--coral-light:#F2E6DE; /* 陶土·柔和警示(非红) */
+  --ink:#2C2C2C;             /* 一级标题·深棕黑                     */
+  --ink-soft:#4A4A4A;
+  --bg:#F8F6F0;              /* 背景·温润米白                       */
+  --card:#FFFFFF;            /* 功能卡片·纯白                       */
+  --text:#4A4A4A;--muted:#757575;--hint:#A3A195;
+  --border:#E5E1D6;--border-strong:#C8D3CA;
+  --radius:12px;--radius-sm:9px;
+  --accent:#3D5F4E;          /* 选中/焦点·薄荷深绿                 */
+  --accent-soft:rgba(61,95,78,.15);
+  --shadow:0 1px 2px rgba(60,70,64,.05),0 5px 14px rgba(60,70,64,.07);
+  --shadow-lg:0 12px 30px rgba(60,70,64,.14);
+  --heat-0:#F0F3EF;--heat-1:#DFE9E2;--heat-2:#C2D3C8;--heat-3:#97B3A3;--heat-4:#5F8A74;
+  --head:#2C2C2C;            /* 正文标题·深棕黑                     */
+  --head-deep:#1F1F1F;       /* 大标题                               */
 }
-/* 「墨匣」夜：暖墨黑棕，不刺眼，木/纸同源 */
+/* 独立暗色色板 · 薄荷墨底：禁止滤镜反色 */
 :root[data-theme="dark"]{
-  --primary:#C29B6E;         /* 核桃木·提亮暖                     */
-  --primary-strong:#D4B083;  /* 按下提亮                           */
-  --primary-mid:#E0C79E;     /* 链接/标题(提亮)                    */
-  --primary-light:#46382C;   /* 深浅底                             */
-  --teal:#A98C5E;--teal-mid:#C2A878;--teal-light:#3A3226;
-  --gold:#C9A45E;--gold-strong:#D8BC82;--gold-light:#4C3E26;
-  --coral:#D28862;--coral-strong:#DF9E7C;--coral-light:#432F25;
-  --ink:#E9E0D0;--ink-soft:#B6A995;
-  --bg:#211D17;              /* 墨匣底·暖黑棕                     */
-  --card:#2B2620;            /* 墨匣卡片                           */
-  --text:#E9E0D0;--muted:#B6A995;--hint:#8B7F6D;
-  --border:#443C2E;--border-strong:#57493A;
-  --accent:#C29B6E;
-  --accent-soft:rgba(194,155,110,.18);
+  --primary:#9DC2AC;         /* 薄荷·提亮                           */
+  --primary-strong:#B7D3C0;  /* 按下提亮                             */
+  --primary-mid:#C9DFD2;     /* 链接/标题(提亮)                      */
+  --primary-light:#37463E;   /* 深浅底                               */
+  --teal:#7CA08D;--teal-mid:#94B3A2;--teal-light:#33463C;
+  --gold:#C9A06B;--gold-strong:#D8B386;--gold-light:#4A3D2C;
+  --coral:#C7957E;--coral-strong:#D5A48D;--coral-light:#3F2F28;
+  --ink:#E7EBE6;--ink-soft:#C4CCC4;
+  --bg:#1E2420;              /* 薄荷墨底·暖黑绿                    */
+  --card:#262D28;            /* 薄荷墨卡片                          */
+  --text:#E7EBE6;--muted:#C4CCC4;--hint:#8E978E;
+  --border:#39413B;--border-strong:#4A544C;
+  --accent:#9DC2AC;
+  --accent-soft:rgba(157,194,172,.18);
   --shadow:0 1px 2px rgba(0,0,0,.40),0 8px 22px rgba(0,0,0,.30);
   --shadow-lg:0 16px 40px rgba(0,0,0,.46);
-  --heat-0:#2B251F;--heat-1:#3C3224;--heat-2:#574529;--heat-3:#7A6236;--heat-4:#A5824C;
-  --head:#CBBFA4;            /* 正文暖墨(暗)                      */
-  --head-deep:#F0E7D8;       /* 标题浅木(暗)                       */
+  --heat-0:#262D28;--heat-1:#32423A;--heat-2:#42574C;--heat-3:#5A7665;--heat-4:#73937F;
+  --head:#D9E1DB;            /* 正文标题(暗)                        */
+  --head-deep:#F2F5F1;       /* 大标题(暗)                           */
 }
 /* 暖木匣纸 · 宋韵——标题级衬线，正文保持清爽无衬线 */
 .page-head h1,.page-head .subtitle,.sidebar .logo,.topbar .title,.metric .value,.fg-name,.editable-table th,.fgu-title,.qk-title,.m-title,.gd-title{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif!important}
 .sidebar .logo,.topbar .title{letter-spacing:.12em;font-weight:700}
-.metric .value,.fg-count{color:var(--coral,#B08A44)}
+.metric .value,.fg-count{color:var(--gold,#805E3C)}
 .nav-item.active,.tab.active{color:var(--primary,#6E4F37)}
 a{color:var(--primary-strong)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -147,6 +147,80 @@ body{overscroll-behavior-y:contain;}        /* 防止滚动越界被浏览器吞
 }
 /* 侧边导航跳转不被置顶顶栏遮挡：所有 section/视图标题预留滚动安全区 */
 section[id],.view{scroll-margin-top:80px;}
+
+/* ═══ 旧全屏长页导览 #pano 整版退休：彻底不渲染、不占位 ═══ */
+#pano,#panoMask{display:none!important;}
+#pano .pano-hero,#pano .pano-sec{display:none!important;}
+
+/* ═══ 栖匣 · 新版交互式分页产品导览 #tour ═══
+   统一使用 :root 薄荷/米白/暖棕色板，浅色深色自动适配；无大面积黄底。 */
+.tour-mask{position:fixed;inset:0;background:rgba(20,26,22,.42);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:1500;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
+.tour-mask.show{opacity:1;visibility:visible}
+.tour{position:fixed;inset:0;z-index:1502;display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s;pointer-events:none}
+.tour.show{opacity:1;visibility:visible;pointer-events:auto}
+.tour-inner{position:relative;width:100%;max-width:760px;max-height:88vh;background:var(--card);border:1px solid var(--border-strong);border-radius:16px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;transform:translateY(12px) scale(.985);transition:transform .24s ease}
+.tour.show .tour-inner{transform:none}
+.tour-close{position:absolute;top:12px;right:12px;z-index:5;width:34px;height:34px;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;touch-action:manipulation}
+.tour-close:hover{background:var(--teal-light)}
+.tour-stages{flex:1;overflow:hidden;position:relative}
+.tour-page{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:34px clamp(20px,5vw,44px) 24px;display:none;visibility:hidden}
+.tour-page.cur{display:block;visibility:visible;animation:tourIn .28s ease}
+@keyframes tourIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+/* 品牌欢迎页 */
+.tp-brand{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;padding-top:8px}
+.tp-logo{width:66px;height:66px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
+.tp-logo img{width:100%;height:100%;display:block;object-fit:cover}
+.tp-title{font-size:clamp(22px,4.6vw,30px);font-weight:800;color:var(--head-deep);line-height:1.5;letter-spacing:.02em;margin:0 0 6px}
+.tp-title .tp-ac{color:var(--primary);font-style:normal;font-weight:900}
+.tp-sub{font-size:13px;color:var(--primary);background:var(--primary-light);border:1px solid var(--teal-light);padding:4px 14px;border-radius:999px;margin-bottom:16px}
+.tp-desc{font-size:14px;color:var(--muted);line-height:1.9;max-width:460px;margin:0 auto}
+.tp-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.tp-badges span{font-size:12px;color:var(--primary-mid);border:1px solid var(--border-strong);border-radius:999px;padding:4px 12px;background:var(--bg)}
+/* 通用页头 */
+.tp-head{text-align:left;margin-bottom:20px}
+.tp-kicker{display:inline-block;font-size:11.5px;letter-spacing:.14em;color:var(--teal);margin-bottom:8px}
+.tp-h{font-size:clamp(18px,3.6vw,24px);font-weight:800;color:var(--head-deep);line-height:1.5}
+.tp-h .tp-ac{color:var(--primary);font-style:normal}
+/* 适用人群四卡 */
+.tp-who{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tp-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 16px 15px}
+.tp-card h4{font-size:14.5px;color:var(--head);font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.tp-card h4::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.tp-card p{font-size:12.5px;color:var(--muted);line-height:1.8}
+/* 上手指引三步 */
+.tp-steps{display:flex;flex-direction:column;gap:12px}
+.tp-step{display:flex;gap:14px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px}
+.tp-step .ts-num{width:34px;height:34px;flex:none;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
+.tp-step h4{font-size:15px;color:var(--head);font-weight:800;margin-bottom:4px}
+.tp-step p{font-size:12.5px;color:var(--muted);line-height:1.8}
+/* 导航指引 */
+.tp-navtips{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.tp-nav{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:left}
+.tp-nav .tn-ic{display:inline-flex;width:40px;height:40px;border-radius:10px;background:var(--primary-light);color:var(--primary);align-items:center;justify-content:center;margin-bottom:10px}
+.tp-nav h4{font-size:14.5px;color:var(--head);font-weight:800;margin-bottom:5px}
+.tp-nav p{font-size:12.5px;color:var(--muted);line-height:1.8}
+.tp-note{margin-top:6px;font-size:12.5px;color:var(--hint);text-align:center;background:var(--gold-light);border:1px dashed var(--gold-strong);border-radius:12px;padding:10px 14px;line-height:1.7}
+/* 底部控制条 */
+.tour-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 20px;border-top:1px solid var(--border);background:var(--bg);flex-wrap:wrap}
+.tour-dots{display:flex;gap:7px;align-items:center;flex:1;justify-content:center;min-width:80px}
+.tour-dot{width:8px;height:8px;border-radius:99px;background:var(--border-strong);transition:all .25s;cursor:pointer;border:none;padding:0}
+.tour-dot.cur{background:var(--primary);width:22px}
+.tour-ctl{display:flex;gap:8px}
+.tour-btn{font-size:13px;border-radius:9px;padding:9px 16px;cursor:pointer;touch-action:manipulation;border:1px solid var(--border-strong);background:var(--card);color:var(--muted);font-weight:600;transition:all .18s}
+.tour-btn:hover{color:var(--primary);border-color:var(--primary)}
+.tour-btn.primary{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:800}
+.tour-btn.primary:hover{background:var(--primary-strong)}
+.tour-btn.ghost{border-color:transparent;background:none}
+#tourSkip{color:var(--hint)}
+/* 移动端：卡片自适应 */
+@media (max-width:640px){
+  .tour-inner{max-height:92vh;border-radius:14px}
+  .tour-page{padding:26px 18px 18px}
+  .tp-who,.tp-navtips{grid-template-columns:1fr}
+  .tour-foot{flex-wrap:wrap;justify-content:center}
+  .tour-ctl{order:1}
+  .tour-dots{order:0;width:100%}
+}
 
 .app{display:block;min-height:100vh}
 
@@ -11965,17 +12039,19 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 <script>
 /* ═══════ 栖匣 · 全景导览展示逻辑 ═══════ */
 function openPano(){
-  var p=document.getElementById('pano');if(!p)return;
-  var m=document.getElementById('panoMask');
-  p.classList.add('show');if(m)m.classList.add('show');
-  document.body.style.overflow='hidden';
-  p.scrollTop=0;
+  /* 新版交互式分页导览 #tour 取代旧的全屏长页 #pano */
+  var t=document.getElementById('tour');var m=document.getElementById('tourMask');
+  if(!t){ // 兜底：结构尚未就绪时直接清空转发
+    var p=document.getElementById('pano');if(p)p.classList.remove('show');return;
+  }
+  t.classList.add('show');if(m)m.classList.add('show');
+  try{document.body.style.overflow='hidden';}catch(e){}
+  tourGo(0);
 }
 function closePano(){
-  var p=document.getElementById('pano');if(!p)return;
-  var m=document.getElementById('panoMask');
-  p.classList.remove('show');if(m)m.classList.remove('show');
-  document.body.style.overflow='';
+  var t=document.getElementById('tour');if(t)t.classList.remove('show');
+  var m=document.getElementById('tourMask');if(m)m.classList.remove('show');
+  try{document.body.style.overflow='';}catch(e){}
 }
 function panoGo(dest){
   if(dest==='about'||dest==='home'){
@@ -12205,6 +12281,111 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 </div>
 
 </div>
+
+<!-- ═══════════ 栖匣 · 新版交互式分页产品导览 #tour（取代旧全屏长页 #pano） ═══════════
+     统一薄荷/米白/暖棕色板，浅深自动适配；4 步分页：品牌→适用人群→上手小事→导航指引 -->
+<div class="tour-mask" id="tourMask"></div>
+<div class="tour" id="tour" role="dialog" aria-modal="true" aria-label="栖匣产品导览">
+  <div class="tour-inner">
+    <button class="tour-close" id="tourClose" title="关闭导览" aria-label="关闭">✕</button>
+    <div class="tour-stages" id="tourStages">
+      <section class="tour-page" data-tp="0">
+        <div class="tp-brand">
+          <span class="tp-logo"><img src="pwa/logo.png" alt="栖匣"></span>
+          <h1 class="tp-title">一「栖」一「匣」，<em class="tp-ac">先安放，再生长</em></h1>
+          <div class="tp-sub">零登录 · 全部数据只存于你的浏览器本地</div>
+          <p class="tp-desc">学业、目标、时间、金钱、健康、眼界——把大学四年收进一只只属于自己的匣子，一处接住，慢慢长成。</p>
+          <div class="tp-badges"><span>接纳疲惫</span><span>拒绝内卷焦虑</span><span>不上传云端</span></div>
+        </div>
+      </section>
+      <section class="tour-page" data-tp="1">
+        <div class="tp-head">
+          <span class="tp-kicker">写给正在读这些字的你</span>
+          <h2 class="tp-h">它为你而造，<em class="tp-ac">无论你正处在哪个阶段</em></h2>
+        </div>
+        <div class="tp-who">
+          <div class="tp-card"><h4>刚刚踏入大学</h4><p>无需焦虑第一步，从升学规划、每天的第一件事，到怎么管钱管时间，这里都有章法。</p></div>
+          <div class="tp-card"><h4>学业与未来并进</h4><p>竞赛、实习、考研保研压在肩头时，它是帮你把一团乱麻一件件拆开、落地的地图。</p></div>
+          <div class="tp-card"><h4>想掌控自己的节奏</h4><p>管钱、管时间、管身体一处放下；自律不是被逼，而是自己说了算。</p></div>
+          <div class="tp-card"><h4>相信长期主义</h4><p>愿意把每天的小事做到位，把四年度成一部不断回看、不断生长的作品。</p></div>
+        </div>
+      </section>
+      <section class="tour-page" data-tp="2">
+        <div class="tp-head">
+          <span class="tp-kicker">三件省力的小事</span>
+          <h2 class="tp-h">上手第一件事，<em class="tp-ac">就从这三件开始</em></h2>
+        </div>
+        <div class="tp-steps">
+          <div class="tp-step"><span class="ts-num">1</span><div><h4>专注 25 分钟</h4><p>打开番茄心流计时，把手机放到一边，专注一小段，就已经是很棒的开始。</p></div></div>
+          <div class="tp-step"><span class="ts-num">2</span><div><h4>记录一条灵感</h4><p>在灵感看板落下一笔，好想法先收好、不丢失，日后自有回响。</p></div></div>
+          <div class="tp-step"><span class="ts-num">3</span><div><h4>做一次每日复盘</h4><p>睡前花两分钟记下今天，悦纳当下的状态，也把明天排得更从容。</p></div></div>
+        </div>
+      </section>
+      <section class="tour-page" data-tp="3">
+        <div class="tp-head">
+          <span class="tp-kicker">快速上手导航</span>
+          <h2 class="tp-h">一点就懂 · <em class="tp-ac">从哪里开始逛</em></h2>
+        </div>
+        <div class="tp-navtips">
+          <div class="tp-nav"><span class="tn-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></span><h4>左上角 · 汉堡菜单</h4><p>点开侧边栏，所有板块都收在这里：学业、竞赛、论文、理财、成长……一处尽收。</p></div>
+          <div class="tp-nav"><span class="tn-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 10v11h14V10"></path></svg></span><h4>底部 · 五大操作台</h4><p>首页 / 学业 / 专注 / 健康 / 札记，常用入口一指切换，随时回到栖匣。</p></div>
+        </div>
+        <div class="tp-note">准备好了吗？从这里开始，把你的每一天安放好。</div>
+      </section>
+    </div>
+    <div class="tour-foot">
+      <button class="tour-btn ghost" id="tourSkip">跳过导览</button>
+      <div class="tour-dots" id="tourDots"></div>
+      <div class="tour-ctl">
+        <button class="tour-btn ghost" id="tourPrev">上一步</button>
+        <button class="tour-btn primary" id="tourNext">下一步</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+/* 分页导览交互：下一步/上一步/跳过/圆点/关闭；首次打开自动弹出，跳过或完成后永久不再自动弹 */
+(function(){
+  function $(id){return document.getElementById(id);}
+  function $q(s){return document.querySelector(s);}
+  function $a(s){return document.querySelectorAll(s);}
+  function markSeen(){try{localStorage.setItem('pp_tour_seen','1');}catch(e){}}
+  function tourGo(i){
+    var pages=$a('.tour-page');var n=pages.length;
+    if(i<0)i=0;if(i>n-1)i=n-1;idx=i;
+    for(var k=0;k<n;k++)pages[k].classList.remove('cur');
+    if(pages[idx])pages[idx].classList.add('cur');
+    var prev=$('tourPrev'),next=$('tourNext');
+    if(prev){prev.style.visibility=(idx===0)?'hidden':'visible';}
+    if(next){next.textContent=(idx===n-1)?'开始使用 ✓':'下一步';}
+    var dots=$a('.tour-dot');
+    for(var d=0;d<dots.length;d++){if(parseInt(dots[d].getAttribute('data-td'),10)===idx)dots[d].classList.add('cur');else dots[d].classList.remove('cur');}
+  }
+  window.tourGo=tourGo;var idx=0;
+  function buildDots(){
+    var n=$a('.tour-page').length,w=$('tourDots');if(!w)return;var h='';
+    for(var i=0;i<n;i++)h+='<button type="button" class="tour-dot" data-td="'+i+'" aria-label="第'+(i+1)+'页"></button>';
+    w.innerHTML=h;
+  }
+  function tourFinished(){markSeen();closePano();}
+  function boot(){
+    buildDots();tourGo(0);
+    var c=$('tourClose'),s=$('tourSkip'),p=$('tourPrev'),n=$('tourNext'),m=$('tourMask'),dots=$('tourDots');
+    if(c)c.addEventListener('click',function(){markSeen();closePano();});
+    if(s)s.addEventListener('click',function(){markSeen();closePano();});
+    if(p)p.addEventListener('click',function(){tourGo(idx-1);});
+    if(n)n.addEventListener('click',function(){
+      var pages=$a('.tour-page');if(idx>=pages.length-1){tourFinished();}else{tourGo(idx+1);}
+    });
+    if(dots)dots.addEventListener('click',function(ev){var d=ev.target.closest?ev.target.closest('.tour-dot'):null;if(d)tourGo(parseInt(d.getAttribute('data-td'),10));});
+    if(m)m.addEventListener('click',function(){markSeen();closePano();});
+    document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){markSeen();closePano();}});
+    var seen=null;try{seen=localStorage.getItem('pp_tour_seen');}catch(e){}
+    if(seen!=='1'){setTimeout(function(){try{openPano();}catch(e){}},650);}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
 
 <!-- ═══════ 增量功能 v53：可选云端备份(WebDAV/坚果云) + 每日待办提醒 — 完全隔离，try/catch 兜底，不影响既有功能 ═══════ -->
 <script>
@@ -12481,7 +12662,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
             '<button class="btn btn-primary" onclick="exportAll()">⬇️ 一键导出全部数据备份</button>'+
             '<button class="btn" onclick="document.getElementById(\'qxImportInput\').click()">⬆️ 从备份文件导入恢复</button>'+
             '<input type="file" id="qxImportInput" accept=".json,.txt" style="display:none" onchange="importAll(event)">'+
-            '<button class="btn" onclick="ckClearAll()" style="border-color:var(--coral);color:var(--coral)">🗑️ 清空我的全部记录（保留参考模板）</button></div>'+
+'<button class="btn" onclick="try{localStorage.removeItem(&#39;pp_tour_seen&#39;);}catch(e){};openPano();" title="手动再看一遍产品分页导览">🚪 重新观看导览</button>'+
+'<button class="btn" onclick="ckClearAll()" style="border-color:var(--coral);color:var(--coral)">🗑️ 清空我的全部记录（保留参考模板）</button></div>'+
           '<p style="font-size:12px;color:var(--hint);margin:12px 0 0;line-height:1.7">记录只保存在你的浏览器本地。<b>清理缓存、无痕模式或换设备前，务必先导出备份</b>，否则记录会随浏览器清除。</p></div>';
         if(intro&&intro.parentNode)intro.parentNode.insertBefore(wrap,intro.nextSibling);
       }
