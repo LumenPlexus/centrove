@@ -1,0 +1,37 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>栖匣 · 图标选图</title>
+<style>
+body{background:#F3EEE2;color:#3E3227;margin:0;padding:34px;font-family:system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1{font-size:22px;margin:12px 0 6px;color:#5A462F}
+p.sub{color:#8A6A3A;margin:0 0 28px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;max-width:1240px;margin:0 auto}
+.card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 26px rgba(110,79,55,.14);position:relative;cursor:pointer;transition:.15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(110,79,55,.22)}
+.card .num{position:absolute;top:14px;left:14px;background:#C9A45E;color:#4A3A2C;font-weight:800;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:13px;background:#F6F1E6}
+.card h2{margin:14px 2px 5px;font-size:16px}
+.card p{margin:0 2px;font-size:13px;color:#6E6353;line-height:1.65}
+.badge{display:inline-block;margin:11px 2px 0;padding:4px 12px;border-radius:999px;font-size:12px;background:#EFE6D2;color:#6E4F37}
+.rec{position:absolute;top:14px;right:14px;background:#6E4F37;color:#F6EFE1;border-radius:999px;padding:5px 12px;font-size:12px}
+.foot{margin:30px auto 0;color:#8A6A3A;font-size:13px;text-align:center}
+</style></head><body>
+<h1>栖匣 · 图标四选一</h1>
+<p class="sub">请凭眼缘挑选，回复编号即可（如：图1）。四款均已去掉植物与鸟巢，皆为「匣」的高级意象。</p>
+<div class="grid">
+  <div class="card" onclick="pick(1)"><i class="num">1</i><span class="rec">推荐</span>
+    <img src="3.jpg" alt="1"><h2>极简线条·开合匣</h2>
+    <p>一处金色开合点睛，线条极简、留白高级，最适合做品牌标志，小尺寸也耐看。</p><span class="badge">最像品牌标 · 最耐看</span></div>
+  <div class="card" onclick="pick(2)"><i class="num">2</i>
+    <img src="1.jpg" alt="2"><h2>手风琴·抽屉匣</h2>
+    <p>翻开的手风琴式抽屉、内里分格收纳，最贴「匣纳成长」，有故事感。</p><span class="badge">最有故事 · 最贴收纳</span></div>
+  <div class="card" onclick="pick(3)"><i class="num">3</i>
+    <img src="4.jpg" alt="3"><h2>双层·金盖匣</h2>
+    <p>沉稳木底叠暖金盖，克制奢华；但略偏化妆盒质感。</p><span class="badge">奢华克制</span></div>
+  <div class="card" onclick="pick(4)"><i class="num">4</i>
+    <img src="2.jpg" alt="4"><h2>发光·宝箱徽章</h2>
+    <p>一束暖光自匣中溢出；但偏游戏奖励图标感，略套路。</p><span class="badge">偏宝箱 · 慎选</span></div>
+</div>
+<div class="foot">从这页看不出的话，回到对话直接回复“图1/图2/图3/图4”即可。</div>
+<script>function pick(n){window.location.href='/qixia/choose/pick.html?n='+n;}</script>
+</body></html>
