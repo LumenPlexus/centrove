@@ -1,6 +1,6 @@
 /*
- * 栖匣 Service Worker（根目录版）
- * v61 · 栖匣重启装。把 SW 提升到站点根目录，使 scope 默认覆盖整个站点根
+ * Centrove Service Worker（根目录版）
+ * v61 · Centrove重启装。把 SW 提升到站点根目录，使 scope 默认覆盖整个站点根
  * （含 index.html 主页）。此前 SW 位于 pwa/ 下且未指定 scope，
  * 默认作用域只有 /pwa/，接管不了主页 → 断网即黑屏/加载失败。
  * 另于 v52 收尾：`关于`新增「版权·许可·信息说明」、修正板块数量表述(25+→33)
@@ -13,9 +13,9 @@
  *    从未开通过的首次断网打开无法生效（还什么缓存都没有）。
  *  - 导航采用「网络优先」，联网取最新、断网用缓存兜底。
  */
-const CACHE = 'qixia-v82';
+const CACHE = 'centrove-v83';
 const SCOPE = new URL('./', self.location);          // 站点根目录
-const ROOT  = SCOPE.href;                            // 如 /pingwanxiang/
+const ROOT  = SCOPE.href;                            // 如 /centrove/
 const INDEX = new URL('./index.html', SCOPE).href;   // 主页绝对地址
 
 const CORE = [ROOT, INDEX, './pwa/manifest.json', './pwa/icon-192.png', './pwa/icon-512.png', './pwa/splash-6.1.png', './pwa/splash-5.8.png', './pwa/splash-4.7.png'];
