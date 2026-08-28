@@ -13111,6 +13111,31 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .qx-history-day .ok{color:#2F7A4C;font-weight:700}
 .qx-history-day .no{color:var(--hint)}
 @media(min-width:1100px){.view{max-width:980px}}
+/* 顶栏标签移动端防截断 */
+@media(max-width:700px){.topbar .tb-badge{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:32vw}}
+@media(max-width:520px){.topbar .tb-badge{display:none}}
+/* 产品总览(#pano)暖木配色协调：清除残留墨绿，统一暖棕金 */
+.pano{color:#4A3A2C}
+.pano-close{color:#4A3A2C;border-color:rgba(111,79,55,.18)}
+.pt-sash{background:linear-gradient(120deg,#6E4F37,#8A6A3A 60%,#6E4F37);color:#F6EFE1;box-shadow:0 8px 20px rgba(110,79,55,.24)}
+.pt-sash::before{background:radial-gradient(circle at top left,#6E4F37 60%,transparent 60%)}
+.pt-sash::after{background:radial-gradient(circle at top right,#6E4F37 60%,transparent 60%)}
+.pano-cta{color:#4A3A2C}
+.pano-h2 em,.pano-lead b{color:#8A6A3A}
+[data-theme="dark"] .pt-sash{background:linear-gradient(120deg,#3A2A1E,#5B4532 60%,#3A2A1E);color:#F0E7D8}
+[data-theme="dark"] .pt-sash::before{background:radial-gradient(circle at top left,#3A2A1E 60%,transparent 60%)}
+[data-theme="dark"] .pt-sash::after{background:radial-gradient(circle at top right,#3A2A1E 60%,transparent 60%)}
+/* 统一深色模式导览 CTA 主按钮为暖棕金（消除残留墨绿 #2a3b30 / #7A9C84） */
+[data-theme="dark"] .pano-cta .btn.btn-primary{background:linear-gradient(120deg,#5B4532,#6E4F37 60%,#5B4532)!important;border:1px solid #A0813F!important;box-shadow:0 16px 34px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08)!important}
+[data-theme="dark"] .pano-cta .btn.btn-primary:hover{background:linear-gradient(120deg,#6E4F37,#7A5838)!important;border-color:#C9A45E!important}
+[data-theme="dark"] .pano-close{background:rgba(38,30,18,.8)!important;border-color:rgba(207,169,103,.25)!important;color:#EDE7D7!important}
+[data-theme="dark"] .pano-close:hover{background:rgba(52,41,26,.9)!important;color:#E2C186!important}
+[data-theme="dark"] .pano-pp .dot.on{background:#C9A45E!important}
+/* 移动端导览底部留白：CTA 不再被屏幕下缘/微信底栏裁切 */
+.pano{padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(max-width:560px){.pano-inner{padding:0 16px 92px}.pano-cta{margin:56px 0 4px;padding:40px 18px}.pano-cta .btn{width:100%}}
+/* 首页备份提示微调：加深分隔，避免与背景粘连 */
+#qixiaBackupTip{border-left:4px solid #C7974A;background:#FFF6E8}
 </style>
 <script>
 /* ═══════════ 栖匣 · 体验增强模块 2（独立自包含，全部防御式，不破坏既有内容） ═══════════ */
