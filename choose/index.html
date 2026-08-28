@@ -1,29 +1,47 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>栖匣 · 主图标</title>
+<title>栖匣 · 图标选样</title>
 <style>
-body{background:#F3EEE2;color:#3E3227;margin:0;padding:44px 24px;font-family:system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-align:center}
-.wrap{max-width:820px;margin:0 auto}
-.brand{font-size:30px;font-weight:800;letter-spacing:2px;color:#5A462F;margin:6px 0 4px}
-.tag{color:#B38546;font-size:14px;margin:0 0 8px}
-h1{font-size:20px;margin:22px 0 6px;color:#5A462F}
-p{color:#6E6353;font-size:14px;line-height:1.8;margin:0 auto;max-width:560px}
-.icon{width:180px;height:180px;margin:26px auto;border-radius:30px;background:#fff;box-shadow:0 14px 40px rgba(110,79,55,.20);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.icon img{width:100%;height:100%;object-fit:cover}
-.note{margin-top:34px;padding:14px 20px;background:#fff;border-radius:14px;box-shadow:0 6px 20px rgba(110,79,55,.10);display:inline-block;text-align:left;font-size:13px;color:#6E6353;line-height:1.9}
-.note b{color:#5A462F}
+*{box-sizing:border-box}
+body{background:#F3EEE2;color:#3E3227;margin:0;padding:34px 20px 60px;font-family:system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto}
+h1{font-size:24px;margin:10px 0 6px;color:#5A462F;letter-spacing:1px}
+p.sub{color:#8A6A3A;margin:0 0 30px;font-size:14px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 26px rgba(110,79,55,.14);position:relative;transition:.18s;cursor:zoom-in}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(110,79,55,.22)}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:13px;background:#F6F1E6;display:block}
+.card .num{position:absolute;top:14px;left:14px;background:#C9A45E;color:#4A3A2C;font-weight:800;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.card h2{margin:14px 2px 5px;font-size:16px;color:#4E3B27}
+.card p{margin:0 2px;font-size:13px;color:#6E6353;line-height:1.7}
+.badge{display:inline-block;margin:11px 2px 0;padding:4px 12px;border-radius:999px;font-size:12px;background:#EFE6D2;color:#6E4F37}
+.rec{position:absolute;top:14px;right:14px;background:#6E4F37;color:#F6EFE1;border-radius:999px;padding:5px 11px;font-size:11px}
+.foot{margin:34px auto 0;color:#8A6A3A;font-size:13px;text-align:center;line-height:2}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(20,15,10,.86);z-index:50;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lightbox img{max-width:min(82vw,760px);max-height:82vh;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 </style></head><body>
 <div class="wrap">
-<div class="brand">栖匣</div>
-<div class="tag">大学生成长中枢 · 心有所栖 · 匣纳成长</div>
-<h1>全新主图标 · 开合匣</h1>
-<p>去掉了原先那几道多余的横杠，只保留一条干净的开合匣轮廓：单线勾边、内容留白、一处暖金点睛在盒口。极简克制，小尺寸也清晰耐看。</p>
-<div class="icon"><img src="../pwa/logo.png" alt="栖匣 主图标"></div>
-<div class="note">
-<b>设计说明</b><br>
-· 单线轮廓 —— 无厚度双线、无多余横杠，干净利落<br>
-· 暖金点睛 —— 只在盒口留一处金色边缘，克制而高级<br>
-· 匣纳成长 —— 一只打开的匣，安放整个大学生活<br>
-· 小尺寸清晰 —— 32px 应用图标下依然认得出
+<h1>栖匣 · 图标选样</h1>
+<p class="sub">点击任意一款可放大细看。我已去掉全部植物/鸟巢/手绘感，四款皆为「匣」的高端意象，配产品文案「匣纳成长 · 心有所栖」。凭眼缘挑一款，回复编号即可（如：图A），我来定稿接入。</p>
+<div class="grid">
+  <div class="card" onclick="zoom('option_B')" data-opt="B"><i class="num">B</i><span class="rec">推荐</span>
+    <img src="option_B.jpg" alt="B"><h2>双匣相合 · 铜木对映</h2>
+    <p>核桃木外框内嵌暖青铜，一明一暗、一匣一匣，美术馆级克制奢华。最稳、最耐看，不像 AI 产物。</p><span class="badge">美术馆级 · 首推</span></div>
+  <div class="card" onclick="zoom('option_E')" data-opt="E"><i class="num">E</i>
+    <img src="option_E.jpg" alt="E"><h2>书脊匣影 · 珍匣</h2>
+    <p>核桃木纹理 + 黄铜包边 + 隐现的书脊，像博物馆装订珍匣，材质叙事完整。</p><span class="badge">珍匣收藏感</span></div>
+  <div class="card" onclick="zoom('option_D')" data-opt="D"><i class="num">D</i>
+    <img src="option_D.jpg" alt="D"><h2>抽屉书匣 · 一线暖光</h2>
+    <p>单线勾边、一格抽屉抽出，露出一线细暖金。极简精确，留白多，小尺寸特别清晰。</p><span class="badge">极简精确</span></div>
+  <div class="card" onclick="zoom('option_A')" data-opt="A"><i class="num">A</i>
+    <img src="option_A.jpg" alt="A"><h2>极简开合匣</h2>
+    <p>单一线条的开合匣，盒口一处金色点睛。干净现代，最接近品牌 logo 的线条感。</p><span class="badge">最像品牌标</span></div>
 </div>
-</div></body></html>
+<div class="foot">看不清就点图放大。回复「图A / 图B / 图D / 图E」即可，我据此生成应用图标全套尺寸并接入。</div>
+</div>
+<div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lbImg" src="" alt="放大预览"></div>
+<script>
+var MAP={option_B:'option_B.jpg',option_E:'option_E.jpg',option_D:'option_D.jpg',option_A:'option_A.jpg'};
+function zoom(k){var img=document.getElementById('lbImg');img.src=MAP[k];document.getElementById('lb').style.display='flex';}
+</script>
+</body></html>
