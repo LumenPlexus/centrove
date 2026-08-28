@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.28.4"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.28.5"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -36,7 +36,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260830', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260901', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -125,8 +125,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* 主题切换平滑过渡：只对「当前可见」的容器做短暂柔和过渡；
    去掉 box-shadow / border-color 等重绘开销高的属性，并限定在活动视图与导航结构上，
    避免整页几百个元素（含隐藏板块）同时过渡导致的满屏重绘卡顿 */
-body,body input,textarea,select,.topbar,.sidebar,.bottom-nav,.page-head,.modal{transition:background-color .2s ease,color .2s ease}
-.view.active .card{transition:background-color .2s ease,color .2s ease}
+body,body input,textarea,select,.topbar,.sidebar,.bottom-nav,.page-head,.modal{transition:background-color .12s ease,color .12s ease}
+.view.active .card{transition:background-color .12s ease,color .12s ease}
 html{-webkit-text-size-adjust:100%}
 .sidebar,.modal,.pano{-webkit-overflow-scrolling:touch}
 /* ═══ 栖匣 · 移动端触控与滚动加固 ═══
@@ -612,7 +612,7 @@ strong{font-weight:600}
    仅当用户手动切换（data-theme="dark"）时才进入夜间模式。 */
 /* ── 主题切换基础：交接平滑；变量统一由顶层 :root[data-theme] 权威给出，此处不再覆盖 ── */
 body,.view,.card,.sidebar,.topbar,.bottom-nav,.modal,input,textarea,select,
-th,td,.callout,.callout-warn,.page-head,.tt-menu,.tag{transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+th,td,.callout,.callout-warn,.page-head,.tt-menu,.tag{transition:background-color .12s ease,color .12s ease,border-color .12s ease}
 /* 根治切换"蓝块"：首屏立即应用最终主题、所有原生化控件焦点环一律改松针绿 */
 html:not([data-theme="dark"]):not([data-theme="light"]){background:#F5EFE2}
 /* ── 焦点/选中统一为松针绿，根除浏览器系统蓝环（杜绝切换时的"蓝块"） ── */
@@ -12651,7 +12651,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.28.4';
+  var V='2026.08.28.5';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -13155,6 +13155,40 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 @media(max-width:560px){.pano-inner{padding:0 16px 92px}.pano-cta{margin:56px 0 4px;padding:40px 18px}.pano-cta .btn{width:100%}}
 /* 首页备份提示微调：加深分隔，避免与背景粘连 */
 #centroveBackupTip{border-left:4px solid #C7974A;background:#FFF6E8}
+/* ═══ 深色遗留总收口（追加到此，保证覆盖权最高）═══
+   根除深色下仍残留的「浅硬编码底 + 深字」与「导览首屏低对比」——
+   .card 直排文字、导览大标题/副标题/统计胶囊/对比卡标题此前未进深色覆盖区。 */
+[data-theme="dark"] .card{color:var(--text,#F1E9D8)!important}
+[data-theme="dark"] .pano-hero h1.pano-h1{color:#F1E9D8!important;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+[data-theme="dark"] .pano-hero h1 .thin{color:#CFC2A9!important}
+[data-theme="dark"] .pano-h1 .pano-grow{color:#E2BF85!important}
+[data-theme="dark"] .pano-hero .dek{color:#D6CFC1!important}
+[data-theme="dark"] .pano-hero .dek b,[data-theme="dark"] .pano-hero .dek em{color:#E2BF85!important}
+[data-theme="dark"] .pm-verse,[data-theme="dark"] .pm-verse em{color:#CEC1A8!important}
+[data-theme="dark"] .pm-pair b{color:#E2BF85!important}
+[data-theme="dark"] .pm-pair i,[data-theme="dark"] .pm-x{color:#B7BCA6!important}
+[data-theme="dark"] .pano-hero .hr-dot .dm{color:#C9A45E!important}
+[data-theme="dark"] .pano-hero .hr-dot i{background:linear-gradient(90deg,transparent,rgba(201,161,94,.7))}
+[data-theme="dark"] .pano-hero .hr-dot i.rt{background:linear-gradient(90deg,rgba(201,161,94,.7),transparent)}
+[data-theme="dark"] .pano-stats span{background:rgba(255,255,255,.05)!important;border-color:rgba(207,169,103,.30)!important;color:#D6CFC1!important}
+[data-theme="dark"] .pano-stats b{color:#E2BF85!important}
+[data-theme="dark"] .pano-cp.no h4{color:#D6CFC1!important}
+/* 深色下剩余内联「深字」兜底：品牌棕/深灰正文提亮，避免深底深字仍看不清 */
+[data-theme="dark"] [style*="color:#6E4F37"]:not(a),[data-theme="dark"] [style*="color: #6E4F37"]:not(a){color:#E2BF85!important}
+[data-theme="dark"] [style*="color:#5F5E5A"]:not(a),[data-theme="dark"] [style*="color: #5F5E5A"]:not(a){color:#CFC2A9!important}
+[data-theme="dark"] [style*="color:#8A6A2F"]:not(a),[data-theme="dark"] [style*="color: #8A6A2F"]:not(a){color:#E2BF85!important}
+[data-theme="dark"] [style*="color:#4A5A52"]:not(a),[data-theme="dark"] [style*="color: #4A5A52"]:not(a){color:#CFC2A9!important}
+/* 备份提醒条：深色下改用暖金暗底，避免亮黄块刺眼 */
+[data-theme="dark"] #centroveBackupTip{background:rgba(212,178,124,.10)!important;border-color:#8A6D48!important;color:#E2BF85!important}
+/* 模糊兜底：不允许 backdrop-filter 的浏览器给遮罩/胶囊等实体底，避免糊成一团看不清 */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .pano-mask,.tour-mask{background:rgba(12,16,20,.82)}
+  .pano-progress,.pano-nav{background:#fff!important}
+  .pano-close{background:#fff!important}
+  .pano-stats span{background:rgba(255,252,242,.9)!important}
+  [data-theme="dark"] .pano-progress,[data-theme="dark"] .pano-nav,[data-theme="dark"] .pano-close{background:#242019!important}
+  [data-theme="dark"] .pano-stats span{background:rgba(255,255,255,.06)!important}
+}
 </style>
 <script>
 /* ═══════════ 栖匣 · 体验增强模块 2（独立自包含，全部防御式，不破坏既有内容） ═══════════ */
