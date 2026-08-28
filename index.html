@@ -249,6 +249,19 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .date{font-size:12px;color:var(--muted)}
 .topbar .quote{flex:1;font-size:12px;color:var(--muted);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-left:8px}
 .topbar .tools{display:flex;gap:8px}
+.tb-search{position:relative;display:flex;align-items:center;margin-right:4px}
+.tb-search .tb-search-ic{position:absolute;left:9px;width:15px;height:15px;color:var(--hint);pointer-events:none}
+.tb-search input{width:150px;height:34px;padding:0 10px 0 30px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:13px;outline:none;transition:width .2s,border-color .15s,box-shadow .15s}
+.tb-search input:focus{width:200px;border-color:var(--primary);box-shadow:0 0 0 3px var(--accent-soft)}
+.tb-search input::placeholder{color:var(--hint)}
+.tb-search .tb-search-drop{position:absolute;top:38px;right:0;left:auto;min-width:220px;max-width:320px;background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);overflow:hidden;z-index:50;display:none}
+.tb-search .tb-search-drop.open{display:block}
+.tb-search .tsd-item{display:flex;flex-direction:column;gap:2px;padding:9px 12px;cursor:pointer;border-left:3px solid transparent}
+.tb-search .tsd-item:hover{background:var(--primary-light)}
+.tb-search .tsd-item.hl{border-left-color:var(--primary)}
+.tb-search .tsd-item b{font-size:12.5px;color:var(--primary);font-weight:600}
+.tb-search .tsd-item span{font-size:11.5px;color:var(--hint)}
+.tb-search .tsd-empty{padding:12px;font-size:12.5px;color:var(--muted);text-align:center}
 .icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:color .15s,background-color .15s,border-color .15s}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)}
 .icon-btn svg{width:16px;height:16px}
@@ -261,6 +274,7 @@ section[id],.view{scroll-margin-top:80px;}
 .nav-item.active{background:var(--primary-light);color:var(--primary);font-weight:600}
 .nav-item svg{width:16px;height:16px;flex-shrink:0}
 .nav-section{font-size:10px;color:var(--hint);text-transform:uppercase;letter-spacing:1px;padding:12px 10px 4px;font-weight:600}
+.nav-section .nsec-ic{width:11px;height:11px;flex-shrink:0;vertical-align:-1px;margin-right:5px;display:inline-block;color:var(--teal)}
 
 .main{margin-left:184px;padding:24px 32px 60px;min-height:100vh}
 .view{display:none;max-width:1100px;margin:0 auto}
@@ -1312,6 +1326,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
+      <!-- 顶栏离线搜索：纯本地，不联网。Enter 命中板块关键词即跳转 -->
+      <div class="tb-search" id="tbSearchWrap">
+        <svg class="tb-search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="topSearch" placeholder="搜索板块（本地）" autocomplete="off" aria-label="全站本地搜索">
+      </div>
       <!-- 桌面端始终显示 -->
       <button class="icon-btn btn-inspire" id="btnInspire" onclick="refreshHomeDaily();spinInspire()" title="换一批灵感">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
@@ -1377,7 +1396,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="home" onclick="switchView(&#39;home&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>今日概览
     </div>
-    <div class="nav-section">🎯 锚愿匣 · 目标与行动</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>锚愿匣 · 目标与行动</div>
     <div class="nav-item" data-view="quadrant" onclick="switchView(&#39;quadrant&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急
     </div>
@@ -1393,7 +1412,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="life" onclick="switchView(&#39;life&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图
     </div>
-    <div class="nav-section">⏱️ 时栖录 · 效率与工具</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path></svg>时栖录 · 效率与工具</div>
     <div class="nav-item" data-view="timer" onclick="switchView(&#39;timer&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时
     </div>
@@ -1403,7 +1422,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="ai" onclick="switchView(&#39;ai&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>智造工坊
     </div>
-    <div class="nav-section">📚 学业栖仓 · 学业成长</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业栖仓 · 学业成长</div>
     <div class="nav-item" data-view="study" onclick="switchView(&#39;study&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进
     </div>
@@ -1422,21 +1441,21 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="campus" onclick="switchView(&#39;campus&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活
     </div>
-    <div class="nav-section">💼 职途匣 · 职业与技能</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职途匣 · 职业与技能</div>
     <div class="nav-item" data-view="career" onclick="switchView(&#39;career&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展
     </div>
     <div class="nav-item" data-view="growth" onclick="switchView(&#39;growth&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83.83-2.5 2.5-2.5 4a2.5 2.5 0 1 0 5 0c0-1.5-1.67-3.17-2.5-4z"></path><path d="M12 2v6m0 0L8 4m4 4l4-4"></path></svg>个人提升
     </div>
-    <div class="nav-section">📒 时光贮格 · 记录与成长</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>时光贮格 · 记录与成长</div>
     <div class="nav-item" data-view="journal" onclick="switchView(&#39;journal&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记
     </div>
     <div class="nav-item" data-view="stats" onclick="switchView(&#39;stats&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长档案
     </div>
-    <div class="nav-section">🌿 安养隅 · 生活与健康</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>安养隅 · 生活与健康</div>
     <div class="nav-item" data-view="health" onclick="switchView(&#39;health&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>运动健康
     </div>
@@ -1446,7 +1465,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="safety" onclick="switchView(&#39;safety&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航
     </div>
-    <div class="nav-section">✨ 灵拾槽 · 阅读与休闲</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>灵拾槽 · 阅读与休闲</div>
     <div class="nav-item" data-view="creative" onclick="switchView(&#39;creative&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>灵感看板
     </div>
@@ -1462,7 +1481,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="fun" onclick="switchView(&#39;fun&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>轻松一下
     </div>
-    <div class="nav-section">💰 贮金格 · 理财与副业</div>
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>贮金格 · 理财与副业</div>
     <div class="nav-item" data-view="finance" onclick="switchView(&#39;finance&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>理财管理
     </div>
@@ -1478,7 +1497,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div class="nav-item" data-view="perk" onclick="switchView(&#39;perk&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-3.6 8-10V5l-8-2.8L4 5v7c0 6.4 8 10 8 10z"></path></svg>助学帮扶
     </div>
-    <div class="nav-section">⚙️ 设置 · 栖匣系统
+    <div class="nav-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nsec-ic"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>设置 · 栖匣系统
     </div>
     <div class="nav-item" data-view="about" onclick="switchView(&#39;about&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品
@@ -5703,7 +5722,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <strong>🛡️ 持续更新</strong>——我会一直打磨它：新板块、新模板、新功能会持续加入，你拿到的总是最新版。</p>
           </div>
         </div>
-        <div class="callout callout-info" style="margin-top:12px"><strong>现阶段完全免费：</strong>这个工作台当前不收一分钱，也没有广告、不收集你的任何数据，核心功能开箱即用。<br><span style="font-size:12px;opacity:.9">诚实说明：我不承诺"永远免费"——产品要可持续，未来可能推出<strong>可选的增值内容</strong>（如垂直专业专区、进阶模板、可选云端同步）；但你在用的核心记录功能会保持免费，已有数据与功能不会被突然收费。</span></div>
+        <div class="callout callout-info" style="margin-top:12px"><strong>关于免费与边界：</strong>栖匣现阶段面向大学生<strong>公益免费开放</strong>，没有广告、不收集你的任何数据，核心功能开箱即用。产品未来如果计划拓展增值类服务，会<strong>提前在本页「更新日志」板块公示</strong>告知大家，你在用的核心记录功能始终保持免费，已有数据不会被突然收费。你的所有记录存储于你的浏览器本地，平台无法访问你的个人数据，隐私安全可控。本站所有经验攻略仅作为大学生成长参考，不替代学校官方通知、专业法律咨询建议。</div>
       </div>
 
             <div class="card" style="margin-top:16px">
@@ -11714,7 +11733,43 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   .view table{max-width:100%}
   /* 竞答表格：给"认证/入口"列留足空间 */
   .view table td:first-child,.view table th:first-child{white-space:normal;min-width:72px}
+  .tbl-scroll-hint{display:none;font-size:11px;color:var(--hint);margin:2px 2px 8px;text-align:right;user-select:none}
+  @media (max-width:768px){ .tbl-scroll-hint.on{display:block} }
 </style>
+<script>
+(function(){
+  /* 宽表格横向滚动提示：仅当该表格在窄屏下确实横向溢出时，才在表格上方追加「左右滑动查看完整表格」小字 */
+  function hintTables(){
+    var hintEl=document.getElementById('qxTblHint');
+    if(!hintEl){hintEl=document.createElement('div');hintEl.id='qxTblHint';hintEl.className='tbl-scroll-hint';document.body.appendChild(hintEl);}
+    var tables=document.querySelectorAll('.view.active table');
+    var target=null;
+    if(window.innerWidth<=768){
+      for(var i=0;i<tables.length;i++){
+        var t=tables[i];if(t.className&&/timetable/.test(t.className||''))continue;
+        try{if(t.scrollWidth>t.clientWidth+4){target=t;break;}}catch(e){}
+      }
+    }
+    if(target){
+      hintEl.classList.add('on');
+      // 将提示插到目标表格同卡片内的表格正上方（若已有则不重复）
+      if(hintEl.dataTarget!==target){hintEl.dataTarget=target;hintEl.textContent='↔ 左右滑动查看完整表格';}
+      var p=target.parentNode;if(p&&p.firstChild!==hintEl&&!p.querySelector('.tbl-scroll-hint')){p.insertBefore(hintEl,target);}
+    }else{hintEl.classList.remove('on');hintEl.dataTarget=null;}
+  }
+  window.qxHintTables=hintTables;
+  var t0=null;
+  document.addEventListener('DOMContentLoaded',function(){clearTimeout(t0);t0=setTimeout(hintTables,400);});
+  // 板块切换/窗口缩放后重新计算
+  document.addEventListener('click',function(){clearTimeout(t0);t0=setTimeout(hintTables,250);});
+  window.addEventListener('resize',function(){clearTimeout(t0);t0=setTimeout(hintTables,200);});
+  // 切换视图后调用
+  var ov=window.switchView;
+  window.switchView=function(){clearTimeout(t0);var r=ov&&ov.apply(window,arguments);t0=setTimeout(hintTables,300);return r;};
+  // 兜底：动态渲染的表格（切换下拉/视角后）也会被识别
+  var ti=setInterval(function(){if(window.innerWidth<=768)hintTables();},1400);
+})();
+</script>
 <script>
 (function(){
   /* 外链统一处理：所有链接"点击即打开"，不弹复制面板、不拦截跳转。
@@ -12641,6 +12696,45 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         var hit=QX_SEARCH[q];if(hit&&window.switchView){switchView(hit);closeSidebar&&closeSidebar();flash2('已带你到相关板块，找到你要的内容。');}
       }
     });
+    /* 顶栏离线搜索：建立「关键词→板块」索引，input 实时过滤、Enter 跳转、点击跳转 */
+    (function(){
+      var ilist=[];
+      try{
+        var items=document.querySelectorAll('#sidebar .nav-item');
+        for(var i=0;i<items.length;i++){var it=items[i];var v=it.getAttribute('data-view');var t=(it.textContent||'').trim();if(v&&t)ilist.push({v:v,t:t});}
+      }catch(e){}
+      var input=document.getElementById('topSearch');if(!input)return;
+      var wrap=document.getElementById('tbSearchWrap');
+      var drop=document.createElement('div');drop.className='tb-search-drop';if(wrap)wrap.appendChild(drop);
+      function closeDrop(){hide=1;drop.classList.remove('open');drop.innerHTML='';}
+      var hide=0;
+      function render(q){
+        q=(q||'').trim().toLowerCase();drop.innerHTML='';
+        if(!q){drop.classList.remove('open');return;}
+        var done={};var rows='';var n=0;
+        for(var idx in QX_SEARCH){var kw=idx,to=QX_SEARCH[idx];
+          if(kw.indexOf(q)>=0&&!done[to]){done[to]=1;var label=to;for(var k2 in QX_SEARCH){if(QX_SEARCH[k2]===to&&k2.length>label.length)label=k2;}rows+='<div class="tsd-item hl" data-v="'+to+'"><b>前往：'+label+'</b><span>关键词命中「'+kw+'」</span></div>';n++;}}
+        if(!n){for(var j=0;j<ilist.length;j++){if(ilist[j].t.toLowerCase().indexOf(q)>=0){rows+='<div class="tsd-item" data-v="'+ilist[j].v+'"><b>'+ilist[j].t+'</b><span>匹配板块名称</span></div>';if(++n>8)break;}}}
+        if(!n)rows='<div class="tsd-empty">没有找到对应板块，换个关键词试试，如「番茄」「绩点」「记账」。</div>';
+        drop.innerHTML=rows;drop.classList.add('open');hide=0;
+      }
+      input.addEventListener('input',function(){render(this.value);});
+      input.addEventListener('keydown',function(e){
+        if(e.key==='Enter'){var q=(this.value||'').trim().toLowerCase();if(!q)return;
+          var hit=QX_SEARCH[q];if(hit&&window.switchView){switchView(hit);closeSidebar&&closeSidebar();flash2('已带你到相关板块。');closeDrop();}
+          else{var f=drop.querySelector('.tsd-item');if(f&&f.getAttribute('data-v')){switchView(f.getAttribute('data-v'));closeDrop();}}
+        }
+        if(e.key==='Escape'){this.value='';closeDrop();}
+      });
+      drop.addEventListener('click',function(ev){var it=ev.target.closest?ev.target.closest('.tsd-item'):null;if(!it)return;var v=it.getAttribute('data-v');if(v&&window.switchView){switchView(v);closeSidebar&&closeSidebar();closeDrop();}});
+      document.addEventListener('click',function(ev){if(hide||!wrap)return;if(!wrap.contains(ev.target))closeDrop();});
+      // 移动端：搜索框窄屏下占位紧凑
+      try{
+        var mo=window.matchMedia&&window.matchMedia('(max-width:620px)');
+        function adapt(){if(input.parentNode){input.parentNode.style.maxWidth=window.innerWidth<620?'120px':'';}}
+        if(mo){mo.addListener(adapt);}adapt();
+      }catch(e){}
+    })();
     // 存储看护：检测损坏JSON，友好提示而非白屏
     try{
       var bad=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('pp_')===0){try{JSON.parse(localStorage.getItem(k));}catch(err){bad.push(k);}}}
@@ -12697,6 +12791,12 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.28',t:'栖匣 · 全站治愈配色与新品分页导览上线',tag:'视觉 + 导览 + 搜索',items:[
+      '全局配色统一为「大地薄荷」：温润米白底 #F8F6F0、薄荷深绿主色 #3D5F4E、暖棕点缀 #805E3C，根治导览/卡片黄绿白多色割裂。',
+      '新手导览重制为 4 步分页交互（品牌 / 适用人群 / 上手小事 / 导航指引）：首次打开自动弹出，跳过或完成后不再打扰，设置里可手动重看。',
+      '顶栏新增全站离线搜索框：纯本地不联网，输入关键词实时过滤、回车直达板块。',
+      '宽表格移动端自动横向滑动并附「左右滑动查看完整表格」提示；侧边栏分组标题改用主题色 SVG 线条图标。'
+    ]},
     {v:'2026.08.28',t:'日夜模式与触控彻底修复 · 品牌焕新落定',tag:'修复 + 新板块',items:[
       '彻底修复日/夜模式切换：开屏仅首访展示、导览改为按需进入，不再抢占屏幕导致“点主题没反应、页面切不动”。',
       '移动端触控与滚动加固：消除点击高亮与 30 万级触控延迟、以及点击宽内容后“无法向上滑动”的滚动陷阱。',
