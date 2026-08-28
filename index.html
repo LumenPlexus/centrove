@@ -129,6 +129,24 @@ body,body input,textarea,select,.topbar,.sidebar,.bottom-nav,.page-head,.modal{t
 .view.active .card{transition:background-color .2s ease,color .2s ease}
 html{-webkit-text-size-adjust:100%}
 .sidebar,.modal,.pano{-webkit-overflow-scrolling:touch}
+/* ═══ 栖匣 · 移动端触控与滚动加固 ═══
+   目标：消除「点了没反应(300ms双击延迟/高亮残留)」「点某处后无法上滑(横向溢出滚动陷阱)」两类微信/内置浏览器顽疾。
+   全部为增量、无侵入：不改任何业务 JS，仅统一触控语义与滚动容器。 */
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+html,body{height:auto;min-height:100%;}
+html,body{overflow-x:hidden;}               /* 根治宽内容横向平移后竖滚失灵 */
+body{overscroll-behavior-y:contain;}        /* 防止滚动越界被浏览器吞掉触控 */
+@media (hover:none),(pointer:coarse){
+  button,.btn,.icon-btn,.nav-item,.tb-item,.chip,[onclick],label,select,.pano-close,.theme-toggle,.pp-sitem{
+    touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    -webkit-user-select:none;user-select:none;}
+}
+/* 触屏上每次按压都给即时视觉反馈，避免“点了看似没反应” */
+@media (hover:none),(pointer:coarse){
+  .icon-btn:active,.btn:active,.nav-item:active,.tb-item:active{opacity:.55;transform:scale(.96);}
+}
+/* 侧边导航跳转不被置顶顶栏遮挡：所有 section/视图标题预留滚动安全区 */
+section[id],.view{scroll-margin-top:80px;}
 
 .app{display:block;min-height:100vh}
 
@@ -1390,6 +1408,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
     <div class="nav-item" data-view="about" onclick="switchView(&#39;about&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品
+    </div>
+    <div class="nav-item" data-view="changelog" onclick="switchView(&#39;changelog&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志
     </div>
     <div class="nav-item active" data-view="settings" onclick="switchView(&#39;settings&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置
@@ -6796,6 +6817,35 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </div>
   </section>
 
+  <!-- ════════════════════════════════════════════════════════════
+       新增板块：更新日志 / 版本自检 (changelog)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="view" id="view-changelog">
+<div class="section-intro">产品一路怎么长成的、修了哪些 bug、接下来规划什么，都在这里透明可见。</div>
+    <div class="page-head">
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.28</span></h1>
+      <p>透明 · 每次迭代都如实记录 —— 这里也承载版本自检与隐私提示</p>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;border-color:var(--border-strong)">
+      <h3>🧭 版本自检</h3>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px">网页每次打开都会在本地做一次轻量自检，只检查<b>你自己浏览器里的数据</b>是否完整，绝不读取、上传任何个人内容。状态结果在下方实时展示。</p>
+      <div id="qxSelfReport" style="margin-top:12px;font-size:13.5px;color:var(--text);padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);line-height:1.7">正在自检…</div>
+      <div id="qxSystemMeta" style="margin-top:12px;font-size:12px;color:var(--hint);line-height:1.9"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;border-color:var(--border-strong)">
+      <h3>🔒 隐私与数据边界</h3>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.95;margin-top:6px">栖匣<b>不注册、不联网、不上传</b>：你的所有记录 100% 保存在当前浏览器的本地存储里，平台看不到、也拿不到。</p>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.95;margin-top:6px"><b>请务必留意：</b>清理浏览器缓存、使用<b>无痕/隐私模式</b>、更换设备或浏览器，都会导致这些本地记录无法找回。因此在使用前，请在「系统设置」里<b>定期导出 JSON 备份</b>，这是最稳妥的防丢方式。</p>
+    </div>
+
+    <div class="card">
+      <h3>📜 版本迭代记录</h3>
+      <div id="qxChangelog" style="margin-top:8px"></div>
+    </div>
+  </section>
+
     </main>
   </div>
 
@@ -8653,7 +8703,7 @@ var NAV_ALL=[{
 },{
   g:'⏱️ 时栖录 · 效率与工具',items:[['ai','🤖','智造工坊'],['tools','🛠','高效方法'],['timer','🍅','心流计时']]
 },{
-  g:'⚙️ 设置 · 栖匣系统',items:[['about','ℹ️','关于产品'],['settings','⚙️','系统设置']]
+  g:'⚙️ 设置 · 栖匣系统',items:[['about','ℹ️','关于产品'],['changelog','📜','更新日志'],['settings','⚙️','系统设置']]
 }];
 function renderFocus(){
   var cont=document.getElementById('focusStart');if(!cont)return;
@@ -12454,5 +12504,134 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   else setTimeout(qxInit,350);
   // 切换视图后刷新 core 位
   try{var _sw=window.switchView&&window.switchView.bind(window);window.switchView=function(n){var r=typeof _sw==='function'?_sw(n):undefined;refreshViews();setTimeout(refreshNav,30);return r;};}catch(e){}
+})();
+
+/* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
+   纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
+(function(){
+  var V='2026.08.28';
+  var VFILE='pwa/version.txt';
+  function $(id){return document.getElementById(id);}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  var CHANGES=[
+    {v:'2026.08.28',t:'日夜模式与触控彻底修复 · 品牌焕新落定',tag:'修复 + 新板块',items:[
+      '彻底修复日/夜模式切换：开屏仅首访展示、导览改为按需进入，不再抢占屏幕导致“点主题没反应、页面切不动”。',
+      '移动端触控与滚动加固：消除点击高亮与 30 万级触控延迟、以及点击宽内容后“无法向上滑动”的滚动陷阱。',
+      '换用全新「核桃木匣 + 暖光」栖匣品牌图标与启动屏；全站旧名残留清除。',
+      '新增「更新日志」板块与版本自检：打开即可查看每次迭代与数据自检结果。'
+    ]},
+    {v:'2026.08.27',t:'栖匣全景导览理念重塑',tag:'导览 / 文案',items:[
+      '删净旧品牌“次序 / 序梧 / 平万象”等残留指代，统一为“安放优先于鞭策”内核。',
+      '导览文案去“必须完成”压迫话术，强调接纳疲惫、拒绝内卷焦虑。'
+    ]},
+    {v:'2026.08.26',t:'栖匣暖木匣纸视觉体系全面落地',tag:'视觉',items:[
+      '核桃木 / 陈年纸 / 老黄铜 / 陶土单一配色体系，替换旧墨绿。',
+      '宋韵衬线与木刻侧栏，整体去“AI 模板感”，更克制耐看。'
+    ]}
+  ];
+
+  function renderChanges(){
+    var box=$('qxChangelog');if(!box)return;
+    box.innerHTML=CHANGES.map(function(c){
+      return '<div style="padding:14px 16px 12px;border:1px solid var(--border);border-radius:12px;margin-bottom:12px;background:var(--bg)">'+
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'+
+          '<span style="font-weight:700;font-size:13px;color:var(--primary)">'+esc(c.v)+'</span>'+
+          (c.tag?'<span style="font-size:10.5px;color:var(--primary);background:var(--primary-light);border:1px solid var(--border);padding:1px 8px;border-radius:999px">'+esc(c.tag)+'</span>':'')+
+          '<span style="font-size:13.5px;color:var(--text)">'+esc(c.t)+'</span>'+
+        '</div>'+
+        '<ul style="margin:8px 0 0;padding-left:18px;font-size:12.5px;color:var(--muted);line-height:1.9">'+c.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul>'+
+      '</div>';
+    }).join('')+
+    '<p style="font-size:12px;color:var(--hint);line-height:1.7;margin-top:4px">更多规划中的能力（增值共创、跨端同步调研等）会在未来版本更新时在此公示，任何变化都会提前告知，绝不静默。</p>';
+  }
+
+  function selfCheck(){
+    var el=$('qxSelfReport');if(!el)return;
+    var bad=[];
+    ['sportLog','myCountdowns','userMetrics','essayHistory','pp_checklist'].forEach(function(k){
+      var raw=null;try{raw=localStorage.getItem(k);}catch(e){}
+      if(!raw||raw===''||raw==='[]'||raw==='{}')return;
+      try{JSON.parse(raw);}catch(e){bad.push(k);}
+    });
+    var storeBlocked=false;
+    try{var t='__qxprobe__';localStorage.setItem(t,'1');localStorage.removeItem(t);}catch(e){storeBlocked=true;}
+    if(bad.length){
+      el.innerHTML='<span style="color:var(--coral)">⚠️ 发现 '+bad.length+' 处数据记录（'+esc(bad.join('、'))+'）读取异常。建议在「系统设置」导入历史备份恢复；如无备份，先把重要内容手动记下再继续使用。</span>';
+    }else if(storeBlocked){
+      el.innerHTML='<span style="color:var(--coral)">⚠️ 当前浏览器似乎无法保存数据（无痕/隐私模式或存储受限）。为避免辛苦纪录丢失，请现在就到「系统设置」导出备份。</span>';
+    }else{
+      var n=0;try{n=localStorage.length;}catch(e){}
+      el.innerHTML='<span style="color:var(--teal)">✅ 自检通过：本地数据完整，'+n+' 项记录结构正常，各模块状态无异常。</span>';
+    }
+    var meta=$('qxSystemMeta');
+    if(meta){
+      var chunks=['当前版本 v'+V];
+      try{
+        var ua=navigator.userAgent||'';
+        chunks.push(ua.indexOf('Firefox')>=0?'Firefox':ua.indexOf('Edg/')>=0?'Edge':ua.match(/Chrome\//)?'Chrome':ua.match(/Safari/)?'Safari':'其它');
+        if(/MicroMessenger/i.test(ua))chunks.push('微信内');
+      }catch(e){}
+      meta.innerHTML='<b>'+chunks.join('</b> · <b>')+'</b> · 自检时间 '+new Date().toLocaleTimeString();
+    }
+  }
+
+  function checkVersion(){
+    try{
+      fetch(VFILE,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();})
+        .then(function(t){
+          var live=(t||'').trim().replace(/^v/i,'');
+          if(!live||live===V)return;
+          if(live>V)showUpdateToast(live);
+        }).catch(function(){});
+    }catch(e){}
+  }
+  function showUpdateToast(live){
+    if($('qxUpdateToast'))return;
+    var d=document.createElement('div');d.id='qxUpdateToast';
+    d.style.cssText='position:fixed;right:16px;bottom:84px;z-index:1600;max-width:300px;background:var(--card);color:var(--text);border:1px solid var(--border-strong);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.28);padding:14px 16px;font-size:13px;line-height:1.6;text-align:left;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s';
+    d.innerHTML='<div style="font-weight:800;color:var(--primary);margin-bottom:4px">栖匣已有新版本 v'+esc(live)+' </div>'+
+      '<div style="color:var(--hint);margin-bottom:10px">功能更完善、体验更好，欢迎体验新版本 ✨</div>'+
+      '<div style="display:flex;gap:8px">'+
+        '<button onclick="qxGoChangelog()" style="flex:1;padding:8px 0;border:none;border-radius:8px;background:linear-gradient(120deg,#5C4030,#6E4F37);color:#fff;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation">查看更新日志</button>'+
+        '<button onclick="qxHideToast(this)" style="flex:1;padding:8px 0;border:1px solid var(--border-strong);background:var(--card);color:var(--hint);font-size:13px;border-radius:8px;cursor:pointer;touch-action:manipulation">稍后再说</button>'+
+      '</div>';
+    document.body.appendChild(d);
+    requestAnimationFrame(function(){d.style.opacity='1';d.style.transform='';});
+  }
+  window.qxHideToast=function(b){var d=b?b.closest('#qxUpdateToast'):null;if(d){d.style.opacity='0';d.style.transform='translateY(10px)';setTimeout(function(){if(d&&d.parentNode)d.parentNode.removeChild(d)},230);}};
+  window.qxGoChangelog=function(){try{if(window.switchView)window.switchView('changelog');window.qxHideToast&&window.qxHideToast(null);}catch(e){}};
+
+  function quotaCheck(){
+    try{
+      if(navigator.storage&&navigator.storage.estimate){
+        navigator.storage.estimate().then(function(e){
+          if(e&&e.quota&&e.usage>e.quota*0.8&&window.flash){
+            window.flash('本地存储空间已接近饱和…建议导出备份并清理过期打卡日志以释放空间');
+          }
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+  function incognitoCheck(){
+    var priv=false;
+    try{
+      if(!window.localStorage){priv=true;}
+      else{var t='__qxprobe__';localStorage.setItem(t,'1');localStorage.removeItem(t);}
+    }catch(e){priv=true;}
+    if(priv&&window.flash){
+      setTimeout(function(){window.flash('检测到无痕/隐私模式：关闭标签页后所有记录会自动清除。建议先到「系统设置」导出备份');},600);
+    }
+  }
+
+  function boot(){
+    if($('qxVersionChip'))$('qxVersionChip').textContent='v'+V;
+    renderChanges();
+    selfCheck();
+    checkVersion();
+    quotaCheck();
+    setTimeout(incognitoCheck,1400);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script></body></html>
