@@ -31,6 +31,8 @@
       try{ t=sessionStorage.getItem('pp_theme_v2'); }catch(e){ t=null; }
       if(t!=='dark'){ t='light'; }
       document.documentElement.setAttribute('data-theme', t);
+      /* 启动即同步主题图标与状态栏色，避免月亮/太阳图标与当前主题不符而产生"切换不及时"感 */
+      try{ if(window.updateThemeIcon){updateThemeIcon();} }catch(e){}
     })();
     /* 注册 Service Worker：支持安装到桌面 App；首次联网打开后，在支持
        Service Worker 的浏览器里可离线打开（见 sw.js 顶部如实说明）。
@@ -49,7 +51,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260830.9', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260830.10', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -491,7 +493,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .main,.topbar,.view,.card{width:100%;max-width:100%;box-sizing:border-box}
   .view .card .grid>div{min-width:0}
   table,.editable-table,.timetable{max-width:100%;display:block;overflow-x:auto}
-  .topbar .title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+  .topbar .title{white-space:nowrap;overflow:visible;text-overflow:clip;flex:1;min-width:0}
   .card img,img{max-width:100%;height:auto}
 }
 
@@ -765,6 +767,20 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 [data-theme="dark"] #freeBanner{background:linear-gradient(90deg,#2B2419,#33291F)!important;border-color:var(--border)!important;color:#E2D8C4!important}
 [data-theme="dark"] #freeBanner strong{color:#fff!important}
 [data-theme="dark"] #mobileSidebarHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
+/* 夜间：产品导览对比板块（CSS 类背景不受内联兜底覆盖）统一转暗，消除亮块 */
+[data-theme="dark"] .pano-cp.no{background:#26201A!important;border-color:#3A3026!important;box-shadow:none!important}
+[data-theme="dark"] .pano-cp.no h4{color:#9CC0BA!important}
+[data-theme="dark"] .pano-cp.no ul{color:#A99B8A!important}
+[data-theme="dark"] .pano-cp.yes{background:linear-gradient(150deg,#2B2419,#272019 45%,#241F17)!important;border-color:#594C38!important;box-shadow:none!important;color:#EDE3D2!important}
+[data-theme="dark"] .pano-cp.yes ul{color:#CDBFAB!important}
+[data-theme="dark"] .pano-cp .tag,[data-theme="dark"] .pano-cp.yes .tag{color:#C2A15E!important}
+[data-theme="dark"] .pano-cp.no .tag{color:#A0927E!important}
+[data-theme="dark"] .pano-cp li::before{background:#C9A45E!important}
+[data-theme="dark"] .pano-cp.yes li::before{background:#B08A44!important}
+/* 夜间：开学准备进度卡兜底转暗 */
+[data-theme="dark"] #prepareCard{background:linear-gradient(135deg,#2B2419,#2B2419)!important;border-color:#3A3026!important}
+/* 夜间：欢迎语/闪屏浮层转暗，避免白块刺眼 */
+[data-theme="dark"] #flash{background:rgba(42,35,24,.94)!important;color:#E8DEC9!important;border-color:#594C38!important}
 [data-theme="dark"] #mobileSidebarHint [style*="color:#145A32"],[data-theme="dark"] #mobileSidebarHint span[style*="color:#4A5442"]{color:var(--text)!important}
 [data-theme="dark"] .bm-qr-note{background:var(--card)!important;color:var(--text)!important;border-color:var(--border)!important}[data-theme="dark"] [style*="background:#F1EBDD"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]){background:var(--card)!important;color:var(--text)!important}/* 夜间：其余 #E 开头浅色内联背景（#EFE8D8/#F1EBDD/#EFE8D8/#EFE8D8 等卡片）统一转暗，且排除语义相关类 */
 [data-theme="dark"] [style*="background:#E1"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E2"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E3"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E4"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E5"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E6"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E7"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E8"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E9"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#EA"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#EB"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#EC"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#ED"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#EE"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#EF"]:not(.tt-color-btn):not(.tt-clear-btn):not(.heat-cell):not(.achievement-badge):not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]){background:var(--card)!important;color:var(--text)!important}[data-theme="dark"] [style*="background:#E1"]:not(.tt-color-btn):not(.heat-cell):not(.achievement-badge) p:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E6"]:not(.tt-color-btn):not(.heat-cell):not(.achievement-badge) p:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#E5"]:not(.tt-color-btn):not(.heat-cell):not(.achievement-badge) p:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]),[data-theme="dark"] [style*="background:#F1EBDD"] p:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]){color:var(--text)!important}
@@ -1207,7 +1223,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <span style="width:1px;height:54px;background:#C2A15E"></span>
     </span>
   </div>
-  <div style="margin-top:16px;font-size:12px;color:rgba(243,238,223,.66);letter-spacing:2px;max-width:84%;text-align:center;line-height:2;opacity:0;animation:bins .9s 1.26s forwards">把学业 · 目标 · 金钱 · 健康，连同成长与阅读，收进一只只属于你的匣子<br>数据只存本地 · 私密安全 · 零安装零登录</div>
+  <div style="margin-top:16px;font-size:12px;color:rgba(243,238,223,.66);letter-spacing:2px;max-width:84%;text-align:center;line-height:2;opacity:0;animation:bins .9s 1.26s forwards">把你想认真对待的每件事，都收进一只只属于你的匣子<br>数据只存本地 · 私密安全 · 零安装零登录</div>
   <div style="position:absolute;bottom:58px;font-size:12px;letter-spacing:3px;color:rgba(243,238,223,.48);opacity:0;animation:bins .9s 1.5s forwards">轻触任意处 · 进入</div>
   <style>@keyframes bins{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes bf{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1deg)}}@keyframes srr{0%,100%{transform:scale(.94);opacity:.4}50%{transform:scale(1.05);opacity:1}}</style>
 </div>
@@ -12728,28 +12744,28 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 之前 vs 之后 (步骤 3) -->
     <section class="pano-sec" data-step="2">
       <div class="pano-no"><span class="rn">贰</span><span>没有它 vs 有它 · 两种大学的活法</span></div>
-      <h2 class="pano-h2">同样的开始，<em>差距从第一天就拉开</em></h2>
+      <h2 class="pano-h2">同样的时间，<em>不同的落点</em></h2>
       <div class="pano-compare">
         <div class="pano-cp no">
           <div class="tag">没有它的日子里</div>
-          <h4 style="color:#4A5A52">被推着走的日子</h4>
+          <h4 style="color:#4A5A52">事情总在脑子里打转</h4>
           <ul>
-            <li>规划散落在十几个 App 与便签里，越攒越乱</li>
-            <li>四六级、考研、期末、求职挤在一起，无从下手</li>
-            <li>钱花完才想起记账，时间流逝了才发现虚度</li>
-            <li>灵感一闪而过，努力也撑不过三分钟热度</li>
-            <li>想上进的念头很多，落地到"今天做什么"却很难</li>
+            <li>说要每天背单词，临睡前却发现"明天再说"的念头又赢了</li>
+            <li>四六级、期末、实习的节点挤在一起，一个也没先准备好</li>
+            <li>月底望着账单发愁，这一个月其实都没认真记过账</li>
+            <li>读到的好句子、冒出的好点子，转头就忘了该存进哪里</li>
+            <li>"我得上进"反复起念，落到"今天就做这一件"却说不出来</li>
           </ul>
         </div>
         <div class="pano-cp yes">
           <div class="tag">有了它之后</div>
-          <h4>慢慢掌控的日子</h4>
+          <h4>事情各归其位，走得踏实</h4>
           <ul>
-            <li>所有关键的事都在一处，想找什么随时有</li>
-            <li>大目标拆到"今天做一件"，每天都看得见推进</li>
-            <li>记账与时间块一清二楚，心里越来越有底</li>
-            <li>好想法沉淀成档，坚持被一天天记录、累积</li>
-            <li>不再靠意志硬撑，而是被正反馈推着往前走</li>
+            <li>目标拆成今天的一小步，勾掉一项就多一分笃定</li>
+            <li>考试与求职的日子排进同一张时间表，先做哪件事一眼看清</li>
+            <li>每天三十秒记一笔，钱花在哪，心里就有了底</li>
+            <li>灵感随手收进看板，习惯攒成一条连续的记录</li>
+            <li>不靠一时硬撑，靠每天稳稳往前的一小步</li>
           </ul>
         </div>
       </div>
@@ -12793,7 +12809,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 为什么设计它 · 设计理念 (步骤 7) -->
     <section class="pano-sec pano-sec-ctr" data-step="6">
       <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
-      <p class="pano-lead">我们见过很多年轻人，怀揣大量目标与计划，却被杂乱的思绪压得无从下手。栖匣是一座成长收纳容器：学业、目标、时间、金钱、健康、阅读、眼界与职业……成长里的大小事都能收进匣中一处，迷茫、疲惫等真实状态也有一席之地。</p>
+      <p class="pano-lead">目标很多，计划也不少，真正难的，是先把它们安放妥帖、再一步步往前走。栖匣就是那只替你安放成长的地方——把学业、时间、理财、健康、阅读与职业，都收进一处、各归其位；迷茫、疲惫这些心情，也被稳稳接住。你尽管往前走，剩下的，匣子替你在记。</p>
       <p class="pano-lead" style="margin-top:10px">自律不只有一种模样：不必等待心绪完全安顿才开始行动，整理规划与向前推进可以同步发生。它拒绝高压内卷式的一味催促，也不鼓励停滞与等待——收纳是载体，行动与规划同样重要。</p>
       <div class="pano-concept">
         <div class="pano-cv" data-side="栖">
@@ -13297,9 +13313,9 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function showUpdateToast(live){
     if($('qxUpdateToast'))return;
     var d=document.createElement('div');d.id='qxUpdateToast';
-    d.style.cssText='position:fixed;right:16px;bottom:84px;z-index:1600;max-width:300px;background:var(--card);color:var(--text);border:1px solid var(--border-strong);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.28);padding:14px 16px;font-size:13px;line-height:1.6;text-align:left;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s';
+    d.style.cssText='position:fixed;right:14px;bottom:auto;top:68px;z-index:1600;max-width:300px;background:var(--card);color:var(--text);border:1px solid var(--border-strong);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.28);padding:14px 16px;font-size:13px;line-height:1.6;text-align:left;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s';
     d.innerHTML='<div style="font-weight:800;color:var(--primary);margin-bottom:4px">栖匣已有新版本 v'+esc(live)+' </div>'+
-      '<div style="color:var(--hint);margin-bottom:10px">功能更完善、体验更好，欢迎体验新版本 ✨</div>'+
+      '<div style="color:var(--hint);margin-bottom:10px">本次更新包含界面与体验优化，刷新即可使用最新功能，具体改进见下方更新日志。</div>'+
       '<div style="display:flex;gap:8px">'+
         '<button onclick="qxGoChangelog()" style="flex:1;padding:8px 0;border:none;border-radius:8px;background:linear-gradient(120deg,#5C4030,#6E4F37);color:#fff;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation">查看更新日志</button>'+
         '<button onclick="qxHideToast(this)" style="flex:1;padding:8px 0;border:1px solid var(--border-strong);background:var(--card);color:var(--hint);font-size:13px;border-radius:8px;cursor:pointer;touch-action:manipulation">稍后再说</button>'+
@@ -13867,8 +13883,8 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .qx-history-day .no{color:var(--hint)}
 @media(min-width:1100px){.view{max-width:980px}}
 /* 顶栏标签移动端防截断 */
-@media(max-width:700px){.topbar .tb-badge{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:32vw}.topbar .tb-en{font-size:11px}}
-@media(max-width:520px){.topbar .tb-badge{display:none}}
+@media(max-width:700px){.topbar .tb-badge{white-space:nowrap;overflow:visible;text-overflow:clip;max-width:none;font-size:8.5px}.topbar .tb-en{font-size:11px}}
+@media(max-width:520px){.topbar .tb-badge{font-size:7.5px;padding:1px 4px}}
 /* 产品总览(#pano)暖木配色协调：清除残留墨绿，统一暖棕金 */
 .pano{color:#4A3A2C}
 .pano-close{color:#4A3A2C;border-color:rgba(111,79,55,.18)}
