@@ -13,7 +13,7 @@
  *    从未开通过的首次断网打开无法生效（还什么缓存都没有）。
  *  - 导航采用「网络优先」，联网取最新、断网用缓存兜底。
  */
-const CACHE = 'qixia-v89';
+const CACHE = 'qixia-v90';
 const SCOPE = new URL('./', self.location);          // 站点根目录
 const ROOT  = SCOPE.href;                            // 如 /centrove/
 const INDEX = new URL('./index.html', SCOPE).href;   // 主页绝对地址

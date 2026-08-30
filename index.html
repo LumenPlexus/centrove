@@ -1257,10 +1257,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0" onerror="logoFallback(this)">栖匣 <span class="tb-badge">心有所栖 · 匣纳成长</span></div>
+      <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0" onerror="logoFallback(this)">栖匣<span class="tb-badge">心有所栖 · 匣纳成长</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
-    <div class="tb-feature" title="学业 · 目标 · 时间 · 金钱 · 健康 · 眼界 —— 一匣安放">学业 · 目标 · 时间 · 金钱 · 健康 · 眼界 <i>一处安放</i></div>
     <div class="tools">
       <!-- 桌面端始终显示 -->
       <button class="icon-btn btn-inspire tb-mobile-hide" id="btnInspire" onclick="refreshHomeDaily();spinInspire()" title="换一批灵感">
@@ -1417,6 +1416,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
     <div class="nav-item" data-view="fun" onclick="switchView(&#39;fun&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>轻松一下
+    </div>
+
+    <div class="nav-section">览界 · 眼界与视野</div>
+    <div class="nav-item" data-view="vision" onclick="switchView(&#39;vision&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>眼界珍藏
     </div>
 
     <div class="nav-section">贮金格 · 理财与副业</div>
@@ -6330,6 +6334,126 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <!-- ═══════ 职场进阶（职场人通用） ═══════ -->
     
 
+
+    <!-- ═══════ 眼界珍藏 · 拓宽认知的视野（六大支柱之「眼界」） ═══════ -->
+    <section class="view" id="view-vision">
+<div class="section-intro">涉猎的宽度，决定你看到的世界有多大。这里不功利地输入：纪录片、演讲、跨领域书、新鲜见闻——把认知边界一点点撑大。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>眼界珍藏</h1>
+        <p>视野六个方向直达资源 · 纪录片与演讲清单 · 跨领域书单 · 我的视野札记</p>
+      </div>
+
+      <div class="card daily-card" style="margin-bottom:16px;background:linear-gradient(135deg,#EFE9DA,#FBF7EE);border:1px solid var(--border)">
+        <h3 style="color:var(--primary);margin-top:0">把「眼界」放进日程 · 每周三件微行动</h3>
+        <p style="font-size:13.5px;color:var(--text);line-height:1.9;margin:6px 0 4px">眼界不是刷出来的，是攒出来的。不用贪多，每周固定三件小事，一年后你会明显感觉看问题不一样：</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:8px">
+          <div style="border-left:3px solid var(--primary);background:#FBF6EA;padding:10px 13px;border-radius:0 8px 8px 0"><div style="font-weight:600;color:var(--primary);font-size:13px;margin-bottom:4px">① 每周一部好内容</div><div style="font-size:12.5px;line-height:1.7;color:var(--muted)">看 1 集高质量纪录片，或 1 场 TED/优质演讲（下方清单直接进去挑）。</div></div>
+          <div style="border-left:3px solid var(--teal);background:#F4F4E8;padding:10px 13px;border-radius:0 8px 8px 0"><div style="font-weight:600;color:var(--teal);font-size:13px;margin-bottom:4px">② 每周一篇跨领域</div><div style="font-size:12.5px;line-height:1.7;color:var(--muted)">读 1 篇与你专业无关的领域深度文章或一个章节（历史/经济/科学/艺术任选）。</div></div>
+          <div style="border-left:3px solid var(--gold);background:#F9F1DE;padding:10px 13px;border-radius:0 8px 8px 0"><div style="font-weight:600;color:var(--gold-strong, #96692F);font-size:13px;margin-bottom:4px">③ 每周弄懂一个概念</div><div style="font-size:12.5px;line-height:1.7;color:var(--muted)">把新听到的一个概念/一件事，用自己的一句话讲清楚，记到下方「视野札记」。</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>六大视野方向 · 免费直达</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">每个方向给你一个足够好的免费入口，点开即直达，挑一个持续往里钻即可。</p>
+        <div class="grid grid-2">
+          <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+            <div class="info"><div class="name">经济 · 财商</div><div class="desc">「中国大学MOOC」名校经济学/金融基础课免费学，把「钱」看明白</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.jiqizhixin.com/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8"></path><path d="M8 12h8"></path></svg></div>
+            <div class="info"><div class="name">科技 · AI 风向</div><div class="desc">「机器之心」看懂 AI 与前沿科技在发生什么，不被时代甩下</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.dpm.org.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+            <div class="info"><div class="name">历史 · 文明</div><div class="desc">故宫·数字多宝阁，3D 看文物背后的文明脉络，历史原来这么近</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.guokr.com/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"></path><path d="M12 3v9l4.5 2.5"></path></svg></div>
+            <div class="info"><div class="name">科学 · 宇宙</div><div class="desc">「果壳」把硬科学讲成人话，宇宙地球生物，越看越觉得世界奇妙</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.ted.com/talks" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path></svg></div>
+            <div class="info"><div class="name">人文 · 思想</div><div class="desc">TED 经典演讲：全球顶尖大脑的 18 分钟，最划算的认知输入</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.namoc.org/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"></path><path d="M5 21l14-18"></path><path d="M19 21L5 3"></path></svg></div>
+            <div class="info"><div class="name">艺术 · 审美</div><div class="desc">中国美术馆线上展厅：不花钱逛名作，审美的眼光是靠看的</div></div><div class="arrow">↗</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>纪录片与高分演讲清单 · 直接点开看</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">先点「直达」进 B 站/官网，看封面挑一部顺眼的；看完把观感记到下方「视野札记」。</p>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+            <thead><tr style="background:var(--surface);text-align:left"><th style="padding:8px 10px;border:1px solid var(--border)">方向</th><th style="padding:8px 10px;border:1px solid var(--border)">片名 / 主题</th><th style="padding:8px 10px;border:1px solid var(--border)">为什么值得看</th><th style="padding:8px 10px;border:1px solid var(--border)">直达</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">人文</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>但是还有书籍</b></td><td style="padding:8px 10px;border:1px solid var(--border)">讲读书人/编辑/译者的一线故事，看完想读书</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E4%BD%86%E6%98%AF%E8%BF%98%E6%9C%89%E4%B9%A6%E7%B1%8D" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">历史</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>河西走廊</b></td><td style="padding:8px 10px;border:1px solid var(--border)">以「路」串起两千年文明，历史地理绝美</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E6%B2%B3%E8%A5%BF%E8%B5%B0%E5%BB%8A%E7%BA%AA%E5%BD%95%E7%89%87" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">科学</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>宇宙时空之旅 COSMOS</b></td><td style="padding:8px 10px;border:1px solid var(--border)">把仰望星空变成人生体验，格局直接打开</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=COSMOS%20%E5%AE%87%E5%AE%99%E6%97%B6%E7%A9%BA%E4%B9%8B%E6%97%85" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">自然</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>美丽中国</b></td><td style="padding:8px 10px;border:1px solid var(--border)">BBC 团队拍的祖国山河，重新认识脚下大地</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E7%BE%8E%E4%B8%BD%E4%B8%AD%E5%9B%BD%E7%BA%AA%E5%BD%95%E7%89%87" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">社会</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>人生七年</b></td><td style="padding:8px 10px;border:1px solid var(--border)">56 年跟拍一群人，看懂阶层与选择</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E4%BA%BA%E7%94%9F%E4%B8%83%E5%B9%B4%20%E7%BA%AA%E5%BD%95%E7%89%87" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">思想</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>TED · 如何掌控你的自由时间</b></td><td style="padding:8px 10px;border:1px solid var(--border)">8 分钟改变你对「没时间」的认知（可开中文字幕）</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://www.ted.com/talks/laura_vanderkam_how_to_gain_control_of_your_free_time" target="_blank" rel="noopener noreferrer">TED↗</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>跨领域书目 · 每个方向开一本</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">不必都读，按当下好奇的一个方向挑一本，读完记一句「我get到了什么」。</p>
+        <div class="grid grid-2">
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E4%B8%87%E5%8E%86%E5%8D%81%E4%BA%94%E5%B9%B4" target="_blank" rel="noopener noreferrer"><div class="ico">📜</div><div class="info"><div class="name">历史 · 万历十五年</div><div class="desc">以小见大看懂明朝体制，「大历史观」入门</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E4%B9%A1%E5%9C%9F%E4%B8%AD%E5%9B%BD" target="_blank" rel="noopener noreferrer"><div class="ico">🌾</div><div class="info"><div class="name">社会 · 乡土中国</div><div class="desc">读懂中国社会与人的底层逻辑，费孝通经典</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E8%87%AA%E7%A7%81%E7%9A%84%E5%9F%BA%E5%9B%A0" target="_blank" rel="noopener noreferrer"><div class="ico">🧬</div><div class="info"><div class="name">科学 · 自私的基因</div><div class="desc">颠覆对生命的理解，「道金斯」进化论科普神作</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E8%96%9B%E5%85%86%E4%B8%B0%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%AE%B2%E4%B9%89" target="_blank" rel="noopener noreferrer"><div class="ico">💰</div><div class="info"><div class="name">经济 · 薛兆丰经济学讲义</div><div class="desc">一个经济学视角看世界，决策更有章法</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E6%97%B6%E9%97%B4%E7%AE%80%E5%8F%B2%20%E9%9C%8D%E9%87%91" target="_blank" rel="noopener noreferrer"><div class="ico">🌌</div><div class="info"><div class="name">思想 · 时间简史</div><div class="desc">霍金讲宇宙，把好奇心重新打开</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E8%8B%8F%E8%8F%B2%E7%9A%84%E4%B8%96%E7%95%8C" target="_blank" rel="noopener noreferrer"><div class="ico">🧠</div><div class="info"><div class="name">哲学 · 苏菲的世界</div><div class="desc">小说体哲学史，最好懂的哲学入门</div></div><div class="arrow">↗</div></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>我的视野札记（随手记 · 自动保存）</h3>
+        <p style="font-size:13px;color:var(--muted)">读完看完、听到新鲜事，随手记两句。写下来才算真的「装进眼界」。</p>
+        <div style="margin-top:10px">
+          <div style="font-size:12.5px;color:var(--hint);margin-bottom:5px">① 本周新弄懂的一个概念 / 一件事</div>
+          <textarea id="visionNew" placeholder="例：这周搞懂了「复利」——钱生钱，早开始十年差别巨大……" style="min-height:66px;margin-bottom:12px"></textarea>
+          <div style="font-size:12.5px;color:var(--hint);margin-bottom:5px">② 见闻 / 新体验 / 触动我的观点</div>
+          <textarea id="visionExp" placeholder="例：看了《河西走廊》，第一次觉得历史不是背的，是一群人真真切切活过的……" style="min-height:66px;margin-bottom:12px"></textarea>
+          <div style="font-size:12.5px;color:var(--hint);margin-bottom:5px">③ 想看的清单（以后慢慢补看）</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+            <input id="visionIn" placeholder="例：纪录片《我们的星球》、TED·用得上的TED演讲……" style="flex:1;min-width:180px">
+            <button class="btn btn-primary btn-sm" onclick="addVision()">加入清单</button>
+          </div>
+          <div id="visionList"></div>
+        </div>
+      </div>
+
+      <script>
+      /* 眼界珍藏 · 全部数据仅存本机 localStorage，私密安全 */
+      (function(){
+        function load(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
+        function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+        function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+        var a=document.getElementById('visionNew'); if(a){a.value=load('pp_vision_new'); a.addEventListener('input',function(){save('pp_vision_new',a.value)})}
+        var b=document.getElementById('visionExp'); if(b){b.value=load('pp_vision_exp'); b.addEventListener('input',function(){save('pp_vision_exp',b.value)})}
+        var lst=document.getElementById('visionList');
+        function get(){var arr=load('pp_vision_list');try{return JSON.parse(arr)}catch(e){return []}}
+        function render(){
+          var arr=get(); var html;
+          if(!arr.length){ html='<p style="color:var(--hint);font-size:13px">还没有想看的清单 · 加入一条开始攒眼界</p>'; }
+          else{ html=arr.map(function(t,i){return '<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:6px"><span style="flex:1;font-size:13.5px;color:var(--text)">'+esc(t)+'</span><button class="btn btn-sm" data-i="'+i+'">删除</button></div>'}).join(''); }
+          lst.innerHTML=html;
+          lst.querySelectorAll('button[data-i]').forEach(function(btn){btn.onclick=function(){var arr=get();arr.splice(+btn.getAttribute('data-i'),1);save('pp_vision_list',JSON.stringify(arr));render();}});
+        }
+        render();
+        window.addVision=function(){var inp=document.getElementById('visionIn');var v=inp?(inp.value||'').trim():'';if(!v){if(typeof flash==='function')flash('先写点什么再加入');return;}var arr=get();arr.push(v);save('pp_vision_list',JSON.stringify(arr));if(inp)inp.value='';render();if(typeof flash==='function')flash('已加入想看清单');};
+      })();
+      </script>
+    </section>
 
     <!-- ═══════ 影视·观世界（全年龄通用） ═══════ -->
     <section class="view" id="view-movie">
@@ -12034,7 +12158,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       '<div style="margin-top:13px;font-size:22px;font-weight:800;letter-spacing:4px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25)">栖匣<span style="font-size:12.5px;letter-spacing:3px;font-weight:400;color:#B6A995"> · 心有所栖 · 匣纳成长</span></div>'+
       '<div style="margin:10px auto 6px;font-size:14px;color:#fff;line-height:1.85;max-width:520px">你见过很多工具。<br>但这一页，专为你的这四年而造。</div>'+
       '<div style="margin:6px auto 16px;max-width:560px;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:12.5px;color:rgba(255,255,255,.94);line-height:1.7">'+
-        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#E2D8C4">一页收纳，四年不乱</b>——33 个板块，从入学规划到毕业去向，全在这里。</span></div>'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#E2D8C4">一页收纳，四年不乱</b>——34 个板块，从入学规划到毕业去向，全在这里。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🔒</span><span><b style="color:#E2D8C4">只存你手，退出即散</b>——无账号、无云端、无后台，关掉页面，谁都不知道你的记录。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">♻️</span><span><b style="color:#E2D8C4">年份在走，信息不陈旧</b>——考试、政策、活动逐年自新，永远跟你学校的年历一起走。</span></div>'+
       '</div>'+
@@ -12942,7 +13066,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 <script>
 /* ═══════════ 栖匣 · 运行时系统层：极简模式/分区折叠/全站搜索/存储看护/设置置顶 ═══════════ */
 (function(){
-  var CORE=['home','today','quadrant','plans','goals','habits','timer','journal','creative','settings','about'];
+  var CORE=['home','today','quadrant','plans','goals','habits','timer','journal','creative','vision','settings','about'];
   var QX_SEARCH={
     '今天':'home','今日':'home','概览':'home','待办':'home','打卡':'home','习惯':'habits','倒数':'home','倒计时':'home',
     '目标':'goals','计划':'plans','时间':'timer','专注':'timer','番茄':'timer','钟':'timer','四象限':'quadrant','矩阵':'quadrant',
