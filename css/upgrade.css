@@ -317,8 +317,15 @@ body.sidebar-collapsed .topbar { left: 0; }
 [data-theme="dark"] .topbar .tb-badge { color: #E6D6AE; background: linear-gradient(135deg,#4A3A24,#3A2F1E); border-color: #7C6236; }
 /* 移动端：口号保留（不离屏不换行），日期字号收小；超小屏只留口号 */
 @media (max-width: 768px) {
-  .topbar .tb-badge { font-size: 8.5px; padding: 1.5px 7px; letter-spacing: .05em; margin-left: 6px; }
+  .topbar .tb-badge { font-size: 8.5px; padding: 1.5px 7px; letter-spacing: .05em; margin-left: 6px; display: inline-block; }
   .topbar .title img { width: 22px; height: 22px; }
+}
+/* 修正基础样式在窄屏把品牌口号隐藏/截断的问题：始终完整显示「心有所栖 · 匣纳成长」 */
+@media (max-width: 700px) {
+  .topbar .tb-badge { max-width: none !important; overflow: visible !important; text-overflow: clip; }
+}
+@media (max-width: 520px) {
+  .topbar .tb-badge { display: inline-block !important; white-space: nowrap; font-size: 8px; letter-spacing: .02em; padding: 1.5px 6px; }
 }
 @media (max-width: 420px) { .topbar .date { display: none; } }
 
