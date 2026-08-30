@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.5"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.6"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -49,7 +49,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260830.5', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260830.6', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -1196,9 +1196,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,94,.42),rgba(201,161,94,0) 70%);filter:blur(7px);animation:bins .6s both"></div>
     <img src="data:image/png;base64,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" alt="栖匣" draggable="false" style="width:106px;height:106px;border-radius:28px;box-shadow:0 0 0 3px rgba(201,161,94,.32),0 22px 54px rgba(5,15,10,.5);opacity:0;animation:bins .7s .12s forwards,bf 3.6s ease-in-out 1.2s infinite;position:relative" onerror="logoFallback(this)"></div>
   <div style="font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:46px;font-weight:800;color:#F3EEDF;letter-spacing:12px;margin-top:30px;opacity:0;animation:bins .9s .45s forwards">栖匣</div>
-  <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">一只匣 · 安放四年</div>
+  <div style="font-size:13px;letter-spacing:6px;color:#E0C48C;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">一只匣 · 安放成长</div>
   <div style="margin-top:20px;height:1px;width:60px;background:linear-gradient(90deg,transparent,#E0C48C,transparent);opacity:0;animation:bins .9s .78s forwards"></div>
-  <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:rgba(243,238,223,.9);letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">先安放，再生长</div>
+  <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:rgba(243,238,223,.9);letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">收纳诸事，步履向前</div>
   <div style="margin-top:22px;display:flex;gap:0;align-items:flex-end;opacity:0;animation:bins .9s 1.08s forwards">
     <span style="display:flex;gap:7px;align-items:flex-end">
       <span style="width:14px;height:26px;border-radius:4px;background:#6E4F37"></span>
@@ -1485,15 +1485,15 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         <p style="margin-top:14px;font-size:13.5px;line-height:2;color:var(--text)">
           <em style="font-style:normal;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:15.5px;color:var(--primary);letter-spacing:1px">把每一天好好安放，心有所栖，万象入匣。</em><br>
           一段漫长的大学旅程，会生出数不清的目标、计划与期待。<b style="color:var(--primary)">学业备考 · 竞赛科研 · 实习求职 · 复盘感悟 · 理财规划</b>——栖匣便是属于你的一方园地，帮你把一路重要的成长印记一一承载。<br>
-          不必让繁多的任务与计划日复一日盘旋在脑海：<b style="color:var(--primary)">当一件事项找到了安稳的归处，内心自然卸下重担，得以从容前行。</b><br>
+          不必让繁多的任务与计划日复一日盘旋在脑海。将各项规划妥善收纳，卸下内心重担，从容前行。<br>
           <span style="color:var(--primary-mid)">打开栖匣，就可以立刻开始规划与执行</span>——目标拆解、备考路线、时间安排、复盘总结，各归其位。<br>
           零安装、零登录，全部数据仅保存在你的本地设备。<em style="font-style:normal;color:var(--gold)">心有所栖，匣纳成长。</em>
         </p>
       </div>
 
       <!-- 💡 常驻备份提醒（首页显眼位置，永久展示） -->
-      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:11px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:12.5px;line-height:1.8;box-shadow:var(--shadow-xs)">
-        <b>💡 重要备份提醒：</b>你的全部记录都存储在浏览器本地。清理浏览器缓存、使用无痕浏览模式会造成记录丢失，请<b>定期导出备份</b>（顶栏「导出数据备份」），以防数据丢失。
+      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,#F6E4CF,#FBEEE1);border:1px solid #E0BE92;color:#5C4328;font-size:12.5px;line-height:2;box-shadow:var(--shadow-xs)">
+        <b>⚠️ 重要提醒 · 数据只存在你的浏览器本地：</b>清除浏览器缓存、更换设备、<b>无痕浏览</b>、以及 iOS 长时间未打开页面，都会导致全部记录丢失。<b>请勿在图书馆、机房等公共电脑上留存隐私内容</b>；务必<b>定期导出备份</b>（顶栏「导出数据备份」，建议每周一次并双重保存到网盘）。
       </div>
 
       <div class="page-head">
@@ -5921,7 +5921,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card about-hero" style="background:linear-gradient(135deg,var(--surface),#F1EADE);border:1px solid var(--border)">
         <h3 style="color:var(--primary);font-size:17px">栖匣 · 心有所栖，万象入匣</h3>
         <p style="font-size:13.5px;color:var(--text);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:var(--primary)">完全本地运行</b>的大学生成长园地：不下载 App、不注册账号、打开浏览器即用，离线也能正常工作。<br>一段漫长的大学旅程，会生出数不清的目标、计划与期待——学业备考、竞赛科研、实习求职、复盘感悟、理财规划。栖匣把这些重要的成长印记拢到一处、各归其位：<b style="color:var(--primary)">当一件事项找到了安稳的归处，你就能腾出心力，专注把当下这一件做好。</b></p>
-        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把大学四年走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣</div>
+        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣</div>
       </div>
 
       <div class="card" style="margin-top:16px">
@@ -6646,7 +6646,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <li>反复出现"活着没意思"或伤害自己的想法</li>
             <li>突然的性格大变、社交退缩超过1个月</li>
           </ul>
-          <div class="callout callout-warn" style="margin-top:8px"><strong>求助是勇敢不是软弱：</strong>学校心理咨询中心（免费保密）、医院心理科/精神科、心理援助热线（12356 及当地热线）、紧急情况打 120/110。和信任的人说出来，就是第一步。</div>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>求助是勇敢不是软弱：</strong>学校心理咨询中心（免费保密，预约即可）、医院心理科/精神科、全国心理援助热线 400-161-9995、北京心理危机干预热线 010-82951332、紧急情况请拨打 120/110。和信任的人说出来，就是第一步。</div>
         </div>
         <div class="card">
           <h3>我的心理自测（每周1次 · 1-5分）</h3>
@@ -6679,7 +6679,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <h4>需要时就用（免费/正规渠道）</h4>
             <ul style="font-size:13px;line-height:1.9">
               <li><strong>在校：</strong>学校心理咨询中心（免费、保密，预约即可）</li>
-              <li><strong>热线：</strong>全国心理援助热线 12356；北京心理危机干预热线 010-82951332</li>
+              <li><strong>热线：</strong>学校心理咨询中心（免费保密，预约即可）；全国心理援助热线 400-161-9995；北京心理危机干预热线 010-82951332；紧急情况请拨打 120/110</li>
               <li><strong>在线：</strong>"简单心理""壹心理"等平台的免费倾诉频道；当地精神卫生中心门诊</li>
               <li><strong>紧急：</strong>有伤害自己的念头，立刻打120/110或告诉身边信任的人，绝不独处硬扛</li>
             </ul>
@@ -7230,7 +7230,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
   <!-- ═══════════ 栖匣 助手 · 本地 Agent（纯前端、无后端，话术为预置回应） ═══════════ -->
   <section class="view" id="view-agent">
-<div class="section-intro">陪你走完大学四年的成长搭档：帮助规划、执行、复盘，情绪只是配套而非前置门槛。</div>
+<div class="section-intro">陪你走好每一步的成长搭档：帮助规划、执行、复盘，情绪只是配套而非前置门槛。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"></path><path d="M9 17h6v3H9z"></path><circle cx="9" cy="11.5" r=".5" fill="currentColor"></circle><circle cx="15" cy="11.5" r=".5" fill="currentColor"></circle></svg>栖匣 助手</h1>
       <p>打开即可开始规划与执行，不必先「调整好心态」再做事。</p>
@@ -7238,7 +7238,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <div class="card" style="display:flex;flex-direction:column;overflow:hidden">
       <div id="agentChat" style="height:320px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:12px;scroll-behavior:smooth">
-        <div class="agent-bubble agent-in"><b>🪵 栖匣 助手</b><div style="margin-top:4px">你好，欢迎来到栖匣。<br>我是陪你走完大学四年的成长搭档。你可以直接告诉我：是想规划备考 / 绩点 / 保研 / 考证路线，拆解目标和任务、安排时间、准备简历面试，还是想整理复盘、记录这段时期的想法。<br><br>你今天想从哪里开始？</div></div>
+        <div class="agent-bubble agent-in"><b>🪵 栖匣 助手</b><div style="margin-top:4px">你好，欢迎来到栖匣。<br>我是陪你规划当下、记录成长的助手。你可以直接告诉我：是想规划备考 / 绩点 / 保研 / 考证路线，拆解目标和任务、安排时间、准备简历面试，还是想整理复盘、记录这段时期的想法。<br><br>你今天想从哪里开始？</div></div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 2px 8px">
         <span style="font-size:11px;color:var(--hint);line-height:1.9">快速选择一种场景：</span>
@@ -8328,7 +8328,7 @@ function switchTpl(k){
 
 function shareProduct(){
   var url=location.href.split('#')[0]||location.href;
-  var txt='分享一个我刚用上的「栖匣」——把大学四年安放好的成长搭档。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「栖匣」· © 作者：尹平平';
+  var txt='分享一个我刚用上的「栖匣」——把成长岁月安放好的收纳匣。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「栖匣」· © 作者：尹平平';
   var html='<div id="shareMask" style="position:fixed;inset:0;background:rgba(6,14,10,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)document.getElementById(\'shareMask\').remove()">'+
     '<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;padding:18px 16px;box-sizing:border-box;box-shadow:0 12px 40px rgba(0,0,0,.35)">'+
     '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div style="font-size:16px;font-weight:700;color:var(--text)">分享给朋友</div><button onclick="document.getElementById(\'shareMask\').remove()" style="border:none;background:none;font-size:22px;color:var(--hint);cursor:pointer;line-height:1">×</button></div>'+
@@ -9337,7 +9337,7 @@ function init(){
           '回来啦——今天想在哪个板块安放一点新东西？',
           '欢迎回来，愿你今天稳稳往前挪一小步。',
           '匣子已经为你打开，想记点什么，随时开始。',
-          '不必急着完成一切，先安放好一件重要的事。',
+          '不必逼自己一天完成所有事，今天推进最重要的一件就好。',
           '把心里那件盘旋的事，先写进匣子吧。',
           '每一天都是新的留白，正等着你落笔。',
           '慢一点没关系，别停下来就好。',
@@ -9979,13 +9979,27 @@ function _userDataKeyList(){
 function exportAll(){
   var data={"_app":"栖匣","_author":"尹平平","_site":(location.origin+location.pathname.replace(/index\.html$/,'/')),"_v":2,"_exportTime":new Date().toISOString()};
   /* 以“原样字符串快照”导出全部用户数据，杜绝白名单漏项 */
-  _userDataKeyList().forEach(function(k){try{data[k]=localStorage.getItem(k);}catch(e){}});
+  var dataKeys=[];
+  _userDataKeyList().forEach(function(k){try{var raw=localStorage.getItem(k); if(raw!=null){data[k]=raw; dataKeys.push(k);} }catch(e){}});
+  /* 完整性校验：先做序列化-解析回读，损坏则中止导出，不生成受损备份 */
+  try{
+    var _check=JSON.stringify(data);
+    var _back=JSON.parse(_check);
+    if(!_back||_back._v!==2) throw 'bad';
+    var _ok=0,_tot=0;
+    Object.keys(data).forEach(function(k){ if(k[0]!=='_'){ _tot++; try{ if(String(_back[k])===String(data[k])) _ok++; }catch(e){} } });
+    if(_tot>0 && _ok < Math.max(2, Math.floor(_tot*0.9))) throw 'mismatch';
+  }catch(err){
+    uiAlert('⚠️ 导出已中止：本地数据完整性自检未通过（可能存在损坏）。\n\n建议先用「系统设置 → 从最近自动备份恢复」找回数据，确认正常后再导出，避免生成损坏备份。');
+    return;
+  }
   var blob=new Blob([JSON.stringify(data)],{type:'application/json'});
   var a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download='栖匣-备份-'+todayKey()+'.json';
+  a.download='栖匣-全量备份-'+todayKey()+'.json';
   a.click();
-  flash('已导出全部数据（含随笔/心情/祝福/模板/成就等）');
+  try{ localStorage.setItem('pp_last_export',String(Date.now())); }catch(e){}
+  flash('✅ 已导出全量备份（含 '+dataKeys.length+' 类填写数据）· 请及时复制到网盘双重保存');
 }
 function importAll(ev){
   var f=ev.target.files[0];if(!f)return;
@@ -10173,7 +10187,7 @@ function exportGrowth(){
   lines.push('· 今天完成打卡：'+todayDone+' 项');
   lines.push('· 累计有记录天数：'+recDays+' 天');
   lines.push('');
-  lines.push('💡 我想对自己说：把四年，过出掌控感。');
+  lines.push('💡 我想对自己说：把每一天，过出掌控感。');
   lines.push('每一件小事都有迹可循，这份成长存档正被我一点一滴写厚。');
   lines.push('');
   lines.push('（由「栖匣」自动汇总 · 仅存于你的设备）');
@@ -10230,7 +10244,7 @@ function exportGrowth(){
       rrow('今天完成打卡', todayDone+' 项', todayDone)+
       rrow('近 7 天完成率', (wkTot>0?Math.round(wkDone/(wkTot||1)*100):100)+'%（'+wkDone+'/'+wkTot+'）', wkDone)+
     '</div>'+
-    '<div class="sign">每一件小事都有迹可循。<br><b>把四年，过出掌控感。</b></div>'+
+    '<div class="sign">每一件小事都有迹可循。<br><b>把每一天，过出掌控感。</b></div>'+
     '<div class="foot">数据由「栖匣」自动汇总 · 仅存于你的设备</div>'+
   '</div></body></html>';
   showPdfReport('我的成长报告', html, text);
@@ -11384,7 +11398,7 @@ function mobileHint(){
 }
 
 /* ── 考试倒计时 ──
-   v2.7：日期改用【官方核实 + 年度惯例推算】双轨，笔试/机考/口试类型分离。
+   v2.7：日期改用【官方核实 + 年度惯例推算】两源核对，笔试/机考/口试类型分离。
    官方已公布的日期以官方为准（2026已核实）；未公布的按历年惯例推算并明确标注"以官方公告为准"。
    */
 function _nthWeekday(year,month,n,weekday){var d=new Date(year,month-1,1);var first=(6-(7-d.getDay()+weekday)%7);if(first<0)first+=7;return first+(n-1)*7;}
@@ -12148,21 +12162,21 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       '<div style="position:absolute;left:-40px;top:-46px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(212,178,124,.16),rgba(255,255,255,0) 70%)"></div>'+
       '<div style="position:absolute;right:-56px;bottom:-56px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,94,.20),rgba(255,255,255,0) 70%)"></div>'+
       '<div style="position:absolute;top:12px;left:16px">'+
-        '<span style="font-size:11px;letter-spacing:3px;color:#B6A995">先安放，再生长 · 你的四年有处安放</span>'+
+        '<span style="font-size:11px;letter-spacing:3px;color:#B6A995">栖匣｜收纳成长诸事，步步趋近心中所向</span>'+
       '</div>'+
       '<div style="position:relative;margin:14px auto 0;width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(212,178,124,.85);background:rgba(255,255,255,.10);box-shadow:0 0 0 6px rgba(255,255,255,.06);overflow:hidden">'+
         '<img src="pwa/logo.png" alt="栖匣" style="width:60px;height:60px;border-radius:50%;display:block" onerror="logoFallback(this)">'+
       '</div>'+
       '<div style="margin-top:13px;font-size:22px;font-weight:800;letter-spacing:4px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25)">栖匣<span style="font-size:12.5px;letter-spacing:3px;font-weight:400;color:#B6A995"> · 心有所栖 · 匣纳成长</span></div>'+
-      '<div style="margin:10px auto 6px;font-size:14px;color:#fff;line-height:1.85;max-width:520px">你见过很多工具。<br>但这一页，专为你的这四年而造。</div>'+
+      '<div style="margin:10px auto 6px;font-size:14px;color:#fff;line-height:1.85;max-width:520px">你见过很多工具。<br>而这一页，为长期记录成长的人而造。</div>'+
       '<div style="margin:6px auto 16px;max-width:560px;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:12.5px;color:rgba(255,255,255,.94);line-height:1.7">'+
-        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#E2D8C4">一页收纳，四年不乱</b>——34 个板块，从入学规划到毕业去向，全在这里。</span></div>'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🗂️</span><span><b style="color:#E2D8C4">一页收纳，长期不乱</b>——34 个板块，从入学规划到职业方向，全在这里。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">🔒</span><span><b style="color:#E2D8C4">只存你手，退出即散</b>——无账号、无云端、无后台，关掉页面，谁都不知道你的记录。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)"><span style="font-size:15px">♻️</span><span><b style="color:#E2D8C4">年份在走，信息不陈旧</b>——考试、政策、活动逐年自新，永远跟你学校的年历一起走。</span></div>'+
       '</div>'+
       '<div style="font-size:12.5px;color:rgba(255,255,255,.95)">设计 · 开发 · <b style="font-size:15px;color:#E2D8C4">尹平平</b> · 独立原创</div>'+
       '<div style="margin:16px auto;width:60%;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0))"></div>'+
-      '<div style="font-size:12.5px;color:rgba(255,255,255,.92);font-style:italic;letter-spacing:1px">愿你把最要紧的四年，过成自己想要的样子。</div>'+
+      ''+
       '<div style="padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);font-size:12px;color:#FFF6E6;line-height:1.85;text-align:left;margin-top:14px">🔎 <b style="color:#FFFFFF">时效说明：</b>站内考试 / 报名 / 活动 / 政策等参考信息，均整理自各官方权威来源，核验于 <b style="color:#FFE3AC;text-decoration:underline" id="ppReviewDate">'+_Y+' 年 '+_MM+' 月</b>；本声明随新学年 <b style="color:#FFE3AC;font-weight:800">自动更新</b>，使用前请以各官方当年最新通知为准。</div>'+
       '<div style="margin-top:13px;font-size:10.5px;color:rgba(255,255,255,.78);line-height:1.7">© '+_Y+' 尹平平 · 栖匣 · 心有所栖 · 匣纳成长 · 保留所有权利 · 受《中华人民共和国著作权法》保护，未获书面授权禁止整站复制、搬运或另作商业用途。唯一正版地址即当前链接。</div>';
     main.appendChild(f);
@@ -12684,10 +12698,10 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="pt-name-premium">
-        <span class="pm-verse">一「栖」一「匣」：先安放，再生长。把状态收好，而不是时时催促。<em>—— 栖匣，为每一位大学生而来</em></span>
+        <span class="pm-verse">一「栖」一「匣」：收纳成长诸事，锚定方向，落实眼前规划。<em>—— 栖匣，致每一位精进者</em></span>
       </div>
-      <h1 class="pano-h1">把每一天，好好<em class="pano-grow">安放</em><span class="thin">：四年，去有所成，来有所栖</span></h1>
-      <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康，连同成长 · 阅读 · 职业</b></em>，你关心的方方面面收拢到一只匣里、互相咬合，陪你过好大学四年。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
+      <h1 class="pano-h1">把每一天，好好<em class="pano-grow">安放</em><span class="thin">：来有所栖，去有所成</span></h1>
+      <p class="dek"><em style="font-style:normal"><b>学业 · 目标 · 时间 · 金钱 · 健康，连同成长 · 阅读 · 职业</b></em>，你关心的方方面面收拢到一只匣里、互相咬合，主要面向大学生群体，同样支持更长周期的个人成长记录。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
       <div class="pano-stats">
         <span><b>25+</b> 能力模块</span>
@@ -12700,7 +12714,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 定位：价值主张 (步骤 2) -->
     <section class="pano-sec pano-sec-ctr" data-step="1">
       <div class="pano-no"><span class="rn">壹</span><span>它为什么无可取代 · 你所得到的</span></div>
-      <h2 class="pano-h2">它不是又一个工具，<br>而是把四年过成<em>想要的样子</em>的那个地方</h2>
+      <h2 class="pano-h2">它不是又一个工具，<br>而是让成长<em>步步趋近所向</em>的栖身之处</h2>
       <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康，以及成长、阅读与职业</b>，还让它们互相咬合。栖匣，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
       <div class="pano-feat">
         <div class="pano-ft"><span class="fi">⚡</span><b>双击即用 · 零安装零门槛</b><p>一个网页即是全部，点开就能用，不用下载、不用配置。</p></div>
@@ -12714,11 +12728,11 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 之前 vs 之后 (步骤 3) -->
     <section class="pano-sec" data-step="2">
       <div class="pano-no"><span class="rn">贰</span><span>没有它 vs 有它 · 两种大学的活法</span></div>
-      <h2 class="pano-h2">同样是四年，<em>差距从第一天就拉开</em></h2>
+      <h2 class="pano-h2">同样的开始，<em>差距从第一天就拉开</em></h2>
       <div class="pano-compare">
         <div class="pano-cp no">
           <div class="tag">没有它的日子里</div>
-          <h4 style="color:#4A5A52">被推着走的四年</h4>
+          <h4 style="color:#4A5A52">被推着走的日子</h4>
           <ul>
             <li>规划散落在十几个 App 与便签里，越攒越乱</li>
             <li>四六级、考研、期末、求职挤在一起，无从下手</li>
@@ -12729,7 +12743,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         </div>
         <div class="pano-cp yes">
           <div class="tag">有了它之后</div>
-          <h4>慢慢掌控的四年</h4>
+          <h4>慢慢掌控的日子</h4>
           <ul>
             <li>所有关键的事都在一处，想找什么随时有</li>
             <li>大目标拆到"今天做一件"，每天都看得见推进</li>
@@ -12755,7 +12769,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 大引言 (步骤 5) -->
     <div class="pano-quote" data-step="4">
-      <p>真正的自由，不是想做什么就做什么，<br>而是能把四年的每一天，都落在实处、握在自己手里。</p>
+      <p>真正的自由，不是想做什么就做什么，<br>而是能把每一天，都落在实处、握在自己手里。</p>
       <span class="by">— 栖匣 的设计哲学 —</span>
     </div>
 
@@ -12779,21 +12793,21 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 为什么设计它 · 设计理念 (步骤 7) -->
     <section class="pano-sec pano-sec-ctr" data-step="6">
       <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
-      <h2 class="pano-h2">它因一个朴素信念而生：<em>安放优先于鞭策，先接住，再谈成长</em></h2>
-      <p class="pano-lead">我们见过太多人被"大学很自由"的美好期待，和"自由反而不知从何下手"的落差困住。真正能走远的自律，不该靠意志硬扛、被列表审判，而该靠<b>一处能接住你的地方</b>。《大学》里讲"知止而后有定，定而后能静"——先把状态安放下来、不慌不忙地收好，心中安定，人才能真正从容地找到自己的步调。</p>
+      <p class="pano-lead">我们见过很多年轻人，怀揣大量目标与计划，却被杂乱的思绪压得无从下手。栖匣是一座成长收纳容器，收纳<b>学业、目标、时间、金钱、健康、眼界</b>等完整成长事务，也接纳迷茫、疲惫等真实状态。</p>
+      <p class="pano-lead" style="margin-top:10px">自律不只有一种模样：不必等待心绪完全安顿才开始行动，整理规划与向前推进可以同步发生。它拒绝高压内卷式的一味催促，也不鼓励停滞与等待——收纳是载体，行动与规划同样重要。</p>
       <div class="pano-concept">
         <div class="pano-cv" data-side="栖">
           <span class="cv-char">栖</span>
           <div class="cv-body">
-            <h5>安放 · 接纳 · 不催促</h5>
-            <p>迷茫、停顿、疲惫，都是正常状态，同样值得被好好存放。未完成的计划不是失败，只是一份待续的记录。这里不审判你、不制造内卷焦虑，先把状态妥帖收好，才有余力往前走。</p>
+            <h5>心绪 · 状态 · 落脚安放</h5>
+            <p>心绪与状态，可以在此落脚安放。迷茫、停顿、疲惫都是成长里的常态；未完成的计划，只是一份待续的记录，不代表失败。</p>
           </div>
         </div>
         <div class="pano-cv" data-side="匣">
           <span class="cv-char">匣</span>
           <div class="cv-body">
-            <h5>收纳 · 生长 · 汇成档案</h5>
-            <p>学业 · 目标 · 时间 · 金钱 · 健康，连同成长与阅读——把它们收拢进同一只匣子，互相咬合、日渐积累。一天一天的记录被保存下来，到毕业时，收下完整而真实的青春答卷。</p>
+            <h5>收纳 · 咬合 · 点滴沉淀</h5>
+            <p>收纳学业 · 目标 · 时间 · 金钱 · 健康 · 眼界，把多条成长线索收拢到一处，互相咬合，随日常点滴积累沉淀。</p>
           </div>
         </div>
       </div>
@@ -12801,7 +12815,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <div class="pano-hb"><div class="medal">燃</div><h5>越用回报越多</h5><p>连续打卡出勋章，坚持汇成热力图，一年后是你自己的成绩单。</p></div>
         <div class="pano-hb"><div class="medal">册</div><h5>周度成长档案</h5><p>每周自动汇总进度与亮点，复盘不再无从下手，看得见自己在长大。</p></div>
         <div class="pano-hb"><div class="medal">镜</div><h5>全景回看</h5><p>一年后的你回看今天，会发现每一笔认真都算数——比任何鸡汤都管用。</p></div>
-        <div class="pano-hb"><div class="medal">心</div><h5>日拱一卒</h5><p>不追求一天蜕变，只求每天向前一小步，把四年过成一部作品。</p></div>
+        <div class="pano-hb"><div class="medal">心</div><h5>日拱一卒</h5><p>不追求一天蜕变，只求每天向前一小步，持续沉淀自我。</p></div>
       </div>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
@@ -12827,7 +12841,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <div class="pano-wi"><b>刚踏入大学</b><span>无需焦虑第一步，从升学规划、每天的第一件事，到怎么管钱管时间，这里都有章法。</span></div>
         <div class="pano-wi"><b>学业与未来并进</b><span>竞赛、实习、考研保研压在肩头时，它是帮你把一团乱麻一件件拆开、落地的地图。</span></div>
         <div class="pano-wi"><b>想掌控自己的节奏</b><span>管钱、管时间、管身体一处放下；自律不是被逼，而是自己说了算。</span></div>
-        <div class="pano-wi"><b>相信长期主义</b><span>愿意把每天的小事做到位，把四年度成一部不断回看、不断生长的作品。</span></div>
+        <div class="pano-wi"><b>相信长期主义</b><span>愿意把每天的小事做到位，让成长不断回看、不断生长。</span></div>
       </div>
       <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
     </section>
@@ -12847,14 +12861,14 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <div class="pano-cta">
       <div class="ct-mark" aria-hidden="true"><img src="pwa/logo.png" alt="栖匣" draggable="false" onerror="logoFallback(this)"></div>
       <div class="ct-eyebrow">终章 · 从此刻开始</div>
-      <h2 class="ct-title">把四年，<em>过出掌控感</em></h2>
-      <p class="ct-lead">它不是"又一个工具"——它把<b>学业 · 目标 · 时间 · 金钱 · 健康，连同成长 · 阅读 · 职业</b>，收拢进一个只属你的成长中枢。今天记下的一件小事，四年后都有迹可循。</p>
+      <h2 class="ct-title">把每一天，<em>过出掌控感</em></h2>
+      <p class="ct-lead">它不是"又一个工具"——它把<b>学业 · 目标 · 时间 · 金钱 · 健康，连同成长 · 阅读 · 职业</b>，收拢进一个只属你的成长中枢。今天记下的一件小事，日后都有迹可循。</p>
       <div class="ct-vows">
         <div><span class="vt"></span><span>无账号 · 无云端 · 无后台 —— 它不制造记录之外的任何痕迹</span></div>
         <div><span class="vt"></span><span>离线打开有条件 —— 联网打开过一次后，支持离线查看已用内容</span></div>
-        <div><span class="vt"></span><span>核心免费 · 数据只在本机 —— 它只安静陪满这四年</span></div>
+        <div><span class="vt"></span><span>核心免费 · 数据只在本机 —— 它只安静陪你走得更远</span></div>
       </div>
-      <div class="ct-sign"><span class="ln"></span>从写下第一件小事开始，它陪你把大学四年，过成想要的样子<span class="ln"></span></div>
+      <div class="ct-sign"><span class="ln"></span>从写下第一件小事开始，它陪你一步一个脚印，把想要的自己慢慢活出来<span class="ln"></span></div>
       <div class="btns">
         <button class="btn btn-primary" data-pano="home">入座 · 开始记录成长<span class="arr">→</span></button>
         <button class="pano-btn-ghost" data-pano="about">再逛逛导览</button>
@@ -12972,7 +12986,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="qg-slide active">
         <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="21" width="28" height="18" rx="3"></rect><rect class="d" x="7" y="14" width="34" height="6" rx="2.5"></rect></svg></div>
         <div class="qg-title">欢迎来到栖匣</div>
-        <div class="qg-desc">一只安放你大学四年的匣子，静置在本机浏览器里。</div>
+        <div class="qg-desc">一只安放你大学生活的匣子，静置在本机浏览器里。</div>
       </div>
       <div class="qg-slide">
         <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="22" width="28" height="16" rx="3"></rect><line x1="19.4" y1="22" x2="19.4" y2="38"></line><line x1="28.6" y1="22" x2="28.6" y2="38"></line><rect x="10" y="16" width="28" height="6" rx="2"></rect></svg></div>
@@ -12986,8 +13000,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       </div>
       <div class="qg-slide">
         <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 16h12l4 5h12v15H10z" stroke-linejoin="round"></path><line x1="16" y1="29" x2="32" y2="29"></line><line x1="16" y1="33.5" x2="32" y2="33.5"></line></svg></div>
-        <div class="qg-title">四年成长档案</div>
-        <div class="qg-desc">从大一到大四一路沉淀，毕业时收下完整的青春答卷。</div>
+        <div class="qg-title">成长档案</div>
+        <div class="qg-desc">把每一段日子沉淀进档案，毕业时收下完整的青春答卷。</div>
       </div>
       <div class="qg-slide">
         <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="22" width="20" height="15" rx="3"></rect><path d="M19 22v-4a5 5 0 0110 0v4"></path><circle class="d" cx="24" cy="29" r="2.3"></circle><line x1="24" y1="29" x2="24" y2="31.4"></line></svg></div>
@@ -12997,7 +13011,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="qg-slide">
         <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="g" d="M16 18.5l4 4 9-10"></path><rect x="10" y="23" width="28" height="16" rx="3"></rect></svg></div>
         <div class="qg-title">准备就绪</div>
-        <div class="qg-desc">把大学四年，安放成你想要的样子。开始吧。</div>
+        <div class="qg-desc">把生活，安放成你想要的样子。开始吧。</div>
       </div>
     </div>
     <div class="qg-foot">
@@ -13098,7 +13112,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     try{localStorage.setItem('pp_qx_mode',m)}catch(e){}
     applyCSSMode(m);refreshNav();refreshViews();
     if(m==='min'){var act=document.querySelector('.view.active');var aid=act?(act.id||'').replace(/^view-/,''):'';if(CORE.indexOf(aid)<0&&window.switchView){try{switchView('home')}catch(e){}}}
-    flash2(m==='min'?'已切换极简模式：先安放最重要的几件事，一步步来，照样向前。':'已切换完整模式：全部板块与参考攻略已展开，随时行动。');
+    flash2(m==='min'?'已切换极简模式：只保留最重要的几件事，一步步做，照样向前。':'已切换完整模式：全部板块与参考攻略已展开，随时行动。');
   };
   function scrollToId(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}}
   window.qxQuickGo=function(k){
@@ -13334,7 +13348,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 (function(){
   function $id(x){return document.getElementById(x)}
   var BANNED='勿称栖匣为「情绪疗愈工具 / 心理疏导软件」；勿说「先安放杂念再去行动」「先调整好心态再开始」；勿反复讲解「栖 / 匣」概念；勿制造「内卷 / 冲刺 / 必须追赶长线目标」的压迫感；勿用「工作台」称呼栖匣。';
-  var OPEN='你好，欢迎来到栖匣。\n我是陪你走完大学四年的成长搭档。你可以直接告诉我：是想规划备考 / 绩点 / 保研 / 考证路线，拆解目标和任务、安排时间、准备简历面试，还是想整理复盘、记录这段时期的想法。\n\n你今天想从哪里开始？';
+  var OPEN='你好，欢迎来到栖匣。\n我是陪你规划当下、记录成长的助手。你可以直接告诉我：是想规划备考 / 绩点 / 保研 / 考证路线，拆解目标和任务、安排时间、准备简历面试，还是想整理复盘、记录这段时期的想法。\n\n你今天想从哪里开始？';
 
   // 场景库：覆盖大学生高频诉求；每个场景带推荐动作（跳转到对应板块）
   var SCENARIOS=[
@@ -13930,8 +13944,8 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
       ov.id='qxGuideOverlay';
       ov.style.cssText='position:fixed;inset:0;background:rgba(20,16,12,.5);z-index:99990;display:flex;align-items:center;justify-content:center;padding:20px;animation:qxFade .25s ease';
       ov.innerHTML='<div role="dialog" aria-modal="true" aria-label="新手入门引导" style="background:var(--card);border:1px solid var(--border);border-radius:18px;max-width:340px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 16px 60px rgba(0,0,0,.4)">'+
-        '<div style="font-size:20px;font-weight:800;color:var(--primary);letter-spacing:2px;margin-bottom:10px">欢迎来到栖匣</div>'+
-        '<div style="font-size:13.5px;color:var(--text);line-height:2;text-align:left">初次使用，建议先填写<b style="color:var(--primary)">【今日核心】</b>，确定今天最重要的一件事；侧边栏包含所有成长板块，按需浏览即可。</div>'+
+        '<div style="font-size:20px;font-weight:800;color:var(--primary);letter-spacing:2px;margin-bottom:10px">一「栖」一「匣」</div>'+
+        '<div style="font-size:13.5px;color:var(--text);line-height:2;text-align:left">收纳成长诸事，锚定方向，落实眼前规划。为你收拢学业、目标与日常安排。<b style="color:var(--primary)">—— 栖匣，致每一位精进者</b><br>把每一天妥善安放，步步趋近心中所向。</div>'+
         '<button id="qxGuideClose" class="btn btn-primary" style="width:100%;margin-top:16px;padding:11px;font-size:15px">好的 · 开始安放今天</button>'+
         '<div style="font-size:11px;color:var(--hint);margin-top:10px;line-height:1.7">这段引导只会出现一次；之后可在「系统 → 关于产品」重看全景导览。</div>'+
         '</div>';
@@ -14999,5 +15013,182 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
   }
 })();
 
+</script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   栖匣 · 增强模块三（boot3）—— 免责提示 / 反诈专区 / 多元发展路径 /
+   导入预览与容错 / 清空双层确认 / 双标签冲突告警 / 存储空间预警 / 备份提醒
+   全自包含、逐功能 try/catch 防御，任何一项失败都不影响站点其它功能。
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var boot3=function(){
+    /* ---------- 0) 工具 ---------- */
+    function el(id){return document.getElementById(id);}
+    function qs(s,c){return (c||document).querySelector(s);}
+    function qsAll(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+    function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+    function SSL(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+    function LS(k,d){try{var v=localStorage.getItem(k);return v==null?d:v;}catch(e){return d;}}
+    var seen={};
+    function banner(viewId,htmlText,kind){
+      try{
+        if(seen['v'+viewId])return;seen['v'+viewId]=1;
+        var v=el(viewId);if(!v)return;
+        var host=qs('h1',v)||qs('h2',v)||v.firstChild;
+        var note=document.createElement('div');
+        note.className='callout callout-'+(kind||'warn');
+        note.setAttribute('role','note');
+        note.style.cssText='margin:10px 2px 14px;font-size:12.5px;line-height:1.9;'
+          +(kind==='danger'?'border-left:4px solid var(--danger-border);':'');
+        note.textContent=htmlText;
+        if(host&&host.parentNode)host.parentNode.insertBefore(note,host.nextSibling);
+        else v.insertBefore(note,v.firstChild);
+      }catch(e){}
+    }
+
+    /* ---------- 1) 第三方内容免责提示（置于各板块标题下方） ---------- */
+    banner('view-finance','⚠️ 本页面理财内容仅为科普教育，不构成任何投资建议，投资有风险，请谨慎决策。','warn');
+    banner('view-mind','⚠️ 本表格仅个人自我记录工具，非专业心理测量量表，结果不能替代医院心理诊断，心理不适请及时寻求专业帮助。','warn');
+    banner('view-tpl','⚠️ 模板仅供学习写作结构与思路，禁止直接复制原文提交作业、考试、保研文书，避免雷同风险。','warn');
+    banner('view-paper','⚠️ 模板仅供学习写作结构与思路，禁止直接复制原文提交作业、考试、保研文书，避免雷同风险。','warn');
+    banner('view-career','⚠️ 页面政策信息为静态参考，规则会更新变动，请务必以本校教务处、教育部官方最新通知为准。','info');
+    banner('view-campus','⚠️ 页面政策信息为静态参考，规则会更新变动，请务必以本校教务处、教育部官方最新通知为准。','info');
+    banner('view-exam','⚠️ 页面政策信息为静态参考，规则会更新变动，请务必以本校教务处、教育部官方最新通知为准。','info');
+    banner('view-study','⚠️ 第三方网课、B站UP主等资源仅作为参考，请自行甄别内容质量与时效。','info');
+
+    /* ---------- 2) 保研去唯一化：多元发展路径平等展示（升学/职业入口） ---------- */
+    [
+      ['view-career','升学与职业发展路径不止一条：保研、考研、考公、就业、创业、gap 调整、跨专业考研…都是值得认真考虑的选择，没有“唯一正确”的路线。请结合自身兴趣、家庭条件与节奏，选择适合你的那一条。'],
+      ['view-campus','同样值得被看到：考公、就业、创业、跨考、或留出 gap 时间想清楚，都是正当且常见的选择。选择适合你的节奏，而非被某种“最优叙事”绑架。']
+    ].forEach(function(p){ var v=qs('#sidebar .nav-item[data-view^="'+p[0].slice(5)+'"]'); if(v) banner(p[0],p[1],'info'); });
+
+    /* ---------- 3) 反校园贷 / 刷单骗局 / 虚假兼职 红色警示专区 ---------- */
+    (function(){
+      try{
+        var safe=el('view-safety');if(!safe||seen.safetyNote)return;seen.safetyNote=1;
+        var box=document.createElement('div');
+        box.className='callout callout-warn';
+        box.setAttribute('data-qx-anti','1');
+        box.style.borderLeft='4px solid var(--danger-border)';
+        box.innerHTML='<strong style="color:var(--danger);font-size:14px">🚨 紧急警示：识别三类高发骗局（务必牢记）</strong>'+
+          '<div style="font-size:12.5px;line-height:2;margin-top:6px"><b>① 校园贷 / 注销校园贷</b>：任何“学生贷”“注销额度”来电都是骗局，正规金融不与学生贷挂钩；缺钱优先走学校困难补助、勤工俭学、家人。<br>'+
+          '<b>② 刷单返利</b>：先给小额甜头、再诱导垫付大额“连单”，对方收款即失联。刷单本就是灰色，赚不到钱只有陷阱。<br>'+
+          '<b>③ 虚假兼职 / 交费入职</b>：先收押金、会费、培训费再“派单”的兼职全是套路；正规兼职不提前收费。入兼职群、拉人头的“工作”尤其警惕。<br>'+
+          '<b style="color:var(--normal,#333)">遇骗局拨打 110 / 96110（反诈专线），心存疑问先和家人老师核实，切勿转账。</b></div>';
+        var host=qs('h1',safe)||safe;
+        if(host&&host.parentNode)host.parentNode.insertBefore(box,host.nextSibling);
+        else safe.insertBefore(box,safe.firstChild);
+      }catch(e){}
+    })();
+
+    /* ---------- 4) 导入备份预览 + 损坏容错 + 确认（覆盖旧 importAll） ---------- */
+    try{
+      if(typeof window.importAll==='function'){
+        var _origImport=window.importAll;
+        function readPreviewKeys(data){
+          var keys=[];Object.keys(data).forEach(function(k){if(k[0]!=='_')keys.push(k);});
+          return keys;
+        }
+        window.importAll=function(ev){
+          var inp=ev&&ev.target;var f=inp&&inp.files?inp.files[0]:null;if(!f)return;
+          var r=new FileReader();
+          r.onload=function(e){
+            var data=null;
+            try{data=JSON.parse(e.target.result);}catch(err){data=null;}
+            if(!data||typeof data!=='object'){window.uiAlert&&uiAlert('⚠️ 无法识别该文件：不是有效的 JSON 备份，未做任何更改。');if(inp)inp.value='';return;}
+            var keys=readPreviewKeys(data);
+            if(!keys.length){window.uiAlert&&uiAlert('⚠️ 该备份内没有可导入的记录内容（可能为空或被人为修改过）。');if(inp)inp.value='';return;}
+            var preview=keys.slice(0,10).map(function(k){return '· '+esc(k);}).join('\n')+(keys.length>10?'\n… 等 '+keys.length+' 项':'');
+            if(!window.uiConfirm)return _origImport(ev);
+            uiConfirm('导入预览：这份备份包含 '+keys.length+' 项本地记录：\n'+preview+'\n\n导入将覆盖当前设备上的同名记录。请先「导出全量备份」留底，再确认是否继续？',function(){
+              var okc=0,failc=0;
+              keys.forEach(function(k){
+                try{
+                  var val=data[k];
+                  localStorage.setItem(k,typeof val==='string'?val:JSON.stringify(val));
+                  okc++;
+                }catch(err){failc++;}
+              });
+              try{localStorage.setItem('pp_last_export',String(Date.now()));}catch(_){}
+              window.uiAlert&&uiAlert('导入完成：成功写入 '+okc+' 项'+(failc?'，已跳过 '+failc+' 项异常数据（未崩溃，其余照常恢复）':'')+'。页面即将刷新。');
+              setTimeout(function(){try{location.reload();}catch(_){}},1700);
+            });
+          };
+          r.onerror=function(){window.uiAlert&&uiAlert('⚠️ 读取文件失败，请重试。');};
+          r.readAsText(f);
+          if(inp)inp.value='';
+        };
+      }
+    }catch(e){}
+
+    /* ---------- 5) 清除全部数据：双层弹窗二次确认 ---------- */
+    try{
+      if(typeof window.clearAll==='function'){
+        var _origClear=window.clearAll;
+        window.clearAll=function(){
+          window.uiConfirm&&uiConfirm('确定清空【全部填写数据】吗？\n（任务 / 打卡 / 笔记 / 心情 / 记录等。产品框架与预置内容将保留。）\n此操作无法撤销，请先「导出数据备份」留底。',function(){
+            window.uiConfirm&&uiConfirm('🛑 再次确认：确定要清空所有填写数据吗？之后将自动刷新页面。',function(){_origClear();});
+          });
+        };
+      }
+    }catch(e){}
+
+    /* ---------- 6) 双标签页编辑冲突告警 ---------- */
+    (function(){
+      try{
+        var tabId=sessionStorage.getItem('qx_tabid')||('t'+Math.random().toString(36).slice(2,9));
+        sessionStorage.setItem('qx_tabid',tabId);
+        var warned=0;
+        function heartbeat(){try{localStorage.setItem('pp_qx_heart',JSON.stringify({id:tabId,t:Date.now()}));}catch(e){}}
+        function check(){
+          try{
+            var raw=localStorage.getItem('pp_qx_heart');if(!raw)return;
+            var h=JSON.parse(raw);if(!h)return;
+            if(h.id!==tabId&&(Date.now()-h.t)<2800&&warned<1){
+              warned++;
+              window.uiAlert&&uiAlert('⚠️ 检测到该站已在另一个浏览器标签页打开\n\n两个标签同时编辑会互相覆盖记录，可能丢失刚写的内容。建议只保留一个标签页操作，另一页尽快关闭或刷新后再用。');
+            }
+          }catch(e){}
+        }
+        heartbeat();check();
+        setInterval(function(){heartbeat();},1500);
+        document.addEventListener('visibilitychange',function(){if(!document.hidden){heartbeat();setTimeout(check,400);}});
+      }catch(e){}
+    })();
+
+    /* ---------- 7) 本地存储空间预警（接近上限时提示清理/导出） ---------- */
+    (function(){
+      try{
+        if(sessionStorage.getItem('qx_stwarn'))return;sessionStorage.setItem('qx_stwarn','1');
+        var est=0;try{est=JSON.stringify(localStorage).length*2;}catch(e){est=0;}
+        if(est>3.8*1024*1024&&est>0){
+          window.uiAlert&&uiAlert('📦 本地存储空间将满（约 '+(est/1024/1024).toFixed(1)+' MB / 约 5MB）\n\n为避免写不进去或数据丢失，建议：① 导出全量备份到网盘；② 清理无用/过期记录后再继续使用。');
+        }
+      }catch(e){}
+    })();
+
+    /* ---------- 8) 自动备份提醒：距上次手动导出 >30 天温和提醒 ---------- */
+    (function(){
+      try{
+        if(sessionStorage.getItem('qx_bknote'))return;sessionStorage.setItem('qx_bknote','1');
+        var last=parseInt(LS('pp_last_export','0'),10)||0;
+        var days=(Date.now()-last)/86400000;
+        if(last>0&&days>30){
+          window.uiAlert&&uiAlert('💡 距你上次手动导出备份已超过 30 天\n\n数据只保存在本机浏览器，建议尽快「导出全量备份」并双份保存（网盘 + 本地文件），防止换设备 / 清缓存 / 更新浏览器时丢失记录。（备份当前不会自动上传云端。）');
+        }
+      }catch(e){}
+    })();
+
+    /* ---------- 9) 锚点标题不被置顶导航遮挡：全站标题 scroll-margin ---------- */
+    try{
+      var st=document.createElement('style');
+      st.textContent='section.view h1,h2,h3,h4,h5,[id]{scroll-margin-top:92px}';
+      document.head.appendChild(st);
+    }catch(e){}
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot3,900);});
+  else setTimeout(boot3,900);
+})();
 </script>
 </body></html>
