@@ -243,7 +243,7 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .title{font-size:16px;font-weight:600;color:var(--primary);white-space:nowrap;display:flex;align-items:center;gap:8px}
 .topbar .tb-badge{font-size:9px;font-weight:500;background:linear-gradient(135deg,#6E4F37,#6E4F37);color:#fff;padding:2px 8px;border-radius:10px;white-space:nowrap;flex-shrink:0}
 .topbar .tb-title{min-width:0}
-.topbar .tb-title .title{overflow:hidden;text-overflow:ellipsis}
+.topbar .tb-title .title{overflow:visible;text-overflow:clip}
 .tb-more{position:relative;flex-shrink:0}
 .tb-more-menu{
   position:absolute;top:calc(100% + 8px);right:0;background:var(--card);
@@ -441,12 +441,15 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     align-items:center;
     box-sizing:border-box;
   }
-  /* 标题区自适应收缩，防止溢出 */
+  /* 标题区保持完整宽度：放不下时整条顶栏横向滑动，标语与图标都完整可见、绝不截断 */
+  .topbar{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+  .topbar::-webkit-scrollbar{display:none}
   .topbar .tb-title{
-    flex:1;
+    flex-shrink:0;
     min-width:0;
-    overflow:hidden;
+    overflow:visible;
   }
+  .topbar .tools{flex-shrink:0}
   .topbar .title{font-size:15px}
   .topbar .tb-badge{font-size:9px;padding:2px 6px}
   .topbar .quote{display:none}
@@ -493,8 +496,8 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .main,.topbar,.view,.card{width:100%;max-width:100%;box-sizing:border-box}
   .view .card .grid>div{min-width:0}
   table,.editable-table,.timetable{max-width:100%;display:block;overflow-x:auto}
-  .topbar .title{white-space:nowrap;overflow:visible;text-overflow:clip;flex:1;min-width:0}
-  .tb-mobile-hide{display:none!important}/* 顶栏移动端：收起灵感/导览/分享/导出四个仅桌面用的图标，释放空间给品牌徽标，杜绝口号被截断 */
+  .topbar .title{white-space:nowrap;overflow:visible;text-overflow:clip;flex-shrink:0}
+  .tb-mobile-hide{display:flex!important}/* 移动端也显示灵感/导览/分享/导出图标：放不下时顶栏横向滑动，图标与标语都完整可见 */
   .card img,img{max-width:100%;height:auto}
 }
 
@@ -894,8 +897,8 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 
 /* ── 手机端顶栏防溢出：标语完整显示，字号随宽度自动缩小，绝不截断 ── */
 @media(max-width:480px){
-  .topbar{overflow:visible;}
-  .topbar .title{font-size:14px;white-space:nowrap;overflow:visible;text-overflow:clip;flex:1;min-width:0;gap:5px}
+  .topbar{overflow-x:auto;overflow-y:hidden;}
+  .topbar .title{font-size:14px;white-space:nowrap;overflow:visible;text-overflow:clip;flex-shrink:0;gap:5px}
   .topbar .tb-badge{font-size:8px;padding:2px 5px;flex-shrink:1}
 }
 
@@ -908,9 +911,9 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 
 
 /* ═══════ v7 顶栏响应式：桌面端原版 / 手机端精简 ══════ */
-/* 手机端(<768px)：隐藏桌面专属按钮，显示夜间切换 */
+/* 手机端(<768px)：分享/导出等图标也保留显示，顶栏放不下时横向滑动 */
 @media(max-width:768px){
-  .tb-share-btn,.tb-export-btn{display:none!important;}
+  .tb-share-btn,.tb-export-btn{display:flex!important;}
   .mobile-only-tool{display:flex!important;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--radius-sm);
     color:var(--muted);border:1px solid var(--border);background:transparent;cursor:pointer;transition:all .15s;}
   .mobile-only-tool:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid);}
@@ -5892,8 +5895,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">界面想要清爽还是丰富、常用板块想怎么安排，都由你说了算。每一条都说明<b style="color:var(--primary)">它是什么、按下去会发生什么</b>。</p>
         <div class="help-grid" style="display:grid;gap:10px">
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
-            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🪶 极简 / 完整模式（显示开关）：界面清爽还是丰富</div>
-            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">这就是"显示开关"——你只要按一次就能决定界面显示哪些板块。<b>极简模式</b>只保留最核心的板块（今日概览、今日待办、轻重缓急、行进罗盘、目标拆解、习惯养成、专注计时、札记、灵感、眼界珍藏、系统设置），把备考干货、职业、理财等参考攻略类大板块一并收起，界面安静，适合只想踏实记录、不想看海量指南的人。<b>完整模式</b>则把全部板块与参考攻略都展开。到「系统设置 → 数据安全与使用模式」一键切换，切换只影响「看不看得见」，<b>不会删除也不影响你记下的任何一条数据</b>。</p>
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🧩 板块显示开关（模板显示开关）：界面想清爽还是丰富</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">这个开关决定<b>侧边栏与首页显示哪些板块</b>，包括「专项模板」等参考内容要不要出现，按一下立即生效、想换随时换。<b>极简模式</b>只保留最核心的板块（今日概览、今日待办、轻重缓急、行进罗盘、目标拆解、习惯养成、专注计时、札记、灵感、眼界珍藏、系统设置），把备考干货、职业、理财、专项模板等参考攻略类大板块一并收起，界面安静，适合只想踏实记录、不想看海量指南的人。<b>完整模式</b>则把全部板块与参考攻略都展开。到「系统设置 → 数据安全与使用模式」一键切换，切换只影响「看不看得见」，<b>不会删除也不影响你记下的任何一条数据</b>。</p>
           </div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">⭐ 板块收藏：常用板块顺手钉在侧边栏顶部</div>
