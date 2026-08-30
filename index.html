@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.6"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.12"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -51,7 +51,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260830.10', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260830.11', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -494,6 +494,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .view .card .grid>div{min-width:0}
   table,.editable-table,.timetable{max-width:100%;display:block;overflow-x:auto}
   .topbar .title{white-space:nowrap;overflow:visible;text-overflow:clip;flex:1;min-width:0}
+  .tb-mobile-hide{display:none!important}/* 顶栏移动端：收起灵感/导览/分享/导出四个仅桌面用的图标，释放空间给品牌徽标，杜绝口号被截断 */
   .card img,img{max-width:100%;height:auto}
 }
 
@@ -891,11 +892,11 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
   padding:18px 20px!important;border-radius:14px!important;color:#fff!important;
   margin-bottom:20px!important;box-shadow:0 4px 16px rgba(122,115,99,.18)!important;}
 
-/* ── 手机端顶栏防溢出 ── */
+/* ── 手机端顶栏防溢出：标语完整显示，字号随宽度自动缩小，绝不截断 ── */
 @media(max-width:480px){
   .topbar{overflow:visible;}
-  .topbar .title{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .topbar .tb-badge{font-size:8px;padding:2px 5px;}
+  .topbar .title{font-size:14px;white-space:nowrap;overflow:visible;text-overflow:clip;flex:1;min-width:0;gap:5px}
+  .topbar .tb-badge{font-size:8px;padding:2px 5px;flex-shrink:1}
 }
 
 /* ── 平板适配 ── */
@@ -5883,7 +5884,22 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">在 <b>系统设置 → 周报 PNG 导出</b>，一键把本周的坚持与成果生成一张干净图片，可保存、可分享给家人朋友。不用自己截图、裁切、拼接，一张图讲清你这周。</p>
           </div>
         </div>
-        <div class="callout callout-info" style="margin-top:12px"><b>小提示：</b>上面这些都是比较隐蔽、但用意很实在的功能。用顺一个，就能明显省时省力。</div>
+        <div class="callout callout-info" style="margin-top:12px"><b>小提示：</b>上面这些都是看起来不起眼、但实际很省事的功能。用顺一个，就能明显省时省力。</div>
+      </div>
+
+      <div class="card" style="background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2;margin-bottom:16px">
+        <h3 style="color:var(--primary);font-size:16px">🧩 版面安排 · 界面更合你的习惯</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">界面想要清爽还是丰富、常用板块想怎么安排，都由你说了算。每一条都说明<b style="color:var(--primary)">它是什么、按下去会发生什么</b>。</p>
+        <div class="help-grid" style="display:grid;gap:10px">
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🪶 极简 / 完整模式（显示开关）：界面清爽还是丰富</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">这就是"显示开关"——你只要按一次就能决定界面显示哪些板块。<b>极简模式</b>只保留最核心的板块（今日概览、今日待办、轻重缓急、行进罗盘、目标拆解、习惯养成、专注计时、札记、灵感、眼界珍藏、系统设置），把备考干货、职业、理财等参考攻略类大板块一并收起，界面安静，适合只想踏实记录、不想看海量指南的人。<b>完整模式</b>则把全部板块与参考攻略都展开。到「系统设置 → 数据安全与使用模式」一键切换，切换只影响「看不看得见」，<b>不会删除也不影响你记下的任何一条数据</b>。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">⭐ 板块收藏：常用板块顺手钉在侧边栏顶部</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">在任意板块页面右上角点「★ 收藏」，就能把这个板块钉进左侧「★ 我的收藏」。之后想快速回去，不用在长长的侧边栏里翻，点一下即跳转；再点一次即为取消。收藏只是快捷入口，<b>不复制内容、不占数据</b>，每个板块占一行随时可移除，你的收藏清单也会随备份一起保存。</p>
+          </div>
+        </div>
       </div>
 
       <div class="card" style="margin-bottom:16px">
@@ -7234,7 +7250,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.30.5</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.30.12</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -13194,12 +13210,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.30.5';
+  var V='2026.08.30.12';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.30.12',t:'顶栏标语完整显示 · 帮助中心更准确',tag:'体验优化',blocks:[
+      '· 移动端顶栏标语「心有所栖 · 匣纳成长」随屏宽自动缩小字号、极窄屏收起徽标图，不再被截断，完整显示不限宽。',
+      '· 帮助中心新增「版面安排」：讲清极简/完整模式（显示开关）各保留哪些板块，以及板块收藏怎么钉进侧边栏、有什么用。',
+      '· 帮助中心措辞校准：去掉不合适的词，说明更贴切、更准确，与功能实际表现一致。'
+    ]},
     {v:'2026.08.30.5',t:'顶栏固定 · 保研考研强化 · 体验提速',tag:'新功能',blocks:[
       '· 顶部导航栏调整：向下滚动时始终固定在页面顶端，任何位置都能随时查看与跳转，不再需要滚回顶部。',
       '· 保研/考研强化：新增定位自测（成绩/排名/科研/英语一键评测冲·稳·保并输出建议）、择校「2+2+2」筛选法、公共课三科分阶段作战表、调剂指南与防骗提醒。',
@@ -13882,9 +13903,10 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .qx-history-day .ok{color:#4A5D2E;font-weight:700}
 .qx-history-day .no{color:var(--hint)}
 @media(min-width:1100px){.view{max-width:980px}}
-/* 顶栏标签移动端防截断 */
-@media(max-width:700px){.topbar .tb-badge{white-space:nowrap;overflow:visible;text-overflow:clip;max-width:none;font-size:8.5px}.topbar .tb-en{font-size:11px}}
-@media(max-width:520px){.topbar .tb-badge{font-size:7.5px;padding:1px 4px}}
+/* 顶栏标语移动端防截断：字号随屏宽自动缩放，极窄屏收起徽标图，标语永远完整显示 */
+@media(max-width:700px){.topbar .tb-badge{white-space:nowrap;overflow:visible;text-overflow:clip;max-width:none;font-size:clamp(7px,2.4vw,9px)}.topbar .tb-en{font-size:11px}}
+@media(max-width:520px){.topbar .tb-badge{font-size:clamp(6.5px,2.2vw,8px);padding:1px 4px}.topbar .title img{width:20px;height:20px}}
+@media(max-width:380px){.topbar .title img{display:none}.topbar .title{gap:3px}}
 /* 产品总览(#pano)暖木配色协调：清除残留墨绿，统一暖棕金 */
 .pano{color:#4A3A2C}
 .pano-close{color:#4A3A2C;border-color:rgba(111,79,55,.18)}
