@@ -1,0 +1,1767 @@
+/* ============================================================
+   栖匣 · 全面升级改造层 (upgrade.css)
+   作用：统一设计令牌、修复响应式、补齐公共组件、覆盖旧版割裂样式
+   ============================================================ */
+
+/* ── 1. 设计令牌覆盖 ──
+   栖匣「暖木‑米棕栖匣」视觉体系：全站禁用原生蓝、冷灰、纯白、亮红、亮绿。
+   色板分四类提示：普通说明 / 警告风险 / 成功正向 / 弱化备注，浅深两套配套。 */
+:root,
+:root[data-theme="light"] {
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  --primary: #6B4D33;
+  --primary-strong: #59402A;
+  --primary-mid: #7A5A3D;
+  --primary-light: #FDF6E8;
+
+  --gold: #B38546;
+  --gold-strong: #96692F;
+  --gold-light: #F9F1DE;
+  --teal: #4A5D2E;
+  --teal-mid: #6B7A46;
+  --teal-light: #EEF1E5;
+  --coral: #8B4513;
+  --coral-strong: #A0521C;
+  --coral-light: #FBEEE6;
+
+  /* 语义提示色（对齐四类提示色板；成功/已完成统一用暖金，与整体棕色栖调协调） */
+  --success: #7A5A30;
+  --success-bg: #FAEFD6;
+  --success-border: #D9BC8C;
+  --warn: #8B4513;
+  --warn-bg: #FBEEE6;
+  --warn-border: #D9B38C;
+  --danger: #8B4513;
+  --danger-bg: #FBEEE6;
+  --danger-border: #D9B38C;
+  --info: #6B4D33;
+  --info-bg: #FDF6E8;
+  --info-border: #E5DBC8;
+
+  /* ── 提示组件统一令牌（浅色） ── */
+  --tip-bg: #FDF6E8;        /* 普通说明提示 背景 */
+  --tip-border: #E5DBC8;    /* 普通说明提示 边框 */
+  --tip-text: #6B4D33;      /* 普通说明提示 文字 */
+  --warn-tip-bg: #FBEEE6;   /* 警告风险提示 背景 */
+  --warn-tip-border: #D9B38C;
+  --warn-tip-text: #8B4513;
+  --ok-bg: #FAEFD6;         /* 成功正向提示 背景（暖金） */
+  --ok-border: #D9BC8C;
+  --ok-text: #7A5A30;
+  --note: #8C7863;          /* 弱化小字备注 */
+  --rule: #E5DBC8;          /* 全站分割线 */
+  --tip-radius: 12px;       /* 全站提示框统一圆角 */
+  --tip-pad: 14px 16px;     /* 全站提示框统一内边距 */
+
+  --bg: #FAF7F0;
+  --card: #FFFFFF;
+  --surface: #F5EFE2;
+  --text: #33291F;
+  --muted: #6B5E51;
+  --hint: #8C7863;
+  --border: #E5DBC8;
+  --border-strong: #D2C5AA;
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --shadow-xs: 0 1px 2px rgba(51, 41, 31, 0.04);
+  --shadow-sm: 0 2px 6px rgba(51, 41, 31, 0.06);
+  --shadow-md: 0 4px 14px rgba(51, 41, 31, 0.08);
+  --shadow-lg: 0 12px 32px rgba(51, 41, 31, 0.12);
+
+  --transition-fast: 120ms ease;
+  --transition-base: 200ms ease;
+}
+
+:root[data-theme="dark"] {
+  --primary: #D4B27C;
+  --primary-strong: #E0C390;
+  --primary-mid: #CBA979;
+  --primary-light: #3D2E1F;
+
+  --gold: #E2BF85;
+  --gold-strong: #EBD09B;
+  --gold-light: #4A3D27;
+  --teal: #D2DDBC;
+  --teal-mid: #566B3F;
+  --teal-light: #2F3C24;
+  --coral: #F0C8A0;
+  --coral-strong: #7A4320;
+  --coral-light: #4A2A1A;
+
+  /* 语义提示色（深色配套；成功/已完成用暖棕金，与栖调一致） */
+  --success: #E6CE9D;
+  --success-bg: #3A3120;
+  --success-border: #7C6236;
+  --warn: #F0C8A0;
+  --warn-bg: #4A2A1A;
+  --warn-border: #7A4320;
+  --danger: #F0C8A0;
+  --danger-bg: #4A2A1A;
+  --danger-border: #7A4320;
+  --info: #E5DBC8;
+  --info-bg: #3D2E1F;
+  --info-border: #5A4430;
+
+  /* ── 提示组件统一令牌（深色配套） ── */
+  --tip-bg: #3D2E1F;
+  --tip-border: #5A4430;
+  --tip-text: #E5DBC8;
+  --warn-tip-bg: #4A2A1A;
+  --warn-tip-border: #7A4320;
+  --warn-tip-text: #F0C8A0;
+  --ok-bg: #3A3120;
+  --ok-border: #7C6236;
+  --ok-text: #E6CE9D;
+  --note: #A89078;
+  --rule: #5A4430;
+
+  --bg: #221D16;
+  --card: #2B251C;
+  --surface: #252019;
+  --text: #F1E9D8;
+  --muted: #CFC2A9;
+  --hint: #A89078;
+  --border: #4A3E2C;
+  --border-strong: #5A4430;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── 2. 基础排版与可访问性 ── */
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: clip;   /* 用 clip 而非 hidden：既拦横向溢出，又不破坏 .topbar 的 sticky 固定 */
+}
+
+h1, h2, h3, h4, h5, h6, .page-head h1, .sidebar .logo, .topbar .title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 0.85em; }
+
+/* 提升对比度 */
+a { color: var(--primary-strong); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 3. 公共组件统一 ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  padding: 18px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.card:hover { box-shadow: var(--shadow-sm); }
+
+.btn, button[class*="btn"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  min-width: 38px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  gap: 6px;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.btn-primary:hover { background: var(--primary-strong); }
+.btn-sm { min-height: 32px; padding: 6px 10px; font-size: 13px; }
+.btn-ghost, .btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* ── 3.5 今日知识标签页 ── */
+.knowledge-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.k-tab {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 4px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+.k-tab svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.k-tab:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.k-tab.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  font-weight: 600;
+}
+[data-theme="dark"] .k-tab {
+  background: var(--bg);
+  color: var(--muted);
+  border-color: var(--border-strong);
+}
+[data-theme="dark"] .k-tab.active {
+  background: rgba(212, 178, 124, 0.22);
+  color: #E6DCC4;
+  border-color: #D4B27C;
+}
+
+/* ── 4. 响应式与触摸友好 ── */
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  .card { padding: 14px; border-radius: var(--radius-sm); }
+  .btn, button { min-height: 44px; min-width: 44px; padding: 10px 14px; }
+  .btn-sm { min-height: 38px; }
+  input, textarea, select { min-height: 44px; }
+  .grid.grid-2, .grid.grid-3, .grid.grid-4 { grid-template-columns: 1fr !important; gap: 12px; }
+  table, .editable-table { display: block; overflow-x: auto; white-space: nowrap; }
+  .page-head h1 { font-size: 20px; }
+  .main { padding: 14px; }
+}
+
+@media (min-width: 1400px) {
+  .main { max-width: 1200px; margin: 0 auto; padding: 28px; }
+}
+
+@media (min-width: 1800px) {
+  .main { max-width: 1400px; }
+}
+
+/* ── 5. 布局与导航增强 ── */
+.app { min-height: 100vh; display: flex; flex-direction: column; padding-top: 64px; }
+.main { flex: 1; padding: 18px; }
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 184px;
+  right: 0;
+  height: 64px;
+  z-index: 90;
+  background: rgba(250, 247, 240, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+body.sidebar-collapsed .topbar { left: 0; }
+[data-theme="dark"] .topbar { background: rgba(31, 27, 22, 0.92); }
+@media (min-width: 769px) and (max-width: 1024px) { .topbar { left: 190px; } }
+@media (max-width: 768px) { .app { padding-top: 54px; } .topbar { left: 0; right: 0; height: 54px; } }
+@media (max-width: 480px) { .app { padding-top: 50px; } .topbar { height: 50px; } }
+
+.topbar .title img,
+.sidebar .logo img,
+.tp-logo img,
+.home-hero img,
+.about-hero img {
+  background: var(--primary);
+  color: transparent;
+  object-fit: cover;
+}
+img[src*="pwa/logo"] { background: var(--primary); }
+img[alt="栖匣"] { color: transparent; }
+
+/* 顶部导航 */
+/* 顶部导航 */
+.cu-topnav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.cu-topnav button {
+  min-width: 64px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.cu-topnav button span { font-size: 14px; }
+.cu-topnav button small { font-size: 11px; }
+@media (max-width: 768px) {
+  /* 手机端：搜索/帮助按钮改为纯图标，避免挤占品牌名 */
+  .cu-topnav { gap: 4px; }
+  .cu-topnav button {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  .cu-topnav button small { display: none; }
+  .cu-topnav button span { font-size: 16px; }
+  .tb-badge { display: none; }
+  /* 品牌区域永远保留：让标题按自身宽度显示，不要压缩到只剩图标 */
+  .topbar .tb-title { flex: 0 1 auto; min-width: 60px; }
+  .topbar .title { flex-shrink: 0; overflow: visible; text-overflow: clip; }
+  .topbar .tools { gap: 4px; }
+  /* 顶栏精简：把导出/分享/导览/换一批灵感收进「更多」菜单，只留主题切换和更多 */
+  .topbar .tools .tb-mobile-hide { display: none; }
+  /* 今日心语按钮不要被标题挤扁 */
+  .mind-card > div:first-child {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .mind-card .mind-refresh {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  /* 超小屏：今日心语标题与按钮分两行，按钮完整显示 */
+  .mind-card > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .mind-card .mind-refresh {
+    align-self: flex-end;
+    margin-left: 0;
+  }
+}
+
+/* 全局禁用旧版卡片折叠按钮，避免遮挡内容（尤其是今日心语的换一句按钮） */
+.qx-foldbtn { display: none !important; }
+.qx-fold { max-height: none !important; overflow: visible !important; }
+
+/* 侧边栏分组 */
+.nav-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--hint);
+  padding: 10px 16px 4px;
+  font-weight: 700;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin: 2px 8px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.nav-item:hover { background: var(--surface); color: var(--text); }
+.nav-item.active { background: var(--primary-light); color: var(--primary-strong); font-weight: 600; }
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
+}
+[data-theme="dark"] .bottom-nav { background: rgba(44, 38, 32, 0.96); }
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.bottom-nav-item.active { color: var(--primary); }
+
+/* ── 6. 折叠区块（解决首页堆砌/滚动过长） ── */
+.cu-section { margin-bottom: 14px; }
+.cu-section summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+}
+.cu-section summary::-webkit-details-marker { display: none; }
+.cu-section summary::after {
+  content: "›";
+  font-size: 20px;
+  transition: transform var(--transition-fast);
+}
+.cu-section[open] summary::after { transform: rotate(90deg); }
+.cu-section > .cu-section-body {
+  padding: 14px 0 0;
+}
+
+/* ── 7. Toast 提示 ── */
+.cu-toast {
+  position: fixed;
+  left: auto;
+  right: 24px;
+  bottom: 24px;
+  transform: translateY(14px);
+  z-index: 10000;
+  background: var(--tip-bg);
+  color: var(--tip-text);
+  border: 1px solid var(--tip-border);
+  padding: 12px 16px;
+  border-radius: var(--tip-radius);
+  font-size: 13px;
+  line-height: 1.7;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  max-width: min(92vw, 420px);
+  text-align: left;
+  word-break: break-word;
+}
+/* 全站 Toast 唯一载体收敛：站内同时存在 #flash 与 .cu-toast 两套实现，
+   同一条消息会弹出两次。此处隐藏 .cu-toast，由注入脚本把其消息转发到 #flash，
+   保证 upgrade.js 内部的 toast() 调用同样可见且不重复。 */
+.cu-toast { display: none !important; }
+[data-theme="dark"] .cu-toast { background: var(--tip-bg); color: var(--tip-text); border-color: var(--tip-border); }
+.cu-toast.show { opacity: 1; transform: translateY(0); }
+/* Toast 三态：成功 / 警告 / 失败 —— 全部落在暖木‑米棕色板内 */
+.cu-toast.success { background: var(--ok-bg); color: var(--ok-text); border: 1px solid var(--ok-border); }
+.cu-toast.warn,
+.cu-toast.danger { background: var(--warn-tip-bg); color: var(--warn-tip-text); border: 1px solid var(--warn-tip-border); }
+[data-theme="dark"] .cu-toast.success { background: var(--ok-bg); color: var(--ok-text); border-color: var(--ok-border); }
+[data-theme="dark"] .cu-toast.warn,
+[data-theme="dark"] .cu-toast.danger { background: var(--warn-tip-bg); color: var(--warn-tip-text); border-color: var(--warn-tip-border); }
+
+/* ── 8. 确认弹窗 ── */
+.cu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 34, 22, 0.50);
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.cu-overlay.show { opacity: 1; pointer-events: auto; }
+.cu-modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  transform: scale(0.96);
+  transition: transform 0.2s;
+}
+.cu-overlay.show .cu-modal { transform: scale(1); }
+.cu-modal h4 { margin: 0 0 10px; font-size: 17px; }
+.cu-modal p { color: var(--muted); margin: 0 0 18px; font-size: 14px; line-height: 1.6; }
+.cu-modal .cu-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+/* ── 9. 全局搜索 ── */
+.cu-search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10500;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 9vh 16px 5vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.cu-search-overlay.show { opacity: 1; pointer-events: auto; }
+.cu-search-box {
+  width: min(680px, 100%);
+  max-height: calc(86vh - 6vh);
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-10px);
+  transition: transform 0.2s;
+}
+.cu-search-overlay.show .cu-search-box { transform: translateY(0); }
+.cu-search-input {
+  width: 100%;
+  flex-shrink: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 18px;
+  font-size: 16px;
+  background: transparent;
+  color: var(--text);
+}
+.cu-search-results { flex: 1 1 auto; min-height: 0; max-height: none; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 8px; }
+.cu-search-empty { padding: 24px; text-align: center; color: var(--hint); }
+.cu-search-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.cu-search-item:hover, .cu-search-item.active { background: var(--surface); }
+.cu-search-item small { color: var(--hint); font-size: 12px; }
+.cu-search-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--primary-strong);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.cu-search-tag:hover { background: var(--primary-light); }
+
+/* 帮助中心 */
+.help-grid details {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.help-grid summary {
+  padding: 12px 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.help-grid summary::-webkit-details-marker { display: none; }
+.help-grid summary::after {
+  content: "+";
+  font-size: 18px;
+  color: var(--primary);
+  font-weight: 400;
+}
+.help-grid details[open] summary::after { content: "−"; }
+.help-grid details p {
+  padding: 0 14px 14px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+
+/* ── 10. 仪表盘图表 ── */
+.cu-chart { width: 100%; }
+.cu-bar { display: flex; align-items: flex-end; gap: 6px; height: 120px; padding: 10px 0; }
+.cu-bar-item { flex: 1; background: var(--primary); border-radius: 4px 4px 0 0; min-width: 16px; opacity: 0.85; position: relative; }
+.cu-bar-item:hover { opacity: 1; }
+.cu-bar-label { font-size: 11px; color: var(--hint); text-align: center; margin-top: 4px; }
+.cu-pie { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto; }
+.cu-legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; font-size: 12px; }
+.cu-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.cu-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* ── 11. 帮助中心 ── */
+#view-help .help-grid { display: grid; gap: 14px; }
+#view-help details { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; }
+#view-help summary { font-weight: 600; cursor: pointer; }
+#view-help p { color: var(--muted); margin: 10px 0 0; }
+
+/* 帮助中心 · 深色主题适配（压过内联浅色背景） */
+:root[data-theme="dark"] #view-help div[style*="background:linear-gradient(135deg,#F1EADE"] {
+  background: linear-gradient(135deg, #2E2A23 0%, #352F26 100%) !important;
+  border-color: #463B29 !important;
+}
+:root[data-theme="dark"] #view-help div[style*="#FFFDF5"] {
+  background: #2F2A21 !important;
+  border-color: #463B29 !important;
+}
+
+/* ── 12. 模块开关与隐藏 ── */
+.cu-module-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.cu-module-toggle:last-child { border-bottom: 0; }
+.cu-switch {
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--border-strong);
+  position: relative;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.cu-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--transition-fast);
+}
+.cu-switch.on { background: var(--primary); }
+.cu-switch.on::after { transform: translateX(18px); }
+
+/* 隐藏被关闭的模块 */
+.cu-hidden-module { display: none !important; }
+
+/* ── 13. 首页 hero 区保持与页面协调的暖木浅色 ── */
+.home-hero {
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+/* ── 14. 表格与长文本 ── */
+.editable-table th,
+table th {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+}
+.editable-table td,
+table td { padding: 8px; border: 1px solid var(--border); }
+
+/* ── 15. 语义提示色（统一到暖木‑米棕四类色板） ── */
+.callout-success { background: var(--success-bg); border-color: var(--success-border); color: var(--success); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger); }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); color: var(--info); }
+
+/* ── 16. 覆盖旧版硬编码颜色（深色兜底） ── */
+[data-theme="dark"] .card[style*="#FFFFFF"],
+[data-theme="dark"] .card[style*="#FFF"],
+[data-theme="dark"] .card[style*="#FCF8EC"],
+[data-theme="dark"] .card[style*="#F5EFE2"],
+[data-theme="dark"] .card[style*="#F6F2E9"] {
+  background: var(--card) !important;
+}
+[data-theme="dark"] .about-hero,
+[data-theme="dark"] .home-hero {
+  background: linear-gradient(135deg, #5C4030, #3A271A) !important;
+  color: #F5E9D8 !important;
+}
+
+/* ── 17. 安全区与底部导航占位 ── */
+.app { padding-bottom: env(safe-area-inset-bottom); }
+@media (max-width: 768px) {
+  .main { padding-bottom: 80px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   栖匣 · 全站提示组件统一层（暖木‑米棕栖匣视觉体系）
+   目标：四类提示（普通说明／警告风险／成功正向／弱化备注）全站配色、圆角、
+   内边距完全一致；清除原生蓝、冷灰、纯白、亮红、亮绿残留；浅深两套同步。
+   本层位于 upgrade.css 末尾，优先级高于 index.html 内联样式与内联 style
+   属性（关键声明使用 !important）。
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── A. 提示框基础：圆角、内边距、边框、行距全站一致 ── */
+.callout,
+.callout-info,
+.callout-warn,
+.callout-ok,
+.callout-success,
+.callout-danger,
+.callout-tip,
+.tip,
+.tp-note,
+.note-zone,
+.privacy-note,
+.qx-table-hint,
+.tbl-scroll-hint,
+.pb-info,
+.habit-info,
+.cd-info,
+.qk-tip,
+.bm-qr-note,
+.pano-note,
+#qixiaBackupTip,
+#uiModalMsg,
+.qg-tip,
+.help-grid details > p {
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+  font-size: 13px;
+  line-height: 1.85;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--tip-border) !important;
+  background: var(--tip-bg) !important;
+  color: var(--tip-text) !important;
+  margin: 10px 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* 提示框内标题与强调文字：跟随提示主色，禁止蓝／亮红 */
+.callout b,
+.callout strong,
+.callout-info b,
+.callout-info strong,
+.callout-warn b,
+.callout-warn strong,
+.callout-ok b,
+.callout-ok strong,
+.callout-success b,
+.callout-success strong,
+.callout-danger b,
+.callout-danger strong,
+.tip b,
+.tip strong,
+#qixiaBackupTip b,
+#qixiaBackupTip strong,
+#uiModalMsg b,
+#uiModalMsg strong {
+  color: inherit !important;
+  font-weight: 700;
+}
+
+/* 提示框内链接 */
+.callout a,
+.callout-info a,
+.callout-warn a,
+.callout-ok a,
+.tip a,
+#qixiaBackupTip a {
+  color: inherit !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── B. 三类语义提示配色（覆盖 A 的基础色） ── */
+/* B1. 普通说明提示：💡 小提醒 / 操作指引 / 使用小贴士 / 普通备注 */
+.callout-info,
+.callout-tip,
+.tip,
+.privacy-note,
+.qx-table-hint,
+.tbl-scroll-hint,
+.pb-info,
+.habit-info,
+.cd-info,
+.qk-tip,
+.pano-note,
+.bm-qr-note,
+.note-zone,
+.tp-note,
+#qixiaBackupTip {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+}
+
+/* B2. 警告风险提示：⚠️ 风险红线 / 理财避坑 / 兼职防骗 / 重要警示 */
+.callout-warn,
+.callout-danger {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+.callout-warn strong,
+.callout-warn b,
+.callout-danger strong,
+.callout-danger b {
+  color: var(--warn-tip-text) !important;
+}
+
+/* B3. 成功正向提示：打卡完成 / 保存成功 / 导入导出成功 */
+.callout-ok,
+.callout-success {
+  background: var(--ok-bg) !important;
+  border-color: var(--ok-border) !important;
+  color: var(--ok-text) !important;
+}
+.callout-ok strong,
+.callout-ok b,
+.callout-success strong,
+.callout-success b {
+  color: var(--ok-text) !important;
+}
+
+/* B4. 弱化小字备注：免责／仅供参考／以官方通知为准 —— 无背景色块 */
+.qx-note,
+.note-sm,
+.tip-note,
+.foot-note,
+.disclaimer,
+.hint-sm,
+[data-note="weak"],
+p[style*="color:var(--hint)"]:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]),
+div[style*="color:var(--hint)"]:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]),
+span[style*="color:var(--hint)"]:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]),
+small[style*="color:var(--hint)"]:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]) {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: var(--note) !important;
+}
+
+/* 兜底：任何显式声明为「弱化备注」语义的元素 */
+.view [class*="disclaimer"],
+.view [class*="footnote"],
+.view [class*="weak-note"] {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--note) !important;
+}
+
+/* ── C. 表单校验报错文字：禁用刺眼亮红，统一警告色系 ── */
+.err-msg,
+.error-msg,
+.field-error,
+.form-error,
+.input-error,
+.valid-msg,
+[class*="err-tip"],
+[class*="error-tip"],
+[data-role="error"] {
+  color: var(--warn-tip-text) !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+/* ── D. Toast 消息提示（#flash 为站内实际 Toast 载体） ──
+   统一停靠右下角；移动端抬升以避开底部手机导航。 */
+#flash,
+.flash {
+  top: auto !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  left: auto !important;
+  transform: translateY(14px) !important;
+  background: var(--tip-bg) !important;
+  color: var(--tip-text) !important;
+  border: 1px solid var(--tip-border) !important;
+  border-radius: var(--tip-radius) !important;
+  padding: 12px 16px !important;
+  font-size: 13px;
+  line-height: 1.7;
+  box-shadow: var(--shadow-lg) !important;
+  max-width: min(92vw, 420px);
+  text-align: left;
+  word-break: break-word;
+  z-index: 12000 !important;
+}
+#flash.show,
+.flash.show { transform: translateY(0) !important; }
+/* 成功态 */
+#flash.is-ok,
+.flash.is-ok {
+  background: var(--ok-bg) !important;
+  color: var(--ok-text) !important;
+  border-color: var(--ok-border) !important;
+}
+/* 警告 / 失败态 */
+#flash.is-warn,
+.flash.is-warn,
+#flash.is-err,
+.flash.is-err {
+  background: var(--warn-tip-bg) !important;
+  color: var(--warn-tip-text) !important;
+  border-color: var(--warn-tip-border) !important;
+}
+#flash b,
+#flash strong,
+.flash b,
+.flash strong { color: inherit !important; }
+
+/* 更新提示条（右下角版本更新 Toast） */
+#qxUpdateToast {
+  background: var(--card) !important;
+  border: 1px solid var(--tip-border) !important;
+  border-radius: var(--tip-radius) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow-lg) !important;
+  max-width: min(92vw, 420px);
+}
+#qxUpdateToast > div {
+  background: var(--card) !important;
+  border: 1px solid var(--tip-border) !important;
+  border-radius: var(--tip-radius) !important;
+  color: var(--text) !important;
+}
+
+/* ── E. 二次确认弹窗内部提示文字区块 ── */
+#uiModal .modal,
+#uiModal > div,
+.cu-modal,
+.cu-search-panel,
+.cu-sheet,
+.qx-modal-inner {
+  /* 禁用纯白：弹窗/对话框卡片统一宣纸暖白 #FDFBF7 */
+  background: #FDFBF7 !important;
+  border: 1px solid var(--tip-border) !important;
+  border-radius: var(--tip-radius) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] #uiModal .modal,
+:root[data-theme="dark"] #uiModal > div,
+:root[data-theme="dark"] .cu-modal,
+:root[data-theme="dark"] .cu-search-panel,
+:root[data-theme="dark"] .cu-sheet,
+:root[data-theme="dark"] .qx-modal-inner {
+  background: var(--card) !important;
+}
+#uiModalMsg,
+.cu-modal p,
+.cu-modal .cu-hint {
+  background: var(--tip-bg) !important;
+  border: 1px solid var(--tip-border) !important;
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+  color: var(--tip-text) !important;
+  font-size: 13.5px;
+  line-height: 1.85;
+}
+/* 危险操作确认（删除 / 清空数据）：警告色系 */
+#uiModal .modal.is-danger #uiModalMsg,
+#uiModal.is-danger #uiModalMsg,
+.cu-modal.is-danger p,
+.cu-modal.is-danger .cu-hint {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+#uiModal .btn-danger,
+.cu-modal .btn-danger,
+.tb-more-danger {
+  background: var(--warn-tip-text) !important;
+  border-color: var(--warn-tip-text) !important;
+  color: #FFF8EF !important;
+}
+#uiModal .btn-danger:hover,
+.cu-modal .btn-danger:hover,
+.tb-more-danger:hover {
+  background: var(--coral-strong) !important;
+  border-color: var(--coral-strong) !important;
+}
+
+/* ── F. 按钮 / 可点元素 hover 与激活态：清蓝，统一暖棕 ── */
+.btn:hover,
+button:hover,
+[onclick]:not(.nav-item):not(.bottom-nav-item):hover {
+  border-color: var(--border-strong) !important;
+}
+.btn:active,
+button:active,
+[onclick]:not(.nav-item):not(.bottom-nav-item):active {
+  background: var(--primary-light) !important;
+  color: var(--primary) !important;
+}
+.btn:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible,
+[onclick]:focus-visible {
+  outline: 2px solid var(--gold) !important;
+  outline-offset: 2px;
+}
+/* 浏览器默认焦点蓝环 / 表单校验红框一律替换 */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-light) !important;
+  outline: none !important;
+}
+::selection {
+  background: rgba(179, 133, 70, 0.24);
+  color: var(--text);
+}
+
+/* ── G. 导航选中高亮：侧边栏 / 顶部标签 / 底部手机导航 ── */
+.nav-item.active,
+.nav-item.active:hover {
+  background: var(--primary-light) !important;
+  color: var(--primary) !important;
+  box-shadow: inset 3px 0 0 var(--gold) !important;
+}
+.nav-item:hover { background: var(--surface) !important; color: var(--primary) !important; }
+.bottom-nav-item.active,
+.bottom-nav-item.active .bn-ic,
+.bottom-nav-item.active svg {
+  color: var(--gold) !important;
+}
+.bottom-nav-item.active { background: transparent !important; }
+.tab.active {
+  color: var(--primary) !important;
+  border-bottom-color: var(--gold) !important;
+}
+/* .k-tab 是实心胶囊（原为 primary 底 + 白字），必须同时给出可读的前景色，
+   否则 primary 底 + primary 字会导致文字不可见 */
+.k-tab.active {
+  background: var(--primary) !important;
+  color: #FDF6E8 !important;
+  border-color: var(--gold) !important;
+  font-weight: 600;
+}
+:root[data-theme="dark"] .k-tab.active {
+  background: rgba(212, 178, 124, 0.22) !important;
+  color: #E6DCC4 !important;
+  border-color: var(--gold) !important;
+}
+:root[data-theme="dark"] .bottom-nav-item.active,
+:root[data-theme="dark"] .bottom-nav-item.active svg { color: var(--gold) !important; }
+:root[data-theme="dark"] .nav-item.active { color: var(--primary) !important; }
+
+/* ── H. 分割线：全站统一暖木米棕，清除蓝／绿／灰残留 ── */
+hr,
+.divider,
+.sep {
+  border: 0 !important;
+  border-top: 1px solid var(--rule) !important;
+  background: transparent !important;
+  height: 0;
+}
+.card + .card,
+.view > .card + .card { border-color: var(--rule); }
+
+/* ── I. 标签 / 徽章 / 分类标记：锁在暖米‑棕黄色区间 ── */
+.tag,
+.tag-blue,
+.tag-teal,
+.tag-coral,
+.tag-gold,
+.tag-gray,
+.chip,
+.badge,
+.qs-badge,
+.pill,
+[class*="tag-"],
+[class*="badge"] {
+  border-radius: 999px;
+}
+.tag-blue,
+.tag-teal,
+.tag-coral,
+.tag-gold,
+.tag-gray {
+  background: var(--tip-bg) !important;
+  border: 1px solid var(--tip-border) !important;
+  color: var(--tip-text) !important;
+}
+.tag-gold { background: var(--gold-light) !important; border-color: var(--gold) !important; color: var(--gold-strong) !important; }
+.tag-gray { background: var(--surface) !important; color: var(--muted) !important; }
+.qs-badge {
+  background: linear-gradient(135deg, var(--gold), var(--gold-strong)) !important;
+  color: #FFF8EF !important;
+}
+.streak,
+.res-link .ico {
+  background: var(--warn-tip-bg) !important;
+  color: var(--warn-tip-text) !important;
+  border: 1px solid var(--warn-tip-border) !important;
+}
+
+/* ── J. 进度条 / 图表：暖棕黄铜，移除浏览器默认蓝 ── */
+.progress,
+.progress::-webkit-progress-bar,
+progress,
+progress::-webkit-progress-bar {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  overflow: hidden;
+}
+.progress .bar,
+.progress > div,
+#weekProgress,
+#prepareBar {
+  background: linear-gradient(90deg, var(--gold), var(--gold-strong)) !important;
+  border-radius: 999px !important;
+}
+progress::-webkit-progress-value,
+progress::-moz-progress-bar {
+  background: #B38546 !important;
+  border-radius: 999px;
+}
+:root[data-theme="dark"] .progress .bar,
+:root[data-theme="dark"] #weekProgress,
+:root[data-theme="dark"] #prepareBar {
+  background: linear-gradient(90deg, #D4B27C, #B38546) !important;
+}
+/* 打卡完成态：成功色系（用户色板） */
+.habit-check.checked {
+  background: var(--teal) !important;
+  border-color: var(--teal) !important;
+  color: #FDFBF5 !important;
+}
+.habit-item.done { border-color: var(--teal) !important; background: var(--teal-light) !important; }
+:root[data-theme="dark"] .habit-item.done { background: var(--ok-bg) !important; border-color: var(--ok-border) !important; }
+:root[data-theme="dark"] .habit-check.checked { color: #2F3C24 !important; }
+/* 图表色板：暖棕梯度，替换默认彩色 */
+.cu-bar-item { background: linear-gradient(180deg, var(--gold), var(--primary-mid)) !important; }
+.cu-legend i { background: var(--gold) !important; }
+.cu-pie { background-image: conic-gradient(var(--gold) 0 38%, var(--primary-mid) 38% 68%, var(--coral) 68% 88%, var(--border-strong) 88% 100%) !important; }
+/* 热力图 / 仪表盘：沿用暖棕 heat 梯度 */
+.heat-cell, [class*="heat-"] { color: var(--text); }
+
+/* ── K. 深色模式兜底：任何残留的浅色硬编码提示底转为深棕提示底 ── */
+:root[data-theme="dark"] .callout,
+:root[data-theme="dark"] .callout-info,
+:root[data-theme="dark"] .callout-tip,
+:root[data-theme="dark"] .tip,
+:root[data-theme="dark"] .privacy-note,
+:root[data-theme="dark"] .qx-table-hint,
+:root[data-theme="dark"] .tbl-scroll-hint,
+:root[data-theme="dark"] .pb-info,
+:root[data-theme="dark"] .habit-info,
+:root[data-theme="dark"] .cd-info,
+:root[data-theme="dark"] .pano-note,
+:root[data-theme="dark"] .bm-qr-note,
+:root[data-theme="dark"] .note-zone,
+:root[data-theme="dark"] .tp-note,
+:root[data-theme="dark"] #qixiaBackupTip {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+}
+:root[data-theme="dark"] .callout-warn,
+:root[data-theme="dark"] .callout-danger {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+:root[data-theme="dark"] .callout-warn strong,
+:root[data-theme="dark"] .callout-warn b,
+:root[data-theme="dark"] .callout-danger strong,
+:root[data-theme="dark"] .callout-danger b {
+  color: var(--warn-tip-text) !important;
+}
+:root[data-theme="dark"] .callout-ok,
+:root[data-theme="dark"] .callout-success {
+  background: var(--ok-bg) !important;
+  border-color: var(--ok-border) !important;
+  color: var(--ok-text) !important;
+}
+/* 深色下清除蓝色分割线与蓝色高亮残留 */
+:root[data-theme="dark"] hr,
+:root[data-theme="dark"] .divider,
+:root[data-theme="dark"] .sep {
+  border-top-color: var(--rule) !important;
+}
+:root[data-theme="dark"] ::selection { background: rgba(212, 178, 124, 0.28); color: var(--text); }
+
+/* ── L. 移动端窄屏：提示卡片不贴边、不横向溢出 ── */
+@media (max-width: 768px) {
+  .callout,
+  .callout-info,
+  .callout-warn,
+  .callout-ok,
+  .callout-success,
+  .callout-danger,
+  .callout-tip,
+  .tip,
+  .tp-note,
+  .note-zone,
+  .privacy-note,
+  .qx-table-hint,
+  .tbl-scroll-hint,
+  .pb-info,
+  .habit-info,
+  .cd-info,
+  .bm-qr-note,
+  .pano-note,
+  #qixiaBackupTip,
+  #uiModalMsg,
+  #flash,
+  .flash,
+  #qxUpdateToast {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: auto !important;
+    box-sizing: border-box;
+    /* 统一安全内边距：与全站提示框完全一致，文字不贴边框 */
+    padding: var(--tip-pad) !important;
+  }
+  /* 提示框左右安全边距由父级保证，杜绝贴屏幕边缘 */
+  .view > .callout,
+  .view > .tip,
+  .view .card > .callout,
+  .view .card > .tip {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #flash,
+  .flash {
+    right: max(12px, env(safe-area-inset-right)) !important;
+    left: max(12px, env(safe-area-inset-left)) !important;
+    top: auto !important;
+    bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+    max-width: none !important;
+  }
+  #qxUpdateToast {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+    max-width: none !important;
+  }
+  #qxUpdateToast > div { max-width: none !important; width: 100% !important; }
+  .cu-toast { left: 12px; right: 12px; transform: translateY(20px); max-width: none; }
+  .cu-toast.show { transform: translateY(0); }
+  .cu-toast.show { transform: translateY(0); }
+}
+
+/* ── M. 语义色归位：成功色只用于「成功正向」场景，装饰性元素回落到暖棕主色 ── */
+/* 侧边栏分组图标（原用 var(--teal)，随 teal 语义化为成功色后需回落到暖棕） */
+.nav-section .nsec-ic,
+.nav-section .nsec-ic svg,
+.nav-section .nsec-ic path,
+.nav-section .nsec-ic circle,
+.nav-section .nsec-ic rect,
+.nav-section .nsec-ic line,
+.nav-section .nsec-ic polyline {
+  color: var(--primary-mid) !important;
+  stroke: currentColor !important;
+  fill: none;
+}
+/* 导览卡片：kicker 小标题与标题前装饰条回落到暖棕／黄铜 */
+.tp-kicker { color: var(--primary-mid) !important; }
+.tp-card h4::before { background: var(--gold) !important; }
+:root[data-theme="dark"] .nav-section .nsec-ic,
+:root[data-theme="dark"] .nav-section .nsec-ic svg { color: var(--primary) !important; }
+:root[data-theme="dark"] .tp-kicker { color: var(--primary) !important; }
+
+/* ── N. JS 兜底标记的提示块统一样式 ── */
+[data-pp-tip],
+[data-pp-tip] b,
+[data-pp-tip] strong {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+}
+[data-pp-warn],
+[data-pp-warn] b,
+[data-pp-warn] strong {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+[data-pp-ok],
+[data-pp-ok] b,
+[data-pp-ok] strong {
+  background: var(--ok-bg) !important;
+  border-color: var(--ok-border) !important;
+  color: var(--ok-text) !important;
+}
+[data-pp-note],
+[data-pp-note] b,
+[data-pp-note] strong,
+[data-pp-note] span {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--note) !important;
+  padding: 0 !important;
+}
+[data-pp-tip],
+[data-pp-warn],
+[data-pp-ok] {
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+/* 行内警告/错误提示（不变成块，只改文字色） */
+span[data-pp-warn],
+span[data-pp-err],
+[data-pp-err] {
+  display: inline !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--warn-tip-text) !important;
+  padding: 0 !important;
+}
+:root[data-theme="dark"] [data-pp-tip] { background: var(--tip-bg) !important; border-color: var(--tip-border) !important; color: var(--tip-text) !important; }
+:root[data-theme="dark"] [data-pp-warn] { background: var(--warn-tip-bg) !important; border-color: var(--warn-tip-border) !important; color: var(--warn-tip-text) !important; }
+:root[data-theme="dark"] [data-pp-ok] { background: var(--ok-bg) !important; border-color: var(--ok-border) !important; color: var(--ok-text) !important; }
+:root[data-theme="dark"] [data-pp-note] { color: var(--note) !important; }
+
+/* ── O. 兜底：把常见的内联提示块形态也纳入统一色板 ── */
+/* 轻松上手 / 首页引导说明（rgba(111,84,64,.08)+虚线边框） */
+[style*="background:rgba(111,84,64,.08)"],
+[style*="background: rgba(111, 84, 64, 0.08)"] {
+  background: var(--tip-bg) !important;
+  border: 1px dashed var(--tip-border) !important;
+  color: var(--tip-text) !important;
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+}
+/* 深色卡片上的半透明提示块 */
+[style*="background:rgba(0,0,0,.20)"],
+[style*="background:rgba(0, 0, 0, 0.2)"] {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+}
+:root[data-theme="dark"] [style*="background:rgba(0,0,0,.20)"],
+:root[data-theme="dark"] [style*="background:rgba(0, 0, 0, 0.2)"] {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+}
+
+/* ── P. 高权重兜底：压过 index.html 尾部 style 块中的 .view .callout-* 覆盖 ── */
+/* index.html 第 13097 行 `.view .callout-info{background:linear-gradient(...)}`
+   位于外链之后，需以更高特异性（:root .view …）覆盖，否则提示框背景透明。 */
+:root .view .callout-info,
+:root .card .callout-info,
+:root .view .callout-tip,
+:root .card .callout-tip,
+:root .view .callout.privacy-note,
+:root .view .tip,
+:root .card .tip {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+}
+:root .view .callout-warn,
+:root .card .callout-warn,
+:root .view .callout-danger,
+:root .card .callout-danger {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+}
+:root .view .callout-ok,
+:root .card .callout-ok,
+:root .view .callout-success,
+:root .card .callout-success {
+  background: var(--ok-bg) !important;
+  border-color: var(--ok-border) !important;
+  color: var(--ok-text) !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--tip-radius) !important;
+  padding: var(--tip-pad) !important;
+}
+/* 提示框内强调文字跟随主色 */
+:root .view .callout-info b,
+:root .view .callout-info strong,
+:root .card .callout-info b,
+:root .card .callout-info strong { color: var(--tip-text) !important; }
+:root .view .callout-warn b,
+:root .view .callout-warn strong,
+:root .view .callout-danger b,
+:root .view .callout-danger strong { color: var(--warn-tip-text) !important; }
+:root .view .callout-ok b,
+:root .view .callout-ok strong,
+:root .view .callout-success b,
+:root .view .callout-success strong { color: var(--ok-text) !important; }
+
+/* 深色同权重兜底 */
+:root[data-theme="dark"] .view .callout-info,
+:root[data-theme="dark"] .card .callout-info,
+:root[data-theme="dark"] .view .callout-tip,
+:root[data-theme="dark"] .view .tip,
+:root[data-theme="dark"] .view .callout,
+:root[data-theme="dark"] .card .callout {
+  background: var(--tip-bg) !important;
+  border-color: var(--tip-border) !important;
+  color: var(--tip-text) !important;
+}
+:root[data-theme="dark"] .view .callout-warn,
+:root[data-theme="dark"] .view .callout-danger,
+:root[data-theme="dark"] .card .callout-warn {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+:root[data-theme="dark"] .view .callout-ok,
+:root[data-theme="dark"] .view .callout-success {
+  background: var(--ok-bg) !important;
+  border-color: var(--ok-border) !important;
+  color: var(--ok-text) !important;
+}
+
+/* ── Q. 弱化备注高权重兜底 ──
+   index.html 中存在 ID 级硬编码（如 [data-theme="dark"] #view-save .card li），
+   特异性为 (1,2,1)，普通 .card [data-pp-note] (0,4,0) 压不过，
+   故此处用同等 ID 级选择器兜底，保证「仅供参考／以官方通知为准」类小字
+   在深色下仍为弱化备注色 #A89078，而非冷灰或正文色。 */
+:root[data-theme="dark"] .view [data-pp-note],
+:root[data-theme="dark"] .card [data-pp-note],
+:root[data-theme="dark"] #view-goals .card [data-pp-note],
+:root[data-theme="dark"] #view-party .card [data-pp-note],
+:root[data-theme="dark"] #view-finance .card [data-pp-note],
+:root[data-theme="dark"] #view-save .card [data-pp-note],
+:root[data-theme="dark"] #view-shop .card [data-pp-note],
+:root[data-theme="dark"] #view-life .card [data-pp-note],
+:root[data-theme="dark"] #view-ai .card [data-pp-note],
+:root[data-theme="dark"] #view-college .card [data-pp-note],
+:root[data-theme="dark"] #view-settings .card [data-pp-note],
+:root[data-theme="dark"] .view [data-pp-note] *,
+:root[data-theme="dark"] .card [data-pp-note] * {
+  color: var(--note) !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+:root .view [data-pp-note],
+:root .card [data-pp-note],
+:root .view [data-pp-note] * {
+  color: var(--note) !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* ── R. 深色模式交互件对比度补齐 ── */
+/* 危险按钮：深色下原为浅底浅字（几乎不可见），改为规范警告色系 */
+:root[data-theme="dark"] #uiModal .btn-danger,
+:root[data-theme="dark"] .cu-modal .btn-danger,
+:root[data-theme="dark"] .btn-danger,
+:root[data-theme="dark"] .tb-more-danger {
+  background: var(--warn-tip-bg) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+:root[data-theme="dark"] #uiModal .btn-danger:hover,
+:root[data-theme="dark"] .cu-modal .btn-danger:hover,
+:root[data-theme="dark"] .btn-danger:hover,
+:root[data-theme="dark"] .tb-more-danger:hover {
+  background: var(--warn-tip-border) !important;
+  border-color: var(--warn-tip-border) !important;
+  color: var(--warn-tip-text) !important;
+}
+/* .chip 徽标：深色下深字压深底，改为暖米字 + 暖边框 */
+:root[data-theme="dark"] .chip {
+  color: #C9B38C !important;
+  border-color: rgba(212, 178, 124, 0.34) !important;
+  background: rgba(212, 178, 124, 0.10) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   S 节 · 成就徽章深色模式统一（不依赖内联色匹配，杜绝漏网）
+   原因：index.html 用 [style*="f3f4f6"] 匹配未解锁徽章，
+        但实际内联色是 #F1EFE8，选择器永远命中不了，
+        导致深色下未解锁徽章浅底浅字（对比度 1.05，完全不可见）。
+   ═══════════════════════════════════════════════════════════ */
+:root[data-theme="dark"] .achievement-badge{
+  background:#383127 !important;
+  border-color:#4F4433 !important;
+  color:#D8CBB2 !important;
+}
+:root[data-theme="dark"] .achievement-badge.unlocked{
+  background:linear-gradient(135deg,#4A3C22,#3B3018) !important;
+  border-color:#8A6A2D !important;
+  color:#E8D5A8 !important;
+}
+/* ═══════════════════════════════════════════════════════════
+   T 节 · 打卡日历「今日高亮块」文字色自适配
+   该块背景用 var(--primary)：浅色=#6B4D33(深棕) 配白字很好，
+   但深色下 --primary=#D4B27C(浅金)，白字对比度仅 2.01 几乎看不清。
+   改为变量驱动：深色下自动切浅金字（对比度约 6.7）。
+   ═══════════════════════════════════════════════════════════ */
+:root{--cal-on:#FFFFFF}
+:root[data-theme="dark"]{--cal-on:#E8D5A8}
+/* 深色下今日块改深棕底+浅金字（避免大面积浅金刺眼，对比度约 6.7） */
+:root[data-theme="dark"] .cal-today{
+  background:#4A3C22 !important;
+  border-color:#8A6A2D !important;
+}
+:root[data-theme="dark"] .cal-today > div{color:var(--cal-on) !important}
+
+/* ═══════════════════════════════════════════════════════════
+   U 节 · 移动端正文外链触摸目标放大
+   问题：正文里的官网链接行内高度仅 15px（如「实习僧 ↗」「icourse163.org ↗」），
+        手机上手指很难点中（建议触摸目标 ≥32px）。
+   做法：inline 元素的垂直 padding 不撑开行高、但会扩大点击热区；
+        水平方向用等量负 margin 抵消，视觉位置保持不变。
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width:768px){
+  /* 覆盖所有正文链接（含 href="#" 的「了解更多 →」），排除已成型的按钮式链接 */
+  .view a[href]:not(.btn):not([class*="btn"]),
+  .card a[href]:not(.btn):not([class*="btn"]){
+    padding:9px 3px !important;
+    margin:0 -3px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   V 节 · 聊天助手气泡 & 今日知识卡片样式补全
+   问题：agent-bubble / agent-user / knowledge-card 都没有对应 CSS，
+        完全靠浏览器默认样式或父容器兜底，看起来像半成品。
+   ═══════════════════════════════════════════════════════════ */
+.agent-bubble{align-self:flex-start;max-width:85%;padding:10px 13px;border-radius:14px;background:var(--card);border:1px solid var(--border);color:var(--text);font-size:13px;line-height:1.7;box-shadow:var(--shadow-xs)}
+.agent-bubble b{display:block;font-size:12px;color:var(--primary);margin-bottom:3px}
+.agent-user{align-self:flex-end;background:var(--primary-light);border-color:var(--primary-mid);color:var(--primary-strong)}
+:root[data-theme="dark"] .agent-bubble{background:#2E2720;border-color:#4F4433}
+:root[data-theme="dark"] .agent-user{background:#3B2E1E;border-color:#8A6A2D;color:#E8CBA0}
+.knowledge-card{background:linear-gradient(180deg,var(--card),var(--bg));border-color:var(--border-strong)}
+
+/* ── V 节续 · 助手气泡形态 & GPA 录入表输入框补齐 ── */
+/* .agent-in（助手消息）此前只是个语义标记、无任何规则，完全靠 .agent-bubble 兜底。
+   这里让它真正成为「左侧气泡」：左下角收窄，与右侧用户气泡形成对话方向感。 */
+.agent-in{border-bottom-left-radius:5px}
+.agent-user{border-bottom-right-radius:5px}
+
+/* GPA 录入表：单元格只有内联边框，输入框此前完全裸奔——
+   没有边框、没有内边距、课程名 input 宽度不受控容易撑破表格。 */
+#gpaRows input{
+  width:100%;box-sizing:border-box;padding:5px 8px;
+  border:1px solid var(--border);border-radius:8px;
+  background:var(--card);color:var(--text);
+  font-size:13px;font-family:inherit;line-height:1.5;
+}
+#gpaRows input:focus{outline:none;border-color:var(--primary-mid);box-shadow:0 0 0 3px rgba(107,77,51,.08)}
+#gpaRows input::placeholder{color:var(--hint)}
+#gpaRows input.gpa-credit,#gpaRows input.gpa-score{max-width:88px}
+#gpaRows .gpa-gp{text-align:center;font-variant-numeric:tabular-nums;color:var(--muted)}
+:root[data-theme="dark"] #gpaRows input{background:#2E2720;border-color:#4F4433;color:#E8DDC8}
+:root[data-theme="dark"] #gpaRows input:focus{border-color:#8A6A2D}
+:root[data-theme="dark"] #gpaRows .gpa-gp{color:#BCA97F}
+
+/* ═══════════════════════════════════════════════════════════
+   W 节 · 侧边栏分组（nav-section）与导航条目视觉统一
+   要求：分组间柔和分隔线 #E5DBC8（浅色）／深色配套；
+   条目间距统一、图标垂直居中且尺寸一致；选中高亮暖木棕；
+   移动端长名称自动换行、不溢出、不出现横向滚动。
+   ═══════════════════════════════════════════════════════════ */
+.nav-section{
+  font-size:11px;
+  letter-spacing:0.05em;
+  font-weight:700;
+  color:var(--hint);
+  padding:11px 16px 4px;
+  margin:0 8px;
+  border-top:1px solid var(--rule);
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+/* 紧跟在常驻首页项之后的第一个分组，去掉顶部多余分隔，视觉更干净 */
+.nav-section:first-of-type{ border-top:0; }
+/* 导航条目：上下内边距与条目间外边距完全统一 */
+.nav-item{
+  padding:10px 14px;
+  margin:2px 8px;
+  gap:10px;
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  align-items:center;
+  color:var(--muted);
+}
+/* 图标：统一 18px，垂直居中 */
+.nav-item svg{
+  width:18px;
+  height:18px;
+  flex-shrink:0;
+  display:inline-block;
+}
+/* 条目文字垂直居中、图标文字对齐 */
+.nav-item{ line-height:1.4; }
+/* 移动端：长菜单名自动换行，侧边栏不横向溢出、滑动顺畅 */
+@media (max-width:768px){
+  .sidebar{ overflow-x:hidden; }
+  .nav-section{ margin:0 6px; padding:10px 12px 4px; }
+  .nav-item{ margin:2px 6px; padding:10px 12px; }
+  .nav-item svg{ width:17px; height:17px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   深色模式 · 兜底补丁（最高优先级，覆盖内联 style）
+   作用：把散落在各板块里的"硬编码浅色卡片/色块"统一转暗，根除夜间模式下
+   亮米白卡刺眼、浅底配浅字看不清的问题。
+   ═══════════════════════════════════════════════════════════════════════ */
+:root[data-theme="dark"] [style*="background:#FFF8EF"],
+:root[data-theme="dark"] [style*="background:#FFF5F0"],
+:root[data-theme="dark"] [style*="background:#FDF6EC"],
+:root[data-theme="dark"] [style*="background:#FCF8EC"],
+:root[data-theme="dark"] [style*="background:#FDF6ED"],
+:root[data-theme="dark"] [style*="background:#FFFDF5"],
+:root[data-theme="dark"] [style*="background:#FFFDF6"],
+:root[data-theme="dark"] [style*="background:#FFFDF4"],
+:root[data-theme="dark"] [style*="background:#F1EBDD"],
+:root[data-theme="dark"] [style*="background:#F1EADE"],
+:root[data-theme="dark"] [style*="background:#FBF1D8"],
+:root[data-theme="dark"] [style*="background:#F3EBD8"]{
+  background:#2B251C !important;
+  border-color:#4A3E2C !important;
+}
+:root[data-theme="dark"] [style*="background:linear-gradient(135deg,#F1EADE"],
+:root[data-theme="dark"] [style*="background:linear-gradient(150deg,#F1EADE"]{
+  background:linear-gradient(135deg,#2E2922,#332C24) !important;
+  border-color:#4A3E2C !important;
+}
+/* 帮助中心 · 实用功能的深度功能卡：深色下彻底转暗，文字高对比 */
+:root[data-theme="dark"] #view-help .help-grid div[style*="#FFFDF5"]{ background:#332C22 !important; border-color:#463B29 !important; }
+:root[data-theme="dark"] #view-help div[style*="background:linear-gradient(135deg,#F1EADE"]{ background:linear-gradient(135deg,#2E2922,#332C24) !important; border-color:#463B29 !important; }
+/* 浅色表头兜底：未命中的 <th>/<tr> 也统一转暗，保证深色下表格可读 */
+:root[data-theme="dark"] th[style*="background:#EFE8D8"],
+:root[data-theme="dark"] tr[style*="background:#EFE8D8"]{
+  background:#332B22 !important;
+  color:var(--text) !important;
+}
+
+/* ============================================================
+   保研全旅程 · 3D 时间轴
+   ============================================================ */
+.baoyan3d{display:flex;gap:18px;align-items:stretch;flex-wrap:wrap}
+.b3d-stage{flex:1 1 260px;min-width:250px;display:flex;flex-direction:column;
+  perspective:760px;perspective-origin:50% 42%}
+/* 前方"地面"投影带：强化卡片悬空与纵深 */
+.b3d-stage::after{content:"";display:block;height:26px;margin:8px 10px 0;
+  border-radius:50%;background:radial-gradient(ellipse at center,rgba(74,58,40,.16),transparent 68%);
+  filter:blur(3px)}
+.b3d-panel{perspective:1200px}
+.b3d-ring{position:relative;width:100%;height:158px;margin:0 auto;
+  transform-style:preserve-3d;transition:transform 1s cubic-bezier(.22,.61,.36,1)}
+.b3d-cell{position:absolute;inset:18px 14px;width:calc(100% - 28px);height:110px;
+  border-radius:16px;background:var(--card);
+  border:1px solid var(--border-strong);
+  box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--gold-light),var(--card));
+  backface-visibility:visible;transform-style:preserve-3d;
+  transition:box-shadow .3s, border-color .3s, opacity .4s, filter .4s;
+  will-change:transform}
+[data-theme="dark"] .b3d-cell{background:linear-gradient(160deg,#3A3124,#2C2620);border-color:#4A3E2C}
+.b3d-cell .b3d-c{text-align:center;padding:8px;transform:translateZ(14px)}
+.b3d-c b{display:block;font-size:16px;color:var(--primary-strong);letter-spacing:.05em}
+[data-theme="dark"] .b3d-c b{color:#E5C89A}
+.b3d-c span{display:block;margin-top:3px;font-size:11px;color:var(--hint)}
+.b3d-cell.active{box-shadow:0 18px 34px rgba(74,58,40,.25);border-color:var(--gold);z-index:2;
+  background:linear-gradient(160deg,#FAF4E3,var(--card))}
+[data-theme="dark"] .b3d-cell.active{background:linear-gradient(160deg,#3D3422,#2C2620);border-color:var(--gold)}
+.b3d-cell.active .b3d-c{color:var(--primary-strong)}
+.b3d-cell.active .b3d-c b{color:#6B4D33}
+[data-theme="dark"] .b3d-cell.active .b3d-c b{color:#EFD7A8}
+/* 阶段进度角标：正面卡片高亮，增强"当前"反馈 */
+.b3d-cell .b3d-tag{position:absolute;top:-8px;left:50%;transform:translateX(-50%) translateZ(2px);
+  background:var(--gold);color:#fff;font-size:9px;line-height:1;padding:3px 8px;border-radius:20px;
+  letter-spacing:.05em;white-space:nowrap;box-shadow:0 2px 6px rgba(74,58,40,.25)}
+.b3d-cell.active .b3d-c b{font-size:17px}
+/* 阶段一键切换按钮组 */
+.b3d-chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.b3d-chip{border:1px solid var(--border-strong);background:var(--card);color:var(--muted);
+  font-size:12px;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.15s;touch-action:manipulation}
+.b3d-chip.active{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}
+.b3d-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:6px}
+.b3d-dots{display:flex;gap:5px}
+.b3d-dot{width:7px;height:7px;border-radius:50%;background:var(--border-strong);cursor:pointer;transition:.25s}
+.b3d-dot.active{background:var(--gold);transform:scale(1.35)}
+.b3d-panel{flex:1 1 320px;min-width:260px;background:var(--card);
+  border:1px solid var(--border);border-left:3px solid var(--gold);
+  border-radius:14px;padding:18px 18px 16px;box-shadow:var(--shadow)}
+.b3d-phase{font-size:11px;color:var(--gold-strong);letter-spacing:.08em;font-weight:600;margin-bottom:6px}
+[data-theme="dark"] .b3d-phase{color:#E5C89A}
+.b3d-title{font-family:var(--font-display);font-size:19px;color:var(--primary-strong);margin-bottom:10px}
+[data-theme="dark"] .b3d-title{color:#F0DDB8}
+.b3d-list{font-size:13.5px;line-height:2;color:var(--text)}
+.b3d-list li{margin-bottom:6px;padding-left:18px;position:relative}
+.b3d-list li::before{content:"";position:absolute;left:0;top:.85em;width:8px;height:8px;border-radius:50%;background:var(--teal-mid)}
+.b3d-list li b{color:var(--primary-strong)}
+[data-theme="dark"] .b3d-list li b{color:#EAD2A8}
+@media(max-width:768px){
+  .b3d-ring{height:150px}
+  .b3d-cell{inset:16px 8px}
+  .b3d-stage,.b3d-panel{min-width:100%}
+}
