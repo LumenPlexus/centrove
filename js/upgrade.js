@@ -71,8 +71,8 @@
 
   // 安全地接管旧 flash
   if (typeof window.flash === 'function') {
-    var oldFlash = window.flash;
-    window.flash = function (msg) { toast(msg); try { oldFlash(msg); } catch (e) { } };
+    // 统一走 toast：.cu-toast 已被 CSS 隐藏并转发到 #flash，只渲染一次，杜绝同一条消息双弹
+    window.flash = function (msg) { toast(msg); };
   } else {
     window.flash = toast;
   }

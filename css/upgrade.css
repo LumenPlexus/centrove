@@ -304,6 +304,20 @@ body.sidebar-collapsed .topbar { left: 0; }
 @media (max-width: 768px) { .app { padding-top: 54px; } .topbar { left: 0; right: 0; height: 54px; } }
 @media (max-width: 480px) { .app { padding-top: 50px; } .topbar { height: 50px; } }
 
+/* 顶栏「产品特色」标签：在标题区与右侧功能图标之间居中填充空隙，不遮挡任何图标与内容 */
+.topbar .tb-title { flex: 0 1 auto; }
+.topbar .tb-feature {
+  flex: 1; min-width: 0; text-align: center; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; margin: 0 10px;
+  font-family: var(--font-display, "Noto Serif SC", "Songti SC", "STSong", serif);
+  font-size: 12.5px; letter-spacing: .12em; color: #8A6D48; opacity: .92; pointer-events: none;
+}
+.topbar .tb-feature i { font-style: normal; color: var(--primary, #6B4D33); font-weight: 700; }
+[data-theme="dark"] .topbar .tb-feature { color: #C9A45E; }
+[data-theme="dark"] .topbar .tb-feature i { color: #E0C48C; }
+@media (max-width: 900px) { .topbar .tb-feature { font-size: 11.5px; letter-spacing: .08em; } }
+@media (max-width: 768px) { .topbar .tb-feature { display: none; } }
+
 .topbar .title img,
 .sidebar .logo img,
 .tp-logo img,

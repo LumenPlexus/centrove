@@ -1243,8 +1243,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     e.setAttribute('data-gone','');
     /* 轻触任意处跳过闪屏（不影响后续导览/直接进入逻辑） */
     e.onclick=function(){dismiss(e);};
-    /* 标准闪屏时长 2.5 秒，结束时按首访与否决定弹导览或直接进 */
-    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },2500);
+    /* 标准闪屏时长 3 秒（约1.5秒内容完全呈现，留足阅读时间），轻触可跳过；
+       结束时按首访与否决定弹导览或直接进产品 */
+    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },3000);
   }
   show();
 })();
@@ -1259,6 +1260,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0" onerror="logoFallback(this)">栖匣 <span class="tb-badge">心有所栖 · 匣纳成长</span></div>
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
+    <div class="tb-feature" title="学业 · 目标 · 时间 · 金钱 · 健康 · 眼界 —— 一匣安放">学业 · 目标 · 时间 · 金钱 · 健康 · 眼界 <i>一处安放</i></div>
     <div class="tools">
       <!-- 桌面端始终显示 -->
       <button class="icon-btn btn-inspire tb-mobile-hide" id="btnInspire" onclick="refreshHomeDaily();spinInspire()" title="换一批灵感">
@@ -7509,11 +7511,9 @@ function showOutlink(url){
     try{var u=new URL(h);same=(u.host===location.host&&u.protocol===location.protocol);}catch(e){return;}
     if(same)return;                                         // 同站不拦截
     e.preventDefault();e.stopPropagation();
-    if(isInAppBrowser()){
-      showOutlink(h);                                       // 内嵌浏览器：友好面板，规避白屏/风险弹窗
-    }else{
-      openExternalDirect(h);                                // 普通浏览器：新标签直达官方站
-    }
+    /* 外链一律新标签页直接打开：去掉旧的「外链安全直达 / 搜索直达」中间弹窗，
+       保证点击即直达官方正规站点（微信等内嵌浏览器按系统默认处理，不再被我方拦截）。 */
+    openExternalDirect(h);
   });
 /* 切到外链/其它标签页时，记录当前所在板块与滚动位置（返回时自动恢复） */
 document.addEventListener('visibilitychange',function(){
@@ -9206,10 +9206,11 @@ function init(){
     }
   }catch(e){}
   
-  /* 返回轻提示：每天一句不重复的暖心鼓励，自然融入栖匣的"安放优先"气质，让回来有期待感 */
+  /* 返回轻提示：每天一句不重复的暖心鼓励，等闪屏结束(约3.4s)后直接渲染一次、停留约4.2秒可看清，
+     不再经 flash 双重渲染、也不被启动屏遮挡 */
   try{
     if(localStorage.getItem('pp_last_view')){
-      setTimeout(function(){try{if(typeof flash==='function'){
+      setTimeout(function(){try{
         var GREETS=[
           '回来啦——今天想在哪个板块安放一点新东西？',
           '欢迎回来，愿你今天稳稳往前挪一小步。',
@@ -9222,9 +9223,16 @@ function init(){
           '说点什么、记点什么，都由你来做主。',
           '愿今天的你，比昨天更清楚自己要去哪里。'
         ];
-        var gi=Math.floor(Date.now()/86400000)%GREETS.length;
-        flash(GREETS[gi]);
-      }}catch(e){}},260);
+        var _gi=Math.floor(Date.now()/86400000)%GREETS.length;
+        var _mf=document.getElementById('flash');
+        if(_mf){
+          _mf.textContent=GREETS[_gi];
+          _mf.classList.remove('is-ok','is-warn','is-err');
+          _mf.classList.add('show');
+          if(_mf.__ppT)clearTimeout(_mf.__ppT);
+          _mf.__ppT=setTimeout(function(){_mf.classList.remove('show');},4200);
+        }else if(typeof flash==='function'){ flash(GREETS[_gi]); }
+      }}catch(e){}},3500);
     }
   }catch(e){}
   
