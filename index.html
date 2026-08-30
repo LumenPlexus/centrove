@@ -49,7 +49,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260830.6', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260830.7', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -1545,7 +1545,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <!-- 今日知识 · 每天四条（健康 / 认知 / 社会 / 财商），点「换一批」全体换新，标签页展示更省空间 -->
       <div class="card" style="margin-bottom:10px;background:linear-gradient(135deg,#F1EADE,#EFE8D8);border-color:#D8CBB2">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
-          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>今日知识 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天四条 · 不重复 · 换一批</span></h3>
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 6.5C10 4.5 6.5 5 5 5.5v13c1.5-.5 5-1 7 1 2-2 5.5-1.5 7-1v-13c-1.5-.5-5-1-7 1z"></path><path d="M12 6.5v13"></path></svg>今日知识 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天四条 · 不重复 · 换一批</span></h3>
           <button class="mind-refresh" onclick="refreshHomeDaily();spinInspire()" title="四条一起换一批新的"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;vertical-align:-2px;margin-right:3px"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>换一批</button>
         </div>
       </div>
@@ -1554,7 +1554,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="k-tab active" data-k="health" onclick="switchKnowledge('health')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>健康</button>
           <button class="k-tab" data-k="cognition" onclick="switchKnowledge('cognition')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>认知</button>
           <button class="k-tab" data-k="life" onclick="switchKnowledge('life')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>社会</button>
-          <button class="k-tab" data-k="finance" onclick="switchKnowledge('finance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12"></path><path d="M15 9H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H8"></path></svg>财商</button>
+          <button class="k-tab" data-k="finance" onclick="switchKnowledge('finance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10"></path><path d="M9 9.5h6M9 14.5h6"></path></svg>财商</button>
         </div>
         <div id="knowledgeBody" style="font-size:13.5px;line-height:1.85;color:var(--text)">
           <strong>午睡时长</strong><br>10-20分钟短时午睡能恢复精力、提升下午专注力；超过30分钟易进入深睡，醒来更昏沉。定好闹钟，别睡过头。<br><span style="font-size:11px;color:var(--hint)">出处：健康小知识 · 按日期轮换不重复</span>
@@ -6256,9 +6256,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>计划黄金法则 · 年→月→周→日这样拆才不落空</h3>
         <div class="grid grid-2">
           <div>
-            <h4>四层拆解示例（以"四级 550+"为例）</h4>
+            <h4>四层拆解示例（以"一次通过英语四级"为例）</h4>
             <ol style="font-size:13px;line-height:1.9;padding-left:18px">
-              <li><strong>年度：</strong>12月四级考到550+（拆出听力/阅读/写作/翻译四块分别达标）</li>
+              <li><strong>年度：</strong>12月英语四级一次通过（拆出听力/阅读/写作/翻译四块分别达标）</li>
               <li><strong>月度：</strong>本月完成听力精听20篇 + 阅读精读15篇 + 背完高频词800个</li>
               <li><strong>周度：</strong>本周每天听力1篇，周六做1套真题，周日复盘错题</li>
               <li><strong>日度：</strong>今天：背25个词 + 精听1篇 + 记3个错题</li>
@@ -12793,7 +12793,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 为什么设计它 · 设计理念 (步骤 7) -->
     <section class="pano-sec pano-sec-ctr" data-step="6">
       <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
-      <p class="pano-lead">我们见过很多年轻人，怀揣大量目标与计划，却被杂乱的思绪压得无从下手。栖匣是一座成长收纳容器，收纳<b>学业、目标、时间、金钱、健康、眼界</b>等完整成长事务，也接纳迷茫、疲惫等真实状态。</p>
+      <p class="pano-lead">我们见过很多年轻人，怀揣大量目标与计划，却被杂乱的思绪压得无从下手。栖匣是一座成长收纳容器：学业、目标、时间、金钱、健康、阅读、眼界与职业……成长里的大小事都能收进匣中一处，迷茫、疲惫等真实状态也有一席之地。</p>
       <p class="pano-lead" style="margin-top:10px">自律不只有一种模样：不必等待心绪完全安顿才开始行动，整理规划与向前推进可以同步发生。它拒绝高压内卷式的一味催促，也不鼓励停滞与等待——收纳是载体，行动与规划同样重要。</p>
       <div class="pano-concept">
         <div class="pano-cv" data-side="栖">
@@ -12807,7 +12807,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
           <span class="cv-char">匣</span>
           <div class="cv-body">
             <h5>收纳 · 咬合 · 点滴沉淀</h5>
-            <p>收纳学业 · 目标 · 时间 · 金钱 · 健康 · 眼界，把多条成长线索收拢到一处，互相咬合，随日常点滴积累沉淀。</p>
+            <p>收纳学业、目标、时间、金钱、健康、阅读与职业……把成长的一条条线索收拢到一处，互相咬合，随日常点滴积累沉淀。</p>
           </div>
         </div>
       </div>
