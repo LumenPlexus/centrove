@@ -492,6 +492,20 @@
         因此封装为 applyLatePatches，在 boot 和 800ms 后各执行一次）
      ============================================================ */
   function applyLatePatches() {
+
+    // 导入值结构白名单校验：拒绝把缓存值改成会令渲染崩溃的形态（如 pp_tasks 变成对象）。
+    function _safeImportValue(k, v) {
+      var LIST = ['pp_tasks', 'pp_words', 'pp_wrongs', 'pp_books', 'pp_pods', 'pp_decisions', 'pp_grateful', 'pp_inspire', 'pp_vision', 'pp_goals', 'pp_checkinDefs', 'pp_userBooks', 'pp_feedback', 'pp_feedback_local', 'pp_habits'];
+      var MAP = ['pp_checkins', 'pp_journals', 'pp_mood', 'pp_bookNotes', 'pp_expenses', 'pp_bless', 'pp_prepare_done', 'pp_timeBlocks', 'pp_resume_tracks', 'pp_exam_countdowns', 'pp_countdowns', 'pp_wd', 'pp_vision'];
+      if (v === null || v === undefined) return { del: true };
+      if (LIST.indexOf(k) >= 0) { if (!Array.isArray(v)) return { skip: true }; return { v: JSON.stringify(v) }; }
+      if (MAP.indexOf(k) >= 0) { if (!v || typeof v !== 'object' || Array.isArray(v)) return { skip: true }; return { v: JSON.stringify(v) }; }
+      var t = typeof v;
+      if (t === 'string') return { v: v };
+      if (t === 'number' || t === 'boolean') return { v: String(v) };
+      if (t === 'object') { if (Array.isArray(v) || v.constructor === Object) return { v: JSON.stringify(v) }; return { skip: true }; }
+      return { skip: true };
+    }
     if (typeof window.exportData === 'function') {
       window.exportData = function () {
         var payload = { app: '栖匣', version: DATA_VERSION, exportDate: new Date().toISOString(), source: 'centrove', data: {} };
@@ -526,9 +540,11 @@
             if (!keys.length) throw new Error('未找到可识别的栖匣数据键');
             confirmDanger('导入确认', '将覆盖 ' + keys.length + ' 项本地数据。建议先导出当前备份。是否继续？', function () {
               keys.forEach(function (k) {
+                var r = _safeImportValue(k, data[k]);
+                if (r.skip) return;
                 try {
-                  if (data[k] === null || data[k] === undefined) localStorage.removeItem(k);
-                  else localStorage.setItem(k, typeof data[k] === 'string' ? data[k] : JSON.stringify(data[k]));
+                  if (r.del) localStorage.removeItem(k);
+                  else localStorage.setItem(k, r.v);
                 } catch (err) { console.warn('导入项失败', k, err); }
               });
               toast('数据导入成功');
@@ -560,9 +576,11 @@
             if (!keys.length) throw new Error('未找到可识别的栖匣数据键');
             confirmDanger('导入确认', '将覆盖 ' + keys.length + ' 项本地数据。建议先导出当前备份。是否继续？', function () {
               keys.forEach(function (k) {
+                var r = _safeImportValue(k, data[k]);
+                if (r.skip) return;
                 try {
-                  if (data[k] === null || data[k] === undefined) localStorage.removeItem(k);
-                  else localStorage.setItem(k, typeof data[k] === 'string' ? data[k] : JSON.stringify(data[k]));
+                  if (r.del) localStorage.removeItem(k);
+                  else localStorage.setItem(k, r.v);
                 } catch (err) { console.warn('导入项失败', k, err); }
               });
               toast('数据导入成功');
