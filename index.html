@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.12"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.15"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -265,6 +265,27 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .date{font-size:12px;color:var(--muted)}
 .topbar .quote{flex:1;font-size:12px;color:var(--muted);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-left:8px}
 .topbar .tools{display:flex;gap:8px}
+/* 顶栏新式样（对齐设计稿）：品牌(logo+名) + 中部标语 + 直达图标（搜索/帮助带浅色底、夜间模式月↔日） */
+.topbar .tb-brand{display:flex;align-items:center;gap:8px;flex-shrink:0;min-width:0}
+.topbar .tb-logo{width:28px;height:28px;border-radius:8px;flex-shrink:0;display:block}
+.topbar .tb-name{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:17px;font-weight:700;letter-spacing:.12em;color:var(--primary);white-space:nowrap}
+.topbar .tb-slogan{flex:1;min-width:0;font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12.5px;color:var(--hint);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-left:12px;margin-right:6px}
+.topbar .tb-pill{background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
+.topbar .tb-pill:hover{background:rgba(107,77,51,.15)}
+.topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
+.topbar .tb-pill-help:hover{background:rgba(192,57,43,.15);color:#A53020;border-color:rgba(192,57,43,.30)}
+[data-theme="dark"] .topbar .tb-pill{background:rgba(214,197,180,.07);border-color:rgba(246,242,233,.14)}
+[data-theme="dark"] .topbar .tb-pill:hover{background:rgba(214,197,180,.12)}
+[data-theme="dark"] .topbar .tb-pill-help{color:#E88C80;background:rgba(216,92,74,.16);border-color:rgba(224,130,110,.30)}
+[data-theme="dark"] .topbar .tb-pill-help:hover{background:rgba(216,92,74,.24)}
+@media(max-width:768px){
+  .topbar .tb-logo{width:24px;height:24px;border-radius:7px}
+  .topbar .tb-name{font-size:15px}
+  .topbar .tb-slogan{font-size:11.5px}
+}
+@media(max-width:560px){
+  .topbar .tb-slogan{display:none}
+}
 .icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:color .15s,background-color .15s,border-color .15s}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)}
 .icon-btn svg{width:16px;height:16px}
@@ -1277,32 +1298,34 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     <button class="icon-btn mobile-toggle" onclick="toggleSidebar()" title="打开全部板块">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
-    <div class="tb-title" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <div class="title"><img src="pwa/logo.png" alt="栖匣" style="width:26px;height:26px;border-radius:7px;flex-shrink:0" onerror="logoFallback(this)">栖匣<span class="tb-badge">心有所栖 · 匣纳成长</span></div>
-      <div class="date" id="todayDate">2026年8月24日 星期日</div>
+    <div class="tb-brand" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
+      <img src="pwa/logo.png" alt="栖匣" class="tb-logo" onerror="logoFallback(this)"><span class="tb-name">栖匣</span>
     </div>
+    <div class="tb-slogan">心有所栖 · 匣纳成长</div>
     <div class="tools">
-      <!-- 顶栏直达图标（只显图标、不写文字）：搜索 / 帮助中心 / 换一批灵感 / 查看产品导览。其余功能一律收进右侧「更多 ⋯」 -->
-      <button class="icon-btn tb-pin-row" onclick="tbSearchGo()" title="全局搜索板块与内容" aria-label="全局搜索">
+      <!-- 顶部直达：搜索 / 帮助中心（带浅色底突出）、夜间模式（月↔日）；换一批灵感、产品导览等收进「更多 ⋯」 -->
+      <button class="icon-btn tb-pill" onclick="tbSearchGo()" title="搜索板块与内容" aria-label="全局搜索">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
-      <button class="icon-btn tb-pin-row" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
+      <button class="icon-btn tb-pill tb-pill-help" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
       </button>
-      <button class="icon-btn btn-inspire" id="btnInspire" onclick="refreshHomeDaily();spinInspire()" title="换一批灵感" aria-label="换一批灵感">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+      <button class="icon-btn" id="themeToggleBtn" onclick="toggleTheme()" title="切换日间 / 夜间模式" aria-label="切换日间 / 夜间模式">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIconMoon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIconSun" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
-      <button class="icon-btn btn-guide" id="btnGuide" onclick="openPano()" title="查看产品导览" aria-label="查看产品导览">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-      </button>
-      <!-- 更多工具（桌面端：导入/PDF/重置；手机端：分享/导出/导入/PDF/关于/设置/重置） -->
+      <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
         <button class="icon-btn" onclick="toggleTbMore();closeMoreMenu()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
-          <div class="tb-more-label">界面显示</div>
-          <button class="tb-more-item" onclick="toggleTheme();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            切换日间 / 夜间模式
+          <div class="tb-more-label">灵感与内容</div>
+          <button class="tb-more-item" onclick="refreshHomeDaily();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            换一批灵感
+          </button>
+          <button class="tb-more-item" onclick="openPano();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            查看产品导览
           </button>
           <div class="tb-more-sep"></div>
           <div class="tb-more-label">数据与工具</div>
@@ -7255,7 +7278,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.30.12</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.30.15</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -9326,7 +9349,7 @@ function init(){
 
 
   var d=new Date();
-  document.getElementById('todayDate').textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+'日一二三四五六'[d.getDay()];
+  var _td=document.getElementById('todayDate');if(_td)_td.textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+'日一二三四五六'[d.getDay()];
   var q=QUOTES[(Math.floor(Date.now()/86400000))%QUOTES.length];
   var _dq=document.getElementById('dailyQuote');if(_dq)_dq.textContent='“'+q+'”';
 
@@ -13228,12 +13251,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.30.14';
+  var V='2026.08.30.15';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.30.15',t:'顶栏还原成你给的设计稿样式 · 标语完整显示',tag:'体验优化',blocks:[
+      '· 顶栏对齐设计稿重排：左侧为「图标 + 栖匣」品牌名，中部独立显示标语「心有所栖 · 匣纳成长」，不再挤压截断。',
+      '· 右侧快捷图标调整为「搜索（浅色底）」「帮助中心（红色浅底突出）」「夜间模式（月亮↔太阳自动切换）」+ 最右侧「更多 ⋯」；顶栏不再堆叠文字，只放图标更清爽。',
+      '· 换一批灵感、查看产品导览 收进「更多 ⋯」菜单的「灵感与内容」分组；分享/导出/导入/PDF/设置/关于/重置继续在菜单内分组展示。',
+      '· 窄屏（≤560px）时标语优雅整体收起而非半截截断，小屏图标自适应缩放，文字与图形不再显示不全。'
+    ]},
     {v:'2026.08.30.14',t:'顶栏清爽回归 · 更新提示更得体',tag:'体验优化',blocks:[
       '· 顶栏恢复「简洁直达」：只保留 搜索、帮助中心、换一批灵感、查看产品导览 4 个常用图标（仅图标、无文字）放在「更多 ⋯」之前；分享、导出、主题切换、导入、PDF、系统设置、关于等统一收进「更多」菜单，点击 ⋯ 才展开显示图标与文字，界面不再拥挤。',
       '· 「更多 ⋯」菜单分组重排并新增：界面显示（切换日间/夜间模式）、数据与工具、系统（系统设置、关于产品），重置数据单独列于底部并保持警示色。',
