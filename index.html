@@ -52,7 +52,7 @@
         try {
           var _swReloadDone = false;
           function _swReloadNow(){ if(_swReloadDone) return; _swReloadDone = true; try{ setTimeout(function(){ window.location.reload(); }, 220); }catch(e){} }
-          navigator.serviceWorker.register('./sw.js?v=20260831.15', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260831.16', { scope: './' }).then(function(reg){
             // 兜底A：新旧SW切换正式接管时，恰好刷新一次（兼容 skipWaiting 与 clients.claim）
             navigator.serviceWorker.addEventListener('controllerchange', function(){
               try{ if(navigator.serviceWorker.controller && navigator.serviceWorker.controller.state === 'activated') _swReloadNow(); }catch(e){}
@@ -252,7 +252,7 @@ section[id],.view{scroll-margin-top:80px;}
   background:linear-gradient(180deg,#FDFAF4 0%,#F5EEDA 100%);
   border:1px solid #E4D8C4;border-radius:16px;
   box-shadow:0 22px 48px rgba(74,58,40,.16),0 5px 16px rgba(74,58,40,.10);
-  padding:10px;min-width:218px;display:none;z-index:80;flex-direction:column;gap:2px;
+  padding:10px;min-width:218px;display:none;z-index:9995;flex-direction:column;gap:2px;
   max-height:min(72vh,560px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
 }
 @media(max-width:768px){.tb-more-menu{top:60px;right:8px;}}
