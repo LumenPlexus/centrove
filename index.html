@@ -248,7 +248,8 @@ section[id],.view{scroll-margin-top:80px;}
 .tb-more-menu{
   position:absolute;top:calc(100% + 8px);right:0;background:var(--card);
   border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);
-  padding:6px;min-width:180px;display:none;z-index:60;flex-direction:column;gap:2px;
+  padding:6px;min-width:190px;display:none;z-index:60;flex-direction:column;gap:2px;
+  max-height:min(68vh,540px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
 }
 .tb-more-menu.show{display:flex}
 .tb-more-item{
@@ -1281,44 +1282,35 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="date" id="todayDate">2026年8月24日 星期日</div>
     </div>
     <div class="tools">
-      <!-- 桌面端始终显示 -->
-      <button class="icon-btn btn-inspire tb-mobile-hide" id="btnInspire" onclick="refreshHomeDaily();spinInspire()" title="换一批灵感">
+      <!-- 顶栏直达图标（只显图标、不写文字）：搜索 / 帮助中心 / 换一批灵感 / 查看产品导览。其余功能一律收进右侧「更多 ⋯」 -->
+      <button class="icon-btn tb-pin-row" onclick="tbSearchGo()" title="全局搜索板块与内容" aria-label="全局搜索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-btn tb-pin-row" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </button>
+      <button class="icon-btn btn-inspire" id="btnInspire" onclick="refreshHomeDaily();spinInspire()" title="换一批灵感" aria-label="换一批灵感">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-        <span class="btn-inspire-text">换一批灵感</span>
       </button>
-      <button class="icon-btn btn-guide tb-mobile-hide" id="btnGuide" onclick="openPano()" title="新手导览 · 快速了解各板块用法">
+      <button class="icon-btn btn-guide" id="btnGuide" onclick="openPano()" title="查看产品导览" aria-label="查看产品导览">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-        <span class="btn-guide-text">导览</span>
-      </button>
-      <button class="icon-btn tb-share-btn tb-mobile-hide" id="tbShareBtn" onclick="shareProduct()" title="分享给朋友">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
-      </button>
-      <button class="icon-btn tb-export-btn tb-mobile-hide" id="tbExportBtn" onclick="exportAll()" title="导出数据备份（含全部板块）">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-      </button>
-      <button type="button" class="icon-btn theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="切换日间 / 夜间模式" style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent">
-        <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
       <!-- 更多工具（桌面端：导入/PDF/重置；手机端：分享/导出/导入/PDF/关于/设置/重置） -->
       <div class="tb-more" id="tbMore">
         <button class="icon-btn" onclick="toggleTbMore();closeMoreMenu()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
+          <div class="tb-more-label">界面显示</div>
+          <button class="tb-more-item" onclick="toggleTheme();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            切换日间 / 夜间模式
+          </button>
+          <div class="tb-more-sep"></div>
           <div class="tb-more-label">数据与工具</div>
-          <button class="tb-more-item" onclick="refreshHomeDaily();spinInspire();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            换一批灵感
-          </button>
-          <button class="tb-more-item guide-more" onclick="openPano();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-            查看产品导览
-          </button>
-          <!-- 手机端在菜单里显示分享和导出 -->
-          <button class="tb-more-item mobile-menu-item" onclick="shareProduct();toggleTbMore()">
+          <button class="tb-more-item" onclick="shareProduct();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
             分享给朋友
           </button>
-          <button class="tb-more-item mobile-menu-item" onclick="exportAll();toggleTbMore()">
+          <button class="tb-more-item" onclick="exportAll();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             导出数据备份
           </button>
@@ -1329,6 +1321,16 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="tb-more-item" onclick="exportCurrentPDF();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
             导出 PDF
+          </button>
+          <div class="tb-more-sep"></div>
+          <div class="tb-more-label">系统</div>
+          <button class="tb-more-item" onclick="switchView(&apos;settings&apos;);toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            系统设置
+          </button>
+          <button class="tb-more-item" onclick="switchView(&apos;about&apos;);toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            关于产品
           </button>
           <div class="tb-more-sep"></div>
           <button class="tb-more-item tb-more-danger" onclick="resetLocalData();toggleTbMore()">
@@ -7573,6 +7575,19 @@ function closeSidebar(){
   document.body.classList.remove('sidebar-open');
 }
 function toggleTbMore(){document.getElementById('tbMoreMenu').classList.toggle('show')}
+/* 顶栏搜索图标：桌面端聚焦侧栏搜索框(自动展开被收缩的侧栏)；移动端先打开侧栏再聚焦，随后自动出现搜索结果 */
+window.tbSearchGo=function(){
+  try{
+    if(window.matchMedia&&matchMedia('(min-width:769px)').matches){
+      if(document.body.classList.contains('sidebar-collapsed')){
+        document.body.classList.remove('sidebar-collapsed');
+        try{localStorage.setItem('pp_sidebar_collapsed','0');}catch(e){}
+      }
+    }else if(typeof window.openSidebar==='function'){ window.openSidebar(); }
+    var b=document.getElementById('navSearch');
+    setTimeout(function(){ if(b){ b.focus(); b.select(); } },80);
+  }catch(e){}
+};
 /* 重置本地数据：清空 localStorage 后恢复默认示例，解决旧缓存导致的“内容变了”问题 */
 function resetLocalData(){
   if(!confirm('确定清空本地保存的所有数据（计划、目标、日记等），恢复到默认示例吗？此操作不可撤销。'))return;
@@ -13213,12 +13228,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.30.12';
+  var V='2026.08.30.14';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.30.14',t:'顶栏清爽回归 · 更新提示更得体',tag:'体验优化',blocks:[
+      '· 顶栏恢复「简洁直达」：只保留 搜索、帮助中心、换一批灵感、查看产品导览 4 个常用图标（仅图标、无文字）放在「更多 ⋯」之前；分享、导出、主题切换、导入、PDF、系统设置、关于等统一收进「更多」菜单，点击 ⋯ 才展开显示图标与文字，界面不再拥挤。',
+      '· 「更多 ⋯」菜单分组重排并新增：界面显示（切换日间/夜间模式）、数据与工具、系统（系统设置、关于产品），重置数据单独列于底部并保持警示色。',
+      '· 修复版本号不同步导致的「一打开就弹新版本提示」问题，不再无故打扰。',
+      '· 新版本提示改为紧凑小卡片（内容自适应高度、上下居中、无大段空白），点击或点关闭即优雅消失。'
+    ]},
     {v:'2026.08.30.12',t:'顶栏标语完整显示 · 帮助中心更准确',tag:'体验优化',blocks:[
       '· 移动端顶栏标语「心有所栖 · 匣纳成长」随屏宽自动缩小字号、极窄屏收起徽标图，不再被截断，完整显示不限宽。',
       '· 帮助中心新增「版面安排」：讲清极简/完整模式（显示开关）各保留哪些板块，以及板块收藏怎么钉进侧边栏、有什么用。',
@@ -13337,17 +13358,21 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function showUpdateToast(live){
     if($('qxUpdateToast'))return;
     var d=document.createElement('div');d.id='qxUpdateToast';
-    d.style.cssText='position:fixed;right:14px;bottom:auto;top:68px;z-index:1600;max-width:300px;background:var(--card);color:var(--text);border:1px solid var(--border-strong);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.28);padding:14px 16px;font-size:13px;line-height:1.6;text-align:left;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s';
-    d.innerHTML='<div style="font-weight:800;color:var(--primary);margin-bottom:4px">栖匣已有新版本 v'+esc(live)+' </div>'+
-      '<div style="color:var(--hint);margin-bottom:10px">本次更新包含界面与体验优化，刷新即可使用最新功能，具体改进见下方更新日志。</div>'+
+    /* 紧凑小卡片：内容自适应高度、底部居中、无大空白，尽量少打扰 */
+    d.style.cssText='position:fixed;left:14px;right:14px;bottom:18px;margin:0 auto;max-width:360px;z-index:1600;background:var(--card);color:var(--text);border:1px solid var(--border-strong);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.30);padding:14px 16px;font-size:13px;line-height:1.6;text-align:left;opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s';
+    d.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px">'+
+      '<div style="display:flex;align-items:center;gap:8px;min-width:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary);flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span style="font-weight:800;color:var(--primary);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">栖匣有新版本 v'+esc(live)+'</span></div>'+
+      '<button onclick="qxHideToast(this)" aria-label="关闭" style="border:none;background:transparent;color:var(--hint);font-size:16px;line-height:1;cursor:pointer;padding:2px;flex-shrink:0">✕</button>'+
+    '</div>'+
+      '<div style="color:var(--hint);font-size:12.5px;line-height:1.7;margin-bottom:12px">本次为界面与体验优化，刷新即可用上新功能。点下方可直接查看改进内容。</div>'+
       '<div style="display:flex;gap:8px">'+
-        '<button onclick="qxGoChangelog()" style="flex:1;padding:8px 0;border:none;border-radius:8px;background:linear-gradient(120deg,#5C4030,#6E4F37);color:#fff;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation">查看更新日志</button>'+
-        '<button onclick="qxHideToast(this)" style="flex:1;padding:8px 0;border:1px solid var(--border-strong);background:var(--card);color:var(--hint);font-size:13px;border-radius:8px;cursor:pointer;touch-action:manipulation">稍后再说</button>'+
+        '<button onclick="qxGoChangelog()" style="flex:1;padding:9px 0;border:none;border-radius:9px;background:linear-gradient(120deg,#5C4030,#6E4F37);color:#fff;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation">查看更新日志</button>'+
+        '<button onclick="qxHideToast(this)" style="flex:1;padding:9px 0;border:1px solid var(--border-strong);background:var(--card);color:var(--hint);font-size:13px;border-radius:9px;cursor:pointer;touch-action:manipulation">稍后再说</button>'+
       '</div>';
     document.body.appendChild(d);
     requestAnimationFrame(function(){d.style.opacity='1';d.style.transform='';});
   }
-  window.qxHideToast=function(b){var d=b?b.closest('#qxUpdateToast'):null;if(d){d.style.opacity='0';d.style.transform='translateY(10px)';setTimeout(function(){if(d&&d.parentNode)d.parentNode.removeChild(d)},230);}};
+  window.qxHideToast=function(b){var d=b?b.closest('#qxUpdateToast'):null;if(d){d.style.opacity='0';d.style.transform='translateY(12px)';setTimeout(function(){if(d&&d.parentNode)d.parentNode.removeChild(d)},230);}};
   window.qxGoChangelog=function(){try{if(window.switchView)window.switchView('changelog');window.qxHideToast&&window.qxHideToast(null);}catch(e){}};
 
   function quotaCheck(){
