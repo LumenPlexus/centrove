@@ -341,43 +341,7 @@ body.sidebar-collapsed .topbar { left: 0; }
 img[src*="pwa/logo"] { background: var(--primary); }
 img[alt="栖匣"] { color: transparent; }
 
-/* 顶部导航 */
-/* 顶部导航 */
-.cu-topnav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: auto;
-}
-.cu-topnav button {
-  min-width: 64px;
-  height: 36px;
-  padding: 0 10px;
-  border-radius: 18px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-.cu-topnav button span { font-size: 14px; }
-.cu-topnav button small { font-size: 11px; }
-@media (max-width: 768px) {
-  /* 手机端：搜索/帮助按钮改为纯图标，避免挤占品牌名 */
-  .cu-topnav { gap: 4px; }
-  .cu-topnav button {
-    width: 34px;
-    min-width: 34px;
-    height: 34px;
-    padding: 0;
-    border-radius: 50%;
-  }
-  .cu-topnav button small { display: none; }
-  .cu-topnav button span { font-size: 16px; }
+/* 顶部导航（已停用：顶栏搜索/帮助图标改为在 index.html 顶栏 .tools 内直接内置，不再由 upgrade.js 注入 .cu-topnav，故删去旧样式避免冗余与重复图标） */
   .tb-badge { display: inline-block; }
   /* 品牌区域永远保留：让标题按自身宽度显示，不要压缩到只剩图标 */
   .topbar .tb-title { flex: 0 1 auto; min-width: 60px; }

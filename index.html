@@ -1323,7 +1323,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn" onclick="toggleTbMore();closeMoreMenu()" title="更多工具">⋯</button>
+        <button class="icon-btn" onclick="toggleTbMore()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <div class="tb-more-label">界面显示</div>
           <button class="tb-more-item" onclick="toggleTheme();toggleTbMore()">
@@ -1358,11 +1358,23 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
             导出 PDF
           </button>
+          <button class="tb-more-item" onclick="if(typeof exportWeekPNG==='function'){exportWeekPNG();}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            导出本周报告图
+          </button>
+          <button class="tb-more-item" onclick="switchView(&apos;stats&apos;);toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            数据统计概览
+          </button>
           <div class="tb-more-sep"></div>
           <div class="tb-more-label">系统</div>
           <button class="tb-more-item" onclick="switchView(&apos;settings&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             系统设置
+          </button>
+          <button class="tb-more-item" onclick="switchView(&apos;changelog&apos;);toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
+            更新日志
           </button>
           <button class="tb-more-item" onclick="switchView(&apos;about&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
@@ -7291,7 +7303,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.30.15</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.31.2</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -7611,9 +7623,14 @@ function closeSidebar(){
   document.body.classList.remove('sidebar-open');
 }
 function toggleTbMore(){document.getElementById('tbMoreMenu').classList.toggle('show')}
-/* 顶栏搜索图标：桌面端聚焦侧栏搜索框(自动展开被收缩的侧栏)；移动端先打开侧栏再聚焦，随后自动出现搜索结果 */
+/* 顶栏搜索图标：优先打开升级版「全屏搜索覆盖层」（可一次搜遍所有板块与个人记录）；
+   若 upgrade.js 尚未就绪则回退为聚焦侧栏搜索框。移动端先展开侧栏再聚焦。 */
 window.tbSearchGo=function(){
   try{
+    if(window.QixiaUpgrade && typeof window.QixiaUpgrade.openSearch==='function'){
+      window.QixiaUpgrade.openSearch();
+      return;
+    }
     if(window.matchMedia&&matchMedia('(min-width:769px)').matches){
       if(document.body.classList.contains('sidebar-collapsed')){
         document.body.classList.remove('sidebar-collapsed');
@@ -8089,7 +8106,7 @@ function renderWrongs(){
   var box=document.getElementById('wrongList');
   if(!ws.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有错题记录</p>';return}
   box.innerHTML=ws.slice(-10).reverse().map(function(w){
-    return '<div style="padding:8px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px"><span class="tag tag-coral">'+w.type+'</span> <span style="font-size:13px">'+w.desc+'</span><div style="font-size:11px;color:var(--hint);margin-top:4px">'+w.date+'</div></div>'
+    return '<div style="padding:8px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px"><span class="tag tag-coral">'+escapeHtml(w.type)+'</span> <span style="font-size:13px">'+escapeHtml(w.desc)+'</span><div style="font-size:11px;color:var(--hint);margin-top:4px">'+escapeHtml(w.date)+'</div></div>'
   }).join('');
 }
 function addWrong(){
@@ -8109,7 +8126,7 @@ function renderBooks(){
   var box=document.getElementById('bookNoteList');if(!box)return;
   if(!bs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有读书笔记</p>';return}
   box.innerHTML=bs.slice(-8).reverse().map(function(b){
-    return '<div style="padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px"><div style="font-weight:600;font-size:13px;color:var(--primary)">'+b.title+'</div><div style="font-size:12px;color:var(--muted);margin-top:4px;white-space:pre-wrap">'+b.note+'</div><div style="font-size:11px;color:var(--hint);margin-top:4px">'+b.date+'</div></div>'
+    return '<div style="padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px"><div style="font-weight:600;font-size:13px;color:var(--primary)">'+escapeHtml(b.title)+'</div><div style="font-size:12px;color:var(--muted);margin-top:4px;white-space:pre-wrap">'+escapeHtml(b.note)+'</div><div style="font-size:11px;color:var(--hint);margin-top:4px">'+escapeHtml(b.date)+'</div></div>'
   }).join('');
 }
 function addBookNote(){
@@ -8129,7 +8146,7 @@ function renderPodcasts(){
   var box=document.getElementById('podcastNoteList');if(!box)return;
   if(!ps.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有播客笔记</p>';return}
   box.innerHTML=ps.slice(-8).reverse().map(function(p){
-    return '<div style="padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px"><div style="font-weight:600;font-size:13px;color:var(--teal)">'+p.name+'</div><div style="font-size:12px;color:var(--muted);margin-top:4px;white-space:pre-wrap">'+p.note+'</div><div style="font-size:11px;color:var(--hint);margin-top:4px">'+p.date+'</div></div>'
+    return '<div style="padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px"><div style="font-weight:600;font-size:13px;color:var(--teal)">'+escapeHtml(p.name)+'</div><div style="font-size:12px;color:var(--muted);margin-top:4px;white-space:pre-wrap">'+escapeHtml(p.note)+'</div><div style="font-size:11px;color:var(--hint);margin-top:4px">'+escapeHtml(p.date)+'</div></div>'
   }).join('');
 }
 function addPodcast(){
@@ -8258,7 +8275,7 @@ var PREPARE_ITEMS=[
 ];
 function renderPrepareProgress(){
   var box=document.getElementById('prepareList');if(!box)return;
-  var done=JSON.parse(localStorage.getItem('pp_prepare_done')||'{}');
+  var done={};try{done=JSON.parse(localStorage.getItem('pp_prepare_done')||'{}')||{};}catch(e){done={};}
   box.innerHTML='';
   PREPARE_ITEMS.forEach(function(item){
     var isDone=!!done[item.k];
@@ -10864,7 +10881,7 @@ try{
 
 
 
-function closeMoreMenu(){var m=document.getElementById("moreMenuDropdown");if(m)m.style.display="none";}
+function closeMoreMenu(){var m=document.getElementById('tbMoreMenu');if(m)m.classList.remove('show');}
 function toggleMoreMenu(e){
   if(e)e.stopPropagation();
   var menu=document.getElementById('moreMenuDropdown');
@@ -13283,12 +13300,25 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.30.15';
+  var V='2026.08.31.2';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.31.2',t:'「更多」菜单补全 · 安全加固 · 数据保护',tag:'修复｜新功能',blocks:[
+      '· 「更多 ⋯」菜单恢复与补全：新增「导出本周报告图」「数据统计概览」「更新日志」等此前缺失的入口，分组更清晰、功能更完整。',
+      '· 存储安全加固：错题、读书笔记、播客笔记等用户内容的回显统一转义，杜绝脚本注入风险；本地数据损坏时也不再整段渲染崩溃。',
+      '· 数据保护：无痕/隐私模式或存储接近上限时主动提示导出备份；开启「保存受限」告警；首次输入后离开页面会有提醒，防止误关丢失正在写的内容。',
+      '· 效率新增：桌面端按「/」快速打开全局搜索（搜索覆盖层已支持一次搜遍所有板块与记录），Esc 快捷关闭。',
+      '· 「更多」下拉与点击交互修正，消除冗余死代码。'
+    ]},
+    {v:'2026.08.31.1',t:'修复顶栏搜索/帮助图标重复 · 升级更可靠',tag:'Bug修复',blocks:[
+      '· 修复「搜索、帮助」图标在顶栏出现两次的问题：升级脚本旧版会再注入一套顶部按钮，与顶栏内置图标叠加所致，现已彻底停用重复注入，顶栏只保留一套「搜索 · 帮助 · 夜间 · 更多」。',
+      '· 删除重复注入的旧版样式代码，页面更干净、加载更轻。',
+      '· 顶栏搜索图标升级为「全屏搜索覆盖层」：一次可搜遍所有板块与你输入的待办、日记、记账、错题、单词、书摘、灵感、习惯、目标、电影等记录，输入即出结果、回车直达、ESC 关闭。',
+      '· 强制刷新离线缓存并升级缓存版本，确保老用户也能第一时间看到修复，不再停留在旧版界面。'
+    ]},
     {v:'2026.08.30.15',t:'顶栏还原成你给的设计稿样式 · 标语完整显示',tag:'体验优化',blocks:[
       '· 顶栏对齐设计稿重排：左侧为「图标 + 栖匣」品牌名，中部独立显示标语「心有所栖 · 匣纳成长」，不再挤压截断。',
       '· 右侧快捷图标调整为「搜索（浅色底）」「帮助中心（红色浅底突出）」「夜间模式（月亮↔太阳自动切换）」+ 最右侧「更多 ⋯」；顶栏不再堆叠文字，只放图标更清爽。',
@@ -15316,6 +15346,22 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot3,900);});
   else setTimeout(boot3,900);
+})();
+</script>
+<script>
+/* 兜底清理：杜绝顶栏重复图标（搜索/帮助出现两次）。
+   旧版 upgrade.js 会在顶栏动态注入 .cu-topnav（又一套搜索+帮助按钮），与本顶栏内置图标叠加。
+   此处作为最后防线，无论 upgrade.js 是旧是缓存，都把残留的 .cu-topnav 移除，
+   保证顶栏始终只保留内置的一套「搜索·帮助·夜间·更多」。 */
+(function(){
+  function cleanup(){
+    try{ var arr=document.querySelectorAll('.cu-topnav'); Array.prototype.forEach.call(arr,function(n){ n.remove(); }); }catch(e){}
+  }
+  cleanup();
+  document.addEventListener('DOMContentLoaded',cleanup);
+  window.addEventListener('load',function(){ setTimeout(cleanup,120); });
+  setTimeout(cleanup,500);
+  setTimeout(cleanup,1500);
 })();
 </script>
 </body></html>

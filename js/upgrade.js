@@ -8,7 +8,7 @@
 
   var NS = window.QixiaUpgrade = {};
   var STORE_KEY = 'pp_cu_config_v1';
-  var DATA_VERSION = '2026.08.30.6';
+  var DATA_VERSION = '2026.08.31.2';
 
   /* ============================================================
      1. 通用工具
@@ -166,6 +166,10 @@
      6. 顶部导航增强（全局搜索、帮助入口）
      ============================================================ */
   function injectTopNav() {
+    /* 顶栏搜索/帮助图标已在 index.html 的 .topbar .tools 中内置（搜索升级为全屏搜索覆盖层）。
+       此处旧版动态注入的 .cu-topnav 会与内置图标重复，导致搜索/问号各出现两次，
+       故彻底停用该注入。全局搜索能力仍由 QixiaUpgrade.openSearch() 提供并被顶栏搜索复用。 */
+    return;
     var topbar = $('.topbar');
     if (!topbar || $('.cu-topnav', topbar)) return;
     var nav = el('div', 'cu-topnav');
@@ -935,6 +939,11 @@
       Array.prototype.forEach.call(document.querySelectorAll('.qx-fold'), function (c) { c.classList.remove('qx-fold'); c.style.maxHeight = ''; });
     } catch (e) {}
     injectTopNav();
+    // 防御性兜底：无论从任何缓存/旧文件残留了 .cu-topnav（旧版升级脚本注入的冗余顶部按钮），
+    // 一律移除，确保顶栏只保留 index.html 内置的一套「搜索·帮助·夜间·更多」图标，杜绝重复。
+    try {
+      Array.prototype.forEach.call(document.querySelectorAll('.cu-topnav'), function (n) { n.remove(); });
+    } catch (e) {}
     injectHelpNav();
     applyModuleVisibility();
     ensureExternalLinks();
@@ -993,4 +1002,80 @@
   NS.renderDashboard = renderDashboard;
   NS.renderExpenseChart = renderExpenseChart;
   NS.renderSettingsExtras = renderSettingsExtras;
+
+  /* ============================================================
+     X. 安全与健壮性增强层（2026.08.31.2）
+     - 本地存储可用性探测（无痕/隐私模式写失败时给出明确提示）
+     - 存储容量预警（接近上限提醒导出备份）
+     - 全局「保存受限」错误可视化，避免数据“以为存了”实为丢失
+     - 首次输入后启用离开提醒，防误关丢失正在写的内容
+     - 桌面端「/」快捷键直达全屏搜索（含 Ctrl/Cmd+K）
+     ============================================================ */
+  function probeStorage() {
+    try { var t = 'qx_probe'; localStorage.setItem(t, '1'); localStorage.removeItem(t); return true; }
+    catch (e) { return false; }
+  }
+  function patchStorageSafety() {
+    if (!probeStorage()) {
+      try { setTimeout(function () { toast('当前为无痕/隐私模式，记录可能无法长期保存，请注意定期导出备份', 'warn'); }, 1500); } catch (e) {}
+      return;
+    }
+    try {
+      var used = 0, i;
+      for (i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i), v = localStorage.getItem(k);
+        used += (String(k).length + (String(v || '').length)) * 2;
+      }
+      if (used > 4.5 * 1024 * 1024) {
+        setTimeout(function () { toast('本地存储接近上限，请尽快用「更多 → 导出数据备份」保存重要数据', 'warn'); }, 1800);
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('error', function (ev) {
+    if (ev && ev.message && /quota|securityerror|abort|denied/i.test(ev.message)) {
+      try { toast('保存受限：请检查浏览器隐私设置或存储空间，重要数据建议导出备份', 'warn'); } catch (e) {}
+    }
+  });
+  function patchBeforeUnload() {
+    var dirty = false;
+    function mark() { dirty = true; }
+    document.addEventListener('input', mark, true);
+    document.addEventListener('change', mark, true);
+    function hasRealData() {
+      var keys = ['pp_tasks', 'pp_checkins', 'pp_journals', 'pp_expenses', 'pp_words', 'pp_wrongs', 'pp_books', 'pp_habits', 'pp_mood', 'pp_goals', 'pp_vision', 'pp_decisions', 'pp_grateful', 'pp_inspire', 'pp_pods', 'pp_bless'];
+      for (var i = 0; i < keys.length; i++) {
+        try { var v = localStorage.getItem(keys[i]); if (v && v.length > 2) return true; } catch (e) {}
+      }
+      return false;
+    }
+    window.addEventListener('beforeunload', function (e) {
+      if (!dirty || !hasRealData()) return;
+      e.preventDefault();
+      e.returnValue = '';
+    });
+  }
+  function patchKeyboardShortcuts() {
+    document.addEventListener('keydown', function (e) {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      var t = e.target;
+      var typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || (t.isContentEditable));
+      // 「/」快速打开搜索（非输入状态）
+      if (e.key === '/' && !typing) {
+        e.preventDefault();
+        if (typeof openSearch === 'function') openSearch();
+        else if (window.QixiaUpgrade && typeof window.QixiaUpgrade.openSearch === 'function') window.QixiaUpgrade.openSearch();
+      }
+      // Esc 关闭全屏搜索覆盖层
+      if (e.key === 'Escape') {
+        try { var ov = document.getElementById('qsOverlay') || document.querySelector('.qs-overlay'); if (ov) ov.style.display = 'none'; } catch (err) {}
+      }
+    });
+  }
+  function runSafetyLayer() {
+    patchStorageSafety();
+    patchBeforeUnload();
+    patchKeyboardShortcuts();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runSafetyLayer);
+  else runSafetyLayer();
 })();
