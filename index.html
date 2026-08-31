@@ -12772,7 +12772,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 /* 入座底栏：首次进入导览时固定在底部，引导用户「入座」后才进入产品 */
 .pano-seatbar{position:sticky;bottom:0;margin-top:10px;display:flex;justify-content:center;padding:16px 0 8px;background:linear-gradient(180deg,rgba(255,253,248,0),var(--card) 42%);z-index:6}
 .pano-seatbar .btn-seat{font-size:15px;padding:12px 28px;letter-spacing:1px;box-shadow:0 8px 24px rgba(74,58,40,.18)}
-#pano.seat-lock .pano-close{display:none}
+/* 首次「入座」导览也保留 ✕ 关闭键：随时能退出，避免浮层盖住顶栏导致“点了没反应” */
+#pano.seat-lock .pano-close{display:flex;background:#FFFFFF;border-color:rgba(74,58,40,.16);color:#4A3A2C}
+#pano.seat-lock .pano-close:hover{background:#FFF}
 [data-theme="dark"] .mind-refresh{background:#312A20;color:#C9B38A;border-color:#4F4433}
 [data-theme="dark"] .mind-refresh:hover{background:#382F24}
 </style>
@@ -12822,10 +12824,15 @@ function panoWire(){
   p.addEventListener('click',function(ev){
     var t=ev.target.closest('[data-pano]');if(!t)return;
     var act=t.getAttribute('data-pano');
-    if(p.classList.contains('seat-lock')&&act!=='seat')return;  /* 锁定中：仅「入座」有效 */
-    if(act==='close')closePano(true);
-    else if(act==='home'||act==='about')panoGo(act);
-    else if(act==='seat')seatPano();
+    if(act==='seat'){seatPano();return;}
+    /* 关闭/跳转始终可用：不再被首次「入座」锁死，并在关闭时记录“已看过”，
+       避免导览浮层每次重开盖住顶栏导致“点了没反应” */
+    if(act==='close'){
+      try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
+      if(p)p.classList.remove('seat-lock');
+      closePano(true);return;
+    }
+    if(act==='home'||act==='about')panoGo(act);
   });
 }
 /* ── 导览为单屏长页：自由滚动浏览；关闭/跳转由 panoWire 处理 ── */
