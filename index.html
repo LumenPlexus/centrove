@@ -248,7 +248,7 @@ section[id],.view{scroll-margin-top:80px;}
 .tb-more-menu{
   position:absolute;top:calc(100% + 8px);right:0;background:var(--card);
   border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);
-  padding:6px;min-width:190px;display:none;z-index:60;flex-direction:column;gap:2px;
+  padding:8px;min-width:214px;display:none;z-index:60;flex-direction:column;gap:2px;
   max-height:min(68vh,540px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
 }
 .tb-more-menu.show{display:flex}
@@ -272,7 +272,7 @@ section[id],.view{scroll-margin-top:80px;}
 /* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
 .topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
 .topbar .tools{margin-left:auto;flex-shrink:0}
-.topbar .icon-btn{width:30px;height:30px;border-radius:10px}
+.topbar .icon-btn{width:32px;height:32px;border-radius:50%}
 .topbar .icon-btn svg{width:15px;height:15px}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
@@ -288,7 +288,7 @@ section[id],.view{scroll-margin-top:80px;}
   .topbar .tb-logo{width:22px;height:22px;border-radius:6px}
   .topbar .tb-name{font-size:15px}
   .topbar .tb-slogan{font-size:11px;padding:2px 9px}
-  .topbar .icon-btn{width:28px;height:28px;border-radius:9px}
+  .topbar .icon-btn{width:30px;height:30px;border-radius:50%}
 }
 @media(max-width:560px){
   .topbar .tb-slogan{display:none}
@@ -1310,12 +1310,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
     <div class="tb-slogan">心有所栖 · 匣纳成长</div>
     <div class="tools">
-      <!-- 顶部直达：搜索 / 帮助中心（带浅色底突出）、夜间模式（月↔日）；换一批灵感、产品导览等收进「更多 ⋯」 -->
-      <button class="icon-btn tb-pill" onclick="tbSearchGo()" title="搜索板块与内容" aria-label="全局搜索">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <!-- 顶栏四键（对齐旧版模板）：换一批灵感 → 查看产品导览 → 夜间模式 → 更多 ⋯。全局搜索移入「更多 ⋯」顶部，另支持键盘 `/` 快捷唤起。 -->
+      <button class="icon-btn" onclick="refreshHomeDaily()" title="换一批灵感" aria-label="换一批灵感">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
       </button>
-      <button class="icon-btn tb-pill tb-pill-help" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      <button class="icon-btn" onclick="openPano()" title="查看产品导览" aria-label="查看产品导览">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="7" y1="4.4" x2="12" y2="2"></line></svg>
       </button>
       <button class="icon-btn" id="themeToggleBtn" onclick="toggleTheme()" title="切换日间 / 夜间模式" aria-label="切换日间 / 夜间模式">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIconMoon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -1325,10 +1325,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="tb-more" id="tbMore">
         <button class="icon-btn" onclick="toggleTbMore()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
-          <div class="tb-more-label">界面显示</div>
-          <button class="tb-more-item" onclick="toggleTheme();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            切换日间 / 夜间模式
+          <button class="tb-more-item" onclick="tbSearchGo();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            全局搜索
           </button>
           <div class="tb-more-sep"></div>
           <div class="tb-more-label">灵感与内容</div>
@@ -1375,6 +1374,10 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="tb-more-item" onclick="switchView(&apos;changelog&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
             更新日志
+          </button>
+          <button class="tb-more-item" onclick="switchView(&apos;help&apos;);toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            帮助中心
           </button>
           <button class="tb-more-item" onclick="switchView(&apos;about&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
@@ -7303,7 +7306,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.31.2</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.31.3</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -13300,12 +13303,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.31.2';
+  var V='2026.08.31.3';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.31.3',t:'顶栏恢复旧版经典布局 · 视觉协调',tag:'体验优化',blocks:[
+      '· 顶栏按经典模板重新排布：左侧「≡ + 栖匣 Logo + 名称」，右侧统一四枚圆形按钮 = 「换一批灵感 → 查看产品导览 → 日/夜间模式 → 更多 ⋯」，图标大小/配色更协调。',
+      '· 「更多 ⋯」菜单按图片版式分组：灵感与内容（换一批灵感/查看产品导览）、数据与工具（分享/导出备份/导入/导出PDF 等）、系统（设置/更新日志/帮助中心/关于）、最下红色「重置本地数据」，全部可点且生效。',
+      '· 全局搜索改从顶栏移入「更多 ⋯」顶部（支持键盘 `/` 快捷唤起），顶栏不再出现搜索/帮助图标，更干净。'
+    ]},
     {v:'2026.08.31.2',t:'「更多」菜单补全 · 安全加固 · 数据保护',tag:'修复｜新功能',blocks:[
       '· 「更多 ⋯」菜单恢复与补全：新增「导出本周报告图」「数据统计概览」「更新日志」等此前缺失的入口，分组更清晰、功能更完整。',
       '· 存储安全加固：错题、读书笔记、播客笔记等用户内容的回显统一转义，杜绝脚本注入风险；本地数据损坏时也不再整段渲染崩溃。',

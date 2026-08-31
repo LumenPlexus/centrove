@@ -5,11 +5,11 @@
  *  - 用户所有记录数据一律保存在本机浏览器 localStorage，绝不上传任何服务器、
  *    也绝不经由本 Service Worker 发送或中转任何数据。
  *  - 升级版号后，浏览器会自动拉取新版缓存并刷新一次，此后再次打开即为最新内容。
- * 版本：2026.08.31.2
+ * 版本：2026.08.31.3
  */
 var CACHE_DATE = '2026.08.31';
 
-var CACHE_NAME = 'qi-xia-' + CACHE_DATE.replace(/\./g, '') + '-31b';
+var CACHE_NAME = 'qi-xia-' + CACHE_DATE.replace(/\./g, '') + '-3b';
 var PRECACHE = [
   './',
   './index.html',
