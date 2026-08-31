@@ -51,15 +51,17 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260830.11', { scope: './' }).then(function(reg){
+          function _swReloadNow(){ if(_swReloadDone) return; _swReloadDone = true; try{ setTimeout(function(){ window.location.reload(); }, 220); }catch(e){} }
+          navigator.serviceWorker.register('./sw.js?v=20260831.7', { scope: './' }).then(function(reg){
+            // 兜底A：新旧SW切换正式接管时，恰好刷新一次（兼容 skipWaiting 与 clients.claim）
+            navigator.serviceWorker.addEventListener('controllerchange', function(){
+              try{ if(navigator.serviceWorker.controller && navigator.serviceWorker.controller.state === 'activated') _swReloadNow(); }catch(e){}
+            });
+            // 兜底B：SW 安装完成激活即刷新（去掉旧的 !skipWaiting 误判，修复"始终不自动刷新"缺陷）
             reg.addEventListener('updatefound', function(){
-              var nw = reg.installing;
-              if(!nw) return;
+              var nw = reg.installing; if(!nw) return;
               nw.addEventListener('statechange', function(){
-                if(nw.state === 'activated' && !nw.skipWaiting && !_swReloadDone){
-                  _swReloadDone = true;
-                  try{ window.location.reload(); }catch(e){}
-                }
+                if(nw.state === 'activated') _swReloadNow();
               });
             });
           }).catch(function(){});
