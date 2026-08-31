@@ -246,24 +246,28 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .tb-title .title{overflow:visible;text-overflow:clip}
 .tb-more{position:relative;flex-shrink:0}
 .tb-more-menu{
-  position:fixed;top:66px;right:12px;background:var(--card);
-  border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);
-  padding:8px;min-width:214px;display:none;z-index:60;flex-direction:column;gap:2px;
-  max-height:min(70vh,540px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  position:fixed;top:66px;right:12px;color:var(--text);
+  background:linear-gradient(180deg,#FDFAF4 0%,#F5EEDA 100%);
+  border:1px solid #E4D8C4;border-radius:16px;
+  box-shadow:0 22px 48px rgba(74,58,40,.16),0 5px 16px rgba(74,58,40,.10);
+  padding:10px;min-width:218px;display:none;z-index:80;flex-direction:column;gap:2px;
+  max-height:min(72vh,560px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
 }
 @media(max-width:768px){.tb-more-menu{top:60px;right:8px;}}
 @media(max-width:480px){.tb-more-menu{top:56px;right:6px;}}
 .tb-more-menu.show{display:flex}
 .tb-more-item{
-  display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;
-  font-size:13px;color:var(--text);width:100%;text-align:left;transition:background .15s;
+  display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;
+  font-size:13.5px;color:var(--text);width:100%;text-align:left;line-height:1.3;
+  transition:background .16s ease,color .16s ease,transform .14s ease;
 }
-.tb-more-item:hover{background:var(--primary-light);color:var(--primary)}
-.tb-more-item svg{width:16px;height:16px;color:var(--primary-mid);flex-shrink:0}
-.tb-more-label{font-size:11px;color:var(--hint);padding:4px 12px 2px;font-weight:600;letter-spacing:.5px}
-.tb-more-sep{height:1px;background:var(--border);margin:4px 8px}
+.tb-more-item:hover{background:rgba(179,133,70,.14);color:#6A4A2A;transform:translateX(2px)}
+.tb-more-item svg{width:17px;height:17px;color:#8A6A3A;flex-shrink:0}
+.tb-more-label{font-size:11px;color:var(--hint);padding:8px 12px 3px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.tb-more-sep{height:1px;background:linear-gradient(90deg,transparent,#D9CBB2,transparent);margin:5px 8px}
 .tb-more-danger{color:#8B4513}
-.tb-more-danger:hover{background:#FBEEE6;color:#8B4513}
+.tb-more-danger:hover{background:#F6E3DC;color:#7A3410;transform:translateX(2px)}
+.tb-more-danger svg{color:#B0451B}
 .topbar .date{font-size:12px;color:var(--muted)}
 .topbar .quote{flex:1;font-size:12px;color:var(--muted);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-left:8px}
 .topbar .tools{display:flex;gap:8px}
@@ -274,8 +278,8 @@ section[id],.view{scroll-margin-top:80px;}
 /* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
 .topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
 .topbar .tools{margin-left:auto;flex-shrink:0}
-.topbar .icon-btn{width:40px;height:40px;border-radius:50%}
-.topbar .icon-btn svg{width:19px;height:19px}
+.topbar .icon-btn{width:42px;height:42px;border-radius:50%}
+.topbar .icon-btn svg{width:20px;height:20px}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
 .topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
@@ -290,7 +294,8 @@ section[id],.view{scroll-margin-top:80px;}
   .topbar .tb-logo{width:22px;height:22px;border-radius:6px}
   .topbar .tb-name{font-size:15px}
   .topbar .tb-slogan{font-size:11px;padding:2px 9px}
-  .topbar .icon-btn{width:36px;height:36px;border-radius:50%}
+  .topbar .icon-btn{width:38px;height:38px;border-radius:50%}
+  .topbar .icon-btn svg{width:19px;height:19px}
 }
 @media(max-width:560px){
   .topbar .tb-slogan{display:none}
@@ -577,7 +582,7 @@ strong{font-weight:600}
   font-size:0;overflow:hidden;
 }
 .icon-btn.btn-inspire:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid);transform:none;box-shadow:none}
-.icon-btn.btn-inspire svg{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;min-height:16px!important;max-height:16px!important;color:currentColor}
+.icon-btn.btn-inspire svg{color:currentColor}
 .icon-btn.btn-inspire.spin svg{animation:spin .6s ease}
 .icon-btn.btn-inspire .btn-inspire-text{display:none!important}
 /* 顶栏「产品导览」按钮：与「换一批灵感」同尺寸同风格（桌面+手机均为图标按钮） */
@@ -589,7 +594,7 @@ strong{font-weight:600}
   font-size:0;overflow:hidden;
 }
 .icon-btn.btn-guide:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:none;box-shadow:0 4px 12px rgba(74,58,40,.25)}
-.icon-btn.btn-guide svg{width:16px!important;height:16px!important;min-width:16px!important;max-width:16px!important;min-height:16px!important;max-height:16px!important;color:currentColor}
+.icon-btn.btn-guide svg{color:currentColor}
 .icon-btn.btn-guide .btn-guide-text{display:none!important}
 .tb-more-item.guide-more{color:var(--primary-mid)!important;font-weight:600}
 .tb-more-item.guide-more:hover{background:var(--primary-light,#F1EBDD)!important;color:var(--primary)!important}
@@ -752,8 +757,13 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 [data-theme="dark"] .view.active .btn[style*="background:#F1EBDD"]:not([data-pp-tip]):not([data-pp-warn]):not([data-pp-ok]):not([data-pp-note]){background:#4A3427!important;color:#fff!important;border-color:#7C5B38!important;}
 [data-theme="dark"] .view.active .tt-clear-btn{background:#3A3126!important;color:#DAD5C7!important;border-color:#4A4033!important;}
 /* 倒计时闪电图标：颜色由 JS _iconInk 按背景亮度动态设定，无需 CSS 兜底 */
-[data-theme="dark"] .tb-more-menu{background:var(--card)!important;border-color:var(--border)!important;}
-[data-theme="dark"] .tb-more-item:hover{background:var(--primary-light)!important;}
+[data-theme="dark"] .tb-more-menu{background:linear-gradient(180deg,#2A2118,#241B13)!important;border-color:#493B2A!important;color:#E0D6C4!important}
+[data-theme="dark"] .tb-more-item:hover{background:rgba(200,160,92,.14)!important;color:#E8D5B8!important}
+[data-theme="dark"] .tb-more-item svg{color:#C9A96E!important}
+[data-theme="dark"] .tb-more-label{color:#A89078!important}
+[data-theme="dark"] .tb-more-danger{color:#F0B29B!important}
+[data-theme="dark"] .tb-more-danger:hover{background:#4A2A1A!important;color:#FFD3C0!important}
+[data-theme="dark"] .tb-more-sep{background:linear-gradient(90deg,transparent,#4F4433,transparent)!important}
 [data-theme="dark"] input,[data-theme="dark"] textarea,[data-theme="dark"] [contenteditable="true"]{
   background:var(--bg)!important;color:var(--text)!important;border-color:var(--border)!important;
 }
@@ -1110,9 +1120,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .topbar{background:linear-gradient(180deg,var(--card),#251F19);box-shadow:0 1px 3px rgba(0,0,0,.3)}
 [data-theme="dark"] .topbar .icon-btn,[data-theme="dark"] .topbar .theme-toggle,[data-theme="dark"] #btnGuide{color:#D6C9B4;border-color:#57493A}
 [data-theme="dark"] .topbar .icon-btn:hover,[data-theme="dark"] .topbar .theme-toggle:hover{background:var(--primary-light);color:#E8D5B8;border-color:#8A6A3A}
-[data-theme="dark"] .tb-more-menu{background:var(--card);border-color:var(--border)}
+[data-theme="dark"] .tb-more-menu{background:linear-gradient(180deg,#2A2118,#241B13);border-color:#493B2A}
 [data-theme="dark"] .tb-more-item{color:#E0D6C4}
-[data-theme="dark"] .tb-more-item:hover{background:var(--primary-light);color:#E8D5B8}
+[data-theme="dark"] .tb-more-item:hover{background:rgba(200,160,92,.14);color:#E8D5B8}
 [data-theme="dark"] .btn-primary{background:linear-gradient(140deg,#5C4430,#3E2F24);border-color:#6E4F37;color:#F0E7D8}
 [data-theme="dark"] .btn-teal{background:linear-gradient(140deg,#6E5A32,#56441F);border-color:#7A6236;color:#F0E7D8}
 [data-theme="dark"] input:focus,textarea:focus,select:focus{background:var(--card);border-color:var(--primary);box-shadow:0 0 0 3px var(--accent-soft)}
@@ -1312,15 +1322,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
     <div class="tb-slogan">心有所栖 · 匣纳成长</div>
     <div class="tools">
-      <!-- 顶栏六键（一定包含 搜索+帮助+模板四键）：搜索 → 帮助 → 换一批灵感 → 查看产品导览 → 夜间模式 → 更多 ⋯。每键仅一套、无重复。 -->
+      <!-- 顶栏（搜索 + 帮助 + 产品导览 + 夜间 + 更多，共五键，精简去重；“换一批灵感”已并入各卡片内按钮，不再占顶栏入口） -->
       <button class="icon-btn" onclick="tbSearchGo()" title="搜索板块与内容" aria-label="全局搜索">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
       <button class="icon-btn" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-      </button>
-      <button class="icon-btn" onclick="refreshHomeDaily()" title="换一批灵感" aria-label="换一批灵感">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
       </button>
       <button class="icon-btn" onclick="openPano()" title="查看产品导览" aria-label="查看产品导览">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="7" y1="4.4" x2="12" y2="2"></line></svg>
@@ -1333,21 +1340,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="tb-more" id="tbMore">
         <button class="icon-btn" onclick="toggleTbMore()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
-          <button class="tb-more-item" onclick="tbSearchGo();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            全局搜索
-          </button>
-          <div class="tb-more-sep"></div>
-          <div class="tb-more-label">灵感与内容</div>
-          <button class="tb-more-item" onclick="refreshHomeDaily();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            换一批灵感
-          </button>
-          <button class="tb-more-item" onclick="openPano();toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-            查看产品导览
-          </button>
-          <div class="tb-more-sep"></div>
+          <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
           <button class="tb-more-item" onclick="shareProduct();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
@@ -1382,10 +1375,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="tb-more-item" onclick="switchView(&apos;changelog&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
             更新日志
-          </button>
-          <button class="tb-more-item" onclick="switchView(&apos;help&apos;);toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            帮助中心
           </button>
           <button class="tb-more-item" onclick="switchView(&apos;about&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
@@ -1632,10 +1621,10 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </div>
       <div class="card knowledge-card" style="margin-bottom:14px">
         <div class="knowledge-tabs">
-          <button class="k-tab active" data-k="health" onclick="switchKnowledge('health')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>健康</button>
-          <button class="k-tab" data-k="cognition" onclick="switchKnowledge('cognition')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>认知</button>
-          <button class="k-tab" data-k="life" onclick="switchKnowledge('life')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>社会</button>
-          <button class="k-tab" data-k="finance" onclick="switchKnowledge('finance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10"></path><path d="M9 9.5h6M9 14.5h6"></path></svg>财商</button>
+          <button class="k-tab active" data-k="health" onclick="switchKnowledge('health')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span>健康</span></button>
+          <button class="k-tab" data-k="cognition" onclick="switchKnowledge('cognition')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>认知</span></button>
+          <button class="k-tab" data-k="life" onclick="switchKnowledge('life')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>社会</span></button>
+          <button class="k-tab" data-k="finance" onclick="switchKnowledge('finance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 6.5v11"></path><path d="M14.6 9.3c0-.6-.9-1-2.6-1-1.5 0-2.3.5-2.3 1.1 0 1.4 4.6.6 4.6 2.3 0 .7-1.2 1.3-2.6 1.3-1.8 0-2.8-.5-2.8-1.2"></path></svg><span>财商</span></button>
         </div>
         <div id="knowledgeBody" style="font-size:13.5px;line-height:1.85;color:var(--text)">
           <strong>午睡时长</strong><br>10-20分钟短时午睡能恢复精力、提升下午专注力；超过30分钟易进入深睡，醒来更昏沉。定好闹钟，别睡过头。<br><span style="font-size:11px;color:var(--hint)">出处：健康小知识 · 按日期轮换不重复</span>
@@ -12485,6 +12474,28 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 </script>
 
 <style>
+/* 今日知识 · 四个分类标签：统一分段式胶囊，图标居中、同尺寸、对齐基线（兼容浅/深主题） */
+.knowledge-tabs{display:flex;gap:8px;flex-wrap:nowrap;margin-bottom:14px}
+.k-tab{
+  flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:10px 4px 8px;border-radius:12px;border:1px solid transparent;
+  background:transparent;color:var(--muted,#8C7863);cursor:pointer;font-family:inherit;
+  font-size:12px;line-height:1;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .14s ease;
+}
+.k-tab svg{width:22px;height:22px;color:var(--muted,#8C7863);transition:color .18s ease}
+.k-tab span{font-size:12px;font-weight:600;letter-spacing:.02em}
+.k-tab:hover{background:rgba(179,133,70,.10);color:var(--text,#4A3427)}
+.k-tab:hover svg{color:#8A6A3A}
+.k-tab.active{
+  background:linear-gradient(140deg,#6E4F37,#57422F);border-color:#6E4F37;
+  color:#F5ECD8;box-shadow:0 6px 16px rgba(74,58,40,.22);
+}
+.k-tab.active svg{color:#F0D9A8}
+[data-theme="dark"] .k-tab{color:#B8A98E;border-color:#332A20}
+[data-theme="dark"] .k-tab svg{color:#B8A98E}
+[data-theme="dark"] .k-tab:hover{background:rgba(200,160,92,.12);color:#E8D5B8}
+[data-theme="dark"] .k-tab.active{background:linear-gradient(140deg,#7A5B39,#5C4430);border-color:#8A6A3A;color:#F0E7D8}
+[data-theme="dark"] .k-tab.active svg{color:#F0D9A8}
 /* 今日心语刷新按钮 */
 .mind-refresh{font-size:12.5px;border:1px solid var(--border,#E5DBC8);background:var(--card,#fff);color:var(--primary,#4A3427);padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
 .mind-refresh:hover{background:var(--primary-light,#F1EBDD)}
@@ -13837,7 +13848,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     }
     var hv=el('view-home');
     if(hv){
-      initFold(hv.querySelector('.mind-card'),'mind');
+      // 注意：不给「今日心语」卡片注入折叠箭头，否则会压住右上角「换一句」按钮；
+      // 仅对生活刻度与开学准备卡片保留折叠能力。
       initFold(hv.querySelector('.daily-card'),'scale');
       initFold(el('prepareCard'),'prepare');
     }
