@@ -246,11 +246,13 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .tb-title .title{overflow:visible;text-overflow:clip}
 .tb-more{position:relative;flex-shrink:0}
 .tb-more-menu{
-  position:absolute;top:calc(100% + 8px);right:0;background:var(--card);
+  position:fixed;top:66px;right:12px;background:var(--card);
   border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);
   padding:8px;min-width:214px;display:none;z-index:60;flex-direction:column;gap:2px;
-  max-height:min(68vh,540px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  max-height:min(70vh,540px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
 }
+@media(max-width:768px){.tb-more-menu{top:60px;right:8px;}}
+@media(max-width:480px){.tb-more-menu{top:56px;right:6px;}}
 .tb-more-menu.show{display:flex}
 .tb-more-item{
   display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;
@@ -272,8 +274,8 @@ section[id],.view{scroll-margin-top:80px;}
 /* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
 .topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
 .topbar .tools{margin-left:auto;flex-shrink:0}
-.topbar .icon-btn{width:32px;height:32px;border-radius:50%}
-.topbar .icon-btn svg{width:15px;height:15px}
+.topbar .icon-btn{width:40px;height:40px;border-radius:50%}
+.topbar .icon-btn svg{width:19px;height:19px}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
 .topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
@@ -288,7 +290,7 @@ section[id],.view{scroll-margin-top:80px;}
   .topbar .tb-logo{width:22px;height:22px;border-radius:6px}
   .topbar .tb-name{font-size:15px}
   .topbar .tb-slogan{font-size:11px;padding:2px 9px}
-  .topbar .icon-btn{width:30px;height:30px;border-radius:50%}
+  .topbar .icon-btn{width:36px;height:36px;border-radius:50%}
 }
 @media(max-width:560px){
   .topbar .tb-slogan{display:none}
@@ -1310,7 +1312,13 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
     <div class="tb-slogan">心有所栖 · 匣纳成长</div>
     <div class="tools">
-      <!-- 顶栏四键（对齐旧版模板）：换一批灵感 → 查看产品导览 → 夜间模式 → 更多 ⋯。全局搜索移入「更多 ⋯」顶部，另支持键盘 `/` 快捷唤起。 -->
+      <!-- 顶栏六键（一定包含 搜索+帮助+模板四键）：搜索 → 帮助 → 换一批灵感 → 查看产品导览 → 夜间模式 → 更多 ⋯。每键仅一套、无重复。 -->
+      <button class="icon-btn" onclick="tbSearchGo()" title="搜索板块与内容" aria-label="全局搜索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-btn" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </button>
       <button class="icon-btn" onclick="refreshHomeDaily()" title="换一批灵感" aria-label="换一批灵感">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
       </button>
@@ -7306,7 +7314,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.31.3</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.08.31.4</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -13303,12 +13311,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.08.31.3';
+  var V='2026.08.31.4';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.08.31.4',t:'顶栏恢复搜索+帮助图标 · 图标放大 · 修复“更多”菜单不显示',tag:'修复',blocks:[
+      '· 顶栏左侧「搜索 🔍」与「帮助 ?」图标恢复显示，并保留模板四键（换一批灵感/查看产品导览/夜间/更多），共六键，各有且仅有一份、无重复。',
+      '· 顶栏圆形图标全面放大（桌面 40px、移动端 36px），触控更大、更清晰，对齐模板观感。',
+      '· 修复“点击更多下拉菜单不显示”：下拉面板改为悬浮于页面之上，不再被顶栏裁切，任意屏幕都能弹出并逐项可点。'
+    ]},
     {v:'2026.08.31.3',t:'顶栏恢复旧版经典布局 · 视觉协调',tag:'体验优化',blocks:[
       '· 顶栏按经典模板重新排布：左侧「≡ + 栖匣 Logo + 名称」，右侧统一四枚圆形按钮 = 「换一批灵感 → 查看产品导览 → 日/夜间模式 → 更多 ⋯」，图标大小/配色更协调。',
       '· 「更多 ⋯」菜单按图片版式分组：灵感与内容（换一批灵感/查看产品导览）、数据与工具（分享/导出备份/导入/导出PDF 等）、系统（设置/更新日志/帮助中心/关于）、最下红色「重置本地数据」，全部可点且生效。',
