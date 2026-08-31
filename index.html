@@ -285,7 +285,10 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .icon-btn:hover{color:#5A3F26;transform:translateY(-2px);background:linear-gradient(180deg,#FFFEF8 0%,#F9F1E2 50%,#F0E5CD 100%);border-color:rgba(179,133,70,.55);box-shadow:0 2px 2px rgba(107,77,51,.10),0 8px 18px -5px rgba(139,99,50,.34),0 0 0 3px rgba(179,133,70,.12),inset 0 1px 0 rgba(255,255,255,1)}
 .topbar .icon-btn:active{transform:scale(.9);background:linear-gradient(180deg,#EADDC2,#F2E8D3);box-shadow:inset 0 2px 5px rgba(107,77,51,.22),0 1px 2px rgba(107,77,51,.10)}
 .topbar .icon-btn svg{width:20px;height:20px;position:relative;z-index:1}
-.topbar .icon-btn[title="更多工具"]{font-size:24px;line-height:1;letter-spacing:-1px}
+/* “更多”按钮：触控区更大、三点更饱满清晰，仍旧与整体图标保持统一的高级纸感风格 */
+.topbar .icon-btn.tb-more-dots{width:46px;height:46px}
+.topbar .icon-btn.tb-more-dots svg{width:25px;height:25px}
+@media(max-width:768px){.topbar .icon-btn.tb-more-dots{width:42px;height:42px}.topbar .icon-btn.tb-more-dots svg{width:23px;height:23px}}
 .topbar .icon-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(179,133,70,.28),0 8px 18px -6px rgba(139,99,50,.32)}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
@@ -1350,7 +1353,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn" onclick="toggleTbMore()" title="更多工具">⋯</button>
+        <button class="icon-btn tb-more-dots" onclick="toggleTbMore(event)" title="更多工具" aria-label="更多工具">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.5" fill="currentColor"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/></svg>
+        </button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
@@ -7634,7 +7639,11 @@ function closeSidebar(){
   if(ov)ov.classList.remove('show');
   document.body.classList.remove('sidebar-open');
 }
-function toggleTbMore(){document.getElementById('tbMoreMenu').classList.toggle('show')}
+function toggleTbMore(ev){
+  if(ev){ try{ ev.stopPropagation(); }catch(e){} }
+  var m=document.getElementById('tbMoreMenu');
+  if(m)m.classList.toggle('show');
+}
 /* 顶栏搜索图标：优先打开升级版「全屏搜索覆盖层」（可一次搜遍所有板块与个人记录）；
    若 upgrade.js 尚未就绪则回退为聚焦侧栏搜索框。移动端先展开侧栏再聚焦。 */
 window.tbSearchGo=function(){
