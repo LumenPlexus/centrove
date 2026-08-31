@@ -239,7 +239,7 @@ section[id],.view{scroll-margin-top:80px;}
 
 .app{display:block;min-height:100vh;padding-top:64px}
 
-.topbar{background:var(--card);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:16px;position:fixed;top:0;left:184px;right:0;z-index:20;height:64px;margin-left:0}
+.topbar{background:var(--card);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;position:fixed;top:0;left:184px;right:0;z-index:20;height:60px;margin-left:0}
 .topbar .title{font-size:16px;font-weight:600;color:var(--primary);white-space:nowrap;display:flex;align-items:center;gap:8px}
 .topbar .tb-badge{font-size:9px;font-weight:500;background:linear-gradient(135deg,#6E4F37,#6E4F37);color:#fff;padding:2px 8px;border-radius:10px;white-space:nowrap;flex-shrink:0}
 .topbar .tb-title{min-width:0}
@@ -267,21 +267,28 @@ section[id],.view{scroll-margin-top:80px;}
 .topbar .tools{display:flex;gap:8px}
 /* 顶栏新式样（对齐设计稿）：品牌(logo+名) + 中部标语 + 直达图标（搜索/帮助带浅色底、夜间模式月↔日） */
 .topbar .tb-brand{display:flex;align-items:center;gap:8px;flex-shrink:0;min-width:0}
-.topbar .tb-logo{width:28px;height:28px;border-radius:8px;flex-shrink:0;display:block}
-.topbar .tb-name{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:17px;font-weight:700;letter-spacing:.12em;color:var(--primary);white-space:nowrap}
-.topbar .tb-slogan{flex:1;min-width:0;font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12.5px;color:var(--hint);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-left:12px;margin-right:6px}
-.topbar .tb-pill{background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
-.topbar .tb-pill:hover{background:rgba(107,77,51,.15)}
+.topbar .tb-logo{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:block}
+.topbar .tb-name{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:16px;font-weight:700;letter-spacing:.12em;color:var(--primary);white-space:nowrap}
+/* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
+.topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
+.topbar .tools{margin-left:auto;flex-shrink:0}
+.topbar .icon-btn{width:30px;height:30px;border-radius:10px}
+.topbar .icon-btn svg{width:15px;height:15px}
+.topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
+.topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
 .topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
-.topbar .tb-pill-help:hover{background:rgba(192,57,43,.15);color:#A53020;border-color:rgba(192,57,43,.30)}
+.topbar .tb-pill-help:hover{background:rgba(192,57,43,.16);color:#A53020;border-color:rgba(192,57,43,.32)}
+[data-theme="dark"] .topbar .tb-slogan{color:#D6C9B4;background:rgba(214,197,180,.08);border-color:rgba(246,242,233,.14)}
 [data-theme="dark"] .topbar .tb-pill{background:rgba(214,197,180,.07);border-color:rgba(246,242,233,.14)}
 [data-theme="dark"] .topbar .tb-pill:hover{background:rgba(214,197,180,.12)}
 [data-theme="dark"] .topbar .tb-pill-help{color:#E88C80;background:rgba(216,92,74,.16);border-color:rgba(224,130,110,.30)}
 [data-theme="dark"] .topbar .tb-pill-help:hover{background:rgba(216,92,74,.24)}
 @media(max-width:768px){
-  .topbar .tb-logo{width:24px;height:24px;border-radius:7px}
+  .topbar{padding:0 12px;gap:6px}
+  .topbar .tb-logo{width:22px;height:22px;border-radius:6px}
   .topbar .tb-name{font-size:15px}
-  .topbar .tb-slogan{font-size:11.5px}
+  .topbar .tb-slogan{font-size:11px;padding:2px 9px}
+  .topbar .icon-btn{width:28px;height:28px;border-radius:9px}
 }
 @media(max-width:560px){
   .topbar .tb-slogan{display:none}
@@ -1318,6 +1325,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="tb-more" id="tbMore">
         <button class="icon-btn" onclick="toggleTbMore();closeMoreMenu()" title="更多工具">⋯</button>
         <div class="tb-more-menu" id="tbMoreMenu">
+          <div class="tb-more-label">界面显示</div>
+          <button class="tb-more-item" onclick="toggleTheme();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            切换日间 / 夜间模式
+          </button>
+          <div class="tb-more-sep"></div>
           <div class="tb-more-label">灵感与内容</div>
           <button class="tb-more-item" onclick="refreshHomeDaily();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
@@ -7716,6 +7729,20 @@ document.addEventListener('visibilitychange',function(){
     try{localStorage.setItem('pp_last_view',_curView);localStorage.setItem('pp_last_scroll',window.scrollY);}catch(e){}
   }
 });
+/* 实时记录滚动位置（节流）：用户在本板块内滚动时也不断更新，返回外链后回到的是「刚停留的部位」而非板块顶部 */
+(function(){
+  var _lastSave=0, _pending=0;
+  function save(){
+    try{ if(typeof _curView!=='undefined') localStorage.setItem('pp_last_view',_curView); localStorage.setItem('pp_last_scroll',window.scrollY); }catch(e){}
+  }
+  window.addEventListener('scroll',function(){
+    var now=Date.now();
+    if(now-_lastSave>250){ _lastSave=now; save(); _pending=0; }
+    else{ if(!_pending){ _pending=setTimeout(function(){ _pending=0; save(); },300); } }
+  },{passive:true});
+  window.addEventListener('pagehide',save);
+  if(document.hidden===false){ /* 空占位，保证 es6 判定简洁 */ }
+})();
 
 function switchTab(el,id){
   el.parentNode.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
@@ -9397,7 +9424,12 @@ function init(){
     if(_lv&&document.getElementById('view-'+_lv)){
       switchView(_lv);
       var _sc=parseInt(localStorage.getItem('pp_last_scroll')||'0',10);
-      if(_sc>0){setTimeout(function(){window.scrollTo(0,_sc);},80);}
+      if(_sc>0){
+        function _restoreSc(){try{window.scrollTo(0,_sc);}catch(e){}}
+        setTimeout(_restoreSc,80);          // 首次落位
+        setTimeout(_restoreSc,500);         // 板块异步渲染后再补一次，避免被重置回顶部
+        if(window.addEventListener)window.addEventListener('load',function(){setTimeout(_restoreSc,150);}); // 图片加载完兜底
+      }
     }
   }catch(e){}
   
