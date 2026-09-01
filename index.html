@@ -303,9 +303,10 @@ section[id],.view{scroll-margin-top:80px;}
 .icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:color .15s,background-color .15s,border-color .15s}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)}
 .icon-btn svg{width:16px;height:16px}
-/* 更多按钮：与其他图标同尺寸，三个圆点造型更精致；弹出时柔和高亮 */
-.topbar .icon-btn.icon-btn-more svg{width:22px;height:22px}
-.icon-btn.icon-btn-more.is-open{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 12px rgba(74,58,40,.22)}
+/* 更多按钮：与其他图标同尺寸，三点造型精致；悬停微高亮，弹出时深色高亮 */
+.topbar .icon-btn.icon-btn-more svg{width:24px;height:24px}
+.icon-btn.icon-btn-more:hover{background:var(--primary-light)}
+.icon-btn.icon-btn-more.is-open{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 14px rgba(74,58,40,.28)}
 
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:184px;background:var(--card);border-right:1px solid var(--border);padding:12px 8px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;z-index:21;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;overscroll-behavior-y:contain;touch-action:pan-y}
 /* flex column 容器里子项默认会被压缩，撑不出滚动高度；固定不收缩才是正常滚动 */
@@ -1341,7 +1342,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn icon-btn-more" onclick="var _m=document.getElementById('tbMoreMenu');if(_m){var _op=_m.classList.toggle('show');_m.style.display=_op?'flex':'none';if(_op){this.classList.add('is-open');}else{this.classList.remove('is-open');}}if(event&&event.stopPropagation){event.stopPropagation();}" title="更多工具" aria-label="更多工具" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.3"/><circle cx="12" cy="12" r="2.3"/><circle cx="12" cy="19" r="2.3"/></svg></button>
+        <button class="icon-btn icon-btn-more" id="tbMoreBtn" type="button" title="更多工具" aria-label="更多工具" aria-haspopup="menu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="4" cy="5" r="2.5"/><circle cx="4" cy="12" r="2.5"/><circle cx="4" cy="19" r="2.5"/></svg></button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
@@ -7653,8 +7654,11 @@ function resetLocalData(){
 /* 点击空白处关闭“更多”菜单 */
 document.addEventListener('click',function(e){
   var m=document.getElementById('tbMoreMenu');
-  if(m && m.classList.contains('show') && !document.getElementById('tbMore').contains(e.target)){
-    m.classList.remove('show');
+  var b=document.getElementById('tbMoreBtn');
+  var tb=document.getElementById('tbMore');
+  if(m && (m.classList.contains('show')||m.style.display==='flex') && !(tb&&tb.contains(e.target))){
+    m.classList.remove('show');m.style.display='none';
+    if(b){b.classList.remove('is-open');}
   }
 });
 /* ─────── 外链安全直达 ───────

@@ -1096,4 +1096,25 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runSafetyLayer);
   else runSafetyLayer();
+
+  /* ─── 更多菜单 · 脚本级绑定（不依赖内联事件，内嵌/受限制环境更稳） ───
+     点击三点：强制用内联样式显示/隐藏菜单，任何样式都盖不住；
+     并阻止冒泡，避免被全局“点空白收起”逻辑在同一个点击里立刻关掉。 */
+  function bindMoreMenu() {
+    var btn = document.getElementById('tbMoreBtn');
+    var menu = document.getElementById('tbMoreMenu');
+    if (!btn || !menu) return false;
+    btn.addEventListener('click', function (ev) {
+      var op = menu.classList.toggle('show');
+      menu.style.display = op ? 'flex' : 'none';
+      try { btn.classList[op ? 'add' : 'remove']('is-open'); } catch (e) {}
+      if (ev) { ev.stopPropagation(); try { ev.preventDefault(); } catch (err) {} }
+      return false;
+    }, true); // 捕获阶段先执行，先于 document 冒泡监听
+    return true;
+  }
+  if (!bindMoreMenu()) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindMoreMenu);
+    else window.addEventListener('load', bindMoreMenu);
+  }
 })();
