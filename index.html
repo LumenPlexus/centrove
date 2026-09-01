@@ -51,7 +51,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260831.17', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260831.18', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -1251,7 +1251,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 15; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#2B2419 0%,#2B2419 48%,#241E15 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 1400; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#2B2419 0%,#2B2419 48%,#241E15 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
   <!-- 栖匣启动屏：深松 × 宣纸 × 赭金，生长环推演「六线归一」 -->
   <div style="position:absolute;inset:0;opacity:.18;background:radial-gradient(rgba(246,241,226,.06) 1px,transparent 1px);background-size:22px 22px;pointer-events:none"></div>
   <div style="position:relative;width:128px;height:128px;display:flex;align-items:center;justify-content:center">
@@ -12505,8 +12505,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .mind-refresh.spinning{animation:spinr .45s ease}
 @keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 /* ═══════════ 产品介绍弹窗 · 重构版（现代高级 · 品牌蓝绿 · 系统无衬线字体） ═══════════ */
-.pano-mask{position:fixed;inset:0;background:rgba(28,22,14,.62);z-index:14;opacity:0;pointer-events:none;transition:opacity .35s ease}
-.pano{position:fixed;inset:0;z-index:16;color:#33291F;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8;
+.pano-mask{position:fixed;inset:0;background:rgba(28,22,14,.62);z-index:1300;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.pano{position:fixed;inset:0;z-index:1301;color:#33291F;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8;
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
   background:
     radial-gradient(1000px 520px at 6% -8%,rgba(194,174,150,.12),transparent 58%),
