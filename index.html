@@ -51,17 +51,15 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          function _swReloadNow(){ if(_swReloadDone) return; _swReloadDone = true; try{ setTimeout(function(){ window.location.reload(); }, 220); }catch(e){} }
-          navigator.serviceWorker.register('./sw.js?v=20260831.16', { scope: './' }).then(function(reg){
-            // 兜底A：新旧SW切换正式接管时，恰好刷新一次（兼容 skipWaiting 与 clients.claim）
-            navigator.serviceWorker.addEventListener('controllerchange', function(){
-              try{ if(navigator.serviceWorker.controller && navigator.serviceWorker.controller.state === 'activated') _swReloadNow(); }catch(e){}
-            });
-            // 兜底B：SW 安装完成激活即刷新（去掉旧的 !skipWaiting 误判，修复"始终不自动刷新"缺陷）
+          navigator.serviceWorker.register('./sw.js?v=20260831.17', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
-              var nw = reg.installing; if(!nw) return;
+              var nw = reg.installing;
+              if(!nw) return;
               nw.addEventListener('statechange', function(){
-                if(nw.state === 'activated') _swReloadNow();
+                if(nw.state === 'activated' && !nw.skipWaiting && !_swReloadDone){
+                  _swReloadDone = true;
+                  try{ window.location.reload(); }catch(e){}
+                }
               });
             });
           }).catch(function(){});
@@ -280,16 +278,8 @@ section[id],.view{scroll-margin-top:80px;}
 /* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
 .topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
 .topbar .tools{margin-left:auto;flex-shrink:0}
-.topbar .icon-btn{position:relative;width:40px;height:40px;border-radius:12px;color:#6B4D33;background:linear-gradient(180deg,#FEFBF4 0%,#F7EFE0 52%,#EFE3CB 100%);border:1px solid rgba(125,95,55,.26);box-shadow:0 1px 1px rgba(107,77,51,.08),0 3px 10px -3px rgba(107,77,51,.24),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(125,95,55,.08);transition:color .18s ease,background .18s ease,border-color .18s ease,box-shadow .2s ease,transform .18s cubic-bezier(.2,.7,.3,1.2)}
-.topbar .icon-btn::after{content:"";position:absolute;left:6px;right:6px;top:3px;height:7px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9),rgba(255,255,255,0));pointer-events:none}
-.topbar .icon-btn:hover{color:#5A3F26;transform:translateY(-2px);background:linear-gradient(180deg,#FFFEF8 0%,#F9F1E2 50%,#F0E5CD 100%);border-color:rgba(179,133,70,.55);box-shadow:0 2px 2px rgba(107,77,51,.10),0 8px 18px -5px rgba(139,99,50,.34),0 0 0 3px rgba(179,133,70,.12),inset 0 1px 0 rgba(255,255,255,1)}
-.topbar .icon-btn:active{transform:scale(.9);background:linear-gradient(180deg,#EADDC2,#F2E8D3);box-shadow:inset 0 2px 5px rgba(107,77,51,.22),0 1px 2px rgba(107,77,51,.10)}
-.topbar .icon-btn svg{width:20px;height:20px;position:relative;z-index:1}
-/* “更多”按钮：触控区更大、三点更饱满清晰，仍旧与整体图标保持统一的高级纸感风格 */
-.topbar .icon-btn.tb-more-dots{width:46px;height:46px}
-.topbar .icon-btn.tb-more-dots svg{width:25px;height:25px}
-@media(max-width:768px){.topbar .icon-btn.tb-more-dots{width:42px;height:42px}.topbar .icon-btn.tb-more-dots svg{width:23px;height:23px}}
-.topbar .icon-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(179,133,70,.28),0 8px 18px -6px rgba(139,99,50,.32)}
+.topbar .icon-btn{width:42px;height:42px;border-radius:50%}
+.topbar .icon-btn svg{width:20px;height:20px}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
 .topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
@@ -297,10 +287,6 @@ section[id],.view{scroll-margin-top:80px;}
 [data-theme="dark"] .topbar .tb-slogan{color:#D6C9B4;background:rgba(214,197,180,.08);border-color:rgba(246,242,233,.14)}
 [data-theme="dark"] .topbar .tb-pill{background:rgba(214,197,180,.07);border-color:rgba(246,242,233,.14)}
 [data-theme="dark"] .topbar .tb-pill:hover{background:rgba(214,197,180,.12)}
-[data-theme="dark"] .topbar .icon-btn{color:#E3CEA6;background:linear-gradient(180deg,#3A3123 0%,#2E281C 55%,#262015 100%);border-color:rgba(210,185,140,.24);box-shadow:0 1px 1px rgba(0,0,0,.4),0 4px 12px -4px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07),inset 0 -1px 2px rgba(0,0,0,.35)}
-[data-theme="dark"] .topbar .icon-btn::after{background:linear-gradient(90deg,transparent,rgba(212,178,124,.32),transparent)}
-[data-theme="dark"] .topbar .icon-btn:hover{color:#F1DFBF;transform:translateY(-2px);background:linear-gradient(180deg,#433A28 0%,#362E1E 55%,#2C2517 100%);border-color:rgba(212,178,124,.5);box-shadow:0 2px 2px rgba(0,0,0,.45),0 8px 18px -5px rgba(0,0,0,.65),0 0 0 3px rgba(212,178,124,.14),inset 0 1px 0 rgba(255,255,255,.08)}
-[data-theme="dark"] .topbar .icon-btn:active{transform:scale(.9);background:linear-gradient(180deg,#241F14,#2C2517);box-shadow:inset 0 2px 5px rgba(0,0,0,.5)}
 [data-theme="dark"] .topbar .tb-pill-help{color:#E88C80;background:rgba(216,92,74,.16);border-color:rgba(224,130,110,.30)}
 [data-theme="dark"] .topbar .tb-pill-help:hover{background:rgba(216,92,74,.24)}
 @media(max-width:768px){
@@ -308,9 +294,8 @@ section[id],.view{scroll-margin-top:80px;}
   .topbar .tb-logo{width:22px;height:22px;border-radius:6px}
   .topbar .tb-name{font-size:15px}
   .topbar .tb-slogan{font-size:11px;padding:2px 9px}
-  .topbar .icon-btn{width:36px;height:36px;border-radius:11px}
+  .topbar .icon-btn{width:38px;height:38px;border-radius:50%}
   .topbar .icon-btn svg{width:19px;height:19px}
-  .topbar .icon-btn[title="更多工具"]{font-size:21px}
 }
 @media(max-width:560px){
   .topbar .tb-slogan{display:none}
@@ -318,6 +303,10 @@ section[id],.view{scroll-margin-top:80px;}
 .icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:color .15s,background-color .15s,border-color .15s}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)}
 .icon-btn svg{width:16px;height:16px}
+/* 更多按钮：加大加精致，带“打开”高亮反馈 */
+.topbar .icon-btn.icon-btn-more{width:46px;height:46px}
+.topbar .icon-btn.icon-btn-more svg{width:24px;height:24px}
+.icon-btn.is-open{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 12px rgba(74,58,40,.28);transform:scale(.94)}
 
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:184px;background:var(--card);border-right:1px solid var(--border);padding:12px 8px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;z-index:21;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;overscroll-behavior-y:contain;touch-action:pan-y}
 /* flex column 容器里子项默认会被压缩，撑不出滚动高度；固定不收缩才是正常滚动 */
@@ -1133,8 +1122,8 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .nav-item:hover{background:rgba(194,155,110,.10);color:#E0C79E}
 [data-theme="dark"] .nav-item.active{background:linear-gradient(90deg,#5C4430,#6E4F37);color:#F0E7D8;box-shadow:0 5px 14px -6px rgba(0,0,0,.5)}
 [data-theme="dark"] .topbar{background:linear-gradient(180deg,var(--card),#251F19);box-shadow:0 1px 3px rgba(0,0,0,.3)}
-[data-theme="dark"] .topbar .theme-toggle,[data-theme="dark"] #btnGuide{color:#D6C9B4;border-color:#57493A}
-[data-theme="dark"] .topbar .theme-toggle:hover{background:var(--primary-light);color:#E8D5B8;border-color:#8A6A3A}
+[data-theme="dark"] .topbar .icon-btn,[data-theme="dark"] .topbar .theme-toggle,[data-theme="dark"] #btnGuide{color:#D6C9B4;border-color:#57493A}
+[data-theme="dark"] .topbar .icon-btn:hover,[data-theme="dark"] .topbar .theme-toggle:hover{background:var(--primary-light);color:#E8D5B8;border-color:#8A6A3A}
 [data-theme="dark"] .tb-more-menu{background:linear-gradient(180deg,#2A2118,#241B13);border-color:#493B2A}
 [data-theme="dark"] .tb-more-item{color:#E0D6C4}
 [data-theme="dark"] .tb-more-item:hover{background:rgba(200,160,92,.14);color:#E8D5B8}
@@ -1353,9 +1342,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn tb-more-dots" onclick="var _m=document.getElementById('tbMoreMenu');if(_m){_m.classList.toggle('show');}if(event&&event.stopPropagation){event.stopPropagation();}" title="更多工具" aria-label="更多工具">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.5" fill="currentColor"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/></svg>
-        </button>
+        <button class="icon-btn icon-btn-more" onclick="var _m=document.getElementById('tbMoreMenu');if(_m){_m.classList.toggle('show');if(_m.classList.contains('show')){this.classList.add('is-open');}else{this.classList.remove('is-open');}}if(event&&event.stopPropagation){event.stopPropagation();}" title="更多工具" aria-label="更多工具" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="19" r="2.2"/></svg></button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
@@ -1379,21 +1366,21 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
             导出本周报告图
           </button>
-          <button class="tb-more-item" onclick="try{switchView(&apos;stats&apos;)}catch(e){}toggleTbMore()">
+          <button class="tb-more-item" onclick="switchView(&apos;stats&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
             数据统计概览
           </button>
           <div class="tb-more-sep"></div>
           <div class="tb-more-label">系统</div>
-          <button class="tb-more-item" onclick="try{switchView(&apos;settings&apos;)}catch(e){}toggleTbMore()">
+          <button class="tb-more-item" onclick="switchView(&apos;settings&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             系统设置
           </button>
-          <button class="tb-more-item" onclick="try{switchView(&apos;changelog&apos;)}catch(e){}toggleTbMore()">
+          <button class="tb-more-item" onclick="switchView(&apos;changelog&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
             更新日志
           </button>
-          <button class="tb-more-item" onclick="try{switchView(&apos;about&apos;)}catch(e){}toggleTbMore()">
+          <button class="tb-more-item" onclick="switchView(&apos;about&apos;);toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
             关于产品
           </button>
@@ -7639,11 +7626,7 @@ function closeSidebar(){
   if(ov)ov.classList.remove('show');
   document.body.classList.remove('sidebar-open');
 }
-function toggleTbMore(ev){
-  if(ev){ try{ ev.stopPropagation(); }catch(e){} }
-  var m=document.getElementById('tbMoreMenu');
-  if(m)m.classList.toggle('show');
-}
+function toggleTbMore(){document.getElementById('tbMoreMenu').classList.toggle('show')}
 /* 顶栏搜索图标：优先打开升级版「全屏搜索覆盖层」（可一次搜遍所有板块与个人记录）；
    若 upgrade.js 尚未就绪则回退为聚焦侧栏搜索框。移动端先展开侧栏再聚焦。 */
 window.tbSearchGo=function(){
@@ -12781,9 +12764,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 /* 入座底栏：首次进入导览时固定在底部，引导用户「入座」后才进入产品 */
 .pano-seatbar{position:sticky;bottom:0;margin-top:10px;display:flex;justify-content:center;padding:16px 0 8px;background:linear-gradient(180deg,rgba(255,253,248,0),var(--card) 42%);z-index:6}
 .pano-seatbar .btn-seat{font-size:15px;padding:12px 28px;letter-spacing:1px;box-shadow:0 8px 24px rgba(74,58,40,.18)}
-/* 首次「入座」导览也保留 ✕ 关闭键：随时能退出，避免浮层盖住顶栏导致“点了没反应” */
-#pano.seat-lock .pano-close{display:flex;background:#FFFFFF;border-color:rgba(74,58,40,.16);color:#4A3A2C}
-#pano.seat-lock .pano-close:hover{background:#FFF}
+#pano.seat-lock .pano-close{display:none}
 [data-theme="dark"] .mind-refresh{background:#312A20;color:#C9B38A;border-color:#4F4433}
 [data-theme="dark"] .mind-refresh:hover{background:#382F24}
 </style>
@@ -12833,15 +12814,10 @@ function panoWire(){
   p.addEventListener('click',function(ev){
     var t=ev.target.closest('[data-pano]');if(!t)return;
     var act=t.getAttribute('data-pano');
-    if(act==='seat'){seatPano();return;}
-    /* 关闭/跳转始终可用：不再被首次「入座」锁死，并在关闭时记录“已看过”，
-       避免导览浮层每次重开盖住顶栏导致“点了没反应” */
-    if(act==='close'){
-      try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
-      if(p)p.classList.remove('seat-lock');
-      closePano(true);return;
-    }
-    if(act==='home'||act==='about')panoGo(act);
+    if(p.classList.contains('seat-lock')&&act!=='seat')return;  /* 锁定中：仅「入座」有效 */
+    if(act==='close')closePano(true);
+    else if(act==='home'||act==='about')panoGo(act);
+    else if(act==='seat')seatPano();
   });
 }
 /* ── 导览为单屏长页：自由滚动浏览；关闭/跳转由 panoWire 处理 ── */
