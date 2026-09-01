@@ -51,7 +51,7 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260831.19', { scope: './' }).then(function(reg){
+          navigator.serviceWorker.register('./sw.js?v=20260831.20', { scope: './' }).then(function(reg){
             reg.addEventListener('updatefound', function(){
               var nw = reg.installing;
               if(!nw) return;
@@ -278,8 +278,8 @@ section[id],.view{scroll-margin-top:80px;}
 /* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
 .topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
 .topbar .tools{margin-left:auto;flex-shrink:0}
-.topbar .icon-btn{width:42px;height:42px;border-radius:50%}
-.topbar .icon-btn svg{width:20px;height:20px}
+.topbar .icon-btn{width:42px;height:42px;border-radius:50%;background:rgba(107,77,51,.05);box-shadow:0 1px 2px rgba(74,58,40,.04);-webkit-tap-highlight-color:transparent}
+.topbar .icon-btn svg{width:20px;height:20px;transition:transform .18s cubic-bezier(.2,.9,.3,1.4),color .18s}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
 .topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
@@ -306,7 +306,12 @@ section[id],.view{scroll-margin-top:80px;}
 /* 更多按钮：与其他图标同尺寸，三点造型精致；悬停微高亮，弹出时深色高亮 */
 .topbar .icon-btn.icon-btn-more svg{width:24px;height:24px}
 .icon-btn.icon-btn-more:hover{background:var(--primary-light)}
-.icon-btn.icon-btn-more.is-open{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 14px rgba(74,58,40,.28)}
+.icon-btn.icon-btn-more.is-open{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 5px 16px rgba(74,58,40,.30)}
+/* 顶栏图标组 · 精致交互：悬停上浮、按压反馈、深色适配 */
+.topbar .icon-btn:hover{background:rgba(107,77,51,.11);color:var(--primary);border-color:rgba(107,77,51,.28);transform:translateY(-1px);box-shadow:0 5px 12px rgba(74,58,40,.10)}
+.topbar .icon-btn:active{transform:scale(.90)}
+[data-theme="dark"] .topbar .icon-btn{background:rgba(214,197,180,.06);box-shadow:none}
+[data-theme="dark"] .topbar .icon-btn:hover{background:rgba(214,197,180,.13);color:var(--primary);border-color:rgba(246,242,233,.18)}
 
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:184px;background:var(--card);border-right:1px solid var(--border);padding:12px 8px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;z-index:21;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;overscroll-behavior-y:contain;touch-action:pan-y}
 /* flex column 容器里子项默认会被压缩，撑不出滚动高度；固定不收缩才是正常滚动 */
@@ -1342,7 +1347,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn icon-btn-more" id="tbMoreBtn" type="button" title="更多工具" aria-label="更多工具" aria-haspopup="menu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="4" cy="5" r="2.5"/><circle cx="4" cy="12" r="2.5"/><circle cx="4" cy="19" r="2.5"/></svg></button>
+        <button class="icon-btn icon-btn-more" id="tbMoreBtn" type="button" title="更多工具" aria-label="更多工具" aria-haspopup="menu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.4"/><circle cx="12" cy="12" r="2.4"/><circle cx="12" cy="19" r="2.4"/></svg></button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
@@ -6010,7 +6015,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card about-hero" style="background:linear-gradient(135deg,var(--surface),#F1EADE);border:1px solid var(--border)">
         <h3 style="color:var(--primary);font-size:17px">栖匣 · 心有所栖，万象入匣</h3>
         <p style="font-size:13.5px;color:var(--text);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:var(--primary)">完全本地运行</b>的大学生成长园地：不下载 App、不注册账号、打开浏览器即用，离线也能正常工作。<br>一段漫长的大学旅程，会生出数不清的目标、计划与期待——学业备考、竞赛科研、实习求职、复盘感悟、理财规划。栖匣把这些重要的成长印记拢到一处、各归其位：<b style="color:var(--primary)">当一件事项找到了安稳的归处，你就能腾出心力，专注把当下这一件做好。</b></p>
-        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣　·　<span style="font-size:11px;color:var(--muted)">当前版本 2026.08.31.19</span></div>
+        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣　·　<span style="font-size:11px;color:var(--muted)">当前版本 2026.08.31.20</span></div>
       </div>
 
       <div class="card" style="margin-top:16px">
