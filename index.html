@@ -1353,7 +1353,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn tb-more-dots" onclick="toggleTbMore(event)" title="更多工具" aria-label="更多工具">
+        <button class="icon-btn tb-more-dots" onclick="var _m=document.getElementById('tbMoreMenu');if(_m){_m.classList.toggle('show');}if(event&&event.stopPropagation){event.stopPropagation();}" title="更多工具" aria-label="更多工具">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.5" fill="currentColor"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/></svg>
         </button>
         <div class="tb-more-menu" id="tbMoreMenu">
