@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.02.8"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.02.9"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -1245,7 +1245,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   }
   function installNow(){
     if(installPrompt){installPrompt.prompt();installPrompt.userChoice.then(function(){installPrompt=null;renderInstall();}).catch(function(){});return;}
-    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(location.href).then(function(){try{window.flash&&window.flash('先把链接存在剪贴板：点浏览器右上角「菜单→添加到主屏幕/桌面」');}catch(e){}});}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText('https://lumenplexus.github.io/centrove/').then(function(){try{window.flash&&window.flash('先把链接存在剪贴板：点浏览器右上角「菜单→添加到主屏幕/桌面」');}catch(e){}});}
   }
   window.renderInstall=function(){
     var host=document.getElementById('installHost');if(!host)return;
@@ -8554,7 +8554,7 @@ function switchTpl(k){
 }
 
 function shareProduct(){
-  var url=location.href.split('#')[0]||location.href;
+  var url='https://lumenplexus.github.io/centrove/';
   var txt='分享一个我刚用上的「栖匣」——把成长岁月安放好的收纳匣。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「栖匣」· © 作者：尹平平';
   var html='<div id="shareMask" style="position:fixed;inset:0;background:rgba(6,14,10,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)document.getElementById(\'shareMask\').remove()">'+
     '<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;padding:18px 16px;box-sizing:border-box;box-shadow:0 12px 40px rgba(0,0,0,.35)">'+
@@ -10209,7 +10209,7 @@ function _userDataKeyList(){
   return keys;
 }
 function exportAll(){
-  var data={"_app":"栖匣","_author":"尹平平","_site":(location.origin+location.pathname.replace(/index\.html$/,'/')),"_v":2,"_exportTime":new Date().toISOString()};
+  var data={"_app":"栖匣","_author":"尹平平","_site":"https://lumenplexus.github.io/centrove/","_v":2,"_exportTime":new Date().toISOString()};
   /* 以“原样字符串快照”导出全部用户数据，杜绝白名单漏项 */
   var dataKeys=[];
   _userDataKeyList().forEach(function(k){try{var raw=localStorage.getItem(k); if(raw!=null){data[k]=raw; dataKeys.push(k);} }catch(e){}});
@@ -12381,7 +12381,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   function flashOk(m){try{window.flash&&window.flash(m);}catch(e){}}
   function legacyCopy(t,ok){try{var ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-9999px;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);flashOk(ok||'已复制');}catch(e){flashOk('复制失败，请手动选择复制');}}
   function copyText(t,ok){try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){flashOk(ok||'已复制');},function(){legacyCopy(t,ok)});}else{legacyCopy(t,ok);}}catch(e){legacyCopy(t,ok);}}
-  window.copyProductLink=function(){copyText(location.href.split('#')[0],'已复制产品链接，直接发给朋友即可打开');
+  window.copyProductLink=function(){copyText('https://lumenplexus.github.io/centrove/','已复制产品链接，直接发给朋友即可打开');
     return false;};
 
   /* 页脚署名：致敬作者 + 防抄袭明示 + 隐私数据说明 */
