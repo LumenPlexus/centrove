@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.02.7"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.02.8"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -251,7 +251,7 @@ section[id],.view{scroll-margin-top:80px;}
   background:linear-gradient(180deg,#FDFAF4 0%,#F5EEDA 100%);
   border:1px solid #E4D8C4;border-radius:16px;
   box-shadow:0 22px 48px rgba(74,58,40,.16),0 5px 16px rgba(74,58,40,.10);
-  padding:10px;min-width:218px;display:none;z-index:9995;flex-direction:column;gap:2px;
+  padding:10px;min-width:218px;display:none;z-index:100000;flex-direction:column;gap:2px;
   max-height:min(72vh,560px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
 }
 @media(max-width:768px){.tb-more-menu{top:60px;right:8px;}}
@@ -1268,7 +1268,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 40; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#2B2419 0%,#2B2419 48%,#241E15 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 40; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#2B2419 0%,#2B2419 48%,#241E15 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 1; overflow:hidden;">
   <!-- 栖匣启动屏：深松 × 宣纸 × 赭金，生长环推演「六线归一」 -->
   <div style="position:absolute;inset:0;opacity:.18;background:radial-gradient(rgba(246,241,226,.06) 1px,transparent 1px);background-size:22px 22px;pointer-events:none"></div>
   <div style="position:relative;width:128px;height:128px;display:flex;align-items:center;justify-content:center">
@@ -1304,9 +1304,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     try{return localStorage.getItem('pp_pano_seen')!=='1' && localStorage.getItem('pp_quickstart_ok')!=='1';}catch(e){return false;}
   }
   function chrome(hide){
-    /* 强隐/恢复顶栏与底部导航：内联样式优先级最高，任何 WebView/CSS 异常下都必然生效 */
+    /* 强隐/恢复顶栏与底部导航：用 hidden 属性做到 DOM 级不渲染，再以内联样式双保险，任何 WebView/CSS 异常下都必然生效 */
     var nodes=[document.querySelector('.topbar'),document.querySelector('.bottom-nav')];
-    nodes.forEach(function(n){ if(!n)return; if(hide){ if(!n.__origDisp){ n.__origDisp=n.style.getPropertyValue('display')||''; } n.style.display='none'; } else { n.style.display=n.__origDisp||''; delete n.__origDisp; } });
+    nodes.forEach(function(n){ if(!n)return;
+      if(hide){ n.setAttribute('hidden',''); n.style.display='none'; }
+      else{ n.removeAttribute('hidden'); n.style.display=''; }
+    });
   }
   function dismiss(e){
     if(!e)return;
@@ -1342,7 +1345,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 </script>
 <div class="app">
 
-    <div class="topbar">
+    <div class="topbar" hidden>
     <button class="icon-btn mobile-toggle" onclick="toggleSidebar()" title="打开全部板块">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
@@ -1426,6 +1429,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 (function(){
   if(window.__tbmoreReady)return;
   window.__tbmoreReady=true;
+  /* 层级修复：把菜单移出 .topbar（其 z-index:20 会形成层叠上下文，把菜单 9995 封顶造成被遮挡），
+     改为挂到 body 顶层，配合高 z-index 确保任何情况下都不被盖住。 */
+  (function(){
+    var _m=document.getElementById('tbMoreMenu');
+    if(_m && _m.parentNode && _m.parentNode!==document.body){ try{ document.body.appendChild(_m); }catch(e){} }
+  })();
   function set(open){
     var m=document.getElementById('tbMoreMenu'),b=document.getElementById('tbMoreBtn');
     if(!m)return;
@@ -6841,7 +6850,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
 
   <!-- 底部TabBar（移动端·高频5板块） -->
-  <nav class="bottom-nav" id="bottomNav">
+  <nav class="bottom-nav" id="bottomNav" hidden>
     <div class="bottom-nav-item active" data-bv="home" onclick="switchView(&#39;home&#39;);setBottomActive(this)">
       <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
       <span>首页</span>
