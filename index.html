@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.08.30.15"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.01.01"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -51,15 +51,17 @@
       window.addEventListener('load', function () {
         try {
           var _swReloadDone = false;
-          navigator.serviceWorker.register('./sw.js?v=20260831.21', { scope: './' }).then(function(reg){
+          function _swReloadNow(){ if(_swReloadDone) return; _swReloadDone = true; try{ setTimeout(function(){ window.location.reload(); }, 220); }catch(e){} }
+          navigator.serviceWorker.register('./sw.js?v=20260901.01', { scope: './' }).then(function(reg){
+            // 兜底A：新旧SW切换正式接管时，恰好刷新一次（兼容 skipWaiting 与 clients.claim）
+            navigator.serviceWorker.addEventListener('controllerchange', function(){
+              try{ if(navigator.serviceWorker.controller && navigator.serviceWorker.controller.state === 'activated') _swReloadNow(); }catch(e){}
+            });
+            // 兜底B：SW 安装完成激活即刷新（去掉旧的 !skipWaiting 误判，修复"始终不自动刷新"缺陷）
             reg.addEventListener('updatefound', function(){
-              var nw = reg.installing;
-              if(!nw) return;
+              var nw = reg.installing; if(!nw) return;
               nw.addEventListener('statechange', function(){
-                if(nw.state === 'activated' && !nw.skipWaiting && !_swReloadDone){
-                  _swReloadDone = true;
-                  try{ window.location.reload(); }catch(e){}
-                }
+                if(nw.state === 'activated') _swReloadNow();
               });
             });
           }).catch(function(){});
@@ -278,8 +280,23 @@ section[id],.view{scroll-margin-top:80px;}
 /* 标语做成胶囊块（对齐设计稿），靠品牌右侧，图标区用 auto 外边距右推，避免挤压/遮挡文字 */
 .topbar .tb-slogan{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-size:12px;color:#6E5540;background:rgba(107,77,51,.09);border:1px solid rgba(107,77,51,.12);padding:3px 11px;border-radius:999px;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:.05em}
 .topbar .tools{margin-left:auto;flex-shrink:0}
-.topbar .icon-btn{width:42px;height:42px;border-radius:50%;background:rgba(107,77,51,.05);box-shadow:0 1px 2px rgba(74,58,40,.04);-webkit-tap-highlight-color:transparent}
-.topbar .icon-btn svg{width:20px;height:20px;transition:transform .18s cubic-bezier(.2,.9,.3,1.4),color .18s}
+.topbar .icon-btn{position:relative;width:40px;height:40px;border-radius:12px;color:#6B4D33;background:linear-gradient(180deg,#FEFBF4 0%,#F7EFE0 52%,#EFE3CB 100%);border:1px solid rgba(125,95,55,.26);box-shadow:0 1px 1px rgba(107,77,51,.08),0 3px 10px -3px rgba(107,77,51,.24),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(125,95,55,.08);transition:color .18s ease,background .18s ease,border-color .18s ease,box-shadow .2s ease,transform .18s cubic-bezier(.2,.7,.3,1.2)}
+.topbar .icon-btn::after{content:"";position:absolute;left:6px;right:6px;top:3px;height:7px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9),rgba(255,255,255,0));pointer-events:none}
+.topbar .icon-btn:hover{color:#5A3F26;transform:translateY(-2px);background:linear-gradient(180deg,#FFFEF8 0%,#F9F1E2 50%,#F0E5CD 100%);border-color:rgba(179,133,70,.55);box-shadow:0 2px 2px rgba(107,77,51,.10),0 8px 18px -5px rgba(139,99,50,.34),0 0 0 3px rgba(179,133,70,.12),inset 0 1px 0 rgba(255,255,255,1)}
+.topbar .icon-btn:active{transform:scale(.9);background:linear-gradient(180deg,#EADDC2,#F2E8D3);box-shadow:inset 0 2px 5px rgba(107,77,51,.22),0 1px 2px rgba(107,77,51,.10)}
+.topbar .icon-btn svg{width:20px;height:20px;position:relative;z-index:1}
+/* “更多”按钮：触控区适中、三点小巧圆润，采用柔和浅棕，与米纸顶栏统一的高级质感 */
+.topbar .icon-btn.tb-more-dots{width:40px;height:40px;color:#9A7B55;background:transparent;border-color:transparent}
+.topbar .icon-btn.tb-more-dots svg{width:20px;height:20px}
+.topbar .icon-btn.tb-more-dots:hover{color:#6B4D33;background:rgba(107,77,51,.06)}
+[data-theme="dark"] .topbar .icon-btn.tb-more-dots{color:#CDB695;background:transparent;border-color:transparent}
+[data-theme="dark"] .topbar .icon-btn.tb-more-dots:hover{color:#E8D5B8;background:rgba(216,194,160,.08)}
+@media(max-width:768px){.topbar .icon-btn.tb-more-dots{width:38px;height:38px}.topbar .icon-btn.tb-more-dots svg{width:19px;height:19px}}
+/* 三点按钮：开启态高亮 + 细腻质感 */
+.topbar .icon-btn.tb-more-dots.is-open{color:#fff;transform:translateY(-1px);background:linear-gradient(180deg,#8A6236,#6B4D33);border-color:#6B4D33;box-shadow:0 3px 4px rgba(107,77,51,.28),0 10px 22px -6px rgba(107,77,51,.50),inset 0 1px 0 rgba(255,255,255,.30);}
+.topbar .icon-btn.tb-more-dots.is-open::after{background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0));}
+[data-theme="dark"] .topbar .icon-btn.tb-more-dots.is-open{color:#FFF3D8;background:linear-gradient(180deg,#5C4628,#4A3720);border-color:#6B5331;box-shadow:0 3px 6px rgba(0,0,0,.5),0 12px 24px -8px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.14);}
+.topbar .icon-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(179,133,70,.28),0 8px 18px -6px rgba(139,99,50,.32)}
 .topbar .tb-pill{border-radius:999px;background:rgba(107,77,51,.09);border-color:rgba(107,77,51,.16)}
 .topbar .tb-pill:hover{background:rgba(107,77,51,.16)}
 .topbar .tb-pill-help{color:#C0392B;background:rgba(192,57,43,.09);border-color:rgba(192,57,43,.18)}
@@ -287,6 +304,10 @@ section[id],.view{scroll-margin-top:80px;}
 [data-theme="dark"] .topbar .tb-slogan{color:#D6C9B4;background:rgba(214,197,180,.08);border-color:rgba(246,242,233,.14)}
 [data-theme="dark"] .topbar .tb-pill{background:rgba(214,197,180,.07);border-color:rgba(246,242,233,.14)}
 [data-theme="dark"] .topbar .tb-pill:hover{background:rgba(214,197,180,.12)}
+[data-theme="dark"] .topbar .icon-btn{color:#E3CEA6;background:linear-gradient(180deg,#3A3123 0%,#2E281C 55%,#262015 100%);border-color:rgba(210,185,140,.24);box-shadow:0 1px 1px rgba(0,0,0,.4),0 4px 12px -4px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07),inset 0 -1px 2px rgba(0,0,0,.35)}
+[data-theme="dark"] .topbar .icon-btn::after{background:linear-gradient(90deg,transparent,rgba(212,178,124,.32),transparent)}
+[data-theme="dark"] .topbar .icon-btn:hover{color:#F1DFBF;transform:translateY(-2px);background:linear-gradient(180deg,#433A28 0%,#362E1E 55%,#2C2517 100%);border-color:rgba(212,178,124,.5);box-shadow:0 2px 2px rgba(0,0,0,.45),0 8px 18px -5px rgba(0,0,0,.65),0 0 0 3px rgba(212,178,124,.14),inset 0 1px 0 rgba(255,255,255,.08)}
+[data-theme="dark"] .topbar .icon-btn:active{transform:scale(.9);background:linear-gradient(180deg,#241F14,#2C2517);box-shadow:inset 0 2px 5px rgba(0,0,0,.5)}
 [data-theme="dark"] .topbar .tb-pill-help{color:#E88C80;background:rgba(216,92,74,.16);border-color:rgba(224,130,110,.30)}
 [data-theme="dark"] .topbar .tb-pill-help:hover{background:rgba(216,92,74,.24)}
 @media(max-width:768px){
@@ -294,8 +315,9 @@ section[id],.view{scroll-margin-top:80px;}
   .topbar .tb-logo{width:22px;height:22px;border-radius:6px}
   .topbar .tb-name{font-size:15px}
   .topbar .tb-slogan{font-size:11px;padding:2px 9px}
-  .topbar .icon-btn{width:38px;height:38px;border-radius:50%}
+  .topbar .icon-btn{width:36px;height:36px;border-radius:11px}
   .topbar .icon-btn svg{width:19px;height:19px}
+  .topbar .icon-btn[title="更多工具"]{font-size:21px}
 }
 @media(max-width:560px){
   .topbar .tb-slogan{display:none}
@@ -303,15 +325,6 @@ section[id],.view{scroll-margin-top:80px;}
 .icon-btn{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px solid var(--border);transition:color .15s,background-color .15s,border-color .15s}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)}
 .icon-btn svg{width:16px;height:16px}
-/* 更多按钮：与其他图标同尺寸，三点造型精致；悬停微高亮，弹出时深色高亮 */
-.topbar .icon-btn.icon-btn-more svg{width:24px;height:24px}
-.icon-btn.icon-btn-more:hover{background:var(--primary-light)}
-.icon-btn.icon-btn-more.is-open{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 5px 16px rgba(74,58,40,.30)}
-/* 顶栏图标组 · 精致交互：悬停上浮、按压反馈、深色适配 */
-.topbar .icon-btn:hover{background:rgba(107,77,51,.11);color:var(--primary);border-color:rgba(107,77,51,.28);transform:translateY(-1px);box-shadow:0 5px 12px rgba(74,58,40,.10)}
-.topbar .icon-btn:active{transform:scale(.90)}
-[data-theme="dark"] .topbar .icon-btn{background:rgba(214,197,180,.06);box-shadow:none}
-[data-theme="dark"] .topbar .icon-btn:hover{background:rgba(214,197,180,.13);color:var(--primary);border-color:rgba(246,242,233,.18)}
 
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:184px;background:var(--card);border-right:1px solid var(--border);padding:12px 8px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;z-index:21;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;overscroll-behavior-y:contain;touch-action:pan-y}
 /* flex column 容器里子项默认会被压缩，撑不出滚动高度；固定不收缩才是正常滚动 */
@@ -465,7 +478,9 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   body.sidebar-collapsed .topbar{left:0;margin-left:0;}
   body.sidebar-collapsed .main{margin-left:0 !important;}
   .sidebar{transition:transform .26s cubic-bezier(.22,.61,.36,1),opacity .26s cubic-bezier(.4,0,.2,1);}
-  .topbar{transition:left .26s cubic-bezier(.22,.61,.36,1);}
+  .topbar{transition:left .26s cubic-bezier(.22,.61,.36,1),opacity .28s ease,transform .28s ease,background .3s ease,box-shadow .3s ease}
+/* 闪屏与产品导览进行中：整条顶栏下滑隐藏，结束后平滑复位 */
+html.state-splash .topbar,html.state-pano .topbar{opacity:0;pointer-events:none;transform:translateY(-102%)}
   .main{transition:margin-left .26s cubic-bezier(.22,.61,.36,1);}
 }
 /* ── 移动端（≤768px）：侧边栏收进汉堡抽屉；桌面端侧边栏保持常驻可见 ── */
@@ -1056,7 +1071,8 @@ body{
 .card h4{color:var(--primary-mid)}
 
 /* ── 顶栏：米纸 + 细底影，日期待字距；徽标为木质拉手 ── */
-.topbar{background:linear-gradient(180deg,var(--card),#F6EFE0);border-bottom:1px solid var(--border);box-shadow:0 1px 2px rgba(74,58,40,.04)}
+.topbar{background:linear-gradient(180deg,#FFFDF7,var(--card) 4%,#F7F0E1);border-bottom:1px solid rgba(120,96,66,.10);box-shadow:0 1px 0 rgba(74,58,40,.03),0 8px 22px -18px rgba(74,58,40,.25);letter-spacing:.02em}
+html.state-splash .topbar,html.state-pano .topbar{background:none;box-shadow:none;border-bottom-color:transparent}
 .topbar .title{letter-spacing:.12em}
 .topbar .date{letter-spacing:.5px}
 .topbar .tb-badge{background:linear-gradient(135deg,#6E4F37,#7A583E);color:#FBF3E4;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
@@ -1126,9 +1142,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .nav-section{border-top-color:var(--border)}
 [data-theme="dark"] .nav-item:hover{background:rgba(194,155,110,.10);color:#E0C79E}
 [data-theme="dark"] .nav-item.active{background:linear-gradient(90deg,#5C4430,#6E4F37);color:#F0E7D8;box-shadow:0 5px 14px -6px rgba(0,0,0,.5)}
-[data-theme="dark"] .topbar{background:linear-gradient(180deg,var(--card),#251F19);box-shadow:0 1px 3px rgba(0,0,0,.3)}
-[data-theme="dark"] .topbar .icon-btn,[data-theme="dark"] .topbar .theme-toggle,[data-theme="dark"] #btnGuide{color:#D6C9B4;border-color:#57493A}
-[data-theme="dark"] .topbar .icon-btn:hover,[data-theme="dark"] .topbar .theme-toggle:hover{background:var(--primary-light);color:#E8D5B8;border-color:#8A6A3A}
+[data-theme="dark"] .topbar{background:linear-gradient(180deg,#4A3929,var(--card) 8%,#3A2C20);box-shadow:0 1px 0 rgba(0,0,0,.18),0 8px 24px -18px rgba(0,0,0,.55)}
+[data-theme="dark"] .topbar .theme-toggle,[data-theme="dark"] #btnGuide{color:#D6C9B4;border-color:#57493A}
+[data-theme="dark"] .topbar .theme-toggle:hover{background:var(--primary-light);color:#E8D5B8;border-color:#8A6A3A}
 [data-theme="dark"] .tb-more-menu{background:linear-gradient(180deg,#2A2118,#241B13);border-color:#493B2A}
 [data-theme="dark"] .tb-more-item{color:#E0D6C4}
 [data-theme="dark"] .tb-more-item:hover{background:rgba(200,160,92,.14);color:#E8D5B8}
@@ -1257,7 +1273,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
-<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 1400; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#2B2419 0%,#2B2419 48%,#241E15 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 15; background: radial-gradient(60% 50% at 50% 34%, rgba(201,161,94,.20), transparent 62%), linear-gradient(172deg,#2B2419 0%,#2B2419 48%,#241E15 100%); display: none; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 0; overflow:hidden;">
   <!-- 栖匣启动屏：深松 × 宣纸 × 赭金，生长环推演「六线归一」 -->
   <div style="position:absolute;inset:0;opacity:.18;background:radial-gradient(rgba(246,241,226,.06) 1px,transparent 1px);background-size:22px 22px;pointer-events:none"></div>
   <div style="position:relative;width:128px;height:128px;display:flex;align-items:center;justify-content:center">
@@ -1294,6 +1310,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   }
   function dismiss(e){
     if(!e)return;
+    document.documentElement.classList.remove('state-splash'); /* 闪屏结束：恢复顶栏 */
     e.style.opacity='0';
     setTimeout(function(){e.style.display='none'; afterSplash(); },420);
   }
@@ -1309,6 +1326,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   }
   function show(){
     var e=bs();if(!e)return;
+    document.documentElement.classList.add('state-splash'); /* 闪屏期间隐藏顶栏 */
     e.style.display='flex';e.style.opacity='1';
     e.setAttribute('data-gone','');
     /* 轻触任意处跳过闪屏（不影响后续导览/直接进入逻辑） */
@@ -1347,7 +1365,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </button>
       <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
       <div class="tb-more" id="tbMore">
-        <button class="icon-btn icon-btn-more" id="tbMoreBtn" type="button" title="更多工具" aria-label="更多工具" aria-haspopup="menu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.4"/><circle cx="12" cy="12" r="2.4"/><circle cx="12" cy="19" r="2.4"/></svg></button>
+        <button class="icon-btn tb-more-dots" id="tbMoreBtn" type="button" data-hint="更多工具" title="更多工具" aria-label="更多工具">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.5" fill="currentColor"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/></svg>
+        </button>
         <div class="tb-more-menu" id="tbMoreMenu">
           <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
@@ -1371,21 +1391,21 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
             导出本周报告图
           </button>
-          <button class="tb-more-item" onclick="switchView(&apos;stats&apos;);toggleTbMore()">
+          <button class="tb-more-item" onclick="try{switchView(&apos;stats&apos;)}catch(e){}toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
             数据统计概览
           </button>
           <div class="tb-more-sep"></div>
           <div class="tb-more-label">系统</div>
-          <button class="tb-more-item" onclick="switchView(&apos;settings&apos;);toggleTbMore()">
+          <button class="tb-more-item" onclick="try{switchView(&apos;settings&apos;)}catch(e){}toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             系统设置
           </button>
-          <button class="tb-more-item" onclick="switchView(&apos;changelog&apos;);toggleTbMore()">
+          <button class="tb-more-item" onclick="try{switchView(&apos;changelog&apos;)}catch(e){}toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
             更新日志
           </button>
-          <button class="tb-more-item" onclick="switchView(&apos;about&apos;);toggleTbMore()">
+          <button class="tb-more-item" onclick="try{switchView(&apos;about&apos;)}catch(e){}toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
             关于产品
           </button>
@@ -1396,6 +1416,38 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           </button>
         </div>
       </div>
+<script>
+/* ── 三点菜单·独立启动器 ──
+   放在按钮正下方、最靠前执行。不依赖任何外部/后续脚本：
+   即使下方超大主脚本因数据等任何原因报错中断，这里已定义 setTbMore/toggleTbMore
+   并挂好委托监听，右上角菜单也必定可点。防重复绑定：__tbmoreReady。 */
+(function(){
+  if(window.__tbmoreReady)return;
+  window.__tbmoreReady=true;
+  var lastTs=0;
+  function set(open){
+    var m=document.getElementById('tbMoreMenu'),b=document.getElementById('tbMoreBtn');
+    if(!m)return;
+    if(open){m.classList.add('show');m.style.display='flex';if(b)b.classList.add('is-open');}
+    else{m.classList.remove('show');m.style.display='none';if(b)b.classList.remove('is-open');}
+  }
+  window.setTbMore=set;
+  window.toggleTbMore=function(){var m=document.getElementById('tbMoreMenu');set(!(m&&m.classList.contains('show')));};
+  function isBtn(e){try{return !!(e&&e.target&&e.target.closest&&e.target.closest('#tbMoreBtn'));}catch(err){return false;}}
+  function h(e){
+    if(!isBtn(e))return;
+    var now=Date.now();
+    if(now-lastTs<350)return;
+    lastTs=now;
+    (window.toggleTbMore||function(){} )();
+    try{if(e.preventDefault)e.preventDefault();}catch(err){}
+  }
+  document.addEventListener('click',h,true);
+  document.addEventListener('pointerdown',h,true);
+  document.addEventListener('touchend',h,true);   /* 兜底：个别WebView只派 touch */
+  window.__tbmoreModern=true;
+})();
+</script>
       <input type="file" id="importFileMenu" accept=".json" style="display:none" onchange="importAll(event)">
     </div>
   </div>
@@ -6015,7 +6067,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card about-hero" style="background:linear-gradient(135deg,var(--surface),#F1EADE);border:1px solid var(--border)">
         <h3 style="color:var(--primary);font-size:17px">栖匣 · 心有所栖，万象入匣</h3>
         <p style="font-size:13.5px;color:var(--text);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:var(--primary)">完全本地运行</b>的大学生成长园地：不下载 App、不注册账号、打开浏览器即用，离线也能正常工作。<br>一段漫长的大学旅程，会生出数不清的目标、计划与期待——学业备考、竞赛科研、实习求职、复盘感悟、理财规划。栖匣把这些重要的成长印记拢到一处、各归其位：<b style="color:var(--primary)">当一件事项找到了安稳的归处，你就能腾出心力，专注把当下这一件做好。</b></p>
-        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣　·　<span style="font-size:11px;color:var(--muted)">当前版本 2026.08.31.21</span></div>
+        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣</div>
       </div>
 
       <div class="card" style="margin-top:16px">
@@ -7631,7 +7683,42 @@ function closeSidebar(){
   if(ov)ov.classList.remove('show');
   document.body.classList.remove('sidebar-open');
 }
-function toggleTbMore(){document.getElementById('tbMoreMenu').classList.toggle('show')}
+function setTbMore(open){
+  var m=document.getElementById('tbMoreMenu');
+  var b=document.getElementById('tbMoreBtn');
+  if(!m)return;
+  if(open){
+    m.classList.add('show'); m.style.display='flex';
+    if(b)b.classList.add('is-open');
+  }else{
+    m.classList.remove('show'); m.style.display='none';
+    if(b)b.classList.remove('is-open');
+  }
+}
+window.setTbMore=window.setTbMore||setTbMore;
+function toggleTbMore(){
+  var m=document.getElementById('tbMoreMenu');
+  setTbMore(!(m&&m.classList.contains('show')));
+}
+window.toggleTbMore=window.toggleTbMore||toggleTbMore;
+/* ─── 三点菜单权威入口：文档级捕获监听，同时响应 click 与 pointerdown(触摸)，
+       避免内嵌 WebView 触摸不触发 click 而“点了没反应”。时间窗去重防双重切换。─── */
+(function(){
+  if(window.__tbmoreReady)return;   /* 独立启动器已接管，这里不再重复绑定，防开了又关 */
+  window.__tbmoreReady=true;
+  var lastTs=0;
+  function isMoreBtn(e){ try{ return !!(e&&e.target&&e.target.closest&&e.target.closest('#tbMoreBtn')); }catch(err){ return false; } }
+  function handle(e){
+    if(!isMoreBtn(e))return;
+    var now=Date.now();
+    if(now-lastTs<350)return;   // pointerdown 与 click 同源去重
+    lastTs=now;
+    toggleTbMore();
+    try{ if(e.preventDefault)e.preventDefault(); }catch(err){}
+  }
+  document.addEventListener('click', handle, true);
+  document.addEventListener('pointerdown', handle, true);
+})();
 /* 顶栏搜索图标：优先打开升级版「全屏搜索覆盖层」（可一次搜遍所有板块与个人记录）；
    若 upgrade.js 尚未就绪则回退为聚焦侧栏搜索框。移动端先展开侧栏再聚焦。 */
 window.tbSearchGo=function(){
@@ -7659,11 +7746,9 @@ function resetLocalData(){
 /* 点击空白处关闭“更多”菜单 */
 document.addEventListener('click',function(e){
   var m=document.getElementById('tbMoreMenu');
-  var b=document.getElementById('tbMoreBtn');
   var tb=document.getElementById('tbMore');
-  if(m && (m.classList.contains('show')||m.style.display==='flex') && !(tb&&tb.contains(e.target))){
-    m.classList.remove('show');m.style.display='none';
-    if(b){b.classList.remove('is-open');}
+  if(m && m.classList.contains('show') && (!tb || !tb.contains(e.target))){
+    setTbMore(false);
   }
 });
 /* ─────── 外链安全直达 ───────
@@ -10893,7 +10978,7 @@ try{
 
 
 
-function closeMoreMenu(){var m=document.getElementById('tbMoreMenu');if(m)m.classList.remove('show');}
+function closeMoreMenu(){ setTbMore(false); }
 function toggleMoreMenu(e){
   if(e)e.stopPropagation();
   var menu=document.getElementById('moreMenuDropdown');
@@ -12514,8 +12599,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 .mind-refresh.spinning{animation:spinr .45s ease}
 @keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 /* ═══════════ 产品介绍弹窗 · 重构版（现代高级 · 品牌蓝绿 · 系统无衬线字体） ═══════════ */
-.pano-mask{position:fixed;inset:0;background:rgba(28,22,14,.62);z-index:1300;opacity:0;pointer-events:none;transition:opacity .35s ease}
-.pano{position:fixed;inset:0;z-index:1301;color:#33291F;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8;
+.pano-mask{position:fixed;inset:0;background:rgba(28,22,14,.62);z-index:14;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.pano{position:fixed;inset:0;z-index:16;color:#33291F;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8;
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
   background:
     radial-gradient(1000px 520px at 6% -8%,rgba(194,174,150,.12),transparent 58%),
@@ -12772,7 +12857,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 /* 入座底栏：首次进入导览时固定在底部，引导用户「入座」后才进入产品 */
 .pano-seatbar{position:sticky;bottom:0;margin-top:10px;display:flex;justify-content:center;padding:16px 0 8px;background:linear-gradient(180deg,rgba(255,253,248,0),var(--card) 42%);z-index:6}
 .pano-seatbar .btn-seat{font-size:15px;padding:12px 28px;letter-spacing:1px;box-shadow:0 8px 24px rgba(74,58,40,.18)}
-#pano.seat-lock .pano-close{display:none}
+/* 首次「入座」导览也保留 ✕ 关闭键：随时能退出，避免浮层盖住顶栏导致“点了没反应” */
+#pano.seat-lock .pano-close{display:flex;background:#FFFFFF;border-color:rgba(74,58,40,.16);color:#4A3A2C}
+#pano.seat-lock .pano-close:hover{background:#FFF}
 [data-theme="dark"] .mind-refresh{background:#312A20;color:#C9B38A;border-color:#4F4433}
 [data-theme="dark"] .mind-refresh:hover{background:#382F24}
 </style>
@@ -12781,6 +12868,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
 function openPano(){
   /* 产品导览 #pano：品牌长页沉浸式导览，浅深色自动适配 */
   var p=document.getElementById('pano');var m=document.getElementById('panoMask');
+  document.documentElement.classList.add('state-pano'); /* 导览期间隐藏顶栏 */
   if(p)p.classList.add('show');if(m)m.classList.add('show');
   try{document.body.style.overflow='hidden';}catch(e){}
   try{if(p&&p.querySelector('.pano-inner'))p.querySelector('.pano-inner').scrollTop=0;}catch(e){}
@@ -12790,6 +12878,7 @@ function openPano(){
 function closePano(force){
   var p=document.getElementById('pano');
   if(p&&p.classList.contains('seat-lock')&&!force)return;  /* 锁定中：非强制（非「入座」）不关 */
+  document.documentElement.classList.remove('state-pano'); /* 导览结束：恢复顶栏 */
   if(p)p.classList.remove('show');
   var m=document.getElementById('panoMask');if(m)m.classList.remove('show');
   try{document.body.style.overflow='';}catch(e){}
@@ -12822,10 +12911,15 @@ function panoWire(){
   p.addEventListener('click',function(ev){
     var t=ev.target.closest('[data-pano]');if(!t)return;
     var act=t.getAttribute('data-pano');
-    if(p.classList.contains('seat-lock')&&act!=='seat')return;  /* 锁定中：仅「入座」有效 */
-    if(act==='close')closePano(true);
-    else if(act==='home'||act==='about')panoGo(act);
-    else if(act==='seat')seatPano();
+    if(act==='seat'){seatPano();return;}
+    /* 关闭/跳转始终可用：不再被首次「入座」锁死，并在关闭时记录“已看过”，
+       避免导览浮层每次重开盖住顶栏导致“点了没反应” */
+    if(act==='close'){
+      try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
+      if(p)p.classList.remove('seat-lock');
+      closePano(true);return;
+    }
+    if(act==='home'||act==='about')panoGo(act);
   });
 }
 /* ── 导览为单屏长页：自由滚动浏览；关闭/跳转由 panoWire 处理 ── */

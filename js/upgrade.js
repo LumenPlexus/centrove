@@ -8,7 +8,7 @@
 
   var NS = window.QixiaUpgrade = {};
   var STORE_KEY = 'pp_cu_config_v1';
-  var DATA_VERSION = '2026.08.31.21';
+  var DATA_VERSION = '2026.09.01.01';
 
   /* ============================================================
      1. 通用工具
@@ -1096,41 +1096,4 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runSafetyLayer);
   else runSafetyLayer();
-
-  /* ─── 更多菜单 · 脚本级绑定（不依赖内联事件，内嵌/受限制环境更稳） ───
-     点击三点：强制用内联样式显示/隐藏菜单，任何样式都盖不住；
-     并阻止冒泡，避免被全局“点空白收起”逻辑在同一个点击里立刻关掉。 */
-  function bindMoreMenu() {
-    var btn = document.getElementById('tbMoreBtn');
-    var menu = document.getElementById('tbMoreMenu');
-    if (!btn || !menu) return false;
-    btn.addEventListener('click', function (ev) {
-      var op = menu.classList.toggle('show');
-      menu.style.display = op ? 'flex' : 'none';
-      try { btn.classList[op ? 'add' : 'remove']('is-open'); } catch (e) {}
-      if (ev) { ev.stopPropagation(); try { ev.preventDefault(); } catch (err) {} }
-      return false;
-    }, true); // 捕获阶段先执行，先于 document 冒泡监听
-    return true;
-  }
-  if (!bindMoreMenu()) {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindMoreMenu);
-    else window.addEventListener('load', bindMoreMenu);
-  }
-
-  /* ─── 版本角标：右下角常显当前版本，便于确认加载的是不是新版 ─── */
-  function addVersionChip() {
-    try {
-      var cv = DATA_VERSION || '1.0';
-      var old = document.getElementById('qxia-ver-chip');
-      if (old) old.remove();
-      var chip = document.createElement('div');
-      chip.id = 'qxia-ver-chip';
-      chip.textContent = 'v' + cv;
-      chip.title = '栖匣当前版本';
-      chip.style.cssText = 'position:fixed;right:10px;bottom:7px;z-index:5;font-size:10px;font-weight:600;color:rgba(92,75,61,.42);background:rgba(92,75,61,.07);padding:2px 9px;border-radius:999px;pointer-events:none;letter-spacing:.03em';
-      document.body.appendChild(chip);
-    } catch (e) {}
-  }
-  addVersionChip();
 })();
