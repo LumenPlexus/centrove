@@ -98,64 +98,8 @@
   }
   NS.confirmDanger = confirmDanger;
 
-  /* ============================================================
-     安装到桌面 / 下载应用：一键引导
-     - Chrome/Edge/安卓可触发系统级安装弹窗（beforeinstallprompt）
-     - iOS Safari、微信内置浏览器等无系统弹窗的场景，给出分步图文引导
-     ============================================================ */
-  var deferredInstallPrompt = null;
-  if (window.addEventListener) {
-    window.addEventListener('beforeinstallprompt', function (e) {
-      e.preventDefault();
-      deferredInstallPrompt = e; // 保存后供用户主动触发
-    });
-    // 安装完成 / 被忽略后清理
-    window.addEventListener('appinstalled', function () { deferredInstallPrompt = null; toast('已安装，可从桌面图标打开栖匣'); });
-  }
-
-  function isIos() {
-    var ua = navigator.userAgent;
-    return (/iPad|iPhone|iPod/.test(ua)) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  }
-  function isWechat() { return /MicroMessenger/i.test(navigator.userAgent); }
-
-  NS.installApp = function installApp() {
-    // 该系统级安装弹窗可用时优先使用（安卓/Chrome/Edge）
-    if (deferredInstallPrompt) {
-      deferredInstallPrompt.prompt();
-      deferredInstallPrompt.userChoice.then(function () { deferredInstallPrompt = null; }).catch(function () {});
-      return;
-    }
-    var bIos = isIos(), bWechat = isWechat();
-    var card = '';
-    if (bWechat) {
-      card += '<div class="cu-guide"><h5>微信内无法直接安装</h5>' +
-        '<p>微信自带浏览器不提供「添加到主屏幕」。请先点右上角 <b>···</b> → <b>在浏览器中打开</b>，再用下面的方法安装。</p></div>';
-    }
-    card += bIos
-      ? '<div class="cu-guide"><h5>iPhone / iPad（用 Safari 打开）</h5><ol>' +
-        '<li>点底部<b>「分享」</b>按钮（方框＋向上箭头图标）</li>' +
-        '<li>在弹出菜单里选<b>「添加到主屏幕」</b></li>' +
-        '<li>点右上角<b>「添加」</b>，桌面就会出现栖匣图标</li></ol></div>'
-      : '<div class="cu-guide"><h5>安卓 / 鸿蒙（用 Chrome 或系统浏览器打开）</h5><ol>' +
-        '<li>点右上角<b>「⋮」菜单</b>，或在地址栏右侧找安装提示</li>' +
-        '<li>选<b>「安装应用 / 添加到主屏幕」</b></li>' +
-        '<li>按系统提示安装，桌面就会出现栖匣图标</li></ol></div>';
-    card += '<div class="cu-guide"><h5>安装后有什么好处？</h5>' +
-      '<p>像普通 App 一样全屏打开、没有浏览器地址栏；首次加载后<b>支持离线使用</b>。你的所有数据仍只保存在手机本地，不会上传。</p></div>';
-
-    var ov = el('div', 'cu-overlay');
-    ov.innerHTML = '<div class="cu-modal install-modal">' +
-      '<h4>安装栖匣 · 添加到桌面</h4>' +
-      '<div class="cu-guides">' + card + '</div>' +
-      '<div class="cu-actions"><button class="btn btn-primary cu-cancel">知道了</button></div></div>';
-    document.body.appendChild(ov);
-    requestAnimationFrame(function () { ov.classList.add('show'); });
-    function closeInstall() { ov.classList.remove('show'); setTimeout(function () { ov.remove(); }, 220); }
-    ov.addEventListener('click', function (e) { if (e.target === ov) closeInstall(); });
-    $('.cu-cancel', ov).addEventListener('click', closeInstall);
-  };
-  window.installApp = NS.installApp;
+  // 说明：安装到桌面/下载应用的入口已统一内置在 index.html（window.openInstall / installApp），
+  // 以保证微信、iOS、普通浏览器等所有环境点击都有反应，且不依赖本升级层的加载顺序。
 
   // 接管部分旧 uiConfirm，使其使用新皮肤
   if (typeof window.uiConfirm === 'function') {
@@ -838,7 +782,7 @@
       '<div class="card help-grid">' +
       '<details><summary>数据存在哪里？会不会丢？</summary><p>所有数据都保存在当前浏览器的 localStorage 中，不会自动上传到服务器。这意味着：清理缓存、卸载浏览器、重置手机、使用无痕模式，都会导致数据丢失。<br><b>定期导出 JSON 备份是唯一可靠的保护方式。</b></p></details>' +
       '<details><summary>如何备份与恢复？</summary><p>① 打开「系统设置」。② 点击「导出数据备份」，保存 .json 文件到手机文件管理或云盘。③ 需要恢复时，在同一页面点击「导入数据」并选择该文件即可。<br>备份文件包含你录入的全部内容：待办、习惯、日记、记账、错题、单词、书摘、灵感等。</p></details>' +
-      '<details><summary>怎么把栖匣放到手机桌面（或装成 App）？</summary><p>打开栖匣后，点右上角<b>「更多」→「安装到桌面 / 下载应用」</b>，按提示操作即可。<br>安卓/鸿蒙·Chrome/Edge：直接点系统的「安装应用」；<b>iPhone/iPad：</b>用 Safari 打开，点底部「分享」→「添加到主屏幕」。<br>若浏览器没有「添加到主屏」按钮，就按上面弹窗里的分步说明操作。添加后像普通 App 一样全屏打开，首次加载后支持离线使用。</p></details>' +
+      '<details><summary>怎么把栖匣放到手机桌面（或装成 App）？没有入口按钮怎么办？</summary><p>打开栖匣后，点右上角<b>「更多」→「安装到桌面 / 下载应用」</b>，会按你的设备自动给出可执行步骤。<br><b>iPhone / iPad（Safari）：</b>点底部「分享」⤴ → 「添加到主屏幕」→ 「添加」。<br><b>安卓 / Chrome / Edge：</b>点右上角「⋮ 菜单」→「安装应用 / 添加到主屏幕」；电脑浏览器则点地址栏右侧的「下载/加号」安装图标 →「安装」。<br><b>如果浏览器里找不到以上入口：</b>先确认已通过 Safari / Chrome / Edge 这类浏览器打开本页（微信内置浏览器没有此功能），然后点「更多→安装到桌面/下载应用」里的<b>「复制链接」</b>按钮，把链接粘贴到下一步要用的浏览器地址栏打开即可出现对应入口。添加后像普通 App 一样全屏打开、无地址栏，首次加载后支持离线使用。</p></details>' +
       '<details><summary>顶部搜索怎么用？</summary><p>点击顶栏 🔍 搜索图标，输入关键词即可查找。支持搜索：板块名称（如「理财」「备考」）、页面标题、你的待办、日记、记账、错题、单词、书摘、灵感、习惯、目标、电影等。<br>如果没有输入内容，会显示常用关键词，点击即可快速跳转。</p></details>' +
       '<details><summary>为什么有些板块找不到了？</summary><p>在「系统设置 → 升级功能 → 模块显示开关」里，你可以按需要隐藏不常用的板块，让导航更简洁。<br><b>隐藏不会删除数据</b>，重新打开开关即可恢复显示。</p></details>' +
       '<details><summary>待办、习惯、倒数日怎么用？</summary><p><b>待办：</b>在「今日概览」输入任务回车即可，支持打勾完成、拖拽排序。<br><b>习惯：</b>进入「习惯养成」新建习惯，每天点击圆圈打卡，会自动生成月度热力图。<br><b>倒数日：</b>在「今日概览」添加事件名称和目标日期，首页会自动显示剩余天数。</p></details>' +

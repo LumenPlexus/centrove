@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.03.15"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.03.16"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -1280,6 +1280,114 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   setInterval(function(){try{renderInstall();}catch(e){}},2500);
 })();
 </script>
+<script>
+/* ============================================================
+   安装到桌面 / 下载应用（全环境统一入口，独立于 upgrade.js）
+   - 有系统原生安装能力（Chrome/Edge/安卓下载场景）→ 直接弹系统安装框
+   - 微信内置 / iOS Safari / 无系统按钮的浏览器 → 弹分步安装引导面板 + 可复制链接
+   任何环境点击都一定有反应。
+   ============================================================ */
+(function () {
+  'use strict';
+  function inWeixin() { try { return /MicroMessenger/i.test(navigator.userAgent || ''); } catch (e) { return false; } }
+  function isIos() {
+    try {
+      var ua = navigator.userAgent || '';
+      return /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    } catch (e) { return false; }
+  }
+  function isStandalone() {
+    try { return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true; } catch (e) { return false; }
+  }
+  function copyText(t) {
+    try { if (navigator.clipboard && window.isSecureContext) { return navigator.clipboard.writeText(t).then(function () { return true; }); } } catch (e) {}
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = t; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e2) {}
+      document.body.removeChild(ta); return Promise.resolve(ok);
+    } catch (e) { return Promise.resolve(false); }
+  }
+  window.copyThisLink = function () {
+    var hint = '链接已复制：粘贴到 Safari / Chrome / Edge 打开后，再点浏览器「分享→添加到主屏幕」或「菜单→安装应用」即可';
+    var p = copyText(location.href);
+    if (p && typeof p.then === 'function') {
+      p.then(function (ok) {
+        try { if (typeof window.flash === 'function') { window.flash(ok ? hint : location.href); } else { alert(ok ? hint : location.href); } } catch (e) { alert(location.href); }
+      });
+    } else { try { if (typeof window.flash === 'function') { window.flash(hint); } else { alert(hint); } } catch (e) {} }
+    return false;
+  };
+
+  window.openInstall = function () {
+    try {
+      var p = window.installPrompt || null;
+      if (p && typeof p.prompt === 'function') {
+        p.prompt();
+        try { p.userChoice.then(function () { window.installPrompt = null; try { if (typeof window.renderInstall === 'function') window.renderInstall(); } catch (e2) {} }).catch(function () {}); } catch (e2) {}
+        try { if (typeof window.toggleTbMore === 'function') window.toggleTbMore(); } catch (e3) {}
+        return;
+      }
+    } catch (e) {}
+    showInstallSheet();
+  };
+  window.installApp = window.openInstall; // 兼容旧调用名
+
+  var sheetInjected = false;
+  function injectSheetStyle() {
+    if (sheetInjected) return; sheetInjected = true;
+    var css =
+      '.cios{position:fixed!important;left:0!important;right:0!important;top:0!important;bottom:0!important;z-index:120000!important;background:rgba(45,34,22,.5)!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;opacity:0;transition:opacity .18s;}\n' +
+      '.cios.show{opacity:1}\n' +
+      '.cios-box{width:100%;max-width:540px;background:var(--card,#fffdf8);border-radius:20px 20px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.28);padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:86vh;overflow-y:auto;transform:translateY(26px);transition:transform .2s;}\n' +
+      '.cios.show .cios-box{transform:none}\n' +
+      '.cios h3{margin:2px 0 12px;font-size:17px;color:var(--head,#4A3427);font-weight:700;line-height:1.4}\n' +
+      '.cios-card{background:var(--bg,#F4EDDF);border:1px solid var(--border,#E0D4BE);border-radius:12px;padding:11px 13px;margin-bottom:10px;font-size:13.5px;line-height:1.8;color:var(--muted,#6E5B44)}\n' +
+      '.cios-card b{color:var(--primary,#8A5A2B)}\n' +
+      '.cios-warn{background:#FFF6DE;border-color:#E9C96B;color:#6B5220}\n' +
+      '.cios-btn{display:block;width:100%;text-align:center;padding:12px;margin:4px 0 11px;border:none;border-radius:12px;background:var(--primary,#7A5330);color:#fff;font-size:15px;font-weight:600}\n' +
+      '.cios-btn.ghost{background:var(--bg,#F0E7D5);color:var(--primary,#7A5330);border:1px solid var(--border,#D8C8A8)}\n' +
+      '.cios-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}\n' +
+      '.cios-x{border:none;background:none;font-size:18px;color:var(--muted,#8A7658);cursor:pointer;padding:0;line-height:1}';
+    var st = document.createElement('style');
+    st.textContent = css;
+    document.head.appendChild(st);
+  }
+  function showInstallSheet() {
+    injectSheetStyle();
+    var weixin = inWeixin(), ios = isIos(), standalone = isStandalone();
+    var html = '<div class="cios-box"><div class="cios-top"><h3>把栖匣安装到桌面 / 主屏幕</h3><button class="cios-x" onclick="closeInstallSheet()" aria-label="关闭">✕</button></div>';
+    if (standalone) {
+      html += '<div class="cios-card">✅ 你现在已经以 <b>App 全屏方式</b> 使用栖匣（没有浏览器地址栏）。如还需再加一台设备，用下面的方法即可。</div>';
+    }
+    if (weixin) {
+      html += '<div class="cios-card cios-warn"><b>当前在微信里，无法直接添加。</b><br>请按下面任一步骤操作：<br>▸ 点本页右上角 <b>「···」→「在浏览器中打开」</b>，再用下方针对浏览器的方法添加；<br>▸ 或点下方按钮<b>复制链接</b>，粘贴到 Safari / Chrome / 系统浏览器打开后添加。</div>';
+      html += '<button class="cios-btn" onclick="return copyThisLink()">📋 复制链接（粘贴到浏览器打开）</button>';
+    } else if (ios) {
+      html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，用 Safari 打开</button>';
+      html += '<div class="cios-card"><b>iPhone / iPad（Safari）：</b><br>① 用 Safari 打开本页；<br>② 点底部<b>「分享」按钮 ⤴</b>；<br>③ 选<b>「添加到主屏幕」</b>；<br>④ 点右上角<b>「添加」</b>，桌面即出现栖匣图标，之后全屏像 App 一样使用。</div>';
+    } else {
+      html += '<div class="cios-card"><b>安卓 / Chrome / Edge / 电脑浏览器：</b><br>① 点右上角<b>「⋮ 菜单」</b>（安卓），或地址栏右侧的「下载 / 加号」安装图标（电脑）；<br>② 选<b>「安装应用」</b> 或 <b>「添加到主屏幕」</b>；<br>③ 按提示完成安装，桌面即出现栖匣图标。</div>';
+      html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，换浏览器 / 设备打开</button>';
+    }
+    html += '<div class="cios-card">安装后：全屏打开、没有地址栏、<b>支持离线使用</b>；你的数据仍只保存在手机本地，不会上传。</div>';
+    html += '<button class="cios-btn" onclick="closeInstallSheet()">知道了</button></div>';
+    var ov = document.createElement('div');
+    ov.className = 'cios';
+    ov.id = 'ciSheet';
+    ov.innerHTML = html;
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('show'); });
+    ov.addEventListener('click', function (e) { if (e.target === ov) window.closeInstallSheet(); });
+  }
+  window.closeInstallSheet = function () {
+    var el = document.getElementById('ciSheet');
+    if (el) { el.classList.remove('show'); setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 220); }
+  };
+})();
+</script>
 <div id="brandSplash" style="position: fixed; inset: 0px; z-index: 40; background: radial-gradient(70% 55% at 50% 30%, rgba(198,164,112,.26), transparent 60%), linear-gradient(172deg,#FEFBF4 0%,#F7F0E0 52%,#F1E7D0 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 1; overflow:hidden;">
   <!-- 栖匣启动屏：暖米白 × 赭金 × 深棕，与产品主界面同色调体系，明亮不暗沉 -->
   <div style="position:absolute;inset:0;opacity:.5;background:radial-gradient(rgba(110,79,55,.11) 1.2px,transparent 1.2px);background-size:24px 24px;pointer-events:none"></div>
@@ -1388,7 +1496,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         <div class="tb-more-menu" id="tbMoreMenu">
           <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
           <div class="tb-more-label">数据与工具</div>
-          <button class="tb-more-item" onclick="installApp();toggleTbMore()">
+          <button class="tb-more-item" onclick="openInstall();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><path d="M9 8l3-3 3 3"></path><line x1="12" y1="9" x2="12" y2="15"></line></svg>
             安装到桌面 / 下载应用
           </button>
