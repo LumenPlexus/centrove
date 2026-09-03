@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.03.21"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.06.01"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -13963,12 +13963,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.03.14';
+  var V='2026.09.06.01';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.06.01',t:'全平台图标与启动屏彻底统一 · 桌面图标不再变丑',tag:'视觉焕新',blocks:[
+      '· 网页、安卓 App、微信小程序三端的代表图标已全部统一为「奶油底 · 盖体一体的暖棕宝箱 + 金锁」图标，从 16px 到 1024px 任一尺寸都完整清晰。',
+      '· 安卓 App 启动屏彻底重做：奶油渐变底 + 居中闭合宝箱 + 「栖匣」品牌字，打开即为品牌画面，不再出现灰底、盖子悬浮、碎片化的旧画面。',
+      '· 修复部分浏览器 / 鸿蒙桌面把网页快捷方式生成为「黑底蓝字栖」的问题：重制了更通用的 favicon.ico（经典多尺寸），并统一了网页图标引用。',
+      '· 已安装旧版 App 的用户请先卸载旧版再安装新版；网页快捷方式请删除旧的、重新添加一次即可看到新图标。'
+    ]},
     {v:'2026.09.03.14',t:'导览恒定日间 · 不受夜间模式影响',tag:'体验优化',blocks:[
       '· 产品导览现在恒为日间清爽的暖纸风格：即使在夜间模式下打开，也始终保持浅色好看的样子，不会再变得黑压压、深一块浅一块。',
       '· 退出导览后，会自动回到你原来的设置（之前是日间仍回日间、夜间仍回夜间），不会打乱你的习惯。'
