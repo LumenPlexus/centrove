@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.03.18"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.03.19"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -1314,6 +1314,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       return '';
     } catch (e) { return ''; }
   }
+  function isDesktop() {
+    try { return window.innerWidth >= 900 && (navigator.maxTouchPoints || 0) < 5; } catch (e) { return false; }
+  }
   function copyText(t) {
     try { if (navigator.clipboard && window.isSecureContext) { return navigator.clipboard.writeText(t).then(function () { return true; }); } } catch (e) {}
     try {
@@ -1327,29 +1330,28 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   }
   window.copyThisLink = function () {
     var url = location.href;
-    var hint = '链接已复制：粘贴到 Safari / Chrome / Edge 打开后即可添加';
-    // 无论复制是否成功，都在按钮下方放一行可直接长按复制的网址，保证用户反过来拿得到链接
-    function reveal() {
+    var hint = '链接已复制';
+    function showFallback() {
       var box = document.getElementById('ciLinkBox');
-      if (box) { box.style.display = 'block'; var i = box.querySelector('input'); if (i) { i.select(); try { i.focus(); } catch (e2) {} } return; }
+      if (box) { box.style.display = 'block'; var i = box.querySelector('input'); if (i) i.select(); return false; }
       var safe = url.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-      var html = '<div class="cios-linkbox" id="ciLinkBox" style="margin:2px 0 10px;display:block">' +
-        '<div style="font-size:12px;color:var(--muted);margin-bottom:4px">若上方没提示"已复制"，请<b>长按下面这行网址</b> → 点「拷贝 / 复制」：</div>' +
-        '<input readonly value="' + safe + '" style="width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--border,#D8C8A8);border-radius:8px;background:#fff;color:var(--text);font-size:12.5px;letter-spacing:.2px" onclick="this.select()"></div>';
-      var sheet = document.getElementById('ciSheet');
-      var boxEl = sheet && sheet.querySelector('.cios-box');
-      if (boxEl) { var wrap = document.createElement('div'); wrap.innerHTML = html; boxEl.insertBefore(wrap.firstChild, boxEl.firstChild.nextSibling); }
-      else { var w2 = document.createElement('div'); w2.innerHTML = html; document.body.appendChild(w2.firstChild); }
-      var inp = document.getElementById('ciLinkBox') && document.getElementById('ciLinkBox').querySelector('input');
-      if (inp) { inp.select(); try { inp.focus(); } catch (e3) {} }
+      var el = document.createElement('div');
+      el.id = 'ciLinkBox';
+      el.style.cssText = 'margin:10px 0 2px;padding:9px 10px;border:1px dashed #D8C8A8;border-radius:8px;background:#FFFDF5;text-align:left';
+      el.innerHTML = '<div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:5px">当前浏览器拦截了自动复制。请<b>长按下面这行网址</b> → 点「拷贝 / 复制」，再粘贴到支持一键安装的浏览器打开：</div>' +
+        '<input readonly value="' + safe + '" onclick="this.select()" style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #D8C8A8;border-radius:6px;background:#fff;font-size:12px;letter-spacing:.2px;color:#3b2a18">';
+      var btn = document.querySelector('#ciSheet button[onclick*="copyThisLink"]');
+      if (btn && btn.parentNode) { btn.parentNode.insertBefore(el, btn.nextSibling); }
+      else { var s = document.getElementById('ciSheet'); if (s && s.querySelector('.cios-box')) s.querySelector('.cios-box').appendChild(el); }
+      var i2 = el.querySelector('input'); if (i2) i2.select();
     }
     var p = copyText(url);
     if (p && typeof p.then === 'function') {
       p.then(function (ok) {
         if (ok) { try { if (typeof window.flash === 'function') window.flash(hint); } catch (e) {} }
-        else { reveal(); try { if (typeof window.flash === 'function') window.flash('复制未成功，请长按下方网址手动复制'); } catch (e) {} }
+        else showFallback();
       });
-    } else { reveal(); }
+    } else { showFallback(); }
     return false;
   };
 
@@ -1405,20 +1407,24 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，用 Safari 打开</button>';
       html += '<div class="cios-card"><b>iPhone / iPad（Safari）：</b><br>① 用 Safari 打开本页；<br>② 点底部<b>「分享」按钮 ⤴</b>；<br>③ 选<b>「添加到主屏幕」</b>；<br>④ 点右上角<b>「添加」</b>，桌面即出现栖匣图标，之后全屏像 App 一样使用。</div>';
     } else {
-      var br = browserName();
-      var steps = {
-        quark: '<b>夸克浏览器：</b>右上角<b>「头像」→「更多工具」→「创建快捷方式」</b>→ 命名后点「创建」，桌面即出现图标。',
-        uc: '<b>UC浏览器：</b>点中间菜单键 →<b>「收藏网址」→「手机桌面」</b>。',
-        qq: '<b>QQ浏览器：</b>点右下角<b>「三横线」→「工具箱 → 添加快捷方式 → 手机桌面」</b>。',
-        huawei: '<b>华为浏览器：</b>点页面右下角<b>「∷ / 四个点」→「添加至桌面」</b>。',
-        samsung: '<b>三星浏览器：</b>右上角<b>「⋯」→「添加至主屏幕」→「添加」</b>。',
-        edge: '<b>Edge / Chrome：</b>右上角<b>「⋮」→「安装此网站 / 添加到主屏幕」</b>→ 安装。',
-        firefox: '<b>Firefox：</b>点菜单 →<b>「Add to Home Screen」</b>→ 改好名称 → Add。',
-        chrome: '<b>Chrome / Edge / 安卓系统浏览器：</b>右上角<b>「⋮」→「安装应用 / 添加到主屏幕」</b>→ 确认名称即可；电脑地址栏右侧的「安装」图标也可直接安装。'
-      };
-      var s = steps[br] || steps.chrome;
-      html += '<div class="cios-card">' + s + '</div>';
-      html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，换浏览器 / 设备打开</button>';
+      if (isDesktop()) {
+        html += '<div class="cios-card"><b>电脑（Chrome / Edge）：</b>点右上角或地址栏右侧的<b>「安装」图标</b> → 点「安装」即可；页面顶部若已出现「一键安装」，点它最快。</div>';
+      } else {
+        var br = browserName();
+        var steps = {
+          quark: '<b>夸克浏览器（入口因版本 / 鸿蒙·安卓而异）：</b>最稳的是<b>长按顶部地址栏</b>（网址或它旁边的图标）→ 菜单里选「<b>添加到桌面 / 创建快捷方式</b>」；或点<b>底部菜单 → 工具箱 → 添加到桌面</b>；或右上角「…」→「添加到桌面」。若菜单里一直没有「添加到桌面」，先进夸克<b>设置 → 常用设置</b>把<b>「网页快捷方式」开关打开</b>再试。',
+          uc: '<b>UC浏览器：</b>点中间菜单键 →<b>「收藏网址」→「手机桌面」</b>。',
+          qq: '<b>QQ浏览器：</b>点右下角<b>「三横线」→「工具箱 → 添加快捷方式 → 手机桌面」</b>。',
+          huawei: '<b>华为浏览器：</b>点页面右下角<b>「∷ / 四个点」→「添加至桌面」</b>；或在「我的 → 书签 / 历史」里长按网址 → 添加至桌面。</b>',
+          samsung: '<b>三星浏览器：</b>右上角<b>「⋯」→「添加至主屏幕」→「添加」</b>。',
+          edge: '<b>Edge / Chrome（手机）：</b>右上角<b>「⋮」→「安装此网站 / 添加到主屏幕」</b>→ 安装。',
+          firefox: '<b>Firefox（手机）：</b>点菜单 →<b>「Add to Home Screen」</b>→ 改好名称 → Add。',
+          chrome: '<b>Chrome / Edge / 安卓系统浏览器（手机）：</b>右上角<b>「⋮」→「安装应用 / 添加到主屏幕」</b>→ 确认名称；安卓上有时会自动弹出安装提示，点「安装」即可。'
+        };
+        var s = steps[br] || steps.chrome;
+        html += '<div class="cios-card">' + s + '</div>';
+      }
+      html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，换到支持一键的浏览器 / 设备打开</button>';
     }
     html += '<button class="cios-btn" onclick="closeInstallSheet()">知道了</button></div>';
     var ov = document.createElement('div');
@@ -6209,12 +6215,13 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div style="font-size:12.5px;color:var(--hint);line-height:1.8;margin-top:10px">📌 手机 / 电脑怎么添加：直接看<b>你正在用的那一台设备 / 浏览器</b>那一条即可。若上方灰色框内已出现「一键安装」按钮，点它最快。</div>
         <div class="help-grid" style="display:grid;gap:8px;margin-top:6px">
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">苹果手机 iPhone（仅 Safari）：</b>① 用 <b>Safari</b> 打开本页；② 点屏幕底部工具栏的「<b>分享</b>」图标（带向上箭头的方框）；③ 向下滑动菜单，点「<b>添加到主屏幕</b>」（没有这项？点菜单最底部「<b>编辑操作</b>」，把它加进菜单）；④ 确认 / 修改名称，点右上角「<b>添加</b>」，桌面即生成图标。以后从主屏幕图标打开，就是全屏 App 体验。</div>
-          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">Chrome（安卓 / 电脑 / 鸿蒙）：</b>打开网页后点右上角「<b>⋮ / 三条横线</b>」→「添加到主屏幕」或「收藏网址」→「手机桌面」→ 自定义名称确认。电脑版：点地址栏右侧的「安装」（电脑 / 加号）图标 →「安装」。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">安卓 · Chrome（手机）：</b>打开网页后点右上角「<b>⋮ / 三条横线</b>」→「添加到主屏幕」或「收藏网址」→「手机桌面」→ 自定义名称确认。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">电脑 · Chrome / Edge：</b>点右上角或地址栏右侧的<b>「安装」图标（电脑 / 加号）</b>→ 点「安装」。这是网页真正可"一键安装"的入口，浏览器会弹授权，点安装即可；Firefox / Safari 桌面版暂不能把网页装成 App。</div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">华为浏览器：</b>方法一：打开网页后点页面右下角「<b>∷ / 四个点</b>」菜单 →「<b>添加至桌面</b>」。方法二：在「<b>我的 → 书签收藏 / 历史记录</b>」里长按目标网站 →「添加至桌面」（注：桌面快捷方式上限为 10 个）。</div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">QQ浏览器：</b>方法一：打开网页，点右下角「<b>三横线</b>」菜单 →「<b>工具箱 → 添加快捷方式 → 手机桌面</b>」。方法二：点菜单「添加书签」，在编辑界面点「<b>发送到桌面</b>」。</div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">UC浏览器：</b>方法一：打开网页，点中间菜单键 →「收藏网址」→ 在弹出的选项里点「<b>手机桌面</b>」。方法二：在「<b>我的 → 收藏 / 历史</b>」里长按网址 → 弹窗点「<b>发送至桌面</b>」。</div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">vivo / 360 / 百度 / 搜狗浏览器：</b>点菜单键 →「添加书签 / 收藏网址 / 添加收藏」→ 后点「<b>添加到手机桌面 / 添加至桌面</b>」确认。</div>
-          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">夸克浏览器：</b>点右上角「<b>头像</b>」→「<b>更多工具</b>」→「<b>创建快捷方式</b>」→ 命名后点「创建」，桌面即出现图标。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">夸克浏览器（入口因版本 / 鸿蒙·安卓而异）：</b>最稳的是<b>长按顶部地址栏</b>（网址或旁小图标）→ 选「<b>添加到桌面 / 创建快捷方式</b>」；或点<b>底部菜单 → 工具箱 → 添加到桌面</b>；或右上角「…」→「添加到桌面」。若菜单里始终没有「添加到桌面」，先进夸克<b>设置 → 常用设置</b>把<b>「网页快捷方式」开关打开</b>再试。</div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">Firefox：</b>打开网页后点菜单 →「<b>Add to Home Screen</b>」（添加到主屏幕）→ 修改名称 → 点「Add」确认。</div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">微信内打开：</b>微信不提供「添加到主屏幕」。先点右上角「<b>···</b>」→「<b>在浏览器中打开</b>」，再用上面对应设备的浏览器方法添加。</div>
         </div>
