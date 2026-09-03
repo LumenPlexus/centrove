@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.03.20';
+var VERSION = '2026.09.03.21';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -17,11 +17,19 @@ var PRECACHE_URLS = [
   './js/upgrade.js',
   './pwa/manifest.json',
   './pwa/version.txt',
+  './favicon.ico',
+  './favicon-16.png',
+  './favicon-32.png',
+  './favicon-48.png',
+  './favicon-96.png',
+  './favicon.svg',
   './pwa/apple-touch-icon.png',
-  './pwa/icon-180.png',
   './pwa/icon-192.png',
   './pwa/icon-512.png',
-  './pwa/logo.png'
+  './pwa/icon-180.png',
+  './pwa/logo.png',
+  './pwa/maskable-192.png',
+  './pwa/maskable-512.png'
 ];
 
 self.addEventListener('install', function (e) {
