@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.09.03"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.09.04"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="栖匣">
-  <link rel="manifest" href="pwa/manifest.json?v=2026090903">
+  <link rel="manifest" href="pwa/manifest.json?v=2026090904">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -396,7 +396,7 @@ body.sidebar-open{overflow:hidden}
 .metric{background:var(--bg);border-radius:var(--radius-sm);padding:14px}
 .metric .label{font-size:11px;color:var(--hint);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
 .metric .value{font-size:24px;font-weight:600;color:var(--primary);line-height:1.2}
-.metric .sub{font-size:11px;color:var(--muted);margin-top:2px}
+.metric .sub{font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 /* 可编辑指标占位态：未填写时用浅色小字提示，避免“点击填写”被放大成主数字显得杂乱 */
 .metric .value.ph{font-size:15px;font-weight:500;color:var(--hint,#8a93a2);line-height:1.6}
 
@@ -903,15 +903,23 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 /* ── 新增板块通用样式 ── */
 .view-new .card{transition:transform .15s,box-shadow .15s;}
 .view-new .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
-.countdown-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;
-  background:var(--bg);border:1px solid var(--border);margin-bottom:8px;transition:background .15s;}
-.countdown-item:hover{background:var(--primary-light);}
-.cd-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+.countdown-item{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;
+  background:var(--bg);border:1px solid var(--border);margin-bottom:10px;transition:all .15s;}
+.countdown-item:hover{background:var(--primary-light);transform:translateY(-1px);box-shadow:var(--shadow-sm,0 1px 4px rgba(0,0,0,.06));}
+.cd-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
   flex-shrink:0;font-size:16px;color:#fff;font-weight:700;}
-.cd-info{flex:1;min-width:0;}
-.cd-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cd-date{font-size:11px;color:var(--hint);margin-top:2px;}
-.cd-count{font-size:18px;font-weight:700;color:var(--primary);white-space:nowrap;font-family:ui-monospace,monospace;}
+.cd-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;align-self:center;}
+.cd-name{font-size:14px;font-weight:600;line-height:1.4;color:var(--text);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word;}
+.cd-meta{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap;}
+.cd-date{font-size:12px;color:var(--hint);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.3px;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+.cd-type{font-size:11px;line-height:1;color:var(--primary);background:var(--primary-light,#f2ede3);
+  border-radius:20px;padding:4px 9px;flex-shrink:0;font-weight:500;}
+.cd-count{flex-shrink:0;display:flex;align-items:baseline;gap:3px;color:var(--primary);white-space:nowrap;text-align:right;}
+.cd-count .lbl{font-size:11px;color:var(--hint);}
+.cd-count .num{font-size:26px;font-weight:800;line-height:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;}
+.cd-count .unit{font-size:12px;color:var(--hint);}
+@media(max-width:380px){.countdown-item{gap:8px;padding:12px}.cd-count .num{font-size:20px}.cd-icon{width:36px;height:36px}}
 .habit-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
   background:var(--bg);border:1px solid var(--border);margin-bottom:6px;transition:all .15s;}
 .habit-item.done{background:linear-gradient(135deg,rgba(122,115,99,.08),rgba(122,115,99,.04));
@@ -7541,6 +7549,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <button class="btn btn-primary btn-sm" style="padding:12px 22px;font-size:14px;background:#8A6A2D;border-color:#8A6A2D;border-radius:10px;transition:transform .08s ease;box-shadow:0 2px 8px rgba(138,106,45,.25)" onclick="exportGrowth()">📊 查看我的成长报告</button>
       </div>
     </div>
+    <div id="growthSince" style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:12px 14px;border-radius:12px;background:var(--bg);border:1px dashed var(--border-strong,var(--border));font-size:12.5px;color:var(--muted);line-height:1.6"></div>
     <div class="grid grid-4" style="margin-bottom:16px">
       <div class="stat-card"><div class="stat-num" id="statDays">0</div><div class="stat-label">有效使用天数</div><div class="stat-hint">有实际操作的天然数</div></div>
       <div class="stat-card"><div class="stat-num" id="statStreak">0</div><div class="stat-label">最长连续打卡</div><div class="stat-hint">各习惯中最长连击</div></div>
@@ -7569,7 +7578,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.03.07</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.09.04</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -10533,12 +10542,12 @@ function renderShelf(){
     var shortTitle=b.t.replace(/[《》]/g,'');
     return '<div style="cursor:pointer" onclick="showBookDetail(\''+b.id+'\')">'+
       '<div style="width:100%;aspect-ratio:3/4;background:'+coverBg+';border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=\'translateY(-4px)\'" onmouseout="this.style.transform=\'none\'">'+
-        '<div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">'+shortTitle+'</div>'+
+        '<div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word">'+shortTitle+'</div>'+
         '<div style="font-size:9px;opacity:.8;text-align:center">'+b.a+'</div>'+
         '<div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div>'+
         '<div style="font-size:9px;opacity:.7">'+b.cat+'</div>'+
       '</div>'+
-      '<div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+shortTitle+'</div>'+
+      '<div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word">'+shortTitle+'</div>'+
     '</div>';
   }).join('');
 }
@@ -11006,7 +11015,7 @@ function renderPlans(){
           '<input value="'+escapeHtml(cell.text)+'" data-key="'+key+'" oninput="ttText(\''+key+'\',this.value)" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td>';
       }
       var label=cell.text?escapeHtml(cell.text):'';
-      return '<td data-key="'+key+'" title="'+(col.n||'')+(label?'：'+label:'')+'" style="height:30px;min-width:84px;background:'+col.bg+';color:'+col.fg+';cursor:pointer;font-size:11px;text-align:center;overflow:hidden;white-space:nowrap" onclick="fillTT(this,\''+key+'\')">'+label+'</td>';
+      return '<td data-key="'+key+'" title="'+(col.n||'')+(label?'：'+label:'')+'" style="height:30px;min-width:84px;background:'+col.bg+';color:'+col.fg+';cursor:pointer;font-size:11px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" onclick="fillTT(this,\''+key+'\')">'+label+'</td>';
     }).join('');
     return '<tr><td onclick="editSlotLabel(\''+slot+'\')" title="点击编辑这个时段名称" style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap;cursor:pointer">'+escapeHtml(sLabel)+'</td>'+cells+'</tr>';
   }).join('');
@@ -11209,7 +11218,6 @@ function saveReadingNote(idx){
   var el=document.getElementById('rn_'+key);
   if(el)saveReadingNoteKey(key,el.value);
 }
-function saveReadingNote(idx){var el=document.getElementById('rn_'+idx);if(!el)return;var rn=getReadingNotes();rn[idx]=el.value;saveReadingNotes(rn);flash('笔记已保存');}
 
 /* ═══════════ 英语精读 · 六级真题风格模块 ═══════════ */
 var CET6_READINGS=[
@@ -11614,7 +11622,7 @@ function renderCountdowns(){
         '<div style="display:flex;align-items:center;gap:10px">'+
           '<div style="font-size:36px;font-weight:800;color:'+bigColor+';line-height:1;letter-spacing:-1px">'+bigText+'</div>'+
           '<div style="flex:1;font-size:11px;color:var(--muted)">'+
-            '<div>📅 '+item.date+'</div>'+
+            '<div>📅 <span style="white-space:nowrap">'+item.date+'</span></div>'+
             '<div style="margin-top:2px">进度 '+progress+'%</div>'+
             '<input type="date" value="'+item.date+'" onchange="updateCountdownDate('+i+',this.value)" style="margin-top:4px;font-size:11px;border:1px solid var(--border);border-radius:4px;padding:2px 4px;width:100%">'+
           '</div>'+
@@ -12159,16 +12167,24 @@ function renderExamCountdowns(){
   box.innerHTML=tip+list.map(function(e,i){
     var d=new Date(e.date);
     var diff=Math.ceil((d-now)/(86400000));
-    var diffStr=diff>0?'还有 <strong>'+diff+'</strong> 天':'<strong style="color:var(--teal)">就是今天！</strong>';
     var tv=_typeIcon(e.type);
+    var niceDate=e.date&&e.date.indexOf('-')>-1?e.date.split('-').join('.'):(e.date||'');
+    var cd='<div class="cd-count'+(diff<=0?' today':'')+'">'+
+      (diff>0
+        ?'<span class="lbl">还有</span><span class="num">'+diff+'</span><span class="unit">天</span>'
+        :'<span class="num" style="font-size:16px;font-weight:700;color:var(--teal)">就是今天</span>')+
+      '</div>';
     return '<div class="countdown-item">'+
       '<div class="cd-icon" style="background:'+e.color+';color:'+_iconInk(e.color)+'">'+tv[0]+'</div>'+
       '<div class="cd-info">'+
-        '<div class="cd-name" contenteditable="true" onblur="editExamName('+i+',this.textContent)">'+e.name+'</div>'+
-        '<div class="cd-date">'+e.date+' · <span style="color:var(--muted)">'+tv[1]+'</span></div>'+
+        '<div class="cd-name" contenteditable="true" onblur="editExamName('+i+',this.textContent)" title="点击可修改考试名称">'+e.name+'</div>'+
+        '<div class="cd-meta">'+
+          '<span class="cd-date">'+niceDate+'</span>'+
+          '<span class="cd-type">'+tv[1]+'</span>'+
+        '</div>'+
       '</div>'+
-      '<div class="cd-count">'+diffStr+'</div>'+
-      '<button style="background:none;border:none;color:var(--hint);cursor:pointer;font-size:16px;padding:4px" onclick="removeExam('+i+')">×</button>'+
+      cd+
+      '<button title="删除该考试" style="background:none;border:none;color:var(--hint);cursor:pointer;font-size:16px;line-height:1;padding:4px;flex-shrink:0" onclick="removeExam('+i+')">×</button>'+
     '</div>';
   }).join('');
 }
@@ -12547,6 +12563,19 @@ function updateStats(){
   var totalPomo=0; Object.keys(pomos).forEach(function(k){totalPomo+=pomos[k]||0;});
   setEl('statPomos',totalPomo);
   setEl('statPomoStreak',longestConsecutiveDays(pomos));
+
+  /* 里程碑：始于首次打开 · 实时刷新陪伴天数 */
+  try{
+    var _fu=getFirstUseDate();
+    var _g=document.getElementById('growthSince');
+    if(_fu&&_g){
+      var _dstart=new Date(_fu+'T00:00:00');
+      var _dtoday=new Date(); _dtoday.setHours(0,0,0,0);
+      var _computed=Math.round((_dtoday-_dstart)/86400000)+1;
+      _g.innerHTML='<span style="display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#8A6A2D;font-size:15px">🌱</span>'+
+        '<span><b style="color:var(--text)">你的栖匣之旅始于 '+_fu+'</b> · 从<strong style="color:var(--primary)">第一次打开</strong>就自动开始记录，之后所有记录与数据都保存在本机、实时同步、不会因升级而消失 · 至今已陪伴你 <b style="color:var(--primary)">'+_computed+'</b> 天</span>';
+    }
+  }catch(e){}
 
   /* 实时同步时间戳 */
   try{
@@ -13968,12 +13997,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.09.03';
+  var V='2026.09.09.04';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.09.04',t:'考试倒计时卡片重设计 · 成长档案新增陪伴里程碑',tag:'体验优化',blocks:[
+      '· 「考试规划」的每一张倒计时卡片已重做：考试名称不再被截断成「英语…」（超出两行才省略），日期统一成「2026.12.12」单行完整显示、「笔试/口语/机考」做成独立小标签，右侧「还有 X 天」改为紧凑醒目版，整体更均衡、信息更清楚、不再留大片空白。',
+      '· 「成长档案」新增一块陪伴里程碑：一开始就是「你的栖匣之旅始于 XXXX-XX-XX」，从你第一次打开就开始为你记录，之后你的任务、专注、习惯、学习、读书、目标等数据都保存在本机、实时同步、升级也不会消失，还会实时显示至今陪伴你多少天。',
+      '· 各处统计在进入页面、切换回来、以及停留页面时均实时刷新（默认每 60 秒自动重算一次），数字不会停留在旧值。'
+    ]},
     {v:'2026.09.09.03',t:'修复“轻松上手·分类导航”点击板块不能跳转',tag:'导航修复',blocks:[
       '· 首页「轻松上手·分类导航」里的板块，现在点击即直达对应板块页面（不再出现“点了没反应”）。',
       '· 采用与侧边栏一致的最稳跳转方式 + 移动端委托兜底，安卓/鸿蒙/网页均稳定生效。'
