@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.04"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.05"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -1558,8 +1558,15 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         if(typeof openPano==='function') openPano();
       }catch(err){}
     }else{
-      /* 非首访用户：闪屏结束后一律回到首页，不加载上次所在板块/不记忆上次位置 */
-      try{ if(typeof switchView==='function') switchView('home'); }catch(e){}
+      /* 闪屏结束后定位到当前界面：
+         若地址栏带合法板块 hash（例如从外部链接返回、浏览器后退/前进、或点了带 #view 的链接），
+         则回到对应板块而非首页；若为彻底冷启动（地址无 hash 或为 #view-home），仍展示首页。 */
+      try{
+        var _hh=''+(location.hash||'');
+        _hh=_hh.replace(/^#view-/,'');
+        var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
+        if(typeof switchView==='function'){ switchView(_hasHash?_hh:'home'); }
+      }catch(e){ try{if(typeof switchView==='function')switchView('home');}catch(e2){} }
     }
   }
   function show(){
@@ -7972,6 +7979,21 @@ function switchView(name){
     if(location.hash!==want){location.hash=want;}
   }catch(e){}
 }
+/* ─── Hash 路由统一接管：浏览器后退/前进、或直接打开带 #view-… 的链接时能正确切换板块 ─── */
+function routeHash(){
+  try{
+    var h=''+(location.hash||'');
+    h=h.replace(/^#view-/,'');
+    if(h&&h!=='home'&&document.getElementById('view-'+h)){
+      switchView(h);
+    }else{
+      /* 无 hash 或 hash 指向首页/非法板块时，回到首页 */
+      switchView('home');
+    }
+  }catch(e){}
+}
+window.routeHash=window.routeHash||routeHash;
+if(window.addEventListener)window.addEventListener('hashchange',routeHash);
 
 function openSidebar(){
   var sb=document.getElementById('sidebar');
