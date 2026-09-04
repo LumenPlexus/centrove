@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.06.05';
+var VERSION = '2026.09.06.06';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -94,19 +94,16 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // 2) 静态资源：缓存优先 + 后台刷新（stale-while-revalidate）
+  // 2) 静态资源：网络优先（在线永远拿最新，杜绝陈旧图标/资源被缓存优先策略锁死），
+  //    绕过浏览器 HTTP 缓存刷新后再存 SW 缓存；断网时回退缓存（保持离线可用）。
+  var freshReq = new Request(req.url, { method: 'GET', cache: 'reload' });
   e.respondWith(
-    caches.match(req).then(function (hit) {
-      var upd = fetch(req).then(function (resp) {
-        if (resp && (resp.ok)) {
-          var cl = req.clone();
-          caches.open(RUN).then(function (cache) { cache.put(cl, resp).catch(function () {}); }).catch(function () {});
-        }
-        return resp;
-      }).catch(function () {
-        return hit ? undefined : Response.error();
-      });
-      return hit || upd;
-    })
+    fetch(freshReq).then(function (resp) {
+      if (resp && (resp.ok || resp.type === 'opaque')) {
+        var cl = req.clone();
+        caches.open(RUN).then(function (cache) { cache.put(cl, resp).catch(function () {}); }).catch(function () {});
+      }
+      return resp;
+    }).catch(function () { return fromCache(req); })
   );
 });
