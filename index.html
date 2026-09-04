@@ -903,23 +903,34 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
 /* ── 新增板块通用样式 ── */
 .view-new .card{transition:transform .15s,box-shadow .15s;}
 .view-new .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
-.countdown-item{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;
+.countdown-item{display:flex;flex-direction:column;padding:15px 16px;border-radius:14px;
   background:var(--bg);border:1px solid var(--border);margin-bottom:10px;transition:all .15s;}
 .countdown-item:hover{background:var(--primary-light);transform:translateY(-1px);box-shadow:var(--shadow-sm,0 1px 4px rgba(0,0,0,.06));}
 .cd-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:16px;color:#fff;font-weight:700;}
-.cd-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;align-self:center;}
-.cd-name{font-size:14px;font-weight:600;line-height:1.4;color:var(--text);
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word;}
-.cd-meta{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap;}
-.cd-date{font-size:12px;color:var(--hint);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.3px;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+  flex-shrink:0;font-size:16px;color:#fff;font-weight:700;margin-top:1px;}
+.cd-namecon{flex:1;min-width:0;}
+.cd-name{font-size:15px;font-weight:700;line-height:1.45;color:var(--text);
+  word-break:break-word;overflow-wrap:break-word;white-space:normal;}  /* 标题完整显示，不截断 */
+.cd-del{flex-shrink:0;background:none;border:none;color:var(--hint);cursor:pointer;font-size:18px;
+  line-height:1;padding:2px 5px;margin:-2px -3px 0 0;border-radius:8px;}
+.cd-del:hover{color:var(--coral);background:rgba(0,0,0,.04);}
+.cd-count{display:flex;align-items:baseline;justify-content:center;gap:6px;margin:12px 0 0;padding:12px 14px;
+  border-radius:12px;background:linear-gradient(135deg,rgba(110,79,55,.12),rgba(110,79,55,.04));
+  color:var(--primary);box-shadow:inset 0 1px 0 rgba(255,255,255,.6);}
+.cd-count .lbl{font-size:13px;font-weight:600;color:var(--primary);letter-spacing:1px;}
+.cd-count .num{font-size:32px;font-weight:800;line-height:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-variant-numeric:tabular-nums;letter-spacing:.5px;}
+.cd-count .unit{font-size:13px;font-weight:600;color:var(--primary);letter-spacing:1px;}
+.cd-count.today{background:linear-gradient(135deg,rgba(46,139,116,.14),rgba(46,139,116,.05));color:var(--teal);}
+.cd-count.today .num{font-size:17px;font-weight:800;color:var(--teal);}
+.cd-meta{display:flex;align-items:center;gap:10px;margin-top:11px;padding-top:10px;
+  border-top:1px dashed var(--border);flex-wrap:wrap;}
+.cd-date{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--text);
+  font-variant-numeric:tabular-nums;letter-spacing:.4px;white-space:nowrap;font-weight:600;}
+.cd-date svg{flex-shrink:0;color:var(--primary)}
 .cd-type{font-size:11px;line-height:1;color:var(--primary);background:var(--primary-light,#f2ede3);
-  border-radius:20px;padding:4px 9px;flex-shrink:0;font-weight:500;}
-.cd-count{flex-shrink:0;display:flex;align-items:baseline;gap:3px;color:var(--primary);white-space:nowrap;text-align:right;}
-.cd-count .lbl{font-size:11px;color:var(--hint);}
-.cd-count .num{font-size:26px;font-weight:800;line-height:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;}
-.cd-count .unit{font-size:12px;color:var(--hint);}
-@media(max-width:380px){.countdown-item{gap:8px;padding:12px}.cd-count .num{font-size:20px}.cd-icon{width:36px;height:36px}}
+  border-radius:20px;padding:4px 10px;flex-shrink:0;font-weight:600;letter-spacing:.3px;}
+@media(max-width:380px){.countdown-item{padding:12px}.cd-icon{width:38px;height:38px}.cd-name{font-size:14px}.cd-count .num{font-size:27px}.cd-count.today .num{font-size:15px}}
 .habit-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
   background:var(--bg);border:1px solid var(--border);margin-bottom:6px;transition:all .15s;}
 .habit-item.done{background:linear-gradient(135deg,rgba(122,115,99,.08),rgba(122,115,99,.04));
@@ -12043,15 +12054,22 @@ function mobileHint(){
    v2.7：日期改用【官方核实 + 年度惯例推算】两源核对，笔试/机考/口试类型分离。
    官方已公布的日期以官方为准（2026已核实）；未公布的按历年惯例推算并明确标注"以官方公告为准"。
    */
-function _nthWeekday(year,month,n,weekday){var d=new Date(year,month-1,1);var first=(6-(7-d.getDay()+weekday)%7);if(first<0)first+=7;return first+(n-1)*7;}
+function _nthWeekday(year,month,n,weekday){
+  var d=new Date(year,month-1,1);
+  if(n<0){ /* 负数=从月末倒数：-1 为最后一个该星期几，-2 为倒数第二个 */
+    var last=new Date(year,month,0).getDate();
+    var day=last-((new Date(year,month-1,last)).getDay()-weekday+7)%7+(n+1)*7;
+    return day;
+  }
+  var first=(weekday-d.getDay()+7)%7+1;return first+(n-1)*7;}
 function _fmtDate(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 /* 单场种子：name / month / nth / weekday / type / c(色) / note */
 var EXAM_RULES=[
   {name:'英语四级(CET-4)笔试',m:12,n:2,w:6,type:'笔试',c:'#4A3427',note:'12月场·上午'},
   {name:'英语六级(CET-6)笔试',m:12,n:2,w:6,type:'笔试',c:'#7C5B38',note:'12月场·下午'},
   {name:'英语四级口试(CET-4)',m:11,n:3,w:6,type:'口语',c:'#B0855A',note:'选考·自愿报名'},
-  {name:'英语六级口试(CET-6)',m:11,n:4,w:6,type:'口语',c:'#A9803F',note:'选考·自愿报名'},
-  {name:'研究生入学考试(初试)',m:12,n:2,w:6,type:'笔试',c:'#B07F63',note:'全国统一初试'},
+  {name:'英语六级口试(CET-6)',m:11,n:3,w:6,offset:1,type:'口语',c:'#A9803F',note:'选考·自愿报名'},
+  {name:'研究生入学考试(初试)',m:12,n:-2,w:6,type:'笔试',c:'#B07F63',note:'预计12月下旬·以教育部正式公告为准'},
   {name:'法考客观题(机考)',m:9,n:2,w:6,type:'机考',c:'#B45309',note:'分两批次'},
   {name:'法考主观题',m:10,n:3,w:7,type:'机考',c:'#EA580C',note:'客观过线后方可报'},
   {name:'教师资格证笔试',m:9,n:2,w:6,type:'笔试',c:'#6E4F37',note:'下半年场'},
@@ -12065,7 +12083,6 @@ var EXAM_OFFICIAL_2026={
   '英语六级(CET-6)笔试':'2026-12-12',
   '英语四级口试(CET-4)':'2026-11-21',
   '英语六级口试(CET-6)':'2026-11-22',
-  '研究生入学考试(初试)':'2026-12-19',
   '法考客观题(机考)':'2026-09-12',
   '法考主观题':'2026-10-18',
   '教师资格证笔试':'2026-09-12',
@@ -12077,6 +12094,12 @@ var EXAM_OFFICIAL_MAP={2026:EXAM_OFFICIAL_2026};
 function officialExamDate(name){
   var robj=EXAM_OFFICIAL_MAP[new Date().getFullYear()];
   return robj?robj[name]:null;
+}
+/* 单场日期统一入口：官方已公布→精确取用；否则按规则推算（支持负数序号=从月末倒数，offset=在基点日期上顺延天数，如六级口试=四级口试次日） */
+function _seedDate(year, rule){
+  var od=officialExamDate(rule.name);
+  if(od)return new Date(od+'T00:00:00');
+  return new Date(year,rule.m-1,_nthWeekday(year,rule.m,rule.n,rule.w)+(rule.offset||0));
 }
 function getExams(){
   /* 一次性的旧数据迁移：若已存数据为旧版（无 type 字段），用新版官方规则校正日期与类型，同时保留用户自定义项 */
@@ -12096,9 +12119,8 @@ function getExams(){
           return false;
         });
         if(matched){
-          var calc=new Date(nat,matched.m-1,_nthWeekday(nat,matched.m,matched.n,matched.w));
-          var _od=officialExamDate(matched.name); if(_od){calc=new Date(_od+'T00:00:00');}
-          if(calc<td){calc=new Date(nat+1,matched.m-1,_nthWeekday(nat+1,matched.m,matched.n,matched.w));}
+          var calc=_seedDate(nat,matched);
+          if(calc<td){calc=_seedDate(nat+1,matched);}
           migrated.push({name:matched.name+(matched.note?'（'+matched.note+'）':''),date:_fmtDate(calc),color:matched.c,type:matched.type||'笔试'});
         }else{
           /* 用户自定义/未知项：保留原样 */
@@ -12110,9 +12132,8 @@ function getExams(){
       EXAM_RULES.forEach(function(r){
         var nm=r.name+(r.note?'（'+r.note+'）':'');
         if(!have[nm]&&!used[r.name]){
-          var calc=new Date(nat,r.m-1,_nthWeekday(nat,r.m,r.n,r.w));
-          var _od2=officialExamDate(r.name); if(_od2){calc=new Date(_od2+'T00:00:00');}
-          if(calc<td){calc=new Date(nat+1,r.m-1,_nthWeekday(nat+1,r.m,r.n,r.w));}
+          var calc=_seedDate(nat,r);
+          if(calc<td){calc=_seedDate(nat+1,r);}
           migrated.push({name:nm,date:_fmtDate(calc),color:r.c,type:r.type||'笔试'});
         }
       });
@@ -12126,10 +12147,9 @@ function getExams(){
   var out=[];
   EXAM_RULES.forEach(function(s){
     var calc=false;
-    /* 当年已有官方公布日期则精确取用，否则按历史规律推算 */
-    var _od3=officialExamDate(s.name); if(_od3){calc=new Date(_od3+'T00:00:00');}
-    else{calc=new Date(y,s.m-1,_nthWeekday(y,s.m,s.n,s.w));}
-    if(calc<today){calc=new Date(y+1,s.m-1,_nthWeekday(y+1,s.m,s.n,s.w));}
+    /* 当年已有官方公布日期则精确取用，否则按规则推算（含六级口试=四级口试次日等复杂关系） */
+    calc=_seedDate(y,s);
+    if(calc<today){calc=_seedDate(y+1,s);}
     out.push({name:s.name+(s.note?'（'+s.note+'）':''),date:_fmtDate(calc),color:s.c,type:s.type||'笔试'});
   });
   return out;
@@ -12145,7 +12165,7 @@ function renderExamCountdowns(){
     box.innerHTML='<p style="color:var(--hint);text-align:center;padding:20px">还没有添加考试，在上方输入框添加吧～</p>';
     return;
   }
-  var tip='<p style="font-size:12px;color:var(--hint);line-height:1.6;margin-bottom:10px">📌 已按<b>官方近年规律</b>预置：四六级笔试每年6月、12月各一场（四级上午、六级下午<b>同日</b>），口试为独立报考项；法考客观题=机考、主观题另考；教资/计算机等级各有笔试与机考/面试环节，均已拆分标注类型。<strong>具体日期以教育部教育考试院及各部委当年度官方公告为准</strong>。过期自动隐藏、自动顺延最近一场。</p>';
+  var tip='<p style="font-size:12px;color:var(--hint);line-height:1.7;margin-bottom:12px">📌 <b>日期一律以官方公告为准</b>。现已核对本年度官方通知：四六级笔试 12月12日（四级上午·六级下午同日）、口试 11月21—22日；教资笔试 9月12日、面试 12月5—6日；法考客观题 9月12—13日（分批）、主观题 10月18日；计算机等级考试 9月19—21日。<b>研究生初试</b>官方尚未公布，按往年规律暂显示「预计12月19日」，教育部正式公告后自动校正。过期自动隐藏、顺延下一场。</p>';
   var now=new Date();
   function _iconInk(hex){
     try{
@@ -12172,19 +12192,21 @@ function renderExamCountdowns(){
     var cd='<div class="cd-count'+(diff<=0?' today':'')+'">'+
       (diff>0
         ?'<span class="lbl">还有</span><span class="num">'+diff+'</span><span class="unit">天</span>'
-        :'<span class="num" style="font-size:16px;font-weight:700;color:var(--teal)">就是今天</span>')+
+        :'<span class="num">🎉 就是今天</span>')+
       '</div>';
     return '<div class="countdown-item">'+
-      '<div class="cd-icon" style="background:'+e.color+';color:'+_iconInk(e.color)+'">'+tv[0]+'</div>'+
-      '<div class="cd-info">'+
-        '<div class="cd-name" contenteditable="true" onblur="editExamName('+i+',this.textContent)" title="点击可修改考试名称">'+e.name+'</div>'+
-        '<div class="cd-meta">'+
-          '<span class="cd-date">'+niceDate+'</span>'+
-          '<span class="cd-type">'+tv[1]+'</span>'+
+      '<div class="cd-top">'+
+        '<div class="cd-icon" style="background:'+e.color+';color:'+_iconInk(e.color)+'">'+tv[0]+'</div>'+
+        '<div class="cd-namecon">'+
+          '<div class="cd-name" contenteditable="true" onblur="editExamName('+i+',this.textContent)" title="点击可修改考试名称">'+e.name+'</div>'+
         '</div>'+
+        '<button class="cd-del" title="删除该考试" onclick="removeExam('+i+')">×</button>'+
       '</div>'+
       cd+
-      '<button title="删除该考试" style="background:none;border:none;color:var(--hint);cursor:pointer;font-size:16px;line-height:1;padding:4px;flex-shrink:0" onclick="removeExam('+i+')">×</button>'+
+      '<div class="cd-meta">'+
+        '<span class="cd-date"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'+niceDate+'</span>'+
+        '<span class="cd-type">'+tv[1]+'</span>'+
+      '</div>'+
     '</div>';
   }).join('');
 }
@@ -13997,12 +14019,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.09.04';
+  var V='2026.09.09.05';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.09.05',t:'考试倒计时卡片改为上下结构 · 标题完整不省略 · 官方日期核准',tag:'体验优化',blocks:[
+      '· 「考试规划」每张倒计时卡片重排为「上下」结构：第一行是 图标 + 考试名称 + 删除；名称改为完整显示、绝不省略——再长也只换行、不删字；第二行是整条居中醒目的「还有 X 天」大数字，不再被挤到右侧角落；第三行用分隔线隔开，放「日期 + 类型」小标签。整个卡片更舒适、信息一目了然。',
+      '· 倒计时移到考试名称正下方并居中放大，视觉更聚焦、紧迫感更直观。',
+      '· 对本年度各场次日期做了官方核准：四六级笔试 12月12日、口试 11月21—22日；教资笔试 9月12日、面试 12月5—6日；法考客观题 9月12—13日、主观题 10月18日；计算机等级考试 9月19—21日，均有部委官方公告佐证。研究生初试官方日期尚未公布，按惯例暂显示「预计12月19日」，教育部公布后自动校正，绝不虚报。'
+    ]},
     {v:'2026.09.09.04',t:'考试倒计时卡片重设计 · 成长档案新增陪伴里程碑',tag:'体验优化',blocks:[
       '· 「考试规划」的每一张倒计时卡片已重做：考试名称不再被截断成「英语…」（超出两行才省略），日期统一成「2026.12.12」单行完整显示、「笔试/口语/机考」做成独立小标签，右侧「还有 X 天」改为紧凑醒目版，整体更均衡、信息更清楚、不再留大片空白。',
       '· 「成长档案」新增一块陪伴里程碑：一开始就是「你的栖匣之旅始于 XXXX-XX-XX」，从你第一次打开就开始为你记录，之后你的任务、专注、习惯、学习、读书、目标等数据都保存在本机、实时同步、升级也不会消失，还会实时显示至今陪伴你多少天。',
