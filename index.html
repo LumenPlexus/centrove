@@ -1665,7 +1665,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="tb-brand" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
-      <img src="pwa/logo.png?v=2026090606" alt="栖匣" class="tb-logo" onerror="logoFallback(this)"><span class="tb-name">栖匣</span>
+      <img src="pwa/logo.png?v=2026091007" alt="栖匣" class="tb-logo" onerror="logoFallback(this)"><span class="tb-name">栖匣</span>
     </div>
     <div class="tb-slogan">心有所栖 · 匣纳成长</div>
     <div class="tools">
@@ -1786,7 +1786,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 
     <nav class="sidebar" id="sidebar">
     <div class="logo">
-      <img src="pwa/logo.png?v=2026090606" alt="栖匣" style="width:22px;height:22px;border-radius:6px;flex-shrink:0" onerror="logoFallback(this)">
+      <img src="pwa/logo.png?v=2026091007" alt="栖匣" style="width:22px;height:22px;border-radius:6px;flex-shrink:0" onerror="logoFallback(this)">
       栖匣
     </div>
     <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
@@ -1940,7 +1940,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="home-hero card" style="margin-bottom:16px;background:linear-gradient(135deg,#F5EFE2,#EDE5D4);border:1px solid #E5DBC8;color:#4A3B2E">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px">
           <div style="display:flex;align-items:center;gap:12px">
-            <img src="pwa/logo.png?v=2026090606" alt="栖匣" style="width:46px;height:46px;border-radius:12px;box-shadow:0 2px 10px rgba(74,59,46,.15)" onerror="logoFallback(this)">
+            <img src="pwa/logo.png?v=2026091007" alt="栖匣" style="width:46px;height:46px;border-radius:12px;box-shadow:0 2px 10px rgba(74,59,46,.15)" onerror="logoFallback(this)">
             <div>
               <div style="font-size:24px;font-weight:800;letter-spacing:6px;line-height:1.2;color:var(--primary)">栖匣</div>
               <div style="font-size:13px;color:var(--muted);margin-top:3px;letter-spacing:1px">心有所栖 · 匣纳成长 · 为大学生打造的成长园地</div>
@@ -9678,7 +9678,7 @@ function exportCurrentPDF(){
   var nowD=new Date(),taskList=document.querySelector('.view.active')?null:'';
   var ds=(''+nowD.getFullYear())+'-'+('0'+(nowD.getMonth()+1)).slice(-2)+'-'+('0'+nowD.getDate()).slice(-2);
   var html='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>'+name+' · 栖匣</title>'+style+'</head><body>'
-    +'<div class="pdf-brandbar"><div class="pb-logo"><img src="'+absUrl('./pwa/logo.png?v=2026090606')+'" alt="匣" onerror="this.style.display=\'none\'" loading="eager"></div><div class="pb-info"><b>栖匣 · 心有所栖 · 匣纳成长</b><span>个人成长报告 · 数据仅存于你的设备</span></div><div class="pb-meta"><span class="pb-name">'+name+'</span><span class="pb-date">导出于 '+ds+'</span></div></div>'
+    +'<div class="pdf-brandbar"><div class="pb-logo"><img src="'+absUrl('./pwa/logo.png?v=2026091007')+'" alt="匣" onerror="this.style.display=\'none\'" loading="eager"></div><div class="pb-info"><b>栖匣 · 心有所栖 · 匣纳成长</b><span>个人成长报告 · 数据仅存于你的设备</span></div><div class="pb-meta"><span class="pb-name">'+name+'</span><span class="pb-date">导出于 '+ds+'</span></div></div>'
     +clone.innerHTML
     +'<div class="pdf-footer"><div>由「栖匣 · 心有所栖 · 匣纳成长」生成</div><div>个人资料 · 私密导出 · '+ds+'</div></div>'
     +'</body></html>';
@@ -13282,7 +13282,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
         '<span style="font-size:11px;letter-spacing:3px;color:var(--hint)">栖匣｜收纳成长诸事，步步趋近心中所向</span>'+
       '</div>'+
       '<div style="position:relative;margin:14px auto 0;width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--primary);background:var(--card);box-shadow:0 0 0 6px var(--primary-light);overflow:hidden">'+
-        '<img src="pwa/logo.png?v=2026090606" alt="栖匣" style="width:60px;height:60px;border-radius:50%;display:block" onerror="logoFallback(this)">'+
+        '<img src="pwa/logo.png?v=2026091007" alt="栖匣" style="width:60px;height:60px;border-radius:50%;display:block" onerror="logoFallback(this)">'+
       '</div>'+
       '<div style="margin-top:13px;font-size:22px;font-weight:800;letter-spacing:4px;color:var(--primary-strong)">栖匣<span style="font-size:12.5px;letter-spacing:3px;font-weight:400;color:var(--hint)"> · 心有所栖 · 匣纳成长</span></div>'+
       '<div style="margin:10px auto 6px;font-size:14px;color:var(--text);line-height:1.85;max-width:520px">你见过很多工具。<br>而这一页，为长期记录成长的人而造。</div>'+
@@ -13871,7 +13871,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     <!-- 封面首屏 (步骤 1) -->
     <section class="pano-hero" data-step="0">
       <span class="pt-topscallop" aria-hidden="true"></span>
-      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:24px;height:24px;border-radius:8px;overflow:hidden"><img src="pwa/logo.png?v=2026090606" alt="栖匣" style="width:24px;height:24px;display:block" onerror="logoFallback(this)"></span><span class="pt-name">栖匣</span><i></i></div>
+      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:24px;height:24px;border-radius:8px;overflow:hidden"><img src="pwa/logo.png?v=2026091007" alt="栖匣" style="width:24px;height:24px;display:block" onerror="logoFallback(this)"></span><span class="pt-name">栖匣</span><i></i></div>
       <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
       <div class="glow"></div>
       <div class="pt-name-premium">
@@ -14036,7 +14036,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
     <!-- 收官 CTA · 回到「栖匣」产品本身：以品牌印记 + 青绿留白 + 精排收束，收拢"学业·生活·成长的成长中枢"，去书/印外显 -->
     <div class="pano-cta">
-      <div class="ct-mark" aria-hidden="true"><img src="pwa/logo.png?v=2026090606" alt="栖匣" draggable="false" onerror="logoFallback(this)"></div>
+      <div class="ct-mark" aria-hidden="true"><img src="pwa/logo.png?v=2026091007" alt="栖匣" draggable="false" onerror="logoFallback(this)"></div>
       <div class="ct-eyebrow">终章 · 从此刻开始</div>
       <h2 class="ct-title">把每一天，<em>过出掌控感</em></h2>
       <p class="ct-lead">它不是"又一个工具"——它把<b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅……三四十个成长模块，分格收纳、各归其位</b>，都收进这个只属你的成长中枢。今天记下的一件小事，日后都有迹可循。</p>
