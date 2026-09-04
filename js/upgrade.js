@@ -8,7 +8,7 @@
 
   var NS = window.QixiaUpgrade = {};
   var STORE_KEY = 'pp_cu_config_v1';
-  var DATA_VERSION = '2026.09.09.05';
+  var DATA_VERSION = '2026.09.09.06';
 
   /* ============================================================
      1. 通用工具

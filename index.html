@@ -731,6 +731,22 @@ html:not([data-theme="dark"]):not([data-theme="light"]){background:#F5EFE2}
 input,select,textarea,[contenteditable="true"]{accent-color:var(--accent);caret-color:var(--accent)}
 ::selection{background:var(--accent-soft);color:inherit}
 input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
+/* ── 统一清单复选框：文字居左、小方块居右同一行；方块小巧圆角、勾选即填充 ✓ ── */
+.chk{display:flex;align-items:center;gap:10px;padding:8px 6px;border-radius:10px;
+  font-size:13.5px;color:var(--text);line-height:1.5;cursor:pointer;transition:background .12s;
+  -webkit-tap-highlight-color:transparent;}
+.chk:hover{background:rgba(110,79,55,.06)}
+.chk:active{background:rgba(110,79,55,.10)}
+.chk .chk-t{flex:1;min-width:0;word-break:break-word;white-space:normal}
+.chk input{appearance:none;-webkit-appearance:none;width:20px;height:20px;flex-shrink:0;margin:0;
+  border:1.5px solid rgba(110,79,55,.45);border-radius:6px;background:#fff;cursor:pointer;
+  position:relative;transition:all .13s;box-shadow:0 1px 2px rgba(110,79,55,.08)}
+.chk input:hover{border-color:var(--primary)}
+.chk input:checked{background:var(--primary);border-color:var(--primary)}
+.chk input:checked::after{content:'';position:absolute;left:5px;top:1px;width:5px;height:10px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.chk input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[data-theme="dark"] .chk input{background:#fff;border-color:var(--border-strong,rgba(255,255,255,.35))}
 /* 夜间兜底：把硬编码的深色主文字（#4A3427）和深灰（#3A4038/#6B7267）强制提亮，避免看不清 */
 [data-theme="dark"] [style*="color:#4A3427"],[data-theme="dark"] [style*="color: #4A3427"],[data-theme="dark"] [style*="color:rgb(12, 68, 124)"],[data-theme="dark"] [style*="color:rgb(12,68,124)"]{color:var(--primary)!important}
 [data-theme="dark"] [style*="color:#3A4038"],[data-theme="dark"] [style*="color: #3A4038"],[data-theme="dark"] [style*="color:#6B7267"],[data-theme="dark"] [style*="color: #6B7267"]{color:var(--hint)!important}
@@ -4584,21 +4600,21 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="grid grid-2">
           <div>
             <h4>报到必带（证件类，补办很麻烦）</h4>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-idcard"> 录取通知书 + 身份证 + 身份证复印件</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-photo"> 一寸/二寸免冠照（各1寸，多备蓝底）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-file"> 学籍档案（部分院校要求自带，务必密封勿拆）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-party"> 党团组织关系转接函（团员证/介绍信）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-money"> 银行卡 + 少量现金（100-300元应急）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-laptop"> 笔记本电脑 + 充电器 + U盘</label>
+            <label class="chk"><span class="chk-t">录取通知书 + 身份证 + 身份证复印件</span><input type="checkbox" data-key="pck-idcard"></label>
+            <label class="chk"><span class="chk-t">一寸/二寸免冠照（各1寸，多备蓝底）</span><input type="checkbox" data-key="pck-photo"></label>
+            <label class="chk"><span class="chk-t">学籍档案（部分院校要求自带，务必密封勿拆）</span><input type="checkbox" data-key="pck-file"></label>
+            <label class="chk"><span class="chk-t">党团组织关系转接函（团员证/介绍信）</span><input type="checkbox" data-key="pck-party"></label>
+            <label class="chk"><span class="chk-t">银行卡 + 少量现金（100-300元应急）</span><input type="checkbox" data-key="pck-money"></label>
+            <label class="chk"><span class="chk-t">笔记本电脑 + 充电器 + U盘</span><input type="checkbox" data-key="pck-laptop"></label>
           </div>
           <div>
             <h4>军训必带（决定你几天舒服）</h4>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-sun"> 防晒霜（SPF50+，休息时补涂）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-insole"> 厚软军训鞋垫/卫生巾鞋垫</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-water"> 大容量水杯 + 淡盐水/葡萄糖（防中暑）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-cool"> 藿香正气水 + 清凉油 + 冰袖</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-sock"> 中筒棉袜（多备几双，易磨脚）</label>
-            <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="pck-pad"> 创可贴 + 润喉糖（喊口号用）</label>
+            <label class="chk"><span class="chk-t">防晒霜（SPF50+，休息时补涂）</span><input type="checkbox" data-key="pck-sun"></label>
+            <label class="chk"><span class="chk-t">厚软军训鞋垫/卫生巾鞋垫</span><input type="checkbox" data-key="pck-insole"></label>
+            <label class="chk"><span class="chk-t">大容量水杯 + 淡盐水/葡萄糖（防中暑）</span><input type="checkbox" data-key="pck-water"></label>
+            <label class="chk"><span class="chk-t">藿香正气水 + 清凉油 + 冰袖</span><input type="checkbox" data-key="pck-cool"></label>
+            <label class="chk"><span class="chk-t">中筒棉袜（多备几双，易磨脚）</span><input type="checkbox" data-key="pck-sock"></label>
+            <label class="chk"><span class="chk-t">创可贴 + 润喉糖（喊口号用）</span><input type="checkbox" data-key="pck-pad"></label>
           </div>
         </div>
       </div>
@@ -7178,17 +7194,17 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="grid grid-2">
         <div>
           <h4>每周必做（通用）</h4>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-w1"> 背单词/背要点 ≥ 5天（少量高频胜过一天猛灌）</label>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-w2"> 做1套计时真题/模拟题</label>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-w3"> 错题全部二刷并归类</label>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-w4"> 本周踩雷的1个知识点→写进错题本</label>
+          <label class="chk"><span class="chk-t">背单词/背要点 ≥ 5天（少量高频胜过一天猛灌）</span><input type="checkbox" data-key="exam-w1"></label>
+          <label class="chk"><span class="chk-t">做1套计时真题/模拟题</span><input type="checkbox" data-key="exam-w2"></label>
+          <label class="chk"><span class="chk-t">错题全部二刷并归类</span><input type="checkbox" data-key="exam-w3"></label>
+          <label class="chk"><span class="chk-t">本周踩雷的1个知识点→写进错题本</span><input type="checkbox" data-key="exam-w4"></label>
         </div>
         <div>
           <h4>阶段自评（考前对号入座）</h4>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-s1"> 基础：教材/大纲已过完一遍，能默出框架</label>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-s2"> 强化：真题刷完≥6套且每套都计时校对</label>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-s3"> 冲刺：模拟卷稳定在目标线上/接近满分</label>
-          <label style="display:block;padding:2px 0;font-size:13.5px"><input type="checkbox" data-key="exam-s4"> 考前：作息已调稳，主观题模拟计时≥2轮</label>
+          <label class="chk"><span class="chk-t">基础：教材/大纲已过完一遍，能默出框架</span><input type="checkbox" data-key="exam-s1"></label>
+          <label class="chk"><span class="chk-t">强化：真题刷完≥6套且每套都计时校对</span><input type="checkbox" data-key="exam-s2"></label>
+          <label class="chk"><span class="chk-t">冲刺：模拟卷稳定在目标线上/接近满分</span><input type="checkbox" data-key="exam-s3"></label>
+          <label class="chk"><span class="chk-t">考前：作息已调稳，主观题模拟计时≥2轮</span><input type="checkbox" data-key="exam-s4"></label>
         </div>
       </div>
       <div class="callout callout-ok" style="margin-top:10px"><strong>提醒：</strong>勾选不是目的，是用来显形"我到底推进了多少"。如果连续两周周卡基本没勾，说明计划过载或反馈不够——别硬扛，砍掉一项非核心任务。</div>
@@ -14019,12 +14035,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.09.05';
+  var V='2026.09.09.06';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.09.06',t:'考试规划自检复选框统一重绘 · 全局清单控件美观化',tag:'体验优化',blocks:[
+      '· 备考进度自检的每项复选框由系统默认大框重绘为小巧圆角方块，并移到对应文字右侧同一行；文字再长也只换行、方块始终稳居右侧，视觉更清爽、不再突兀。',
+      '· 开学报到/军训「必带清单」的同款复习选框一并做了统一美化，风格保持一致。',
+      '· 勾选态显示主题色实心 + 白色对勾，支持触控点击与键盘焦点，深浅主题下均清晰可辨。',
+      '· 全局复核移动端排版与横向溢出：宽表格在窄屏自动横向滚动、页面整体不外溢，未发现新的截断/错位风险。'
+    ]},
     {v:'2026.09.09.05',t:'考试倒计时卡片改为上下结构 · 标题完整不省略 · 官方日期核准',tag:'体验优化',blocks:[
       '· 「考试规划」每张倒计时卡片重排为「上下」结构：第一行是 图标 + 考试名称 + 删除；名称改为完整显示、绝不省略——再长也只换行、不删字；第二行是整条居中醒目的「还有 X 天」大数字，不再被挤到右侧角落；第三行用分隔线隔开，放「日期 + 类型」小标签。整个卡片更舒适、信息一目了然。',
       '· 倒计时移到考试名称正下方并居中放大，视觉更聚焦、紧迫感更直观。',
