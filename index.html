@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.03"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.04"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -13,13 +13,27 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="栖匣">
-  <link rel="manifest" href="pwa/manifest.json?v=2026090904">
+  <!-- 分享卡片（微信/QQ/Telegram 等抓取）：确保转发出去的卡片一律显示产品本身的原生「宝箱」图标 -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="栖匣">
+  <meta property="og:title" content="栖匣 · 大学生成长中枢">
+  <meta property="og:description" content="心有所栖，匣纳成长——大学生的一站式成长园地。学业备考、目标、时间、账本、健康、情绪与灵感，全部安放在同一处。数据只存本机，不上传。">
+  <meta property="og:image" content="https://lumenplexus.github.io/centrove/pwa/share-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="栖匣 · 暖棕宝箱图标">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="栖匣 · 大学生成长中枢">
+  <meta name="twitter:image" content="https://lumenplexus.github.io/centrove/pwa/share-512.png">
+  <link rel="manifest" href="pwa/manifest.json?v=2026091004">
   <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="pwa/icon-20260910-192.png">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-  <link rel="apple-touch-icon" href="pwa/apple-touch-icon-0905.png">
+  <!-- 主屏图标：统一为产品原生宝箱 logo.png 直接生成（奶油底 + 原样宝箱） -->
   <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon-0905.png">
+  <link rel="apple-touch-icon" href="pwa/apple-touch-icon-0905.png">
   <!-- iOS 启动图（从主屏幕图标打开时显示品牌启动屏，避免白屏） -->
   <link rel="apple-touch-startup-image" media="screen and (device-width:430px) and (device-height:932px)" href="pwa/splash-6.1.png">
   <link rel="apple-touch-startup-image" media="screen and (device-width:390px) and (device-height:844px)" href="pwa/splash-6.1.png">
