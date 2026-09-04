@@ -25,15 +25,15 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="栖匣 · 大学生成长中枢">
   <meta name="twitter:image" content="https://lumenplexus.github.io/centrove/pwa/share-512.png">
-  <link rel="manifest" href="pwa/manifest.json?v=2026090501">
+  <link rel="manifest" href="pwa/manifest.json?v=2026090502">
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="192x192" href="pwa/icon-20260910-192.png?v=2026090501">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png?v=2026090501">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2026090501">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2026090501">
+  <link rel="icon" type="image/png" sizes="192x192" href="pwa/icon-20260910-192.png?v=2026090502">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png?v=2026090502">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2026090502">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2026090502">
   <!-- 主屏图标：统一为产品原生宝箱 logo.png（透明漂空宝箱，与闪屏一致，无底色） -->
-  <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon.png?v=2026090501">
-  <link rel="apple-touch-icon" href="pwa/apple-touch-icon.png?v=2026090501">
+  <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon.png?v=2026090502">
+  <link rel="apple-touch-icon" href="pwa/apple-touch-icon.png?v=2026090502">
   <!-- iOS 启动图（从主屏幕图标打开时显示品牌启动屏，避免白屏） -->
   <link rel="apple-touch-startup-image" media="screen and (device-width:430px) and (device-height:932px)" href="pwa/splash-6.1.png">
   <link rel="apple-touch-startup-image" media="screen and (device-width:390px) and (device-height:844px)" href="pwa/splash-6.1.png">
@@ -1214,6 +1214,57 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] input:focus,textarea:focus,select:focus{background:var(--card);border-color:var(--primary);box-shadow:0 0 0 3px var(--accent-soft)}
 [data-theme="dark"] #freeBanner{background:linear-gradient(90deg,#3A3126,#4A3A2C);border-color:var(--border);color:var(--ink)}
 [data-theme="dark"] .topbar .tb-badge{background:linear-gradient(135deg,#6E4F37,#8A6A3A);color:#F0E7D8}
+
+/* ═══ 栖匣 · 模块分区多色系统（对应反馈「界面区分再清楚一些 / 色系有点单调」）═══
+   每个模块家族拥有独立强调色；浅/深主题自适应；只做增量，不破坏原「暖木匣纸」设计语言。 */
+/* 学者蓝 · 学业/考试/论文/竞赛/计划/目标 */
+#view-study,#view-exam,#view-paper,#view-contest,#view-plans,#view-goals,#view-college{--m:#2E6FB0;--m-deep:#1F4E7E;--m-soft:rgba(46,111,176,.13)}
+:root[data-theme="dark"] #view-study,:root[data-theme="dark"] #view-exam,:root[data-theme="dark"] #view-paper,:root[data-theme="dark"] #view-contest,:root[data-theme="dark"] #view-plans,:root[data-theme="dark"] #view-goals,:root[data-theme="dark"] #view-college{--m:#5FA2D6;--m-deep:#3570A6;--m-soft:rgba(95,162,214,.15)}
+/* 成长绿 · 职业/成长/模板/工具/AI */
+#view-career,#view-growth,#view-tpl,#view-tools,#view-ai,#view-agent,#view-creative{--m:#2E8B5F;--m-deep:#1F6B46;--m-soft:rgba(46,139,95,.13)}
+:root[data-theme="dark"] #view-career,:root[data-theme="dark"] #view-growth,:root[data-theme="dark"] #view-tpl,:root[data-theme="dark"] #view-tools,:root[data-theme="dark"] #view-ai,:root[data-theme="dark"] #view-agent,:root[data-theme="dark"] #view-creative{--m:#54B486;--m-deep:#2E8A61;--m-soft:rgba(84,180,134,.15)}
+/* 生活琥珀 · 校园/生活/休闲 */
+#view-campus,#view-party,#view-safety,#view-life,#view-habits,#view-shelf,#view-movie,#view-fun,#view-vision,#view-podcast,#view-journal{--m:#C2703D;--m-deep:#96492A;--m-soft:rgba(194,112,61,.13)}
+:root[data-theme="dark"] #view-campus,:root[data-theme="dark"] #view-party,:root[data-theme="dark"] #view-safety,:root[data-theme="dark"] #view-life,:root[data-theme="dark"] #view-habits,:root[data-theme="dark"] #view-shelf,:root[data-theme="dark"] #view-movie,:root[data-theme="dark"] #view-fun,:root[data-theme="dark"] #view-vision,:root[data-theme="dark"] #view-podcast,:root[data-theme="dark"] #view-journal{--m:#E0935E;--m-deep:#B96A3A;--m-soft:rgba(224,147,94,.15)}
+/* 健康莓玫 · 健康/心理 */
+#view-health,#view-mind{--m:#B5546E;--m-deep:#8D3A55;--m-soft:rgba(181,84,110,.13)}
+:root[data-theme="dark"] #view-health,:root[data-theme="dark"] #view-mind{--m:#DE87A0;--m-deep:#B75A77;--m-soft:rgba(222,135,160,.15)}
+/* 财商青碧 · 财务/省钱/副业 */
+#view-finance,#view-save,#view-earn,#view-shop,#view-perk{--m:#2A7F8C;--m-deep:#1D5E68;--m-soft:rgba(42,127,140,.13)}
+:root[data-theme="dark"] #view-finance,:root[data-theme="dark"] #view-save,:root[data-theme="dark"] #view-earn,:root[data-theme="dark"] #view-shop,:root[data-theme="dark"] #view-perk{--m:#4FB3C0;--m-deep:#2E8B99;--m-soft:rgba(79,179,192,.15)}
+/* 专注靛紫 · 计时/习惯 */
+#view-timer,#view-habits{--m:#6B5B9E;--m-deep:#4A3E78;--m-soft:rgba(107,91,158,.14)}
+:root[data-theme="dark"] #view-timer,:root[data-theme="dark"] #view-habits{--m:#9890CC;--m-deep:#6E63AA;--m-soft:rgba(152,144,204,.15)}
+/* 兜底：凡未被上表点名的视图（首页/总览/统计/帮助/关于等）用品牌核桃木 */
+#view-home,#view-quadrant,#view-stats,#view-help,#view-about,#view-settings,#view-changelog{--m:#6B4D33;--m-deep:#523A26;--m-soft:rgba(107,77,51,.11)}
+
+/* 版头：彩色引条 + 图标着色，让每个板块一眼可辨 */
+#view-home .page-head::before,
+#view-quadrant .page-head::before,#view-career .page-head::before,#view-study .page-head::before,#view-exam .page-head::before,#view-paper .page-head::before,#view-contest .page-head::before,#view-plans .page-head::before,#view-goals .page-head::before,#view-college .page-head::before,
+#view-growth .page-head::before,#view-tpl .page-head::before,#view-tools .page-head::before,#view-ai .page-head::before,#view-agent .page-head::before,#view-creative .page-head::before,
+#view-campus .page-head::before,#view-party .page-head::before,#view-safety .page-head::before,#view-life .page-head::before,#view-habits .page-head::before,#view-shelf .page-head::before,#view-movie .page-head::before,#view-fun .page-head::before,#view-vision .page-head::before,#view-podcast .page-head::before,#view-journal .page-head::before,
+#view-health .page-head::before,#view-mind .page-head::before,
+#view-finance .page-head::before,#view-save .page-head::before,#view-earn .page-head::before,#view-shop .page-head::before,#view-perk .page-head::before,
+#view-timer .page-head::before,
+#view-stats .page-head::before,#view-help .page-head::before,#view-about .page-head::before,#view-settings .page-head::before,#view-changelog .page-head::before{
+  width:74px;height:4px;background:linear-gradient(90deg,var(--m),var(--m-deep));
+}
+#view-home .page-head h1,#view-quadrant .page-head h1,#view-career .page-head h1,#view-study .page-head h1,#view-exam .page-head h1,#view-paper .page-head h1,#view-contest .page-head h1,#view-plans .page-head h1,#view-goals .page-head h1,#view-college .page-head h1,#view-growth .page-head h1,#view-tpl .page-head h1,#view-tools .page-head h1,#view-ai .page-head h1,#view-agent .page-head h1,#view-creative .page-head h1,#view-campus .page-head h1,#view-party .page-head h1,#view-safety .page-head h1,#view-life .page-head h1,#view-habits .page-head h1,#view-shelf .page-head h1,#view-movie .page-head h1,#view-fun .page-head h1,#view-vision .page-head h1,#view-podcast .page-head h1,#view-journal .page-head h1,#view-health .page-head h1,#view-mind .page-head h1,#view-finance .page-head h1,#view-save .page-head h1,#view-earn .page-head h1,#view-shop .page-head h1,#view-perk .page-head h1,#view-timer .page-head h1,#view-stats .page-head h1,#view-help .page-head h1,#view-about .page-head h1,#view-settings .page-head h1,#view-changelog .page-head h1{position:relative;padding-left:16px}
+#view-home .page-head h1::before,#view-quadrant .page-head h1::before,#view-career .page-head h1::before,#view-study .page-head h1::before,#view-exam .page-head h1::before,#view-paper .page-head h1::before,#view-contest .page-head h1::before,#view-plans .page-head h1::before,#view-goals .page-head h1::before,#view-college .page-head h1::before,#view-growth .page-head h1::before,#view-tpl .page-head h1::before,#view-tools .page-head h1::before,#view-ai .page-head h1::before,#view-agent .page-head h1::before,#view-creative .page-head h1::before,#view-campus .page-head h1::before,#view-party .page-head h1::before,#view-safety .page-head h1::before,#view-life .page-head h1::before,#view-habits .page-head h1::before,#view-shelf .page-head h1::before,#view-movie .page-head h1::before,#view-fun .page-head h1::before,#view-vision .page-head h1::before,#view-podcast .page-head h1::before,#view-journal .page-head h1::before,#view-health .page-head h1::before,#view-mind .page-head h1::before,#view-finance .page-head h1::before,#view-save .page-head h1::before,#view-earn .page-head h1::before,#view-shop .page-head h1::before,#view-perk .page-head h1::before,#view-timer .page-head h1::before,#view-stats .page-head h1::before,#view-help .page-head h1::before,#view-about .page-head h1::before,#view-settings .page-head h1::before,#view-changelog .page-head h1::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:5px;border-radius:3px;background:var(--m)}
+#view-home .page-head h1 svg,#view-quadrant .page-head h1 svg,#view-career .page-head h1 svg,#view-study .page-head h1 svg,#view-exam .page-head h1 svg,#view-paper .page-head h1 svg,#view-contest .page-head h1 svg,#view-plans .page-head h1 svg,#view-goals .page-head h1 svg,#view-college .page-head h1 svg,#view-growth .page-head h1 svg,#view-tpl .page-head h1 svg,#view-tools .page-head h1 svg,#view-ai .page-head h1 svg,#view-agent .page-head h1 svg,#view-creative .page-head h1 svg,#view-campus .page-head h1 svg,#view-party .page-head h1 svg,#view-safety .page-head h1 svg,#view-life .page-head h1 svg,#view-habits .page-head h1 svg,#view-shelf .page-head h1 svg,#view-movie .page-head h1 svg,#view-fun .page-head h1 svg,#view-vision .page-head h1 svg,#view-podcast .page-head h1 svg,#view-journal .page-head h1 svg,#view-health .page-head h1 svg,#view-mind .page-head h1 svg,#view-finance .page-head h1 svg,#view-save .page-head h1 svg,#view-earn .page-head h1 svg,#view-shop .page-head h1 svg,#view-perk .page-head h1 svg,#view-timer .page-head h1 svg,#view-stats .page-head h1 svg,#view-help .page-head h1 svg,#view-about .page-head h1 svg,#view-settings .page-head h1 svg,#view-changelog .page-head h1 svg{color:var(--m)}
+
+/* 板块导语：色带导语卡，顶部清晰色块 —— 板块区分一眼可辨 */
+#view-home .section-intro,#view-quadrant .section-intro,#view-career .section-intro,#view-study .section-intro,#view-exam .section-intro,#view-paper .section-intro,#view-contest .section-intro,#view-plans .section-intro,#view-goals .section-intro,#view-college .section-intro,#view-growth .section-intro,#view-tpl .section-intro,#view-tools .section-intro,#view-ai .section-intro,#view-agent .section-intro,#view-creative .section-intro,#view-campus .section-intro,#view-party .section-intro,#view-safety .section-intro,#view-life .section-intro,#view-habits .section-intro,#view-shelf .section-intro,#view-movie .section-intro,#view-fun .section-intro,#view-vision .section-intro,#view-podcast .section-intro,#view-journal .section-intro,#view-health .section-intro,#view-mind .section-intro,#view-finance .section-intro,#view-save .section-intro,#view-earn .section-intro,#view-shop .section-intro,#view-perk .section-intro,#view-timer .section-intro,#view-stats .section-intro,#view-help .section-intro,#view-about .section-intro,#view-settings .section-intro,#view-changelog .section-intro{
+  position:relative;overflow:hidden;
+  background:linear-gradient(90deg,var(--m-soft),transparent 88%);
+  border-left:5px solid var(--m);
+  border-radius:0 12px 12px 0;padding:13px 16px 12px;margin-bottom:20px;
+}
+#view-home .section-intro strong,#view-career .section-intro strong,#view-study .section-intro strong,#view-exam .section-intro strong,#view-paper .section-intro strong,#view-growth .section-intro strong,#view-campus .section-intro strong,#view-life .section-intro strong,#view-health .section-intro strong,#view-finance .section-intro strong,#view-save .section-intro strong,#view-timer .section-intro strong{color:var(--m-deep)}
+
+/* 卡片：标题下加一端彩色短引条 + 图标着色，整版更鲜活又不喧宾夺主 */
+#view-career .card h3,#view-study .card h3,#view-exam .card h3,#view-paper .card h3,#view-contest .card h3,#view-plans .card h3,#view-goals .card h3,#view-college .card h3,#view-growth .card h3,#view-tpl .card h3,#view-tools .card h3,#view-ai .card h3,#view-agent .card h3,#view-creative .card h3,#view-campus .card h3,#view-party .card h3,#view-safety .card h3,#view-life .card h3,#view-habits .card h3,#view-shelf .card h3,#view-movie .card h3,#view-fun .card h3,#view-vision .card h3,#view-podcast .card h3,#view-journal .card h3,#view-health .card h3,#view-mind .card h3,#view-finance .card h3,#view-save .card h3,#view-earn .card h3,#view-shop .card h3,#view-perk .card h3,#view-timer .card h3{position:relative;padding-bottom:13px}
+#view-career .card h3::after,#view-study .card h3::after,#view-exam .card h3::after,#view-paper .card h3::after,#view-contest .card h3::after,#view-plans .card h3::after,#view-goals .card h3::after,#view-college .card h3::after,#view-growth .card h3::after,#view-tpl .card h3::after,#view-tools .card h3::after,#view-ai .card h3::after,#view-agent .card h3::after,#view-creative .card h3::after,#view-campus .card h3::after,#view-party .card h3::after,#view-safety .card h3::after,#view-life .card h3::after,#view-habits .card h3::after,#view-shelf .card h3::after,#view-movie .card h3::after,#view-fun .card h3::after,#view-vision .card h3::after,#view-podcast .card h3::after,#view-journal .card h3::after,#view-health .card h3::after,#view-mind .card h3::after,#view-finance .card h3::after,#view-save .card h3::after,#view-earn .card h3::after,#view-shop .card h3::after,#view-perk .card h3::after,#view-timer .card h3::after{content:"";position:absolute;left:0;bottom:0;width:40px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--m),var(--m-deep))}
 </style>
 <style id="qx-system">
 /* ═══════════ 栖匣 · 系统统一层（令牌/分区/极简模式/移动端触控/长文可读性） ═══════════ */
@@ -3039,6 +3090,58 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
         <div class="callout callout-info" style="margin-top:10px"><strong>数据说明：</strong>毕业生规模/起薪、校招节奏与AI使用率（65%、72.4%等）为第三方年度报告口径，于 2026-08 整理；数据每年变化、口径不一，<strong>仅供参考，求职决策请以各校就业网、官方统计与企业当季招聘公告的最新发布为准</strong>。</div>
         <div class="callout callout-warn" style="margin-top:10px"><strong>行动建议：</strong>大三起就把秋招当"主战场"经营——先修简历与作品集，6月起关注提前批，9月集中投递。别等到大四才"临时抱佛脚"，机会偏爱提前准备的人。</div>
+      </div>
+
+      <!-- 深·职业规划路线图：把「方向-简历-面试-投递」再下沉一层 -->
+      <div class="card" style="margin-top:16px">
+        <h3>🗺️ 职业规划行动路线图（大一 → 研三，逐级进阶）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">别把求职留到大四。这张表把每个阶段的"关键动作"和"可量化产出"写清楚，照着一步一步走，四年后简历自然厚实。</p>
+        <table>
+          <thead><tr><th style="width:92px">阶段</th><th>关键动作（照做）</th><th style="width:150px">本阶段明确产出</th></tr></thead>
+          <tbody>
+            <tr><td><strong>大一</strong></td><td>①做1次"兴趣-能力-行情"摸底（见下方摸底四步法）；②绩点打底（GPA 3.5+/专业前30%）；③加2-3个社团/部门并<strong>当上干事，主动接有成果的活儿</strong>；④过四六级；⑤学一门基础硬技能（Office/WPS、常用办公软件）</td><td>方向初选记录；绩点；至少1段社团成果</td></tr>
+            <tr><td><strong>大二</strong></td><td>①锁定1-2个候选方向；②参加1次学科竞赛/科研（争取获奖或发摘要）；③考1张对口的初级证书（如计算机二级、普通话、初级会计等）；④接触简历写作，积累可写入的素材</td><td>竞赛/科研经历；证书；简历V1.0</td></tr>
+            <tr><td><strong>大三</strong></td><td>①寒暑假各做1段<strong>对口实习</strong>；②升级简历到V2.0（STAR+量化）；③整理作品集/项目库；④关注秋招提前批（6-7月）；⑤考核心证书（如保研/考研/教资/专业资格证等二选一发力）</td><td>2段以上对口实习；简历V2.0；作品集</td></tr>
+            <tr><td><strong>大四上</strong></td><td>①秋招集中投递（9-11月黄金期）；②全力以赴准备面试与笔试；③考研/考公择一并行充底；④每周复盘投递与面试</td><td>投递30-80家；面试8场以上；offer或明确面试机会</td></tr>
+            <tr><td><strong>大四下/研三</strong></td><td>①春招补录（3-5月）；②谈薪与offer选择（见谈薪实战）；③办理三方协议/政审/档案等入坑流程；④善始善终完成毕业论文/实习答辩</td><td>正式offer；三方签订；顺利毕业</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info" style="margin-top:10px"><strong>节奏提醒：</strong>具体时间点（国考约11月、省考约次年3-4月、选调约10-12月、秋招提前批约6-7月）各校各行业每年略有不同，<strong>请以你所在学校就业指导中心、报考单位官网的当季官方通知为准</strong>，并把这些节点录入本页上方的投递追踪表。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>🔍 行业「摸底」四步法（选方向前先做，别拍脑袋）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">用2个晚上，用这套方法把"我不确定做什么"变成"我有具体方向+证据"。</p>
+        <ol>
+          <li><strong>列清单：</strong>写下你比较接受/有点兴趣的3-5个方向（岗位或行业），不评价先写完。</li>
+          <li><strong>找真实样本：</strong>去牛客、Boss直聘、知乎、各校就业网，搜每个方向的<strong>真实JD</strong>和<strong>某岗位的一天</strong>，各看3-5条，记录"每天到底做什么、要求什么能力"。</li>
+          <li><strong>对能力：</strong>把每条的硬性要求拆成清单，对照自己的专业/经历/证书，逐项标"已有 / 可短补 / 需长期积累"。</li>
+          <li><strong>做个小验证：</strong>选"可短补"最高的那个，用1-2周做一个<strong>最小产物</strong>（如：做1条运营分析、1份行业报告、1页作品集、答3道面试题），用真实结果检验兴趣与能力是否匹配。</li>
+        </ol>
+        <div class="callout callout-ok" style="margin-top:10px"><strong>产出建议：</strong>把四步的结果填进<a href="#view-career">上方方向卡</a>的"目标单位/差异化要求"，方向就具体落地了，简历也就有了骨血。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>💰 谈薪实战：别只比月薪，要看「总包」</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">offer到手后的谈薪/选择，帮你多算清每笔钱的真实价值。</p>
+        <ul>
+          <li><strong>算总包（Total Package）：</strong>月薪×12~15薪 + 年终奖 + 补贴（餐补/房补/交通/补贴）+ 落户/公积金缴纳基数与比例 + 福利（体检/团建/带薪假）。<strong>两家比，别只比"税前月薪"。</strong></li>
+          <li><strong>公积金很值钱：</strong>不同公司缴纳基数和比例差距很大，把它折进"到手收益"里算，往往影响几千元/年。</li>
+          <li><strong>开口时机：</strong>谈薪在<strong>确定录用、HR主动问期望</strong>时谈；先了解该岗位/城市市场区间（可在牛客、脉脉、各校就业报告查），报一个"区间"而非死价。</li>
+          <li><strong>少说个人困难：</strong>不要用"我房租高/要养家"来谈薪，用"行业行情 + 我的匹配度与产出"谈，更专业。</li>
+          <li><strong>留余地：</strong>拿到offer后常有1-2轮微调空间；若明显低于行情，礼貌给出依据再争取；谈不动可谈<strong>入职时间、补贴、岗位</strong>等次优条件。</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-top:10px"><strong>防踩坑：</strong>签约前务必看清合同里的试用期时长、薪资构成、违约金条款；警惕"培训贷""收押金""先交钱入职"——正规单位不会向求职者收费。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>📡 求职渠道清单（叠加用，别只用一个App）</h3>
+        <div class="grid grid-3">
+          <div><h4>官方 &amp; 校园</h4><ul style="font-size:12.5px;line-height:1.85"><li>学校就业指导中心官网/公众号</li><li>校内宣讲会、双选会</li><li>教育部/人社部专项招聘</li><li>公务员/选调等官方报名系统</li></ul></div>
+          <div><h4>实习 &amp; 校招 App</h4><ul style="font-size:12.5px;line-height:1.85"><li>牛客（笔试/面经/实习）</li><li>Boss直聘、智联、前程无忧(51job)、应届生求职网</li><li>企业官网/官方招聘公众号</li></ul></div>
+          <div><h4>人脉 &amp; 内推</h4><ul style="font-size:12.5px;line-height:1.85"><li>学长学姐、导师、院系就业老师</li><li>实习转正、校友内推</li><li>领英(LinkedIn)、脉脉、职场社群</li></ul></div>
+        </div>
+        <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。</div>
       </div>
     </section>
 
