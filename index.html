@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.09.01"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.09.03"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="栖匣">
-  <link rel="manifest" href="pwa/manifest.json?v=20260909">
+  <link rel="manifest" href="pwa/manifest.json?v=2026090903">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -9855,7 +9855,7 @@ function renderFocus(){
     for(var j=0;j<sec.items.length;j++){
       var it=sec.items[j];
       var _ic=navIconFor(it[0]);
-      html+='<div class="focus-board" data-go="'+it[0]+'" tabindex="0" role="button" title="前往『"+it[2]+"』"><span class="fb-ico'+( _ic?' fb-svg':'')+'">'+(_ic||it[1])+'</span><span class="fb-na">'+it[2]+'</span></div>';
+      html+='<div class="focus-board" data-go="'+it[0]+'" tabindex="0" role="button" onclick="switchView(\''+it[0]+'\')" title="前往『"+it[2]+"』"><span class="fb-ico'+( _ic?' fb-svg':'')+'">'+(_ic||it[1])+'</span><span class="fb-na">'+it[2]+'</span></div>';
     }
     html+='</div></div></div>';
   }
@@ -9883,6 +9883,9 @@ function toggleFocusGroup(btn){
   function focusGo(e){
     var t=(e.target&&e.target.closest)?e.target.closest('.focus-board[data-go]'):null;
     if(!t)return;
+    /* 板块已自带内联 onclick 直达 switchView（与侧边栏一致，最稳）；这里只当没有内联处理时才兜底，
+       避免同一点击触发两次跳转造成扰动。 */
+    if(t.onclick)return;
     var v=t.getAttribute('data-go');if(!v)return;
     if(e.type==='keydown'){if(e.key!=='Enter'&&e.key!==' '){return;}e.preventDefault();}
     else{e.preventDefault();}
@@ -13963,12 +13966,20 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.09.01';
+  var V='2026.09.09.03';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.09.03',t:'修复“轻松上手·分类导航”点击板块不能跳转',tag:'导航修复',blocks:[
+      '· 首页「轻松上手·分类导航」里的板块，现在点击即直达对应板块页面（不再出现“点了没反应”）。',
+      '· 采用与侧边栏一致的最稳跳转方式 + 移动端委托兜底，安卓/鸿蒙/网页均稳定生效。'
+    ]},
+    {v:'2026.09.09.02',t:'桌面图标换回产品原有宝箱 · 大小适中更美观',tag:'图标还原',blocks:[
+      '· 桌面图标已改回产品页面里那个原有的宝箱图标（不再另画），采用奶油底 + 居中黄金比例比例，大小调整到舒适美观，明亮清晰不突兀。',
+      '· 网页版 Manifest、离线缓存、版本号已同步刷新；若桌面上仍显示旧图标，长按删除快捷方式后用浏览器重新「添加到主屏幕」一次即可。'
+    ]},
     {v:'2026.09.09.01',t:'桌面图标换代：彻底摆脱“栖”字字母占位',tag:'图标修复',blocks:[
       '· 网页版桌面图标换成带版本号的全新文件：整块奶油底色 + 居中宝箱，任何安卓启动器 / 浏览器都把它画成完整彩色方块，不再退化成单个「栖」字。',
       '· 换名后图标缓存 hash 变化，若你的手机上桌面上仍显示旧「栖」字图标，请：长按该图标 → 删除快捷方式；然后用浏览器重新「添加到主屏幕 / 安装」一次，即显示宝箱图标。',
