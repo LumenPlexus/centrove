@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.02"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.03"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -731,22 +731,28 @@ html:not([data-theme="dark"]):not([data-theme="light"]){background:#F5EFE2}
 input,select,textarea,[contenteditable="true"]{accent-color:var(--accent);caret-color:var(--accent)}
 ::selection{background:var(--accent-soft);color:inherit}
 input[type="checkbox"],input[type="radio"]{accent-color:var(--accent)}
-/* ── 统一清单复选框：文字居左、小方块居右同一行；方块小巧圆角、勾选即填充 ✓ ── */
-.chk{display:flex;align-items:center;gap:10px;padding:8px 6px;border-radius:10px;
-  font-size:13.5px;color:var(--text);line-height:1.5;cursor:pointer;transition:background .12s;
-  -webkit-tap-highlight-color:transparent;}
+/* ── 全站统一复选框：去掉原生方框，改为暖色圆角方/圆，勾选即打 ✓（SVG 自适应任意尺寸）── */
+input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex-shrink:0;vertical-align:middle;margin:0;cursor:pointer;position:relative;
+  border:1.6px solid var(--border-strong,rgba(110,79,55,.4));border-radius:5px;background:#fff;box-shadow:0 1px 2px rgba(110,79,55,.06);
+  transition:background-color .16s,border-color .16s,transform .16s,box-shadow .16s}
+input[type=checkbox]:hover{border-color:var(--primary)}
+input[type=checkbox]:checked{background-color:var(--primary);border-color:var(--primary);box-shadow:0 2px 6px rgba(110,79,55,.22)}
+input[type=checkbox]:checked::after{content:'';position:absolute;left:16%;top:16%;width:68%;height:68%;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13.5 10 18.5 19 7'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;background-position:center}
+input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[data-theme="dark"] input[type=checkbox]{background:#fff;border-color:var(--border-strong,rgba(255,255,255,.35))}
+[data-theme="dark"] input[type=checkbox]:checked{background-color:var(--primary);border-color:var(--primary)}
+/* ── 清单条目（备考自检 / 开学准备清单）：文字居左、圆形勾选居右、垂直居中对齐、间距适中 ── */
+.chk{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;
+  font-size:13.5px;color:var(--text);line-height:1.55;cursor:pointer;transition:background .12s;
+  -webkit-tap-highlight-color:transparent}
 .chk:hover{background:rgba(110,79,55,.06)}
 .chk:active{background:rgba(110,79,55,.10)}
 .chk .chk-t{flex:1;min-width:0;word-break:break-word;white-space:normal}
-.chk input{appearance:none;-webkit-appearance:none;width:20px;height:20px;flex-shrink:0;margin:0;
-  border:1.5px solid rgba(110,79,55,.45);border-radius:6px;background:#fff;cursor:pointer;
-  position:relative;transition:all .13s;box-shadow:0 1px 2px rgba(110,79,55,.08)}
-.chk input:hover{border-color:var(--primary)}
-.chk input:checked{background:var(--primary);border-color:var(--primary)}
-.chk input:checked::after{content:'';position:absolute;left:5px;top:1px;width:5px;height:10px;
-  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
-.chk input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-[data-theme="dark"] .chk input{background:#fff;border-color:var(--border-strong,rgba(255,255,255,.35))}
+.chk input{width:21px;height:21px;border-radius:50%}
+.chk input:checked{animation:qxPop .28s ease}
+@keyframes qxPop{0%{transform:scale(.72)}55%{transform:scale(1.1)}100%{transform:scale(1)}}
 /* 夜间兜底：把硬编码的深色主文字（#4A3427）和深灰（#3A4038/#6B7267）强制提亮，避免看不清 */
 [data-theme="dark"] [style*="color:#4A3427"],[data-theme="dark"] [style*="color: #4A3427"],[data-theme="dark"] [style*="color:rgb(12, 68, 124)"],[data-theme="dark"] [style*="color:rgb(12,68,124)"]{color:var(--primary)!important}
 [data-theme="dark"] [style*="color:#3A4038"],[data-theme="dark"] [style*="color: #3A4038"],[data-theme="dark"] [style*="color:#6B7267"],[data-theme="dark"] [style*="color: #6B7267"]{color:var(--hint)!important}
@@ -7626,7 +7632,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.10.02</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.10.03</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -14164,12 +14170,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.10.02';
+  var V='2026.09.10.03';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.10.03',t:'全站复选框精致重绘：告别生硬方框，统一暖色圆/圆角勾选',tag:'体验优化',blocks:[
+      '· 「备考进度自检」「开学准备清单」的打卡勾选，由原来的瘦高圆角矩形改为更为协调的圆形暖色按钮：已勾选为深棕色圆形+白色自然勾，未勾选为白底圆环，位置右对齐、与文字垂直居中、间距适中，不再紧贴边缘。',
+      '· 勾选瞬间带轻快回弹动画，手感更鲜活。',
+      '· 全局统一所有勾选框（今日任务、打卡、四象限、目标里程碑、阅读清单等）的样式，全部改为柔和圆角方框 + 白色勾，替换原生难看的系统方框，深浅色模式均适配。'
+    ]},
     {v:'2026.09.10.02',t:'首页顶部可收纳 · 侧边栏联动常用偏好 · 每次打开都回首页',tag:'体验优化',blocks:[
       '· 首页最顶部的「栖匣」品牌主视觉区可一键折叠，占位大段介绍文字可随时收起，为你让出首屏空间，且会记住你的选择。',
       '· 「轻松上手 · 分类导航」同样支持一键折叠/展开，节省首页纵向空间。',
