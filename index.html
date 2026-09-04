@@ -25,15 +25,15 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="栖匣 · 大学生成长中枢">
   <meta name="twitter:image" content="https://lumenplexus.github.io/centrove/pwa/share-512.png">
-  <link rel="manifest" href="pwa/manifest.json?v=2026090601">
-  <link rel="icon" href="favicon.ico?v=2026090601" sizes="any">
-  <link rel="icon" type="image/png" sizes="192x192" href="pwa/icon-20260910-192.png?v=2026090601">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png?v=2026090601">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2026090601">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2026090601">
+  <link rel="manifest" href="pwa/manifest.json?v=2026090602">
+  <link rel="icon" href="favicon.ico?v=2026090602" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="pwa/icon-20260910-192.png?v=2026090602">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png?v=2026090602">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2026090602">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2026090602">
   <!-- 主屏图标：统一为产品原生宝箱 logo.png（透明漂空宝箱，与闪屏一致，无底色） -->
-  <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon.png?v=2026090601">
-  <link rel="apple-touch-icon" href="pwa/apple-touch-icon.png?v=2026090601">
+  <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon.png?v=2026090602">
+  <link rel="apple-touch-icon" href="pwa/apple-touch-icon.png?v=2026090602">
   <!-- iOS 启动图（从主屏幕图标打开时显示品牌启动屏，避免白屏） -->
   <link rel="apple-touch-startup-image" media="screen and (device-width:430px) and (device-height:932px)" href="pwa/splash-6.1.png">
   <link rel="apple-touch-startup-image" media="screen and (device-width:390px) and (device-height:844px)" href="pwa/splash-6.1.png">
@@ -1265,6 +1265,23 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 /* 卡片：标题下加一端彩色短引条 + 图标着色，整版更鲜活又不喧宾夺主 */
 #view-career .card h3,#view-study .card h3,#view-exam .card h3,#view-paper .card h3,#view-contest .card h3,#view-plans .card h3,#view-goals .card h3,#view-college .card h3,#view-growth .card h3,#view-tpl .card h3,#view-tools .card h3,#view-ai .card h3,#view-agent .card h3,#view-creative .card h3,#view-campus .card h3,#view-party .card h3,#view-safety .card h3,#view-life .card h3,#view-habits .card h3,#view-shelf .card h3,#view-movie .card h3,#view-fun .card h3,#view-vision .card h3,#view-podcast .card h3,#view-journal .card h3,#view-health .card h3,#view-mind .card h3,#view-finance .card h3,#view-save .card h3,#view-earn .card h3,#view-shop .card h3,#view-perk .card h3,#view-timer .card h3{position:relative;padding-bottom:13px}
 #view-career .card h3::after,#view-study .card h3::after,#view-exam .card h3::after,#view-paper .card h3::after,#view-contest .card h3::after,#view-plans .card h3::after,#view-goals .card h3::after,#view-college .card h3::after,#view-growth .card h3::after,#view-tpl .card h3::after,#view-tools .card h3::after,#view-ai .card h3::after,#view-agent .card h3::after,#view-creative .card h3::after,#view-campus .card h3::after,#view-party .card h3::after,#view-safety .card h3::after,#view-life .card h3::after,#view-habits .card h3::after,#view-shelf .card h3::after,#view-movie .card h3::after,#view-fun .card h3::after,#view-vision .card h3::after,#view-podcast .card h3::after,#view-journal .card h3::after,#view-health .card h3::after,#view-mind .card h3::after,#view-finance .card h3::after,#view-save .card h3::after,#view-earn .card h3::after,#view-shop .card h3::after,#view-perk .card h3::after,#view-timer .card h3::after{content:"";position:absolute;left:0;bottom:0;width:40px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--m),var(--m-deep))}
+
+/* ═══ 版头色系「穿透」到卡片正文（对应反馈：只有标题变色、下面内容没变色、显突兀）═══
+   把板块强调色注入该板块内所有强调令牌，使正文的 标签/链接/数据/勾选/图标/焦点/选中 全部与该板块同色；
+   系统框（顶栏/侧栏/底栏/品牌核桃木）保持统一，避免大面积涂色造成紊乱，浅深主题自动适配。 */
+#view-career,#view-study,#view-exam,#view-paper,#view-contest,#view-plans,#view-goals,#view-college,
+#view-growth,#view-tpl,#view-tools,#view-ai,#view-agent,#view-creative,
+#view-campus,#view-party,#view-safety,#view-life,#view-habits,#view-shelf,#view-movie,#view-fun,#view-vision,#view-podcast,#view-journal,
+#view-health,#view-mind,
+#view-finance,#view-save,#view-earn,#view-shop,#view-perk,
+#view-timer{
+  --primary:var(--m);            /* 数字/链接/按钮/图标/引条 → 板块色 */
+  --accent:var(--m);            /* 选中/焦点/勾选/边框 → 板块色 */
+  --accent-soft:var(--m-soft);  /* 浅底色/选区/扫光 → 板块浅色 */
+}
+/* 内容板块内的标签与链接同板块色浅底，清晰而不刺眼 */
+#view-career a[href],#view-study a[href],#view-exam a[href],#view-paper a[href],#view-contest a[href],#view-plans a[href],#view-goals a[href],#view-college a[href],#view-growth a[href],#view-tpl a[href],#view-tools a[href],#view-ai a[href],#view-agent a[href],#view-creative a[href],#view-campus a[href],#view-party a[href],#view-safety a[href],#view-life a[href],#view-habits a[href],#view-shelf a[href],#view-movie a[href],#view-fun a[href],#view-vision a[href],#view-podcast a[href],#view-journal a[href],#view-health a[href],#view-mind a[href],#view-finance a[href],#view-save a[href],#view-earn a[href],#view-shop a[href],#view-perk a[href],#view-timer a[href]{color:var(--m-deep);text-decoration-color:color-mix(in srgb,var(--m) 55%,transparent)}
+#view-career a[href]:hover,#view-study a[href]:hover,#view-exam a[href]:hover,#view-paper a[href]:hover,#view-contest a[href]:hover,#view-plans a[href]:hover,#view-goals a[href]:hover,#view-college a[href]:hover,#view-growth a[href]:hover,#view-tpl a[href]:hover,#view-tools a[href]:hover,#view-ai a[href]:hover,#view-agent a[href]:hover,#view-creative a[href]:hover,#view-campus a[href]:hover,#view-party a[href]:hover,#view-safety a[href]:hover,#view-life a[href]:hover,#view-habits a[href]:hover,#view-shelf a[href]:hover,#view-movie a[href]:hover,#view-fun a[href]:hover,#view-vision a[href]:hover,#view-podcast a[href]:hover,#view-journal a[href]:hover,#view-health a[href]:hover,#view-mind a[href]:hover,#view-finance a[href]:hover,#view-save a[href]:hover,#view-earn a[href]:hover,#view-shop a[href]:hover,#view-perk a[href]:hover,#view-timer a[href]:hover{color:var(--m)}
 </style>
 <style id="qx-system">
 /* ═══════════ 栖匣 · 系统统一层（令牌/分区/极简模式/移动端触控/长文可读性） ═══════════ */
@@ -5497,6 +5514,29 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </ul>
           </div>
         </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="16 13 8 13 8 17 16 17 16 13"></polyline></svg>异地实习 / 就业 · 证件与权益别踩坑</h3>
+        <div class="callout callout-info" style="margin-top:2px"><strong>大学里没人教、但离校一定会用到的办事常识。</strong>实习或毕业去外地，居住证、社保、医保衔接、档案四件事处理对了省心，错了要跑好几趟。以下为自己核对与办事方向，具体办理标准请以<strong>当地政务 / 学校就业办 / 国家最新政策</strong>为准。</div>
+        <div class="grid grid-2">
+          <div>
+            <h4>证件与居住</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>居住证：</strong>在实习/就业城市实际居住（一般连续满半年，或凭就业/租房手续办理）即可申领。影响考驾照、异地办事、部分城市落户/人才积分。去当地公安派出所或政务服务网办理。</li>
+              <li><strong>学生证/校园卡：</strong>毕业前可补办一次；火车票学生优惠、景区半价等学生权益以官方当年规定为准。</li>
+              <li><strong>身份证到期：</strong>提前 3 个月办理，异地也可在居住地派出所换领，别拖到要用才发现过期。</li>
+            </ul>
+          </div>
+          <div>
+            <h4>权益与三大件</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>社保：</strong>正式入职签劳动合同后应由单位正常缴纳，<strong>别信"放弃社保换补贴"</strong>——不缴社保既违法也影响医保/买房/落户。可在"国家社会保险公共服务平台"查自己的权益记录。</li>
+              <li><strong>医保衔接：</strong>学生在校参加的是居民医保，就业后转职工医保；去外地就医先办<strong>异地就医备案</strong>即可直接结算，流程在"国家医保服务平台"App 办。</li>
+              <li><strong>档案：</strong>毕业前把档案去向定下来（单位/人才市场/回原籍），<strong>档案不能自己拿、不能拆封</strong>；三方协议、报到证等走向可咨询学校就业办与户籍地人才中心。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:8px"><strong>通用提醒：</strong>凡"代办社保/包落户/兼职交押金"一类，多为中介或骗局，先问学校就业办、当地 12333（社保热线）与正规政务渠道确认，可少走很多弯路。</div>
       </div>
     </section>
 
