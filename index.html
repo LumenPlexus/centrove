@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.01"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.02"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -1537,6 +1537,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         if(p) p.classList.add('seat-lock');  /* 锁定：必须点「入座」才关 */
         if(typeof openPano==='function') openPano();
       }catch(err){}
+    }else{
+      /* 非首访用户：闪屏结束后一律回到首页，不加载上次所在板块/不记忆上次位置 */
+      try{ if(typeof switchView==='function') switchView('home'); }catch(e){}
     }
   }
   function show(){
@@ -1806,6 +1809,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
 
     <div class="nav-section">设置 · 栖匣系统</div>
+    <div class="nav-item" style="cursor:pointer;color:var(--primary);font-weight:600" onclick="openModulePick()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 3.6 3.9.3-3 2.6 1 3.8-3.5-2-3.5 2 1-3.8-3-2.6 3.9-.3z"></path><path d="M5 14c.6 1.2 1.6 2.1 2.8 2.7"></path><path d="M19 14c-.6 1.2-1.6 2.1-2.8 2.7"></path></svg>常用模块偏好
+    </div>
     <div class="nav-item" data-view="agent" onclick="switchView(&#39;agent&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"></path><path d="M9 17h6v3H9z"></path><circle cx="9" cy="11.5" r=".5" fill="currentColor"></circle><circle cx="15" cy="11.5" r=".5" fill="currentColor"></circle></svg>栖匣 助手
     </div>
@@ -1825,7 +1831,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
   <main class="main">
-      <div id="mobileSidebarHint" style="display:none;margin:8px 16px;padding:6px 12px;border-radius:9px;background:#F1EADE;border:1px solid #D8CBB2;font-size:12.5px;color:#5A4B38;line-height:1.5"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开全部板块</span> <span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#5A4B38;padding:0 4px;border-radius:4px;cursor:pointer" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
+      <div id="mobileSidebarHint" style="display:none;margin:8px 16px;padding:6px 12px;border-radius:9px;background:#F1EADE;border:1px solid #D8CBB2;font-size:12.5px;color:#5A4B38;line-height:1.5"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开板块导航</span> <span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#5A4B38;padding:0 4px;border-radius:4px;cursor:pointer" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
 
     <!-- 首页 -->
     <section class="view active" id="view-home">
@@ -1839,8 +1845,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
               <div style="font-size:13px;color:var(--muted);margin-top:3px;letter-spacing:1px">心有所栖 · 匣纳成长 · 为大学生打造的成长园地</div>
             </div>
           </div>
-          <div style="font-size:11.5px;color:var(--hint);text-align:right;line-height:1.7">零安装 · 零登录 · 数据仅存你的设备 · 打开即可开始规划与执行</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <div style="font-size:11.5px;color:var(--hint);text-align:right;line-height:1.7">零安装 · 零登录 · 数据仅存你的设备 · 打开即可开始规划与执行</div>
+            <button id="heroToggle" type="button" onclick="toggleHeroCollapse()" title="折叠/展开品牌介绍" aria-expanded="true" style="padding:3px 9px;border:1px solid rgba(74,59,46,.25);border-radius:8px;background:rgba(255,255,255,.55);color:var(--primary);font-size:11px;line-height:1.6;cursor:pointer;white-space:nowrap">▾ 收起</button>
+          </div>
         </div>
+        <div id="heroBody">
         <p style="margin-top:14px;font-size:13.5px;line-height:2;color:var(--text)">
           <em style="font-style:normal;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:15.5px;color:var(--primary);letter-spacing:1px">把每一天好好安放，心有所栖，万象入匣。</em><br>
           一段漫长的大学旅程，会生出数不清的目标、计划与期待。<b style="color:var(--primary)">学业备考 · 竞赛科研 · 实习求职 · 复盘感悟 · 理财规划</b>——栖匣便是属于你的一方园地，帮你把一路重要的成长印记一一承载。<br>
@@ -1848,6 +1858,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <span style="color:var(--primary-mid)">打开栖匣，就可以立刻开始规划与执行</span>——目标拆解、备考路线、时间安排、复盘总结，各归其位。<br>
           零安装、零登录，全部数据仅保存在你的本地设备。<em style="font-style:normal;color:var(--gold)">心有所栖，匣纳成长。</em>
         </p>
+        </div>
       </div>
 
       <!-- 💡 常驻备份提醒（首页显眼位置，永久展示） -->
@@ -1862,11 +1873,13 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <!-- 轻松上手：包含侧边栏全部板块，一键直达；可选方向做个性化排序 -->
       <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#F1EADE,#F1EADE);border-color:#D8CBB2">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">
-          <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3z"></path><rect x="14" y="20" width="7" height="7" rx="1.5" transform="translate(-3 -8)"></rect></svg>轻松上手 · 分类导航</h3>
+          <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3z"></path><rect x="14" y="20" width="7" height="7" rx="1.5" transform="translate(-3 -8)"></rect></svg>轻松上手 · 分类导航<button id="focusToggle" type="button" onclick="toggleFocusCollapse()" title="折叠/展开导航" aria-expanded="true" style="margin-left:8px;padding:2px 8px;border:1px solid var(--border-strong);border-radius:8px;background:var(--card);color:var(--primary);font-size:11px;line-height:1.6;cursor:pointer;vertical-align:middle">▾ 收起</button></h3>
           <span style="font-size:11.5px;color:var(--hint)">循领域而入 · 逐层抵达你的细分规划</span>
         </div>
-        <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(111,84,64,.08);border:1px dashed rgba(111,84,64,.28);color:#6E665C;font-size:13px;line-height:1.9"><b style="color:var(--primary)">不必事事求全</b>　挑一个当下最想打理的大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——安放好当下，立刻行动。</div>
-        <div id="focusStart" style="margin-top:12px"></div>
+        <div id="focusBody">
+          <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(111,84,64,.08);border:1px dashed rgba(111,84,64,.28);color:#6E665C;font-size:13px;line-height:1.9"><b style="color:var(--primary)">不必事事求全</b>　挑一个当下最想打理的大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——安放好当下，立刻行动。</div>
+          <div id="focusStart" style="margin-top:12px"></div>
+        </div>
       </div>
       <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
       <div class="card" data-goalcard style="margin-bottom:16px;background:linear-gradient(135deg,#F8F2E4 0%,#F1E7D2 55%,#EBDDC0 100%);border:1px solid rgba(139,105,20,.16);border-left:4px solid #B08A54">
@@ -7613,7 +7626,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.10.01</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.10.02</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -9943,6 +9956,7 @@ function renderFocus(){
   cont.innerHTML=html;
   cont.style.display='block';
   updatePrefStatus();
+  applyHeroCollapse(); applyFocusCollapse(); applySidebarFilter();
 }
 /* 模块偏好选择浮层 */
 function openModulePick(){
@@ -9982,6 +9996,46 @@ function mpConfirm(showAll){
   savePref(sel, showAll?'all':'fav');
   closeModulePick(); renderFocus();
   try{window.flash&&window.flash(showAll?'已展示全部板块':'已按你的选择整理首页常用模块');}catch(e){}
+}
+/* 首页品牌主视觉区：可折叠（记住用户选择） */
+function heroCollapsed(){try{return localStorage.getItem('pp_hero_collapsed')==='1';}catch(e){return false;}}
+function applyHeroCollapse(){
+  var b=document.getElementById('heroBody'),t=document.getElementById('heroToggle');
+  if(!b)return; var col=heroCollapsed();
+  b.style.display=col?'none':'';
+  if(t){t.innerHTML=col?'▸ 展开':'▾ 收起';t.setAttribute('aria-expanded',col?'false':'true');}
+}
+function toggleHeroCollapse(){ try{localStorage.setItem('pp_hero_collapsed',heroCollapsed()?'0':'1');}catch(e){localStorage.setItem('pp_hero_collapsed','1');} applyHeroCollapse(); }
+/* 首页「轻松上手 · 分类导航」区域：可折叠（记住用户选择） */
+function focusCollapsed(){try{return localStorage.getItem('pp_focus_collapsed')==='1';}catch(e){return false;}}
+function applyFocusCollapse(){
+  var b=document.getElementById('focusBody'),t=document.getElementById('focusToggle');
+  if(!b)return; var col=focusCollapsed();
+  b.style.display=col?'none':'';
+  if(t){t.innerHTML=col?'▸ 展开':'▾ 收起';t.setAttribute('aria-expanded',col?'false':'true');}
+}
+function toggleFocusCollapse(){ try{localStorage.setItem('pp_focus_collapsed',focusCollapsed()?'0':'1');}catch(e){localStorage.setItem('pp_focus_collapsed','1');} applyFocusCollapse(); }
+/* 侧边栏联动常用偏好：只看常用时隐藏未选模块（系统设置类恒常保留），并隐藏无可见项的分组标题 */
+function applySidebarFilter(){
+  try{
+    var sel=prefModules(),done=prefDoneFlag(),mode=prefMode();
+    var favOnly=done && mode==='fav' && sel.length>0;
+    var sb=document.getElementById('sidebar'); if(!sb)return;
+    var items=sb.querySelectorAll('.nav-item');
+    for(var i=0;i<items.length;i++){
+      var v=items[i].getAttribute('data-view');
+      items[i].classList.toggle('nav-hidden', !!favOnly && !!v && !PREF_SYS[v] && sel.indexOf(v)<0);
+    }
+    var secs=sb.querySelectorAll('.nav-section');
+    for(var s=0;s<secs.length;s++){
+      var sec=secs[s],any=false,node=sec.nextElementSibling;
+      while(node&&node.classList&&!node.classList.contains('nav-section')){
+        if(node.classList.contains('nav-item')&&!node.classList.contains('nav-hidden')){any=true;break;}
+        node=node.nextElementSibling;
+      }
+      sec.classList.toggle('nav-hidden',!any);
+    }
+  }catch(e){}
 }
 /* 手风琴：点大板块展开/收起其细分板块（同一时间只开一个，聚焦不铺开） */
 function toggleFocusGroup(btn){
@@ -10062,20 +10116,7 @@ function init(){
   renderFinanceKnowledge();
   renderTpl();
   renderDailyQuoteCard();
-  /* 恢复上次所在板块：点外链/刷新/返回后不再跳回主界面 */
-  try{
-    var _lv=localStorage.getItem('pp_last_view');
-    if(_lv&&document.getElementById('view-'+_lv)){
-      switchView(_lv);
-      var _sc=parseInt(localStorage.getItem('pp_last_scroll')||'0',10);
-      if(_sc>0){
-        function _restoreSc(){try{window.scrollTo(0,_sc);}catch(e){}}
-        setTimeout(_restoreSc,80);          // 首次落位
-        setTimeout(_restoreSc,500);         // 板块异步渲染后再补一次，避免被重置回顶部
-        if(window.addEventListener)window.addEventListener('load',function(){setTimeout(_restoreSc,150);}); // 图片加载完兜底
-      }
-    }
-  }catch(e){}
+  /* 冷启动一律回到首页：闪屏结束后固定展示「今日概览」，不再恢复上次所在板块与滚动位置 */
   
   /* 返回轻提示：每天一句不重复的暖心鼓励，等闪屏结束(约3.4s)后直接渲染一次、停留约4.2秒可看清，
      不再经 flash 双重渲染、也不被启动屏遮挡 */
@@ -10714,7 +10755,7 @@ function renderBigQuote(){
 function nextBigQuote(){bigQIdx++;renderBigQuote()}
 
 /* 设置面板：导出/导入/清空 */
-function _UI_PRESERVED(){return ['pp_theme_v2','pp_splash_seen','pp_quickstart_ok','pp_last_view','pp_last_scroll','pp_pano_v4_seen','pp_prepare_archived','pp_pref_modules','pp_pref_done','pp_pref_mode'];}
+function _UI_PRESERVED(){return ['pp_theme_v2','pp_splash_seen','pp_quickstart_ok','pp_last_view','pp_last_scroll','pp_pano_v4_seen','pp_prepare_archived','pp_pref_modules','pp_pref_done','pp_pref_mode','pp_hero_collapsed','pp_focus_collapsed'];}
 /* 收集所有“用户填写的数据”键：DB 层(pp_*)、直存键、动态日期键(pp_mood_/pp_bless_)、模板(pp_tpl_)、随笔(pp_notes)、
    内容可编辑(pp_edit_)、清单(pp_safety_list/相关)、准备进度(pp_prepare_done)、成就(pp_unlockedAchievements)、首次使用(pp_firstUseDate)……
    一律纳入备份，确保换机恢复不丢任何记录。仅排除纯界面/导航状态键。 */
@@ -14123,12 +14164,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.10.01';
+  var V='2026.09.10.02';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.10.02',t:'首页顶部可收纳 · 侧边栏联动常用偏好 · 每次打开都回首页',tag:'体验优化',blocks:[
+      '· 首页最顶部的「栖匣」品牌主视觉区可一键折叠，占位大段介绍文字可随时收起，为你让出首屏空间，且会记住你的选择。',
+      '· 「轻松上手 · 分类导航」同样支持一键折叠/展开，节省首页纵向空间。',
+      '· 选好常用板块后，侧边栏也同步只显示你选中的模块，其余模块自动收起；想找回只需点侧边栏「设置 · 栖匣系统 → 常用模块偏好」，或首页的「显示全部板块」，随时重新勾选。',
+      '· 完全退出产品后再打开：闪屏过后固定回到「首页 · 今日概览」，不再跳到上次浏览的板块。'
+    ]},
     {v:'2026.09.10.01',t:'全新「常用模块偏好」：按你的兴趣定制首页导航',tag:'新功能',blocks:[
       '· 首次打开产品（闪屏 → 产品导览 → 入座）后，会引导你挑几个真正关心、最常用的板块。',
       '· 选好后，首页「轻松上手 · 分类导航」只优先展示你选的这些模块，其余板块自动收起藏进侧边栏，想用时随时点「显示全部板块」或从侧边栏进去，既不打扰也不丢失。',
@@ -16445,6 +16492,8 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .mp-pbtn{font-size:13px;border-radius:9px;padding:10px 18px;cursor:pointer;border:none;background:var(--primary);color:#fff;font-weight:800;transition:all .18s}
 .mp-pbtn:hover{background:var(--primary-strong)}
 @media(max-width:520px){.mp-head{padding:18px 16px 6px}.mp-sub{padding:4px 16px 8px}.mp-body{padding:4px 16px 8px}.mp-foot{padding:12px 16px}.mp-grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}}
+/* ═══ 侧边栏联动常用偏好：藏起未选模块及其空分组标题 ═══ */
+.nav-item.nav-hidden,.nav-section.nav-hidden{display:none!important}
 </style>
 
 <!-- ═══════ 常用模块偏好 · 选择浮层（首次入座后 / 设置里可随时重选） ═══════ -->
