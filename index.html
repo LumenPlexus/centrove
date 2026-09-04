@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.09.04"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.01"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
 
@@ -6448,6 +6448,14 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p style="font-size:13px;color:var(--muted);margin-bottom:10px">入学后「开学准备」会自动收起归档。如果误收或还想再查看，点下面按钮重新开启（首页即可见）。</p>
         <button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="restorePrepare()">重新开启开学准备清单</button>
       </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F3EDDE,#F3EDDE);border-color:#E0D5BF">
+        <h3 style="color:var(--primary)">⭐ 常用模块偏好</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时会让你挑选最常用、最关心的板块；已选板块会优先展示在首页「轻松上手 · 分类导航」，其余板块只是暂时藏起，仍可随时从侧边栏或「显示全部板块」进去。这里可随时重新调整。</p>
+        <div>
+          <button class="btn btn-primary" onclick="openModulePick()">调整我的常用模块</button>
+          <span id="prefStatus" style="display:inline-block;font-size:12px;color:var(--hint);margin-left:10px;vertical-align:middle"></span>
+        </div>
+      </div>
       <div class="card" style="margin-top:16px">
         <h3>📊 周报 PNG 导出</h3>
         <p style="font-size:13px;color:var(--muted);margin-bottom:10px">一键生成本周任务报告图片（PNG），可保存/分享到朋友圈、发给家人朋友看你的成长。</p>
@@ -7605,7 +7613,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.09.04</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.10.01</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -9877,21 +9885,56 @@ function navIconFor(view){
   _navIconCache[view]=n?n.outerHTML:'';
   return _navIconCache[view];
 }
+/* 常用模块偏好：首次入座后引导挑选最常用板块；首页「轻松上手」据此聚焦展示，其余板块仍可在
+   侧边栏/「显示全部板块」中随时找到（满足“隐藏但不消失、想用自会点进去”）。设置里可随时重选。 */
+var PREF_KEY='pp_pref_modules', PREF_DONE='pp_pref_done', PREF_MODE='pp_pref_mode';
+var PREF_SYS={agent:1,settings:1,changelog:1,about:1,help:1};  /* 系统类板块：不属于可选“常用”，恒常展示 */
+function prefModules(){try{var a=JSON.parse(localStorage.getItem(PREF_KEY)||'[]');return Array.isArray(a)?a:[];}catch(e){return[];}}
+function prefMode(){try{return localStorage.getItem(PREF_MODE)||'fav';}catch(e){return'fav';}}
+function prefDoneFlag(){try{return localStorage.getItem(PREF_DONE)==='1';}catch(e){return false;}}
+function savePref(arr,mode){try{localStorage.setItem(PREF_KEY,JSON.stringify(arr||[]));localStorage.setItem(PREF_MODE,mode||'fav');localStorage.setItem(PREF_DONE,'1');}catch(e){}}
+function focusModeAll(){ savePref(prefModules(),'all'); renderFocus(); }
+function focusModeFav(){ savePref(prefModules(),'fav'); renderFocus(); }
+function updatePrefStatus(){
+  try{
+    var s=document.getElementById('prefStatus');if(!s)return;
+    var sel=prefModules(),done=prefDoneFlag();
+    if(!done){s.textContent='尚未挑选 · 默认展示全部板块';}
+    else if(sel.length===0){s.textContent='已选择“展示全部板块”';}
+    else{s.textContent='已选 '+sel.length+' 个常用模块 · 首页优先展示';}
+  }catch(e){}
+}
 function renderFocus(){
   var cont=document.getElementById('focusStart');if(!cont)return;
-  /* 两级导航：先一组「大板块」，点击展开进入其「细分板块」；不再平铺罗列、不再另发推荐段 */
+  var sel=prefModules(), mode=prefMode(), done=prefDoneFlag();
+  var favOnly=done && mode==='fav' && sel.length>0;
   var html='';
+  /* 模式工具条：聚焦常用 vs 展示全部 + 随时调整 */
+  html+='<div class="focus-toolbar">'
+    +'<span class="ft-label">'+(favOnly?('只显示你常用 '+sel.length+' 个 · 其余已藏入侧边栏'):'已显示全部板块 · 也可只看常用')+'</span>'
+    +'<span class="ft-btns">';
+  if(favOnly){ html+='<button class="ft-btn" onclick="focusModeAll()">显示全部板块</button>'; }
+  else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看常用</button>'; }
+  html+='<button class="ft-btn ghost" onclick="openModulePick()">调整常用</button>';
+  html+='</span></div>';
+  /* 两级导航：先一组「大板块」，点击展开进入其「细分板块」；聚焦模式只渲染已选常用，系统板块恒常保留 */
   for(var si=0;si<NAV_ALL.length;si++){
     var sec=NAV_ALL[si];
+    var isSys=!!PREF_SYS[sec.items[0]&&sec.items[0][0]];
+    var items=[];var k;
+    for(k=0;k<sec.items.length;k++){
+      if(isSys || !favOnly || sel.indexOf(sec.items[k][0])>=0){ items.push(sec.items[k]); }
+    }
+    if(items.length===0){ continue; }   /* 聚焦模式下整组无常用模块 → 整组隐藏 */
     html+='<div class="focus-group'+(si===0?' open':'')+'">'
       +'<button class="fg-head" role="button" aria-expanded="'+(si===0?'true':'false')+'" onclick="toggleFocusGroup(this)">'
       +'<span class="fg-caret">'+((si===0)?'–':'+')+'</span>'
       +'<span class="fg-name">'+sec.g+'</span>'
-      +'<span class="fg-count">'+sec.items.length+' 个板块</span>'
+      +(isSys?'':'<span class="fg-count">'+items.length+' 个板块</span>')
       +'</button>'
       +'<div class="fg-body"><div class="focus-grid">';
-    for(var j=0;j<sec.items.length;j++){
-      var it=sec.items[j];
+    for(var j=0;j<items.length;j++){
+      var it=items[j];
       var _ic=navIconFor(it[0]);
       html+='<div class="focus-board" data-go="'+it[0]+'" tabindex="0" role="button" onclick="switchView(\''+it[0]+'\')" title="前往『"+it[2]+"』"><span class="fb-ico'+( _ic?' fb-svg':'')+'">'+(_ic||it[1])+'</span><span class="fb-na">'+it[2]+'</span></div>';
     }
@@ -9899,6 +9942,46 @@ function renderFocus(){
   }
   cont.innerHTML=html;
   cont.style.display='block';
+  updatePrefStatus();
+}
+/* 模块偏好选择浮层 */
+function openModulePick(){
+  var el=document.getElementById('modulePick');if(!el)return;
+  var m=document.getElementById('modulePickMask');if(!m)return;
+  var wrap=document.getElementById('modulePickBody');if(!wrap)return;
+  var sel=prefModules();
+  var groups=[];
+  for(var gi=0;gi<NAV_ALL.length;gi++){ if(!PREF_SYS[NAV_ALL[gi].items[0]&&NAV_ALL[gi].items[0][0]]){ groups.push(NAV_ALL[gi]); } }
+  var html='';
+  for(var g2=0;g2<groups.length;g2++){
+    var sec=groups[g2];
+    html+='<div class="mp-group"><div class="mp-gname">'+sec.g+'</div><div class="mp-grid">';
+    for(var j=0;j<sec.items.length;j++){
+      var it=sec.items[j];
+      var on=sel.indexOf(it[0])>=0;
+      var _ic=navIconFor(it[0]);
+      html+='<div class="mp-chip'+(on?' on':'')+'" data-v="'+it[0]+'" role="button" tabindex="0" onclick="mpChip(this)"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span></div>';
+    }
+    html+='</div></div>';
+  }
+  wrap.innerHTML=html;
+  var cnt=document.getElementById('modulePickCount');if(cnt)cnt.textContent=sel.length;
+  m.classList.add('show'); el.classList.add('show');
+  try{document.body.style.overflow='hidden';}catch(e){}
+}
+function closeModulePick(){
+  var el=document.getElementById('modulePick'),m=document.getElementById('modulePickMask');
+  if(m)m.classList.remove('show'); if(el)el.classList.remove('show');
+  try{document.body.style.overflow='';}catch(e){}
+}
+function mpChip(el){ if(!el)return; el.classList.toggle('on'); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=document.querySelectorAll('.mp-chip.on').length; }
+function mpSelectAll(){ document.querySelectorAll('#modulePick .mp-chip').forEach(function(c){c.classList.add('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=document.querySelectorAll('#modulePick .mp-chip').length; }
+function mpClear(){ document.querySelectorAll('#modulePick .mp-chip').forEach(function(c){c.classList.remove('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=0; }
+function mpConfirm(showAll){
+  var sel=[];document.querySelectorAll('#modulePick .mp-chip.on').forEach(function(e){sel.push(e.getAttribute('data-v'));});
+  savePref(sel, showAll?'all':'fav');
+  closeModulePick(); renderFocus();
+  try{window.flash&&window.flash(showAll?'已展示全部板块':'已按你的选择整理首页常用模块');}catch(e){}
 }
 /* 手风琴：点大板块展开/收起其细分板块（同一时间只开一个，聚焦不铺开） */
 function toggleFocusGroup(btn){
@@ -10631,7 +10714,7 @@ function renderBigQuote(){
 function nextBigQuote(){bigQIdx++;renderBigQuote()}
 
 /* 设置面板：导出/导入/清空 */
-function _UI_PRESERVED(){return ['pp_theme_v2','pp_splash_seen','pp_quickstart_ok','pp_last_view','pp_last_scroll','pp_pano_v4_seen','pp_prepare_archived'];}
+function _UI_PRESERVED(){return ['pp_theme_v2','pp_splash_seen','pp_quickstart_ok','pp_last_view','pp_last_scroll','pp_pano_v4_seen','pp_prepare_archived','pp_pref_modules','pp_pref_done','pp_pref_mode'];}
 /* 收集所有“用户填写的数据”键：DB 层(pp_*)、直存键、动态日期键(pp_mood_/pp_bless_)、模板(pp_tpl_)、随笔(pp_notes)、
    内容可编辑(pp_edit_)、清单(pp_safety_list/相关)、准备进度(pp_prepare_done)、成就(pp_unlockedAchievements)、首次使用(pp_firstUseDate)……
    一律纳入备份，确保换机恢复不丢任何记录。仅排除纯界面/导航状态键。 */
@@ -13509,6 +13592,8 @@ function seatPano(){
   try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
   var p=document.getElementById('pano');if(p)p.classList.remove('seat-lock');
   closePano(true);
+  /* 首次「入座」进入产品后：接着引导挑选常用模块（只触发一次） */
+  maybeOpenPrefPick();
 }
 /* 事件委托：统一接管导览内所有按钮，避免个别按钮不响应 */
 function panoWire(){
@@ -13524,7 +13609,10 @@ function panoWire(){
     if(act==='close'){
       try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
       if(p)p.classList.remove('seat-lock');
-      closePano(true);return;
+      closePano(true);
+      /* 首次关闭导览进入产品后：同样补一次「常用模块偏好」引导 */
+      maybeOpenPrefPick();
+      return;
     }
     if(act==='home'||act==='about')panoGo(act);
   });
@@ -14035,12 +14123,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.09.06';
+  var V='2026.09.10.01';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.10.01',t:'全新「常用模块偏好」：按你的兴趣定制首页导航',tag:'新功能',blocks:[
+      '· 首次打开产品（闪屏 → 产品导览 → 入座）后，会引导你挑几个真正关心、最常用的板块。',
+      '· 选好后，首页「轻松上手 · 分类导航」只优先展示你选的这些模块，其余板块自动收起藏进侧边栏，想用时随时点「显示全部板块」或从侧边栏进去，既不打扰也不丢失。',
+      '· 模块以「大板块分组 + 小方块勾选」呈现，支持全部选中/清空，一目了然；选择结果保存在本机，升级也不变。',
+      '· 随时可改：「系统设置 → 常用模块偏好」或首页导航工具条的「调整常用」，想怎么换都行。'
+    ]},
     {v:'2026.09.09.06',t:'考试规划自检复选框统一重绘 · 全局清单控件美观化',tag:'体验优化',blocks:[
       '· 备考进度自检的每项复选框由系统默认大框重绘为小巧圆角方块，并移到对应文字右侧同一行；文字再长也只换行、方块始终稳居右侧，视觉更清爽、不再突兀。',
       '· 开学报到/军训「必带清单」的同款复习选框一并做了统一美化，风格保持一致。',
@@ -16300,6 +16394,89 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
   window.addEventListener('load',function(){ setTimeout(cleanup,120); });
   setTimeout(cleanup,500);
   setTimeout(cleanup,1500);
+})();
+</script>
+<style>
+/* ═══ 首页「轻松上手」· 常用模块聚焦工具条 ═══ */
+.focus-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 12px;padding:9px 12px;border-radius:10px;background:rgba(111,84,64,.06);border:1px solid var(--border)}
+.focus-toolbar .ft-label{font-size:12px;color:var(--muted);line-height:1.6;flex:1;min-width:160px}
+.focus-toolbar .ft-btns{display:flex;gap:6px;flex-wrap:wrap}
+.focus-toolbar .ft-btn{font-size:12px;border-radius:8px;padding:6px 11px;cursor:pointer;border:1px solid var(--border-strong);background:var(--card);color:var(--primary);font-weight:600;transition:all .15s}
+.focus-toolbar .ft-btn:hover{border-color:var(--primary);background:var(--primary-light)}
+.focus-toolbar .ft-btn.ghost{color:var(--muted)}
+.focus-toolbar .ft-btn.ghost:hover{color:var(--primary)}
+/* ═══ 常用模块偏好 · 全屏选择浮层 ═══ */
+.mp-mask{position:fixed;inset:0;background:rgba(20,26,22,.42);z-index:1600;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s}
+.mp-mask.show{opacity:1;visibility:visible}
+.mp{position:fixed;inset:0;z-index:1602;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s;pointer-events:none}
+.mp.show{opacity:1;visibility:visible;pointer-events:auto}
+.mp-inner{position:relative;width:100%;max-width:720px;max-height:90vh;background:var(--card);border:1px solid var(--border-strong);border-radius:16px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;transform:translateY(12px) scale(.985);transition:transform .24s ease}
+.mp.show .mp-inner{transform:none}
+.mp-close{position:absolute;top:12px;right:12px;z-index:5;width:34px;height:34px;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer}
+.mp-close:hover{background:var(--teal-light)}
+.mp-head{padding:22px 24px 8px}
+.mp-head h2{margin:0;font-size:19px;color:var(--text)}
+.mp-head p{margin:8px 0 0;font-size:12.5px;color:var(--muted);line-height:1.75}
+.mp-sub{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 24px 10px;flex-wrap:wrap}
+.mp-sub>span{font-size:12.5px;color:var(--muted)}
+.mp-sub b{color:var(--primary);font-size:15px}
+.mp-sub .mp-quick{display:flex;gap:6px}
+.mp-sub .mp-quick button{font-size:12px;border-radius:8px;padding:5px 11px;cursor:pointer;border:1px solid var(--border-strong);background:var(--card);color:var(--muted);transition:all .15s}
+.mp-sub .mp-quick button:hover{color:var(--primary);border-color:var(--primary)}
+.mp-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 24px 10px}
+.mp-group{margin-bottom:10px}
+.mp-gname{font-size:12px;color:var(--primary);font-weight:700;letter-spacing:.03em;padding:8px 0 6px}
+.mp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:8px}
+.mp-chip{position:relative;display:flex;align-items:center;gap:7px;padding:9px 10px;border:1px solid var(--border);border-radius:11px;background:var(--bg);cursor:pointer;transition:all .15s;user-select:none}
+.mp-chip:hover{border-color:var(--primary-mid);transform:translateY(-1px)}
+.mp-chip .mp-ic{font-size:17px;line-height:1;flex-shrink:0;display:flex;align-items:center}
+.mp-chip .mp-ic.svg{color:var(--primary);opacity:.92}
+.mp-chip .mp-ic.svg svg{width:17px;height:17px;display:block}
+.mp-chip .mp-na{font-size:12px;color:var(--text);font-weight:500;line-height:1.35;flex:1;min-width:0}
+.mp-chip .mp-tick{position:absolute;top:5px;right:6px;width:15px;height:15px;border-radius:50%;background:var(--border-strong);color:#fff;font-size:10px;line-height:15px;text-align:center;opacity:0;transform:scale(.5);transition:all .18s}
+.mp-chip.on{border-color:var(--primary);background:var(--primary-light);box-shadow:0 0 0 1px var(--primary) inset}
+.mp-chip.on .mp-tick{opacity:1;transform:scale(1);background:var(--primary)}
+[data-theme="dark"] .mp-chip{background:#26211A!important;border-color:#3C3427!important}
+[data-theme="dark"] .mp-chip.on{background:#382F24!important;border-color:#6E4F37!important}
+[data-theme="dark"] .mp-chip .mp-na{color:#D8CBB2!important}
+.mp-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 24px;border-top:1px solid var(--border);background:var(--bg);flex-wrap:wrap}
+.mp-gbtn{font-size:13px;border-radius:9px;padding:10px 16px;cursor:pointer;border:1px solid var(--border-strong);background:transparent;color:var(--muted);font-weight:600;transition:all .18s}
+.mp-gbtn:hover{color:var(--primary);border-color:var(--primary)}
+.mp-pbtn{font-size:13px;border-radius:9px;padding:10px 18px;cursor:pointer;border:none;background:var(--primary);color:#fff;font-weight:800;transition:all .18s}
+.mp-pbtn:hover{background:var(--primary-strong)}
+@media(max-width:520px){.mp-head{padding:18px 16px 6px}.mp-sub{padding:4px 16px 8px}.mp-body{padding:4px 16px 8px}.mp-foot{padding:12px 16px}.mp-grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}}
+</style>
+
+<!-- ═══════ 常用模块偏好 · 选择浮层（首次入座后 / 设置里可随时重选） ═══════ -->
+<div class="mp-mask" id="modulePickMask"></div>
+<div class="mp" id="modulePick" role="dialog" aria-modal="true" aria-label="选择常用模块">
+  <div class="mp-inner">
+    <button class="mp-close" onclick="closeModulePick()" title="关闭">✕</button>
+    <div class="mp-head">
+      <h2>挑几个你最常用的板块</h2>
+      <p>点选你真正关心的板块，首页「轻松上手 · 分类导航」就会优先展示它们；其余板块只是暂时藏起，仍可随时从侧边栏或「显示全部板块」点进去。之后可在「系统设置 → 常用模块偏好」随时重新挑选。</p>
+    </div>
+    <div class="mp-sub">
+      <span>已选 <b id="modulePickCount">0</b> 个</span>
+      <span class="mp-quick"><button onclick="mpSelectAll()">全部选中</button><button onclick="mpClear()">清空</button></span>
+    </div>
+    <div class="mp-body" id="modulePickBody"></div>
+    <div class="mp-foot">
+      <button class="mp-gbtn" onclick="mpConfirm(true)">先不选 · 展示全部板块</button>
+      <button class="mp-pbtn" onclick="mpConfirm(false)">完成 · 开始使用</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* 首次入座（或首次关导览）后，弹出「常用模块偏好」引导，只在未选过时触发一次 */
+function maybeOpenPrefPick(){
+  try{ if(localStorage.getItem('pp_pref_done')==='1')return; setTimeout(function(){ if(window.openModulePick)openModulePick(); },380); }catch(e){}
+}
+(function(){
+  var m=document.getElementById('modulePickMask');
+  if(m)m.addEventListener('click',closeModulePick);
+  document.addEventListener('keydown',function(ev){ if(ev.key==='Escape'){ if(window.closeModulePick)closeModulePick(); } });
 })();
 </script>
 <script>
