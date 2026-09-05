@@ -1,0 +1,645 @@
+ /* 1) 板块名命中（沿用侧边栏原有的过滤结果，避免两处口径不一致） */
+    var navs = [];
+    var navEls = document.querySelectorAll('.sidebar .nav-item');
+    for(var a=0; a<navEls.length && navs.length<10; a++){
+      var ne = navEls[a];
+      if(ne.style.display === 'none') continue;
+      var nt = clean(ne.textContent);
+      if(!nt) continue;
+      if(nt.toLowerCase().indexOf(low) < 0) continue;
+      navs.push({ t: nt, view: ne.getAttribute('data-view') || '', el: ne });
+    }
+
+    /* 2) 正文命中：板块标题 + 列表条目 */
+    var hits = [], seen = {};
+    var nodes = document.querySelectorAll('.view h3, .view h4, .view li, .view dt, .view .card p');
+    var LIMIT = Math.min(nodes.length, 5000);
+    for(var i=0; i<LIMIT && hits.length<14; i++){
+      var n = nodes[i];
+      if(n.children.length > 3) continue;
+      var t = clean(n.textContent);
+      if(t.length < 3 || t.length > 110) continue;
+      if(t.toLowerCase().indexOf(low) < 0) continue;
+      var v = n.closest ? n.closest('.view') : null;
+      if(!v) continue;
+      var vid = (v.id || '').replace(/^view-/, '');
+      var key = vid + '|' + t;
+      if(seen[key]) continue;
+      seen[key] = 1;
+      hits.push({ t: t, view: vid, el: n, content: 1 });
+    }
+
+    if(!navs.length && !hits.length){
+      wrap.innerHTML = '<div class="qsr-empty">没有找到「' + esc(q) + '」<br>' +
+                       '换个说法试试，比如「简历」「四级」「记账」</div>';
+    }else{
+      var h = '';
+      if(navs.length){
+        h += '<div class="qsr-grp">板块</div>';
+        for(var j=0;j<navs.length;j++){
+          h += '<button type="button" class="qsr-item" data-view="' + (navs[j].view||'') + '" data-i="' + items.length + '">' +
+                 mark(navs[j].t.slice(0,40), q) + '</button>';
+          items.push(navs[j]);
+        }
+      }
+      if(hits.length){
+        h += '<div class="qsr-grp">板块里的内容</div>';
+        for(var k=0;k<hits.length;k++){
+          h += '<button type="button" class="qsr-item" data-view="' + (hits[k].view||'') + '" data-i="' + items.length + '">' +
+                 mark(hits[k].t, q) +
+                 '<span class="qsr-v">在「' + esc(viewName(hits[k].view)) + '」</span></button>';
+          items.push(hits[k]);
+        }
+      }
+      h += '<div class="qsr-foot">↑↓ 选择 · Enter 打开 · Esc 关闭</div>';
+      wrap.innerHTML = h;
+    }
+
+    cur = -1;
+    wrap.style.display = 'block';
+
+    /* 定位到搜索框正下方（侧边栏是可滚动容器，用相对偏移最稳） */
+    var sb = document.getElementById('sidebar');
+    if(sb && box){
+      try{
+        var rb = box.getBoundingClientRect(), rs = sb.getBoundingClientRect();
+        wrap.style.top = Math.max(0, rb.bottom - rs.top + sb.scrollTop + 6) + 'px';
+      }catch(e){}
+    }
+
+    Array.prototype.forEach.call(wrap.querySelectorAll('.qsr-item'), function(b){
+      /* pointerdown + click 双保险：移动端/桌面都能触发；直接从 data-view 取目标，
+         不再依赖会被 input 失焦清空的 items 数组，彻底解决「点击搜索结果跳不过去」 */
+      var fired = false;
+      var fire = function(ev){
+        if(fired) return; fired = true;
+        ev.preventDefault();
+        var idx = b.getAttribute('data-i');
+        var it = (idx !== null && idx !== '' && items[idx]) ? items[idx] : null;
+        /* 内容级命中去到对应小节的指定位置；板块级命中仅切换板块顶部 */
+        goHitView(b.getAttribute('data-view'), (it && it.content && it.el) ? it.el : null);
+      };
+      b.addEventListener('pointerdown', fire);
+      b.addEventListener('click', fire);
+    });
+  }
+
+  function move(step){
+    if(!wrap || wrap.style.display === 'none') return;
+    var bs = wrap.querySelectorAll('.qsr-item');
+    if(!bs.length) return;
+    if(cur >= 0 && bs[cur]) bs[cur].classList.remove('on');
+    cur = (cur + step + bs.length) % bs.length;
+    bs[cur].classList.add('on');
+    try{ bs[cur].scrollIntoView({block:'nearest'}); }catch(e){}
+  }
+
+  function qxSearchInit(){
+    box = document.getElementById('navSearch');
+    if(!box || document.getElementById('qxSearchRes')) return;
+
+    var st = document.createElement('style');
+    st.textContent = CSS_SR;
+    document.head.appendChild(st);
+
+    wrap = document.createElement('div');
+    wrap.id = 'qxSearchRes';
+    wrap.setAttribute('role','listbox');
+    wrap.setAttribute('aria-label','搜索结果');
+
+    var sb = document.getElementById('sidebar');
+    if(sb){
+      var cs = getComputedStyle(sb);
+      if(cs.position === 'static') sb.style.position = 'relative';
+      sb.appendChild(wrap);                       /* 挂在侧边栏根节点，避免被过滤隐藏 */
+    }else{
+      box.parentNode.insertBefore(wrap, box.nextSibling);
+    }
+
+    box.setAttribute('autocomplete','off');
+    box.setAttribute('aria-label','搜索板块与板块里的内容');
+    if(box.getAttribute('placeholder') === '🔍 搜索板块…') box.setAttribute('placeholder','🔍 搜板块、也搜内容…');
+
+    box.addEventListener('input', function(){
+      clearTimeout(timer);
+      var v = box.value;
+      timer = setTimeout(function(){ render(v); }, 200);   /* 防抖，避免长列表卡顿 */
+    });
+    box.addEventListener('focus', function(){ if(clean(box.value)) render(box.value); });
+    box.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if(e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if(e.key === 'Enter'){
+        if(wrap && wrap.style.display !== 'none' && cur >= 0){
+          e.preventDefault();
+          var it = items[cur];
+          goHitView(it ? it.view : null, (it && it.content && it.el) ? it.el : null);
+        }
+      }else if(e.key === 'Escape'){
+        box.value = '';
+        if(typeof window.filterNav === 'function'){ try{ window.filterNav(''); }catch(e){} }
+        closeRes(); box.blur();
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(wrap && !wrap.contains(e.target) && e.target !== box) closeRes();
+    });
+    box.addEventListener('blur', function(){
+      setTimeout(function(){
+        if(document.activeElement !== box) closeRes();
+      }, 180);
+    });
+
+    /* Ctrl/Cmd + K 唤起 */
+    document.addEventListener('keydown', function(e){
+      if((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')){
+        e.preventDefault();
+        if(window.innerWidth <= 820){
+          var sb2 = document.getElementById('sidebar');
+          if(sb2 && !sb2.classList.contains('show') && typeof window.toggleSidebar === 'function'){
+            try{ window.toggleSidebar(); }catch(err){}
+          }
+        }
+        setTimeout(function(){
+          if(box){ box.focus(); box.select(); }
+          if(clean(box.value)) render(box.value);
+        }, 120);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ 保研3D时间轴 */
+  var B3D_DATA=[
+    {phase:'大一 · 筑基期',title:'绩点为王：打牢保研地基',items:[
+      '<b>摸清规则</b>：9月开学翻学院官网《推免实施细则》，把绩点权重、竞赛加分、名额线逐条记进便签',
+      '<b>绩点为王</b>：高数、英语等学分高的课冲90+；专业排名冲进前10%（保研资格线）',
+      '<b>英语起步</b>：四级一次过，开始给六级铺垫（六级550+是保研硬加分项）',
+      '<b>进互助圈</b>：加保研交流群/直系学长姐，把"过来人"踩过的坑提前记下来',
+      '<b>学期复盘</b>：每期末对照《细则》自检一次，缺什么下学期立刻补，别等大三',
+      '<b>心态</b>：大一绩点低了极难拉回，别信"大二再努力"'
+    ]},
+    {phase:'大二 · 积累期',title:'进组/竞赛/科研，攒能打的牌',items:[
+      '<b>进课题组</b>：跟导师或学长做项目，尽早接触真实科研',
+      '<b>报竞赛</b>：挑战杯、大创、模拟法庭（法学生）等，拿奖进综评',
+      '<b>六级刷分</b>：趁热冲550+，别拖到大三',
+      '<b>保绩点</b>：核心专业课盯紧，别让一两门硬伤课拖垮排名',
+      '<b>建资料库</b>：证书/获奖/项目逐项归档，为文书提前攒素材',
+      '<b>寒暑假</b>：可参加数模/电赛集训或进实验室实训，假期是拉开差距的地方'
+    ]},
+    {phase:'大三上 · 冲刺期',title:'文书打磨 + 锁定目标院校',items:[
+      '<b>写文书</b>：成绩单、排名证明、个人陈述（1000/1500/2000字三版）、2封推荐信',
+      '<b>做院校表</b>：把目标校按"冲/稳/保"三档列成表格：官网网址、截止日、材料、名额一列清',
+      '<b>套磁</b>：给目标导师发邮件附简历和研究兴趣，提前建立印象',
+      '<b>加学长姐</b>：提前加目标院校学长学姐，信息差就是机会差',
+      '<b>模拟网申</b>：先演练填写流程，备好电子材料各命名一套',
+      '<b>避坑</b>：别为竞赛牺牲绩点（绩点是大头）'
+    ]},
+    {phase:'大三下 · 夏令营（3-7月）',title:'黄金窗口：七成名额在此放出',items:[
+      '<b>分批投递</b>：10-15所，注意各校截止日（错过=失去）',
+      '<b>拿 offer</b>：拿到"优秀营员"≈提前录取，锁定心仪去向',
+      '<b>材料备份</b>：扫描件+纸质备齐，网申系统别临期才登',
+      '<b>备面</b>：提前整理高频面试题+英文自我介绍，模拟演练几轮',
+      '<b>绩效跟进</b>：建共享表格跟踪每校投递进度/结果，避免漏接通知',
+      '<b>双线兜底</b>：不冲突就同时背考研公共课打底'
+    ]},
+    {phase:'大三暑假 · 预推免（8-9月）',title:'补录批次：失手者的第二机会',items:[
+      '<b>再投</b>：材料审核+面试，流程更短、门槛比夏令营低',
+      '<b>集中复习</b>：专业课+英语口语突击',
+      '<b>模拟面试</b>：练自我介绍与常见问题，别裸面',
+      '<b>归档材料</b>：把全部电子版统一命名归档到网盘，随取随用',
+      '<b>心态</b>：夏令营没拿到≠失败，预推免才是多数人的主战场'
+    ]},
+    {phase:'大四上 · 九推确认（9.28）',title:'推免系统：3志愿捡漏冲刺',items:[
+      '<b>填志愿</b>：9.28系统开，填3个平行志愿',
+      '<b>备好草稿</b>：系统开放前先拟好志愿顺序和备选，开抢不慌',
+      '<b>快速确认</b>：收到"待录取"须1-2小时内点确认，手慢无',
+      '<b>多校冲突</b>：拿到多个录取先电话确认资格再取舍，别空欢喜',
+      '<b>捡漏</b>：截至10.20，前面有人放弃就补录，别轻易放弃',
+      '<b>保底策略</b>：至少留1个稳妥志愿，避免全押热门'
+    ]},
+    {phase:'录取',title:'尘埃落定：认真度过本科最后一年',items:[
+      '<b>确认录取</b>：系统待录取确认后即为尘埃落定',
+      '<b>办手续</b>：政审、党团组织关系转接、体检、学籍信息核对一次办齐',
+      '<b>归档</b>：把推免相关材料在学院档案馆归档，防止遗漏影响入学',
+      '<b>本科收尾</b>：稳住毕业设计/论文，别因松懈翻车',
+      '<b>提前联系</b>：联系未来导师，了解研究方向，提前预习',
+      '<b>规划暑假</b>：可提前进组做科研或补读研所需技能'
+    ]}
+  ];
+  var b3dIdx=0;
+  function b3dLayout(){
+    var cells=document.querySelectorAll('.b3d-cell');
+    var n=B3D_DATA.length, rot=360/n;
+    /* 半径按可用宽度自适应，但上限收紧，保证卡片不把侧栏文字挡住 */
+    var radius=Math.max(150, Math.min(205, Math.floor((Math.min(window.innerWidth,480)-60)/2/Math.tan(Math.PI/n))));
+    cells.forEach(function(c,i){
+      /* 相隔越远（角度越靠后）的卡片越小、越模糊、越暗，强化真实纵深感 */
+      var ang=((i-b3dIdx)%n+n)%n;            /* 距当前卡片的步数(0=正面) */
+      var depth=Math.min(ang, n-ang);        /* 环形上到背面的最短距离 */
+      var f=1-depth*0.09;                    /* 缩放系数 */
+      c.style.transform='rotateY('+(i*rot)+'deg) translateZ('+radius+'px) scale('+f+')';
+      c.style.opacity = (i===b3dIdx)?1:Math.max(.42,1-depth*0.17);
+      c.style.filter  = (i===b3dIdx)?'none':'blur('+(depth*0.3).toFixed(2)+'px)';
+      if(!c.querySelector('.b3d-tag')) c.insertAdjacentHTML('afterbegin','<div class="b3d-tag">第'+(i+1)+'站</div>');
+    });
+  }
+  function b3dRender(){
+    var ring=document.getElementById('b3dRing');
+    var dots=document.getElementById('b3dDots');
+    var chips=document.getElementById('b3dChips');
+    var title=document.getElementById('b3dTitle');
+    var list=document.getElementById('b3dList');
+    var phase=document.querySelector('.b3d-phase');
+    if(!ring||!B3D_DATA.length) return;
+    var n=B3D_DATA.length;
+    b3dLayout();
+    ring.style.transform='rotateY('+(-b3dIdx*360/n)+'deg)';
+    ring.querySelectorAll('.b3d-cell').forEach(function(c,i){
+      c.classList.toggle('active', i===b3dIdx);
+      c.style.opacity = (i===b3dIdx)?1:Math.max(.42,1-Math.min(Math.abs(i-b3dIdx),n-Math.abs(i-b3dIdx))*0.17);
+    });
+    dots.innerHTML=B3D_DATA.map(function(_,i){
+      return '<div class="b3d-dot'+(i===b3dIdx?' active':'')+'" onclick="b3dGo('+i+')"></div>';
+    }).join('');
+    /* 阶段一键切换按钮：短信第1站~第N站，点击直达 */
+    if(chips){
+      chips.innerHTML=B3D_DATA.map(function(d,i){
+        var label=(''+d.phase).split('·')[0].trim();
+        return '<button type="button" class="b3d-chip'+(i===b3dIdx?' active':'')+'" onclick="b3dGo('+i+')">'+label+'</button>';
+      }).join('');
+    }
+    var d=B3D_DATA[b3dIdx];
+    if(title) title.textContent=d.title;
+    if(phase) phase.textContent=d.phase;
+    if(list) list.innerHTML=d.items.map(function(it){return '<li>'+it+'</li>';}).join('');
+  }
+  function b3dSpin(dir){
+    var n=B3D_DATA.length;
+    b3dIdx=((b3dIdx+dir)%n+n)%n;
+    b3dRender();
+  }
+  function b3dGo(i){ b3dIdx=((i%B3D_DATA.length)+B3D_DATA.length)%B3D_DATA.length; b3dRender(); }
+  /* 暴露到全局：按钮 onclick 与圆点 onclick 需跨作用域访问 */
+  window.b3dSpin=function(d){ b3dSpin(d); };
+  window.b3dGo=function(i){ b3dGo(i); };
+  window.b3dRender=function(){ b3dRender(); };
+  /* —— 保研/考研 定位自测（冲·稳·保） —— */
+  window.baoyanGuess=function(){
+    var el=function(id){return document.getElementById(id);};
+    var r=el('bq-result'); if(!r) return;
+    var score=0;
+    ['bq-rank','bq-gpa','bq-res','bq-cet'].forEach(function(id){score+=(+document.getElementById(id).value)||0;});
+    var tag,txt;
+    if(score>=11){tag='保研冲刺 · 可冲 985/顶尖 211';
+      txt='你的成绩+科研+英语都在第一梯队，重点冲刺名校夏令营。行动：暑假前准备好"冲档"3-5 所目标校的文书（个人陈述+简历+推荐信），6-7 月密集投夏令营；同步留一手公共课打底，防保研失利。';}
+    else if(score>=8){tag='保研稳档 · 冲击知名 211，冲稳结合';
+      txt='你有扎实的资格线，缺的是"亮点加分"。行动：大三上学期补一两个高质量竞赛/进课题组，把排名再往前挤；夏令营采取"2 冲 3 稳 2 保"策略，别只盯着名校。';}
+    else if(score>=5){tag='双线作战 · 保研冲刺 + 考研打底';
+      txt='你有保研希望但不够牢，别押单边。行动：保研照常投夏令营（当彩头），同时提前开始背考研公共课（数学/英语），9 月结果一出就有退路。重点补绩点：学位课冲 90+。';}
+    else{tag='考研为主 · 把时间给考研，保研当加分彩头';
+      txt='当前更现实的是把精力投给考研。行动：立即"2+2+2"择校（见下方卡片），3 月启动公共课；同保研相关的竞赛/绩点仍可顺手经营，有则加分、无则不耗。';}
+    r.innerHTML='<strong style="color:var(--primary-strong)">路线判定：'+tag+'</strong><br><span style="color:var(--muted)">评测得分 '+score+'/12</span><br><br>'+txt;
+  };
+  function b3dInit(){
+    var ring=document.getElementById('b3dRing');
+    if(!ring) return;
+    var n=B3D_DATA.length, degEach=360/n, startDragX=null, startRot=b3dIdx;
+    /* 桌面：拖拽旋转 */
+    ring.style.cursor='grab';
+    ring.addEventListener('mousedown', function(e){
+      startDragX=e.clientX; startRot=b3dIdx; ring.style.cursor='grabbing';
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e){
+      if(startDragX==null) return;
+      var d=e.clientX-startDragX;
+      var delta=Math.round(d/80);
+      if(delta!==0){ var target=(startRot+delta)%n; b3dGo((target+n)%n); }
+    });
+    window.addEventListener('mouseup', function(){ startDragX=null; ring.style.cursor='grab'; });
+    /* 移动端：左右划动 */
+    var tx=0;
+    ring.addEventListener('touchstart', function(e){ tx=e.touches[0].clientX; }, {passive:true});
+    ring.addEventListener('touchend', function(e){
+      var dx=e.changedTouches[0].clientX-tx;
+      if(Math.abs(dx)>30){ b3dSpin(dx<0?1:-1); }
+    }, {passive:true});
+    var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz=setTimeout(b3dRender,160); });
+    b3dRender();
+  }
+  setTimeout(function(){ try{ b3dInit(); }catch(e){} }, 400);
+
+  /* ------------------------------------------------------------------ 启动 */
+  function boot(){
+    try{ ppA11y(); }catch(e){}
+    try{ qxSearchInit(); }catch(e){}
+  }
+  /* 页面内容是动态渲染的（任务/四象限/目标等），需要持续补齐 */
+  function loop(){
+    boot();
+    setTimeout(loop, 2500);
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(loop, 700); });
+  }else{
+    setTimeout(loop, 700);
+  }
+})();
+
+</script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   栖匣 · 增强模块三（boot3）—— 免责提示 / 反诈专区 / 多元发展路径 /
+   导入预览与容错 / 清空双层确认 / 双标签冲突告警 / 存储空间预警 / 备份提醒
+   全自包含、逐功能 try/catch 防御，任何一项失败都不影响站点其它功能。
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var boot3=function(){
+    /* ---------- 0) 工具 ---------- */
+    function el(id){return document.getElementById(id);}
+    function qs(s,c){return (c||document).querySelector(s);}
+    function qsAll(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+    function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+    function SSL(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+    function LS(k,d){try{var v=localStorage.getItem(k);return v==null?d:v;}catch(e){return d;}}
+    var seen={};
+    function banner(viewId,htmlText,kind){
+      try{
+        if(seen['v'+viewId])return;seen['v'+viewId]=1;
+        var v=el(viewId);if(!v)return;
+        var host=qs('h1',v)||qs('h2',v)||v.firstChild;
+        var note=document.createElement('div');
+        note.className='callout callout-'+(kind||'warn');
+        note.setAttribute('role','note');
+        note.style.cssText='margin:10px 2px 14px;font-size:12.5px;line-height:1.9;'
+          +(kind==='danger'?'border-left:4px solid var(--danger-border);':'');
+        note.textContent=htmlText;
+        if(host&&host.parentNode)host.parentNode.insertBefore(note,host.nextSibling);
+        else v.insertBefore(note,v.firstChild);
+      }catch(e){}
+    }
+
+    /* ---------- 1) 第三方内容免责提示（置于各板块标题下方） ---------- */
+    banner('view-finance','⚠️ 本页面理财内容仅为科普教育，不构成任何投资建议，投资有风险，请谨慎决策。','warn');
+    banner('view-mind','⚠️ 本表格仅个人自我记录工具，非专业心理测量量表，结果不能替代医院心理诊断，心理不适请及时寻求专业帮助。','warn');
+    banner('view-tpl','⚠️ 模板仅供学习写作结构与思路，禁止直接复制原文提交作业、考试、保研文书，避免雷同风险。','warn');
+    banner('view-paper','⚠️ 模板仅供学习写作结构与思路，禁止直接复制原文提交作业、考试、保研文书，避免雷同风险。','warn');
+    banner('view-career','⚠️ 页面政策信息为静态参考，规则会更新变动，请务必以本校教务处、教育部官方最新通知为准。','info');
+    banner('view-campus','⚠️ 页面政策信息为静态参考，规则会更新变动，请务必以本校教务处、教育部官方最新通知为准。','info');
+    banner('view-exam','⚠️ 页面政策信息为静态参考，规则会更新变动，请务必以本校教务处、教育部官方最新通知为准。','info');
+    banner('view-study','⚠️ 第三方网课、B站UP主等资源仅作为参考，请自行甄别内容质量与时效。','info');
+
+    /* ---------- 2) 保研去唯一化：多元发展路径平等展示（升学/职业入口） ---------- */
+    [
+      ['view-career','升学与职业发展路径不止一条：保研、考研、考公、就业、创业、gap 调整、跨专业考研…都是值得认真考虑的选择，没有“唯一正确”的路线。请结合自身兴趣、家庭条件与节奏，选择适合你的那一条。'],
+      ['view-campus','同样值得被看到：考公、就业、创业、跨考、或留出 gap 时间想清楚，都是正当且常见的选择。选择适合你的节奏，而非被某种“最优叙事”绑架。']
+    ].forEach(function(p){ var v=qs('#sidebar .nav-item[data-view^="'+p[0].slice(5)+'"]'); if(v) banner(p[0],p[1],'info'); });
+
+    /* ---------- 3) 反校园贷 / 刷单骗局 / 虚假兼职 红色警示专区 ---------- */
+    (function(){
+      try{
+        var safe=el('view-safety');if(!safe||seen.safetyNote)return;seen.safetyNote=1;
+        var box=document.createElement('div');
+        box.className='callout callout-warn';
+        box.setAttribute('data-qx-anti','1');
+        box.style.borderLeft='4px solid var(--danger-border)';
+        box.innerHTML='<strong style="color:var(--danger);font-size:14px">🚨 紧急警示：识别三类高发骗局（务必牢记）</strong>'+
+          '<div style="font-size:12.5px;line-height:2;margin-top:6px"><b>① 校园贷 / 注销校园贷</b>：任何“学生贷”“注销额度”来电都是骗局，正规金融不与学生贷挂钩；缺钱优先走学校困难补助、勤工俭学、家人。<br>'+
+          '<b>② 刷单返利</b>：先给小额甜头、再诱导垫付大额“连单”，对方收款即失联。刷单本就是灰色，赚不到钱只有陷阱。<br>'+
+          '<b>③ 虚假兼职 / 交费入职</b>：先收押金、会费、培训费再“派单”的兼职全是套路；正规兼职不提前收费。入兼职群、拉人头的“工作”尤其警惕。<br>'+
+          '<b style="color:var(--normal,#333)">遇骗局拨打 110 / 96110（反诈专线），心存疑问先和家人老师核实，切勿转账。</b></div>';
+        var host=qs('h1',safe)||safe;
+        if(host&&host.parentNode)host.parentNode.insertBefore(box,host.nextSibling);
+        else safe.insertBefore(box,safe.firstChild);
+      }catch(e){}
+    })();
+
+    /* ---------- 4) 导入备份预览 + 损坏容错 + 确认（覆盖旧 importAll） ---------- */
+    try{
+      if(typeof window.importAll==='function'){
+        var _origImport=window.importAll;
+        function readPreviewKeys(data){
+          var keys=[];Object.keys(data).forEach(function(k){if(k[0]!=='_')keys.push(k);});
+          return keys;
+        }
+        window.importAll=function(ev){
+          var inp=ev&&ev.target;var f=inp&&inp.files?inp.files[0]:null;if(!f)return;
+          var r=new FileReader();
+          r.onload=function(e){
+            var data=null;
+            try{data=JSON.parse(e.target.result);}catch(err){data=null;}
+            if(!data||typeof data!=='object'){window.uiAlert&&uiAlert('⚠️ 无法识别该文件：不是有效的 JSON 备份，未做任何更改。');if(inp)inp.value='';return;}
+            var keys=readPreviewKeys(data);
+            if(!keys.length){window.uiAlert&&uiAlert('⚠️ 该备份内没有可导入的记录内容（可能为空或被人为修改过）。');if(inp)inp.value='';return;}
+            var preview=keys.slice(0,10).map(function(k){return '· '+esc(k);}).join('\n')+(keys.length>10?'\n… 等 '+keys.length+' 项':'');
+            if(!window.uiConfirm)return _origImport(ev);
+            uiConfirm('导入预览：这份备份包含 '+keys.length+' 项本地记录：\n'+preview+'\n\n导入将覆盖当前设备上的同名记录。请先「导出全量备份」留底，再确认是否继续？',function(){
+              var okc=0,failc=0;
+              keys.forEach(function(k){
+                try{
+                  var val=data[k];
+                  localStorage.setItem(k,typeof val==='string'?val:JSON.stringify(val));
+                  okc++;
+                }catch(err){failc++;}
+              });
+              try{localStorage.setItem('pp_last_export',String(Date.now()));}catch(_){}
+              window.uiAlert&&uiAlert('导入完成：成功写入 '+okc+' 项'+(failc?'，已跳过 '+failc+' 项异常数据（未崩溃，其余照常恢复）':'')+'。页面即将刷新。');
+              setTimeout(function(){try{location.reload();}catch(_){}},1700);
+            });
+          };
+          r.onerror=function(){window.uiAlert&&uiAlert('⚠️ 读取文件失败，请重试。');};
+          r.readAsText(f);
+          if(inp)inp.value='';
+        };
+      }
+    }catch(e){}
+
+    /* ---------- 5) 清除全部数据：双层弹窗二次确认 ---------- */
+    try{
+      if(typeof window.clearAll==='function'){
+        var _origClear=window.clearAll;
+        window.clearAll=function(){
+          window.uiConfirm&&uiConfirm('确定清空【全部填写数据】吗？\n（任务 / 打卡 / 笔记 / 心情 / 记录等。产品框架与预置内容将保留。）\n此操作无法撤销，请先「导出数据备份」留底。',function(){
+            window.uiConfirm&&uiConfirm('🛑 再次确认：确定要清空所有填写数据吗？之后将自动刷新页面。',function(){_origClear();});
+          });
+        };
+      }
+    }catch(e){}
+
+    /* ---------- 6) 双标签页编辑冲突告警 ---------- */
+    (function(){
+      try{
+        var tabId=sessionStorage.getItem('qx_tabid')||('t'+Math.random().toString(36).slice(2,9));
+        sessionStorage.setItem('qx_tabid',tabId);
+        var warned=0;
+        function heartbeat(){try{localStorage.setItem('pp_qx_heart',JSON.stringify({id:tabId,t:Date.now()}));}catch(e){}}
+        function check(){
+          try{
+            var raw=localStorage.getItem('pp_qx_heart');if(!raw)return;
+            var h=JSON.parse(raw);if(!h)return;
+            if(h.id!==tabId&&(Date.now()-h.t)<2800&&warned<1){
+              warned++;
+              window.uiAlert&&uiAlert('⚠️ 检测到该站已在另一个浏览器标签页打开\n\n两个标签同时编辑会互相覆盖记录，可能丢失刚写的内容。建议只保留一个标签页操作，另一页尽快关闭或刷新后再用。');
+            }
+          }catch(e){}
+        }
+        heartbeat();check();
+        setInterval(function(){heartbeat();},1500);
+        document.addEventListener('visibilitychange',function(){if(!document.hidden){heartbeat();setTimeout(check,400);}});
+      }catch(e){}
+    })();
+
+    /* ---------- 7) 本地存储空间预警（接近上限时提示清理/导出） ---------- */
+    (function(){
+      try{
+        if(sessionStorage.getItem('qx_stwarn'))return;sessionStorage.setItem('qx_stwarn','1');
+        var est=0;try{est=JSON.stringify(localStorage).length*2;}catch(e){est=0;}
+        if(est>3.8*1024*1024&&est>0){
+          window.uiAlert&&uiAlert('📦 本地存储空间将满（约 '+(est/1024/1024).toFixed(1)+' MB / 约 5MB）\n\n为避免写不进去或数据丢失，建议：① 导出全量备份到网盘；② 清理无用/过期记录后再继续使用。');
+        }
+      }catch(e){}
+    })();
+
+    /* ---------- 8) 自动备份提醒：距上次手动导出 >30 天温和提醒 ---------- */
+    (function(){
+      try{
+        if(sessionStorage.getItem('qx_bknote'))return;sessionStorage.setItem('qx_bknote','1');
+        var last=parseInt(LS('pp_last_export','0'),10)||0;
+        var days=(Date.now()-last)/86400000;
+        if(last>0&&days>30){
+          window.uiAlert&&uiAlert('💡 距你上次手动导出备份已超过 30 天\n\n数据只保存在本机浏览器，建议尽快「导出全量备份」并双份保存（网盘 + 本地文件），防止换设备 / 清缓存 / 更新浏览器时丢失记录。（备份当前不会自动上传云端。）');
+        }
+      }catch(e){}
+    })();
+
+    /* ---------- 9) 锚点标题不被置顶导航遮挡：全站标题 scroll-margin ---------- */
+    try{
+      var st=document.createElement('style');
+      st.textContent='section.view h1,h2,h3,h4,h5,[id]{scroll-margin-top:92px}';
+      document.head.appendChild(st);
+    }catch(e){}
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot3,900);});
+  else setTimeout(boot3,900);
+})();
+</script>
+<script>
+/* 兜底清理：杜绝顶栏重复图标（搜索/帮助出现两次）。
+   旧版 upgrade.js 会在顶栏动态注入 .cu-topnav（又一套搜索+帮助按钮），与本顶栏内置图标叠加。
+   此处作为最后防线，无论 upgrade.js 是旧是缓存，都把残留的 .cu-topnav 移除，
+   保证顶栏始终只保留内置的一套「搜索·帮助·夜间·更多」。 */
+(function(){
+  function cleanup(){
+    try{ var arr=document.querySelectorAll('.cu-topnav'); Array.prototype.forEach.call(arr,function(n){ n.remove(); }); }catch(e){}
+  }
+  cleanup();
+  document.addEventListener('DOMContentLoaded',cleanup);
+  window.addEventListener('load',function(){ setTimeout(cleanup,120); });
+  setTimeout(cleanup,500);
+  setTimeout(cleanup,1500);
+})();
+</script>
+<style>
+/* ═══ 首页「轻松上手」· 常用模块聚焦工具条 ═══ */
+.focus-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 12px;padding:9px 12px;border-radius:10px;background:rgba(111,84,64,.06);border:1px solid var(--border)}
+.focus-toolbar .ft-label{font-size:12px;color:var(--muted);line-height:1.6;flex:1;min-width:160px}
+.focus-toolbar .ft-btns{display:flex;gap:6px;flex-wrap:wrap}
+.focus-toolbar .ft-btn{font-size:12px;border-radius:8px;padding:6px 11px;cursor:pointer;border:1px solid var(--border-strong);background:var(--card);color:var(--primary);font-weight:600;transition:all .15s}
+.focus-toolbar .ft-btn:hover{border-color:var(--primary);background:var(--primary-light)}
+.focus-toolbar .ft-btn.ghost{color:var(--muted)}
+.focus-toolbar .ft-btn.ghost:hover{color:var(--primary)}
+/* ═══ 常用模块偏好 · 全屏选择浮层 ═══ */
+.mp-mask{position:fixed;inset:0;background:rgba(20,26,22,.42);z-index:1600;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s}
+.mp-mask.show{opacity:1;visibility:visible}
+.mp{position:fixed;inset:0;z-index:1602;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s;pointer-events:none}
+.mp.show{opacity:1;visibility:visible;pointer-events:auto}
+.mp-inner{position:relative;width:100%;max-width:720px;max-height:90vh;background:var(--card);border:1px solid var(--border-strong);border-radius:16px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;transform:translateY(12px) scale(.985);transition:transform .24s ease}
+.mp.show .mp-inner{transform:none}
+.mp-close{position:absolute;top:12px;right:12px;z-index:5;width:34px;height:34px;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer}
+.mp-close:hover{background:var(--teal-light)}
+.mp-head{padding:22px 24px 8px}
+.mp-head h2{margin:0;font-size:19px;color:var(--text)}
+.mp-head p{margin:8px 0 0;font-size:12.5px;color:var(--muted);line-height:1.75}
+.mp-sub{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 24px 10px;flex-wrap:wrap}
+.mp-sub>span{font-size:12.5px;color:var(--muted)}
+.mp-sub b{color:var(--primary);font-size:15px}
+.mp-sub .mp-quick{display:flex;gap:6px}
+.mp-sub .mp-quick button{font-size:12px;border-radius:8px;padding:5px 11px;cursor:pointer;border:1px solid var(--border-strong);background:var(--card);color:var(--muted);transition:all .15s}
+.mp-sub .mp-quick button:hover{color:var(--primary);border-color:var(--primary)}
+.mp-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 24px 10px}
+.mp-group{margin-bottom:10px}
+.mp-gname{font-size:12px;color:var(--primary);font-weight:700;letter-spacing:.03em;padding:8px 0 6px}
+.mp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:8px}
+.mp-chip{position:relative;display:flex;align-items:center;gap:7px;padding:9px 10px;border:1px solid var(--border);border-radius:11px;background:var(--bg);cursor:pointer;transition:all .15s;user-select:none}
+.mp-chip:hover{border-color:var(--primary-mid);transform:translateY(-1px)}
+.mp-chip .mp-ic{font-size:17px;line-height:1;flex-shrink:0;display:flex;align-items:center}
+.mp-chip .mp-ic.svg{color:var(--primary);opacity:.92}
+.mp-chip .mp-ic.svg svg{width:17px;height:17px;display:block}
+.mp-chip .mp-na{font-size:12px;color:var(--text);font-weight:500;line-height:1.35;flex:1;min-width:0}
+.mp-chip .mp-tick{position:absolute;top:5px;right:6px;width:15px;height:15px;border-radius:50%;background:var(--border-strong);color:#fff;font-size:10px;line-height:15px;text-align:center;opacity:0;transform:scale(.5);transition:all .18s}
+.mp-chip.on{border-color:var(--primary);background:var(--primary-light);box-shadow:0 0 0 1px var(--primary) inset}
+.mp-chip.on .mp-tick{opacity:1;transform:scale(1);background:var(--primary)}
+[data-theme="dark"] .mp-chip{background:#26211A!important;border-color:#3C3427!important}
+[data-theme="dark"] .mp-chip.on{background:#382F24!important;border-color:#6E4F37!important}
+[data-theme="dark"] .mp-chip .mp-na{color:#D8CBB2!important}
+.mp-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 24px;border-top:1px solid var(--border);background:var(--bg);flex-wrap:wrap}
+.mp-gbtn{font-size:13px;border-radius:9px;padding:10px 16px;cursor:pointer;border:1px solid var(--border-strong);background:transparent;color:var(--muted);font-weight:600;transition:all .18s}
+.mp-gbtn:hover{color:var(--primary);border-color:var(--primary)}
+.mp-pbtn{font-size:13px;border-radius:9px;padding:10px 18px;cursor:pointer;border:none;background:var(--primary);color:#fff;font-weight:800;transition:all .18s}
+.mp-pbtn:hover{background:var(--primary-strong)}
+@media(max-width:520px){.mp-head{padding:18px 16px 6px}.mp-sub{padding:4px 16px 8px}.mp-body{padding:4px 16px 8px}.mp-foot{padding:12px 16px}.mp-grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}}
+/* ═══ 侧边栏联动常用偏好：藏起未选模块及其空分组标题 ═══ */
+.nav-item.nav-hidden,.nav-section.nav-hidden{display:none!important}
+</style>
+
+<!-- ═══════ 常用模块偏好 · 选择浮层（首次入座后 / 设置里可随时重选） ═══════ -->
+<div class="mp-mask" id="modulePickMask"></div>
+<div class="mp" id="modulePick" role="dialog" aria-modal="true" aria-label="选择常用模块">
+  <div class="mp-inner">
+    <button class="mp-close" onclick="closeModulePick()" title="关闭">✕</button>
+    <div class="mp-head">
+      <h2>挑几个你最常用的板块</h2>
+      <p>点选你真正关心的板块，首页「轻松上手 · 分类导航」就会优先展示它们；其余板块只是暂时藏起，仍可随时从侧边栏或「显示全部板块」点进去。之后可在「系统设置 → 常用模块偏好」随时重新挑选。</p>
+    </div>
+    <div class="mp-sub">
+      <span>已选 <b id="modulePickCount">0</b> 个</span>
+      <span class="mp-quick"><button onclick="mpSelectAll()">全部选中</button><button onclick="mpClear()">清空</button></span>
+    </div>
+    <div class="mp-body" id="modulePickBody"></div>
+    <div class="mp-foot">
+      <button class="mp-gbtn" onclick="mpConfirm(true)">先不选 · 展示全部板块</button>
+      <button class="mp-pbtn" onclick="mpConfirm(false)">完成 · 开始使用</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* 首次入座（或首次关导览）后，弹出「常用模块偏好」引导，只在未选过时触发一次 */
+function maybeOpenPrefPick(){
+  try{ if(localStorage.getItem('pp_pref_done')==='1')return; setTimeout(function(){ if(window.openModulePick)openModulePick(); },380); }catch(e){}
+}
+(function(){
+  var m=document.getElementById('modulePickMask');
+  if(m)m.addEventListener('click',closeModulePick);
+  document.addEventListener('keydown',function(ev){ if(ev.key==='Escape'){ if(window.closeModulePick)closeModulePick(); } });
+})();
+</script>
+<script>
+/* 动态年份：所有 data-qx-year 标记与「最近考试日程」标题内的年份，随浏览器系统时间自动滚动，
+   永不残留过时的硬编码年份（符合"信息不陈旧"的产品承诺）。 */
+(function(){
+  function fillYear(){
+    try{
+      var y=new Date().getFullYear();
+      document.querySelectorAll('[data-qx-year]').forEach(function(el){ el.textContent=y; });
+      var ex=document.getElementById('examSchedTitle');
+      if(ex){ ex.textContent=ex.textContent.replace(/\d{4}\s*下半年/,(y)+' 下半年'); }
+    }catch(e){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fillYear);
+  else fillYear();
+  window.addEventListener('pageshow',fillYear);
+})();
+</script>
+</body></html>

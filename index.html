@@ -6,20 +6,26 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>栖匣</title>
 <script>
-/* 栖匣 · 启动加载器 v3（彻底解决白屏）
-   结论（已实测）：GitHub Pages 对 share.html 的「完整下载」可靠，1728182 字节可一次到位；
-   反而是「多段 Range 分块下载」在 2nd+ 段经常被 CDN/代理中断（http=000）。
-   因此不再做大量分块下载，而是：
-     1) 默认一次完整请求 share.html（带缓存戳，携带浏览器自动 gzip 解压）；
-     2) 用「首尾标记」做完整性校验：必须以 <!DOCTYPE 开头、以 </html> 结尾、长度充足；
-     3) 若不完整 → 仅用一次 Range 补齐缺失的末尾字节，拼接后再次校验；
-     4) 仍失败 → 数秒退避后整段重试；最终失败给出可点击的「重新加载」按钮，绝不静默白屏。
-   安全说明：本加载器只请求并执行本站自身 share.html，不读写/上传任何用户数据。
-*/
+/* 栖匣 · 启动加载器 v4（真机彻底修复加载失败）
+   ─ 诊断结论（线上实测）────────────────────────────────────
+   * share.html 全量下载：在用户手机网络上不稳定，会超时/被截断（曾 40s 只拿到尾部），
+     反复整段重试治标不治本；
+   * 多段 Range 分块（v2）：GitHub Pages CDN 在 2nd+ 段频繁回调失败（http=000）。
+   ─ 本方案（v4）────────────────────────────────────────────
+   发布时把 share.html 拆成许多 150KB 的小文件 qx-000.part … 与 manifest.json。
+   小文件即使网络差也能各自带独立校验地稳定传输。加载器：
+     1. 先拉 manifest.json 拿到分片总数与每片大小；
+     2. 顺序/限并发拉取每个 .part，逐一核对 byteLength === 声明值，不匹配即单独重试该片；
+     3. 全部收齐后按偏移拼接，做总长 + 首尾标记双重校验；
+     4. 通过后才将完整内容注入页面；任一步最终失败给出「重新加载」按钮，绝不静默白屏。
+   内容字节与 share.html 完全一致（已本地 MATCH 校验）。
+   安全说明：本加载器只请求本站自身资源，不读写/上传任何用户数据。*/
 (function () {
-  var V = '2026.09.05.final';
-  var SRC = 'share.html?v=' + V;   // 缓存戳：绕过旧 SW/CDN 命中过期 share.html
-  var TRIES = 5;
+  var V = '2026.09.05.parts';
+  var BASE = '';                       // 相对路径
+  var MANIFEST = BASE + 'parts/manifest.json?v=' + V;
+  var TRIES = 4;                       // 单片最大重试次数
+  var CONCURRENCY = 3;                 // 限并发：3 个片同时下，兼顾稳定与速度
 
   function el(id) { return document.getElementById(id); }
   function setNote(t, isErr, pct) {
@@ -28,81 +34,80 @@
     if (b) b.style.width = Math.max(4, Math.min(100, pct || 100)) + '%';
   }
   function fail(msg) {
-    setNote((msg || '加载失败，请检查网络后重试'), true);
+    setNote((msg || '加载失败，请检查网络（可点击重试）'), true);
     var r = el('ld-retry'); if (r) r.style.display = 'inline-block';
   }
   function sleep(ms) { return new Promise(function (res) { setTimeout(res, ms); }); }
-  function render(buf) {
-    setNote('正在初始化界面…', false, 100);
-    var text = new TextDecoder('utf-8').decode(buf);
-    document.open(); document.write(text); document.close();
-  }
-  function looksComplete(buf) {
-    if (!buf || buf.byteLength < 200000) return false;
-    var s = new TextDecoder('utf-8', { fatal: false }).decode(buf.subarray(0, 512));
-    if (s.indexOf('<!DOCTYPE') !== 0) return false;
-    // 校验字符串化尾部是否以 </html> 结尾（容忍 jschardet 级解码误差用宽松匹配）
-    var tail = new TextDecoder('utf-8', { fatal: false }).decode(buf.subarray(buf.byteLength - 512));
-    return tail.indexOf('</html>') >= 0;
+
+  function fetchBuf(url) {
+    return fetch(url, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.arrayBuffer();
+    });
   }
 
-  /* 一次 Range 请求，返回 { buf, total }；total 从 Content-Range 解析 */
-  function fetchRange(start, end) {
-    return fetch(SRC, {
-      headers: { 'Range': 'bytes=' + start + '-' + end, 'cache': 'no-store' }
-    }).then(function (r) {
-      if (r.status !== 206 && !r.ok) throw new Error('range ' + r.status);
-      var total = null, cr = r.headers.get('Content-Range') || '', m = cr.match(/\/(\d+)\s*$/);
-      if (m) total = +m[1];
-      return r.arrayBuffer().then(function (ab) { return { buf: ab, total: total }; });
+  /* 拉取单片，声明长度不符则重试 */
+  function fetchPart(url, expect) {
+    return new Promise(function (resolve, reject) {
+      function attempt(t) {
+        fetchBuf(url).then(function (ab) {
+          if (!expect || ab.byteLength === expect) { resolve(ab); return; }
+          throw new Error('short ' + ab.byteLength + '/' + expect);
+        }).catch(function (e) {
+          if (t < TRIES - 1) { setNote('重试中…', true, 10); setTimeout(function () { attempt(t + 1); }, 500 * (t + 1)); }
+          else reject(e);
+        });
+      }
+      attempt(0);
     });
   }
 
   async function run() {
-    var lastErr = null;
-    for (var attempt = 1; attempt <= TRIES; attempt++) {
-      if (attempt > 1) { setNote('下载被中断，' + (attempt - 1) + '/' + (TRIES - 1) + ' 次重试…', true, 10); await sleep(700 * attempt); }
-      try {
-        setNote('正在加载栖匣…', false, 20);
-        var res = await fetch(SRC, { cache: 'no-store' });
-        if (!res.ok) throw new Error('http ' + res.status);
-        var ab = await res.arrayBuffer();
-        if (looksComplete(ab)) { render(ab); return; }
+    try {
+      setNote('正在加载栖匣…', false, 8);
+      var man = await fetchBuf(MANIFEST).then(function (ab) {
+        return JSON.parse(new TextDecoder('utf-8').decode(ab));
+      });
+      var list = man.parts || man;               // 兼容数组结构
+      var count = man.count || man.parts.length;
+      var total = man.total;
+      var segs = new Array(count);
 
-        /* 不完整：尝试用一次 Range 补齐缺失的末尾 */
-        setNote('校验文件完整性…', false, 55);
-        var start = ab.byteLength;
-        // 未知总长时先发一次 Range 探到 Content-Range /total
-        var probe = await fetchRange(start, start + 262143);
-        var total = probe.total;
-        var tailBuf = probe.buf;
-        if (total && total >= ab.byteLength) {
-          setNote('补齐下载中断的尾部…', false, 75);
-          var seg = new Uint8Array(total);
-          seg.set(new Uint8Array(ab), 0);
-          // 若 Range 只返回了部分，继续抓下一段
-          var off = start + tailBuf.byteLength;
-          seg.set(new Uint8Array(tailBuf), start);
-          while (total && off < total) {
-            var nxt = await fetchRange(off, Math.min(total - 1, off + 262143));
-            seg.set(new Uint8Array(nxt.buf), off);
-            off += nxt.buf.byteLength;
-          }
-          if (looksComplete(seg)) { render(seg); return; }
-        } else if (tailBuf) {
-          // 服务端不支持 Content-Range 头：仅当尾部恰好补满时接纳
-          var merged = new Uint8Array(start + tailBuf.byteLength);
-          merged.set(new Uint8Array(ab), 0);
-          merged.set(new Uint8Array(tailBuf), start);
-          if (looksComplete(merged)) { render(merged); return; }
+      // 限并发下载
+      var queue = list.map(function (p, i) {
+        return { idx: i, url: BASE + 'parts/' + p.name + '?v=' + V, expect: p.size };
+      });
+      var cursor = 0;
+      async function worker() {
+        while (cursor < queue.length) {
+          var it = queue[cursor++];
+          var buf = await fetchPart(it.url, it.expect);
+          segs[it.idx] = new Uint8Array(buf);
+          // 进度
+          var done = segs.filter(function (s) { return !!s; }).length;
+          setNote('正在加载栖匣… ' + Math.round(done / count * 100) + '%', false, Math.max(12, Math.min(95, done / count * 100)));
         }
-        throw new Error('incomplete(' + ab.byteLength + ')');
-      } catch (e) {
-        lastErr = e;
-        // 最后尝试：直接整段重取
       }
+      await Promise.all(Array.from({ length: Math.min(CONCURRENCY, count) }, worker));
+
+      // 完整性：总长 + 首尾标记
+      var len = 0, i;
+      for (i = 0; i < count; i++) { if (!segs[i]) throw new Error('missing ' + i); len += segs[i].length; }
+      if (total != null && len !== total) throw new Error('total ' + len + '/' + total);
+      var buf = new Uint8Array(len);
+      var off = 0;
+      for (i = 0; i < count; i++) { buf.set(segs[i], off); off += segs[i].length; }
+      var head = new TextDecoder('utf-8').decode(buf.subarray(0, 512));
+      var tail = new TextDecoder('utf-8').decode(buf.subarray(len - 512));
+      if (head.indexOf('<!DOCTYPE') !== 0) throw new Error('bad-head');
+      if (tail.indexOf('</html>') < 0) throw new Error('bad-tail');
+
+      setNote('正在初始化界面…', false, 100);
+      var text = new TextDecoder('utf-8').decode(buf);
+      document.open(); document.write(text); document.close();
+    } catch (e) {
+      fail();
     }
-    fail();
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -128,9 +133,9 @@
   }
   .ld-bar { width: 176px; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .22); overflow: hidden; }
   .ld-bar i { display: block; height: 100%; width: 4%; background: #E8C989; border-radius: 3px; transition: width .28s ease; }
-  #ld-note { font-size: 13px; letter-spacing: .4px; color: rgba(255, 255, 255, .92); text-align: center; max-width: 280px; line-height: 1.6; }
+  #ld-note { font-size: 13px; letter-spacing: .4px; color: rgba(255, 255, 255, .92); text-align: center; max-width: 300px; line-height: 1.6; }
   #ld-retry {
-    display: none; margin-top: 4px; padding: 10px 28px; border-radius: 22px;
+    display: none; margin-top: 4px; padding: 10px 30px; border-radius: 22px;
     background: #E8C989; color: #2B2218; border: none; font-size: 14px; font-weight: 600; cursor: pointer;
   }
 </style>

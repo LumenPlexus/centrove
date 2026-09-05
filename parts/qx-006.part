@@ -1,0 +1,1072 @@
+�" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周五&#39;)"><input value="" data-key="15:00|周五" oninput="ttText(&#39;15:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="15:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周六&#39;)"><input value="" data-key="15:00|周六" oninput="ttText(&#39;15:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="15:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周日&#39;)"><input value="" data-key="15:00|周日" oninput="ttText(&#39;15:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">16:00</td><td data-key="16:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周一&#39;)"><input value="" data-key="16:00|周一" oninput="ttText(&#39;16:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="16:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周二&#39;)"><input value="" data-key="16:00|周二" oninput="ttText(&#39;16:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="16:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周三&#39;)"><input value="" data-key="16:00|周三" oninput="ttText(&#39;16:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="16:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周四&#39;)"><input value="" data-key="16:00|周四" oninput="ttText(&#39;16:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="16:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周五&#39;)"><input value="" data-key="16:00|周五" oninput="ttText(&#39;16:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="16:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周六&#39;)"><input value="" data-key="16:00|周六" oninput="ttText(&#39;16:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="16:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;16:00|周日&#39;)"><input value="" data-key="16:00|周日" oninput="ttText(&#39;16:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">17:00</td><td data-key="17:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周一&#39;)"><input value="" data-key="17:00|周一" oninput="ttText(&#39;17:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="17:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周二&#39;)"><input value="" data-key="17:00|周二" oninput="ttText(&#39;17:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="17:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周三&#39;)"><input value="" data-key="17:00|周三" oninput="ttText(&#39;17:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="17:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周四&#39;)"><input value="" data-key="17:00|周四" oninput="ttText(&#39;17:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="17:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周五&#39;)"><input value="" data-key="17:00|周五" oninput="ttText(&#39;17:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="17:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周六&#39;)"><input value="" data-key="17:00|周六" oninput="ttText(&#39;17:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="17:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;17:00|周日&#39;)"><input value="" data-key="17:00|周日" oninput="ttText(&#39;17:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">18:00</td><td data-key="18:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周一&#39;)"><input value="" data-key="18:00|周一" oninput="ttText(&#39;18:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="18:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周二&#39;)"><input value="" data-key="18:00|周二" oninput="ttText(&#39;18:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="18:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周三&#39;)"><input value="" data-key="18:00|周三" oninput="ttText(&#39;18:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="18:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周四&#39;)"><input value="" data-key="18:00|周四" oninput="ttText(&#39;18:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="18:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周五&#39;)"><input value="" data-key="18:00|周五" oninput="ttText(&#39;18:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="18:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周六&#39;)"><input value="" data-key="18:00|周六" oninput="ttText(&#39;18:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="18:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;18:00|周日&#39;)"><input value="" data-key="18:00|周日" oninput="ttText(&#39;18:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">19:00</td><td data-key="19:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周一&#39;)"><input value="" data-key="19:00|周一" oninput="ttText(&#39;19:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="19:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周二&#39;)"><input value="" data-key="19:00|周二" oninput="ttText(&#39;19:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="19:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周三&#39;)"><input value="" data-key="19:00|周三" oninput="ttText(&#39;19:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="19:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周四&#39;)"><input value="" data-key="19:00|周四" oninput="ttText(&#39;19:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="19:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周五&#39;)"><input value="" data-key="19:00|周五" oninput="ttText(&#39;19:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="19:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周六&#39;)"><input value="" data-key="19:00|周六" oninput="ttText(&#39;19:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="19:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;19:00|周日&#39;)"><input value="" data-key="19:00|周日" oninput="ttText(&#39;19:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">20:00</td><td data-key="20:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周一&#39;)"><input value="" data-key="20:00|周一" oninput="ttText(&#39;20:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="20:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周二&#39;)"><input value="" data-key="20:00|周二" oninput="ttText(&#39;20:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="20:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周三&#39;)"><input value="" data-key="20:00|周三" oninput="ttText(&#39;20:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="20:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周四&#39;)"><input value="" data-key="20:00|周四" oninput="ttText(&#39;20:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="20:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周五&#39;)"><input value="" data-key="20:00|周五" oninput="ttText(&#39;20:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="20:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周六&#39;)"><input value="" data-key="20:00|周六" oninput="ttText(&#39;20:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="20:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;20:00|周日&#39;)"><input value="" data-key="20:00|周日" oninput="ttText(&#39;20:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">21:00</td><td data-key="21:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周一&#39;)"><input value="" data-key="21:00|周一" oninput="ttText(&#39;21:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="21:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周二&#39;)"><input value="" data-key="21:00|周二" oninput="ttText(&#39;21:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="21:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周三&#39;)"><input value="" data-key="21:00|周三" oninput="ttText(&#39;21:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="21:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周四&#39;)"><input value="" data-key="21:00|周四" oninput="ttText(&#39;21:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="21:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周五&#39;)"><input value="" data-key="21:00|周五" oninput="ttText(&#39;21:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="21:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周六&#39;)"><input value="" data-key="21:00|周六" oninput="ttText(&#39;21:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="21:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;21:00|周日&#39;)"><input value="" data-key="21:00|周日" oninput="ttText(&#39;21:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">22:00</td><td data-key="22:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周一&#39;)"><input value="" data-key="22:00|周一" oninput="ttText(&#39;22:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="22:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周二&#39;)"><input value="" data-key="22:00|周二" oninput="ttText(&#39;22:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="22:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周三&#39;)"><input value="" data-key="22:00|周三" oninput="ttText(&#39;22:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="22:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周四&#39;)"><input value="" data-key="22:00|周四" oninput="ttText(&#39;22:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="22:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周五&#39;)"><input value="" data-key="22:00|周五" oninput="ttText(&#39;22:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="22:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周六&#39;)"><input value="" data-key="22:00|周六" oninput="ttText(&#39;22:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="22:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;22:00|周日&#39;)"><input value="" data-key="22:00|周日" oninput="ttText(&#39;22:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">23:00</td><td data-key="23:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周一&#39;)"><input value="" data-key="23:00|周一" oninput="ttText(&#39;23:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="23:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周二&#39;)"><input value="" data-key="23:00|周二" oninput="ttText(&#39;23:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="23:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周三&#39;)"><input value="" data-key="23:00|周三" oninput="ttText(&#39;23:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="23:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周四&#39;)"><input value="" data-key="23:00|周四" oninput="ttText(&#39;23:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="23:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周五&#39;)"><input value="" data-key="23:00|周五" oninput="ttText(&#39;23:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="23:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周六&#39;)"><input value="" data-key="23:00|周六" oninput="ttText(&#39;23:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="23:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;23:00|周日&#39;)"><input value="" data-key="23:00|周日" oninput="ttText(&#39;23:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr></tbody></table></div>
+        <button class="btn btn-sm" style="margin-top:10px" onclick="clearTimetable()">清空时间表</button>
+      </div>
+    </section>
+
+    <!-- ═══════ 目标拆解 ═══════ -->
+    <section class="view" id="view-goals">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解</h1>
+        <p>人生目标 · 里程碑进度可视化，勾选即更新进度条</p>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>目标拆解三步法 · 把大目标变成今天能做的动作</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>三步拆解（以"毕业前过法考"为例）</h4>
+            <ol style="font-size:13px;line-height:1.9;padding-left:18px">
+              <li><strong>定终点：</strong>把目标写成"可验证的结果"——法考客观题+主观题全部通过（大三9月考客观、10月考主观）</li>
+              <li><strong>倒推里程碑：</strong>大二：民法刑法民诉先修+每天30分钟法条；大三上：客观题冲刺（刷题3000+）；大三下：主观题专项（案例分析+文书写作）</li>
+              <li><strong>落到今天：</strong>今天就做"背3个刑法罪名构成要件+做10道真题"，做完勾掉，每天一个动作</li>
+            </ol>
+          </div>
+          <div>
+            <h4>让目标不半途而废的 5 个动作</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>写下来并贴出来：</strong>贴在书桌前，每天看见一次</li>
+              <li><strong>设进度条：</strong>下方每个目标卡都能勾里程碑，勾满=完成</li>
+              <li><strong>每周复盘：</strong>周日晚花5分钟看进度，卡住就拆小一步</li>
+              <li><strong>公开承诺：</strong>告诉一个会追问你的人</li>
+              <li><strong>允许休息：</strong>断一天不亏，断一周才亏——明天继续就行</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>怎么用本页：</strong>下方 7 个目标卡可自由改名/增删里程碑，勾选即更新进度条。把"三步法"套到你的目标上：先写终点，再倒推里程碑，最后落到"今天做什么"。</div>
+      </div>      <div id="goalsContainer"><div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:8px"><span contenteditable="true" data-gt="0" onblur="editGoalTitle(0,this)" style="flex:1;font-weight:700;font-size:16px;cursor:text;outline:none">示例1：3 个月内读完 4 本书并输出读书笔记（可修改或删除）</span><button class="btn btn-sm" style="font-size:11px;color:var(--hint)" onclick="delGoal(0)">删除目标</button></div><p contenteditable="true" data-gd="0" onblur="editGoalDesc(0,this)" style="font-size:13px;color:var(--muted);margin:6px 0;cursor:text;outline:none">任何专业的成长都需要"持续输入+输出"。用这个目标训练"读完→写出来→形成自己的观点"的完整闭环。</p><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div class="progress" style="flex:1"><div class="bar" style="width:0%"></div></div><span style="font-size:13px;font-weight:600;color:var(--teal)">0%</span></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-reading&#39;,0)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="0-0" onblur="editGoalMs(0,0,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 1 周：选 4 本书（1 本专业+1 本认知+1 本历史+1 本文学），按难度排序</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(0,0)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-reading&#39;,1)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="0-1" onblur="editGoalMs(0,1,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 1 个月：读完第 1 本专业书，写 1 篇 1500 字读书笔记发到公众号/小红书</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(0,1)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-reading&#39;,2)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="0-2" onblur="editGoalMs(0,2,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 2 个月：读完第 2 本认知书，做 1 页思维导图，记住 3 个核心概念</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(0,2)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-reading&#39;,3)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="0-3" onblur="editGoalMs(0,3,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 3 个月：读完剩下 2 本（每月 1 本），各写 1 篇短评</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(0,3)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-reading&#39;,4)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="0-4" onblur="editGoalMs(0,4,this)" style="flex:1;font-size:13px;cursor:text;outline:none">复盘：把 4 篇笔记整理成合集，看看哪些观点改变了你的行动</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(0,4)">×</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="gmi_0" placeholder="添加里程碑..." style="flex:1"><button class="btn btn-primary btn-sm" onclick="addGoalMs(0)">添加</button></div></div><div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:8px"><span contenteditable="true" data-gt="1" onblur="editGoalTitle(1,this)" style="flex:1;font-weight:700;font-size:16px;cursor:text;outline:none">示例2：90 天养成每周 3 次运动的习惯（可修改或删除）</span><button class="btn btn-sm" style="font-size:11px;color:var(--hint)" onclick="delGoal(1)">删除目标</button></div><p contenteditable="true" data-gd="1" onblur="editGoalDesc(1,this)" style="font-size:13px;color:var(--muted);margin:6px 0;cursor:text;outline:none">健康是所有目标的地基。这个目标训练"小到不可能失败"的习惯搭建：从 1 周 1 次开始，3 个月后自然变成每周 3 次。</p><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div class="progress" style="flex:1"><div class="bar" style="width:0%"></div></div><span style="font-size:13px;font-weight:600;color:var(--teal)">0%</span></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-health&#39;,0)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="1-0" onblur="editGoalMs(1,0,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 1 周：挑 1 项运动（跑步/跳绳/瑜伽/快走），每周 1 次，每次 20 分钟</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(1,0)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-health&#39;,1)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="1-1" onblur="editGoalMs(1,1,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 2 周：每周 2 次，时间加到 30 分钟</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(1,1)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-health&#39;,2)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="1-2" onblur="editGoalMs(1,2,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 3-4 周：每周 3 次，30-40 分钟，记录心率/时长/体感</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(1,2)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-health&#39;,3)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="1-3" onblur="editGoalMs(1,3,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 5-8 周：每周 3 次稳定，给自己设小奖励（完赛奖牌/新装备/泡澡）</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(1,3)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-health&#39;,4)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="1-4" onblur="editGoalMs(1,4,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 9-12 周：维持节奏，月底复盘体重/精神/睡眠的变化</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(1,4)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-health&#39;,5)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="1-5" onblur="editGoalMs(1,5,this)" style="flex:1;font-size:13px;cursor:text;outline:none">结业：把"运动 90 天"的截图发朋友圈，建立长期形象</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(1,5)">×</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="gmi_1" placeholder="添加里程碑..." style="flex:1"><button class="btn btn-primary btn-sm" onclick="addGoalMs(1)">添加</button></div></div><div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:8px"><span contenteditable="true" data-gt="2" onblur="editGoalTitle(2,this)" style="flex:1;font-weight:700;font-size:16px;cursor:text;outline:none">示例3：6 个月内找到一份满意实习或副业（可修改或删除）</span><button class="btn btn-sm" style="font-size:11px;color:var(--hint)" onclick="delGoal(2)">删除目标</button></div><p contenteditable="true" data-gd="2" onblur="editGoalDesc(2,this)" style="font-size:13px;color:var(--muted);margin:6px 0;cursor:text;outline:none">求职/找副业不是"投简历+等结果"，而是"输出+连接+迭代"的系统动作。这套拆解可直接复用。</p><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div class="progress" style="flex:1"><div class="bar" style="width:0%"></div></div><span style="font-size:13px;font-weight:600;color:var(--teal)">0%</span></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-career&#39;,0)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="2-0" onblur="editGoalMs(2,0,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 1-2 周：定 3 个目标岗位/副业方向，分析招聘要求</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(2,0)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-career&#39;,1)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="2-1" onblur="editGoalMs(2,1,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 3-4 周：打磨简历+作品集，投 20 家，先拿面试经验</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(2,1)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-career&#39;,2)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="2-2" onblur="editGoalMs(2,2,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 5-6 周：复盘被拒原因，针对性补短板（技能/案例/表达）</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(2,2)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-career&#39;,3)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="2-3" onblur="editGoalMs(2,3,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 7-10 周：拿到 offer 后选最优；如果还无 offer，进模拟面试</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(2,3)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-career&#39;,4)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="2-4" onblur="editGoalMs(2,4,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 11-16 周：进入工作，前 2 周只观察+提问，之后才上手</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(2,4)">×</button></div><div style="display:flex;align-items:center;gap:6px;padding:3px 0"><input type="checkbox" onchange="toggleGoal(&#39;demo-career&#39;,5)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-gm="2-5" onblur="editGoalMs(2,5,this)" style="flex:1;font-size:13px;cursor:text;outline:none">第 18-24 周：积累 1-2 个可写进简历的成果，准备下一份</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs(2,5)">×</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="gmi_2" placeholder="添加里程碑..." style="flex:1"><button class="btn btn-primary btn-sm" onclick="addGoalMs(2)">添加</button></div></div><div style="height:16px"></div><div class="card" style="border:1px dashed var(--border)"><h3 style="margin-bottom:10px">＋ 添加新目标</h3><input id="newGoalTitle" placeholder="目标名称，如：考取职业资格证" style="width:100%;margin-bottom:6px"><input id="newGoalDesc" placeholder="目标描述（选填）" style="width:100%;margin-bottom:6px"><input id="newGoalMs" placeholder="首个里程碑（选填）" style="width:100%;margin-bottom:6px"><textarea id="newGoalSteps" placeholder="目标拆解步骤（选填）：每行写一条，添加后自动变成可勾选的里程碑。
+例如：
+第1周：完成调研
+第2周：完成初稿
+第3周：修改定稿" style="min-height:90px;margin-bottom:6px"></textarea><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" onclick="addGoal()">添加目标</button><span style="font-size:11px;color:var(--hint)">也可只填名称先创建，之后随时逐条补充里程碑</span></div></div></div>
+    </section>
+
+    <!-- ═══════ 少儿成长（中小学生 + 家长） ═══════ -->
+    
+
+    <!-- ═══════ 职场进阶（职场人通用） ═══════ -->
+    
+
+
+    <!-- ═══════ 眼界珍藏 · 拓宽认知的视野（读观思，见更广的世界） ═══════ -->
+    <section class="view" id="view-vision">
+<div class="section-intro">涉猎的宽度，决定你看到的世界有多大。这里不功利地输入：纪录片、演讲、跨领域书、新鲜见闻——把认知边界一点点撑大。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>眼界珍藏</h1>
+        <p>视野六个方向直达资源 · 纪录片与演讲清单 · 跨领域书单 · 我的视野札记</p>
+      </div>
+
+      <div class="card daily-card" style="margin-bottom:16px;background:linear-gradient(135deg,#EFE9DA,#FBF7EE);border:1px solid var(--border)">
+        <h3 style="color:var(--primary);margin-top:0">把「眼界」放进日程 · 每周三件微行动</h3>
+        <p style="font-size:13.5px;color:var(--text);line-height:1.9;margin:6px 0 4px">眼界不是刷出来的，是攒出来的。不用贪多，每周固定三件小事，一年后你会明显感觉看问题不一样：</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:8px">
+          <div style="border-left:3px solid var(--primary);background:#FBF6EA;padding:10px 13px;border-radius:0 8px 8px 0"><div style="font-weight:600;color:var(--primary);font-size:13px;margin-bottom:4px">① 每周一部好内容</div><div style="font-size:12.5px;line-height:1.7;color:var(--muted)">看 1 集高质量纪录片，或 1 场 TED/优质演讲（下方清单直接进去挑）。</div></div>
+          <div style="border-left:3px solid var(--teal);background:#F4F4E8;padding:10px 13px;border-radius:0 8px 8px 0"><div style="font-weight:600;color:var(--teal);font-size:13px;margin-bottom:4px">② 每周一篇跨领域</div><div style="font-size:12.5px;line-height:1.7;color:var(--muted)">读 1 篇与你专业无关的领域深度文章或一个章节（历史/经济/科学/艺术任选）。</div></div>
+          <div style="border-left:3px solid var(--gold);background:#F9F1DE;padding:10px 13px;border-radius:0 8px 8px 0"><div style="font-weight:600;color:var(--gold-strong, #96692F);font-size:13px;margin-bottom:4px">③ 每周弄懂一个概念</div><div style="font-size:12.5px;line-height:1.7;color:var(--muted)">把新听到的一个概念/一件事，用自己的一句话讲清楚，记到下方「视野札记」。</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>六大视野方向 · 免费直达</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">每个方向给你一个足够好的免费入口，点开即直达，挑一个持续往里钻即可。</p>
+        <div class="grid grid-2">
+          <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+            <div class="info"><div class="name">经济 · 财商</div><div class="desc">「中国大学MOOC」名校经济学/金融基础课免费学，把「钱」看明白</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.jiqizhixin.com/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8"></path><path d="M8 12h8"></path></svg></div>
+            <div class="info"><div class="name">科技 · AI 风向</div><div class="desc">「机器之心」看懂 AI 与前沿科技在发生什么，不被时代甩下</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.dpm.org.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+            <div class="info"><div class="name">历史 · 文明</div><div class="desc">故宫·数字多宝阁，3D 看文物背后的文明脉络，历史原来这么近</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.guokr.com/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"></path><path d="M12 3v9l4.5 2.5"></path></svg></div>
+            <div class="info"><div class="name">科学 · 宇宙</div><div class="desc">「果壳」把硬科学讲成人话，宇宙地球生物，越看越觉得世界奇妙</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.ted.com/talks" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path></svg></div>
+            <div class="info"><div class="name">人文 · 思想</div><div class="desc">TED 经典演讲：全球顶尖大脑的 18 分钟，最划算的认知输入</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.namoc.org/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"></path><path d="M5 21l14-18"></path><path d="M19 21L5 3"></path></svg></div>
+            <div class="info"><div class="name">艺术 · 审美</div><div class="desc">中国美术馆线上展厅：不花钱逛名作，审美的眼光是靠看的</div></div><div class="arrow">↗</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>纪录片与高分演讲清单 · 直接点开看</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">先点「直达」进 B 站/官网，看封面挑一部顺眼的；看完把观感记到下方「视野札记」。</p>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+            <thead><tr style="background:var(--surface);text-align:left"><th style="padding:8px 10px;border:1px solid var(--border)">方向</th><th style="padding:8px 10px;border:1px solid var(--border)">片名 / 主题</th><th style="padding:8px 10px;border:1px solid var(--border)">为什么值得看</th><th style="padding:8px 10px;border:1px solid var(--border)">直达</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">人文</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>但是还有书籍</b></td><td style="padding:8px 10px;border:1px solid var(--border)">讲读书人/编辑/译者的一线故事，看完想读书</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E4%BD%86%E6%98%AF%E8%BF%98%E6%9C%89%E4%B9%A6%E7%B1%8D" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">历史</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>河西走廊</b></td><td style="padding:8px 10px;border:1px solid var(--border)">以「路」串起两千年文明，历史地理绝美</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E6%B2%B3%E8%A5%BF%E8%B5%B0%E5%BB%8A%E7%BA%AA%E5%BD%95%E7%89%87" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">科学</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>宇宙时空之旅 COSMOS</b></td><td style="padding:8px 10px;border:1px solid var(--border)">把仰望星空变成人生体验，格局直接打开</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=COSMOS%20%E5%AE%87%E5%AE%99%E6%97%B6%E7%A9%BA%E4%B9%8B%E6%97%85" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">自然</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>美丽中国</b></td><td style="padding:8px 10px;border:1px solid var(--border)">BBC 团队拍的祖国山河，重新认识脚下大地</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E7%BE%8E%E4%B8%BD%E4%B8%AD%E5%9B%BD%E7%BA%AA%E5%BD%95%E7%89%87" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">社会</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>人生七年</b></td><td style="padding:8px 10px;border:1px solid var(--border)">56 年跟拍一群人，看懂阶层与选择</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://search.bilibili.com/all?keyword=%E4%BA%BA%E7%94%9F%E4%B8%83%E5%B9%B4%20%E7%BA%AA%E5%BD%95%E7%89%87" target="_blank" rel="noopener noreferrer">B站↗</a></td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--border)">思想</td><td style="padding:8px 10px;border:1px solid var(--border)"><b>TED · 如何掌控你的自由时间</b></td><td style="padding:8px 10px;border:1px solid var(--border)">8 分钟改变你对「没时间」的认知（可开中文字幕）</td><td style="padding:8px 10px;border:1px solid var(--border)"><a href="https://www.ted.com/talks/laura_vanderkam_how_to_gain_control_of_your_free_time" target="_blank" rel="noopener noreferrer">TED↗</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>跨领域书目 · 每个方向开一本</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">不必都读，按当下好奇的一个方向挑一本，读完记一句「我get到了什么」。</p>
+        <div class="grid grid-2">
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E4%B8%87%E5%8E%86%E5%8D%81%E4%BA%94%E5%B9%B4" target="_blank" rel="noopener noreferrer"><div class="ico">📜</div><div class="info"><div class="name">历史 · 万历十五年</div><div class="desc">以小见大看懂明朝体制，「大历史观」入门</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E4%B9%A1%E5%9C%9F%E4%B8%AD%E5%9B%BD" target="_blank" rel="noopener noreferrer"><div class="ico">🌾</div><div class="info"><div class="name">社会 · 乡土中国</div><div class="desc">读懂中国社会与人的底层逻辑，费孝通经典</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E8%87%AA%E7%A7%81%E7%9A%84%E5%9F%BA%E5%9B%A0" target="_blank" rel="noopener noreferrer"><div class="ico">🧬</div><div class="info"><div class="name">科学 · 自私的基因</div><div class="desc">颠覆对生命的理解，「道金斯」进化论科普神作</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E8%96%9B%E5%85%86%E4%B8%B0%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%AE%B2%E4%B9%89" target="_blank" rel="noopener noreferrer"><div class="ico">💰</div><div class="info"><div class="name">经济 · 薛兆丰经济学讲义</div><div class="desc">一个经济学视角看世界，决策更有章法</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E6%97%B6%E9%97%B4%E7%AE%80%E5%8F%B2%20%E9%9C%8D%E9%87%91" target="_blank" rel="noopener noreferrer"><div class="ico">🌌</div><div class="info"><div class="name">思想 · 时间简史</div><div class="desc">霍金讲宇宙，把好奇心重新打开</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://weread.qq.com/web/search/books?keyword=%E8%8B%8F%E8%8F%B2%E7%9A%84%E4%B8%96%E7%95%8C" target="_blank" rel="noopener noreferrer"><div class="ico">🧠</div><div class="info"><div class="name">哲学 · 苏菲的世界</div><div class="desc">小说体哲学史，最好懂的哲学入门</div></div><div class="arrow">↗</div></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>我的视野札记（随手记 · 自动保存）</h3>
+        <p style="font-size:13px;color:var(--muted)">读完看完、听到新鲜事，随手记两句。写下来才算真的「装进眼界」。</p>
+        <div style="margin-top:10px">
+          <div style="font-size:12.5px;color:var(--hint);margin-bottom:5px">① 本周新弄懂的一个概念 / 一件事</div>
+          <textarea id="visionNew" placeholder="例：这周搞懂了「复利」——钱生钱，早开始十年差别巨大……" style="min-height:66px;margin-bottom:12px"></textarea>
+          <div style="font-size:12.5px;color:var(--hint);margin-bottom:5px">② 见闻 / 新体验 / 触动我的观点</div>
+          <textarea id="visionExp" placeholder="例：看了《河西走廊》，第一次觉得历史不是背的，是一群人真真切切活过的……" style="min-height:66px;margin-bottom:12px"></textarea>
+          <div style="font-size:12.5px;color:var(--hint);margin-bottom:5px">③ 想看的清单（以后慢慢补看）</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+            <input id="visionIn" placeholder="例：纪录片《我们的星球》、TED·用得上的TED演讲……" style="flex:1;min-width:180px">
+            <button class="btn btn-primary btn-sm" onclick="addVision()">加入清单</button>
+          </div>
+          <div id="visionList"></div>
+        </div>
+      </div>
+
+      <script>
+      /* 眼界珍藏 · 全部数据仅存本机 localStorage，私密安全 */
+      (function(){
+        function load(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
+        function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+        function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+        var a=document.getElementById('visionNew'); if(a){a.value=load('pp_vision_new'); a.addEventListener('input',function(){save('pp_vision_new',a.value)})}
+        var b=document.getElementById('visionExp'); if(b){b.value=load('pp_vision_exp'); b.addEventListener('input',function(){save('pp_vision_exp',b.value)})}
+        var lst=document.getElementById('visionList');
+        function get(){var arr=load('pp_vision_list');try{return JSON.parse(arr)}catch(e){return []}}
+        function render(){
+          var arr=get(); var html;
+          if(!arr.length){ html='<p style="color:var(--hint);font-size:13px">还没有想看的清单 · 加入一条开始攒眼界</p>'; }
+          else{ html=arr.map(function(t,i){return '<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:6px"><span style="flex:1;font-size:13.5px;color:var(--text)">'+esc(t)+'</span><button class="btn btn-sm" data-i="'+i+'">删除</button></div>'}).join(''); }
+          lst.innerHTML=html;
+          lst.querySelectorAll('button[data-i]').forEach(function(btn){btn.onclick=function(){var arr=get();arr.splice(+btn.getAttribute('data-i'),1);save('pp_vision_list',JSON.stringify(arr));render();}});
+        }
+        render();
+        window.addVision=function(){var inp=document.getElementById('visionIn');var v=inp?(inp.value||'').trim():'';if(!v){if(typeof flash==='function')flash('先写点什么再加入');return;}var arr=get();arr.push(v);save('pp_vision_list',JSON.stringify(arr));if(inp)inp.value='';render();if(typeof flash==='function')flash('已加入想看清单');};
+      })();
+      </script>
+    </section>
+
+    <!-- ═══════ 影视·观世界（全年龄通用） ═══════ -->
+    <section class="view" id="view-movie">
+<div class="section-intro">把看过的影剧与当时的感想收好，它们也是成长的一部分。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>幕间观澜</h1>
+        <p>电影电视剧里的人生智慧 · 每日影视金句 · 示范笔记 · 我的观影笔记</p>
+      </div>
+      <div class="callout callout-info"><strong>为什么看电影也能成长：</strong>好电影是浓缩的人生样本——用2小时看完别人一生的选择、困境与觉醒。收集经典台词、提炼启发、迁移到自己的生活场景，观影就从"消遣"变成"输入"。
+<div class="privacy-note">
+  <span class="pn-icon">🔒</span>
+  <span><strong>隐私说明：</strong>你的所有数据（计划、日记、目标等）仅存储在你当前使用的浏览器本地，本产品不收集、不上传、不追踪任何个人信息。换设备或清浏览器数据会丢失，请定期用顶部「导出数据备份」功能保存。<a href="#" onclick="switchView(&#39;about&#39;);return false">了解更多 →</a></span>
+</div>
+
+      <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#4A342710,#A87F3C10);border:1px solid var(--primary-mid)">
+        <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>每日影视金句 <button class="btn btn-sm" style="float:right" onclick="nextMovieQuote()">换一句</button></h3>
+        <div id="movieQuote" style="background:var(--card);border-radius:8px;padding:20px;font-size:16px;line-height:1.9;min-height:110px"><div style="font-size:17px;font-weight:600;line-height:1.7;margin-bottom:12px;text-align:center">「我命由我不由天。」</div><div style="text-align:center;font-size:12px;color:var(--muted);margin-bottom:14px">—— 《哪吒之魔童降世》 · 哪吒的呐喊</div><div style="font-size:13px;color:var(--text);line-height:1.8;background:var(--bg);padding:10px 12px;border-radius:8px;border-left:3px solid var(--primary);margin-bottom:8px"><strong style="color:var(--primary)">解读 · </strong>出身和标签决定不了你，你的选择和行动才决定你。</div><div style="font-size:13px;color:var(--text);line-height:1.8;background:var(--teal-light);padding:10px 12px;border-radius:8px;border-left:3px solid var(--teal)"><strong style="color:var(--teal)">用在哪 · </strong>给自己一个"不认命"的小目标，证明一次自己说了算。</div></div>
+        <p style="text-align:center;font-size:11px;color:var(--hint);margin-top:8px">每日轮换 · 出处 + 解读 + 生活应用</p>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>示范笔记：《肖申克的救赎》——从一部电影学到的 5 件事</h3>
+        <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
+          <h4 style="color:var(--primary);margin-bottom:8px">经典台词（含出处场景）</h4>
+          <ul style="margin-bottom:10px">
+            <li><strong>"希望是美好的，也许是人间至善，而美好的事物永不消逝。"</strong>——安迪在雨中写给瑞德的信</li>
+            <li><strong>"恐惧让你沦为囚犯，希望让你重获自由。"</strong>——安迪与瑞德关于希望的对话</li>
+            <li><strong>"要么忙着活，要么忙着死。"</strong>——安迪在广播室放完音乐后对瑞德说</li>
+            <li><strong>"体制化是这样一种东西：起初你讨厌它，然后你习惯它，最后你离不开它。"</strong>——瑞德关于监狱的独白</li>
+            <li><strong>"得救之道，就在其中。"</strong>——安迪藏在《圣经》里的那把锤子</li>
+          </ul>
+          <h4 style="color:var(--teal);margin-bottom:8px">启发感悟</h4>
+          <p style="margin-bottom:10px">真正的自由不是环境给的，是能力+希望换来的。安迪用 19 年挖一条别人觉得不可能的隧道——不是因为幸运，是因为他每一天都在为那个目标做一点点事。这就是"复利"最动人的版本。</p>
+          <h4 style="color:var(--coral);margin-bottom:8px">可以应用到生活的具体场景</h4>
+          <ul>
+            <li><strong>备考/学习瓶颈期：</strong>把大目标拆成"每天挖一铲子"（每天背 20 个词、做 1 道题），19 年都能挖通，几个月更可以</li>
+            <li><strong>面对不合理环境（宿舍/职场）：</strong>先积累"属于自己的能力锤子"（技能/证书/存款），环境困不住有准备的人</li>
+            <li><strong>情绪低谷时：</strong>像安迪一样"忙着活"——给自己安排具体的事做，行动是恐惧的解药</li>
+            <li><strong>警惕"体制化"：</strong>习惯了熬夜/躺平/抱怨也别让它变成离不开的牢笼，每周做一件跳出舒适区的小事</li>
+          </ul>
+          <h4 style="color:var(--primary);margin-bottom:8px">行动清单</h4>
+          <ul>
+            <li>本周选一部经典电影，用"台词→感悟→应用"三栏写一篇观影笔记</li>
+            <li>把一句话抄下来贴在书桌前："要么忙着活，要么忙着死"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>示范笔记：《垫底辣妹》——把"差生逆袭"变成方法（备考/迷茫期看它最有用）</h3>
+        <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
+          <h4 style="color:var(--primary);margin-bottom:8px">经典台词（含出处场景）</h4>
+          <ul style="margin-bottom:10px">
+            <li><strong>"知道的东西越多，想学的东西也越多，就会有更多未知的领域在等待着你。"</strong>——补习老师坪田鼓励沙耶加时的话</li>
+            <li><strong>"把目标定得高一点，然后全力以赴，这样即使失败了，也差不到哪里去。"</strong>——坪田老师定目标策略</li>
+            <li><strong>"东大不是那么容易的，但努力的人一定有回报。"</strong>——沙耶加决定拼一把时</li>
+            <li><strong>"就算考不上东大，你也一定能找到适合自己的路。"</strong>——母亲对沙耶加的爱与接纳</li>
+          </ul>
+          <h4 style="color:var(--teal);margin-bottom:8px">启发感悟</h4>
+          <p style="margin-bottom:10px">逆袭不是靠"突然开窍"，而是靠"把目标拆到每天能做的具体动作"：从E级垫底到冲刺东大，沙耶加上升的核心是——有人帮她画出了"从底到顶"的阶梯，她每天只走一小步。这恰恰是"目标拆解"最生动的演示：不跟别人比，只跟昨天的自己比。</p>
+          <h4 style="color:var(--coral);margin-bottom:8px">可以应用到生活的具体场景</h4>
+          <ul>
+            <li><strong>备考/四六级/考研：</strong>别定"考过就好"，定一个具体分数，再倒推每天要背多少词、做几道题（对应本台「四六级」「期末冲刺」板块）</li>
+            <li><strong>觉得"我就是学不会数学/英语"：</strong>沙耶加也这么想过，先降难度、从最简单的题拿分，积累正反馈再升级</li>
+            <li><strong>给自己配一个"坪田老师"：</strong>找一个能帮你拆目标、给正反馈的学长/老师/搭子，别一个人闷头扛</li>
+            <li><strong>面对家人/别人的否定：</strong>把"别人说你不行"当成起点，而非终点——用行动而不是辩解来回应</li>
+          </ul>
+          <h4 style="color:var(--primary);margin-bottom:8px">行动清单</h4>
+          <ul>
+            <li>把最近一个大目标拆成"每天5分钟能启动"的一小步</li>
+            <li>找一个能给你正反馈的人，告诉他你的目标，让他帮忙盯进度</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>示范笔记：《当幸福来敲门》——在穷困与打压里保住自己的"能力锤子"</h3>
+        <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
+          <h4 style="color:var(--primary);margin-bottom:8px">经典台词（含出处场景）</h4>
+          <ul style="margin-bottom:10px">
+            <li><strong>"如果你有梦想，就要守护它。当别人做不到的时候，他们就会告诉你，你也做不到。"</strong>——克里斯对儿子说的话</li>
+            <li><strong>"别让别人告诉你你成不了才，即使是我也不行。"</strong>——克里斯对小克里斯</li>
+            <li><strong>"幸福自己会来敲门，生活也总得一沉到底才会反弹。"</strong>——克里斯在洗手间过夜后的自白</li>
+            <li><strong>"你是个好爸爸。"</strong>——儿子对一贫如洗的克里斯最温暖的肯定</li>
+          </ul>
+          <h4 style="color:var(--teal);margin-bottom:8px">启发感悟</h4>
+          <p style="margin-bottom:10px">它讲的不只是"奋斗鸡汤"，而是：在资源最低谷的时候，一个人靠什么撑住？克里斯靠的是——<strong>不放弃自己的专业能力（股票）</strong>、以及"明天一定会比今天好一点"的信念。对我们学生的启示是：家境不好、学校一般、起步慢都没关系，真正决定长期走势的，是你有没有在"别人看不到的地方"坚持积累一项能吃饭的本事。</p>
+          <h4 style="color:var(--coral);margin-bottom:8px">可以应用到生活的具体场景</h4>
+          <ul>
+            <li><strong>专业课/技能积累：</strong>哪怕现在用不上，也把英语、Excel、专业课学扎实，它们就是你的"能力锤子"，环境再差也带得走</li>
+            <li><strong>面对"翻不了身"的自我否定：</strong>把今天分成"找工作/找实习/学技能"三件具体事，用行动代替焦虑（本台「求职渠道清单」可直接落地）</li>
+            <li><strong>物质匮乏但不是赤贫：</strong>珍惜大学里"免费"的图书馆、机房、网课、讲座——这些都是克里斯的"培训机会"，别浪费</li>
+            <li><strong>撑不住时：</strong>像克里斯一样，找一个"具体的人在等你变好"的理由（家人/自己），它比口号更扛摔</li>
+          </ul>
+          <h4 style="color:var(--primary);margin-bottom:8px">行动清单</h4>
+          <ul>
+            <li>写下你正在积累、且"环境带不走"的一门硬本事，本周为它投入3小时</li>
+            <li>盘点一次"免费的成长资源"（图书馆/公开课/学校讲座），把最值得用的一条加进本周计划</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h3>我的观影笔记（随手记 · 自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">格式参考：片名+角色 → 经典台词 → 启发感悟 → 我能用在哪个场景</p>
+        <input id="movieTitle" placeholder="电影/剧名 + 单集" style="margin-bottom:8px">
+        <textarea id="movieNote" placeholder="经典台词 / 启发感悟 / 应用到生活的具体场景" style="min-height:100px"></textarea>
+        <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="addMovie()">保存笔记</button>
+        <div id="movieNoteList" style="margin-top:12px"><p style="color:var(--hint);font-size:13px">还没有观影笔记 · 看完一部电影或剧，用三栏写一篇</p></div>
+      </div>
+    </section>
+    <section class="view" id="view-fun">
+<div class="section-intro">轻松一下，不必愧疚。适度的放松也是一种储备。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>轻松一下</h1>
+        <p>学累了就喘口气 · 这里不教你变强，只陪你放松</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>🌬 一分钟呼吸放松</h3>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9">压力上来的时候，别硬扛。跟着做：吸气 4 秒 → 屏住 4 秒 → 呼气 4 秒，重复 5 次。下面这个格子跟着节奏点就行。</p>
+          <div id="breathDot" style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--primary));margin:16px auto;transition:transform 4s ease-in-out;cursor:pointer" onclick="breathe()"></div>
+          <p style="text-align:center;font-size:13px;color:var(--primary);font-weight:600" id="breathTip">点一下，开始吸气</p>
+        </div>
+        <div class="card">
+          <h3>🎲 今天适合做什么（随机）</h3>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9">不知道该放松还是该学？让缘分决定：</p>
+          <div id="funRandom" style="font-size:15px;color:var(--text);font-weight:600;margin:12px 0;min-height:24px">点下面按钮试试</div>
+          <button class="btn btn-primary btn-sm" onclick="funPick()">帮我选一件</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🌤 今天心情怎么样</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9">不用解释为什么，先选一个最贴近现在的词。选中会收到一句不鸡汤的回话——这里不评判、不催促、不让你"要开心"。</p>
+        <div id="moodBtns" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0"></div>
+        <div id="moodEcho" style="font-size:14px;color:var(--text);line-height:1.9;min-height:22px;background:var(--bg);border-radius:12px;padding:12px 14px;display:none"></div>
+        <div style="margin-top:12px">
+          <div style="font-size:12px;color:var(--hint);margin-bottom:4px">最近 35 天情绪天气（选心情自动记录）</div>
+          <div id="moodTrend"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📝 今天的三件小确幸</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9">每天写三件值得记下的小事——哪怕只是"今天没迟到""食堂阿姨多给了一勺肉"。写着写着，你会发现自己比想象中拥有得多。点"保存今天"就存进本地，随时能回看。</p>
+        <div style="font-size:13px;color:var(--muted);margin:10px 0 4px">今天整体心情（点星评分）：</div>
+        <div id="blessMood" style="display:flex;gap:4px;margin-bottom:12px"></div>
+        <div id="blessInputs" style="display:flex;flex-direction:column;gap:8px;margin:12px 0"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" onclick="saveBless()">保存今天</button>
+          <button class="btn btn-ghost btn-sm" onclick="renderBlessHistory()">看看以前的</button>
+        </div>
+        <div id="blessStreak" style="font-size:12px;color:var(--teal-mid);margin-top:8px;font-weight:600"></div>
+        <div id="blessHistory" style="margin-top:12px"></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎧 声景 · 让背景安静下来</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9">点一下播放，用声音把杂念盖住。适合看书、午休、睡不着的时候。用的是合成音，不联网、不耗流量。</p>
+        <div id="soundBtns" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0"></div>
+        <div id="soundTip" style="font-size:12px;color:var(--hint)">首次播放需要你点一下，浏览器才允许出声。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>💡 一句温柔的话</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9">不想看笑话、也不想被鸡汤灌，就看看这种：不长、不催你、也不假装懂你。点一下换一句。</p>
+        <div id="softLine" style="font-size:15px;color:var(--text);line-height:2;font-style:italic;min-height:24px"></div>
+        <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="nextSoftLine()">换一句</button>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🗒 桌面便签（随手贴·自动保存）</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9">脑子里突然冒出的话、待记的小事、想对自己说的，都贴这儿。多张便签，可增可删，刷新不丢，还能给每张挑个颜色。</p>
+        <div id="noteWall" style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0"></div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <input id="noteInput" placeholder="写点什么…" style="flex:1;min-width:140px" onkeydown="if(event.key==='Enter')addNote()">
+          <span style="display:inline-flex;gap:6px" title="选个颜色">
+            <input type="radio" name="noteColor" value="#FFF4D6" checked style="accent-color:#E8B84B">
+            <input type="radio" name="noteColor" value="#EFE8D8" style="accent-color:#8A6D48">
+            <input type="radio" name="noteColor" value="#F1EBDD" style="accent-color:#9A7348">
+            <input type="radio" name="noteColor" value="#EFE7CF" style="accent-color:#C2A15E">
+            <input type="radio" name="noteColor" value="#FBEEE6" style="accent-color:#B07F63">
+          </span>
+          <button class="btn btn-primary btn-sm" onclick="addNote()">贴一张</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;background:#FFF8EF;border-color:#F2DDB8">
+        <h3 style="color:var(--gold)">关于这个板块</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9">大学不只是卷。累了、丧了、想摆烂一下，都正常。这个板块就是给你喘口气的地方——不打卡、不排行、不制造焦虑。放松完，愿意动的时候再动就好。</p>
+      </div>
+    </section>
+
+
+    <!-- ═══════ 心灵成长（全年龄通用） ═══════ -->
+    <section class="view" id="view-mind">
+<div class="section-intro">情绪和心态没有对错。把起伏如实记下，照顾好自己，比什么都重要。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>心灵成长</h1>
+        <p>情绪管理 · 压力缓解 · 自我关怀 · 关系沟通 · 心理急救箱</p>
+      </div>
+      <div class="callout callout-info"><strong>核心理念：</strong>心理健康不是"没病"，而是"能调节"。所有人都值得学会：识别情绪、应对压力、好好照顾自己。这里的方法对中小学生、学生党、职场人、家长都适用。</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>情绪管理 · 4步降温法</h3>
+          <ol style="font-size:13px;line-height:1.9">
+            <li><strong>命名：</strong>先给情绪起名字（生气/委屈/焦虑/累），命名能立刻降低情绪强度</li>
+            <li><strong>分离：</strong>把"情绪"和"事实"分开写下来——发生了什么 vs 我感觉怎样</li>
+            <li><strong>暂停：</strong>情绪上头时先做3个深呼吸（4-7-8呼吸法），不急着回应</li>
+            <li><strong>行动：</strong>问自己"现在做什么能改善5%"，做一件最小的事</li>
+          </ol>
+          <div class="callout callout-warn" style="margin-top:8px">提醒：情绪没有对错，压抑它才会出问题。允许自己生气/难过，但别让情绪替你做决定。</div>
+        </div>
+        <div class="card">
+          <h3>压力缓解 · 工具箱</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>身体先动：</strong>快走20分钟/深蹲30个——运动是性价比最高的抗压药</li>
+            <li><strong>写下来：</strong>把焦虑的事列成清单，标出"我能控制的"，其余划掉</li>
+            <li><strong>呼吸法：</strong>4秒吸气-7秒屏住-8秒呼气，循环4次，1分钟见效</li>
+            <li><strong>限定担忧时间：</strong>每天固定"担忧15分钟"，其余时间告诉自己"到点再想"</li>
+            <li><strong>睡够觉：</strong>睡眠不足的人抗压能力断崖式下跌</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>自我关怀 · 像对待好朋友一样对待自己</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>换个说法：</strong>把"我真没用"改成"我这次没做好，但我在进步"</li>
+            <li><strong>允许不完美：</strong>完成胜过完美，先做60分再迭代</li>
+            <li><strong>每日3件小确幸：</strong>睡前写下今天3件值得感谢/开心的小事</li>
+            <li><strong>身体照顾：</strong>好好吃饭、按时睡觉、晒晒太阳，身心一体</li>
+            <li><strong>设置边界：</strong>对消耗你的人和事说"不"，不是自私是自爱</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>关系沟通 · 让冲突降温的话术</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>表达感受而非指责：</strong>"你总是这样"→"你这样做的时候，我感到很难受"</li>
+            <li><strong>倾听复述：</strong>"你的意思是……对吗？"——让对方觉得被听见</li>
+            <li><strong>先情绪后问题：</strong>对方情绪激动时，先接情绪（"我知道你很生气"）再谈事</li>
+            <li><strong>用"我"开头：</strong>"我需要……""我希望……"比"你应该……"有效10倍</li>
+            <li><strong>约定冷静期：</strong>激烈争执时暂停15分钟，回来再谈</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">心理急救箱 · 哪些情况需要求助</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li>连续2周以上：情绪低落 / 睡不好 / 吃不下或暴食</li>
+            <li>持续焦虑、心慌，影响上课/上班/生活</li>
+            <li>反复出现"活着没意思"或伤害自己的想法</li>
+            <li>突然的性格大变、社交退缩超过1个月</li>
+          </ul>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>求助是勇敢不是软弱：</strong>学校心理咨询中心（免费保密，预约即可）、医院心理科/精神科、全国统一心理援助热线 <b>12356</b>（24小时）、心理危机救援热线 400-161-9995、北京心理危机干预热线 010-82951332；紧急情况请拨打 120/110。和信任的人说出来，就是第一步。<span style="font-size:11px;color:var(--hint)">（热线号码仅供求助参考，请以当地最新官方公布为准）</span></div>
+        </div>
+        <div class="card">
+          <h3>我的心理自测（每周1次 · 1-5分）</h3>
+          <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每周日晚花3分钟打分，连续2周低于3分请主动寻求帮助。数据只存在你自己的浏览器里。</p>
+          <table class="editable-table">
+            <thead><tr><th>项目</th><th>评分(1-5)</th><th>备注</th></tr></thead>
+            <tbody>
+              <tr><td>睡眠质量</td><td contenteditable="true" data-key="mind-sleep" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="mind-sleep-note" style="cursor:text;background:var(--bg)"></td></tr>
+              <tr><td>情绪状态</td><td contenteditable="true" data-key="mind-mood" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="mind-mood-note" style="cursor:text;background:var(--bg)"></td></tr>
+              <tr><td>压力水平（越高越累）</td><td contenteditable="true" data-key="mind-stress" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="mind-stress-note" style="cursor:text;background:var(--bg)"></td></tr>
+              <tr><td>社交状态</td><td contenteditable="true" data-key="mind-social" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="mind-social-note" style="cursor:text;background:var(--bg)"></td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-info" style="margin-top:8px">打分规则：5=很好，3=一般，1=很差。持续低分不丢人，主动求助是强者的选择。</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7v1a4 4 0 0 1 1 7.87V18a3 3 0 0 1-3 3h-2"></path><path d="M4 12a4 4 0 0 1 1-7.87V4a7 7 0 0 1 14 0v.13A4 4 0 0 1 19 12"></path></svg>21天情绪记录表 + 心理资源清单</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>情绪记录法（每天30秒）</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>记：</strong>每天睡前写下"今天最大的情绪是什么/因为什么/身体哪里发紧"</li>
+              <li><strong>看：</strong>每周日回看7天记录，找出反复出现的"情绪触发器"</li>
+              <li><strong>改：</strong>针对触发器提前准备应对方案（如"考试前必焦虑→提前3天开始复习"）</li>
+              <li><strong>坚持21天：</strong>你会第一次真正"看见"自己的情绪规律，这就是自我关怀的开始</li>
+            </ul>
+          </div>
+          <div>
+            <h4>需要时就用（免费/正规渠道）</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>在校：</strong>学校心理咨询中心（免费、保密，预约即可）</li>
+              <li><strong>全国统一：</strong>心理援助热线 <b>12356</b>（24小时，免费）</li>
+              <li><strong>危机救援：</strong>希望24热线（生命教育与危机干预，24小时免费）<b>400-161-9995</b>；北京心理危机研究与干预中心（24小时）<b>010-82951332</b><span style="font-size:11px;color:var(--hint)">（号码仅供求助参考，以当地官方最新公布为准）</span></li>
+              <li><strong>在线：</strong>"简单心理""壹心理"等平台免费倾诉频道；当地精神卫生中心门诊</li>
+              <li><strong>紧急：</strong>有伤害自己的念头，立刻打120/110或告诉身边信任的人，绝不独处硬扛</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:8px"><strong>记住：</strong>情绪不是敌人，是信号。会照顾情绪的人，学习、工作、关系都会更稳。求助不是脆弱，是成年人的成熟。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🧭 常见心理场景应对速查（遇到就直接照做）</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">道理都懂，难点是"那一刻没话术"。下面这些是具体场景的"急救动作"，收藏起来，遇到就翻。</p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">场景</th><th style="padding:8px;border:1px solid var(--border)">常见信号</th><th style="padding:8px;border:1px solid var(--border)">立刻做（5分钟）</th><th style="padding:8px;border:1px solid var(--border)">长期办法</th></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>开学前的焦虑/到新环境不适应</b></td><td style="padding:8px;border:1px solid var(--border)">失眠、莫名紧张、想逃回家</td><td style="padding:8px;border:1px solid var(--border)">把"怕的事"写下来，圈出能控制的部分；给最亲近的人打个5分钟电话</td><td style="padding:8px;border:1px solid var(--border)">开学第一周主动认识1-2个人，建立"落地感"</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>宿舍/室友矛盾</b></td><td style="padding:8px;border:1px solid var(--border)">憋着不说、越想越气、回避到想搬走</td><td style="padding:8px;border:1px solid var(--border)">用"我感到…是因为…我希望…"句式当场软性表达，别冷战积怨</td><td style="padding:8px;border:1px solid var(--border)">重话不高声、约共同作息规则；实在处不来就走辅导员调解，别内耗</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>想家/孤单</b></td><td style="padding:8px;border:1px solid var(--border)">刷手机到深夜、食欲变化</td><td style="padding:8px;border:1px solid var(--border)">给家里打视频；做一件"只为自己"的小事（自己爱吃的、想看的片）</td><td style="padding:8px;border:1px solid var(--border)">固定每周给家里一次电话；培养一个校内"归属感"（社团/球队/自习搭子）</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>内卷/被比较</b></td><td style="padding:8px;border:1px solid var(--border)">刷到别人晒成绩/offer就心慌、自我否定</td><td style="padding:8px;border:1px solid var(--border)">立刻关掉相关页面；写三个"我最近做到的进步"（哪怕很小）</td><td style="padding:8px;border:1px solid var(--border)">把注意力换到"跟昨天的自己比"，记录自己而非围观别人</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>考前/答辩前崩溃</b></td><td style="padding:8px;border:1px solid var(--border)">手抖、出汗、觉得自己什么都没复习到</td><td style="padding:8px;border:1px solid var(--border)">4-7-8呼吸四轮；把担心写出来；立刻做一道最简单的题找回掌控感</td><td style="padding:8px;border:1px solid var(--border)">提前3天做"精简版"复习让它变可控；考前那天只过框架不再贪新</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>失恋/重大打击后的低谷</b></td><td style="padding:8px;border:1px solid var(--border)">什么都不想干、吃不下或暴食、反复反刍</td><td style="padding:8px;border:1px solid var(--border)">允许难受，给自己设"每天到点停"的边界；出去快走30分钟冲掉情绪</td><td style="padding:8px;border:1px solid var(--border)">一个月后再回顾；若持续2周以上走不出，找心理咨询或拨打12356</td></tr>
+        </tbody></table>
+        <div class="callout callout-info" style="margin-top:8px">共同点：<b>先处理情绪、再处理事情</b>。给情绪5分钟"落地"，你才不会在最冲动的时刻做最坏的决定。</div>
+      </div>
+    </section>
+
+
+  <!-- 底部TabBar（移动端·高频5板块） -->
+  <nav class="bottom-nav" id="bottomNav" hidden>
+    <div class="bottom-nav-item active" data-bv="home" onclick="switchView(&#39;home&#39;);setBottomActive(this)">
+      <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>首页</span>
+    </div>
+    <div class="bottom-nav-item" data-bv="study" onclick="switchView(&#39;study&#39;);setBottomActive(this)">
+      <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span>学业</span>
+    </div>
+    <div class="bottom-nav-item" data-bv="timer" onclick="switchView(&#39;timer&#39;);setBottomActive(this)">
+      <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span>专注</span>
+    </div>
+    <div class="bottom-nav-item" data-bv="health" onclick="switchView(&#39;health&#39;);setBottomActive(this)">
+      <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      <span>健康</span>
+    </div>
+    <div class="bottom-nav-item" data-bv="journal" onclick="switchView(&#39;journal&#39;);setBottomActive(this)">
+      <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+      <span>札记</span>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       新增板块：蟾宫折桂 (exam)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="view view-new" id="view-exam">
+<div class="section-intro">四六级、考研、法考、教资、各类证书的备考都在这里留档。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
+    <div class="page-head">
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>考试规划</h1>
+      <p>四六级 / 考研 / 法考 / 教资 / 公考 — 赶考日历 + 备考兵法，逢考不慌</p>
+    </div>
+    <div class="card">
+      <h3>📅 我的赶考日历</h3>
+      <p style="font-size:12px;color:var(--hint)">点击日期可修改，点击名称可编辑。倒计时自动每天更新。</p>
+      <div id="examCountdownList"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <input id="newExamName" placeholder="考试名称" style="flex:1;min-width:120px">
+        <input type="date" id="newExamDate" style="width:150px">
+        <select id="newExamColor" style="width:90px">
+          <option value="#4A3427">🔵 蓝色</option>
+          <option value="#6E4F37">🟢 绿色</option>
+          <option value="#B07F63">🟠 橙色</option>
+          <option value="#A9803F">🟣 紫色</option>
+          <option value="#C9A24E">🟡 金色</option>
+        </select>
+        <button class="btn btn-primary btn-sm" onclick="addExamCountdown()">添加</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>📚 考试报名入口速查</h3>
+      <div class="grid grid-2">
+        <a class="res-link" href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">📝</div><div class="info"><div class="name">四六级报名</div><div class="desc">cet-bm.neea.edu.cn</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="res-link" href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">🎓</div><div class="info"><div class="name">研究生招生网</div><div class="desc">yz.chsi.com.cn</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="res-link" href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">💻</div><div class="info"><div class="name">计算机等级考试</div><div class="desc">ncre.neea.cn</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="res-link" href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">📖</div><div class="info"><div class="name">教师资格证</div><div class="desc">ntce.neea.edu.cn</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="res-link" href="https://kzp.mof.gov.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">💼</div><div class="info"><div class="name">会计资格考试（初级·中级·高级）</div><div class="desc">kzp.mof.gov.cn 财政部会计评价网</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="res-link" href="https://www.scs.gov.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">🏛</div><div class="info"><div class="name">公务员考试（国考）</div><div class="desc">scs.gov.cn 国家公务员局</div></div><div class="arrow">↗</div>
+        </a>
+      </div>
+      <div class="callout callout-info" style="margin-top:10px"><strong>打不开别慌：</strong>政府/官方站点在微信、QQ 等内嵌浏览器打开时可能白屏或较慢——这是网站自身的访问限制，不是本页或你的问题。若空白：① 长按链接选「在浏览器打开」；② 或直接搜索「四六级报名官网 / 会计考试官网 / 国考官网」找到唯一入口。本页所有链接均为 https 新开页面，普通浏览器可直连。</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>⏰ 备考时间规划建议</h3>
+      <ul>
+        <li><strong>距离&gt;6个月：</strong>基础阶段——背单词、看教材、打牢基础</li>
+        <li><strong>距离3-6个月：</strong>强化阶段——刷真题、整理错题、专项突破</li>
+        <li><strong>距离1-3个月：</strong>冲刺阶段——模拟考、查漏补缺、调整作息</li>
+        <li><strong>距离&lt;1个月：</strong>最后阶段——回顾错题、保持手感、调整心态</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🧠 备考效率要点（按考试拆，让规划用起来更有效）</h3>
+      <div style="font-size:12.5px;line-height:1.75;color:var(--ink)">
+        <div style="background:var(--teal-light);border-left:3px solid var(--primary);padding:9px 11px;border-radius:6px;margin-bottom:10px">
+          <strong>普遍规律——倒排＋反馈：</strong>先看"离考试还有几周"，按周拆底线计划而非完美计划；每周末用真题做1次"计时小自测"看真实水平。考证不是拼时长，是拼"有效反馈次数"——刷完不校对＝白刷。
+        </div>
+        <ul style="margin:0;padding-left:18px">
+          <li><strong>四六级：</strong>先攻听力＋阅读（约占70%），写作翻译背模板＋仿写即可、不追生僻词；真题为王，少买海量模拟题。</li>
+          <li><strong>考研：</strong>暑假是分水岭；英语单词每天固定背到考前；数学 > 英语 > 政治 > 专业课的用力顺序要看目标院校题型，别平均用力。</li>
+          <li><strong>法考：</strong>客观题靠刷题带考点、错题反复做；主观题务必计时手写／打字模拟，别只看解析觉得"会了"。</li>
+          <li><strong>教资：</strong>科目一（综合素质）真题重复率高、作文别跑题；科目二（教育知识）背要点＋练单选；面试多录自己试讲回看教态。</li>
+          <li><strong>公考：</strong>行测先保证稳拿的分（资料／言语／判断），数量留着挑简单题；申论练"概括＋对策"固定句式，少写空话。</li>
+        </ul>
+        <div style="margin-top:10px;font-size:11.5px;opacity:.7">以上为通用经验，具体时间、科目规则以当年各官方通知及你所报院校／省公告为准。</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3 id="examSchedTitle">📆 2026 下半年 · 最近考试日程（以官方最终通知为准）</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border)">考试</th><th style="padding:7px;border:1px solid var(--border)">关键时间</th><th style="padding:7px;border:1px solid var(--border)">官方入口</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>四六级（下半年）</b></td><td style="padding:7px;border:1px solid var(--border)">报名约 9月（窗口仅7-10天）；笔试 12月</td><td style="padding:7px;border:1px solid var(--border)"><a href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">cet-bm.neea.edu.cn ↗</a></td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>教资（下半年）</b></td><td style="padding:7px;border:1px solid var(--border)">笔试 9月；面试 12月</td><td style="padding:7px;border:1px solid var(--border)"><a href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">ntce.neea.edu.cn ↗</a></td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>法考</b></td><td style="padding:7px;border:1px solid var(--border)">客观题 9月；主观题 10月</td><td style="padding:7px;border:1px solid var(--border)"><a href="https://www.moj.gov.cn/" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">moj.gov.cn ↗</a></td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>考研（下一年度）</b></td><td style="padding:7px;border:1px solid var(--border)">约 10月 预报名/报名；12月 初试</td><td style="padding:7px;border:1px solid var(--border)"><a href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">yz.chsi.com.cn ↗</a></td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-warn" style="margin-top:10px"><strong>重要提醒：</strong>四六级报名窗口通常只有 7-10 天且开放日期各校不同，漏报就得等下一场。把报名月份提前写进「考试规划」日历，设个备忘。官网页面的年份链接请以每年最新公告为准。</div>
+    </div>
+    <div class="card" style="margin-top:16px;border-left:3px solid var(--gold)">
+      <h3>📊 备考进度自检（选中即存本地·可多份并行跟踪）</h3>
+      <p style="font-size:12px;color:var(--hint);margin:6px 0 10px">给每场考试建一份"周启动卡"：每周日花2分钟勾掉已完成的有效动作，比"打卡时长"更能反映真实进度。数据存本机，仅自己可见。</p>
+      <div class="grid grid-2">
+        <div>
+          <h4>每周必做（通用）</h4>
+          <label class="chk"><span class="chk-t">背单词/背要点 ≥ 5天（少量高频胜过一天猛灌）</span><input type="checkbox" data-key="exam-w1"></label>
+          <label class="chk"><span class="chk-t">做1套计时真题/模拟题</span><input type="checkbox" data-key="exam-w2"></label>
+          <label class="chk"><span class="chk-t">错题全部二刷并归类</span><input type="checkbox" data-key="exam-w3"></label>
+          <label class="chk"><span class="chk-t">本周踩雷的1个知识点→写进错题本</span><input type="checkbox" data-key="exam-w4"></label>
+        </div>
+        <div>
+          <h4>阶段自评（考前对号入座）</h4>
+          <label class="chk"><span class="chk-t">基础：教材/大纲已过完一遍，能默出框架</span><input type="checkbox" data-key="exam-s1"></label>
+          <label class="chk"><span class="chk-t">强化：真题刷完≥6套且每套都计时校对</span><input type="checkbox" data-key="exam-s2"></label>
+          <label class="chk"><span class="chk-t">冲刺：模拟卷稳定在目标线上/接近满分</span><input type="checkbox" data-key="exam-s3"></label>
+          <label class="chk"><span class="chk-t">考前：作息已调稳，主观题模拟计时≥2轮</span><input type="checkbox" data-key="exam-s4"></label>
+        </div>
+      </div>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>提醒：</strong>勾选不是目的，是用来显形"我到底推进了多少"。如果连续两周周卡基本没勾，说明计划过载或反馈不够——别硬扛，砍掉一项非核心任务。</div>
+    </div>
+    <div class="card" style="margin-top:16px;border-left:3px solid var(--primary)">
+      <h3>🎯 绩点 GPA 计算器 · 一次看懂加权平均</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">
+        <strong>公式：</strong>加权平均绩点 = Σ（课程绩点 × 学分）÷ Σ 学分。不同学校算法略有差异（常见 4.0 制见下表），以下按最常见标准算作参考，最终以你校《学生手册》/教务处的官方算法为准。
+      </p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px" id="gpaTable">
+        <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border);text-align:left">课程</th><th style="padding:7px;border:1px solid var(--border);width:90px">学分</th><th style="padding:7px;border:1px solid var(--border);width:110px">成绩(0-100)</th><th style="padding:7px;border:1px solid var(--border);width:70px">绩点</th><th style="padding:7px;border:1px solid var(--border);width:40px">×</th></tr></thead>
+        <tbody id="gpaBody"></tbody>
+      </table>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="gpaAddRow()">＋ 添加课程</button>
+        <button class="btn btn-sm" style="border-color:var(--primary-mid);color:var(--primary)" onclick="gpaCalc()">计算我的 GPA</button>
+        <button class="btn btn-ghost btn-sm" onclick="gpaReset()">清空重填</button>
+      </div>
+      <div id="gpaResult" class="callout" style="display:none;margin-top:12px"></div>
+      <div class="callout callout-info" style="margin-top:12px">
+        <strong>3 个必须知道的真相（打破信息差）：</strong><br>
+        ① <b>GPA 不是平均分</b>——高学分的公共/必修课拖分最狠，别只盯着单科高分；<br>
+        ② <b>保研看"专业排名"胜于绝对 GPA</b>——3.6 在 A 专业可能靠前，在 B 专业可能掉队，排名才是硬指标；<br>
+        ③ <b>刷分要趁早</b>——重修/刷分的成本很高，大一大二基础课（学分大）就是拉高 GPA 的最佳窗口，别拖到大三大四。
+      </div>
+      <script>
+        (function(){
+          function gpaPoint(s){s=parseFloat(s);if(isNaN(s))return 0;if(s>=90)return 4.0;if(s>=85)return 3.7;if(s>=82)return 3.3;if(s>=78)return 3.0;if(s>=75)return 2.7;if(s>=72)return 2.3;if(s>=68)return 2.0;if(s>=64)return 1.5;if(s>=60)return 1.0;return 0;}
+          window.gpaPoint=gpaPoint;
+          function rowHTML(name,credit,score){
+            return '<tr class="gpa-row"><td style="padding:6px;border:1px solid var(--border)"><input placeholder="课程名" value="'+(name||'')+'" style="width:100%;background:transparent;border:none;color:var(--text)"></td>'+
+              '<td style="padding:6px;border:1px solid var(--border)"><input type="number" min="0" max="30" step="0.5" value="'+(credit||'')+'" placeholder="学分" style="width:60px;background:transparent;border:none;color:var(--text)"></td>'+
+              '<td style="padding:6px;border:1px solid var(--border)"><input type="number" min="0" max="100" value="'+(score||'')+'" placeholder="0-100" style="width:80px;background:transparent;border:none;color:var(--text)"></td>'+
+              '<td style="padding:6px;border:1px solid var(--border);color:var(--primary);font-weight:600" class="gpa-pt">—</td>'+
+              '<td style="padding:6px;border:1px solid var(--border);text-align:center"><button onclick="this.closest(\'tr\').remove()" style="border:none;background:none;color:#B3603F;cursor:pointer;font-size:15px" title="删除">✕</button></td></tr>';
+          }
+          window.gpaReset=function(){var b=document.getElementById('gpaBody');if(b)b.innerHTML=rowHTML('高等数学',4,85)+rowHTML('大学英语',3,88)+rowHTML('思修',2,92);var r=document.getElementById('gpaResult');if(r)r.style.display='none';};
+          window.gpaAddRow=function(){var b=document.getElementById('gpaBody');if(b){var tr=document.createElement('tbody');b.insertAdjacentHTML('beforeend',rowHTML('','',''));}};
+          window.gpaCalc=function(){var rows=document.querySelectorAll('#gpaBody .gpa-row');var sum=0,tot=0,valid=0,missing=0;
+            rows.forEach(function(r){var c=parseFloat((r.cells[1].querySelector('input')||{}).value);var s=parseFloat((r.cells[2].querySelector('input')||{}).value);
+              var p=gpaPoint(s);var pt=r.querySelector('.gpa-pt');if(pt)pt.textContent=(s&&s>0)?p.toFixed(1):'—';
+              if(c>0&&(!isNaN(s)&&s>0)){sum+=p*c;tot+=c;valid++;}else if(c>0)missing++;});
+            var res=document.getElementById('gpaResult');if(!res)return;
+            if(tot<=0){res.style.display='block';res.className='callout callout-warn';res.innerHTML='<strong>还没有有效成绩</strong>：请至少填一门课的学分和成绩，再点计算。';return;}
+            var g=(sum/tot).toFixed(2);
+            var level=g>=3.7?'很能打（保研/奖学金热门区间）':(g>=3.0?'中上（稳定达标区间）':(g>=2.0?'及格线附近（要抓紧拉一拉）':'偏低，大一大二正是拉分窗口'));
+            res.className='callout callout-ok';res.style.display='block';
+            res.innerHTML='<strong>你的加权平均绩点 ≈ '+g+'</strong>（按常见4.0制估算，'+valid+' 门有效课程）。'+level+'。若与你成绩单不一致，请按本校官方算法核对。';
+          };
+          window.gpaReset();
+        })();
+      </script>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       新增板块：竞赛科研日历 (contest)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="view view-new" id="view-contest">
+<div class="section-intro">竞赛与科研贵在一步步扎实：先摸清门槛，再顺着一份省心的清单稳步推进，少走弯路即是积累。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
+    <div class="page-head">
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>竞赛科研日历</h1>
+      <p>挑战杯 / 大创 / 数模 / 互联网+ / 电赛 — 全年节点一览</p>
+    </div>
+    <div class="callout callout-warn" style="margin-bottom:14px">
+      <strong>报名窗口速查（具体日期每年变动，请按当年官方公告为准，勿用旧信息）：</strong>
+      中国国际大学生创新大赛（原互联网+）通常 <strong>5-6月/秋季个别省市另设秋赛</strong> 报名、以当年官网 cy.ncss.cn 公告为准；"挑战杯"揭榜挂帅擂台赛报名多在 5-6月、作品提交以 tiaozhanbei.net 当季公告为准；国家级大创立项报送多数省份 <strong>6-7 月</strong>截止（看本校教务处）。大创&创新大赛都走学校统一申报，先看校内选拔通知再动手。
+    </div>
+    <div class="card">
+      <h3>🏆 竞赛时间线</h3>
+      <div id="contestTimeline"></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>📅 高质量竞赛日历（按月份排序 · 含报名链接）</h3>
+      <p style="font-size:12px;color:var(--hint);margin-bottom:10px">竞赛加分/保研/求职都看重，错过报名窗口=错过一年。点击报名点直达官网。</p>
+      <table>
+        <thead><tr><th>月份</th><th>竞赛</th><th>级别</th><th>内容</th><th>用途</th><th>报名点</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1-3月</strong></td><td>美国大学生数学建模竞赛 MCM/ICM</td><td>国际级</td><td>4天内完成建模论文</td><td>保研/出国强加分</td><td><a href="https://www.comap.org/contests/mcm-icm" target="_blank" rel="noopener noreferrer">comap.org ↗</a></td></tr>
+          <tr><td><strong>2-3月</strong></td><td>"挑战杯"大学生创业计划竞赛（校→省→国）</td><td>国家级</td><td>商业计划书+答辩</td><td>保研核心加分项</td><td><a href="https://www.tiaozhanbei.net/" target="_blank" rel="noopener noreferrer">tiaozhanbei.net ↗</a></td></tr>
+          <tr><td><strong>3-4月</strong></td><td>全国大学生英语竞赛（NECCS）</td><td>国家级</td><td>听力+阅读+写作+智力题</td><td>综测加分/奖学金</td><td><a href="https://www.chinaneccs.cn/" target="_blank" rel="noopener noreferrer">chinaneccs.cn ↗</a></td></tr>
+          <tr><td><strong>3-5月</strong></td><td>蓝桥杯全国软件和信息技术专业人才大赛</td><td>国家级</td><td>程序设计/算法</td><td>计算机/求职加分</td><td><a href="https://lanqiao.cn/" target="_blank" rel="noopener noreferrer">lanqiao.cn ↗</a></td></tr>
+          <tr><td><strong>4-5月</strong></td><td>"外研社·国才杯"全国英语阅读/写作大赛</td><td>国家级</td><td>阅读/写作单科</td><td>保研加分/求职亮点</td><td><a href="https://uchallenge.unipus.cn/" target="_blank" rel="noopener noreferrer">uchallenge.unipus.cn ↗</a></td></tr>
+          <tr><td><strong>4-6月</strong></td><td>全国大学生数学竞赛（CMC）</td><td>国家级</td><td>高数/数学专业组</td><td>保研强加分</td><td><a href="https://www.cms.org.cn/" target="_blank" rel="noopener noreferrer">cms.org.cn ↗</a></td></tr>
+          <tr><td><strong>5-7月</strong></td><td>"互联网+"大学生创新创业大赛</td><td>国家级</td><td>项目BP+路演</td><td>保研顶级加分项</td><td><a href="https://cy.ncss.org.cn/" target="_blank" rel="noopener noreferrer">cy.ncss.org.cn ↗</a></td></tr>
+          <tr><td><strong>6-9月</strong></td><td>全国大学生节能减排社会实践与科技竞赛</td><td>国家级</td><td>节能减排作品</td><td>能源/环境类加分</td><td><a href="https://www.jienengjianpai.org/" target="_blank" rel="noopener noreferrer">jienengjianpai.org ↗</a></td></tr>
+          <tr><td><strong>9-10月</strong></td><td>全国大学生数学建模竞赛（CUMCM）</td><td>国家级</td><td>3天建模论文</td><td>保研核心加分项</td><td><a href="https://www.mcm.edu.cn/" target="_blank" rel="noopener noreferrer">mcm.edu.cn ↗</a></td></tr>
+          <tr><td><strong>9-11月</strong></td><td>"挑战杯"课外学术科技作品竞赛</td><td>国家级</td><td>学术论文+答辩</td><td>保研顶级加分</td><td><a href="https://www.tiaozhanbei.net/" target="_blank" rel="noopener noreferrer">tiaozhanbei.net ↗</a></td></tr>
+          <tr><td><strong>10-12月</strong></td><td>ACM-ICPC国际大学生程序设计竞赛</td><td>国际级</td><td>5小时编程解题</td><td>计算机保研顶级</td><td><a href="https://icpc.global/" target="_blank" rel="noopener noreferrer">icpc.global ↗</a></td></tr>
+          <tr><td><strong>11-12月</strong></td><td>全国大学生化学实验竞赛</td><td>国家级</td><td>实验操作+理论</td><td>化学/材料类加分</td><td><a href="https://www.chemsoc.org.cn/" target="_blank" rel="noopener noreferrer">chemsoc.org.cn ↗</a></td></tr>
+          <tr><td><strong>全年</strong></td><td>大学生创新创业训练计划（大创）</td><td>国家级</td><td>申报立项→研究→结题</td><td>保研必拿项</td><td><a href="https://cn.bing.com/search?q=%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%88%9B%E6%96%B0%E5%88%9B%E4%B8%9A%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92+%E5%AE%98%E7%BD%91" target="_blank" rel="noopener noreferrer">搜索「大创 官网」↗</a></td></tr>
+          <tr><td><strong>全年</strong></td><td>"西门子杯"中国智能制造挑战赛</td><td>国家级</td><td>工程仿真+控制</td><td>工科保研加分</td><td><a href="https://www.siemenscup-cimc.org.cn/" target="_blank" rel="noopener noreferrer">siemenscup-cimc.org.cn ↗</a></td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-warn" style="margin-top:10px"><strong>策略提示：</strong>大一大二先打基础，大三冲国奖。挑2-3个核心竞赛深耕，比参加10个走马观花强。报名时一定先看校内选拔通知，多数竞赛要先通过学校教务处/学工部报名。</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>💡 竞赛准备通用步骤</h3>
+      <ol>
+        <li><strong>组队（提前2-3个月）：</strong>找互补队友（技术+文案+展示），跨专业组队加分</li>
+        <li><strong>选题（提前1-2个月）：</strong>关注社会热点+专业结合+可行性高，避免假大空</li>
+        <li><strong>备赛（持续）：</strong>往届真题必看、优秀作品拆解、导师指导不可少</li>
+        <li><strong>材料提交（赛前1个月）：</strong>申报书反复打磨、PPT简洁有力、视频精炼</li>
+        <li><strong>答辩演练（赛前2周）：</strong>模拟提问、控制时间、团队配合流畅</li>
+      </ol>
+      <div class="callout callout-info" style="margin-top:12px">
+        <strong>保研加分关键：</strong>A类竞赛国家级奖项是保研加分大头。大一就可以开始参与，积累经验。
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🔬 科研冷启动 · 大一也够得着的另一条加分赛道</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">竞争不是只有"竞赛"，跟着导师做课题、发论文、做大创，往往更硬核、更能写进简历。差距就在"敢不敢开口进课题组"。</p>
+      <div class="grid grid-2">
+        <div>
+          <h4>科研 vs 竞赛（先分清）</h4>
+          <table style="font-size:13px;width:100%;border-collapse:collapse">
+            <tbody><tr style="background:#EFE8D8"><th style="padding:6px;border:1px solid var(--border)">维度</th><th style="padding:6px;border:1px solid var(--border)">科研</th><th style="padding:6px;border:1px solid var(--border)">竞赛</th></tr>
+            <tr><td style="padding:6px;border:1px solid var(--border)">产出</td><td style="padding:6px;border:1px solid var(--border)">论文/专利/软著/大创立项</td><td style="padding:6px;border:1px solid var(--border)">获奖作品</td></tr>
+            <tr><td style="padding:6px;border:1px solid var(--border)">周期</td><td style="padding:6px;border:1px solid var(--border)">半年到一两年，细水长流</td><td style="padding:6px;border:1px solid var(--border)">集中冲刺几周</td></tr>
+            <tr><td style="padding:6px;border:1px solid var(--border)">简历价值</td><td style="padding:6px;border:1px solid var(--border)">硬核，直通论文/专利</td><td style="padding:6px;border:1px solid var(--border)">保研/综测加分快</td></tr>
+          </tbody></table>
+        </div>
+        <div>
+          <h4>怎么进课题组（四步）</h4>
+          <ol style="font-size:13px;line-height:1.9">
+            <li><strong>大一打底：</strong>把高数/专业课学好，通读1-2本入门专著+基金类型常识</li>
+            <li><strong>物色导师：</strong>打开学院官网，从"师资-研究方向"，筛出发论文多、愿意带本科生的老师</li>
+            <li><strong>大方发邮件：</strong>见下方模板，附上简历和读过的文献，别空手问</li>
+            <li><strong>先进去打杂：</strong>从查文献/整理数据/跑实验干起，踏实靠谱，名字迟早会印上论文</li>
+          </ol>
+        </div>
+      </div>
+      <div style="background:#EFE8D8;border-radius:8px;padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.9;margin-top:8px">
+        <b>给导师的第一封邮件模板（照着改）：</b>"XX老师您好，我是XX学院XX专业大一/大二XX。拜读了您关于『＿＿课题 』的文章，很受启发。我想在大创/进组方面得到机会，已修读《＿＿》，可胜任查文献、整理数据等工作。随附个人简介与本学期课表，期待您百忙中指点。谢谢。学生：XXX 联系方式：＿＿"——要点：提他研究方向+说清自己能干什么，回复率远高于一句"想跟您做科研"。
+      </div>
+      <div class="callout callout-ok" style="margin-top:8px"><strong>大创（大学生创新创业训练计划）：</strong>走学校统一申报（留意教务处通知），分支3类：创新训练（做研究）/创业训练（做商业计划）/创业实践（落地运营）。立项级别（国家级/省级/校级）直接关乎学分与保研加分，能报国创就别只报校级。</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🏅 竞赛信息差与避坑 · 少走三年的弯路</h3>
+      <ul style="font-size:13px;line-height:2">
+        <li><strong>别只会盯着国赛：</strong>多数竞赛是"校赛→省赛→国赛"层层选拔，先过校内选拔关；校赛获奖同样计入综测，是国赛的敲门砖</li>
+        <li><strong>组队补位不叠加：</strong>技术+文案+设计+答辩各司其职，跨学院互补比全找同专业更出彩</li>
+        <li><strong>申报书先讲清三件事：</strong>解决什么问题+我的创新点+凭什么可行。评委扫读，标题一句能讲清就赢一半</li>
+        <li><strong>答辩控制在3分钟：</strong>按"痛点→方案→成果"讲，提前列"评委最可能质疑的5个点"并准备答法</li>
+        <li><strong>AI可用但要守住边界：</strong>用AI梳理调研、生成初稿可以；但作品核心创意、代码/实物、答辩展示必须自己扛，否则可能构成学术或竞赛不端</li>
+        <li><strong>一个学期主攻1个：</strong>报名10个走马观花，不如把1个做到省级获奖</li>
+      </ul>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>盯节点信息差：</strong>报名截止往往卡在校内通知上，多数竞赛要先经学校教务处/学工部统一报名。把教务处官网、学院通知群设为常看，别错过校内截止（错过=再等一年）。</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>📝 大创申报书 · 结构模板 + 范文示例（照着填就能过初筛）</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">评审老师在申报书上看四件事：<b>你解决什么 / 创新点是否成立 / 方案可不可行 / 能不能产出成果</b>。下面这份是"创新训练"类的通用结构（多数学校申报书字段也大同小异），原文可直接复制后逐段替换成你自己的内容。</p>
+      <div id="dachangTpl" style="white-space:pre-wrap;background:var(--bg);padding:14px;border-radius:10px;border:1px solid var(--border);font-size:12.5px;line-height:1.75;margin-bottom:10px">一、项目基本信息
+  项目名称：基于＿＿的高校食堂剩餐现状调查与减量对策研究
+  项目类别：创新训练项目　　负责人：＿＿　　指导教师：＿＿（职称：＿＿）
+
+二、立项依据
+  1. 问题背景：当前高校食堂剩餐现象普遍，餐饮浪费数据触目惊心（可引全国/本校调研数字）。
+  2. 现状与不足：已有研究多集中于宏观政策或"光盘行动"，缺少针对本校场景的具体数据与可落地的对策。
+  3. 立项必要性：通过精准摸底＋对策建议，为后勤/学工提供可执行的改进依据。
+
+三、研究目标
+  本课题拟用X个月，摸清本校食堂剩餐的规模、高峰时段与成因，提炼出3条可落地减量对策。
+
+四、研究内容与创新点
+  创新点（选1-2个，别贪多）：
+  · 方法新：引入＿＿（如餐盘称重/刷卡数据/问卷三源交叉验证）；
+  · 视角新：从"档口备餐与销售预测"而非仅"学生意识"切入；
+  · 落地新：对策直接对接后勤采购/分餐制度的可操作清单。
+
+五、研究方法与步骤
+  阶段一（第1-2月）：文献梳理＋设计问卷与测量方案
+  阶段二（第3-5月）：实地测量＋问卷发放回收（样本≥N）＋数据整理
+  阶段三（第6-7月）：数据分析、成因归纳
+  阶段四（第8-9月）：撰写调研报告、提出对策建议、结题
+
+六、预期成果
+  · 调研报告1份（约X万字）
+  · 减量对策建议清单1份（可交后勤/学工参考）
+  · 力争形成小论文或认定成果。
+
+七、团队分工
+  负责人：统筹与报告执笔；成员A：数据测量与录入；成员B：问卷设计与分析；成员C：文献与对策整理。
+
+八、可行性分析
+  数据可获取（本校后勤配合）、方法成熟（称重＋问卷）、队伍有分工、周期可行、经费够用。
+
+九、经费预算
+  问卷打印/印刷：＿元；调研补给：＿元；交通：＿元；成果打印：＿元；合计：＿元（与步骤一一对应）。</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="copyDachang()">复制范文</button>
+      </div>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>AI 辅助申报书三要三不要：</strong>可让 AI"梳理论点、整理措辞、把口水话改书面化、帮我列出优缺点"；不要直接整段照抄 AI 生成内容、不要让它编造数据/文献、不要依赖它替代自己的实地调研。申报书的核心（选题、数据、方案）必须真实是你自己做的——这是诚信红线。
+      </div>
+      <script>
+        (function(){window.copyDachang=function(){var t=document.getElementById('dachangTpl');if(!t)return;var ta=document.createElement('textarea');ta.value=t.innerText;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);var d=document.createElement('div');d.textContent='已复制，粘贴到申报书里逐段替换即可';d.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#2F2A21;color:#fff;padding:10px 16px;border-radius:8px;font-size:13px;z-index:9999';document.body.appendChild(d);setTimeout(function(){d.remove();},1800);};})();
+      </script>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       助学帮扶 (perk) · 国家、社会与学校对学子的资助与支持：奖助学金 + 助学贷款 + 困难帮扶 + 学生权益
+       按「所对应的真实需要」引导选择：保住学籍 → 生活保障 → 自食其力 → 学业优秀 → 能力认可 → 日常权益
+       ════════════════════════════════════════════════════════════ -->
+  <section class="view view-new" id="view-perk">
+<div class="section-intro">助学帮扶信息仅供参考，请以学校与国家官方最新通知为准。该申请的帮助，别不好意思要。</div>
+    <div class="page-head">
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>助学帮扶</h1>
+      <p>奖助学金 · 助学贷款 · 困难帮扶 · 学生权益——先看清标准与门槛，按真实需求、如实申报；符合就勇敢申请，不符合也不勉强</p>
+    </div>
+    <div class="callout callout-info"><strong>先说明：</strong>奖学金、助学金、助学贷款与困难帮扶，是国家、社会和学校为<b>符合条件、确有正当需要</b>的学子提供的支持与鼓励。这里的每一项都应<b>如实申报、按需申请</b>：真正需要的人要敢于申请，不必把名额让给别人；不符合条件的人也不必勉强办理。本板块只把「<b>标准、适合谁、如何申请、能得到什么</b>」讲清楚，帮你稳妥地用好应得的支持。</div>
+
+    <div class="card">
+      <h3>🗺 从哪个开始？先想清楚你现在需要解决什么</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:8px">不必一次办完所有项目。按你<strong>当前最需要解决的事</strong>挑对应的一项即可，逐条看清标准再申请。金额与名称为全国通用版，具体以本校当年通知为准。</p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border)">你现在需要解决</th><th style="padding:7px;border:1px solid var(--border)">可关注的项目</th><th style="padding:7px;border:1px solid var(--border)">金额参考</th><th style="padding:7px;border:1px solid var(--border)">申请时机</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:7px;border:1px solid var(--border)">一时凑不齐学费，先保住学籍</td><td style="padding:7px;border:1px solid var(--border)">绿色通道 / 国家助学贷款</td><td style="padding:7px;border:1px solid var(--border)">本专科最高 2万/年（贷款在校期间无息）</td><td style="padding:7px;border:1px solid var(--border)">报到时 / 随时可办</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">家庭经济确实困难，需要生活保障</td><td style="padding:7px;border:1px solid var(--border)">家庭经济困难认定 → 国家助学金</td><td style="padding:7px;border:1px solid var(--border)">平均约 3700/年，多按 10 个月发放</td><td style="padding:7px;border:1px solid var(--border)">通常开学初（约 9 月）集中开展</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">生活费紧张，想靠劳动自食其力</td><td style="padding:7px;border:1px solid var(--border)">校内勤工助学</td><td style="padding:7px;border:1px solid var(--border)">不低于 12 元/小时</td><td style="padding:7px;border:1px solid var(--border)">随时（名额有限，建议早报名）</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">学业优秀，希望获得荣誉与鼓励</td><td style="padding:7px;border:1px solid var(--border)">国家励志 / 国家奖学金</td><td style="padding:7px;border:1px solid var(--border)">励志 5000 / 国家 10000 元每年</td><td style="padding:7px;border:1px solid var(--border)">每学年一次（约 9-10 月）</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">参赛获奖，能力得到认可</td><td style="padding:7px;border:1px solid var(--border)">学科竞赛奖励</td><td style="padding:7px;border:1px solid var(--border)">校级到国家级不等</td><td style="padding:7px;border:1px solid var(--border)">按赛事通知</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">日常出行、学习想节省开支</td><td style="padding:7px;border:1px solid var(--border)">学生优惠认证</td><td style="padding:7px;border:1px solid var(--border)">火车票、正版软件、会员等学生价</td><td style="padding:7px;border:1px solid var(--border)">一次认证，逐年续期</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>通用口径：</strong>以下金额与名称为<strong>全国通用版</strong>；各省、各校的名额与细则，以<strong>本校学工部 / 资助管理中心</strong>当年通知为准（奖助学金集中通知通常每年 9-10 月发布）。先看本校通知，再按提示申请。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px;border-left:4px solid var(--primary-mid)">
+      <h3>🎯 家庭经济困难认定 · 很多助学金、励志奖学金、绿色通道的共同前提</h3>
+      <div class="callout callout-info" style="margin-top:4px"><strong>一句话讲清：</strong>家庭经济困难认定是由国家 / 学校组织的家庭经济状况核查。<b>它不是"人人可申请"的普惠项目</b>，而只面向<b>家庭确实存在经济困难</b>的学生——通过认定后，才具备申报国家助学金、国家励志奖学金、学费减免、困难补助等一系列帮扶的资格。</div>
+      <h4 style="margin:12px 0 6px">① 什么人适合申请（认定对象）</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>本人及家庭确实存在经济困难：如父母务农 / 失业 / 重大疾病、家庭受灾、多子女同时就学、单亲或主要劳动力丧失等</li>
+        <li>本人自愿申请、如实申报家庭情况，愿意接受学校核查与评议</li>
+        <li>认定分<b>特别困难、困难、一般困难</b>等级，家庭经济好转后等级可动态调整</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">② 为什么申请（认定的价值）</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>是申报<b>国家助学金、国家励志奖学金、学费减免、困难补助</b>等多项帮扶的共同前提</li>
+        <li>让国家和学校按真实困难程度精准帮扶，把有限的资源给最需要的人</li>
+        <li>诚实申报、按需使用，把名额让给真正困难的同学，本身就是负责任的做法</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">③ 申请能得到什么</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>通过后按困难等级获得对应资格：一般困难 → 可申报国家助学金（平均约 3700 元/年）；特别困难 → 绿色通道、学费缓缴、困难补助等优先</li>
+        <li>认定结果通常<b>一学年有效</b>，次学年需重新申请、动态核查</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">④ 如何申请（流程）</h4>
+      <ol style="font-size:13px;line-height:1.9;margin-left:18px">
+        <li>留意学工部 / 资助管理中心通知，通常开学初（每年 9 月左右）集中开展</li>
+        <li>如实填报《家庭经济困难学生认定申请表》，准备必要佐证材料（家庭情况说明等）</li>
+        <li>经班级评议 → 学院审核 → 学校认定并公示（为保护隐私，公示一般做脱敏处理）</li>
+        <li>公示无异议后入库，正式成为可申报对象</li>
+      </ol>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>诚信红线：</strong>必须<b>如实申报</b>。弄虚作假骗取认定，一经查实将取消资格、追回已获资助，并记入诚信记录——非常不值得。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px;border-left:4px solid var(--primary-mid)">
+      <h3>🟢 绿色通道 · 不让家庭特困新生因暂时凑不齐学费而进不了校门</h3>
+      <div class="callout callout-info" style="margin-top:4px"><strong>一句话讲清：</strong>绿色通道是面向<b>家庭经济特别困难、入学时确实无法一次性缴清学费 / 住宿费</b>的新生的一项保障，让你<b>先入学报到、安顿好，之后再办理助学贷款或缓缴学费</b>。它不是"免学费"，也不是人人可用，有明确的适用对象和后续义务。</div>
+      <h4 style="margin:12px 0 6px">① 什么人适合（适用对象）</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>家庭经济特别困难、入学时确实无法一次缴清学宿费的新生（含已通过家庭经济困难认定者）</li>
+        <li>孤儿、低保、脱贫家庭、残疾学生、家庭突发重大变故等情形优先</li>
+        <li>由新生报到及需补办情况统一经学校学生资助管理中心受理</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">② 为什么申请</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>确保你<b>不会因为缴费问题被拒之门外</b>，先保住学籍、顺利开始大学生活</li>
+        <li>为后续办理助学贷款 / 学费缓缴 / 助学金争取从容时间，而非被迫放弃上学</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">③ 申请能得到什么</h4>
+      <ul style="font-size:13px;line-height:1.9">
+        <li>报到当天"先注册、后缴费"，办理学费缓缴，或现场衔接国家助学贷款（在校期间利息国家承担）</li>
+        <li>同步对接助学金 / 困难补助等，确保基本生活有保障</li>
+      </ul>
+      <h4 style="margin:10px 0 6px">④ 如何申请（流程）</h4>
+      <ol style="font-size:13px;line-height:1.9;margin-left:18px">
+        <li>报到当天到各校"绿色通道"办理点 / 学生资助管理中心说明情况</li>
+        <li>出示家庭经济困难相关材料（认定表、佐证等），填写申请单</li>
+        <li>学校审核后办理缓缴或现场衔接助学贷款，先入校报到</li>
+        <li>入学后按通知补办后续事项（贷款发放 / 分期缴纳等）</li>
+      </ol>
+      <div class="callout callout-info" style="margin-top:8px"><strong>一定要还的：</strong>绿色通道是"缓"不是"免"，学费最终通过助学贷款或分期方式缴清。请按学校约定按时办理，以免影响学籍与征信。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>🏅 国家·本专科生奖学金（2025-2026 现行标准）</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border)">项目</th><th style="padding:7px;border:1px solid var(--border)">金额</th><th style="padding:7px;border:1px solid var(--border)">关键条件</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家奖学金</b></td><td style="padding:7px;border:1px solid var(--border)">每生每年 <b>10000 元</b></td><td style="padding:7px;border:1px solid var(--border)">特别优秀，二年级起可申报</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家励志奖学金</b></td><td style="padding:7px;border:1px solid var(--border)">每生每年 <b>5000 元</b></td><td style="padding:7px;border:1px solid var(--border)">品学兼优 + 家庭经济困难认定</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)"><b>国家助学金</b></td><td style="padding:7px;border:1px solid var(--border)">平均 <b>3700 元/年</b>，各校可在 2500–5000 内定，多按10个月发放</td><td style="padding:7px;border:1px solid var(--border)">需家庭经济困难认定，覆盖约20%本科生</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-warn" style="margin-top:10px"><strong>互斥红线：</strong>国家奖学金与国家励志奖学金<strong>不能同年同时获得</strong>；退役士兵学生全部享受国家助学金。另有校级/院级、社会捐赠类奖学金（各类基金会、企业奖助），名额与金额看本校通知。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>🎓 研究生资助（读研别错过）</h3>
+      <ul style="font-size:13px;line-height:1.95">
+        <li><strong>研究生国家奖学金：</strong>硕士 <b>2万/年</b>，博士 <b>3万/年</b>（每年奖励硕士约7万名、博士约2万名）</li>
+        <li><strong>研究生国家助学金：</strong>中央高校硕士6000/年、博士1.5万/年，有固定工资收入者除外，无需申请自动发放</li>
+        <li><strong>中央高校学业奖学金：</strong>硕士由8000提高到10000元/年，博士由10000提高到12000元/年（2025 年起执行）</li>
+        <li><strong>直博 / 硕博连读</strong>及各类专项（艰苦行业、军队等）另有标准，同看本校研究生院通知。</li>
+      </ul>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:16px">
+      <div class="card">
+        <h3>💳 国家助学贷款（在校生利息国家承担）</h3>
+        <ul style="font-size:13px;line-height:1.9">
+          <li><strong>额度：</strong>本专科最高 <b>2万/年</b>，研究生最高 <b>2.5万/年</b></li>
+          <li><strong>期限：</strong>学制+15年，最长不超过22年</li>
+          <li><strong>利率：</strong>同期同档次LPR减70个基点，在校期间利息国家承担</li>
+          <li><b>方式：</b>生源地信用助学贷款（回户籍地办，手续快）或 校园地国家助学贷款</li>
+          <li><strong>提醒：</strong>毕业后主动跟进还款计划，别因忘还而影响个人征信。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🛟 其他资助 · 值得留意的项目</h3>
+        <ul style="font-size:13px;line-height:1.9">
+          <li><strong>勤工助学：</strong>校内临时岗位每小时不低于12元（部分高校更高，如成都大学约23元/小时）</li>
+          <li><strong>绿色通道：</strong>家庭特困新生可先报到注册，入学后再办贷款 / 缓缴</li>
+          <li><strong>基层就业补偿：</strong>到中西部/艰苦边远地区县以下单位就业满3年，可补偿学费 / 代偿贷款</li>
+          <li><strong>服兵役资助：</strong>本专科每年最高2万、研究生2.5万，另有学费补偿 / 贷款代偿</li>
+          <li><strong>滋蕙计划：</strong>中西部生源地特困新生可申请入学路费 + 短期生活费资助</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>🏆 学科竞赛 · 获奖是荣誉，也常有奖励</h3>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.7">以 2026 年"挑战杯"揭榜挂帅擂台赛为例：擂主团队税后<b>不低于 10 万元</b>，特等奖不低于2万元、一等奖不低于1万元、二等奖不低于0.5万元、三等奖不低于0.2万元。此外「互联网+」、数模、蓝桥杯等获奖也常带奖级奖金，许多校级竞赛还有评优评先加分。</p>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>申请铁律：</strong>先看本校通知（学工部/资助中心/教务处）再行动；材料通常要：成绩单、困难认定、个人事迹、获奖证书、导师/辅导员推荐、感谢信。提前把成绩单和证书扫描件存好（PDF 备份），申请季不慌。</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>📞 求助口收藏 · 卡住了就找这里</h3>
+      <ul style="font-size:13px;line-height:1.9">
+        <li><strong>教育部高校学生资助热线：</strong>010-66097980 / 010-66096590（每年7月-9月，8:00-20:00）</li>
+        <li>国家助学贷款咨询：生源地教育局学生资助管理中心 或 就读高校学生资助中心</li>
+        <li>学费减免、困难补助：直接找本校学生资助管理中心 / 辅导员</li>
+        <li>买学生火车票遇阻：12306 铁路客服与车站学生资质核验窗口</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#4A342705,#A87F3C05);border:1px dashed var(--primary-mid)">
+      <h3>🛡 下半篇：省钱篇 · 学生优惠认证，一次配齐全年省</h3>
+      <div class="callout callout-warn" style="margin-top:4px"><strong>先提醒：</strong>以下优惠多数需要"学生认证"（用学校 .edu 邮箱或学生证 / 学信网学籍）。认证有效期常为逐年，<strong>过期后重新认证</strong>才能继续享受，建议每学期初检查一遍。</div>
+      <div class="grid grid-2" style="margin-top:8px">
+        <div class="card">
+          <h3>🚄 火车票学生优惠</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>优惠区间：</strong>学校至家庭所在地之间，一年内往返次数（毕业生当年还常有额外单程优惠次数）</li>
+            <li><strong>资质核验：</strong>先在 12306 App 验证学生资质（绑定学籍+优惠区间），每年可线上核验</li>
+            <li><strong>优惠标准：</strong>硬座5折、动车/高铁二等座约7.5折（按席别）</li>
+            <li><b>注意：</b>每学年首用前核验一次，别等到车站才发现用不了</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>💻 数码 / 软件教育优惠</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>Apple：</strong>教育商店 Mac/iPad 学生优惠（每年开学季叠加返校季活动）</li>
+            <li><strong>京东校园：</strong>学生认证后可享学生价/专享券，数码、学习用品折扣</li>
+            <li><strong>华为 / 小米 / 联想：</strong>教育认证直降或赠品</li>
+            <li><strong>正版软件：</strong>微软 Office（学校常提供免费）、Adobe 教育版、JetBrains 学生授权免费</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🎬 视频 / 音乐会员学生价</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li>爱奇艺、腾讯视频、优酷、芒果TV、B站大会员等均有学生认证优惠区间</li>
+            <li>QQ音乐、网易云音乐、酷狗等对学生用户有专享价</li>
+            <li><strong>入口：</strong>各App「个人中心-会员-学生优惠」，用学信网 / 校园邮箱认证即可</li>
+            <li>别买"共享号"黑卡，直接官网学生价既安全又划算</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🍔 生活 / 出行学生折扣</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>支付宝：</strong>完成学生验证可享餐饮、出行等专属学生价</li>
+            <li><strong>交通卡：</strong>一线城市地铁/公交有学生卡，办理通常要学校开证明/学籍认证</li>
+            <li><strong>景区/演出：</strong>多数景点、博物馆学生票半价（带学生证/学信网详情），部分免费</li>
+            <li><strong>快递/酒店：</strong>部分平台有学生专享折扣，下单前搜"学生"字眼</li>
+          </ul>
+        </div>
+      </div>
+      <h3 style="margin-top:14px">✅ 校园认证清单 · 照着做一遍</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:6px">
+        <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border)">平台</th><th style="padding:7px;border:1px solid var(--border)">认证方式</th><th style="padding:7px;border:1px solid var(--border)">有效期 & 提醒</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:7px;border:1px solid var(--border)">12306 学生资质</td><td style="padding:7px;border:1px solid var(--border)">App内学籍绑定+优惠区间</td><td style="padding:7px;border:1px solid var(--border)">每学年首用前核验</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">Apple教育 / 京东校园</td><td style="padding:7px;border:1px solid var(--border)">校园邮箱或学信网详情</td><td style="padding:7px;border:1px solid var(--border)">逐年/按学籍有效期</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">支付宝学生价</td><td style="padding:7px;border:1px solid var(--border)">学生验证+校园信息</td><td style="padding:7px;border:1px solid var(--border)">按学籍有效期</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">视频/音乐会员</td><td style="padding:7px;border:1px solid var(--border)">App内教育认证</td><td style="padding:7px;border:1px solid var(--border)">一般1年，需续期</td></tr>
+          <tr><td style="padding:7px;border:1px solid var(--border)">地铁/公交学生卡</td><td style="padding:7px;border:1px solid var(--border)">学校证明/学籍办理</td><td style="padding:7px;border:1px solid var(--border)">逐年年检</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-ok" style="margin-top:10px"><strong>划重点：</strong>学生优惠是用好你作为学生的正当权益，一次配齐常用平台认证，平时能省下一笔可观的生活费。这条和上面的奖助合起来，就是本台常说的：<b>该省的省、该用的用，把正当的学生权益用好</b>。</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       新增板块：习惯养成实验室 (habits)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="view view-new" id="view-habits">
+<div class="section-intro">把事情拆小，顺着自己的节奏慢慢攒，偶尔停下、回落，也都算数。</div>
+    <div class="page-head">
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>习惯养成实验室</h1>
+      <p>21天养成一个习惯 · 打卡追踪 · 可视化曲线</p>
+    </div>
+    <div class="card">
+      <h3>✅ 今日习惯打卡</h3>
+      <p style="font-size:12px;color:var(--hint)">点击圆圈完成打卡，连续打卡会显示火焰图标 🔥</p>
+      <div id="habitList"></div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <input id="newHabitName" placeholder="新习惯名称（如：背单词30个）" style="flex:1">
+        <select id="newHabitIcon" style="width:70px">
+          <option value="📖">📖</option><option value="🏃">🏃</option><option value="😴">😴</option>
+          <option value="💧">💧</option><option value="🧘">🧘</option><option value="📱">📱</option>
+        </select>
+        <button class="btn btn-primary btn-sm" onclick="addHabit()">添加</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>📈 打卡热力图 · 近 6 周</h3>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:4px">每个格子代表一天，颜色越深代表当天打卡的好习惯越多。<strong>只要你去「习惯养成」板块打卡，这里的颜色会当天自动变深</strong>；没打卡就是浅灰。坚持越久，整片绿得越亮眼。</p>
+      <div id="habitTotals" style="display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 10px"></div>
+      <div id="habitHeatmap" style="margin-top:0"></div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:11px;color:var(--hint)">
+        <span>少</span>
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--heat-0)"></span>
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--heat-1)"></span>
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--heat-2)"></span>
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--heat-3)"></span>
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--heat-4)"></span>
+        <span>多</span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🧠 习惯养成科学方法</h3>
+      <ul>
+        <li><strong>微习惯策略：</strong>从"每天读1页书"开始，而不是"每天读1小时"。小到不可能失败。</li>
+        <li><strong>触发锚定：</strong>把新习惯绑定在已有习惯后——"刷牙后立刻背5个单词"</li>
+        <li><strong>环境设计：</strong>把吉他放在沙发旁而非柜子里；把手机放另一个房间</li>
+        <li><strong>两分钟规则：</strong>任何习惯不超过2分钟开始成本</li>
+        <li><strong>从不间断两次：</strong>错过一次没关系，但绝不错过连续两次</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🗓 21 天执行表 · 每天照着做的具体动作</h3>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:8px">别一次定一堆习惯，<strong>一次只驯一个</strong>。把你想养成的习惯套进下面三阶段，每天只需 3-5 分钟，坚持 21 天自然固化。</p>
+      <div class="grid grid-3">
+        <div style="border-left:3px solid var(--coral);padding-left:12px">
+          <h4 style="color:var(--coral)">第1-7天 · 破冰期（关键是"开始"）</h4>
+          <ul style="font-size:12.5px;line-height:1.85">
+            <li><strong>目标缩到足够小：</strong>"背5个单词"而不是"背1章"——目的不是量，是让你毫无压力地开始</li>
+            <li><strong>绑定固定锚点：</strong>写在某个已有动作之后（起床→喝水→背词），形成条件反射</li>
+            <li><strong>提前布置环境：</strong>今晚就把单词书/哑铃放在明天伸手就够得着的地方</li>
+            <li><strong>每天打卡一次：</strong>点上方圆圈即可，看到连续天数会越点越有劲</li>
+          </ul>
+        </div>
+        <div style="border-left:3px solid var(--teal);padding-left:12px">
+          <h4 style="color:var(--teal)">第8-14天 · 巩固期（关键是"稳定"）</h4>
+          <ul style="fo

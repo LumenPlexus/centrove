@@ -1,0 +1,2105 @@
+/div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
+    </section>
+
+    <!-- 原则 (步骤 8) -->
+    <section class="pano-sec" data-step="7">
+      <div class="pano-no"><span class="rn">陆</span><span>它的底线 · 让你用得安心</span></div>
+      <h2 class="pano-h2">有些事，它<em>坚持不做</em></h2>
+      <div class="pano-nolist">
+        <div class="pano-ni"><span class="x">✕</span>现阶段不设会员、不收费，核心能力开箱即用，免费无套路</div>
+        <div class="pano-ni"><span class="x">✕</span>不卖焦虑、不打广告，不制造「不买就亏」</div>
+        <div class="pano-ni"><span class="x">✕</span>不收集数据，你的内容只存在你自己的设备里</div>
+        <div class="pano-ni"><span class="x">✕</span>不绑架你每天打开，越自由，越长久</div>
+      </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
+    </section>
+
+    <!-- 适合谁 (步骤 9) -->
+    <section class="pano-sec" data-step="8">
+      <div class="pano-no"><span class="rn">柒</span><span>写给正在读这段字的你</span></div>
+      <h2 class="pano-h2">它为你而造，<em>无论你正处在哪个阶段</em></h2>
+      <div class="pano-who">
+        <div class="pano-wi"><b>刚踏入大学</b><span>无需焦虑第一步，从升学规划、每天的第一件事，到怎么管钱管时间，这里都有章法。</span></div>
+        <div class="pano-wi"><b>学业与未来并进</b><span>竞赛、实习、考研保研压在肩头时，它是帮你把一团乱麻一件件拆开、落地的地图。</span></div>
+        <div class="pano-wi"><b>想掌控自己的节奏</b><span>管钱、管时间、管身体一处放下；自律不是被逼，而是自己说了算。</span></div>
+        <div class="pano-wi"><b>相信长期主义</b><span>愿意把每天的小事做到位，让成长不断回看、不断生长。</span></div>
+      </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
+    </section>
+
+    <!-- 上手 (步骤 10，收尾) -->
+    <section class="pano-sec pano-sec-ctr" data-step="9">
+      <div class="pano-no"><span class="rn">捌</span><span>三分钟上手 · 今天就能用</span></div>
+      <h2 class="pano-h2">从三件省力的小事，<em>立刻开始</em></h2>
+      <div class="pano-steps" style="text-align:left">
+        <div class="pano-step"><div class="num">1</div><h5>写下今天要做的第一件事</h5><p>在首页任务框落下一笔，今天就从"有方向"开始。</p></div>
+        <div class="pano-step"><div class="num">2</div><h5>挑一个你感兴趣的模块</h5><p>从下方「关注方向」或侧边栏点进去，所有内容都能填、都能改、都不会丢。</p></div>
+        <div class="pano-step"><div class="num">3</div><h5>让它每天陪你</h5><p>数据本地自动保存，换设备亦可备份搬走；坚持越久，收获越厚。</p></div>
+      </div>
+    </section>
+
+    <!-- 收官 CTA · 回到「栖匣」产品本身：以品牌印记 + 青绿留白 + 精排收束，收拢"学业·生活·成长的成长中枢"，去书/印外显 -->
+    <div class="pano-cta">
+      <div class="ct-mark" aria-hidden="true"><img src="pwa/logo-chest20260911.png" alt="栖匣" draggable="false" onerror="logoFallback(this)"></div>
+      <div class="ct-eyebrow">终章 · 从此刻开始</div>
+      <h2 class="ct-title">把每一天，<em>过出掌控感</em></h2>
+      <p class="ct-lead">它不是"又一个工具"——它把<b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅……三四十个成长模块，分格收纳、各归其位</b>，都收进这个只属你的成长中枢。今天记下的一件小事，日后都有迹可循。</p>
+      <div class="ct-vows">
+        <div><span class="vt"></span><span>无账号 · 无云端 · 无后台 —— 它不制造记录之外的任何痕迹</span></div>
+        <div><span class="vt"></span><span>离线打开有条件 —— 联网打开过一次后，支持离线查看已用内容</span></div>
+        <div><span class="vt"></span><span>核心免费 · 数据只在本机 —— 它只安静陪你走得更远</span></div>
+      </div>
+      <div class="ct-sign"><span class="ln"></span>从写下第一件小事开始，它陪你一步一个脚印，把想要的自己慢慢活出来<span class="ln"></span></div>
+      <div class="btns">
+        <button class="btn btn-primary" data-pano="home">入座 · 开始记录成长<span class="arr">→</span></button>
+        <button class="pano-btn-ghost" data-pano="about">再逛逛导览</button>
+      </div>
+    </div>
+    <div class="pano-note">栖匣 —— 愿你把每一天，都过出掌控感</div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+<!-- ═══════ 增量功能 v53：可选云端备份(WebDAV/坚果云) + 每日待办提醒 — 完全隔离，try/catch 兜底，不影响既有功能 ═══════ -->
+<script>
+(function(){
+  function $id(x){return document.getElementById(x)}
+  function boot(){
+    try{var panel=$id('view-settings');if(!panel)return;ensureWDCard(panel);ensureRemindCard(panel);synchState();maybeNotif();}catch(e){}
+  }
+  /* ---- 云端备份卡 ---- */
+  function ensureWDCard(panel){
+    try{
+      if($id('wdCard'))return;
+      var card=document.createElement('div');card.id='wdCard';card.className='card';
+      card.style.marginTop='16px';card.style.background='var(--card)';card.style.borderColor='var(--border)';
+      card.innerHTML=
+        '<h3 style="color:var(--primary)">☁️ 可选云端备份（WebDAV · 坚果云）</h3>'+
+        '<p style="font-size:13px;color:var(--muted);margin:6px 0;line-height:1.85">把整份备份同步到<b>云端</b>，换电脑/手机/清缓存都不丢。完全可选、不强制注册、不接入任何第三方账号体系。<br><span style="opacity:.85">用法：注册<b>免费的坚果云</b>，在「安全选项 → 第三方应用管理」生成一把<b>应用密码</b>，填入下方即可一键上传/恢复。<b>受限提示：</b>只有支持跨域(CORS)的 WebDAV 网盘（如坚果云 dav.jianguoyun.com）能从浏览器直连。</span></p>'+
+        '<div style="display:flex;flex-direction:column;gap:8px;margin:10px 0">'+
+          '<input id="wdUrl" placeholder="WebDAV 地址（默认 dav.jianguoyun.com/dav/）" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+          '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
+            '<input id="wdUser" placeholder="坚果云账号（邮箱）" style="flex:1;min-width:140px;padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+            '<input id="wdPass" type="password" placeholder="应用密码" style="flex:1;min-width:120px;padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+          '</div>'+
+          '<input id="wdDir" placeholder="云端文件夹名（默认 centrove）" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font-size:13px">'+
+        '</div>'+
+        '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
+          '<button class="btn btn-primary" onclick="webdavUpload()">⬆️ 上传备份</button>'+
+          '<button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="webdavDownload()">⬇️ 从云端恢复</button>'+
+          '<button class="btn" style="border-color:#8B4513;color:#8B4513;background:transparent" onclick="if(confirm(\'确认删除云端备份文件？\'))webdavDelete()">🗑️ 清空云端</button>'+
+        '</div>'+
+        '<p style="font-size:11.5px;opacity:.75;margin-top:9px">🔒 你的账号与应用密码只保存在这台设备的浏览器里（等同其它本地数据），也不会被上传到别处；建议在坚果云单独生成"应用密码"，勿用登录密码。</p>';
+      var clearCard=null;panel.querySelectorAll('.card').forEach(function(c){try{if(c.querySelector('h3')&&c.querySelector('h3').textContent.indexOf('危险操作')>-1)clearCard=c;}catch(e){}});
+      if(clearCard)panel.insertBefore(card,clearCard);else panel.appendChild(card);
+      prefill('wdUrl','pp_wd_url',defaultWD());prefill('wdUser','pp_wd_user','');prefill('wdPass','pp_wd_pass','');prefill('wdDir','pp_wd_dir','centrove');
+      ['wdUrl','wdUser','wdPass','wdDir'].forEach(function(id){$id(id).addEventListener('change',function(){try{DB.set('pp_wd_'+id.slice(2),$id(id).value);}catch(e){}});});
+    }catch(e){}
+  }
+  function remindCard(rc){
+    rc.innerHTML=
+      '<h3 style="color:var(--primary)">🔔 每日待办提醒（页面打开时）</h3>'+
+      '<p style="font-size:13px;color:var(--muted);margin:6px 0;line-height:1.85">到<b>约定时间</b>，弹出一条通知：你还有几条今日待办没完成。<br><span style="opacity:.8">需要<b>页面保持打开 + 允许通知</b>（纯本地网页无法在关闭标签后提醒）；若当天已提示过，不会重复打扰。</span></p>'+
+      '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0">'+
+        '<label style="display:flex;align-items:center;gap:7px;font-size:13.5px;cursor:pointer"><input type="checkbox" id="remindOn" style="width:15px;height:15px" onchange="setRemind(this.checked)"> 开启提醒</label>'+
+        '<label style="display:flex;align-items:center;gap:6px;font-size:13px">每日 <input id="remindTime" type="time" style="padding:5px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:13px" onchange="saveRemindTime()">&nbsp;提醒</label>'+
+        '<button class="btn btn-sm" onclick="testNotif()" style="font-size:11px;padding:4px 9px;border:1px solid var(--border);background:transparent;color:var(--text)">发送测试</button>'+
+      '</div>';
+  }
+  function ensureRemindCard(panel){
+    try{
+      var rc=$id('remindCard');
+      if(!rc){rc=document.createElement('div');rc.id='remindCard';rc.className='card';rc.style.marginTop='16px';rc.style.background='var(--card)';rc.style.borderColor='var(--border)';remindCard(rc);var wd=$id('wdCard');if(wd)wd.parentNode.insertBefore(rc,wd);else panel.appendChild(rc);}
+      else{remindCard(rc);}
+    }catch(e){}
+  }
+  function defaultWD(){try{return location.protocol+'//dav.jianguoyun.com/dav/'}catch(e){return 'https://dav.jianguoyun.com/dav/'}}
+  function prefill(id,key,def){try{var v=DB.get(key,'');$id(id).value=(v===''&&def)?def:v;}catch(e){try{$id(id).value=def;}catch(e2){}}}
+  function cfg(){var g=function(id){try{return ($id(id)&&$id(id).value||'').trim()}catch(e){return ''}};var url=g('wdUrl').replace(/\/+$/,'');if(!url)url=defaultWD().replace(/\/+$/,'');return {url:url+'/',user:g('wdUser'),pass:g('wdPass'),dir:g('wdDir').replace(/^\/+|\/+$/g,'')||'centrove'};}
+  function remote(){var c=cfg();return c.url+'/'+encodeURIComponent(c.dir)+'/centrove-backup.json'}
+  function doFetch(method,body){
+    var c=cfg();
+    if(!c.user||!c.pass){uiAlert('请先填写坚果云账号与应用密码（在坚果云「安全选项 → 第三方应用管理」生成）');return Promise.reject(0);}
+    var o={method:method,headers:{'Authorization':'Basic '+btoa(c.user+':'+c.pass)}};
+    if(body!==undefined)o.body=body;
+    return fetch(remote(),o);
+  }
+  function errMsg(label,res){var code=res&&res.status;if(code===401)return label+'失败：账号或应用密码错误';if(code===404)return label+'失败：云端还没有备份文件';if(code===403||code===405)return label+'失败：服务器不允许该操作（可能未开 WebDAV 写权限）';if(!code||code===0)return label+'失败：网络或跨域受限（需支持 CORS 的 WebDAV）';return label+'失败：HTTP '+code;}
+  function buildData(){var d={"_app":"栖匣","_author":"尹平平","_site":(location.origin+location.pathname.replace(/index\.html$/,'/')),"_v":2,"_exportTime":new Date().toISOString()};if(window._userDataKeyList){try{_userDataKeyList().forEach(function(k){try{d[k]=localStorage.getItem(k);}catch(e){}});}catch(e){}}return d;}
+  window.webdavUpload=function(){try{doFetch('PUT',JSON.stringify(buildData())).then(function(r){if(r.ok){flash('☁️ 已上传到云端');uiAlert('云端备份完成 ✅\n\n整份数据已上传。之后换设备，用它「从云端恢复」即可搬走。');}else uiAlert(errMsg('上传',r));}).catch(function(){uiAlert('上传失败：网络或跨域受限，请确认用的是坚果云 dav.jianguoyun.com');});}catch(e){}}
+  window.webdavDownload=function(){try{doFetch('GET').then(function(r){if(!r.ok){uiAlert(errMsg('恢复',r));return;}return r.text().then(function(txt){try{var d=JSON.parse(txt);if(!d||typeof d!=='object')throw 0;if(d._v===2){Object.keys(d).forEach(function(k){if(k.charAt(0)==='_')return;try{localStorage.setItem(k,d[k]);}catch(e){}});}if(window.renderAll){try{renderAll();}catch(e){}}flash('☁️ 已从云端恢复');uiAlert('云端恢复完成 ✅\n\n已把云端备份写回本机，刷新页面查看全部。');}catch(e){uiAlert('恢复失败：云端文件格式不正确');}});}).catch(function(){uiAlert('恢复失败：网络或跨域受限');});}catch(e){}}
+  window.webdavDelete=function(){try{doFetch('DELETE').then(function(r){if(r.ok){flash('🗑️ 已清空云端');uiAlert('已删除云端备份文件');}else uiAlert(errMsg('删除',r));}).catch(function(){uiAlert('删除失败：网络或跨域受限');});}catch(e){}}
+  /* ---- 每日待办提醒 ---- */
+  function synchState(){try{var on=DB.get('pp_remind_on',0),sw=$id('remindOn');if(sw)sw.checked=!!on;var t=$id('remindTime');if(t){var v=DB.get('pp_remind_time','');t.value=v||'20:00';}}catch(e){}}
+  window.setRemind=function(on){try{if(on){if(!('Notification'in window)){uiAlert('当前浏览器不支持通知');if($id('remindOn'))$id('remindOn').checked=false;return;}Notification.requestPermission().then(function(p){if(p==='granted'){DB.set('pp_remind_on',1);flash('🔔 提醒已开启（页面打开时生效）');}else{DB.set('pp_remind_on',0);if($id('remindOn'))$id('remindOn').checked=false;uiAlert('未获得通知授权，提醒未开启');}});}else{DB.set('pp_remind_on',0);flash('🔕 提醒已关闭');}}catch(e){}}
+  window.saveRemindTime=function(){try{var t=$id('remindTime');if(t)DB.set('pp_remind_time',t.value);}catch(e){}}
+  window.testNotif=function(){try{if(!('Notification'in window)){uiAlert('浏览器不支持通知');return;}Notification.requestPermission().then(function(p){if(p==='granted')new Notification('栖匣',{body:'这是一条测试提醒 ✅ 开启后，每日约定时间会提醒你完成待办。',silent:false});else uiAlert('未获得通知授权');});}catch(e){}}
+  var _hook=null;
+  function maybeNotif(){
+    try{var on=DB.get('pp_remind_on',0);if(!on)return;if(!('Notification'in window)||Notification.permission!=='granted')return;
+      if(_hook)return;var lastDay=null;
+      _hook=setInterval(function(){try{
+        var now=new Date(),hm=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'),day=now.toDateString();
+        var time=(DB.get('pp_remind_time','')||'20:00');if(hm!==time||lastDay===day)return;
+        var tasks=(window.getTasks?getTasks():[])||[],td=typeof todayKey==='function'?todayKey():null;
+        var pending=tasks.filter(function(t){return t&&t.date===td&&!t.done});
+        var body=pending.length?('你还有 '+pending.length+' 条今日待办未完成'):'今日待办已全部完成 ✅';
+        if(document.visibilityState!=='hidden'){new Notification('栖匣 · 待办提醒',{body:body,tag:'pw-remind',silent:false}).onclick=function(){try{window.focus();}catch(e){}};}
+        lastDay=day;
+      }catch(e){}},30000);
+    }catch(e){}
+  }
+  /* 每次切换视图即校准（防渲染重建后卡片/开关丢失） */
+  try{(function(){var sw=window.switchView;window.switchView=function(n){var r=typeof sw==='function'?sw.call(this,n):undefined;try{setTimeout(boot,60);}catch(e){}return r;};})();}catch(e){}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,80);});}else{setTimeout(boot,80);}
+})();
+</script>
+
+<!-- ═══════ 栖匣 · 首次访问新手导览 ═══════ -->
+<div class="qg-overlay" id="qgOverlay" aria-hidden="true">
+  <div class="qg-modal" role="dialog" aria-modal="true" aria-label="栖匣新手导览">
+    <button class="qg-close" onclick="qgClose()" title="跳过导览">✕ 跳过</button>
+    <div class="qg-body">
+      <div class="qg-slide active">
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="21" width="28" height="18" rx="3"></rect><rect class="d" x="7" y="14" width="34" height="6" rx="2.5"></rect></svg></div>
+        <div class="qg-title">欢迎来到栖匣</div>
+        <div class="qg-desc">一只安放你大学生活的匣子，静置在本机浏览器里。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="22" width="28" height="16" rx="3"></rect><line x1="19.4" y1="22" x2="19.4" y2="38"></line><line x1="28.6" y1="22" x2="28.6" y2="38"></line><rect x="10" y="16" width="28" height="6" rx="2"></rect></svg></div>
+        <div class="qg-title">一格，装一种生活</div>
+        <div class="qg-desc">学业、考证、目标、记账、健康、灵感、情绪——想存下的都收得进来。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="t" d="M24 9c-4.8-3.8-11.6-.8-11.6 5.2.2 6.6 8.6 12.4 11.6 14.4 3-2 11.4-7.8 11.6-14.4C35.6 8.2 28.8 5.2 24 9z"></path><rect x="12" y="29" width="24" height="11" rx="3"></rect></svg></div>
+        <div class="qg-title">安放，不催促</div>
+        <div class="qg-desc">迷茫、停顿、累的时候，也值得被好好存放，不必时时高效。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 16h12l4 5h12v15H10z" stroke-linejoin="round"></path><line x1="16" y1="29" x2="32" y2="29"></line><line x1="16" y1="33.5" x2="32" y2="33.5"></line></svg></div>
+        <div class="qg-title">成长档案</div>
+        <div class="qg-desc">把每一段日子沉淀进档案，毕业时收下完整的青春答卷。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="22" width="20" height="15" rx="3"></rect><path d="M19 22v-4a5 5 0 0110 0v4"></path><circle class="d" cx="24" cy="29" r="2.3"></circle><line x1="24" y1="29" x2="24" y2="31.4"></line></svg></div>
+        <div class="qg-title">只存在你这里</div>
+        <div class="qg-desc">记录一律保存在本机，不上传服务器；记得定期导出备份。</div>
+      </div>
+      <div class="qg-slide">
+        <div class="qg-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="g" d="M16 18.5l4 4 9-10"></path><rect x="10" y="23" width="28" height="16" rx="3"></rect></svg></div>
+        <div class="qg-title">准备就绪</div>
+        <div class="qg-desc">把生活，安放成你想要的样子。开始吧。</div>
+      </div>
+    </div>
+    <div class="qg-foot">
+      <button class="qg-prev" id="qgPrev" onclick="qgGo(-1)">返回</button>
+      <div class="qg-dots" id="qgDots"></div>
+      <button class="qg-next" id="qgNext" onclick="qgGo(1)">下一步</button>
+    </div>
+  </div>
+</div>
+<style>
+.qg-overlay{position:fixed;inset:0;z-index:99999;background:rgba(20,16,12,.55);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.qg-overlay.show{opacity:1;pointer-events:auto}
+.qg-modal{width:100%;max-width:430px;background:var(--card,#FDFBF7);color:var(--text,#38342F);border-radius:18px;padding:26px 22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35);position:relative;text-align:center}
+.qg-close{position:absolute;top:12px;right:14px;border:none;background:transparent;color:var(--hint,#A29B92);font-size:13px;cursor:pointer}
+.qg-body{min-height:252px;display:flex}
+.qg-slide{display:none;flex:1;flex-direction:column;align-items:center;justify-content:flex-start}
+.qg-slide.active{display:flex}
+:root,:root[data-theme="light"]{--gui-ink:#6B4F37;--gui-accent:#A0803C;--gui-warm:#B0613E}
+[data-theme="dark"]{--gui-ink:#D3B893;--gui-accent:#C9A45E;--gui-warm:#D28862}
+.qg-ico{width:72px;height:72px;border-radius:20px;margin:6px 0 20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--card,#FDFBF7),var(--bg,#F5EFE2));border:1px solid var(--border,#E2DCD2);box-shadow:var(--shadow,0 6px 18px rgba(74,58,40,.1));color:var(--gui-ink)}
+.qg-ico svg{width:42px;height:42px}
+.qg-ico svg :is(rect,path,line,circle){stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.9}
+.qg-ico .d{fill:currentColor;stroke:none}
+.qg-ico .g{fill:var(--gui-accent);stroke:none}
+.qg-ico .t{fill:var(--gui-warm);stroke:none}
+.qg-title{font-size:19px;font-weight:800;letter-spacing:2px;color:var(--head-deep,var(--primary,#6B5747));margin-bottom:12px}
+.qg-desc{font-size:14px;line-height:2;color:var(--muted,#746F68)}
+.qg-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.qg-prev{border:1px solid var(--border,#E2DCD2);background:transparent;color:var(--text,#38342F);border-radius:10px;padding:9px 18px;font-size:14px;cursor:pointer;visibility:hidden}
+.qg-prev.on{visibility:visible}
+.qg-next{border:none;background:var(--primary,#6B5747);color:#fff;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:600;cursor:pointer}
+.qg-next:hover{opacity:.9}
+.qg-dots{display:flex;gap:6px}
+.qg-dots i{width:7px;height:7px;border-radius:50%;background:var(--border,#E2DCD2);transition:all .25s}
+.qg-dots i.on{background:var(--primary,#6B5747);width:18px;border-radius:4px}
+</style>
+<script>
+(function(){
+  var K='qixia_toured_v1';
+  function go(i){
+    var slides=document.querySelectorAll('.qg-slide'),dots=document.querySelectorAll('#qgDots i');
+    var cur=0,j;for(j=0;j<slides.length;j++){if(slides[j].classList.contains('active')){cur=j;break;}}
+    var next=cur+i;
+    if(next>=slides.length){ if(i>0){close();} return; }
+    if(next<0)return;
+    slides[cur].classList.remove('active');slides[next].classList.add('active');
+    dots[cur].classList.remove('on');dots[next].classList.add('on');
+    var prev=document.getElementById('qgPrev'),nx=document.getElementById('qgNext');
+    prev.classList.toggle('on',next>0); nx.textContent=(next===slides.length-1)?'开始吧':'下一步';
+  }
+  function close(){var o=document.getElementById('qgOverlay');o.classList.remove('show');o.setAttribute('aria-hidden','true');try{localStorage.setItem(K,'1');}catch(e){}}
+  window.qgGo=function(i){go(i);};
+  window.qgClose=function(){close();};
+  function buildDots(){var dots=document.getElementById('qgDots'),n=document.querySelectorAll('.qg-slide').length,d='';for(var k=0;k<n;k++)d+='<i class="'+(k===0?'on':'')+'"></i>';dots.innerHTML=d;}
+  function maybe(){
+    return; /* 新手引导已统一由新版4步导览 #tour 承载（安放+目标行动完整链路），此6页 qg 导览不再自动弹出，避免与导览叠加。函数保留备手动调用。 */
+    try{if(localStorage.getItem(K))return;}catch(e){return;}
+    document.getElementById('qgSlides')||buildDots();
+    setTimeout(function(){var o=document.getElementById('qgOverlay');o.classList.add('show');o.setAttribute('aria-hidden','false');},1200);
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',maybe);}else{setTimeout(maybe,600);}
+})();
+</script>
+<script>
+/* ═══════════ 栖匣 · 运行时系统层：极简模式/分区折叠/全站搜索/存储看护/设置置顶 ═══════════ */
+(function(){
+  var CORE=['home','today','quadrant','plans','goals','habits','timer','journal','creative','vision','settings','about'];
+  var QX_SEARCH={
+    '今天':'home','今日':'home','概览':'home','待办':'home','打卡':'home','习惯':'habits','倒数':'home','倒计时':'home',
+    '目标':'goals','计划':'plans','时间':'timer','专注':'timer','番茄':'timer','钟':'timer','四象限':'quadrant','矩阵':'quadrant',
+    '学业':'study','学习':'study','四级':'study','六级':'study','备考':'exam','考研':'exam','考公':'exam','考编':'exam','保研':'study','绩点':'study',
+    '竞赛':'contest','论文':'paper','简历':'career','求职':'career','职业':'career','奖学金':'perk','助学':'perk','资助':'perk',
+    '记账':'finance','理财':'finance','钱':'finance','省钱':'save','赚钱':'earn','搞钱':'earn','购物':'shop',
+    '健康':'health','运动':'health','健身':'health','心理':'mind','心态':'mind','情绪':'mind','安全':'safety','防骗':'safety',
+    '校园':'campus','入学':'college','新生':'college','证书':'life','证':'life','生涯':'life',
+    '笔记':'journal','日记':'journal','札记':'journal','复盘':'journal','灵感':'creative','收藏':'creative','书':'shelf','读书':'shelf','播客':'podcast','电影':'movie','影':'movie','娱乐':'fun',
+    '模板':'tpl','ai':'ai','设置':'settings','关于':'about','帮助':'about','导览':'about'
+  };
+  function modeNow(){try{return localStorage.getItem('pp_qx_mode')||'full'}catch(e){return 'full'}}
+  function applyCSSMode(m){var b=document.body;if(b)b.setAttribute('data-mode',m==='min'?'min':'full');}
+  function refreshNav(){
+    var items=document.querySelectorAll('#sidebar .nav-item');
+    for(var i=0;i<items.length;i++){var it=items[i];it.removeAttribute('data-more');
+      var v=it.getAttribute('data-view')||'';
+      if(v&&CORE.indexOf(v)<0)it.setAttribute('data-more','1');
+    }
+    // 让只有隐藏项的「参考类分组」标题也收掉，避免空标题
+    var secs=document.querySelectorAll('#sidebar .nav-section');
+    for(var j=0;j<secs.length;j++){var g=secs[j].nextElementSibling;var has=g&&g.querySelector&&g.querySelector('.nav-item:not([data-more])');secs[j].style.display=(document.body&&document.body.getAttribute('data-mode')==='min'&&!has)?'none':'';}
+  }
+  function refreshViews(){
+    var vs=document.querySelectorAll('.view');
+    for(var i=0;i<vs.length;i++){var id=(vs[i].id||'').replace(/^view-/,'');
+      if(CORE.indexOf(id)>=0)vs[i].setAttribute('data-core','1');else vs[i].removeAttribute('data-core');}
+  }
+  function flash2(t){var f=document.getElementById('flash');if(f){f.textContent=t;f.classList.add('show');setTimeout(function(){f.classList.remove('show')},2400);}}
+  window.qxModeSet=function(m){
+    try{localStorage.setItem('pp_qx_mode',m)}catch(e){}
+    applyCSSMode(m);refreshNav();refreshViews();
+    if(m==='min'){var act=document.querySelector('.view.active');var aid=act?(act.id||'').replace(/^view-/,''):'';if(CORE.indexOf(aid)<0&&window.switchView){try{switchView('home')}catch(e){}}}
+    flash2(m==='min'?'已切换极简模式：只保留最重要的几件事，一步步做，照样向前。':'已切换完整模式：全部板块与参考攻略已展开，随时行动。');
+  };
+  function scrollToId(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}}
+  window.qxQuickGo=function(k){
+    if(k==='todo'){switchView('home');setTimeout(function(){scrollToId('todayTasks')},150);}
+    else if(k==='cd'){switchView('home');setTimeout(function(){scrollToId('qxCountdown')},150);}
+    else if(window.switchView)switchView(k);
+    closeSidebar&&closeSidebar();
+  };
+  window.ckClearAll=function(){uiConfirm && uiConfirm('要清空你的全部个人记录吗？将保留产品自带的参考攻略与模板。\n\n建议先「一键导出备份」。',function(){clearAll&&clearAll();});};
+  function qxInit(){
+    applyCSSMode(modeNow());refreshNav();refreshViews();
+    // 分区折叠：📖参考资料区/折叠条 展开收起
+    document.addEventListener('click',function(e){
+      var h=e.target&&e.target.closest?e.target.closest('.ref-head,.qx-coll-h'):null;
+      if(!h)return;
+      if(h.classList.contains('ref-head')){var z=h.parentElement;if(z)z.classList.toggle('collapsed');return;}
+      h.classList.toggle('open');
+      var n=h.nextElementSibling;if(n)n.style.display=(h.classList.contains('open')?'':'none');
+    });
+    // 全站搜索：Enter 命中板块关键词则跳转
+    var ns=document.getElementById('navSearch');
+    if(ns)ns.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){var q=(this.value||'').trim().toLowerCase();if(!q)return;
+        var hit=QX_SEARCH[q];if(hit&&window.switchView){switchView(hit);closeSidebar&&closeSidebar();flash2('已带你到相关板块，找到你要的内容。');}
+      }
+    });
+    // 存储看护：检测损坏JSON，友好提示而非白屏
+    // 注意：pp_ 前缀的键里有些是普通字符串（如 pp_theme_v2 / pp_grade），不是JSON，不应误报
+    try{
+      var bad=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('pp_')===0){var v=localStorage.getItem(k);if(v&&v.trim){var t=v.trim();if(t.length&&(t.charAt(0)==='{'||t.charAt(0)==='[')){try{JSON.parse(t);}catch(err){bad.push(k);}}}}}
+      if(bad.length&&!sessionStorage.getItem('qxb_warned')){sessionStorage.setItem('qxb_warned','1');setTimeout(function(){uiAlert&&uiAlert('检测到 '+bad.length+' 个本地记录文件异常。\n\n为避免丢数据，请到「设置 → 🔐 数据安全」用之前导出的备份「导入恢复」；若没有备份，可选择「清空我的全部记录」重新开始。\n\n不会让页面崩溃，请放心。');},1500);}
+    }catch(e){}
+    // 设置页置顶「数据安全」卡
+    try{
+      var sv=document.getElementById('view-settings');
+      if(sv&&!document.getElementById('qxDataCard')){
+        var intro=sv.querySelector('.section-intro');var wrap=document.createElement('div');wrap.id='qxDataCard';
+        wrap.style.cssText='margin-bottom:22px';
+        wrap.innerHTML='<div class="note-zone"><div class="note-head">🔐 数据安全与使用模式</div>'+
+          '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">'+
+            '<button class="btn btn-primary" onclick="qxModeSet(\'full\')">📚 完整模式</button>'+
+            '<button class="btn" onclick="qxModeSet(\'min\')">🪶 极简模式</button></div>'+
+          '<p style="font-size:12.5px;color:var(--hint);margin:0 0 8px;line-height:1.7">完整模式＝全部板块与参考攻略；极简模式＝只留几件最重要的事，适合只想安静记录、不想看海量干货的人。</p>'+
+          '<hr style="border:none;border-top:1px solid var(--border);margin:4px 0 14px">'+
+          '<div style="display:flex;flex-wrap:wrap;gap:10px">'+
+            '<button class="btn btn-primary" onclick="exportAll()">⬇️ 一键导出全部数据备份</button>'+
+            '<button class="btn" onclick="document.getElementById(\'qxImportInput\').click()">⬆️ 从备份文件导入恢复</button>'+
+            '<input type="file" id="qxImportInput" accept=".json,.txt" style="display:none" onchange="importAll(event)">'+
+'<button class="btn" onclick="try{localStorage.removeItem(&#39;pp_tour_seen&#39;);}catch(e){};openPano();" title="手动再看一遍产品分页导览">🚪 重新观看导览</button>'+
+'<button class="btn" onclick="ckClearAll()" style="border-color:var(--coral);color:var(--coral)">🗑️ 清空我的全部记录（保留参考模板）</button></div>'+
+          '<p style="font-size:12px;color:var(--hint);margin:12px 0 0;line-height:1.7">记录只保存在你的浏览器本地。<b>清理缓存、无痕模式或换设备前，务必先导出备份</b>，否则记录会随浏览器清除。</p></div>';
+        if(intro&&intro.parentNode)intro.parentNode.insertBefore(wrap,intro.nextSibling);
+      }
+    }catch(e){}
+    // 首页新手快速上手卡已移除：避免与底栏/侧边栏重复，保持首页简洁
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(qxInit,350);});
+  else setTimeout(qxInit,350);
+  // 切换视图后刷新 core 位
+  try{var _sw=window.switchView&&window.switchView.bind(window);window.switchView=function(n){var r=typeof _sw==='function'?_sw(n):undefined;refreshViews();setTimeout(refreshNav,30);return r;};}catch(e){}
+})();
+
+/* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
+   纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
+(function(){
+  var V='2026.09.10.03';
+  var VFILE='pwa/version.txt';
+  function $(id){return document.getElementById(id);}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  var CHANGES=[
+    {v:'2026.09.10.03',t:'全站复选框精致重绘：告别生硬方框，统一暖色圆/圆角勾选',tag:'体验优化',blocks:[
+      '· 「备考进度自检」「开学准备清单」的打卡勾选，由原来的瘦高圆角矩形改为更为协调的圆形暖色按钮：已勾选为深棕色圆形+白色自然勾，未勾选为白底圆环，位置右对齐、与文字垂直居中、间距适中，不再紧贴边缘。',
+      '· 勾选瞬间带轻快回弹动画，手感更鲜活。',
+      '· 全局统一所有勾选框（今日任务、打卡、四象限、目标里程碑、阅读清单等）的样式，全部改为柔和圆角方框 + 白色勾，替换原生难看的系统方框，深浅色模式均适配。'
+    ]},
+    {v:'2026.09.10.02',t:'首页顶部可收纳 · 侧边栏联动常用偏好 · 每次打开都回首页',tag:'体验优化',blocks:[
+      '· 首页最顶部的「栖匣」品牌主视觉区可一键折叠，占位大段介绍文字可随时收起，为你让出首屏空间，且会记住你的选择。',
+      '· 「轻松上手 · 分类导航」同样支持一键折叠/展开，节省首页纵向空间。',
+      '· 选好常用板块后，侧边栏也同步只显示你选中的模块，其余模块自动收起；想找回只需点侧边栏「设置 · 栖匣系统 → 常用模块偏好」，或首页的「显示全部板块」，随时重新勾选。',
+      '· 完全退出产品后再打开：闪屏过后固定回到「首页 · 今日概览」，不再跳到上次浏览的板块。'
+    ]},
+    {v:'2026.09.10.01',t:'全新「常用模块偏好」：按你的兴趣定制首页导航',tag:'新功能',blocks:[
+      '· 首次打开产品（闪屏 → 产品导览 → 入座）后，会引导你挑几个真正关心、最常用的板块。',
+      '· 选好后，首页「轻松上手 · 分类导航」只优先展示你选的这些模块，其余板块自动收起藏进侧边栏，想用时随时点「显示全部板块」或从侧边栏进去，既不打扰也不丢失。',
+      '· 模块以「大板块分组 + 小方块勾选」呈现，支持全部选中/清空，一目了然；选择结果保存在本机，升级也不变。',
+      '· 随时可改：「系统设置 → 常用模块偏好」或首页导航工具条的「调整常用」，想怎么换都行。'
+    ]},
+    {v:'2026.09.09.06',t:'考试规划自检复选框统一重绘 · 全局清单控件美观化',tag:'体验优化',blocks:[
+      '· 备考进度自检的每项复选框由系统默认大框重绘为小巧圆角方块，并移到对应文字右侧同一行；文字再长也只换行、方块始终稳居右侧，视觉更清爽、不再突兀。',
+      '· 开学报到/军训「必带清单」的同款复习选框一并做了统一美化，风格保持一致。',
+      '· 勾选态显示主题色实心 + 白色对勾，支持触控点击与键盘焦点，深浅主题下均清晰可辨。',
+      '· 全局复核移动端排版与横向溢出：宽表格在窄屏自动横向滚动、页面整体不外溢，未发现新的截断/错位风险。'
+    ]},
+    {v:'2026.09.09.05',t:'考试倒计时卡片改为上下结构 · 标题完整不省略 · 官方日期核准',tag:'体验优化',blocks:[
+      '· 「考试规划」每张倒计时卡片重排为「上下」结构：第一行是 图标 + 考试名称 + 删除；名称改为完整显示、绝不省略——再长也只换行、不删字；第二行是整条居中醒目的「还有 X 天」大数字，不再被挤到右侧角落；第三行用分隔线隔开，放「日期 + 类型」小标签。整个卡片更舒适、信息一目了然。',
+      '· 倒计时移到考试名称正下方并居中放大，视觉更聚焦、紧迫感更直观。',
+      '· 对本年度各场次日期做了官方核准：四六级笔试 12月12日、口试 11月21—22日；教资笔试 9月12日、面试 12月5—6日；法考客观题 9月12—13日、主观题 10月18日；计算机等级考试 9月19—21日，均有部委官方公告佐证。研究生初试官方日期尚未公布，按惯例暂显示「预计12月19日」，教育部公布后自动校正，绝不虚报。'
+    ]},
+    {v:'2026.09.09.04',t:'考试倒计时卡片重设计 · 成长档案新增陪伴里程碑',tag:'体验优化',blocks:[
+      '· 「考试规划」的每一张倒计时卡片已重做：考试名称不再被截断成「英语…」（超出两行才省略），日期统一成「2026.12.12」单行完整显示、「笔试/口语/机考」做成独立小标签，右侧「还有 X 天」改为紧凑醒目版，整体更均衡、信息更清楚、不再留大片空白。',
+      '· 「成长档案」新增一块陪伴里程碑：一开始就是「你的栖匣之旅始于 XXXX-XX-XX」，从你第一次打开就开始为你记录，之后你的任务、专注、习惯、学习、读书、目标等数据都保存在本机、实时同步、升级也不会消失，还会实时显示至今陪伴你多少天。',
+      '· 各处统计在进入页面、切换回来、以及停留页面时均实时刷新（默认每 60 秒自动重算一次），数字不会停留在旧值。'
+    ]},
+    {v:'2026.09.09.03',t:'修复“轻松上手·分类导航”点击板块不能跳转',tag:'导航修复',blocks:[
+      '· 首页「轻松上手·分类导航」里的板块，现在点击即直达对应板块页面（不再出现“点了没反应”）。',
+      '· 采用与侧边栏一致的最稳跳转方式 + 移动端委托兜底，安卓/鸿蒙/网页均稳定生效。'
+    ]},
+    {v:'2026.09.09.02',t:'桌面图标换回产品原有宝箱 · 大小适中更美观',tag:'图标还原',blocks:[
+      '· 桌面图标已改回产品页面里那个原有的宝箱图标（不再另画），采用奶油底 + 居中黄金比例比例，大小调整到舒适美观，明亮清晰不突兀。',
+      '· 网页版 Manifest、离线缓存、版本号已同步刷新；若桌面上仍显示旧图标，长按删除快捷方式后用浏览器重新「添加到主屏幕」一次即可。'
+    ]},
+    {v:'2026.09.09.01',t:'桌面图标换代：彻底摆脱“栖”字字母占位',tag:'图标修复',blocks:[
+      '· 网页版桌面图标换成带版本号的全新文件：整块奶油底色 + 居中宝箱，任何安卓启动器 / 浏览器都把它画成完整彩色方块，不再退化成单个「栖」字。',
+      '· 换名后图标缓存 hash 变化，若你的手机上桌面上仍显示旧「栖」字图标，请：长按该图标 → 删除快捷方式；然后用浏览器重新「添加到主屏幕 / 安装」一次，即显示宝箱图标。',
+      '· Manifest、离线缓存、版本号已同步刷新；已装的 App 下次连网打开即自动更新，无需重装。'
+    ]},
+    {v:'2026.09.06.01',t:'全平台图标与启动屏彻底统一 · 桌面图标不再变丑',tag:'视觉焕新',blocks:[
+      '· 网页、安卓 App、微信小程序三端的代表图标已全部统一为「奶油底 · 盖体一体的暖棕宝箱 + 金锁」图标，从 16px 到 1024px 任一尺寸都完整清晰。',
+      '· 安卓 App 启动屏彻底重做：奶油渐变底 + 居中闭合宝箱 + 「栖匣」品牌字，打开即为品牌画面，不再出现灰底、盖子悬浮、碎片化的旧画面。',
+      '· 修复部分浏览器 / 鸿蒙桌面把网页快捷方式生成为「黑底蓝字栖」的问题：重制了更通用的 favicon.ico（经典多尺寸），并统一了网页图标引用。',
+      '· 已安装旧版 App 的用户请先卸载旧版再安装新版；网页快捷方式请删除旧的、重新添加一次即可看到新图标。'
+    ]},
+    {v:'2026.09.03.14',t:'导览恒定日间 · 不受夜间模式影响',tag:'体验优化',blocks:[
+      '· 产品导览现在恒为日间清爽的暖纸风格：即使在夜间模式下打开，也始终保持浅色好看的样子，不会再变得黑压压、深一块浅一块。',
+      '· 退出导览后，会自动回到你原来的设置（之前是日间仍回日间、夜间仍回夜间），不会打乱你的习惯。'
+    ]},
+    {v:'2026.09.03.13',t:'导览在电脑端真正「占满并排好」',tag:'布局优化',blocks:[
+      '· 修复电脑 / 平板端导览被左侧导航栏压住的问题：内容不再被边栏遮掉一部分文字，而是与边栏精准对齐、居中于右侧有效区域。',
+      '· 右侧因全窗居中留下的空白随之消除，导览随不同屏幕宽度、边栏宽度自适应，不再像手机版被摆上来。',
+      '· 桌面端说明文与功能网格适度放宽，内容更饱满地铺满可用区域。'
+    ]},
+    {v:'2026.09.03.12',t:'导览更规范 · 不再空荡荡',tag:'视觉与细节',blocks:[
+      '· 修复导览标题行首出现冒号的问题，改为规整居中的两句对仗「把每一天，好好安放 / 来有所栖，去有所成」，更符合中文标点与行文规范。',
+      '· 修复电脑 / 平板端导览“内容堆在上方、下方与侧边一大片空白”的空洞感：封面占满视口、整体垂直居中，宽屏观感更饱满协调。'
+    ]},
+    {v:'2026.09.03.11',t:'产品导览更精致 · 手机电脑都舒服',tag:'视觉与布局',blocks:[
+      '· 首次「产品导览」重新打磨：主标题断行更讲究、电脑端字号收敛不显大，页面不是手机版被抻开的感觉。',
+      '· 顶部四个数据标签改为等宽等高、整齐对齐，电脑/手机上都不再有参差的缺口。',
+      '· 右上角关闭键风格与整体暖木配色统一，不再是一颗突兀的白色圆钮。',
+      '· 导览整体宽度与留白随设备自适应，手机、平板、电脑上都协调统一。'
+    ]},
+    {v:'2026.09.03.10',t:'电脑 / 平板更舒展 · 多设备都好看',tag:'布局优化',blocks:[
+      '· 修复电脑端一个突兀问题：窗口一旦超过 1100px，内容列反而会被收窄。现在桌面内容列会随屏幕自然变宽、居中排布，宽屏下不再左右空荡、也不再像手机版被摆在中间。',
+      '· 大屏下侧栏略微加宽、留白更舒适，顶栏与内容、侧栏三处偏移联动一致，电脑上观感更像原生桌面应用。',
+      '· 平板 / 桌面 / 超宽屏幕分别校准，手机、平板、笔记本、台式机、大屏都协调统一。'
+    ]},
+    {v:'2026.09.03.09',t:'更新日志更贴近你 · 文字更舒服',tag:'体验优化',blocks:[
+      '· 更新日志改为更贴近使用者的视角来写，去掉了技术性表述，读起来更轻松、更好懂。',
+      '· 全文细节统一润色，让每一条更新都清楚说明「对你有什么用」。'
+    ]},
+    {v:'2026.09.03.08',t:'隐私透明 · 动效更体贴',tag:'体验与无障碍',blocks:[
+      '· 隐私体验升级：明确标注数据仅存本机、绝不回传（默认零上传；仅你主动提交的「反馈内容」会发往作者邮箱，云备份仅在你自行配置的私有网盘上启用）。',
+      '· 无障碍「减少动效」：开启系统“减弱动态效果”偏好时自动降低动画/位移，对晕动或光敏用户更友好。'
+    ]},
+    {v:'2026.09.03.07',t:'年份随行 · 信息不陈旧',tag:'稳健与准确性',blocks:[
+      '· 「就业行情速览 / 搞钱合规行情 / 最近考试日程」等标题里的年份，改为随当前日期自动更新，不再残留过时年份。',
+      '· 官方已公布的考试日期会自动对应到今年；尚未覆盖到的年份则按历年规律智能推算，倒计时始终可靠。',
+      '· 毕业生规模等口径类数据补充「参考口径」说明，避免被误读为逐年绝对数字。'
+    ]},
+    {v:'2026.09.03.06',t:'页脚署名 · 更加优雅含蓄',tag:'视觉优化',blocks:[
+      '· 每个页面最下方的「页脚署名卡」顶部那道金色渐变棕条，改为柔和的淡金细线，视觉更节制、更贴合全站侘寂风格，不再显得突兀。'
+    ]},
+    {v:'2026.09.03.05',t:'听你反馈 · 更顺手更耐看',tag:'反馈优化',blocks:[
+      '· 实时同步：近 7 天打卡日历 + 本周完成率与打卡/待办/番茄等操作实时联动，任何改动即时刷新，不再需要手动刷新页面。',
+      '· 视觉升级：首页「今日目标」暗棕渐变卡改为柔和暖色渐变，更贴合全站侘寂气质，不再突兀；夜间模式同步适配。',
+      '· 每日运动打卡：选项更丰富（跳绳/瑜伽/拉伸/跑步/力量/骑行/散步/HIIT/羽毛球…），并支持「＋ 自定义」录入你的专属运动项目，可随时添加。',
+      '· 一周日程模板：补齐早餐、午餐+午休、晚餐+散步等被漏掉的时段，作息连接无断档、更合理。'
+    ]},
+    {v:'2026.09.03.04',t:'全面体检打磨 · 更稳更好用',tag:'安全与体验优化',blocks:[
+      '· 安全加固：便签、听写释义等内容的展示统一做了安全处理，杜绝异常脚本插入；导入备份增加有效性校验，误选错误文件会明确提示而非悄悄写入。',
+      '· 修复细节：分享/安装到桌面时复制当前真实页面地址；复制结果改为页内轻提示而非弹窗阻塞。',
+      '· 文案校准：隐私表述改为「不上传、不后台收集」，更准确不误导；首页板块数量更新为「数十个板块」与实际情况一致。',
+      '· 视觉优化：金色标签文字对比度提升，小字号也清晰可读。',
+      '· 求助渠道校准：心理危机热线机构归属修正（400-161-9995 为「希望24热线」、010-82951332 为北京心理危机研究与干预中心），号码以当地官方最新公布为准。',
+      '· 版本号各处已统一，网页与离线模式获取到的都是最新版本。'
+    ]},
+    {v:'2026.09.03.03',t:'页面底部板块颜色减淡更协调',tag:'视觉优化',blocks:[
+      '· 聆听反馈：页面底部的署名与「使用与隐私说明 / 版权许可」等板块原本偏深的黑褐色已减淡，统一改为贴合全站暖咖色调的浅色质感，黑色与棕色不再冲突。',
+      '· 底部各板块自动适配深/浅色主题：日间为柔和奶油咖色，夜间为温润深咖色，观感更舒适、不再深压。'
+    ]},
+    {v:'2026.09.03.02',t:'隐私与承载说明更透明 · 页脚焕新',tag:'体验优化',blocks:[
+      '· 帮助中心「常见问题」新增一条问答，讲清「这么多人同时打开会不会变卡 / 承载得了吗」：栖匣零后端、每个人各跑各的独立副本，再多人在线也互不影响、不会变卡。',
+      '· 隐私透明重申：无账号、无云端、无后台，你的数据只存在自己设备浏览器里，作者与后台均无法读取。',
+      '· 每个页面底部的署名与时效说明板块重新调色、优化层级：更贴合栖匣暖咖主调，信息更清晰耐看，深色浅色主题下都更协调。'
+    ]},
+    {v:'2026.09.03.01',t:'报告导出修复 · 查看更稳',tag:'修复',blocks:[
+      '· 修复「导出本周报告图」在部分手机 / 内置浏览器里点击没反应的问题：现在会先在页面内弹出生成的周报大图，可一键保存图片，也可长按保存 / 分享，任何环境都有响应。',
+      '· 修复成长档案报告预览里品牌图标偶发加载失败、显示缺失占位图的问题：图标正常加载即按原图显示，加载异常时自动用品牌字样兜底，预览观感始终完整。',
+      '· 「打印 / 另存为 PDF」入口与报告预览更稳定，所见即所得。'
+    ]},
+    {v:'2026.09.02.13',t:'首次引导更合理 · 数据导入更安全',tag:'新功能｜修复',blocks:[
+      '· 首次使用的「现在是大几了」询问延后到产品导览看完并主动关闭后再出现，不再提前弹窗挡路。',
+      '· 数据导入全面加固：导入前自动备份当前全部数据；可自由选择「合并导入（推荐）/ 覆盖全部数据 / 取消」；损坏或格式不符的文件会明确提示，绝不覆盖原有数据。',
+      '· 新增本地故障快照导出：遇到异常可一键生成诊断文件（仅保存在本机，不上传任何数据）。',
+      '· 主动请求浏览器开启持久保存，降低手机浏览器多日后自动清理本地数据的风险；移动端长按顶栏图标也能弹出功能提示。'
+    ]},
+    {v:'2026.09.02.12',t:'启动画面焕新 · 观感更统一 · 细节更舒适',tag:'视觉焕新',blocks:[
+      '· 启动画面整体提亮并转为暖米色 × 赭金 × 深棕的明亮色系，与产品主界面同一套色调，不再暗沉、不显突兀，打开即有柔和精致的第一印象。',
+      '· 顶栏图标调到适中尺寸，触控更清晰、观感更协调，常用操作一眼可辨。',
+      '· 统一全站配色与信息层级，空状态、提示、卡片圆角与留白整体校准，界面更干净舒服。'
+    ]},
+    {v:'2026.08.31.4',t:'顶栏恢复搜索+帮助图标 · 图标放大 · 修复“更多”菜单不显示',tag:'修复',blocks:[
+      '· 顶栏左侧「搜索 🔍」与「帮助 ?」图标恢复显示，并保留常用四键（换一批灵感/查看产品导览/夜间/更多），各有且仅有一份、无重复。',
+      '· 顶栏圆形图标全面放大（桌面 40px、移动端 36px），触控更大、更清晰。',
+      '· 修复“点击更多下拉菜单不显示”：下拉面板改为悬浮于页面之上，不再被顶栏裁切，任意屏幕都能弹出并逐项可点。'
+    ]},
+    {v:'2026.08.31.3',t:'顶栏恢复旧版经典布局 · 视觉协调',tag:'体验优化',blocks:[
+      '· 顶栏按经典模板重新排布：左侧「≡ + 栖匣 Logo + 名称」，右侧统一四枚圆形按钮 = 「换一批灵感 → 查看产品导览 → 日/夜间模式 → 更多 ⋯」，图标大小/配色更协调。',
+      '· 「更多 ⋯」菜单按图片版式分组：灵感与内容（换一批灵感/查看产品导览）、数据与工具（分享/导出备份/导入/导出PDF 等）、系统（设置/更新日志/帮助中心/关于）、最下红色「重置本地数据」，全部可点且生效。',
+      '· 全局搜索改从顶栏移入「更多 ⋯」顶部（支持键盘 `/` 快捷唤起），顶栏不再出现搜索/帮助图标，更干净。'
+    ]},
+    {v:'2026.08.31.2',t:'「更多」菜单补全 · 安全加固 · 数据保护',tag:'修复｜新功能',blocks:[
+      '· 「更多 ⋯」菜单恢复与补全：新增「导出本周报告图」「数据统计概览」「更新日志」等此前缺失的入口，分组更清晰、功能更完整。',
+      '· 存储安全加固：错题、读书笔记、播客笔记等用户内容的回显统一转义，杜绝脚本注入风险；本地数据损坏时也不再整段渲染崩溃。',
+      '· 数据保护：无痕/隐私模式或存储接近上限时主动提示导出备份；开启「保存受限」告警；首次输入后离开页面会有提醒，防止误关丢失正在写的内容。',
+      '· 效率新增：桌面端按「/」快速打开全局搜索（搜索覆盖层已支持一次搜遍所有板块与记录），Esc 快捷关闭。',
+      '· 「更多」下拉与点击交互修正，使用更顺手。'
+    ]},
+    {v:'2026.08.31.1',t:'修复顶栏图标重复 · 全局搜索更强大',tag:'Bug修复',blocks:[
+      '· 修复顶栏「搜索 / 帮助」图标偶发重复显示的问题，顶栏更清爽、只保留一套。',
+      '· 精简重复的样式代码，页面更干净、加载更轻。',
+      '· 顶栏搜索升级为「全屏搜索覆盖层」：一次可搜遍所有板块与你的待办、日记、记账、错题、单词、书摘、灵感、习惯、目标、电影等记录，输入即出结果、回车直达、Esc 关闭。',
+      '· 离线缓存同步升级，老用户刷新后即可看到最新版本。'
+    ]},
+    {v:'2026.08.30.15',t:'顶栏精简为品牌样式 · 标语完整显示',tag:'体验优化',blocks:[
+      '· 顶栏重排为品牌样式：左侧为「图标 + 栖匣」品牌名，中部独立显示标语「心有所栖 · 匣纳成长」，不再挤压截断。',
+      '· 右侧快捷图标调整为「搜索（浅色底）」「帮助中心（红色浅底突出）」「夜间模式（月亮↔太阳自动切换）」+ 最右侧「更多 ⋯」；顶栏不再堆叠文字，只放图标更清爽。',
+      '· 换一批灵感、查看产品导览 收进「更多 ⋯」菜单的「灵感与内容」分组；分享/导出/导入/PDF/设置/关于/重置继续在菜单内分组展示。',
+      '· 窄屏（≤560px）时标语优雅整体收起而非半截截断，小屏图标自适应缩放，文字与图形不再显示不全。'
+    ]},
+    {v:'2026.08.30.14',t:'顶栏清爽回归 · 更新提示更得体',tag:'体验优化',blocks:[
+      '· 顶栏恢复「简洁直达」：只保留 搜索、帮助中心、换一批灵感、查看产品导览 4 个常用图标（仅图标、无文字）放在「更多 ⋯」之前；分享、导出、主题切换、导入、PDF、系统设置、关于等统一收进「更多」菜单，点击 ⋯ 才展开显示图标与文字，界面不再拥挤。',
+      '· 「更多 ⋯」菜单分组重排并新增：界面显示（切换日间/夜间模式）、数据与工具、系统（系统设置、关于产品），重置数据单独列于底部并保持警示色。',
+      '· 修复版本号不同步导致的「一打开就弹新版本提示」问题，不再无故打扰。',
+      '· 新版本提示改为紧凑小卡片（内容自适应高度、上下居中、无大段空白），点击或点关闭即优雅消失。'
+    ]},
+    {v:'2026.08.30.12',t:'顶栏标语完整显示 · 帮助中心更准确',tag:'体验优化',blocks:[
+      '· 移动端顶栏标语「心有所栖 · 匣纳成长」随屏宽自动缩小字号、极窄屏收起徽标图，不再被截断，完整显示不限宽。',
+      '· 帮助中心新增「版面安排」：讲清极简/完整模式（显示开关）各保留哪些板块，以及板块收藏怎么钉进侧边栏、有什么用。',
+      '· 帮助中心措辞校准：去掉不合适的词，说明更贴切、更准确，与功能实际表现一致。'
+    ]},
+    {v:'2026.08.30.5',t:'顶栏固定 · 保研考研强化 · 体验提速',tag:'新功能',blocks:[
+      '· 顶部导航栏调整：向下滚动时始终固定在页面顶端，任何位置都能随时查看与跳转，不再需要滚回顶部。',
+      '· 保研/考研强化：新增定位自测（成绩/排名/科研/英语一键评测冲·稳·保并输出建议）、择校「2+2+2」筛选法、公共课三科分阶段作战表、调剂指南与防骗提醒。',
+      '· 保研全旅程时间轴：从大一到大四分阶段给出每段该做的可执行清单，支持拖拽/圆点切换、一键直达各阶段。',
+      '· 校园生活补充报到军训必带清单（可勾选核销）、选课防坑四招、宿舍空间规划。',
+      '· 考试规划新增备考进度自检周卡；职业板块新增 60 秒自我介绍模板、面试复盘表，面试题库进一步扩充。',
+      '· 主题切换提速、一键即时生效；今日进度与首页进度条统一为暖金咖色，与整体暖棕造型更协调。',
+      '· 帮助中心成形：新增实用功能查找指引与「当作 App 安装」指引，常见问题一站式解决。'
+    ]},
+    {v:'2026.08.30',t:'首页与侧边栏焕新 · 高频功能更好找',tag:'体验优化',blocks:[
+      '· 侧边栏栏目按使用频率重新排序：核心规划、每日打卡、学业备考等移到上方，设置、更新日志、关于移到底部，高频功能更容易点到。',
+      '· 首页进度条改为暖木黄铜色，与整体风格浑然一体。',
+      '· 统一全站卡片与弹窗的圆角大小、内边距与留白，版面对齐更整齐，文字不再紧贴边缘。',
+      '· 图标尺寸与对齐统一，长名称菜单在手机上自动换行，不再溢出屏幕。',
+      '· 侧边栏分组之间加入柔和的米棕分隔线，分区一目了然。'
+    ]},
+    {v:'2026.08.30.1',t:'提示组件配色与可读性全面优化',tag:'视觉',blocks:[
+      '· 全站说明提示、风险警示、成功反馈、弱化备注四类提示配色统一为暖木米棕体系，一眼识别层级。',
+      '· 深色模式下提示卡片与正文对比度全面提升，夜间阅读更省眼力。',
+      '· 表单报错提示改为柔和的暖棕文字，不再刺眼的红色。',
+      '· 标签、徽章、分割线颜色收敛到统一色带，界面更干净。'
+    ]},
+    {v:'2026.08.29',t:'新版块与本地工具上线',tag:'新功能',blocks:[
+      '· 更新日志页上线：每一次改动都能一目了然。',
+      '· 新增本地数据自检工具，一键检查各模块记录是否完整、有无异常丢失。',
+      '· 成长档案新增近 14 天成长轨迹图，直观回看你的坚持与进步。'
+    ]},
+    {v:'2026.08.28',t:'首页与新手体验升级',tag:'新功能',blocks:[
+      '· 首页突出「今日核心任务」，优先安排今天最重要的事。',
+      '· 今日心语、知识卡片、生活刻度等附加卡片可自由折叠，首页更聚焦。',
+      '· 待办与打卡模块增加空白友好提示，不会对着空白页面不知所措。'
+    ]},
+    {v:'2026.08.27',t:'稳定性与细节打磨',tag:'修复',blocks:[
+      '· 修复移动端弹窗滚动错位、按键误触的问题，手机上操作更顺手。',
+      '· 修复部分页面在深色模式下文字过浅、看不清的问题。',
+      '· 数据导入前增加二次确认，避免误覆盖已有记录。',
+      '· 修复部分导航跳转异常，页面切换更流畅可靠。'
+    ]},
+    {v:'2026.08.26',t:'内容模板大更新',tag:'内容更新',blocks:[
+      '· 全面补充学业、求职、理财、健康等板块的实用模板与干货。',
+      '· 更新应试、规划、复盘案例，打开即可参考、可上手的执行。',
+      '· 全站文案统一润色，表述更清晰、读起来更顺畅。'
+    ]},
+    {v:'2026.08.25',t:'全新视觉形象上线',tag:'视觉',blocks:[
+      '· 上线全新启动画面与整体形象，风格更统一、更精致。',
+      '· 主界面全面采用柔和复古的低饱和色调，长时间使用更不易疲劳。',
+      '· 入门引导文案重写，任何新手都能看懂、都知道从哪里开始。'
+    ]},
+    {v:'2026.08.24',t:'深色模式专项优化',tag:'体验优化',blocks:[
+      '· 深色模式下所有页面文字对比度逐页校准，杜绝看不清。',
+      '· 深色与浅色主题切换更流畅，无闪烁、无样式错乱。',
+      '· 主题选择在刷新与跳转后自动保留，不用反复设置。'
+    ]}
+  ];
+
+  function renderChanges(){
+    var box=$('qxChangelog');if(!box)return;
+    box.innerHTML=CHANGES.map(function(c){
+      return '<div style="padding:14px 16px 12px;border:1px solid var(--border);border-radius:12px;margin-bottom:14px;background:var(--card);box-shadow:var(--shadow)">'+
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'+
+          '<span style="font-weight:700;font-size:13px;color:var(--primary)">'+esc(c.v)+'</span>'+
+          (c.tag?'<span style="font-size:10.5px;color:var(--primary);background:var(--primary-light);border:1px solid var(--border);padding:1px 9px;border-radius:999px">'+esc(c.tag)+'</span>':'')+
+          '<span style="font-size:13.5px;font-weight:600;color:var(--text)">'+esc(c.t)+'</span>'+
+        '</div>'+
+        '<div style="margin:8px 0 0;padding-left:2px;font-size:12.5px;color:var(--muted);line-height:1.95">'+c.blocks.map(function(i){return '<p style="margin:4px 0">'+esc(i)+'</p>'}).join('')+'</div>'+
+      '</div>';
+    }).join('')+
+    '<p style="font-size:12px;color:var(--hint);line-height:1.7;margin-top:4px;text-align:center">这里记录栖匣每一次功能优化与问题修复。</p>';
+  }
+
+  function selfCheck(){
+    var el=$('qxSelfReport');if(!el)return;
+    var bad=[];
+    ['sportLog','myCountdowns','userMetrics','essayHistory','pp_checklist'].forEach(function(k){
+      var raw=null;try{raw=localStorage.getItem(k);}catch(e){}
+      if(!raw||raw===''||raw==='[]'||raw==='{}')return;
+      try{JSON.parse(raw);}catch(e){bad.push(k);}
+    });
+    var storeBlocked=false;
+    try{var t='__qxprobe__';localStorage.setItem(t,'1');localStorage.removeItem(t);}catch(e){storeBlocked=true;}
+    if(bad.length){
+      el.innerHTML='<span style="color:var(--coral)">⚠️ 发现 '+bad.length+' 处数据记录（'+esc(bad.join('、'))+'）读取异常。建议在「系统设置」导入历史备份恢复；如无备份，先把重要内容手动记下再继续使用。</span>';
+    }else if(storeBlocked){
+      el.innerHTML='<span style="color:var(--coral)">⚠️ 当前浏览器似乎无法保存数据（无痕/隐私模式或存储受限）。为避免辛苦纪录丢失，请现在就到「系统设置」导出备份。</span>';
+    }else{
+      var n=0;try{n=localStorage.length;}catch(e){}
+      el.innerHTML='<span style="color:var(--teal)">✅ 自检通过：本地数据完整，'+n+' 项记录结构正常，各模块状态无异常。</span>';
+    }
+    var meta=$('qxSystemMeta');
+    if(meta){
+      var chunks=['当前版本 v'+V];
+      try{
+        var ua=navigator.userAgent||'';
+        chunks.push(ua.indexOf('Firefox')>=0?'Firefox':ua.indexOf('Edg/')>=0?'Edge':ua.match(/Chrome\//)?'Chrome':ua.match(/Safari/)?'Safari':'其它');
+        if(/MicroMessenger/i.test(ua))chunks.push('微信内');
+      }catch(e){}
+      meta.innerHTML='<b>'+chunks.join('</b> · <b>')+'</b> · 自检时间 '+new Date().toLocaleTimeString();
+    }
+  }
+
+  /* “有新版本”提示不打扰闪屏与产品导览：仅在两者都结束后才显示 */
+  var __upTObj=null;
+  function __inObstruction(){
+    var dd=document.documentElement;
+    if(dd.classList.contains('state-splash')||dd.classList.contains('state-pano'))return true;
+    var s=document.getElementById('brandSplash');
+    if(s&&s.style&&s.style.display==='flex')return true;
+    return false;
+  }
+  function __tryShowUpdate(){
+    var live=window.__pendingUpdate; if(!live)return;
+    if(__inObstruction()){ clearTimeout(__upTObj); __upTObj=setTimeout(__tryShowUpdate,600); return; }
+    window.__pendingUpdate=null; showUpdateToast(live);
+  }
+  function checkVersion(){
+    try{
+      fetch(VFILE,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();})
+        .then(function(t){
+          var live=(t||'').trim().replace(/^v/i,'');
+          if(!live||live===V)return;
+          if(live>V){window.__pendingUpdate=live;__tryShowUpdate();}
+        }).catch(function(){});
+    }catch(e){}
+  }
+  function showUpdateToast(live){
+    if($('qxUpdateToast'))return;
+    var d=document.createElement('div');d.id='qxUpdateToast';
+    /* 紧凑小卡片：内容自适应高度、底部居中、无大空白，尽量少打扰 */
+    d.style.cssText='position:fixed;left:14px;right:14px;bottom:18px;margin:0 auto;max-width:360px;z-index:1600;background:var(--card);color:var(--text);border:1px solid var(--border-strong);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.30);padding:14px 16px;font-size:13px;line-height:1.6;text-align:left;opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s';
+    d.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px">'+
+      '<div style="display:flex;align-items:center;gap:8px;min-width:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary);flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span style="font-weight:800;color:var(--primary);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">栖匣有新版本 v'+esc(live)+'</span></div>'+
+      '<button onclick="qxHideToast(this)" aria-label="关闭" style="border:none;background:transparent;color:var(--hint);font-size:16px;line-height:1;cursor:pointer;padding:2px;flex-shrink:0">✕</button>'+
+    '</div>'+
+      '<div style="color:var(--hint);font-size:12.5px;line-height:1.7;margin-bottom:12px">本次为界面与体验优化，刷新即可用上新功能。点下方可直接查看改进内容。</div>'+
+      '<div style="display:flex;gap:8px">'+
+        '<button onclick="qxGoChangelog()" style="flex:1;padding:9px 0;border:none;border-radius:9px;background:linear-gradient(120deg,#5C4030,#6E4F37);color:#fff;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation">查看更新日志</button>'+
+        '<button onclick="qxHideToast(this)" style="flex:1;padding:9px 0;border:1px solid var(--border-strong);background:var(--card);color:var(--hint);font-size:13px;border-radius:9px;cursor:pointer;touch-action:manipulation">稍后再说</button>'+
+      '</div>';
+    document.body.appendChild(d);
+    requestAnimationFrame(function(){d.style.opacity='1';d.style.transform='';});
+  }
+  window.qxHideToast=function(b){var d=b?b.closest('#qxUpdateToast'):null;if(d){d.style.opacity='0';d.style.transform='translateY(12px)';setTimeout(function(){if(d&&d.parentNode)d.parentNode.removeChild(d)},230);}};
+  window.qxGoChangelog=function(){try{if(window.switchView)window.switchView('changelog');window.qxHideToast&&window.qxHideToast(null);}catch(e){}};
+
+  function quotaCheck(){
+    try{
+      if(navigator.storage&&navigator.storage.estimate){
+        navigator.storage.estimate().then(function(e){
+          if(e&&e.quota&&e.usage>e.quota*0.8&&window.flash){
+            window.flash('本地存储空间已接近饱和…建议导出备份并清理过期打卡日志以释放空间');
+          }
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+  function incognitoCheck(){
+    var priv=false;
+    try{
+      if(!window.localStorage){priv=true;}
+      else{var t='__qxprobe__';localStorage.setItem(t,'1');localStorage.removeItem(t);}
+    }catch(e){priv=true;}
+    if(priv&&window.flash){
+      setTimeout(function(){window.flash('检测到无痕/隐私模式：关闭标签页后所有记录会自动清除。建议先到「系统设置」导出备份');},600);
+    }
+  }
+
+  function boot(){
+    if($('qxVersionChip'))$('qxVersionChip').textContent='v'+V;
+    renderChanges();
+    selfCheck();
+    checkVersion();
+    quotaCheck();
+    setTimeout(incognitoCheck,1400);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<script>
+/* ═══════ 栖匣 助手 · 本地 Agent（规则驱动、不联网、不上传） ═══════ */
+(function(){
+  function $id(x){return document.getElementById(x)}
+  var BANNED='勿称栖匣为「情绪疗愈工具 / 心理疏导软件」；勿说「先安放杂念再去行动」「先调整好心态再开始」；勿反复讲解「栖 / 匣」概念；勿制造「内卷 / 冲刺 / 必须追赶长线目标」的压迫感；勿用「工作台」称呼栖匣。';
+  var OPEN='你好，欢迎来到栖匣。\n我是陪你规划当下、记录成长的助手。你可以直接告诉我：是想规划备考 / 绩点 / 保研 / 考证路线，拆解目标和任务、安排时间、准备简历面试，还是想整理复盘、记录这段时期的想法。\n\n你今天想从哪里开始？';
+
+  // 场景库：覆盖大学生高频诉求；每个场景带推荐动作（跳转到对应板块）
+  var SCENARIOS=[
+    {label:'目标太多 · 压力大',
+     prompt:'我目标好多，压力有点大，不知道从哪件开始。',
+     reply:'目标多很正常，我们别想着一次性做完。先挑一件今天就能推进一小步的事，把它拆到「今天就做」的程度；其余的记进「目标与行动」，一件一件来，不逼自己。',
+     keys:['目标太多','压力','焦虑','担心','害怕','太多','喘不过气','事多','心事','迷茫','不知从哪','毫无头绪'],
+     action:{text:'去「目标拆解」',view:'goals'}},
+
+    {label:'拖延 · 迟迟不动',
+     prompt:'我又拖了，明知道该做却迟迟不想开始。',
+     reply:'拖延常常卡在最开始的那一步。不必苛责自己，我们就选一件今天耗时最短的小事启动，比如先打开文档写上第一行——动起来，阻力就小很多。也可以先把这件事记进「今日待办」，帮自己卸下惦记。',
+     keys:['拖延','迟迟','不想动','没开始','懒','磨蹭','懒得','拖','动力','不想做','不想开始'],
+     action:{text:'打开「今日概览」',view:'home'}},
+
+    {label:'复盘 · 觉得没产出',
+     prompt:'今天好像没什么产出，复盘下来觉得挺失败的。',
+     reply:'一天没有产出不代表白过。先不急着否定自己，看看今天的计划卡在了哪一环——是目标定得太多，还是被琐事打断？找到卡点、微调明天，就能更顺。',
+     keys:['没产出','没做成','自我否定','失败','白过','虚度','复盘','没状态','没进步','没用'],
+     action:{text:'写一条「时光札记」',view:'journal'}},
+
+    {label:'保研 · 学业路线规划',
+     prompt:'我想好好规划保研和绩点，也把证书、实习一起排进去。',
+     reply:'可以，这正是栖匣能帮你落地的地方。建议分三步：先定一个具体到数字的目标（考到多少分 / 达到什么水平），再倒推时间线把它拆成每周要做的事，最后用「考试规划」和「目标与行动」把进度管起来。想保研的话，把绩点、竞赛、科研、证书、实习一并排进这条时间线就行。',
+     keys:['保研','推免','综测','绩点','学业','证书','考证','四级','六级','竞赛','考研','复习','期末','挂科','重修'],
+     action:{text:'去「学业精进」',view:'study'}},
+
+    {label:'实习 · 求职 · 简历',
+     prompt:'我想准备简历、找实习或面试，不知道从哪里入手。',
+     reply:'求职准备最怕「等准备好了再开始」。你可以现在就把已有经历列出来，挑一个想投的岗位JD，对照着改简历；面试则把高频问题先写一遍答案，再开口练。栖匣的「职业发展」里有简历模板和面试八问可以参考。',
+     keys:['实习','求职','简历','面试','工作','招聘','offer','秋招','春招','找工作','应聘','HR','投递'],
+     action:{text:'去「职业发展」',view:'career'}},
+
+    {label:'财务 · 记账 · 省钱',
+     prompt:'我想管理生活费，省点钱，也想知道怎么规划副业收入。',
+     reply:'先把这个月的生活费按「固定支出 + 弹性支出 + 储蓄」分成三份，每天花 30 秒在「理财管理」记一笔，月底就能看到钱花在哪。想开源的话，可以从低成本、时间灵活的副业开始，别影响学业。',
+     keys:['钱','花钱','记账','省钱','生活费','预算','理财','副业','赚','穷','月光','超支','消费'],
+     action:{text:'去「理财管理」',view:'finance'}},
+
+    {label:'健康 · 作息 · 运动',
+     prompt:'最近作息乱了，想调整睡眠和运动习惯。',
+     reply:'作息调整不需要一夜改变。今晚先做到「到点就放下手机」，明早固定时间起床；运动从 10 分钟开始，比一次性练狠了更重要。健康打卡可以帮你把睡眠、运动、喝水串成一条连续记录。',
+     keys:['健康','作息','睡眠','熬夜','运动','减肥','饮食','身体','生病','健身','早睡','晚睡'],
+     action:{text:'去「运动健康」',view:'health'}},
+
+    {label:'人际 · 宿舍 · 情绪',
+     prompt:'我在宿舍/同学关系上有点困扰，也想更好地处理情绪。',
+     reply:'人际关系里的不舒服，先分清楚是「具体一件事」还是「长期相处模式」。如果是具体事，可以写一条「决策日记」梳理事实和你的需求；如果是情绪累积，先给自己一点独处空间，别让情绪替你做决定。',
+     keys:['人际','社交','宿舍','室友','同学','朋友','恋爱','孤独','社恐','关系','情绪','委屈','吵架'],
+     action:{text:'去「心灵成长」',view:'mind'}},
+
+    {label:'过度消耗 · 想喘口气',
+     prompt:'最近把自己搞得太紧了，身体和精神都有点吃不消。',
+     reply:'把自己逼得太紧，对长期并不划算。先允许自己今晚好好休息、按点吃饭睡觉——这不是偷懒，是让状态能可持续。歇够了，再从最小的一件事重新入手。',
+     keys:['内卷','累','疲惫','负荷','透支','身心','卷不动','睡不好','撑不住',' burnout',' burnout','精疲力竭'],
+     action:{text:'去「心灵成长」',view:'mind'}}
+  ];
+
+  // 关键词 → 板块推荐（用于未匹配场景时的兜底）
+  var TOPICS=[
+    {keys:['四六级','四级','六级','英语','单词','听力','阅读','写作','备考','期末','考研','保研','绩点','竞赛','论文','作业','专业课','复习'],view:'study',name:'学业精进 / 考试规划'},
+    {keys:['简历','面试','实习','求职','职业','offer','秋招','春招','工作'],view:'career',name:'职业发展'},
+    {keys:['目标','计划','任务','待办','习惯','打卡','四象限','时间管理'],view:'home',name:'今日概览 / 目标与行动'},
+    {keys:['日记','复盘','记录','札记','情绪','感恩','灵感'],view:'journal',name:'时光札记 / 灵感看板'},
+    {keys:['钱','记账','理财','省钱','生活费','预算','副业','消费'],view:'finance',name:'理财管理 / 省钱技巧'},
+    {keys:['健康','运动','作息','睡眠','饮食','减肥','健身'],view:'health',name:'运动健康'},
+    {keys:['电影','书','播客','阅读','音乐','轻松','笑话'],view:'shelf',name:'书海拾贝 / 幕间观澜'},
+    {keys:['设置','备份','导出','导入','数据','清空','恢复'],view:'settings',name:'系统设置'}
+  ];
+
+  function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  function bubble(html,who){
+    var chat=$id('agentChat');if(!chat)return;
+    var d=document.createElement('div');
+    d.className=who==='user'?'agent-bubble agent-user':'agent-bubble agent-in';
+    d.innerHTML=html;
+    chat.appendChild(d);
+    chat.scrollTop=chat.scrollHeight;
+  }
+
+  function actionChip(s){
+    if(!s||!s.action)return '';
+    return '<button class="btn btn-sm" style="margin-top:10px;border-color:var(--primary-mid);color:var(--primary);background:var(--primary-light)" onclick="switchView(\''+s.action.view+'\')">'+escapeHtml(s.action.text)+' →</button>';
+  }
+
+  function matchScenario(t){
+    for(var i=0;i<SCENARIOS.length;i++){
+      for(var k=0;k<SCENARIOS[i].keys.length;k++){
+        if(t.indexOf(SCENARIOS[i].keys[k])>=0)return SCENARIOS[i];
+      }
+    }
+    return null;
+  }
+
+  function detectTopics(t){
+    var hits=[],seen={};
+    for(var i=0;i<TOPICS.length;i++){
+      for(var k=0;k<TOPICS[i].keys.length;k++){
+        if(t.indexOf(TOPICS[i].keys[k])>=0 && !seen[TOPICS[i].view]){
+          seen[TOPICS[i].view]=1;
+          hits.push(TOPICS[i]);
+          break;
+        }
+      }
+    }
+    return hits.slice(0,3);
+  }
+
+  function replyScenario(s){
+    bubble('<b>🪵 栖匣 助手</b><div style="margin-top:4px">'+escapeHtml(s.reply)+'</div>'+actionChip(s));
+  }
+
+  window.agentScenario=function(i){
+    if(i<0||i>=SCENARIOS.length)return;
+    var s=SCENARIOS[i];
+    bubble('<b>我</b><div style="margin-top:3px">'+escapeHtml(s.prompt)+'</div>','user');
+    replyScenario(s);
+  };
+
+  window.agentSend=function(){
+    var inp=$id('agentInput');if(!inp)return;
+    var t=inp.value.trim();if(!t)return;inp.value='';
+    bubble('<b>我</b><div style="margin-top:3px">'+escapeHtml(t)+'</div>','user');
+    var s=matchScenario(t);
+    if(s){replyScenario(s);return;}
+
+    var hits=detectTopics(t);
+    if(hits.length){
+      var list=hits.map(function(h){return '<button class="btn btn-sm" style="margin:4px 4px 0 0;border-color:var(--border-strong);background:var(--card);color:var(--text)" onclick="switchView(\''+h.view+'\')">'+escapeHtml(h.name)+'</button>';}).join('');
+      bubble('<b>🪵 栖匣 助手</b><div style="margin-top:4px">我注意到你谈到了这些方向。栖匣里已经准备了对应板块，你可以直接点进去开始记录和规划：</div><div style="margin-top:6px">'+list+'</div><div style="font-size:11px;color:var(--hint);margin-top:8px">也可以再具体说说你的情况，我帮你拆成今天能做的一小步。</div>');
+      return;
+    }
+
+    bubble('<b>🪵 栖匣 助手</b><div style="margin-top:4px">'+escapeHtml('先别急着给这一刻下定义。今天先落一步小而实在的——你现在最想先推进哪一件事？可以具体说说，我帮你拆到「今天就做」的程度。')+'</div>');
+  };
+
+  // 初始欢迎语
+  var chat=$id('agentChat');
+  if(chat && chat.children.length===0){
+    bubble('<b>🪵 栖匣 助手</b><div style="margin-top:4px">'+escapeHtml(OPEN).replace(/\n/g,'<br>')+'</div>');
+  }
+})();
+
+</script>
+<style>
+/* ═══ 栖匣 · 体验增强层（面包屑/收藏/折叠/回到顶部/滚动条/A11y） ═══ */
+.view.active{animation:qxFade .30s ease}
+@keyframes qxFade{from{opacity:.35;transform:translateY(6px)}to{opacity:1;transform:none}}
+.qx-crumb{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:12px;color:var(--muted,#9A927F);margin:2px 0 14px;line-height:1.6;user-select:none}
+.qx-crumb .sep{color:var(--border-strong,#C9C1B0);margin:0 2px}
+.qx-crumb .seg{cursor:pointer;color:var(--primary,#6B5747);background:var(--primary-light,rgba(111,84,64,.12));border:1px solid transparent;border-radius:999px;padding:2px 10px;transition:background .15s,color .15s}
+.qx-crumb .seg:hover{background:var(--primary,#6B5747);color:#fff}
+.qx-crumb .cur{color:var(--muted,#746F68);font-weight:600;padding:2px 4px;max-width:14em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qx-fav-btn{margin-left:auto;cursor:pointer;background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:2px 12px;font-size:11.5px;color:var(--hint,#A29B92);transition:all .15s;flex-shrink:0}
+.qx-fav-btn:hover{color:var(--primary);border-color:var(--primary-mid)}
+.qx-fav-btn.on{color:#B98A3A;border-color:#D8B26A;background:rgba(185,138,58,.12)}
+.qx-favs{display:flex;flex-direction:column;gap:2px;padding:8px 4px 10px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.qx-favs-t{font-size:11px;color:var(--hint,#A29B92);font-weight:600;letter-spacing:.05em;padding:2px 8px 4px;display:flex;align-items:center;gap:6px}
+.qx-fav{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;cursor:pointer;font-size:12.5px;color:var(--text);transition:background .15s}
+.qx-fav:hover{background:var(--primary-light,#F0E8DA)}
+.qx-fav .fstar{color:#C9A45E;flex-shrink:0}
+.qx-fav .x{margin-left:auto;cursor:pointer;color:var(--hint,#A29B92);border:none;background:none;font-size:12px;padding:0 4px;line-height:1}
+.qx-fav .x:hover{color:#8B4513}
+.nav-section{cursor:pointer}
+.nav-section::after{content:"▾";margin-left:auto;font-size:10px;color:var(--hint,#A29B92);transition:transform .25s ease;flex-shrink:0}
+.nav-section.collapsed::after{transform:rotate(-90deg)}
+#qxTop{position:fixed;right:18px;bottom:96px;z-index:900;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card,#FFFDF8);color:var(--primary,#6B5747);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;box-shadow:var(--shadow,0 6px 18px rgba(74,58,40,.12));font-size:17px}
+#qxTop.show{opacity:1;pointer-events:auto}
+#qxTop:hover{background:var(--primary-light,#F0E8DA)}
+.qx-fold{position:relative;transition:max-height .28s ease,opacity .22s ease;overflow:hidden}
+.qx-foldbtn{position:absolute;top:14px;right:12px;width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg,#F5EFE2);color:var(--hint,#A29B92);cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;transition:transform .25s,color .15s;z-index:2}
+.qx-foldbtn:hover{color:var(--primary);border-color:var(--primary-mid)}
+.qx-foldbtn.on{transform:rotate(-180deg)}
+.qx-gradewrap{border-bottom:1px solid var(--border);padding:12px 4px;margin-bottom:12px}
+*{scrollbar-width:thin;scrollbar-color:var(--border-strong,#C9C1B0) transparent}
+*::-webkit-scrollbar{width:9px;height:9px}
+*::-webkit-scrollbar-thumb{background:var(--border-strong,#C9C1B0);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
+*::-webkit-scrollbar-thumb:hover{background:var(--primary-mid,#8A745C);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
+@media(max-width:640px){.qx-crumb{margin-right:6px}.qx-fav-btn{padding:2px 8px}}
+@media print{#qxTop,.qx-foldbtn,.qx-fav-btn,.qx-crumb .seg,#sidebarOverlay{display:none!important}}
+</style>
+<script>
+/* ═══════ 栖匣 · 体验增强模块（独立、非侵入、不影响既有板块内容） ═══════ */
+(function(){
+  function LS(g,d){try{var v=localStorage.getItem(g);return v==null?d:v;}catch(e){return d;}}
+  function SSL(g,v){try{localStorage.setItem(g,v);}catch(e){}}
+  function qsAll(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function el(id){return document.getElementById(id);}
+  var boot=function(){
+    /* ---------- 1) 侧边栏视图元数据（板块名 / 自身名 / 板块首个子页） ---------- */
+    var meta={},secCur='',firstView={};
+    qsAll('#sidebar .nav-section, #sidebar .nav-item').forEach(function(n){
+      if(n.classList.contains('nav-section')){
+        var t=(n.textContent||'').trim(),i=t.indexOf('·');
+        secCur=i>=0?t.slice(i+1).trim():t;return;
+      }
+      var v=n.getAttribute('data-view');if(!v)return;
+      if(!(secCur in firstView))firstView[secCur]=v;
+      meta[v]={sec:secCur||'',label:((n.textContent||'').replace(/\s+/g,'')||v).trim()};
+    });
+    if(!meta.home)meta.home={sec:'',label:'今日概览'};
+    /* 无板块归属的命令（顶部/底部）给个补位 */
+    ['agent','settings','about','changelog'].forEach(function(v){if(!meta[v])meta[v]={sec:'栖匣系统',label:({agent:'栖匣 助手',settings:'系统设置',about:'关于产品',changelog:'更新日志'})[v]}});
+
+    /* ---------- 2) 侧边栏分组 展开/收起 + 状态记忆 ---------- */
+    var collapsedSet=LS('pp_secfold','').split('|').filter(function(x){return x;});
+    function secKey(n){return n.getAttribute('data-seckey')||(n.textContent||'').replace(/\s+/g,'').slice(0,18);}
+    function applySecState(){
+      var cur=null;
+      qsAll('#sidebar .nav-item,#sidebar .nav-section').forEach(function(n){
+        if(n.classList.contains('nav-section')){cur=n;if(collapsedSet.indexOf(secKey(n))>=0)n.classList.add('collapsed');var it=n.nextElementSibling;while(it){if(it.classList.contains('nav-section'))break;if(cur.classList.contains('collapsed'))it.style.display='none';it=it.nextElementSibling;}}
+      });
+    }
+    qsAll('#sidebar .nav-section').forEach(function(n){
+      if(!n.getAttribute('data-seckey'))n.setAttribute('data-seckey',(n.textContent||'').replace(/\s+/g,'').slice(0,18));
+      n.setAttribute('role','button');n.setAttribute('tabindex','0');
+      n.setAttribute('aria-expanded', n.classList.contains('collapsed')?'false':'true');
+      var key=secKey(n);
+      n.addEventListener('click',function(){
+        var on=this.classList.toggle('collapsed');this.setAttribute('aria-expanded',on?'false':'true');
+        var nx=this.nextElementSibling,arr=[];
+        while(nx){if(nx.classList.contains('nav-section'))break;if(nx.classList.contains('nav-item'))arr.push(nx);nx=nx.nextElementSibling;}
+        arr.forEach(function(i){i.style.display=on?'none':'';});
+        var idx=collapsedSet.indexOf(key);
+        if(on&&idx<0)collapsedSet.push(key);else if(!on&&idx>=0)collapsedSet.splice(idx,1);
+        SSL('pp_secfold',collapsedSet.join('|'));
+      });
+      n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();n.click();}});
+    });
+    applySecState();
+
+    /* ---------- 3) 我的收藏（侧边栏列表 + 各页 ☆收藏按钮，状态持久化） ---------- */
+    var favs=[];try{favs=JSON.parse(LS('pp_favs_v1','[]'))||[];}catch(e){favs=[];}
+    function saveFavs(){SSL('pp_favs_v1',JSON.stringify(favs));renderFavs();}
+    function isFav(v){for(var i=0;i<favs.length;i++)if(favs[i].v===v)return true;return false;}
+    function toggleFav(v){
+      var m=meta[v]||{label:v,sec:''};
+      var idx=-1;for(var i=0;i<favs.length;i++)if(favs[i].v===v){idx=i;break;}
+      if(idx>=0)favs.splice(idx,1);else favs.push({v:v,label:m.label,sec:m.sec});
+      saveFavs();
+    }
+    function favBoxHTML(){
+      if(!favs.length)return '';
+      var h='<div class="qx-favs"><div class="qx-favs-t">★ 我的收藏</div>';
+      favs.forEach(function(f){h+='<div class="qx-fav" data-fv="'+f.v+'" role="button" tabindex="0" aria-label="前往 '+esc(f.label)+'"><span class="fstar">★</span><span>'+esc(f.label)+'</span><span class="x" title="移除收藏">✕</span></div>';});
+      h+='</div>';return h;
+    }
+    function renderFavs(){
+      var old=el('qxFavsWrap');if(old&&old.parentNode)old.parentNode.removeChild(old);
+      var nav=el('sidebar');var box=el('navSearch');if(!nav||!box)return;
+      var w=document.createElement('div');w.id='qxFavsWrap';w.innerHTML=favBoxHTML();
+      box.parentNode.insertBefore(w,box.nextSibling);
+      qsAll('.qx-fav',w).forEach(function(it){
+        var fv=it.getAttribute('data-fv');
+        it.addEventListener('click',function(ev){
+          var t=ev.target;
+          if(t&&t.classList&&t.classList.contains('x')){var k=-1;for(var i=0;i<favs.length;i++)if(favs[i].v===fv){k=i;break;}if(k>=0){favs.splice(k,1);saveFavs();}return;}
+          if(window.switchView)switchView(fv);
+        });
+        it.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();if(window.switchView)switchView(fv);}});
+      });
+    }
+    function syncFavBtns(){qsAll('.qx-fav-btn').forEach(function(b){var v=b.getAttribute('data-v');if(isFav(v))b.classList.add('on');else b.classList.remove('on');});}
+
+    /* ---------- 4) 面包屑导航（非首页注入；可点击回上级） ---------- */
+    function crumbHTML(v){
+      var m=meta[v];var h='<span class="seg" data-go="home" role="button" tabindex="0">首页</span><span class="sep">›</span>';
+      if(m&&m.sec&&firstView[m.sec])h+='<span class="seg" data-go="'+firstView[m.sec]+'" role="button" tabindex="0">'+esc(m.sec.replace(/^栖匣/,''))+'</span><span class="sep">›</span>';
+      h+='<span class="cur">'+esc(m?m.label:v)+'</span>';
+      h+='<button class="qx-fav-btn" data-v="'+v+'" role="switch" aria-checked="'+isFav(v)+'" title="收藏 / 取消收藏此页面">★ 收藏</button>';
+      return h;
+    }
+    function injectCrumbs(){
+      qsAll('.view').forEach(function(vw){
+        var v=vw.id.replace(/^view-/,'');if(!v||v==='home')return;
+        if(vw.querySelector('.qx-crumb'))return;
+        var cr=document.createElement('div');cr.className='qx-crumb';cr.innerHTML=crumbHTML(v);
+        var ph=vw.querySelector('.page-head')||vw.firstElementChild;
+        if(ph&&ph.parentNode){vw.insertBefore(cr,ph);}else{vw.insertBefore(cr,vw.firstChild);}
+        qsAll('.seg',cr).forEach(function(seg){
+          seg.addEventListener('click',function(){var g=this.getAttribute('data-go');if(g&&window.switchView)switchView(g);});
+          seg.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();var g=this.getAttribute('data-go');if(g&&window.switchView)switchView(g);}});
+        });
+        var fb=cr.querySelector('.qx-fav-btn');
+        if(fb)fb.addEventListener('click',function(){toggleFav(this.getAttribute('data-v'));});
+      });
+      syncFavBtns();
+    }
+
+    /* ---------- 5) 首页低优先级附加卡片折叠（今日心语 / 生活刻度 / 开学准备） ---------- */
+    function initFold(card,key){
+      if(!card||card.getAttribute('data-qcf'))return;
+      card.setAttribute('data-qcf','1');card.classList.add('qx-fold');
+      var head=card.firstElementChild||card;
+      var btn=document.createElement('button');btn.className='qx-foldbtn';btn.title='折叠 / 展开此卡片';btn.setAttribute('aria-label','折叠或展开');btn.setAttribute('aria-expanded','true');btn.textContent='▾';
+      (head.appendChild?head.appendChild(btn):head.parentNode&&head.parentNode.insertBefore(btn,head));
+      var collapsed=(LS('pp_col_'+key,'')==='1');
+      function apply(on){
+        var full=card.offsetHeight||500;
+        btn.classList.toggle('on',on);btn.setAttribute('aria-expanded',on?'false':'true');
+        if(on){card.style.maxHeight=full+'px';void card.offsetHeight;card.style.maxHeight=((head.offsetHeight||40)+30)+'px';card.style.minHeight='0';}
+        else{card.style.maxHeight=full+'px';void card.offsetHeight;card.style.maxHeight='';card.style.minHeight='';}
+        SSL('pp_col_'+key,on?'1':'0');
+      }
+      btn.addEventListener('click',function(){apply(!btn.classList.contains('on'));});
+      apply(collapsed);
+    }
+    var hv=el('view-home');
+    if(hv){
+      // 注意：不给「今日心语」卡片注入折叠箭头，否则会压住右上角「换一句」按钮；
+      // 仅对生活刻度与开学准备卡片保留折叠能力。
+      initFold(hv.querySelector('.daily-card'),'scale');
+      initFold(el('prepareCard'),'prepare');
+    }
+
+    /* ---------- 6) 回到顶部悬浮按钮 ---------- */
+    var top=document.createElement('button');top.id='qxTop';top.textContent='↑';top.setAttribute('aria-label','回到顶部');document.body.appendChild(top);
+    top.addEventListener('click',function(){try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}});
+    window.addEventListener('scroll',function(){if(window.scrollY>620)top.classList.add('show');else top.classList.remove('show');},{passive:true});
+
+    /* ---------- 7) 本地存储容量预警告警（按 localStorage 字符量估算） ---------- */
+    (function(){
+      try{
+        var n=0;for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);try{n+=(k?k.length:0)+(localStorage.getItem(k)||'').length;}catch(e){}}
+        var approxMB=n*2/1048576;
+        if(approxMB>3.6&&!sessionStorage.getItem('qx_st_warn')){sessionStorage.setItem('qx_st_warn','1');
+          setTimeout(function(){try{uiAlert&&uiAlert('本地存储空间即将用满（约已用 '+approxMB.toFixed(1)+'MB）。为避免记录写入失败，请尽快到「顶栏 → 导出数据备份」保存一份完整记录，再清理不再需要的旧记录。');}catch(e){}} ,3500);
+        }
+      }catch(e){}
+    })();
+
+    /* ---------- 8) 首次使用年级向导 + 设置可改 ---------- */
+    var GKEY='pp_grade';var gradelist=['大一','大二','大三','大四','研究生'];
+    /* 年级 → 阶段重点：兑现弹窗文案「把当下最该专注的板块放到前面陪你」的承诺 */
+    var GRADE_FOCUS={
+      '大一':{go:'college',line:'先把底盘搭稳：看懂规则、别挂科、别乱花钱',picks:[
+        {v:'college',t:'入学指南',w:'绩点、选课、奖学金，先把规则看懂'},
+        {v:'campus',t:'校园生活',w:'课程表、社团、室友公约'},
+        {v:'study',t:'学业精进',w:'四级早过早省心'},
+        {v:'save',t:'省钱技巧',w:'学生认证能省一大笔'}]},
+      '大二':{go:'study',line:'稳住绩点，开始攒硬通货',picks:[
+        {v:'study',t:'学业精进',w:'六级、专业课、笔记体系'},
+        {v:'growth',t:'个人提升',w:'执行力与专注力，现在练最划算'},
+        {v:'contest',t:'竞赛直通',w:'大创、建模，给履历增重'},
+        {v:'party',t:'入团入党',w:'想走选调/央国企，窗口别错过'}]},
+      '大三':{go:'career',line:'方向分化，该为出路做准备了',picks:[
+        {v:'career',t:'职业发展',w:'实习、简历、谈薪'},
+        {v:'tpl',t:'专项模板',w:'考研/考公/法考全年计划'},
+        {v:'contest',t:'竞赛直通',w:'保研加分、履历增重'},
+        {v:'paper',t:'论文写作',w:'提前练手，别临阵磨枪'}]},
+      '大四':{go:'paper',line:'收官之年，把出口走顺',picks:[
+        {v:'paper',t:'论文写作',w:'开题、写作、答辩全流程'},
+        {v:'career',t:'职业发展',w:'秋招、offer 比较、签约'},
+        {v:'tpl',t:'专项模板',w:'复试/面试冲刺'},
+        {v:'life',t:'生涯蓝图',w:'毕业之后，往哪走'}]},
+      '研究生':{go:'paper',line:'研究为主，兼顾出口',picks:[
+        {v:'paper',t:'论文写作',w:'文献、开题、投稿'},
+        {v:'career',t:'职业发展',w:'校招、实习、行业选择'},
+        {v:'earn',t:'搞钱启蒙',w:'把专业能力变成收入'},
+        {v:'mind',t:'心绪安放',w:'长期高压，照顾好自己'}]}
+    };
+    function goView(v){try{if(typeof switchView==='function'){switchView(v);return;}}catch(e){}try{location.hash='#view-'+v;}catch(e){}}
+    /* 首页「当前阶段最该专注」卡片 */
+    function renderGradeFocus(){
+      var host=el('qxGradeFocus');if(!host)return;
+      var g=LS(GKEY,'');var f=GRADE_FOCUS[g];
+      if(!f){host.style.display='none';return;}
+      host.style.display='';
+      host.innerHTML=
+        '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">'+
+          '<h3 style="color:var(--primary);margin:0;line-height:1.6">🎓 '+esc(g)+' · 当下最该专注</h3>'+
+          '<button class="btn btn-sm" id="qxGradeChange" style="background:transparent;color:var(--hint);border-color:var(--border)">换个阶段</button>'+
+        '</div>'+
+        '<div style="margin-top:10px;font-size:13px;color:var(--text);line-height:1.9">'+esc(f.line)+'</div>'+
+        '<div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px">'+
+          f.picks.map(function(p){
+            return '<button type="button" class="btn btn-sm qx-focus-pick" data-go="'+p.v+'" style="text-align:left;padding:11px 13px;height:auto;line-height:1.6;background:var(--bg);border-color:var(--border)">'+
+              '<div style="font-size:13.5px;font-weight:700;color:var(--primary)">'+esc(p.t)+'</div>'+
+              '<div style="font-size:11.5px;color:var(--hint);margin-top:3px">'+esc(p.w)+'</div></button>';
+          }).join('')+
+        '</div>';
+      qsAll('.qx-focus-pick',host).forEach(function(b){
+        b.addEventListener('click',function(){goView(b.getAttribute('data-go'));});
+      });
+      var cb=el('qxGradeChange');
+      if(cb)cb.onclick=function(){gradeModal(true);};
+    }
+    /* 挂载点：插在首页「轻松上手 · 分类导航」卡片之后 */
+    (function mountFocus(){
+      var a=el('focusCard');
+      if(!a){setTimeout(mountFocus,500);return;}
+      if(el('qxGradeFocus')){renderGradeFocus();return;}
+      var d=document.createElement('div');
+      d.className='card';d.id='qxGradeFocus';
+      d.setAttribute('style','margin-bottom:16px;display:none');
+      a.parentNode.insertBefore(d,a.nextSibling);
+      renderGradeFocus();
+    })();
+    function gradeModal(force){
+      if(LS(GKEY+'_done','')==='1'&&!force)return;
+      var o=document.createElement('div');
+      o.style.cssText='position:fixed;inset:0;background:rgba(20,16,12,.5);z-index:15;display:flex;align-items:center;justify-content:center;padding:20px';
+      var ops='';gradelist.forEach(function(g){ops+='<label style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;cursor:pointer;background:var(--bg);font-size:14px;color:var(--text)"><input type="radio" name="qxg" value="'+g+'" style="width:16px;height:16px">'+g+'</label>';});
+      o.innerHTML='<div style="background:var(--card);border:1px solid var(--border);border-radius:18px;max-width:340px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 16px 60px rgba(0,0,0,.4)">'+
+        '<div style="font-size:19px;font-weight:800;color:var(--head-deep,var(--primary));letter-spacing:2px;margin-bottom:6px">现在是大几了？</div>'+
+        '<div style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-bottom:16px">告诉栖匣你的阶段，我们会把当下最该专注的板块放到前面陪你，不让远期目标给你空添压力。</div>'+
+        '<div style="text-align:left">'+ops+'</div>'+
+        '<button id="qxgOk" class="btn btn-primary" style="width:100%;margin-top:10px;padding:11px;font-size:15px">开始安放今天</button>'+
+        '<button id="qxgLater" class="btn" style="width:100%;margin-top:8px;background:transparent;color:var(--hint)">暂不选择</button>'+
+        '</div>';
+      document.body.appendChild(o);
+      function close(){o.parentNode&&o.parentNode.removeChild(o);SSL(GKEY+'_done','1');try{renderGradeUI();}catch(e){}}
+      o.querySelector('#qxgOk').onclick=function(){
+        var sel=o.querySelector('input[name="qxg"]:checked');
+        var picked=sel?sel.value:'';
+        if(picked){SSL(GKEY,picked);SSL(GKEY+'_done','1');}
+        close();
+        try{renderGradeFocus();}catch(e){}
+        if(picked){
+          var f=GRADE_FOCUS[picked];
+          try{window.flash&&flash('已记下「'+picked+'」，这就带你去当下最该看的地方');}catch(e){}
+          if(f&&f.go){setTimeout(function(){goView(f.go);},300);}
+        }
+      };
+      o.querySelector('#qxgLater').onclick=function(){SSL(GKEY+'_done','1');close();};
+      o.querySelector('#qxgOk').focus();
+    }
+    function renderGradeUI(){
+      /* 在「系统设置 → 数据安全」卡顶部插入年级选择行 */
+      var host=el('qxDataCard');
+      if(!host){setTimeout(renderGradeUI,600);return;}
+      if(host.querySelector('.qx-gradewrap'))return;
+      var cur=LS(GKEY,'未设置');
+      var w=document.createElement('div');w.className='qx-gradewrap';
+      w.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">'+
+        '<div style="font-size:13px;color:var(--text)"><b style="color:var(--primary)">🎓 当前年级</b>　<span style="color:var(--muted)">'+esc(cur)+'</span></div>'+
+        '<div style="display:flex;gap:6px;flex-wrap:wrap">'+gradelist.map(function(g){return '<button class="btn btn-sm" data-g="'+g+'" style="border-color:var(--border-strong);'+(cur===g?'background:var(--primary);color:#fff;border-color:var(--primary)':'background:transparent;color:var(--text)')+'">'+g+'</button>';}).join('')+'</div></div>';
+      host.parentNode.insertBefore(w,host);
+      qsAll('[data-g]',w).forEach(function(b){b.addEventListener('click',function(){SSL(GKEY,this.getAttribute('data-g'));SSL(GKEY+'_done','1');qsAll('[data-g]',w).forEach(function(x){x.style.background='transparent';x.style.color='var(--text)';x.style.borderColor='var(--border-strong)';});this.style.background='var(--primary)';this.style.color='#fff';this.style.borderColor='var(--primary)';try{renderGradeFocus();}catch(e){}try{window.flash&&window.flash('已保存年级：'+this.getAttribute('data-g'));}catch(e){} });});
+    }
+    /* 年级询问触发时机：新用户必须先让「产品导览」自动出现，且用户主动关闭后，才询问年级（绝不提前）。
+       老用户（已看过导览）却还没选过年级 → 直接轻量询问。 */
+    var qxGradeAsked=false;
+    function qxGradeWhenReady(delay){
+      if(qxGradeAsked)return;
+      if(LS(GKEY+'_done','')==='1'){setTimeout(renderGradeUI,600);return;}
+      qxGradeAsked=true;
+      setTimeout(function(){gradeModal(false);},delay==null?900:delay);
+    }
+    if(LS(GKEY+'_done','')!=='1'){
+      var qxPano=document.getElementById('pano');
+      var qxFirst=(localStorage.getItem('pp_pano_seen')!=='1')&&(localStorage.getItem('pp_quickstart_ok')!=='1');
+      if(!qxFirst){
+        /* 老用户：导览早已看过，直接询问（避免与正在打开的其他浮层冲突，稍作延迟） */
+        qxGradeWhenReady(900);
+      }else if(qxPano){
+        /* 新用户：监听导览浮层 class。出现(show→生效)后又关闭(show→移除)＝用户已主动关闭导览，
+           此时才弹出年级询问，保证时序为「导览自动出现 → 用户主动关闭 → 问大几」。 */
+        var qxWasShown=false;
+        var qxObs=new MutationObserver(function(){
+          var p=document.getElementById('pano');
+          var shown=p&&p.classList.contains('show');
+          if(shown){qxWasShown=true;}
+          else if(qxWasShown){
+            qxObs.disconnect();
+            qxGradeWhenReady(600);
+          }
+        });
+        qxObs.observe(qxPano,{attributes:true,attributeFilter:['class']});
+        /* 兜底：若导览因异常从未 show（自动弹出失败），25 秒后仍给出询问，避免该功能对新用户永久饿死 */
+        setTimeout(function(){
+          if(!qxWasShown){qxObs.disconnect();qxGradeWhenReady(0);}
+        },25000);
+      }else{
+        qxGradeWhenReady(900);
+      }
+    }else{setTimeout(renderGradeUI,800);}
+
+    /* ---------- 9) 打印适配：打印时临时切浅色主题 ---------- */
+    if(window.matchMedia){var mq=window.matchMedia('print');function onPr(m){var dt=document.documentElement;if(m.matches){if(!dt.getAttribute('data-qxprev'))dt.setAttribute('data-qxprev',dt.getAttribute('data-theme')||'light');dt.setAttribute('data-theme','light');}else{var p=dt.getAttribute('data-qxprev');if(p){dt.setAttribute('data-theme',p);mt.removeAttribute('data-qxprev');}}}function mt(){} if(mq.addEventListener)mq.addEventListener('change',onPr);else if(mq.addListener)mq.addListener(onPr);}
+
+    /* ---------- 10) 危险删除二次确认（打卡 / 倒数日 / 笔记） ---------- */
+    function safeWrap(fnName,msg){
+      if(typeof window[fnName]!=='function')return;
+      var orig=window[fnName];
+      window[fnName]=function(){
+        var a=Array.prototype.slice.call(arguments);
+        if(window.uiConfirm)uiConfirm(msg,function(){orig.apply(window,a);});
+        else if(window.confirm){if(window.confirm(msg))orig.apply(window,a);}
+      };
+    }
+    safeWrap('delCheckinDef','确定删除这条打卡项吗？删除后不可恢复。');
+    safeWrap('delCountdown','确定删除这个倒数日吗？删除后不可恢复。');
+    safeWrap('delNote','确定删除这条记录吗？删除后不可恢复。');
+
+    /* ---------- 11) 导入备份二次确认（防止误导入覆盖现有数据） ---------- */
+    if(typeof importAll==='function'){
+      var _imp=importAll;
+      window.importAll=function(ev){
+        var f=ev&&ev.target&&ev.target.files?ev.target.files[0]:null;if(!f)return;
+        uiConfirm('导入备份会用文件内容覆盖当前设备上的本地记录。确定继续吗？（建议先「导出数据备份」留底）',function(){_imp({target:{files:[f]}});});
+      };
+    }
+
+    /* ---------- 14) 外部链接安全兜底：所有新标签页链接强制补上 rel=noopener noreferrer ---------- */
+    (function fixExternalRels(){
+      try{
+        document.querySelectorAll('a[target="_blank"]').forEach(function(a){
+          var r=a.getAttribute('rel')||'';
+          if(r.indexOf('noopener')===-1)r=(r?(r+' '):'')+'noopener';
+          if(r.indexOf('noreferrer')===-1)r+=' noreferrer';
+          a.setAttribute('rel',r.trim());
+        });
+        /* 未来动态插入的链接统一交给 MutationObserver 兜底 */
+        if(typeof MutationObserver==='function'&&!window._externRelObs){
+          window._externRelObs=new MutationObserver(function(){try{
+            document.querySelectorAll('a[target="_blank"]:not([rel*="noopener"])').forEach(function(a){
+              var r=a.getAttribute('rel')||'';
+              if(r.indexOf('noopener')===-1)r=(r?(r+' '):'')+'noopener';
+              if(r.indexOf('noreferrer')===-1)r+=' noreferrer';
+              a.setAttribute('rel',r.trim());
+            });
+          }catch(e){}});
+          window._externRelObs.observe(document.body,{subtree:true,childList:true});
+        }
+      }catch(e){}
+    })();
+
+    /* ---------- 12) 无障碍：导航项键盘可达 + aria ---------- */
+    qsAll('#sidebar .nav-item').forEach(function(n){
+      var v=n.getAttribute('data-view');
+      n.setAttribute('role','button');n.setAttribute('tabindex','0');
+      if(v)try{n.setAttribute('aria-label',(meta[v]?meta[v].label:v)+' 板块');}catch(e){}
+    });
+
+    /* ---------- 13) 收集并注入（时机不确定时兜底重试） ---------- */
+    injectCrumbs();
+    renderFavs();
+    syncFavBtns();
+  };
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,150);});}
+  else{setTimeout(boot,150);}
+})();
+</script>
+<style>
+/* ═══ 栖匣 · 体验增强层 2（阅读排版/外链/表单/今日核心/搜索/仪表盘） ═══ */
+.qx-core-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:2px;color:#F3E6CB;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:4px 12px;margin-bottom:10px}
+#todayGoalInput{font-size:16px!important;padding:12px 14px!important}
+.view p{line-height:2}
+.view h4{margin:14px 0 6px}
+.view .callout-info{background:linear-gradient(135deg,var(--primary-light),var(--card))!important;border:1px solid var(--border-strong)!important;color:var(--text)!important}
+a[href^="http"]{transition:color .15s,box-shadow .15s,background .15s}
+a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:underline!important;text-underline-offset:3px}
+#qxSearchWrap input,#qxSearchWrap textarea{font-size:14px}
+.qx-res{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:9px 11px;margin-bottom:8px;cursor:pointer;color:var(--text);transition:background .15s}
+.qx-res:hover{background:var(--primary-light)}
+.qx-res mark{background:#E8CD8A;color:#3A2A12;border-radius:3px;padding:0 2px}
+.qx-history-day{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 4px;border-bottom:1px dashed var(--border-strong);font-size:13px;color:var(--text)}
+.qx-history-day .ok{color:#4A5D2E;font-weight:700}
+.qx-history-day .no{color:var(--hint)}
+/* 桌面/平板内容列：宽度随屏幕自然增长并居中（上限 1240px）。
+   修复旧规则“窗口一旦超过 1100px 内容列反而收窄到 980px”的突兀跳变：
+   宽屏不再左右空荡、内容不再显得像手机版被摆在电脑中间，整体更舒展协调。 */
+@media(min-width:1100px){
+  .view{max-width:min(1240px,100%)}
+  .main{padding:26px 40px 64px}
+}
+/* 超宽显示器进一步放宽到 1400px，避免在高分屏/大屏上仍显局促 */
+@media(min-width:2000px){
+  .view{max-width:1400px}
+}
+/* 宽屏下侧栏加宽至更舒适的 210px（与顶栏、主区偏移联动一致），桌面观感更从容 */
+@media(min-width:1240px){
+  .sidebar{width:210px}
+  .topbar{left:210px}
+  .main{margin-left:210px}
+}
+/* 顶栏标语移动端防截断：字号随屏宽自动缩放，极窄屏收起徽标图，标语永远完整显示 */
+@media(max-width:700px){.topbar .tb-badge{white-space:nowrap;overflow:visible;text-overflow:clip;max-width:none;font-size:clamp(7px,2.4vw,9px)}.topbar .tb-en{font-size:11px}}
+@media(max-width:520px){.topbar .tb-badge{font-size:clamp(6.5px,2.2vw,8px);padding:1px 4px}.topbar .title img{width:20px;height:20px}}
+@media(max-width:380px){.topbar .title img{display:none}.topbar .title{gap:3px}}
+/* 产品总览(#pano)暖木配色协调：清除残留墨绿，统一暖棕金 */
+.pano{color:#4A3A2C}
+.pano-close{color:#4A3A2C;border-color:rgba(111,79,55,.18)}
+.pt-sash{background:linear-gradient(120deg,#6E4F37,#8A6A3A 60%,#6E4F37);color:#F6EFE1;box-shadow:0 8px 20px rgba(110,79,55,.24)}
+.pt-sash::before{background:radial-gradient(circle at top left,#6E4F37 60%,transparent 60%)}
+.pt-sash::after{background:radial-gradient(circle at top right,#6E4F37 60%,transparent 60%)}
+.pano-cta{color:#4A3A2C}
+.pano-h2 em,.pano-lead b{color:#8A6A3A}
+[data-theme="dark"] .pt-sash{background:linear-gradient(120deg,#3A2A1E,#5B4532 60%,#3A2A1E);color:#F0E7D8}
+[data-theme="dark"] .pt-sash::before{background:radial-gradient(circle at top left,#3A2A1E 60%,transparent 60%)}
+[data-theme="dark"] .pt-sash::after{background:radial-gradient(circle at top right,#3A2A1E 60%,transparent 60%)}
+/* 统一深色模式导览 CTA 主按钮为暖棕金（消除残留墨绿 #2a3b30 / #8A6D48） */
+[data-theme="dark"] .pano-cta .btn.btn-primary{background:linear-gradient(120deg,#5B4532,#6E4F37 60%,#5B4532)!important;border:1px solid #A0813F!important;box-shadow:0 16px 34px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08)!important}
+[data-theme="dark"] .pano-cta .btn.btn-primary:hover{background:linear-gradient(120deg,#6E4F37,#7A5838)!important;border-color:#C9A45E!important}
+[data-theme="dark"] .pano-close{background:rgba(38,30,18,.8)!important;border-color:rgba(207,169,103,.25)!important;color:#EDE7D7!important}
+[data-theme="dark"] .pano-close:hover{background:rgba(52,41,26,.9)!important;color:#E2C186!important}
+[data-theme="dark"] .pano-pp .dot.on{background:#C9A45E!important}
+/* 移动端导览底部留白：CTA 不再被屏幕下缘/微信底栏裁切 */
+.pano{padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(max-width:560px){.pano-inner{padding:0 16px 92px}.pano-cta{margin:56px 0 4px;padding:40px 18px}.pano-cta .btn{width:100%}}
+/* 首页备份提示微调：加深分隔，避免与背景粘连 */
+#qixiaBackupTip{border-left:4px solid #C7974A;background:#FFF6E8}
+</style>
+<script>
+/* ═══════════ 栖匣 · 体验增强模块 2（独立自包含，全部防御式，不破坏既有内容） ═══════════ */
+(function(){
+  function LS(g,d){try{var v=localStorage.getItem(g);return v==null?d:v;}catch(e){return d;}}
+  function SSL(g,v){try{localStorage.setItem(g,v);}catch(e){}}
+  function el(id){return document.getElementById(id);}
+  function qs(s,c){return (c||document).querySelector(s);}
+  function qsAll(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function p2(n){return (n<10?'0':'')+n;}
+  function qxKey(d){return ''+d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());}
+
+  var boot2=function(){
+
+    /* 0) 全站外链安全：新标签页打开 + 建议系统浏览器提示 + hover 反馈 */
+    qsAll('a[href]').forEach(function(a){
+      var h=(a.getAttribute('href')||'');
+      if(/^https?:/i.test(h)){
+        a.setAttribute('target','_blank');
+        a.setAttribute('rel','noopener noreferrer');
+        if(!a.getAttribute('title'))a.setAttribute('title','外部链接 · 建议用系统浏览器打开');
+      }
+    });
+
+    /* 1) 保存/录入失败文字反馈：给高频保存函数加异常兜底 */
+    ['saveTodayGoal','toggleCheckin','addCountdown'].forEach(function(name){
+      if(typeof window[name]==='function'&&!window[name].qxGuarded){
+        var orig=window[name];
+        window[name]=function(){
+          try{return orig.apply(this,arguments);}
+          catch(e){try{window.flash&&window.flash('⚠️ 保存未生效：请检查浏览器存储空间后重试，必要时先导出备份。');}catch(_){}}
+        };
+        window[name].qxGuarded=true;
+      }
+    });
+
+    /* 2) 首页「今日核心」凸显：加标识徽标 + 放大输入 */
+    (function(){
+      var inp=el('todayGoalInput');if(!inp)return;
+      var card=inp.closest?inp.closest('.card'):null;if(!card||card.getAttribute('data-qxcore')==='1')return;
+      card.setAttribute('data-qxcore','1');
+      var tag=document.createElement('div');tag.className='qx-core-tag';tag.textContent='⭐ 今日核心 · 今天最重要的一件事';
+      card.insertBefore(tag,card.firstChild);
+    })();
+
+    /* 3) 新手入门引导弹窗：仅首次弹一次，文案按定稿，关闭后永久记忆 */
+    /* 为兼容已出现过的其他首访提示，避免叠加：若已看过任意引导则跳过 */
+    function qxOpenGuide(){
+      var ov=document.createElement('div');
+      ov.id='qxGuideOverlay';
+      ov.style.cssText='position:fixed;inset:0;background:rgba(20,16,12,.5);z-index:99990;display:flex;align-items:center;justify-content:center;padding:20px;animation:qxFade .25s ease';
+      ov.innerHTML='<div role="dialog" aria-modal="true" aria-label="新手入门引导" style="background:var(--card);border:1px solid var(--border);border-radius:18px;max-width:340px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 16px 60px rgba(0,0,0,.4)">'+
+        '<div style="font-size:20px;font-weight:800;color:var(--primary);letter-spacing:2px;margin-bottom:10px">一「栖」一「匣」</div>'+
+        '<div style="font-size:13.5px;color:var(--text);line-height:2;text-align:left">收纳成长诸事，锚定方向，落实眼前规划。为你收拢学业、目标与日常安排。<b style="color:var(--primary)">—— 栖匣，致每一位精进者</b><br>把每一天妥善安放，步步趋近心中所向。</div>'+
+        '<button id="qxGuideClose" class="btn btn-primary" style="width:100%;margin-top:16px;padding:11px;font-size:15px">好的 · 开始安放今天</button>'+
+        '<div style="font-size:11px;color:var(--hint);margin-top:10px;line-height:1.7">这段引导只会出现一次；之后可在「系统 → 关于产品」重看全景导览。</div>'+
+        '</div>';
+      document.body.appendChild(ov);
+      function close(){SSL('qx_seek','1');ov.parentNode&&ov.parentNode.removeChild(ov);}
+      ov.querySelector('#qxGuideClose').onclick=close;
+      ov.addEventListener('click',function(e){if(e.target===ov)close();});
+      window.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.contains(ov))close();});
+    }
+    if(LS('qx_seek','')!=='1'){
+      /* 与「年级向导」错峰：等年级选定/跳过后再引导，绝不叠加；已看过任一导览则直接跳过 */
+      var panoSeen=LS('pp_pano_v4_seen','')==='1'||LS('pp_quickstart_ok','')==='1'||LS('pp_splash_seen','')==='1';
+      if(panoSeen){SSL('qx_seek','1');}
+      else{
+        var gTries=0;
+        (function waitGrade(){
+          if(document.body.contains(el('qxGuideOverlay')))return;
+          if(LS('pp_grade_done','')==='1'||LS('pp_grade','')!==''){setTimeout(qxOpenGuide,500);}
+          else{gTries++;if(gTries<16)setTimeout(waitGrade,600);}
+        })();
+      }
+    }
+
+    /* 4) 草稿自动保存：长文本编辑区失焦即存、重开恢复（绝不覆盖已填内容） */
+    var draftIds=[];
+    qsAll('textarea').forEach(function(ta){
+      if(!ta.id)return;
+      if(/note|Note|essay|Essay|plan|Plan|text|Text|草稿/i.test(ta.id)){
+        draftIds.push(ta.id);
+        // 保存
+        ta.addEventListener('input',(function(id){return function(){clearTimeout(this._t);this._t=setTimeout(function(){SSL('qx_draft_'+id,ta.value);},500);};})(ta.id));
+      }
+    });
+    setTimeout(function(){
+      draftIds.forEach(function(id){
+        var ta=el(id);if(!ta)return;
+        var saved=LS('qx_draft_'+id,'');
+        if(saved&&(!ta.value||!ta.value.trim())){ta.value=saved;}
+      });
+    },700);
+
+    /* 5) 首页待办/打卡空白友好提示（仅当真正为空时，新增后自动覆盖，不干扰渲染） */
+    (function(){
+      var taskBox=el('todayTasks'),ckBox=el('checkinList');
+      if(!taskBox&&!ckBox)return;
+      function guard(box,fg,words){
+        if(!box||box.getAttribute('data-qxempty'))return;
+        if(box.children.length===0){
+          var p=document.createElement('p');
+          p.style.cssText='color:var(--hint);font-size:13px;line-height:1.8;padding:6px 0';
+          p.textContent=words;
+          box.appendChild(p);
+          box.setAttribute('data-qxempty','1');
+        }
+      }
+      guard(taskBox,1,'今天还没有任务～ 空着也没关系，写上第一件最重要的小事就开始吧。');
+      guard(ckBox,1,'打卡列表暂时是空的。添加一个想长期坚持的小习惯，明天开始打卡吧。');
+      // 若后续变化（新增条目后容器不再为空）则清除标记，避免残留
+      setInterval(function(){
+        ['todayTasks','checkinList'].forEach(function(id){
+          var b=el(id);if(!b)return;
+          if(b.children.length>0&&b.getAttribute('data-qxempty'))b.removeAttribute('data-qxempty');
+        });
+      },2500);
+    })();
+
+    /* 6) 成长可视化仪表盘：向「成长档案」注入近14天真实轨迹图（只读统计，不造假） */
+    window.qxLast14=function(){
+      var map={};try{map=JSON.parse(LS('pp_checkins','{}'))||{};}catch(e){map={};}
+      var now=new Date(),out=[];
+      for(var i=13;i>=0;i--){
+        var d=new Date(now);d.setDate(now.getDate()-i);var k=qxKey(d);
+        var v=map[k];
+        if(v!==null&&typeof v==='object'){v=Object.values(v).filter(Boolean).length;}
+        else{v=parseFloat(v)||0;}
+        out.push({k:k,v:v});
+      }
+      return out;
+    };
+    window.qxDrawChart=function(){
+      var cv=el('qxDashChart');if(!cv)return;
+      var days=window.qxLast14();var max=1;
+      days.forEach(function(x){if(x.v>max)max=x.v;});
+      var W=Math.max(cv.clientWidth,260),H=132;
+      var html='<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="'+H+'" role="img" aria-label="近14天打卡轨迹">';
+      var bw=(W-24)/days.length;
+      days.forEach(function(x,i){
+        var barH=Math.max(2,(x.v/max)* (H-34));
+        var bx=12+i*bw+bw*0.18;
+        html+='<rect x="'+bx+'" y="'+(H-18-barH)+'" width="'+(bw*0.64)+'" height="'+barH+'" rx="4" fill="'+(x.v>0?'#7A5C33':'#D8CCB6')+'" opacity="'+(x.v>0?1:0.6)+'"><title>'+x.k+' · '+(x.v>0?x.v+' 次打卡':'无打卡')+'</title></rect>';
+        if(x.v>0)html+='<text x="'+(bx+bw*0.32)+'" y="'+(H-18-barH-4)+'" text-anchor="middle" font-size="10" fill="#8A6A2D">'+x.v+'</text>';
+        if(i%2===0)html+='<text x="'+(bx+bw*0.32)+'" y="'+(H-4)+'" text-anchor="middle" font-size="9" fill="#A29B92">'+x.k.slice(5)+'</text>';
+      });
+      html+='<line x1="8" y1="'+(H-18)+'" x2="'+(W-8)+'" y2="'+(H-18)+'" stroke="#C9C1B0" stroke-width="1"/>';
+      html+='</svg>';
+      cv.innerHTML=html;
+    };
+    (function dashInsert(){
+      var host=el('view-stats');if(!host||host.querySelector('[data-qxd]'))return;
+      var card=document.createElement('div');
+      card.setAttribute('data-qxd','1');card.className='card';card.id='qxDashCard';
+      card.style.marginTop='16px';
+      card.innerHTML='<h3>📈 近14天成长轨迹</h3>'+
+        '<p style="font-size:12px;color:var(--hint);margin-top:4px">由你的真实打卡记录绘制，逐日累计；无记录的天保持留白，不生成任何虚假数据。</p>'+
+        '<div id="qxDashChart" style="height:140px;margin-top:10px"></div>'+
+        '<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">'+
+        '<button class="btn btn-sm" style="border-color:var(--border-strong);background:var(--card);color:var(--text)" onclick="qxOpenHistory()">🗓 历史打卡回看</button>'+
+        '<button class="btn btn-sm" style="border-color:var(--border-strong);background:var(--card);color:var(--text)" onclick="qxOpenSearch()">🔍 全站内容检索</button></div>';
+      var gi=el('growthInsight');
+      var anchor=gi?(gi.closest?gi.closest('.card')||gi:gi):null;
+      (anchor&&anchor.parentNode?anchor.parentNode:host).appendChild(card);
+      // 重新走一遍切页重算钩子
+      window.qxDrawChart();
+    })();
+
+    /* 6) 历史打卡回看（只读） */
+    window.qxOpenHistory=function(){
+      var map={};try{map=JSON.parse(LS('pp_checkins','{}'))||{};}catch(e){map={};}
+      var keys=Object.keys(map).sort();
+      var html='';
+      keys=keys.slice(-60);
+      keys.forEach(function(k){
+        var v=map[k],okKey=LS('pp_checkins_done_'+k)||(v>0?'1':'');
+        var done=(v>0);
+        html+='<div class="qx-history-day"><span>'+esc(k)+
+          (done?' <span style="color:#4A5D2E">· '+v+' 项</span>':' <span style="color:var(--hint)">· 未完成</span>')+
+          '</span><span class="'+(done?'ok':'no')+'">'+(done?'✓ 完成':'○ 未打')+'</span></div>';
+      });
+      if(!html)html='<div style="font-size:13px;color:var(--hint);text-align:center;padding:16px 0">还没有打卡记录，去打卡页开始你的第一次吧。</div>';
+      window.qxModal('🗓 历史打卡 · 最近记录',html);
+    };
+
+    /* 全站内容检索弹窗 */
+    window.qxOpenSearch=function(){
+      var body='<input id="qxSeekInput" type="text" placeholder="输入关键词，检索你的札记 / 档案 / 笔记 / 计划…" style="width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:14px;outline:none">'+
+        '<div id="qxSeekRes" style="margin-top:12px;max-height:46vh;overflow:auto"></div>'+
+        '<div style="font-size:11px;color:var(--hint);margin-top:8px;line-height:1.7">仅检索<b>你自己写入</b>的记录，实时本地完成，不上传任何内容。匹配关键词会高亮显示。</div>';
+      window.qxModal('🔍 全站内容检索',body);
+      var inp=el('qxSeekInput');if(!inp)return;
+      inp.focus();
+      inp.addEventListener('input',function(){
+        var kw=inp.value.trim();var box=el('qxSeekRes');if(!box)return;
+        if(kw.length<1){box.innerHTML='<div style="font-size:12.5px;color:var(--hint);padding:8px 0">输入关键词开始检索…</div>';return;}
+        var re=new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'ig');
+        var hits=[];var idx={};
+        for(var i=0;i<localStorage.length;i++){
+          var k=localStorage.key(i);if(!k||idx[k])continue;idx[k]=1;
+          if(/^(pp_theme|pp_splash|pp_quickstart|pp_pano|pp_prepare|qx_|ui_|view|scroll|_|\w+_v\d*$)/.test(k))continue;
+          var raw='';try{raw=LS(k,'');}catch(e){}
+          if(!raw||raw.length<2)continue;
+          var m=typeof raw==='string'?raw.match(re):null;
+          if(m){hits.push({k:k,total:m.length,raw:raw});}
+        }
+        hits.sort(function(a,b){return b.total-a.total;});
+        if(!hits.length){box.innerHTML='<div style="font-size:13px;color:var(--hint);padding:10px 0">未找到包含「'+esc(kw)+'」的记录。</div>';return;}
+        var out='';
+        hits.slice(0,40).forEach(function(h){
+          var rstr=esc(h.raw);
+          out+='<button class="qx-res" data-k="'+esc(h.k)+'"><div style="font-weight:700;color:var(--primary);font-size:13px;margin-bottom:3px">'+esc(h.k)+' <span style="font-weight:400;font-size:11px;color:var(--hint)">· '+h.total+' 处</span></div>'+
+          '<div style="font-size:12px;color:var(--muted);line-height:1.7">'+rstr.replace(re,function(m){return '<mark>'+esc(m)+'</mark>';}).slice(0,160)+'…</div></button>';
+        });
+        box.innerHTML=out;
+        qsAll('.qx-res',box).forEach(function(b){
+          b.addEventListener('click',function(){
+            var gg=window.switchView;
+            if(gg)gg((''+b.getAttribute('data-k')).indexOf('journal')>-1||(''+b.getAttribute('data-k')).match(/札记|随笔|复盘|备忘/)?'journal':'stats');
+          });
+        });
+      });
+    };
+
+    /* 通用弹窗（遮罩点击可关闭、Esc 关闭） */
+    window.qxModal=function(title,bodyHTML){
+      var ov=document.createElement('div');
+      ov.style.cssText='position:fixed;inset:0;background:rgba(20,16,12,.5);z-index:99980;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;animation:qxFade .22s ease';
+      ov.innerHTML='<div role="dialog" aria-modal="true" aria-label="'+esc(title)+'" style="background:var(--card);border:1px solid var(--border);border-radius:18px;max-width:560px;width:100%;padding:22px 20px;box-shadow:0 18px 60px rgba(0,0,0,.35);max-height:82vh;overflow:auto">'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px"><div style="font-size:16px;font-weight:800;color:var(--primary);letter-spacing:1px">'+esc(title)+'</div><button id="qxModalClose" class="btn btn-sm" style="background:var(--bg);border:1px solid var(--border);color:var(--hint);padding:4px 12px">✕ 关闭</button></div>'+
+        '<div style="font-size:13.5px;color:var(--text);line-height:1.9" id="qxModalBody">'+bodyHTML+'</div></div>';
+      document.body.appendChild(ov);
+      function close(){ov.parentNode&&ov.parentNode.removeChild(ov);}
+      ov.querySelector('#qxModalClose').onclick=close;
+      ov.addEventListener('click',function(e){if(e.target===ov)close();});
+      window.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.contains(ov))close();});
+      /* 确保图表重新绘制以适配弹窗内窗口宽度 */
+      setTimeout(window.qxDrawChart,80);
+      return ov;
+    };
+
+    /* 7) 页面加载完成后补执行：外链/今日核心/仪表盘重绘 */
+    setTimeout(function(){
+      try{window.qxDrawChart&&window.qxDrawChart();}catch(e){}
+    },1200);
+
+  };
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(boot2,220);});}
+  else{setTimeout(boot2,220);}
+})();
+</script>
+<script src="js/upgrade.js"></script>
+<script>
+/* 栖匣 · 全站提示块自动归一化（暖木‑米棕栖匣视觉体系）
+   功能：把散落在各页面、用内联样式写的提示/警告/备注文字，统一打上 data-pp-* 标记，
+   由 upgrade.css 末尾的[data-pp-tip]/[data-pp-warn]/[data-pp-note]/[data-pp-ok]统一配色。
+   不修改已有文字与结构，只追加视觉标记。 */
+(function(){
+  function ppMarkTips(){
+    const walked=new WeakSet();
+    /* 标题（h1~h6）里的文字即便以 💡/⚠️ 开头也只是「带图标的标题」，并非提示块。
+       例如「⚠️ 2026 合规与真实行情」「🔔 每日待办提醒」「💡 一句温柔的话」都是卡片 h3，
+       此前被误标成提示块，导致套上了提示底色、与规范色对不上。此处统一排除。 */
+    function inHeading(el){
+      if(/^H[1-6]$/.test(el.tagName||'')) return true;
+      var n=el.parentElement, i=0;
+      while(n && i<3){
+        if(/^H[1-6]$/.test(n.tagName||'')) return true;
+        n=n.parentElement; i++;
+      }
+      return false;
+    }
+    // 1. 普通说明提示：以 💡 开头的块/段，且未被 callout 系统接管
+    document.querySelectorAll('div, p, section, article').forEach(function(el){
+      if(walked.has(el)) return;
+      if(inHeading(el)) return;
+      var t=(el.textContent||'').trim();
+      var id=el.id||'';
+      // 💡 / 📌 / ℹ️ / 🔔 开头的说明块；以及 id 含 tip 的自建提示容器（如 #financeTip）
+      var isTipLead = /^(💡|📌|ℹ️|🔔)/.test(t);
+      var isTipId = /tip/i.test(id);
+      // 只统计"结构性"子元素：行内强调标签（b/strong/br/span 等）不算，
+      // 否则带列表的说明块会被误判为容器而漏标
+      var kids = [].filter.call(el.children, function(c){
+        return !/^(B|STRONG|BR|SPAN|EM|I|CODE|A|SMALL|SUB|SUP)$/.test(c.tagName);
+      }).length;
+      if((isTipLead || isTipId) && kids<=4 && el.clientWidth>80 && t.length<500){
+        if(!el.classList.contains('callout') && !el.classList.contains('callout-info') &&
+           !el.classList.contains('callout-warn') && !el.classList.contains('callout-ok') &&
+           !el.closest('[data-pp-tip]') && !el.closest('[data-pp-warn]')){
+          el.setAttribute('data-pp-tip',''); walked.add(el);
+        }
+      }
+    });
+    // 2. 警告风险提示：以 ⚠️ 开头
+    document.querySelectorAll('span, div, p, section').forEach(function(el){
+      if(walked.has(el)) return;
+      if(inHeading(el)) return;
+      var t=(el.textContent||'').trim();
+      if(t.indexOf('⚠️')===0 && el.clientWidth>30){
+        if(!el.closest('[data-pp-warn]')){ el.setAttribute('data-pp-warn',''); walked.add(el); }
+      }
+    });
+    // 3. 弱化备注：含"仅供参考" / "以...为准" / "资讯仅供" / "来源可能变化" / "不担保"
+    document.querySelectorAll('p, span, li, td, .section-intro, small').forEach(function(el){
+      if(walked.has(el)) return;
+      // 不处理导览弹窗/全景导览内的大段文字
+      if(el.closest('#pano, #tour, .pano, .tour, .pano-inner, .tour-inner')) return;
+      var t=(el.textContent||'').trim();
+      if(/(仅供参考|以[^为]{0,30}为准|资讯仅供|来源可能|不担保|重要决策请再核实)/.test(t) && t.length<220 && el.clientWidth>40){
+        // 已被标为说明/警告的块（含自身）不再降级为弱化备注，避免两种标记叠加打架
+        if(!el.closest('[data-pp-tip]') && !el.closest('[data-pp-warn]') &&
+           !el.hasAttribute('data-pp-tip') && !el.hasAttribute('data-pp-warn')){
+          el.setAttribute('data-pp-note',''); walked.add(el);
+        }
+      }
+    });
+    // 4. 表单校验错误：保持行内，只改文字色
+    document.querySelectorAll('span, small, div').forEach(function(el){
+      if(walked.has(el)) return;
+      var t=(el.textContent||'').trim();
+      if(/(不能为空|请输入|格式错误|请选择|已存在|已过期|保存未生效|检查.*存储空间)/.test(t) && t.length<80){
+        if(el.hasAttribute('data-pp-tip')||el.hasAttribute('data-pp-warn')||el.hasAttribute('data-pp-note')) return;
+        el.setAttribute('data-pp-err',''); walked.add(el);
+      }
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', function(){ ppMarkTips(); startPoll(); });
+  else { ppMarkTips(); startPoll(); }
+  function startPoll(){
+    var delays=[0,260,520,900,1500,2500,4000];
+    var i=0;
+    function next(){ if(i<delays.length){ var d=delays[i]-(i?delays[i-1]:0); setTimeout(function(){ ppMarkTips(); i++; next(); }, d); } }
+    next();
+  }
+  // 动态内容与视图切换后重跑（debounce）
+  var timer;
+  if(window.MutationObserver){
+    new MutationObserver(function(){ clearTimeout(timer); timer=setTimeout(ppMarkTips,180); })
+      .observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:['class']});
+  }
+  // 兜底：页面可见性变化/窗口聚焦后也重跑一次
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) setTimeout(ppMarkTips,200); });
+})();
+
+/* ===== Toast 三态自动分类（成功 / 警告 / 失败），配色由 CSS 统一层接管 ===== */
+(function(){
+  var ERR_RE=/(失败|出错|错误|无效|无法|不能|超时|中断|已取消|已过期|不存在|未找到|请先|格式|必填|为空|已存在|保存未生效|存储空间)/;
+  var WARN_RE=/(警告|注意|风险|谨慎|小心|别忘|提醒|即将清空|将清空|不可恢复|不可撤销|谨慎操作)/;
+  var OK_RE=/(成功|已保存|已复制|已导入|已导出|已添加|已更新|已删除|已清空|已恢复|已完成|已开启|已关闭|已同步|搞定|打卡成功|已提交|已领取|已修复|已就绪)/;
+  function classify(msg){
+    var m=String(msg||'');
+    if(ERR_RE.test(m)) return 'is-err';
+    if(WARN_RE.test(m)) return 'is-warn';
+    if(OK_RE.test(m)) return 'is-ok';
+    return '';
+  }
+  function apply(f,msg){
+    if(!f) return;
+    f.classList.remove('is-ok','is-warn','is-err');
+    var c=classify(msg);
+    if(c) f.classList.add(c);
+  }
+  // 包装原生 flash / flash2：仅在原有行为之外追加语义类，不改变文案与时序
+  function wrap(name){
+    if(typeof window[name]!=='function') return;
+    var orig=window[name];
+    window[name]=function(msg){
+      try{
+        var f=document.getElementById('flash');
+        apply(f, msg);
+      }catch(e){}
+      return orig.apply(this, arguments);
+    };
+  }
+  wrap('flash'); wrap('flash2');
+  /* ===== Toast 载体统一：.cu-toast 的消息转发到 #flash，杜绝双弹 ===== */
+  var _ppLastMsg='', _ppLastTs=0;
+  function ppShowFlash(m){
+    var f=document.getElementById('flash'); if(!f) return;
+    f.textContent=m;
+    f.classList.remove('is-ok','is-warn','is-err');
+    var c=classify(m); if(c) f.classList.add(c);
+    f.classList.add('show');
+    clearTimeout(f.__ppT);
+    f.__ppT=setTimeout(function(){ f.classList.remove('show'); },2200);
+  }
+  function ppHookToast(){
+    var t=document.querySelector('.cu-toast');
+    if(!t || t.__ppHooked || !window.MutationObserver) return;
+    t.__ppHooked=1;
+    // .cu-toast 已被 CSS 隐藏，这里只读取消息并转发到统一 Toast #flash
+    new MutationObserver(function(){
+      var m=(t.textContent||'').trim();
+      if(!m) return;
+      var now=Date.now();
+      var dup=(m===_ppLastMsg && now-_ppLastTs<900);
+      _ppLastMsg=m; _ppLastTs=now;
+      t.textContent=''; t.classList.remove('show');
+      if(!dup) ppShowFlash(m);
+    }).observe(t,{childList:true,characterData:true,subtree:true,attributes:true,attributeFilter:['class']});
+  }
+  ppHookToast();
+  var _ppHookTimer=setInterval(function(){ ppHookToast(); },400);
+  setTimeout(function(){ clearInterval(_ppHookTimer); },15000);
+  if(window.QixiaUpgrade && typeof window.QixiaUpgrade.toast==='function'){
+    window.QixiaUpgrade.toast=function(m){ ppShowFlash(String(m||'')); };
+  }
+
+  // 兜底：若 flash 未被包装成功（函数在闭包内），用 DOM 变化监听补类
+  if(window.MutationObserver){
+    var fl=document.getElementById('flash');
+    if(fl){
+      new MutationObserver(function(){
+        if(fl.classList.contains('show') && !fl.classList.contains('is-ok') && !fl.classList.contains('is-warn') && !fl.classList.contains('is-err')){
+          var c=classify(fl.textContent); if(c) fl.classList.add(c);
+        }
+      }).observe(fl,{childList:true,characterData:true,subtree:true,attributes:true,attributeFilter:['class']});
+    }
+  }
+})();
+</script>
+<script>
+/* ══════════════════════════════════════════════════════════════
+   栖匣 · 今日进度环（新增增强，独立自包含，不改动任何既有逻辑）
+   背景：待办/打卡/四象限/复盘分散在各处，首页缺少一个「今天到底
+         完成得怎么样」的整体反馈。这里把四路数据聚合成一枚进度环。
+   数据：只读 localStorage，不写入、不改动任何既有键。
+   ══════════════════════════════════════════════════════════════ */
+(function(){
+  function LSJ(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+  function el(id){return document.getElementById(id);}
+  function tk(){
+    var d=new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  function stats(){
+    var k=tk(), done=0, total=0, parts=[];
+    /* 1) 今日待办 */
+    var tasks=LSJ('pp_tasks',[]);
+    var tt=(tasks||[]).filter(function(t){return !t.date||t.date===k;});
+    if(tt.length){
+      var td=tt.filter(function(t){return t.done;}).length;
+      done+=td; total+=tt.length; parts.push({n:'待办',d:td,t:tt.length});
+    }
+    /* 2) 每日打卡 */
+    var defs=LSJ('pp_checkinDefs',[]), cins=LSJ('pp_checkins',{}), tc=cins[k]||{};
+    if(defs&&defs.length){
+      var cd=(defs||[]).filter(function(f){return tc[f.id];}).length;
+      done+=cd; total+=defs.length; parts.push({n:'打卡',d:cd,t:defs.length});
+    }
+    /* 3) 四象限 */
+    var q=LSJ('pp_quadrants',{}), tq=q[k]||{}, qa=0, qd=0;
+    ['q1','q2','q3','q4'].forEach(function(g){
+      (tq[g]||[]).forEach(function(it){qa++; if(it&&it.done)qd++;});
+    });
+    if(qa){done+=qd; total+=qa; parts.push({n:'轻重缓急',d:qd,t:qa});}
+    /* 4) 今日复盘 */
+    var j=LSJ('pp_journals',{}), jt=j[k]||{};
+    var jd=((jt.done||'')+(jt.learn||'')+(jt.improve||'')+(jt.tomorrow||'')).trim()?1:0;
+    done+=jd; total+=1; parts.push({n:'复盘',d:jd,t:1});
+    return {done:done,total:total,pct:total?Math.round(done/total*100):0,parts:parts};
+  }
+  function word(p){
+    if(!p.total||p.pct===0) return '今天还空着，写下一件小事就开始。';
+    if(p.pct<50) return '已经起了头，按自己的节奏往下走。';
+    if(p.pct<100) return '过半了，剩下的慢慢来就好。';
+    return '今天的事都安放好了，安心休息。';
+  }
+  function render(){
+    var inp=el('todayGoalInput'); if(!inp) return false;
+    var card=inp.closest?inp.closest('.card'):null; if(!card) return false;
+    var host=el('qxTodayRing');
+    if(!host){
+      host=document.createElement('div');
+      host.id='qxTodayRing'; host.className='card';
+      host.setAttribute('style','margin-bottom:16px');
+      card.parentNode.insertBefore(host,card.nextSibling);
+    }
+    var s=stats(), R=34, C=2*Math.PI*R, off=C*(1-s.pct/100);
+    host.innerHTML=
+      '<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">'+
+        '<svg width="86" height="86" viewBox="0 0 86 86" style="flex-shrink:0" role="img" aria-label="今日完成度 '+s.pct+'%">'+
+          '<circle cx="43" cy="43" r="'+R+'" fill="none" stroke="var(--border)" stroke-width="8"/>'+
+          '<circle cx="43" cy="43" r="'+R+'" fill="none" stroke="var(--gold)" stroke-width="8" stroke-linecap="round"'+
+            ' stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'"'+
+            ' transform="rotate(-90 43 43)" style="transition:stroke-dashoffset .5s ease"/>'+
+          '<text x="43" y="49" text-anchor="middle" font-size="20" font-weight="800" fill="var(--primary)">'+s.pct+'%</text>'+
+        '</svg>'+
+        '<div style="flex:1;min-width:180px">'+
+          '<div style="font-size:15px;font-weight:700;color:var(--head)">今日进度</div>'+
+          '<div style="font-size:13px;color:var(--text);margin-top:5px;line-height:1.8">'+esc(word(s))+'</div>'+
+          '<div style="font-size:12px;color:var(--hint);margin-top:6px">'+
+            '已完成 <b style="color:var(--primary)">'+s.done+'</b> / '+s.total+' 项'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      (s.parts.length?('<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">'+
+        s.parts.map(function(p){
+          var okk=p.d>=p.t;
+          return '<span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid '+
+            (okk?'var(--ok-border)':'var(--tip-border)')+';background:'+
+            (okk?'var(--ok-bg)':'var(--tip-bg)')+';color:'+(okk?'var(--ok-text)':'var(--tip-text)')+'">'+
+            esc(p.n)+' '+p.d+'/'+p.t+'</span>';
+        }).join('')+'</div>'):'');
+    return true;
+  }
+  function boot(){
+    if(!render()){setTimeout(boot,600);return;}
+    /* 数据变化时重绘：本地改动 + 跨标签页 storage 事件 + 切回首页 */
+    ['renderTasks','renderCheckins','renderQuadrant','loadJournal','toggleCheckin','saveTodayGoal'].forEach(function(fn){
+      if(typeof window[fn]==='function'&&!window[fn].__ringHooked){
+        var o=window[fn];
+        window[fn]=function(){var r=o.apply(this,arguments);try{render();}catch(e){}return r;};
+        window[fn].__ringHooked=true;
+      }
+    });
+    window.addEventListener('storage',function(){try{render();}catch(e){}});
+    var sw=window.switchView;
+    if(typeof sw==='function'&&!sw.__ringHooked){
+      window.switchView=function(n){var r=sw.apply(this,arguments);if(n==='home')setTimeout(render,120);return r;};
+      window.switchView.__ringHooked=true;
+    }
+    setInterval(function(){try{render();}catch(e){}},30000);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,900);});
+  else setTimeout(boot,900);
+})();
+</script>
+
+
+<script>
+/* =========================================================================
+   栖匣 · 增强模块二
+   A. ppA11y  —— 无障碍标签自动补齐
+      全站约 200+ 表单控件（任务勾选框、四象限、里程碑、各类输入框）只有
+      placeholder 或仅靠相邻文字表意，屏幕阅读器读不出它们的用途。
+      这里在运行时推断语义并补 aria-label / aria-checked，不动任何原有结构。
+   B. qxSearch —— 全站内容搜索
+      原搜索只能按板块名做精确子串过滤；39 个板块里的海量正文搜不到。
+      这里扩展为「板块 + 正文标题/条目」双路搜索，支持键盘 ↑↓ / Enter / Esc
+      与 Ctrl/Cmd+K 唤起，命中后直接跳转并高亮定位。
+   ========================================================================= */
+(function(){
+  'use strict';
+
+  /* --------------------------------------------------------------- A. a11y */
+  function clean(s){ return (s||'').replace(/\s+/g,' ').trim(); }
+
+  /* 空状态文案不是控件名字。倒数日空列表那句「还没有倒数日 · 在下方添加…」
+     就紧挨着日期输入框，直接拿来当名字会把读屏用户带偏，这里统一挡掉。 */
+  var NOISE = /(还没有|暂无|添加你的第一|在下方添加|提示：|请先|换设备需手动)/;
+  function ok(t){
+    t = clean(t);
+    return (t && t.length > 0 && t.length < 90 && !NOISE.test(t)) ? t : '';
+  }
+  /* 实在找不到名字时，按控件类型给一个说得过去的通名 */
+  var TYPE_FB = {date:'日期', number:'数值', password:'密码', email:'邮箱',
+                 tel:'电话', month:'月份', time:'时间', week:'周', search:'搜索', url:'网址'};
+  /* 便利贴底色这类 radio 只有一个色值、没有任何文字，用色相给出中文名 */
+  function swatchName(el){
+    var m = /^#?([0-9a-fA-F]{6})$/.exec((el.value||'').trim());
+    if(!m) return '';
+    var v = parseInt(m[1],16), r = (v>>16)&255, g = (v>>8)&255, b = v&255;
+    var mx = Math.max(r,g,b), mn = Math.min(r,g,b), d = mx-mn, l = (mx+mn)/2/255;
+    if(d < 18) return '底色 ' + (l > 0.8 ? '浅灰白' : (l > 0.5 ? '灰' : '深灰'));
+    var h = (mx === r) ? 60*(((g-b)/d)%6) : (mx === g ? 60*((b-r)/d+2) : 60*((r-g)/d+4));
+    if(h < 0) h += 360;
+    var nm = h<20?'红':h<45?'橙':h<70?'金黄':h<160?'绿':h<200?'青':h<260?'蓝':h<320?'紫':'粉红';
+    return '底色 ' + ((l > 0.78 ? '浅' : l < 0.4 ? '深' : '') + nm);
+  }
+
+  /* 从相邻元素推断这个控件的名字。
+     站点里大量控件没有 placeholder，名字藏在别处，按可信度依次尝试：
+       ① 后一个兄弟      —— 任务勾选框：<input><span>任务文字</span>
+       ② 前一个兄弟      —— 左侧标签：<label>目标分数</label><input>
+       ③ 父元素的前一个兄弟 —— 指标卡：.metric > .label「目标分数」+ .value > input
+       ④ 表格坐标        —— 行首单元格 + 表头对应列，如「周二 上午（专注时段）」
+       ⑤ 父容器文字      —— 兜底
+     每一级都要过 ok() 这道闸，挡掉空状态文案，否则会拿到似是而非的名字。 */
+  function nameOf(el){
+    var cand = [];
+    var n = el.nextElementSibling, i = 0;
+    while(n && i < 2){
+      if(/^(SPAN|DIV|LABEL|P|TD)$/.test(n.tagName||'')) cand.push(n.textContent);
+      n = n.nextElementSibling; i++;
+    }
+    /* ②③ 这两级是"左边的说明"，真标签都是短语（目标分数 / 选择生日 / 事件名称）。
+       一旦抓到长串，基本是把隔壁一整排按钮的文字都卷进来了，直接弃用。 */
+    var p = el.previousElementSibling, j = 0;
+    while(p && j < 2){
+      if(/^(SPAN|DIV|LABEL|P|TD|B|STRONG)$/.test(p.tagName||'')){
+        var pv2 = clean(p.textContent);
+        if(pv2.length <= 30) cand.push(pv2);
+      }
+      p = p.previousElementSibling; j++;
+    }
+    var par = el.parentElement;
+    if(par){
+      var pv = par.previousElementSibling;
+      if(pv){
+        var pv3 = clean(pv.textContent);
+        if(pv3.length <= 30) cand.push(pv3);
+      }
+    }
+    /* ④ 表格：行首 + 列表头 */
+    var td = (el.closest && el.closest('td')) || null;
+    var tr = td ? td.parentElement : null;
+    if(tr){
+      var cells = Array.prototype.slice.call(tr.children);
+      var idx = cells.indexOf(td);
+      var tbl = (tr.closest && tr.closest('table')) || null;
+      var ths = tbl ? tbl.querySelectorAll('tr') : null;
+      var rowHead = cells.length > 1 ? clean(cells[0].textContent).slice(0,14) : '';
+      var colHead = '';
+      if(ths && ths.length && ths[0] !== tr){
+        var hs = ths[0].children;
+        if(hs && hs[idx]) colHead = clean(hs[idx].textContent).slice(0,14);
+      }
+      cand.push(rowHead + ' ' + colHead);
+    }
+    for(var k = 0; k < cand.length; k++){
+      var t = ok(cand[k]);
+      if(t) return t;
+    }
+    /* ⑤ 父容器文字只在"又短又干净"时才可信。
+       否则多半是把一整排按钮的文字都抓进来了——比如日期框的父容器里
+       还挤着「添加倒数日 🧭 期末冲刺」两个按钮，那显然不是它的名字。
+       这一级宁可放弃，让调用方退回 type 兜底（日期/数值/密码…）。 */
+    if(par){
+      var pt = clean(par.textContent);
+      if(pt && pt.length <= 26){
+        var emoji = false;
+        try{ emoji = /[\u{1F000}-\u{1FAFF}\u{2190}-\u{2BFF}\u{2600}-\u{27BF}]/u.test(pt); }catch(e){}
+        if(!emoji) return pt;
+      }
+    }
+    return '';
+  }
+
+  function ppA11y(){
+    var list = document.querySelectorAll('input,select,textarea');
+    for(var i=0;i<list.length;i++){
+      var el = list[i];
+      if(el.type === 'hidden') continue;
+      if(el.getAttribute('data-pp-a11y') === '1') continue;
+
+      /* 已有正规无障碍名称的一律尊重，不覆盖 */
+      if(el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.getAttribute('title')){
+        el.setAttribute('data-pp-a11y','1'); continue;
+      }
+      var id = el.id;
+      if(id){
+        var lab = null;
+        try{ lab = document.querySelector('label[for="' + id.replace(/"/g,'\\"') + '"]'); }catch(e){}
+        if(lab){ el.setAttribute('data-pp-a11y','1'); continue; }
+      }
+      if(el.closest && el.closest('label')){ el.setAttribute('data-pp-a11y','1'); continue; }
+
+      var ph = clean(el.getAttribute('placeholder'));
+      var nm = '';
+      if(el.type === 'checkbox' || el.type === 'radio'){
+        nm = nameOf(el) || ph || swatchName(el);
+        /* 勾选框补上状态，读屏时能听出"已完成 / 未完成" */
+        el.setAttribute('aria-checked', el.checked ? 'true' : 'false');
+      }else if(el.type === 'file'){
+        /* 文件选择框总是藏在菜单里，相邻文字抓到的都是菜单项，推断不出有意义的名字 */
+        nm = ph || '选择备份文件';
+      }else{
+        nm = ph || nameOf(el) || (TYPE_FB[el.type] || (el.tagName === 'SELECT' ? '下拉选择' :
+             (el.tagName === 'TEXTAREA' ? '多行输入' : '输入框')));
+      }
+      nm = clean(nm).slice(0,64);
+      if(nm){
+        el.setAttribute('aria-label', nm);
+        el.setAttribute('data-pp-a11y','1');
+      }
+      /* 没推断出名字的先不打标记：任务、目标、周计划表都是异步渲染的，
+         等它们所在的区域真正出现后再补，避免一开始就判成"无法命名" */
+    }
+  }
+
+  /* 勾选状态变化时同步 aria-checked（任务打勾后读屏要能听出来） */
+  document.addEventListener('change', function(e){
+    var t = e.target;
+    if(t && (t.type === 'checkbox' || t.type === 'radio')){
+      t.setAttribute('aria-checked', t.checked ? 'true' : 'false');
+    }
+  }, true);
+
+  /* ----------------------------------------------------------- B. 全站搜索 */
+  var CSS_SR =
+    '#qxSearchRes{display:none;position:absolute;left:6px;right:6px;z-index:60;' +
+      'background:var(--card);border:1px solid var(--border);border-radius:12px;' +
+      'box-shadow:var(--shadow-md,0 8px 24px rgba(74,58,40,.16));' +
+      'max-height:min(54vh,430px);overflow-y:auto;overscroll-behavior:contain}' +
+    '#qxSearchRes .qsr-grp{font-size:10.5px;color:var(--hint);padding:9px 10px 3px;' +
+      'letter-spacing:.06em;font-weight:600}' +
+    '#qxSearchRes .qsr-item{display:block;width:100%;text-align:left;padding:8px 10px;' +
+      'border:0;border-top:1px solid var(--rule,var(--border));background:none;cursor:pointer;' +
+      'font-size:12.5px;color:var(--text);line-height:1.5;font-family:inherit}' +
+    '#qxSearchRes .qsr-item:first-of-type{border-top:0}' +
+    '#qxSearchRes .qsr-item:hover,#qxSearchRes .qsr-item.on{background:var(--tip-bg)}' +
+    '#qxSearchRes .qsr-item b{color:var(--primary);font-weight:700}' +
+    '#qxSearchRes .qsr-item .qsr-v{display:block;font-size:10px;color:var(--hint);margin-top:2px}' +
+    '#qxSearchRes .qsr-empty{padding:14px 11px;font-size:12.5px;color:var(--hint);line-height:1.6}' +
+    '#qxSearchRes .qsr-foot{padding:6px 10px 8px;font-size:10px;color:var(--hint);' +
+      'border-top:1px solid var(--rule,var(--border))}' +
+    '@media (max-width:768px){#qxSearchRes{left:4px;right:-24px}}';
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  /* 把命中的关键词包成 <b>，其余原样转义 */
+  function mark(text, q){
+    var i = text.toLowerCase().indexOf(q.toLowerCase());
+    if(i < 0) return esc(text);
+    return esc(text.slice(0,i)) + '<b>' + esc(text.slice(i, i+q.length)) + '</b>' + esc(text.slice(i+q.length));
+  }
+
+  var box = null, wrap = null, timer = null, cur = -1, items = [];
+
+  function viewName(vid){
+    var v = document.getElementById('view-' + vid);
+    if(v){
+      var h = v.querySelector('.page-head h1, h1');
+      if(h) return clean(h.textContent).slice(0,20) || vid;
+    }
+    var nav = document.querySelector('.sidebar .nav-item[data-view="' + vid + '"]');
+    if(nav) return clean(nav.textContent).slice(0,20) || vid;
+    return vid;
+  }
+
+  function closeRes(){
+    if(!wrap) return;
+    wrap.style.display = 'none';
+    wrap.innerHTML = '';
+    cur = -1; items = [];
+  }
+
+  function goHit(it){
+    if(it && it.view) goHitView(it.view, it.el);
+  }
+  /* 直接按 data-view 跳转：不依赖 items 数组，避免 input 失焦清空后点击落空 */
+  function goHitView(view, el){
+    closeRes();
+    if(box) box.blur();
+    if(!view) return;
+    if(typeof window.switchView === 'function') window.switchView(view);
+    /* 手机端跳转后收起侧边栏，否则会挡住内容 */
+    if(window.innerWidth <= 820 && typeof window.closeSidebar === 'function'){
+      try{ window.closeSidebar(); }catch(e){}
+    }
+    if(el && el.scrollIntoView){
+      setTimeout(function(){
+        try{ el.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){ el.scrollIntoView(); }
+        var prev = el.style.backgroundColor, tr = el.style.transition;
+        el.style.transition = 'background-color .25s';
+        el.style.backgroundColor = 'var(--gold-soft, rgba(212,162,90,.30))';
+        setTimeout(function(){
+          el.style.backgroundColor = prev;
+          setTimeout(function(){ el.style.transition = tr; }, 300);
+        }, 1500);
+      }, 240);
+    }
+  }
+
+  function render(q){
+    q = clean(q);
+    if(q.length < 1){ closeRes(); return; }
+    var low = q.toLowerCase();
+
+   

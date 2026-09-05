@@ -1,0 +1,2290 @@
+
+    if(gbox)gbox.textContent='BMI '+gbmi;
+    var weeksEl=document.getElementById('planWeeks');
+    var weeks=weeksEl?parseInt(weeksEl.textContent)||12:12;
+    var pace=((wv-gv)/weeks).toFixed(2);
+    if(pb)pb.textContent='每周约'+pace+'公斤';
+  } else {
+    if(gbox)gbox.textContent='待测算';
+  }
+  markMetricPlaceholders();
+}
+document.addEventListener('blur',function(e){
+  var id=e.target&&e.target.id;
+  if(id==='userHeight'||id==='curWeight'||id==='goalWeight'||id==='planWeeks'||id==='cetGoalInput'||id==='cetBaseInput'||id==='cet6GoalInput'||id==='cet6BaseInput'){
+    try{
+      var data={};
+      ['userHeight','curWeight','goalWeight','planWeeks','cetGoalInput','cetBaseInput','cet6GoalInput','cet6BaseInput'].forEach(function(i){
+        var el=document.getElementById(i);
+        if(el){data[i]=(el.tagName==='INPUT')?el.value:el.textContent;}
+      });
+      localStorage.setItem('userMetrics',JSON.stringify(data));
+    }catch(e){}
+    calcBmi();
+  }
+},true);
+try{
+  var data={};try{data=JSON.parse(localStorage.getItem('userMetrics')||'{}')||{};}catch(e){data={};}
+  Object.keys(data).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&data[id]){
+      if(el.tagName==='INPUT'){el.value=data[id];}
+      else{el.textContent=data[id];}
+    }
+  });
+  setTimeout(calcBmi,200);
+}catch(e){}
+
+
+
+function closeMoreMenu(){ setTbMore(false); }
+function toggleMoreMenu(e){
+  if(e)e.stopPropagation();
+  var menu=document.getElementById('moreMenuDropdown');
+  if(menu){
+    var isHidden=menu.style.display==='none'||!menu.style.display;
+    menu.style.display=isHidden?'block':'none';
+  }
+}
+/* 点击其他地方关闭更多菜单 */
+document.addEventListener('click', function(e){
+  var menu=document.getElementById('moreMenuDropdown');
+  var btn=document.getElementById('btnMore');
+  if(menu&&btn&&!btn.contains(e.target)&&!menu.contains(e.target)){
+    menu.style.display='none';
+  }
+});
+
+/* ═══════ 自动保存机制：所有 data-key 字段 blur 即存 ═══════ */
+function saveEditable(el){
+  if(!el||!el.dataset||!el.dataset.key)return;
+  var key=el.dataset.key;
+  var val=el.textContent||el.innerText||'';
+  try{
+    var all=JSON.parse(localStorage.getItem('autoSaveEditable')||'{}');
+    all[key]={v:val,t:Date.now()};
+    localStorage.setItem('autoSaveEditable',JSON.stringify(all));
+  }catch(e){}
+}
+function loadEditable(){
+  var all={};
+  try{all=JSON.parse(localStorage.getItem('autoSaveEditable')||'{}');}catch(e){}
+  document.querySelectorAll('[data-key]').forEach(function(el){
+    var key=el.dataset.key;
+    if(all[key]&&all[key].v){
+      el.textContent=all[key].v;
+    }
+  });
+}
+/* 时间胶囊：动态添加自定义月份/时段行 */
+var _capsuleSeq=0;
+function addCapsuleMonth(){
+  try{_capsuleSeq=parseInt(localStorage.getItem('cap_seq')||'0')+1;localStorage.setItem('cap_seq',String(_capsuleSeq));}catch(e){_capsuleSeq++;}
+  var label=window.prompt('给这一行起个名字（例如：'+new Date().getFullYear()+'年暑假 / 实习期 / 大四下学期）：','自定义期'+_capsuleSeq);
+  if(label===null)return;label=label.trim();if(!label)label='自定义期'+_capsuleSeq;
+  var row=document.getElementById('capsuleAddRow');
+  var tr=document.createElement('tr');
+  var safe=String(_capsuleSeq);
+  tr.innerHTML='<td style="white-space:nowrap;font-weight:600">'+label+' <span class="cap-del" style="cursor:pointer;color:var(--coral);margin-left:4px" onclick="this.parentNode.parentNode.remove()">✕</span></td>'+
+    '<td contenteditable="true" data-key="capc-'+safe+'-thing" style="cursor:text;background:var(--bg)"></td>'+
+    '<td contenteditable="true" data-key="capc-'+safe+'-thank" style="cursor:text;background:var(--bg)"></td>'+
+    '<td contenteditable="true" data-key="capc-'+safe+'-msg" style="cursor:text;background:var(--bg)"></td>';
+  if(row&&row.parentNode){row.parentNode.insertBefore(tr,row);}
+  flash('已添加「'+label+'」，可直接点击填写，输入后自动保存');
+}
+document.addEventListener('blur',function(e){
+  if(e.target&&e.target.dataset&&e.target.dataset.key){
+    saveEditable(e.target);
+    // 轻提示
+    if(typeof flash==='function'){flash('已自动保存');}
+  }
+},true);
+document.addEventListener('input',function(e){
+  // 输入时静默保存（避免每按一键都flash）
+  if(e.target&&e.target.dataset&&e.target.dataset.key){
+    clearTimeout(window._autoSaveTimer);
+    window._autoSaveTimer=setTimeout(function(){
+      saveEditable(e.target);
+    },500);
+  }
+},true);
+/* ── 复选框自动保存（data-key 的 checkbox，勾选即存本地，仅本机可见）── */
+function loadCheckboxes(){
+  var all={};try{all=JSON.parse(localStorage.getItem('pp_checkbox_v1')||'{}');}catch(e){all={};}
+  document.querySelectorAll('input[type="checkbox"][data-key]').forEach(function(cb){
+    var k=cb.getAttribute('data-key');
+    cb.checked=!!all[k];
+  });
+}
+document.addEventListener('change',function(e){
+  var cb=e.target;
+  if(cb&&cb.type==='checkbox'&&cb.dataset&&cb.dataset.key){
+    var all={};try{all=JSON.parse(localStorage.getItem('pp_checkbox_v1')||'{}');}catch(e){all={};}
+    all[cb.dataset.key]=cb.checked?1:0;
+    try{localStorage.setItem('pp_checkbox_v1',JSON.stringify(all));}catch(e){}
+  }
+},true);
+/* 可编辑指标卡：未填写时用浅色小字占位（“点击填写”不再被放大成主数字，观感更整洁） */
+function markMetricPlaceholders(){
+  document.querySelectorAll('.metric .value[contenteditable]').forEach(function(v){
+    var t=(v.textContent||'').trim();
+    v.classList.toggle('ph',t===''||t==='点击填写'||t==='—');
+  });
+}
+document.addEventListener('input',function(e){
+  var tg=e.target;
+  if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]'))markMetricPlaceholders();
+},true);
+document.addEventListener('blur',function(e){
+  var tg=e.target;
+  if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]'))markMetricPlaceholders();
+},true);
+/* 点开即清占位符：带“点击填写”等占位的可编辑卡，聚焦后自动清空，
+   用户直接输入即可，不必先手动删除占位文字（适用所有同类指标框） */
+document.addEventListener('focusin',function(e){
+  var tg=e.target;
+  if(tg&&tg.closest&&tg.closest('.metric .value[contenteditable]')){
+    var t=(tg.textContent||'').trim();
+    if(t===''||t==='点击填写'||t==='—'){
+      tg.textContent='';
+      if(tg.id==='userHeight'||tg.id==='curWeight'||tg.id==='goalWeight'||tg.id==='planWeeks'){calcBmi();}
+    }
+    markMetricPlaceholders();
+  }
+},true);
+try{markMetricPlaceholders();}catch(e){}
+function clearTable(tableId){
+  uiConfirm('确定要清空整张表格吗？此操作不可撤销。',function(){
+    var t=document.getElementById(tableId);
+    if(!t)return;
+    t.querySelectorAll('[contenteditable="true"]').forEach(function(c){
+      c.textContent='';
+      if(c.dataset.key)saveEditable(c);
+    });
+    flash('已清空');
+  });
+}
+function exportTable(tableId){
+  var t=document.getElementById(tableId);
+  if(!t)return;
+  var rows=[];
+  t.querySelectorAll('tr').forEach(function(tr){
+    var cells=[];
+    tr.querySelectorAll('th,td').forEach(function(td){
+      cells.push(td.textContent.replace(/\n/g,' ').trim());
+    });
+    rows.push(cells.join('\t'));
+  });
+  var blob=new Blob([rows.join('\n')],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=tableId+'-'+todayKey()+'.csv';
+  a.click();
+  flash('已导出CSV');
+}
+// 页面加载时调用
+document.addEventListener('DOMContentLoaded',loadEditable);
+// 兜底：DOMContentLoaded已触发时也调用一次
+setTimeout(loadEditable,100);
+
+
+/* ═══════ 专业倒数日系统 ═══════ */
+/* 倒数日历史上写在无前缀的 myCountdowns，而全站搜索、数据备份、示例播种
+   都只认带 pp_ 前缀的 pp_countdowns。两边各写各的，结果是：
+   用户添加的倒数日在搜索里永远搜不到，播种的示例在首页又看不见。
+   这里统一到 pp_countdowns，并把旧键里的数据一次性并过来。 */
+function getCountdowns(){
+  try{
+    var s=localStorage.getItem('pp_countdowns');
+    var arr=null;
+    if(s){ try{ arr=JSON.parse(s); }catch(e){ arr=null; } }
+    if(!(arr&&arr.length!==undefined)) arr=null;
+    var old=null;
+    try{ var os=localStorage.getItem('myCountdowns'); if(os) old=JSON.parse(os); }catch(e){}
+    if(old&&old.length){
+      arr=arr||[];
+      var seen={};
+      arr.forEach(function(c){ seen[(c.name||'')+'|'+(c.date||'')]=1; });
+      old.forEach(function(c){
+        var k=(c.name||'')+'|'+(c.date||'');
+        if(!seen[k]){ arr.push(c); seen[k]=1; }
+      });
+      saveCountdowns(arr);          /* 合并结果落回新键，并顺手废掉旧键 */
+      return arr;
+    }
+    return arr||[];
+  }catch(e){ return []; }
+}
+function saveCountdowns(arr){
+  try{
+    localStorage.setItem('pp_countdowns',JSON.stringify(arr));
+    localStorage.removeItem('myCountdowns');   /* 旧键作废，杜绝两份数据再次打架 */
+  }catch(e){}
+}
+function renderCountdowns(){
+  var list=getCountdowns();
+  var box=document.getElementById('countdownList');
+  if(!box)return;
+  if(!list.length){
+    box.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--hint);font-size:13px">还没有倒数日 · 在下方添加你的第一个重要事件</div>';
+  }else{
+    box.innerHTML=list.map(function(item,i){
+      var target=new Date(item.date+'T00:00:00');
+      var today=new Date();
+      today.setHours(0,0,0,0);
+      var diff=Math.round((target-today)/86400000);
+      var bigText,bigColor,progress,bgTone;
+      if(diff>0){
+        bigText=diff+'<span style="font-size:18px;font-weight:400"> 天</span>';
+        if(diff<=7){bigColor='var(--coral)';bgTone='var(--card)';}
+        else if(diff<=30){bigColor='var(--primary)';bgTone='var(--card)';}
+        else{bigColor='var(--primary)';bgTone='var(--card)';}
+        // 进度条：以填表日到目标日为100%
+        var totalDays=item.totalDays||Math.max(diff,1);
+        var passed=totalDays-diff;
+        progress=Math.max(0,Math.min(100,Math.round(passed/totalDays*100)));
+      }else if(diff===0){
+        bigText='就是<br>今天';bigColor='var(--teal)';bgTone='var(--card)';progress=100;
+      }else{
+        bigText=Math.abs(diff)+'<span style="font-size:18px;font-weight:400"> 天前</span>';
+        bigColor='var(--muted)';bgTone='var(--bg)';progress=100;
+      }
+      return '<div style="border:1px solid var(--border);border-radius:14px;padding:14px;background:'+bgTone+';position:relative;overflow:hidden">'+
+        '<div style="position:absolute;top:0;left:0;height:3px;width:'+progress+'%;background:'+bigColor+';transition:width .3s"></div>'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">'+
+          '<span contenteditable="true" data-cd-idx="'+i+'" data-cd-field="name" style="font-weight:600;font-size:14px;color:var(--text);cursor:text;flex:1">'+item.name+'</span>'+
+          '<button class="btn btn-sm" onclick="delCountdown('+i+')" style="padding:2px 6px;font-size:11px;background:transparent;border:none;color:var(--hint);cursor:pointer">×</button>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:10px">'+
+          '<div style="font-size:36px;font-weight:800;color:'+bigColor+';line-height:1;letter-spacing:-1px">'+bigText+'</div>'+
+          '<div style="flex:1;font-size:11px;color:var(--muted)">'+
+            '<div>📅 <span style="white-space:nowrap">'+item.date+'</span></div>'+
+            '<div style="margin-top:2px">进度 '+progress+'%</div>'+
+            '<input type="date" value="'+item.date+'" onchange="updateCountdownDate('+i+',this.value)" style="margin-top:4px;font-size:11px;border:1px solid var(--border);border-radius:4px;padding:2px 4px;width:100%">'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+  }
+  // 更新今日metric
+  var next=list.filter(function(x){var d=new Date(x.date+'T00:00:00');var t=new Date();t.setHours(0,0,0,0);return d>=t;}).sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  var nextEl=document.getElementById('nextCountdown');
+  var nextNameEl=document.getElementById('nextCountdownName');
+  if(next.length){
+    var d=new Date(next[0].date+'T00:00:00');var t=new Date();t.setHours(0,0,0,0);
+    var diff=Math.round((d-t)/86400000);
+    if(nextEl)nextEl.textContent=diff+'天';
+    if(nextNameEl)nextNameEl.textContent=next[0].name+' · '+next[0].date;
+  }else{
+    if(nextEl)nextEl.textContent='--';
+    if(nextNameEl)nextNameEl.textContent='未设置';
+  }
+  // 更新今日日期metric
+  var td=new Date();
+  if(document.getElementById('todayDateMetric')){
+    document.getElementById('todayDateMetric').textContent=td.getMonth()+1+'月'+td.getDate()+'日';
+    document.getElementById('todayWeekday').textContent='星期'+'日一二三四五六'[td.getDay()];
+  }
+}
+function examPreset(){
+  var n=document.getElementById('newCountdownName'),d=document.getElementById('newCountdownDate');
+  if(!n||!d)return;
+  n.value='期末考试月 · 冲刺';
+  var t=new Date();t.setDate(t.getDate()+61);
+  d.value=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
+  n.focus();
+  flash('已预填期末冲刺，改好日期后点「添加倒数日」');
+}
+function addCountdown(){
+  var nameInput=document.getElementById('newCountdownName');
+  var dateInput=document.getElementById('newCountdownDate');
+  if(!nameInput||!dateInput)return;
+  var name=nameInput.value.trim();
+  var date=dateInput.value;
+  if(!name||!date){uiAlert('请填写事件名称和日期');return;}
+  var today=new Date();today.setHours(0,0,0,0);
+  var target=new Date(date+'T00:00:00');
+  var totalDays=Math.max(1,Math.round((target-today)/86400000));
+  var arr=getCountdowns();
+  arr.push({name:name,date:date,totalDays:totalDays});
+  saveCountdowns(arr);
+  renderCountdowns();
+  nameInput.value='';dateInput.value='';
+  flash('这个日子已收进匣中');
+}
+function delCountdown(i){
+  uiConfirm('要移除这个倒数日吗？',function(){
+    var arr=getCountdowns();arr.splice(i,1);saveCountdowns(arr);renderCountdowns();
+  });
+}
+function updateCountdownDate(i,newDate){
+  var arr=getCountdowns();if(!arr[i])return;
+  arr[i].date=newDate;
+  var today=new Date();today.setHours(0,0,0,0);
+  var target=new Date(newDate+'T00:00:00');
+  arr[i].totalDays=Math.max(1,Math.round((target-today)/86400000));
+  saveCountdowns(arr);renderCountdowns();
+}
+document.addEventListener('blur',function(e){
+  if(e.target&&e.target.dataset&&e.target.dataset.cdIdx!==undefined){
+    var i=parseInt(e.target.dataset.cdIdx);
+    var field=e.target.dataset.cdField;
+    var arr=getCountdowns();
+    if(arr[i]){arr[i][field]=e.target.textContent;saveCountdowns(arr);}
+  }
+},true);
+// 默认倒数日：不预置任何示例，由用户按需自行添加
+function initDefaultCountdowns(){
+  var arr=getCountdowns();
+  // 兼容旧版：若本地仍残留旧示例（英语四级考试/开学报到/暑假结束），自动清理，交给用户自行添加
+  if(arr&&arr.length){
+    var oldSeeds=['英语四级考试','开学报到','暑假结束','华北电力','华北电力大学','满18岁','18岁','满 18 岁','9月28','9月28日','2008-09-28'];
+    var filtered=arr.filter(function(it){return !oldSeeds.some(function(s){return it.name.indexOf(s)>=0});});
+    if(filtered.length!==arr.length){saveCountdowns(filtered);}
+  }
+}
+
+
+/* ═══════ 运动可视化热力图 ═══════ */
+function getSportLog(){try{var s=localStorage.getItem('sportLog');return s?JSON.parse(s):{};}catch(e){return {};}}
+function saveSportLog(o){try{localStorage.setItem('sportLog',JSON.stringify(o));}catch(e){}}
+function logSport(intensity){
+  var log=getSportLog();
+  var key=todayKey();
+  log[key]={intensity:intensity,time:Date.now()};
+  saveSportLog(log);
+  renderSportHeatmap();
+  flash('又一段旅途，妥帖收存');
+}
+function clearSportLog(){
+  uiConfirm('清空所有运动记录？',function(){
+    saveSportLog({});
+    renderSportHeatmap();
+    flash('已清空');
+  });
+}
+function renderSportHeatmap(){
+  var box=document.getElementById('sportHeatmap');
+  if(!box)return;
+  var log=getSportLog();
+  var today=new Date();
+  var days=[];
+  for(var i=29;i>=0;i--){
+    var d=new Date(today);d.setDate(d.getDate()-i);
+    var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    days.push({key:key,log:log[key],isToday:i===0,day:d.getDate()});
+  }
+  box.innerHTML=days.map(function(d){
+    var bg='var(--heat-empty,#EFE8D8)';
+    var txtColor='var(--hint)';
+    var txt='--';
+    if(d.log){
+      if(d.log.intensity==='heavy'){bg='var(--heat-heavy,#6E4F37)';txt='大';txtColor='var(--heat-text,#fff)';}
+      else if(d.log.intensity==='medium'){bg='var(--heat-medium,#6E4F37)';txt='中';txtColor='var(--heat-text,#fff)';}
+      else{bg='var(--heat-light,#DCC9A8)';txt='轻';txtColor='var(--heat-text,#fff)';}
+    }
+    return '<div title="'+d.key+'" style="aspect-ratio:1;border-radius:4px;background:'+bg+';display:flex;align-items:center;justify-content:center;color:'+txtColor+';font-size:9px;font-weight:'+(d.isToday?'700':'400')+';border:'+(d.isToday?'2px solid var(--primary)':'1px solid var(--border)')+'">'+(d.log?txt:d.day)+'</div>';
+  }).join('');
+  // 统计
+  var count=Object.keys(log).length;
+  var mcEl=document.getElementById('sportMonthCount');
+  if(mcEl){
+    var monthCount=0;
+    var m=today.getMonth();
+    Object.keys(log).forEach(function(k){
+      var d=new Date(k+'T00:00:00');
+      if(d.getMonth()===m)monthCount++;
+    });
+    mcEl.textContent=monthCount;
+  }
+  var tEl=document.getElementById('sportTotal');if(tEl)tEl.textContent=count;
+  // 连续天数
+  var streak=0;
+  for(var i=0;i<30;i++){
+    var d=new Date(today);d.setDate(d.getDate()-i);
+    var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    if(log[key])streak++;else break;
+  }
+  var sEl=document.getElementById('sportStreak');if(sEl)sEl.textContent=streak;
+}
+
+/* ═══════════ 影视·观世界 ═══════════ */
+var MOVIE_QUOTES=[
+  {q:'希望是美好的，也许是人间至善，而美好的事物永不消逝。',src:'《肖申克的救赎》',scene:'安迪写给瑞德的信',e:'希望不是空想，是支撑你每天行动的理由。失去希望的人最先被打败。',apply:'低谷时提醒自己：把眼光放长到3年后，现在熬的每一天都在靠近它。'},
+  {q:'要么忙着活，要么忙着死。',src:'《肖申克的救赎》',scene:'安迪对瑞德说',e:'人生只有两种状态：向前，或者停滞。停滞的代价和向前一样大。',apply:'拖延时问自己：我现在是"忙着活"还是"忙着死"？立刻做一件推进的事。'},
+  {q:'恐惧让你沦为囚犯，希望让你重获自由。',src:'《肖申克的救赎》',scene:'安迪与瑞德的对话',e:'困住你的往往不是现实，是恐惧本身。敢行动的人先自由。',apply:'做一件让你有点害怕但正确的事，比如主动举手、主动约谈、主动报名。'},
+  {q:'生活就像一盒巧克力，你永远不知道下一颗是什么味道。',src:'《阿甘正传》',scene:'阿甘的名言',e:'人生不可控的部分很多，与其焦虑未知，不如专注做好眼前的每一件事。',apply:'对不确定的结果保持开放：尽力而为，然后把结果交给时间。'},
+  {q:'跑，福雷斯特，跑！',src:'《阿甘正传》',scene:'珍妮鼓励阿甘',e:'当你想不清楚的时候，先动起来。行动会带来答案。',apply:'卡壳或迷茫时先"跑"起来——完成一件最小的事，答案在路上。'},
+  {q:'能力越大，责任越大。',src:'《蜘蛛侠》',scene:'本叔对彼得说',e:'责任不是负担，是被信任的证据。愿意担责的人才有成长空间。',apply:'主动认领一件有挑战的事（项目/任务/班委），能力是在责任中长出来的。'},
+  {q:'每个人都有自己的时区。',src:'《长安三万里》',scene:'人生节奏的隐喻',e:'有人22岁毕业、有人25岁才读研、有人40岁才转行——没有统一的时间表。',apply:'不和别人比进度，只和昨天的自己比进步。'},
+  {q:'所有的相遇都是久别重逢。',src:'《一代宗师》',scene:'宫二对叶问',e:'珍惜当下的关系，因为每一次联结都是唯一的。',apply:'今晚主动联系一个许久未聊的朋友或家人，关系需要维护。'},
+  {q:'做噩梦没什么，醒来还活着就好。',src:'《让子弹飞》',scene:'张麻子的口头禅',e:'失败和挫折就像噩梦，只要还在行动就没有输。',apply:'把一次失败当作"噩梦"：醒来，继续赶路。'},
+  {q:'如果你有梦想的话，就要去捍卫它。',src:'《当幸福来敲门》',scene:'克里斯对儿子说',e:'梦想最怕的不是嘲笑，是放弃。捍卫=每天为它做一点事。',apply:'为你的一个梦想写下本周能做的3件小事，从第1件开始。'},
+  {q:'别让任何人告诉你你做不到。',src:'《星际穿越》',scene:'库珀的信念',e:'别人的否定只是他们的认知边界，不是你的天花板。',apply:'把一句"你做不到"当作动力，用行动回击。'},
+  {q:'我命由我不由天。',src:'《哪吒之魔童降世》',scene:'哪吒的呐喊',e:'出身和标签决定不了你，你的选择和行动才决定你。',apply:'给自己一个"不认命"的小目标，证明一次自己说了算。'}
+];
+var movieIdx=-1;
+function nextMovieQuote(){movieIdx++;renderMovieQuote();}
+function renderMovieQuote(){
+  var el=document.getElementById('movieQuote');if(!el)return;
+  if(movieIdx<0){var day=Math.floor(Date.now()/86400000);movieIdx=day%MOVIE_QUOTES.length;}
+  var m=MOVIE_QUOTES[movieIdx%MOVIE_QUOTES.length];
+  el.innerHTML='<div style="font-size:17px;font-weight:600;line-height:1.7;margin-bottom:12px;text-align:center">「'+m.q+'」</div>'+
+    '<div style="text-align:center;font-size:12px;color:var(--muted);margin-bottom:14px">—— '+m.src+' · '+m.scene+'</div>'+
+    '<div style="font-size:13px;color:var(--text);line-height:1.8;background:var(--bg);padding:10px 12px;border-radius:8px;border-left:3px solid var(--primary);margin-bottom:8px"><strong style="color:var(--primary)">解读 · </strong>'+m.e+'</div>'+
+    '<div style="font-size:13px;color:var(--text);line-height:1.8;background:var(--teal-light);padding:10px 12px;border-radius:8px;border-left:3px solid var(--teal)"><strong style="color:var(--teal)">用在哪 · </strong>'+m.apply+'</div>';
+}
+function getMovies(){return DB.get('movies',[]);}
+function saveMovies(a){DB.set('movies',a);}
+function renderMovies(){
+  var box=document.getElementById('movieNoteList');if(!box)return;
+  var ms=getMovies();
+  if(!ms.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有观影笔记 · 看完一部电影或剧，用三栏写一篇</p>';return;}
+  box.innerHTML=ms.slice(-8).reverse().map(function(m,i){
+    return '<div style="padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;font-size:13px;color:var(--primary)">'+escapeHtml(m.title)+'</span>'+
+      '<button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delMovie('+i+')">删除</button></div>'+
+      '<div style="font-size:12px;color:var(--muted);margin-top:4px;white-space:pre-wrap">'+escapeHtml(m.note)+'</div>'+
+      '<div style="font-size:11px;color:var(--hint);margin-top:4px">'+m.date+'</div></div>';
+  }).join('');
+}
+function addMovie(){
+  var t=document.getElementById('movieTitle'),n=document.getElementById('movieNote');
+  if(!t||!t.value.trim()||!n||!n.value.trim()){uiAlert('请填写片名和笔记内容');return;}
+  var ms=getMovies();ms.push({title:t.value.trim(),note:n.value.trim(),date:todayKey()});
+  saveMovies(ms);
+  t.value='';n.value='';
+  renderMovies();flash('观影笔记已保存');
+}
+function delMovie(i){var ms=getMovies();ms.splice(i,1);saveMovies(ms);renderMovies();}
+
+
+/* ═══════════ 节日 · 生日 · 人生刻度 ═══════════ */
+var HOLIDAYS=[
+  ['2026-02-17','春节'],['2026-04-05','清明节'],['2026-05-01','劳动节'],['2026-06-19','端午节'],['2026-09-25','中秋节'],['2026-10-01','国庆节'],
+  ['2027-02-06','春节'],['2027-04-05','清明节'],['2027-05-01','劳动节'],['2027-06-09','端午节'],['2027-09-15','中秋节'],['2027-10-01','国庆节'],
+  ['2028-01-26','春节'],['2028-04-04','清明节'],['2028-05-01','劳动节'],['2028-05-28','端午节'],['2028-10-03','中秋节'],['2028-10-01','国庆节'],
+  ['2029-02-13','春节'],['2029-04-04','清明节'],['2029-05-01','劳动节'],['2029-06-16','端午节'],['2029-09-22','中秋节'],['2029-10-01','国庆节'],
+  ['2030-02-03','春节'],['2030-04-05','清明节'],['2030-05-01','劳动节'],['2030-06-05','端午节'],['2030-09-12','中秋节'],['2030-10-01','国庆节'],
+  ['2031-01-23','春节'],['2031-04-05','清明节'],['2031-05-01','劳动节'],['2031-06-24','端午节'],['2031-09-26','中秋节'],['2031-10-01','国庆节']
+];
+function renderHoliday(){
+  var box=document.getElementById('holidayBox');if(!box)return;
+  var now=new Date();now.setHours(0,0,0,0);
+  var best=null;
+  HOLIDAYS.forEach(function(h){
+    var d=new Date(h[0]+'T00:00:00');
+    if(d>=now&&(!best||d<best.d)){best={d:d,n:h[1],s:h[0]};}
+  });
+  if(!best){box.innerHTML='<p style="color:var(--hint)">暂无节假日数据</p>';return;}
+  var diff=Math.round((best.d-now)/86400000);
+  box.innerHTML='<div style="font-size:15px;font-weight:600;color:var(--coral)">'+best.n+'</div>'+
+    '<div style="font-size:12px;color:var(--muted);margin:4px 0">'+best.s+'</div>'+
+    (diff===0?'<div style="font-size:16px;font-weight:700;color:var(--teal)">就是今天！</div>':'<div style="font-size:16px;font-weight:700;color:var(--primary)">还有 <span style="font-size:22px">'+diff+'</span> 天</div>')+
+    '<div style="font-size:11px;color:var(--hint);margin-top:6px">下个节假日 · 记得提前规划</div>';
+}
+function getBirthday(){try{return localStorage.getItem('birthday')||'';}catch(e){return '';}}
+function saveBirthday(v){
+  try{localStorage.setItem('birthday',v);}catch(e){}
+  renderLifeMeters();flash('生日已保存，随时可改');
+}
+function renderLifeMeters(){
+  var bb=document.getElementById('birthdayBox');var yb=document.getElementById('yearBox');var bi=document.getElementById('birthdayInput');
+  if(bi&&!bi.value){var b0=getBirthday();if(b0)bi.value=b0;}
+  var b=getBirthday();
+  if(!b){
+    if(bb)bb.innerHTML='<p style="color:var(--hint)">选择你的生日，自动计算距生日还有几天</p>';
+  }else{
+    var birth=new Date(b+'T00:00:00');
+    if(!isNaN(birth.getTime())){
+      var now=new Date();now.setHours(0,0,0,0);
+      var thisYear=new Date(now.getFullYear(),birth.getMonth(),birth.getDate());
+      var nextB=thisYear>=now?thisYear:new Date(now.getFullYear()+1,birth.getMonth(),birth.getDate());
+      var age=nextB.getFullYear()-birth.getFullYear();
+      var days2b=Math.round((nextB-now)/86400000);
+      if(bb)bb.innerHTML=(days2b===0?'<div style="font-size:15px;font-weight:600;color:var(--coral)">今天是你 '+age+' 岁生日</div>':'<div style="font-size:15px;font-weight:600;color:var(--primary)">距 '+age+' 岁生日还有 <span style="font-size:20px">'+days2b+'</span> 天</div>')+
+        '<div style="font-size:12px;color:var(--muted);margin-top:4px">'+b+' · 点上方日历可修改</div>';
+    }
+  }
+  if(yb){
+    var now=new Date();now.setHours(0,0,0,0);
+    var y=now.getFullYear();
+    var start=new Date(y,0,1);var end=new Date(y+1,0,1);
+    var dayNum=Math.floor((now-start)/86400000)+1;
+    var total=Math.round((end-start)/86400000);
+    var pct=Math.round(dayNum/total*1000)/10;
+    var daysLeft=Math.round((end-now)/86400000);
+    yb.innerHTML='<div style="font-size:15px;font-weight:600;color:var(--primary)">'+y+' 年已过 <span style="font-size:20px">'+pct+'</span>%</div>'+
+      '<div style="margin:8px 0 4px"><div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,var(--teal),var(--primary));border-radius:4px"></div></div></div>'+
+      '<div style="font-size:12px;color:var(--muted)">第 '+dayNum+' / '+total+' 天 · 距年底还有 '+daysLeft+' 天</div>';
+  }
+}
+/* 支出记账本：本地保存；支持增删、本周/本月/分类汇总 */
+function getExpenses(){try{var a=JSON.parse(localStorage.getItem('pp_expenses')||'[]');return Array.isArray(a)?a:[];}catch(e){return [];}}
+function saveExpenses(a){try{localStorage.setItem('pp_expenses',JSON.stringify(a));}catch(e){}}
+function addExpense(){
+  var n=(document.getElementById('expName').value||'').trim();
+  var amt=parseFloat(document.getElementById('expAmount').value);
+  var cat=document.getElementById('expCat')?document.getElementById('expCat').value:'其他';
+  if(!n||isNaN(amt)||amt<=0){flash('请填写项目名称和有效的金额');return;}
+  if(amt>999999){flash('金额过大，请检查');return;}
+  var list=getExpenses();
+  list.unshift({name:n,cat:cat,amt:Math.round(amt*100)/100,ts:Date.now(),ym:new Date().getFullYear()+'-'+(new Date().getMonth()+1)});
+  saveExpenses(list);
+  document.getElementById('expName').value='';document.getElementById('expAmount').value='';
+  renderExpenses();flash('已记一笔 '+cat+' · ¥'+Math.round(amt*100)/100);
+}
+function delExpense(idx){
+  var list=getExpenses();
+  if(idx<0||idx>=list.length)return;
+  var it=list[idx];list.splice(idx,1);saveExpenses(list);renderExpenses();flash('已移除「'+it.name+'」');
+}
+function renderExpenses(){
+  var list=getExpenses();
+  var box=document.getElementById('expList');
+  if(!box)return;
+  if(!list.length){box.innerHTML='<p style="color:var(--hint);font-size:13px;padding:14px 0">还没有记录，从上方记第一笔开始吧</p>';}
+  else{
+    var tot=list.length;box.innerHTML='';
+    for(var i=0;i<list.length&&i<30;i++){
+      var it=list[i];var d=new Date(it.ts);var ds=(d.getMonth()+1)+'月'+d.getDate()+'日';
+      box.innerHTML+='<div ondblclick="delExpense('+i+')" title="双击删除" style="display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px dashed var(--border);cursor:pointer">'+
+        '<span style="flex:0 0 auto;font-size:11px;color:var(--hint);width:52px">'+ds+'</span>'+
+        '<span class="tag" style="flex:0 0 auto">'+escapeHtml(it.cat)+'</span>'+
+        '<span style="flex:1;font-size:13px;color:var(--text)">'+escapeHtml(it.name)+'</span>'+
+        '<span style="flex:0 0 auto;color:var(--coral);font-weight:600">¥'+escapeHtml(it.amt)+'</span></div>';
+    }
+    if(tot>30)box.innerHTML+='<div style="font-size:11px;color:var(--hint);padding:6px 2px">最近 30 笔已显示，共 '+tot+' 笔（双击记录删除，只保留在本地）</div>';
+  }
+  /* 汇总：本月 & 本周 & 最高分类 */
+  var now=new Date(),y=now.getFullYear(),m=now.getMonth()+1;
+  var monthTotal=0,monthCount=0,weekTotal=0,catSum={};
+  var weekStart=new Date(now);weekStart.setHours(0,0,0,0);weekStart.setDate(now.getDate()-6);
+  for(var j=0;j<list.length;j++){
+    var it=list[j];var d=new Date(it.ts);
+    if(d.getFullYear()===y&&(d.getMonth()+1)===m){monthTotal+=it.amt;monthCount++;catSum[it.cat]=(catSum[it.cat]||0)+it.amt;}
+    if(d.getTime()>=weekStart.getTime())weekTotal+=it.amt;
+  }
+  var e1=document.getElementById('expMonthTotal');if(e1)e1.textContent='¥'+(Math.round(monthTotal*100)/100);
+  var e2=document.getElementById('expMonthLabel');if(e2)e2.textContent=monthCount+' 笔 · '+y+'年'+m+'月';
+  var e3=document.getElementById('expWeekTotal');if(e3)e3.textContent='¥'+(Math.round(weekTotal*100)/100);
+  var top='--',topAmt=0;
+  for(var c in catSum){if(catSum[c]>topAmt){topAmt=catSum[c];top=c;}}
+  var e4=document.getElementById('expTopCat');if(e4)e4.textContent=top;
+  var e5=document.getElementById('expTopCatAmt');if(e5)e5.textContent=(top==='--'?'暂无数据':'本月 '+top+' 共 ¥'+Math.round(topAmt*100)/100);
+}
+
+
+
+/* ════════════════════════════════════════════════════════════
+   栖匣 3.0 升级 JS 层
+   ════════════════════════════════════════════════════════════ */
+
+/* ── 深色模式切换（太阳 / 月亮） ── */
+function toggleTheme(){
+  var root=document.documentElement;
+  /* 切换前临时冻结所有过渡/动画，颜色立即落定；随后在两帧后恢复，保留日常 hover 动效 */
+  root.classList.add('no-trans');
+  var cur=root.getAttribute('data-theme');
+  if(cur!=='dark'){cur='light';root.setAttribute('data-theme','light');} /* 兜底：确保有合法初值 */
+  var next=(cur==='dark')?'light':'dark';
+  root.setAttribute('data-theme',next);
+  /* 强制同步重排：让颜色在这一帧内立刻落位，不出现过渡渐变与滞后 */
+  try{ void root.offsetWidth; }catch(e){}
+  /* 主题只在本次会话内记忆：刷新/重新打开一律回到日间，夜间交给用户每次手动开启 */
+  try{sessionStorage.setItem('pp_theme_v2',next);}catch(e){}
+  updateThemeIcon();
+  try{
+    if(window.requestAnimationFrame){
+      requestAnimationFrame(function(){root.classList.remove('no-trans');});
+    }else{setTimeout(function(){root.classList.remove('no-trans');},30);}
+  }catch(e){root.classList.remove('no-trans');}
+  /* 即时按压反馈：每次点击都有响应，避免"点了没反应"的体感 */
+  try{
+    var btn=document.getElementById('themeToggleBtn');
+    if(btn){
+      btn.style.transform='scale(.8)';
+      setTimeout(function(){btn.style.transform='';},120);
+    }
+    if(window.flash)window.flash(next==='dark'?'🌙 已切换夜间模式，护眼不刺眼':'☀️ 已切换日间模式，清爽明亮');
+  }catch(e){}
+}
+function applySavedTheme(){
+  var root=document.documentElement;
+  root.classList.add('no-trans');
+  var t=null;
+  try{ t=sessionStorage.getItem('pp_theme_v2'); }catch(e){ t=null; }
+  /* 默认固定为【日间模式】：只在本次会话内记忆夜间选择，每次重新打开都是日间。
+     不再跟随系统 / 微信深色，符合「打开即日间，夜间由用户本次自行切换」的预期。
+     即便上次切了夜间，重新打开也回到清爽日间。 */
+  if(t!=='dark'){ t='light'; }
+  root.setAttribute('data-theme',t);
+  updateThemeIcon();
+  try{
+    if(window.requestAnimationFrame){
+      requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.remove('no-trans');});});
+    }else{setTimeout(function(){root.classList.remove('no-trans');},50);}
+  }catch(e){root.classList.remove('no-trans');}
+}
+function updateThemeIcon(){
+  // 用户语义：日间显示月亮（提示可切夜间），暗夜显示太阳（提示可切日间）
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  var sun=document.getElementById('themeIconSun');
+  var moon=document.getElementById('themeIconMoon');
+  if(sun)sun.style.setProperty('display', isDark?'inline-block':'none', 'important');
+  if(moon)moon.style.setProperty('display', isDark?'none':'inline-block', 'important');
+  /* 同步浏览器地址栏 / 状态栏颜色 */
+  var meta=document.getElementById('themeColorMeta');
+  if(meta)meta.setAttribute('content', isDark?'#221D16':'#4A3427');
+}
+
+/* ── 底部导航激活状态 ── */
+function setBottomActive(el){
+  document.querySelectorAll('.bottom-nav-item').forEach(function(i){i.classList.remove('active');});
+  if(el)el.classList.add('active');
+}
+/* 切换视图时同步底部导航 */
+var _origSwitchView=switchView;
+switchView=function(name){
+  _origSwitchView(name);
+  /* 桌面端收起态下切换板块：自动展开侧边栏，保证当前板块高亮可见 */
+  if(window.matchMedia&&window.matchMedia('(min-width:769px)').matches&&document.body.classList.contains('sidebar-collapsed')){
+    document.body.classList.remove('sidebar-collapsed');
+    try{localStorage.setItem('pp_sidebar_collapsed','0');}catch(e){}
+  }
+  /* 同步底部导航 */
+  var bv=document.querySelector('.bottom-nav-item[data-bv="'+name+'"]');
+  if(bv)setBottomActive(bv);
+  /* 切换视图后回到顶部，避免内容停留在视口下方（"内容在下面"问题） */
+  try{ window.scrollTo(0,0); }catch(e){}
+  var main=document.querySelector('.main'); if(main)main.scrollTop=0;
+  /* 成长档案：每次切进来都即时重算，数据不冻结 */
+  if(name==='stats'){ try{ updateStats(); }catch(e){} }
+};
+/* 成长档案实时刷新：从打开页面起，每分钟自动重算天数/徽章/活跃度，
+   并跨天自动更新"使用天数"，无需刷新页面 */
+setInterval(function(){try{updateStats();}catch(e){}},60000);
+
+/* ── 导航引导常驻逻辑（替代原来的6秒消失） ── */
+function mobileHint(){
+  try{
+    if(sessionStorage.getItem('pp_nav_guide_closed'))return;
+    if(window.innerWidth>860)return;
+    var h=document.getElementById('mobileSidebarHint');
+    if(h)h.style.display='flex';
+  }catch(e){}
+}
+
+/* ── 考试倒计时 ──
+   v2.7：日期改用【官方核实 + 年度惯例推算】两源核对，笔试/机考/口试类型分离。
+   官方已公布的日期以官方为准（2026已核实）；未公布的按历年惯例推算并明确标注"以官方公告为准"。
+   */
+function _nthWeekday(year,month,n,weekday){
+  var d=new Date(year,month-1,1);
+  if(n<0){ /* 负数=从月末倒数：-1 为最后一个该星期几，-2 为倒数第二个 */
+    var last=new Date(year,month,0).getDate();
+    var day=last-((new Date(year,month-1,last)).getDay()-weekday+7)%7+(n+1)*7;
+    return day;
+  }
+  var first=(weekday-d.getDay()+7)%7+1;return first+(n-1)*7;}
+function _fmtDate(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+/* 单场种子：name / month / nth / weekday / type / c(色) / note */
+var EXAM_RULES=[
+  {name:'英语四级(CET-4)笔试',m:12,n:2,w:6,type:'笔试',c:'#4A3427',note:'12月场·上午'},
+  {name:'英语六级(CET-6)笔试',m:12,n:2,w:6,type:'笔试',c:'#7C5B38',note:'12月场·下午'},
+  {name:'英语四级口试(CET-4)',m:11,n:3,w:6,type:'口语',c:'#B0855A',note:'选考·自愿报名'},
+  {name:'英语六级口试(CET-6)',m:11,n:3,w:6,offset:1,type:'口语',c:'#A9803F',note:'选考·自愿报名'},
+  {name:'研究生入学考试(初试)',m:12,n:-2,w:6,type:'笔试',c:'#B07F63',note:'预计12月下旬·以教育部正式公告为准'},
+  {name:'法考客观题(机考)',m:9,n:2,w:6,type:'机考',c:'#B45309',note:'分两批次'},
+  {name:'法考主观题',m:10,n:3,w:7,type:'机考',c:'#EA580C',note:'客观过线后方可报'},
+  {name:'教师资格证笔试',m:9,n:2,w:6,type:'笔试',c:'#6E4F37',note:'下半年场'},
+  {name:'教资面试',m:12,n:2,w:6,type:'面试',c:'#8A6D48',note:'笔试过线后'},
+  {name:'计算机等级考试NCRE',m:9,n:3,w:6,type:'机考',c:'#9A7348',note:'机考形式'},
+  {name:'普通话水平测试',m:((new Date().getMonth()+2)%12)||12,n:2,w:6,type:'口试',c:'#A87F3C',note:'就近场次·以测试站为准'}
+];
+/* 2026官方已核实日期（精确覆盖） */
+var EXAM_OFFICIAL_2026={
+  '英语四级(CET-4)笔试':'2026-12-12',
+  '英语六级(CET-6)笔试':'2026-12-12',
+  '英语四级口试(CET-4)':'2026-11-21',
+  '英语六级口试(CET-6)':'2026-11-22',
+  '法考客观题(机考)':'2026-09-12',
+  '法考主观题':'2026-10-18',
+  '教师资格证笔试':'2026-09-12',
+  '教资面试':'2026-12-05',
+  '计算机等级考试NCRE':'2026-09-19'
+};
+/* 官方已核实日期按「当前年份」自动路由；每年新增年份只需追加一个同名映射，此后年份自动生效 */
+var EXAM_OFFICIAL_MAP={2026:EXAM_OFFICIAL_2026};
+function officialExamDate(name){
+  var robj=EXAM_OFFICIAL_MAP[new Date().getFullYear()];
+  return robj?robj[name]:null;
+}
+/* 单场日期统一入口：官方已公布→精确取用；否则按规则推算（支持负数序号=从月末倒数，offset=在基点日期上顺延天数，如六级口试=四级口试次日） */
+function _seedDate(year, rule){
+  var od=officialExamDate(rule.name);
+  if(od)return new Date(od+'T00:00:00');
+  return new Date(year,rule.m-1,_nthWeekday(year,rule.m,rule.n,rule.w)+(rule.offset||0));
+}
+function getExams(){
+  /* 一次性的旧数据迁移：若已存数据为旧版（无 type 字段），用新版官方规则校正日期与类型，同时保留用户自定义项 */
+  var saved0=DB.get('exams',null);
+  if(saved0&&Array.isArray(saved0)&&saved0.length){
+    var hasType=saved0.some(function(e){return e&&e.type;});
+    if(!hasType){
+      var nat=new Date().getFullYear(), td=new Date();td.setHours(0,0,0,0);
+      var rulesMap={};EXAM_RULES.forEach(function(r){rulesMap[r.name]=1;});
+      var used={}, migrated=[];
+      saved0.forEach(function(e){
+        if(!e||!e.name){return;}
+        var matched=null;
+        EXAM_RULES.some(function(r){
+          if(r.name.indexOf('（')>-1){var base=r.name.split('（')[0];if(!used[r.name]&&e.name.indexOf(base)>-1){matched=r;used[r.name]=1;return true;}}
+          else if(!used[r.name]&&e.name==r.name){matched=r;used[r.name]=1;return true;}
+          return false;
+        });
+        if(matched){
+          var calc=_seedDate(nat,matched);
+          if(calc<td){calc=_seedDate(nat+1,matched);}
+          migrated.push({name:matched.name+(matched.note?'（'+matched.note+'）':''),date:_fmtDate(calc),color:matched.c,type:matched.type||'笔试'});
+        }else{
+          /* 用户自定义/未知项：保留原样 */
+          migrated.push({name:e.name||'考试',date:e.date||(new Date().getFullYear()+'-12-31'),color:e.color||'#4A3427',type:e.type||'笔试'});
+        }
+      });
+      /* 补充官方种子中尚未存在的默认项 */
+      var have={};migrated.forEach(function(e){have[e.name]=1;});
+      EXAM_RULES.forEach(function(r){
+        var nm=r.name+(r.note?'（'+r.note+'）':'');
+        if(!have[nm]&&!used[r.name]){
+          var calc=_seedDate(nat,r);
+          if(calc<td){calc=_seedDate(nat+1,r);}
+          migrated.push({name:nm,date:_fmtDate(calc),color:r.c,type:r.type||'笔试'});
+        }
+      });
+      DB.set('exams',migrated);
+      return migrated;
+    }
+    return saved0;
+  }
+  var y=new Date().getFullYear();
+  var today=new Date();today.setHours(0,0,0,0);
+  var out=[];
+  EXAM_RULES.forEach(function(s){
+    var calc=false;
+    /* 当年已有官方公布日期则精确取用，否则按规则推算（含六级口试=四级口试次日等复杂关系） */
+    calc=_seedDate(y,s);
+    if(calc<today){calc=_seedDate(y+1,s);}
+    out.push({name:s.name+(s.note?'（'+s.note+'）':''),date:_fmtDate(calc),color:s.c,type:s.type||'笔试'});
+  });
+  return out;
+}
+function saveExams(e){DB.set('exams',e);}
+function renderExamCountdowns(){
+  var all=getExams();
+  var now0=new Date();now0.setHours(0,0,0,0);
+  var list=all.filter(function(e){return new Date(e.date+'T00:00:00')>=now0;});
+  var box=document.getElementById('examCountdownList');
+  if(!box)return;
+  if(!list.length){
+    box.innerHTML='<p style="color:var(--hint);text-align:center;padding:20px">还没有添加考试，在上方输入框添加吧～</p>';
+    return;
+  }
+  var tip='<p style="font-size:12px;color:var(--hint);line-height:1.7;margin-bottom:12px">📌 <b>日期一律以官方公告为准</b>。现已核对本年度官方通知：四六级笔试 12月12日（四级上午·六级下午同日）、口试 11月21—22日；教资笔试 9月12日、面试 12月5—6日；法考客观题 9月12—13日（分批）、主观题 10月18日；计算机等级考试 9月19—21日。<b>研究生初试</b>官方尚未公布，按往年规律暂显示「预计12月19日」，教育部正式公告后自动校正。过期自动隐藏、顺延下一场。</p>';
+  var now=new Date();
+  function _iconInk(hex){
+    try{
+      var h=hex.replace('#',''); if(h.length===3)h=h.split('').map(function(c){return c+c}).join('');
+      var r=parseInt(h.substr(0,2),16)/255, g=parseInt(h.substr(2,2),16)/255, b=parseInt(h.substr(4,2),16)/255;
+      var f=function(c){return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);};
+      var L=0.2126*f(r)+0.7152*f(g)+0.0722*f(b);
+      return L>0.35?'#1a1a1a':'#ffffff';
+    }catch(e){return '#ffffff';}
+  }
+  /* 类型 → 图标 + 色点 */
+  function _typeIcon(t){t=t||'笔试';
+    var m={笔试:['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>','笔试'],
+      '机考':['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="2" y="4" width="20" height="14" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="18" x2="12" y2="20"></line><line x1="6" y1="8" x2="8" y2="10"></line></svg>','机考'],
+      '口语':['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>','口语'],
+      '面试':['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>','面试']};
+    return m[t]||m['笔试'];
+  }
+  box.innerHTML=tip+list.map(function(e,i){
+    var d=new Date(e.date);
+    var diff=Math.ceil((d-now)/(86400000));
+    var tv=_typeIcon(e.type);
+    var niceDate=e.date&&e.date.indexOf('-')>-1?e.date.split('-').join('.'):(e.date||'');
+    var cd='<div class="cd-count'+(diff<=0?' today':'')+'">'+
+      (diff>0
+        ?'<span class="lbl">还有</span><span class="num">'+diff+'</span><span class="unit">天</span>'
+        :'<span class="num">🎉 就是今天</span>')+
+      '</div>';
+    return '<div class="countdown-item">'+
+      '<div class="cd-top">'+
+        '<div class="cd-icon" style="background:'+e.color+';color:'+_iconInk(e.color)+'">'+tv[0]+'</div>'+
+        '<div class="cd-namecon">'+
+          '<div class="cd-name" contenteditable="true" onblur="editExamName('+i+',this.textContent)" title="点击可修改考试名称">'+e.name+'</div>'+
+        '</div>'+
+        '<button class="cd-del" title="删除该考试" onclick="removeExam('+i+')">×</button>'+
+      '</div>'+
+      cd+
+      '<div class="cd-meta">'+
+        '<span class="cd-date"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'+niceDate+'</span>'+
+        '<span class="cd-type">'+tv[1]+'</span>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+function addExamCountdown(){
+  var n=document.getElementById('newExamName');
+  var d=document.getElementById('newExamDate');
+  var c=document.getElementById('newExamColor');
+  if(!n||!d||!n.value.trim()||!d.value){flash('请填写考试名称和日期');return;}
+  var list=getExams();
+  list.push({name:n.value.trim(),date:d.value,color:c?c.value:'#4A3427'});
+  saveExams(list);renderExamCountdowns();
+  n.value='';d.value='';
+  flash('已添加考试，已收进考试规划');
+}
+function editExamName(i,name){
+  var list=getExams();
+  if(list[i])list[i].name=name.trim()||list[i].name;
+  saveExams(list);
+}
+function removeExam(i){
+  uiConfirm('要移除这场考试吗？',function(){
+    var list=getExams();list.splice(i,1);saveExams(list);renderExamCountdowns();
+  });
+}
+
+/* ── 学分衡算 · 绩点计算器 ── */
+function gpaPoint(sc,score){
+  sc=sc||5;
+  if(sc==='4'){ var t=[0,0,0,0,0,0,0,0,0,0];t[0]=4;t[1]=4;t[2]=4;t[3]=3.7;t[4]=3.3;t[5]=3.0;t[6]=2.0;t[7]=1.0;t[8]=0;
+    if(score>=90)return 4.0;if(score>=85)return 3.7;if(score>=82)return 3.3;if(score>=78)return 3.0;
+    if(score>=75)return 2.7;if(score>=72)return 2.3;if(score>=68)return 2.0;if(score>=64)return 1.5;
+    if(score>=60)return 1.0;return 0;}
+  // 五分制
+  if(score>=90)return 4.0;if(score>=85)return 3.5;if(score>=80)return 3.0;if(score>=75)return 2.5;
+  if(score>=70)return 2.0;if(score>=65)return 1.5;if(score>=60)return 1.0;return 0;
+}
+function gpaAddRow(sample){
+  var tbody=document.getElementById('gpaRows');if(!tbody)return;
+  var tr=document.createElement('tr');
+  var n=sample?'高等数学':'';var c=sample?'4':'';var s=sample?'92':'';
+  tr.innerHTML='<td style="padding:4px;border:1px solid var(--border)"><input class="gpa-name" placeholder="课程名" value="'+n+'"></td>'+
+    '<td style="padding:4px;border:1px solid var(--border)"><input class="gpa-credit" type="number" min="0" step="0.5" placeholder="学分" value="'+c+'" style="width:60px"></td>'+
+    '<td style="padding:4px;border:1px solid var(--border)"><input class="gpa-score" type="number" min="0" max="100" placeholder="0-100" value="'+s+'" style="width:70px" oninput="gpaRowGp(this)"></td>'+
+    '<td class="gpa-gp" style="padding:4px;border:1px solid var(--border);color:var(--hint)"></td>'+
+    '<td style="padding:4px;border:1px solid var(--border);text-align:center"><button class="btn btn-sm" style="font-size:10px;padding:1px 6px;color:var(--hint)" onclick="gpaDelRow(this)" title="删除">✕</button></td>';
+  tbody.appendChild(tr);
+  if(sample)setTimeout(function(){gpaCalc();},0);else gpaRowGp(tr.querySelector('.gpa-score'));
+}
+function gpaRowGp(inp){
+  var tr=inp.closest('tr');
+  var sc=document.getElementById('gpaScale').value;
+  var score=parseFloat(inp.value);
+  var gp=tr.querySelector('.gpa-gp');
+  if(gp){if(isNaN(score)||score<=0){gp.textContent='';}else{gp.textContent=gpaPoint(sc,score).toFixed(1);}}
+  gpaCalc();
+}
+function gpaDelRow(btn){var tr=btn.closest('tr');if(tr)tr.parentNode.removeChild(tr);gpaCalc();}
+function gpaClear(){var tbody=document.getElementById('gpaRows');if(tbody)tbody.innerHTML='';var r=document.getElementById('gpaResult');if(r)r.innerHTML='';}
+function gpaCalc(){
+  var box=document.getElementById('gpaResult');if(!box)return;
+  var names=document.querySelectorAll('#gpaRows .gpa-name');
+  var creds=document.querySelectorAll('#gpaRows .gpa-credit');
+  var scores=document.querySelectorAll('#gpaRows .gpa-score');
+  var sc=document.getElementById('gpaScale').value;
+  var sumCr=0,sumScore=0,sumGp=0,valid=0;
+  for(var i=0;i<creds.length;i++){
+    var cr=parseFloat(creds[i].value),sc_=parseFloat(scores[i].value);
+    if(cr>0&&!isNaN(sc_)&&sc_>0){var gp=gpaPoint(sc,sc_);sumCr+=cr;sumScore+=cr*sc_;sumGp+=cr*gp;valid++;}
+  }
+  if(valid===0){box.innerHTML='<div class="callout callout-info" style="flex:1;margin:0"><strong>开始录入</strong>上面课程，或点「载入示例」看效果。</div>';return;}
+  var wAvg=sumScore/sumCr,avgGp=sumGp/sumCr;
+  var wAvgTxt=wAvg.toFixed(2);
+  box.innerHTML=
+    '<div style="flex:1;min-width:180px;padding:10px 14px;border-radius:10px;background:var(--teal-light);border:1px solid var(--primary)"><div style="font-size:11px;color:var(--muted)">加权平均分</div><div style="font-size:24px;font-weight:800;color:var(--primary)">'+wAvgTxt+'</div></div>'+
+    '<div style="flex:1;min-width:180px;padding:10px 14px;border-radius:10px;background:var(--teal-light);border:1px solid var(--primary)"><div style="font-size:11px;color:var(--muted)">平均绩点(GPA)</div><div style="font-size:24px;font-weight:800;color:var(--primary)">'+avgGp.toFixed(2)+'</div></div>'+
+    '<div style="flex:1;min-width:180px;padding:10px 14px;border-radius:10px;background:#FDF6EC;border:1px solid var(--border-strong)"><div style="font-size:11px;color:var(--muted)">有效课程 / 总学分</div><div style="font-size:20px;font-weight:800;color:var(--ink)">'+valid+' 门 / '+sumCr.toFixed(1)+' 学分</div></div>';
+  var gps=document.querySelectorAll('#gpaRows .gpa-gp');
+  for(var k=0;k<gps.length;k++){gps[k].textContent='';}
+  for(var j=0;j<creds.length;j++){
+    var cr=parseFloat(creds[j].value),sc_=parseFloat(scores[j].value);
+    if(cr>0&&!isNaN(sc_)&&sc_>0)gps[j].textContent=gpaPoint(sc,sc_).toFixed(1);
+  }
+}
+
+/* ── 竞赛时间线 ── */
+function renderContestTimeline(){
+  var events=[
+    {month:'1-2月',title:'寒假备战期',desc:'利用假期学习数模/电赛基础知识，组队磨合',type:'prepare'},
+    {month:'3-4月',title:'大创申报 + 挑战杯启动',desc:'撰写申报书、确定选题、联系指导老师',type:'apply'},
+    {month:'5-6月',title:'数学建模校赛/省赛',desc:'美赛(MCM/ICM)通常2月，国赛9月',type:'contest'},
+    {month:'6-8月',title:'互联网+暑期推进',desc:'完善商业计划书、制作路演PPT、暑期集训',type:'prepare'},
+    {month:'9-10月',title:'数模国赛 + 电赛 + 互联网+决赛',desc:'竞赛密集期，合理安排时间',type:'contest'},
+    {month:'10-11月',title:"挑战杯'揭榜挂帅'",desc:'关注官方发布的榜单，选择合适题目攻关',type:'apply'},
+    {month:'11-12月',title:'年度总结 + 来年规划',desc:'复盘今年参赛经验，规划明年参赛路线',type:'review'}
+  ];
+  var box=document.getElementById('contestTimeline');
+  if(!box)return;
+  box.innerHTML=events.map(function(e){
+    var colors={prepare:'#7C5B38',apply:'#6E4F37',contest:'#B07F63',review:'#A9803F'};
+    return '<div class="timeline-event">'+
+      '<div class="timeline-dot" style="background:'+(colors[e.type]||'#888')+'"></div>'+
+      '<div class="timeline-time">'+e.month+'</div>'+
+      '<div class="timeline-title">'+e.title+'</div>'+
+      '<div class="timeline-desc">'+e.desc+'</div>'+
+    '</div>';
+  }).join('');
+}
+
+/* ── 保研时间线 ── */
+function renderBaoyanTimeline(){
+  var events=[
+    {time:'大一全年',title:'打基础',desc:'保持高GPA（目标3.5+）、过四级、加入实验室/课题组'},
+    {time:'大二上',title:'开始科研',desc:'联系导师进组、参与大创项目、发第一篇论文/专利'},
+    {time:'大二下~大三上',title:'冲刺六绩',desc:'刷高GPA、过六级、参加学科竞赛拿奖'},
+    {time:'大三下（3-6月）',title:'夏令营申请',desc:'准备材料、投递夏令营（5-6所保底+冲刺）、关注信息'},
+    {time:'大三暑假（7-8月）',title:'参营+预推免',desc:'参加夏令营获得offer、同时准备预推免（9月）'},
+    {time:'大四上（9-10月）',title:'正式推免',desc:'填报系统、确认录取、完成推免流程'}
+  ];
+  var box=document.getElementById('baoyanTimeline');
+  if(box)box.innerHTML=events.map(function(e){
+    return '<div class="timeline-event"><div class="timeline-dot"></div>'+
+      '<div class="timeline-time">'+e.time+'</div>'+
+      '<div class="timeline-title">'+e.title+'</div>'+
+      '<div class="timeline-desc">'+e.desc+'</div></div>';
+  }).join('');
+}
+
+/* ── 习惯养成 ── */
+var TAG_COLORS=['#4A3427','#6E4F37','#8A6A2D','#A9803F','#C9A24E','#A87F3C','#9A7348','#B45309'];
+function getHabits(){return DB.get('habits',[
+  {name:'📖 背单词30个',icon:'📖',streak:0,lastDate:'',records:{}},
+  {name:'🏃 运动30分钟',icon:'🏃',streak:0,lastDate:'',records:{}},
+  {name:'😴 23:30前睡觉',icon:'😴',streak:0,lastDate:'',records:{}},
+  {name:'📖 阅读30分钟',icon:'📖',streak:0,lastDate:'',records:{}},
+  {name:'✍️ 写复盘日记',icon:'✍️',streak:0,lastDate:'',records:{}}
+]);}
+function saveHabits(h){DB.set('habits',h);}
+function renderHabits(){
+  var habits=getHabits();
+  var box=document.getElementById('habitList');
+  if(!box)return;
+  var today=todayKey();
+  box.innerHTML=habits.map(function(h,i){
+    var done=h.records[today]===true;
+    return '<div class="habit-item'+(done?' done':'')+'" id="habit-'+i+'">'+
+      '<div class="habit-check'+(done?' checked':'')+'" onclick="toggleHabit('+i+')">'+(done?'✓':'')+'</div>'+
+      '<div class="habit-info"><div class="habit-name">'+escapeHtml(h.name)+'</div>'+
+      '<div class="habit-streak">'+(h.streak>0?'🔥 连续 '+h.streak+' 天':'还未开始')+(((h.focus||0)>0)?' · 🧠专注 '+h.focus:'')+'</div></div>'+
+      '<button class="btn btn-sm habit-del" style="font-size:11px;padding:2px 8px;color:var(--coral);flex-shrink:0;margin-left:auto;background:transparent;border:1px solid var(--border)" onclick="delHabit('+i+')" title="删除该习惯">✕ 删</button>'+
+    '</div>';
+  }).join('');
+  refreshPomoHabitOpts();
+}
+function toggleHabit(i){
+  var habits=getHabits();
+  if(!habits[i])return;
+  var today=todayKey();
+  var prevDay=yesterdayKey();
+  if(habits[i].records[today]===true){
+    delete habits[i].records[today];
+    // 回退连续天数
+    if(habits[i].lastDate===today)habits[i].lastDate=prevDay;
+    habits[i].streak=Math.max(0,calcStreak(habits[i]));
+  }else{
+    habits[i].records[today]=true;
+    habits[i].lastDate=today;
+    habits[i].streak=calcHabitStreak(habits[i]);
+  }
+  saveHabits(habits);renderHabits();renderHabitHeatmap();updateStats();
+}
+function calcHabitStreak(habit){
+  var streak=0;
+  var d=new Date();
+  while(true){
+    var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    if(habit.records[key]===true){streak++;d.setDate(d.getDate()-1);}
+    else break;
+  }
+  return streak;
+}
+function yesterdayKey(){
+  var d=new Date();d.setDate(d.getDate()-1);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function addHabit(){
+  var n=document.getElementById('newHabitName');
+  var ic=document.getElementById('newHabitIcon');
+  if(!n||!n.value.trim()){flash('请输入习惯名称');return;}
+  var habits=getHabits();
+  habits.push({name:(ic?ic.value:'📖')+' '+n.value.trim(),icon:ic?ic.value:'📖',streak:0,lastDate:'',records:{}});
+  saveHabits(habits);renderHabits();renderHabitHeatmap();updateStats();refreshHomeStats();refreshPomoHabitOpts();
+  n.value='';
+  flash('已添加习惯');
+}
+function delHabit(i){
+  var habits=getHabits();
+  if(!habits[i])return;
+  var name=habits[i].name||'该习惯';
+  uiConfirm('要移除「'+name+'」吗？已记录的打卡数据也会一并清走。',function(){
+    habits.splice(i,1);
+    saveHabits(habits);renderHabits();renderHabitHeatmap();updateStats();refreshHomeStats();refreshPomoHabitOpts();
+    flash('该条习惯已移除');
+  });
+}
+function renderHabitHeatmap(){
+  var habits=getHabits();
+  var box=document.getElementById('habitHeatmap');
+  if(!box)return;
+  var days=[];
+  for(var i=41;i>=0;i--){
+    var d=new Date();d.setDate(d.getDate()-i);
+    var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    var doneCount=habits.filter(function(h){return h.records[key]===true;}).length;
+    var ratio=habits.length>0?doneCount/habits.length:0;
+    var lvl=0;
+    if(ratio>0&&ratio<0.25)lvl=1;
+    else if(ratio>=0.25&&ratio<0.5)lvl=2;
+    else if(ratio>=0.5&&ratio<0.75)lvl=3;
+    else if(ratio>=0.75)lvl=4;
+    days.push('<div class="heat-cell heat-'+lvl+'" title="'+key+'（'+doneCount+'/'+habits.length+' 个习惯）"></div>');
+  }
+  box.innerHTML='<div class="heat-grid" style="grid-template-columns:repeat(7,1fr)">'+days.join('')+'</div>'+
+    '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--hint)">'+
+    '<span>6周前</span><span>今天</span></div>';
+  /* 本周 / 本月坚持概况 */
+  var tbox=document.getElementById('habitTotals');
+  if(tbox&&habits.length){
+    var wk=0,wkT=7*habits.length,mo=0,moT=30*habits.length;
+    for(var w=0;w<7;w++){var wd=new Date();wd.setDate(wd.getDate()-w);wk+=wkHit(habits,wd);}
+    for(var m=0;m<30;m++){var md=new Date();md.setDate(md.getDate()-m);mo+=wkHit(habits,md);}
+    var wkPct=Math.round(wk/wkT*100),moPct=Math.round(mo/moT*100);
+    tbox.innerHTML='<span style="font-size:12px;color:var(--text)">本周坚持率 <b style="color:var(--teal)">'+wkPct+'%</b> <span style="color:var(--hint)">('+wk+'/'+wkT+')</span></span>'+
+      '<span style="font-size:12px;color:var(--muted)">｜</span>'+
+      '<span style="font-size:12px;color:var(--text)">近30天 <b style="color:var(--primary)">'+moPct+'%</b> <span style="color:var(--hint)">('+mo+'/'+moT+')</span></span>';
+  } else if(tbox){tbox.innerHTML='';}
+}
+function wkHit(habits,d){
+  var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  return habits.filter(function(h){return h.records[key]===true;}).length;
+}
+
+/* ── 面试八问 ── */
+var INTERVIEW_QS=[
+  {q:'请做一个自我介绍',tip:'控制在1-2分钟，突出与岗位相关的3个亮点，用"我+动词+量化结果"结构'},
+  {q:'你最大的优点和缺点是什么？',tip:'优点举一个例子佐证；缺点说一个真实的但正在改进的（不要太致命）'},
+  {q:'你为什么选择我们公司/这个岗位？',tip:'提前做功课，说出具体的了解和匹配度，不要泛泛而谈'},
+  {q:'描述一次你遇到的困难以及如何解决的',tip:'用STAR法则，重点在Action和Result，体现你的能力和态度'},
+  {q:'你对我们行业有什么看法？',tip:'展现你的行业认知和学习能力，可以提1-2个趋势性观点'},
+  {q:'你未来3-5年的职业规划是什么？',tip:'要有层次感（1年学本领→3年独当一面→5年带团队），体现稳定性'},
+  {q:'你有什么问题想问我吗？',tip:'一定要问！问关于团队文化、岗位挑战、期望产出等高质量问题'},
+  {q:'你的期望薪资是多少？',tip:'提前调研市场价，给出一个合理区间（如：根据调研，期望范围X-Y）'},
+  {q:'你做过的最有成就感/最失败的一件事？',tip:'有成就感的事讲"为什么对你有意义"+量化结果；失败的事重点讲"复盘+改正"，别只甩锅给外部'},
+  {q:'如果和同事/上级意见不合，你会怎么办？',tip:'体现"先沟通对齐目标、用事实和方案说话、以结果为导向"的能力，不要急于站队或忍气吞声'},
+  {q:'你最大的压力来源是什么？/你如何应对高压？',tip:'先说你正常应对压力的成熟方式（拆解/优先级/休息/求助），再用一个真实例子佐证，别只会说"我扛得住"'},
+  {q:'你没有相关经验，为什么认为能胜任？',tip:'把可迁移能力（学习力、软技能、底层方法）和你的快速学习案例讲出来，承认差距但给出弥补计划'}
+];
+function renderInterviewQuestions(){
+  var box=document.getElementById('interviewQuestions');
+  if(!box)return;
+  box.innerHTML=INTERVIEW_QS.map(function(item,i){
+    return '<details style="margin-bottom:10px;border:1px solid var(--border);border-radius:10px;overflow:hidden">'+
+      '<summary style="padding:12px 14px;background:var(--bg);cursor:pointer;font-size:13px;font-weight:500;color:var(--text);user-select:none">'+
+      '<strong>Q'+(i+1)+'. '+item.q+'</strong></summary>'+
+      '<div style="padding:12px 14px;font-size:12.5px;color:var(--muted);line-height:1.75;border-top:1px solid var(--border)">'+
+      '<strong>💡 回答思路：</strong>'+item.tip+
+      '</div></details>';
+  }).join('');
+}
+
+/* ── 简历投递追踪 ── */
+function getResumeTracks(){return DB.get('resumeTracks',[]);}
+function saveResumeTracks(t){DB.set('resumeTracks',t);}
+function addResumeTrack(){
+  var c=document.getElementById('rtCompany'),p=document.getElementById('rtPosition'),s=document.getElementById('rtStatus');
+  if(!c||!c.value.trim()){flash('请填写公司名');return;}
+  var tracks=getResumeTracks();
+  tracks.unshift({company:c.value.trim(),position:p?p.value.trim():'',status:s?s.value:'已投递',date:todayKey()});
+  if(tracks.length>50)tracks=tracks.slice(0,50);
+  saveResumeTracks(tracks);renderResumeTracks();
+  c.value='';if(p)p.value='';
+  flash('已记录');
+}
+function renderResumeTracks(){
+  var tracks=getResumeTracks();
+  var box=document.getElementById('resumeTrackerBody');
+  if(!box)return;
+  if(!tracks.length){
+    box.innerHTML='<tr><td colspan="5" style="color:var(--hint);text-align:center;padding:20px">暂无记录</td></tr>';return;
+  }
+  var statusColors={'已投递':'#888','初筛通过':'#7C5B38','面试中':'#6E4F37','offer':'#C9A24E','已拒绝':'#B07F63'};
+  box.innerHTML=tracks.map(function(t){
+    return '<tr><td>'+t.company+'</td><td>'+t.position+'</td><td>'+t.date+'</td>'+
+      '<td><span style="color:'+(statusColors[t.status]||'#888')+';font-weight:500">'+t.status+'</span></td>'+
+      '<td></td></tr>';
+  }).join('');
+}
+
+/* ── 成长档案统计 ── */
+/* 首开日期：应用一打开就同步记录（仅首次写入，绝不覆盖已存值），
+   保证「使用天数/成长档案」从用户第一次打开那天起算，而非进入统计页时才起算 */
+function ensureFirstUseDate(){
+  try{
+    if(!localStorage.getItem('pp_firstUseDate')){
+      var n=new Date();
+      var k=n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2);
+      localStorage.setItem('pp_firstUseDate',k);
+    }
+    return localStorage.getItem('pp_firstUseDate');
+  }catch(e){return null;}
+}
+/* 同步执行：页面一加载完成首开日期的记录 */
+(function(){ try{ ensureFirstUseDate(); }catch(e){} })();
+function getFirstUseDate(){ var d=DB.get('firstUseDate',null); if(d)return d; return ensureFirstUseDate(); }
+/* 连续天数计算（用于习惯最长连续 / 番茄最长连续天序） */
+function longestStreakFromRecords(records){
+  var keys=(records&&typeof records==='object')?Object.keys(records).filter(function(k){return records[k];
+  }).sort():[];
+  if(!keys.length)return 0;
+  var best=1,cur=1,prev=new Date(keys[0]+'T00:00:00');
+  for(var i=1;i<keys.length;i++){
+    var d=new Date(keys[i]+'T00:00:00');
+    if(Math.round((d-prev)/86400000)===1){cur++;}else{cur=1;}
+    if(cur>best)best=cur;
+    prev=d;
+  }
+  return best;
+}
+function longestConsecutiveDays(map){
+  var keys=(map&&typeof map==='object')?Object.keys(map).filter(function(k){return (map[k]||0)>0;
+  }).sort():[];
+  if(!keys.length)return 0;
+  var best=1,cur=1,prev=new Date(keys[0]+'T00:00:00');
+  for(var i=1;i<keys.length;i++){
+    var d=new Date(keys[i]+'T00:00:00');
+    if(Math.round((d-prev)/86400000)===1){cur++;}else{cur=1;}
+    if(cur>best)best=cur;
+    prev=d;
+  }
+  return best;
+}
+/* 成长档案 · 一切统计都从这里实时算出：日历跨度只作下限，重点统计「有实际操作行为」的真实数据 */
+function updateStats(){
+  var first=getFirstUseDate();
+  if(!first){first=todayKey();}
+  var tasks=DB.get('tasks',[])||[];
+  var habits=getHabits();
+  var checkins=DB.get('checkins',{})||{};
+  var pomos=DB.get('pomoCount',{})||{};
+  var goals1=DB.get('goalChecks',{})||{};
+  var goals2=DB.get('goal100',{})||{};
+
+  /* 1) 真实有效使用天数：只要某天有打卡/完成待办/番茄/目标等任意操作即算一天 */
+  var activeDays={};
+  function addDay(k){ if(k)activeDays[k]=1; }
+  tasks.forEach(function(t){ if(t.done) addDay(t.doneDate||t.date); });
+  habits.forEach(function(h){ var r=h.records||{}; Object.keys(r).forEach(function(rk){ if(r[rk]) addDay(rk); }); });
+  function cntCheckins(c){ for(var k in c){ var day=c[k]; if(day&&typeof day==='object'){ var n=0; for(var x in day){ if(day[x])n++; } if(n>0)addDay(k);} else if(day){ addDay(k);} } }
+  cntCheckins(checkins);
+  Object.keys(pomos).forEach(function(k){ if((pomos[k]||0)>0) addDay(k); });
+  function cntGoals(g){ for(var k in g){ if(g[k])addDay(k); } }
+  cntGoals(goals1); cntGoals(goals2);
+  if(first)addDay(String(first));
+  var days=Math.max(1,Object.keys(activeDays).length);
+  setEl('statDays',days);
+
+  /* 2) 累计完成任务：勾选为「已完成」的待办数量 */
+  var done=0; tasks.forEach(function(t){ if(t.done)done++; });
+  setEl('statTasksDone',done);
+
+  /* 3) 习惯最长连续打卡：从逐日记录算最长连续，而非只看当前 streak */
+  var maxStreak=0;
+  habits.forEach(function(h){ var s=longestStreakFromRecords(h.records||{}); if(s>maxStreak)maxStreak=s; });
+  setEl('statStreak',maxStreak);
+
+  /* 4) 番茄总数 + 最长连续番茄天序 */
+  var totalPomo=0; Object.keys(pomos).forEach(function(k){totalPomo+=pomos[k]||0;});
+  setEl('statPomos',totalPomo);
+  setEl('statPomoStreak',longestConsecutiveDays(pomos));
+
+  /* 里程碑：始于首次打开 · 实时刷新陪伴天数 */
+  try{
+    var _fu=getFirstUseDate();
+    var _g=document.getElementById('growthSince');
+    if(_fu&&_g){
+      var _dstart=new Date(_fu+'T00:00:00');
+      var _dtoday=new Date(); _dtoday.setHours(0,0,0,0);
+      var _computed=Math.round((_dtoday-_dstart)/86400000)+1;
+      _g.innerHTML='<span style="display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#8A6A2D;font-size:15px">🌱</span>'+
+        '<span><b style="color:var(--text)">你的栖匣之旅始于 '+_fu+'</b> · 从<strong style="color:var(--primary)">第一次打开</strong>就自动开始记录，之后所有记录与数据都保存在本机、实时同步、不会因升级而消失 · 至今已陪伴你 <b style="color:var(--primary)">'+_computed+'</b> 天</span>';
+    }
+  }catch(e){}
+
+  /* 实时同步时间戳 */
+  try{
+    var _st=document.getElementById('growthLiveStamp');
+    if(_st){ var n=new Date(); _st.textContent='实时统计 · 更新于 '+String(n.getMonth()+1).padStart(2,'0')+'月'+String(n.getDate()).padStart(2,'0')+'日 '+String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0'); }
+  }catch(e){}
+
+  renderAchievements();
+  renderWeeklyTrend();
+  renderGrowthInsight(days,done,totalPomo,maxStreak);
+}
+function setEl(id,val){var el=document.getElementById(id);if(el)el.textContent=val;}
+
+/* ── 成就徽章 ── */
+var ACHIEVEMENTS=[
+  {id:'first_day',name:'🌱 初次见面',desc:'第一天使用栖匣',check:function(s){return s.days>=1}},
+  {id:'week_streak',name:'🔥 七天连续',desc:'任意习惯连续打卡7天',check:function(s){return s.maxStreak>=7}},
+  {id:'tasks_10',name:'✅ 任务达人',desc:'累计完成10个任务',check:function(s){return s.tasksDone>=10}},
+  {id:'pomo_50',name:'🍅 番茄大师',desc:'累计完成50个番茄',check:function(s){return s.pomos>=50}},
+  {id:'month_use',name:'📅 月度坚持',desc:'连续使用30天',check:function(s){return s.days>=30}},
+  {id:'tasks_50',name:'🎯 执行力MAX',desc:'累计完成50个任务',check:function(s){return s.tasksDone>=50}},
+  {id:'pomo_200',name:'⏰ 专注狂人',desc:'累计完成200个番茄',check:function(s){return s.pomos>=200}},
+  {id:'week_streak_30',name:'🔥 三十连击',desc:'任意习惯连续打卡30天',check:function(s){return s.maxStreak>=30}},
+  {id:'tasks_100',name:'🏆 效率王者',desc:'累计完成100个任务',check:function(s){return s.tasksDone>=100}},
+  {id:'pomo_500',name:'🧠 心流战士',desc:'累计完成500个番茄',check:function(s){return s.pomos>=500}},
+  {id:'habits_all',name:'⭐ 全能选手',desc:'一天内完成所有习惯打卡',check:function(s){return false}},/* 特殊判断 */
+  {id:'month_use_90',name:'🎓 季度陪伴',desc:'连续使用90天',check:function(s){return s.days>=90}},
+  {id:'tasks_300',name:'💪 不懈努力',desc:'累计完成300个任务',check:function(s){return s.tasksDone>=300}},
+  {id:'year_use',name:'🌟 一周年',desc:'使用满365天',check:function(s){return s.days>=365}}
+];
+function renderAchievements(){
+  var box=document.getElementById('achievementBadges');
+  if(!box)return;
+  var stats={days:parseInt(document.getElementById('statDays')?.textContent||0),
+    tasksDone:parseInt(document.getElementById('statTasksDone')?.textContent||0),
+    pomos:parseInt(document.getElementById('statPomos')?.textContent||0),
+    maxStreak:parseInt(document.getElementById('statStreak')?.textContent||0)};
+  var unlocked=DB.get('unlockedAchievements',[]);
+  box.innerHTML=ACHIEVEMENTS.map(function(a){
+    var isUnlocked=a.check(stats)||unlocked.indexOf(a.id)>=0;
+    if(isUnlocked&&unlocked.indexOf(a.id)<0)unlocked.push(a.id);
+    return '<div class="achievement-badge'+(isUnlocked?' unlocked':' locked')+'"'+
+      'style="background:'+(isUnlocked?'linear-gradient(135deg,#fef3c7,#fde68a)':'#F1EFE8')+';border-color:'+(isUnlocked?'#C9A24E':'#E1DCCE')+'"'+
+      'title="'+a.name+' - '+a.desc+'">'+a.name+'</div>';
+  }).join('');
+  try{localStorage.setItem('pp_unlockedAchievements',JSON.stringify(unlocked));}catch(e){}
+}
+
+/* ── 本周打卡趋势（自然周 · 每周自动切换 · 支持查看历史周快照）
+   数据源合并：① 习惯打卡完成记录 ② 标记为「已完成」的今日待办。两类共同计入本周完成任务。 */
+var _weekOffset=0;
+function setWeekOffset(o){_weekOffset=o;renderWeeklyTrend();}
+function dKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function renderWeeklyTrend(){
+  var box=document.getElementById('weeklyActivity');
+  if(!box)return;
+  var now=new Date();
+  var curMon=new Date(now);curMon.setHours(0,0,0,0);curMon.setDate(curMon.getDate()-((curMon.getDay()+6)%7));
+  var mon=new Date(curMon);mon.setDate(mon.getDate()+_weekOffset*7);
+  var sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  var tasks=DB.get('tasks',[])||[];
+  var habits=getHabits();
+
+  var byDay={};
+  for(var i=0;i<7;i++){var dd=new Date(mon);dd.setDate(mon.getDate()+i);byDay[dKey(dd)]={h:0,t:0};}
+  habits.forEach(function(h){var r=h.records||{};for(var k in r){if(r[k]&&byDay[k])byDay[k].h++;}});
+  tasks.forEach(function(t){if(t.done){var kk=t.doneDate||t.date;if(byDay[kk])byDay[kk].t++;}});
+
+  var weekH=0,weekT=0;for(var wk in byDay){weekH+=byDay[wk].h;weekT+=byDay[wk].t;}
+  var weekTotal=weekH+weekT;
+  var labels=['一','二','三','四','五','六','日'];
+  var head='<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">'+
+    '<div style="font-size:13px;font-weight:600;color:var(--text)">'+( _weekOffset===0?'本周':'历史周')+' · '+mon.getMonth()+1+'月'+mon.getDate()+'日 ~ '+sun.getMonth()+1+'月'+sun.getDate()+'日</div>'+
+    '<div style="display:flex;gap:6px;flex-wrap:wrap">'+
+      '<button class="btn btn-sm" onclick="setWeekOffset('+(_weekOffset-1)+')" title="查看上一周">‹ 上周</button>'+
+      '<button class="btn btn-sm" onclick="setWeekOffset(0)" '+( _weekOffset===0?'disabled style="opacity:.45"':'')+'>回到本周</button>'+
+      '<button class="btn btn-sm" onclick="setWeekOffset('+(_weekOffset+1)+')" title="查看下一周">下周 ›</button>'+
+    '</div></div>';
+
+  if(weekTotal===0){
+    box.innerHTML=head+'<div style="padding:26px 12px;text-align:center;color:var(--hint);font-size:13px;line-height:1.9">'+
+      '这一周还没有打卡或完成的任务<br><span style="font-size:12px">到「今日概览」打个卡、勾选一件待办，这里会自动出现你的变化。</span></div>';
+    return;
+  }
+
+  var maxVal=1;for(var j=0;j<7;j++){var dq=new Date(mon);dq.setDate(mon.getDate()+j);var bq=byDay[dKey(dq)];var vv=(bq?bq.h+bq.t:0);if(vv>maxVal)maxVal=vv;}
+  var bars=[];
+  for(var j2=0;j2<7;j2++){
+    var d2=new Date(mon);d2.setDate(mon.getDate()+j2);var key2=dKey(d2);
+    var b2=byDay[key2]||{h:0,t:0};var v=b2.h+b2.t;var pct=Math.round(v/maxVal*100);
+    var isToday=dKey(new Date())===key2;
+    bars.push('<div style="display:flex;flex-direction:column;align-items:center;flex:1 0 auto;min-width:34px;gap:4px">'+
+      '<div style="font-size:11px;color:var(--text);font-weight:600">'+v+'</div>'+
+      '<div title="'+key2+'（打卡 '+b2.h+' 次 · 完成待办 '+b2.t+' 件）" style="width:26px;height:'+Math.max(pct,6)+'px;background:linear-gradient(to top,'+(isToday?'#4f8a72,#2f6f57':'#c9a24e,#8a6a2d')+');border-radius:4px 4px 0 0;min-height:6px;box-shadow:0 1px 3px rgba(0,0,0,.12)"></div>'+
+      '<span style="font-size:10px;color:var(--hint)">'+(isToday?'今天':'周'+labels[j2])+'</span></div>');
+  }
+  box.innerHTML=head+
+    '<div style="display:flex;align-items:flex-end;gap:6px;height:150px;padding:0 4px;overflow-x:auto">'+bars.join('')+'</div>'+
+    '<div style="display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;margin-top:10px;font-size:11px;color:var(--muted)">'+
+      '<span style="display:inline-flex;align-items:center;gap:5px"><i style="width:11px;height:11px;border-radius:3px;background:linear-gradient(to top,#c9a24e,#8a6a2d);display:inline-block"></i>习惯打卡</span>'+
+      '<span style="display:inline-flex;align-items:center;gap:5px"><i style="width:11px;height:11px;border-radius:3px;background:linear-gradient(to top,#4f8a72,#2f6f57);display:inline-block"></i>完成待办</span>'+
+      '<span style="display:inline-flex;align-items:center;gap:5px;color:var(--text);font-weight:600">合计 '+weekTotal+'（打卡 '+weekH+' · 待办 '+weekT+'）</span></div>'+
+    '<div style="margin-top:6px;font-size:11px;color:var(--hint);text-align:center">已完成任务 = 习惯打卡 + 已完成的待办，两项合并计入</div>';
+}
+
+/* ── 成长洞察 ── */
+function renderGrowthInsight(days,tasks,pomos,streak){
+  var box=document.getElementById('growthInsight');
+  if(!box)return;
+  var insights=[];
+  if(days>=1&&days<7)insights.push('🎉 你刚开始使用栖匣！坚持一周就能看到变化。建议先从<strong>每日打卡</strong>和<strong>番茄专注</strong>两个功能开始。');
+  if(days>=7)insights.push('📅 你已经坚持使用 <strong>'+days+'</strong> 天了！超过80%的人会在第一周放弃，你已经超越了他们。');
+  if(tasks>=10)insights.push('✅ 已完成 <strong>'+tasks+'</strong> 个任务！执行力在稳步提升。继续保持"今日只定一件事"的习惯。');
+  if(pomos>=10)insights.push('🍅 累计 <strong>'+pomos+'</strong> 个番茄钟！深度专注是最好的投资。');
+  if(streak>=7)insights.push('🔥 最长连续打卡 <strong>'+streak+'</strong> 天！习惯的力量正在显现。');
+  if(streak>=30)insights.push('🏆 <strong>30天连续打卡</strong>成就解锁！这已经不是习惯，而是生活方式了。');
+  if(insights.length===0)insights.push('💡 开始使用各项功能后，这里会出现专属于你的成长洞察。先去打个卡吧！');
+  box.innerHTML=insights.join('<br><br>');
+}
+
+/* ── 时间表交互重构：单击切色 / 双击编辑 ── */
+
+/* 色块JS已移除 — 使用原始renderTimeBlocks(6970行) */
+/* ── init 增强：加载新板块数据 ── */
+var _origInit = init;
+init = function(){
+  try{ _origInit(); }catch(e){ console.error('origInit',e); }
+  try{ applySavedTheme(); }catch(e){}
+  /* 还原桌面端侧边栏收起态（用户偏好持久化） */
+  try{
+    if(window.matchMedia&&window.matchMedia('(min-width:769px)').matches&&localStorage.getItem('pp_sidebar_collapsed')==='1'){
+      document.body.classList.add('sidebar-collapsed');
+    }
+  }catch(e){}
+  try{ renderExamCountdowns(); }catch(e){}
+  try{ renderContestTimeline(); }catch(e){}
+  try{ renderBaoyanTimeline(); }catch(e){}
+  try{ renderHabits(); }catch(e){}
+  try{ renderHabitHeatmap(); }catch(e){}
+  try{ renderInterviewQuestions(); }catch(e){}
+  try{ renderResumeTracks(); }catch(e){}
+  try{ if(!document.getElementById('gpaRows').children.length) gpaAddRow(false); }catch(e){}
+  try{ updateStats(); }catch(e){ console.error('updateStats',e); }
+};
+
+
+
+
+
+init();
+
+/* ── 微信首次进入的一次性安抚提示（过了"将要访问"拦截页后马上显示一次） ── */
+(function(){
+  try{
+    if(!/MicroMessenger/i.test(navigator.userAgent||''))return;
+    var k='pp_wx_tip';
+    var shown=localStorage.getItem(k);
+    if(shown)return;
+    try{ localStorage.setItem(k,'1'); }catch(e){}
+    setTimeout(function(){
+      try{
+        var tip=document.getElementById('flashSplash')||document.getElementById('brandSplash');
+        if(tip){ tip.style.display='flex'; }
+        if(window.flash){
+          window.flash('👋 欢迎进入栖匣！刚才那条「非官方网页」提示是微信的安全机制，第一次点「继续访问」即可，以后一般不再弹出。');
+        }
+      }catch(e){}
+    },600);
+  }catch(e){}
+})();
+</script>
+
+
+
+
+<script>
+function openQrPreview(img){
+  var p=document.getElementById('qrPreview');
+  var i=document.getElementById('qrPreviewImg');
+  if(!p||!i)return;
+  i.src=img.src||img.currentSrc||'';
+  p.classList.add('show');
+}
+function closeQrPreview(){var p=document.getElementById('qrPreview');if(p)p.classList.remove('show');}
+function saveQrPreview(){
+  var i=document.getElementById('qrPreviewImg');
+  if(!i||!i.src)return;
+  var a=document.createElement('a');
+  a.href=i.src;a.download='centrove-qr';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  try{closeQrPreview();flash('已保存/开始下载图片，去微信扫一扫或识别即可');}catch(e){}
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPreview();});
+
+/* ═══════ 自动保存机制：编辑即存，防丢失 ═══════ */
+(function(){
+  var saveTimer=null;
+  function autoSaveEdit(el){
+    if(!el.dataset.autoSaveKey) return;
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(function(){
+      localStorage.setItem('pp_edit_'+el.dataset.autoSaveKey, el.innerHTML);
+    },500);
+  }
+  document.addEventListener('input', function(e){
+    if(e.target.isContentEditable||e.target.contentEditable==='true'){
+      autoSaveEdit(e.target);
+    }
+  }, true);
+  /* 页面关闭前最后保存一次 */
+  window.addEventListener('beforeunload', function(){
+    document.querySelectorAll('[contenteditable=true],[contenteditable="true"]').forEach(function(el){
+      if(el.dataset.autoSaveKey){
+        localStorage.setItem('pp_edit_'+el.dataset.autoSaveKey, el.innerHTML);
+      }
+    });
+  });
+})();
+
+/* ═══════ 定期自动备份 + 一键恢复（防丢失保险） ═══════ */
+(function(){
+  var DAY=function(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
+  /* 快照：把非「界面偏好」的用户数据整体备份 */
+  function snapshotAllData(){
+    var out={};
+    try{
+      var keep=[];
+      try{keep=(window._UI_PRESERVED&&window._UI_PRESERVED())||[];}catch(ke){}
+      for(var i=0;i<localStorage.length;i++){
+        var k=localStorage.key(i);
+        if(keep.indexOf(k)>=0)continue;
+        if(k.indexOf('pp_autobackup')===0)continue;
+        out[k]=localStorage.getItem(k);
+      }
+    }catch(e){}
+    return out;
+  }
+  function label(t){
+    try{return new Date(t).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});}catch(e){return String(t||'');}
+  }
+  function updateInfo(t){
+    var el=document.getElementById('autoBackupInfo');
+    if(el&&t){el.textContent='✓ 最近自动备份：'+label(t)+'　·　保留最近 7 天，可随时一键恢复（本机存储，仅存你设备）';}
+  }
+  /* 执行一次自动备份 */
+  window.performAutoBackup=function(force){
+    if(force===undefined)force=false;
+    var payload=snapshotAllData(),now=new Date();
+    try{localStorage.setItem('pp_autobackup',JSON.stringify({t:now.toISOString(),d:payload}));}catch(e){}
+    try{
+      var hist=[],h=localStorage.getItem('pp_autobackup_history');
+      if(h){try{hist=JSON.parse(h)||[];}catch(e){hist=[];}}
+      hist.push({t:now.toISOString(),d:payload});
+      while(hist.length>7)hist.shift();
+      try{localStorage.setItem('pp_autobackup_history',JSON.stringify(hist));}
+      catch(quotaErr){ /* 空间不足：逐条丢掉最旧的，直到能写入 */
+        while(hist.length>0){hist.shift();try{localStorage.setItem('pp_autobackup_history',JSON.stringify(hist));break;}catch(x){continue;}}
+      }
+    }catch(e){}
+    try{localStorage.setItem('pp_autobackup_last',now.toISOString());}catch(e){}
+    updateInfo(now.toISOString());
+    if(force){
+      try{
+        var _kb=(JSON.stringify(payload).length/1024).toFixed(1);
+        var _cnt=Object.keys(payload).length;
+        if(window.flash)flash('✓ 已备份到本机（此设备的浏览器存储，不上传任何服务器）· 含 '+_cnt+' 项填写数据，约 '+_kb+' KB，保留最近 7 天，可随时一键恢复');
+      }catch(e){try{if(window.flash)flash('✓ 已立即备份到本机');}catch(x){}}
+    }
+    return true;
+  };
+  /* 从最近自动备份恢复 */
+  window.restoreAutoBackup=function(){
+    var raw=null;try{raw=localStorage.getItem('pp_autobackup');}catch(e){}
+    if(!raw){window.uiAlert&&uiAlert('⚠️ 还没有可用自动备份\n\n只有产生过自动备份后才能恢复。可先点「立即备份一次」创建一个，或用「导出全部数据」手动备份。');return;}
+    var bk=null;try{bk=JSON.parse(raw);}catch(e){}
+    if(!bk||!bk.d||typeof bk.d!=='object'){window.uiAlert&&uiAlert('⚠️ 自动备份文件异常，无法恢复。\n建议改用「导出/导入」的 JSON 完整备份。');return;}
+    function restoreAllData(map){
+      var keep=[];
+      try{keep=(window._UI_PRESERVED&&window._UI_PRESERVED())||[];}catch(ke){}
+      try{
+        var del=[];
+        for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(keep.indexOf(k)>=0)continue;if(k.indexOf('pp_autobackup')===0)continue;del.push(k);}
+        for(var j=0;j<del.length;j++)localStorage.removeItem(del[j]);
+        for(var m in map){if(keep.indexOf(m)<0&&m.indexOf('pp_autobackup')!==0)localStorage.setItem(m,map[m]);}
+      }catch(e){}
+    }
+    if(window.uiConfirm){uiConfirm('确定用『最近自动备份（'+label(bk.t)+'）』覆盖当前数据吗？\n仅恢复你的填写内容与记录，不影响产品框架。',function(){restoreAllData(bk.d);try{location.reload();}catch(e){}});}
+  };
+  /* 启动：同一天已备份则仅更新提示，否则立即自动备份一次 */
+  try{
+    var last=localStorage.getItem('pp_autobackup_last');
+    if(last&&new Date(last).getFullYear()+'-'+String(new Date(last).getMonth()+1).padStart(2,'0')+'-'+String(new Date(last).getDate()).padStart(2,'0')===DAY()){
+      var cur=null;try{var rr=localStorage.getItem('pp_autobackup');if(rr)cur=JSON.parse(rr);}catch(e){}
+      updateInfo(cur&&cur.t?cur.t:last);
+    }else{
+      performAutoBackup(false);
+    }
+  }catch(e){}
+})();
+
+</script>
+<script>
+(function(){
+  var hint=document.getElementById('mobileSidebarHint');
+  if(!hint)return;
+  function updateHint(){hint.style.display=(window.innerWidth<=768)?'flex':'none';}
+  updateHint();
+  window.addEventListener('resize',updateHint);
+})();
+</script>
+
+<!-- ═══════ 深色模式：修复浅色渐变"亮块"与个别配色 ═══════ -->
+<style>
+[data-theme="dark"] .card[style*="#EFE8D8"], [data-theme="dark"] .card[style*="#F1EBDD"], [data-theme="dark"] .card[style*="#FFF8EF"], [data-theme="dark"] .card[style*="#FDEFE2"], [data-theme="dark"] .card[style*="#FFF5F0"], [data-theme="dark"] .card[style*="#F1EADE"], [data-theme="dark"] .card[style*="#EDE5D4"], [data-theme="dark"] .mind-card{background:var(--card)!important;border-color:var(--border)!important}
+[data-theme="dark"] .mind-card div, [data-theme="dark"] .mind-card h3, [data-theme="dark"] .mind-card span, [data-theme="dark"] .mind-card p, [data-theme="dark"] .mind-card strong,
+[data-theme="dark"] .card[style*="#F1EADE"] div, [data-theme="dark"] .card[style*="#F1EADE"] h3, [data-theme="dark"] .card[style*="#F1EADE"] span,
+[data-theme="dark"] .card[style*="#EDE5D4"] div, [data-theme="dark"] .card[style*="#EDE5D4"] h3, [data-theme="dark"] .card[style*="#EDE5D4"] span{color:var(--text)!important}
+[data-theme="dark"] .editable-table td[contenteditable="true"]:focus{background:rgba(212,178,124,.12)!important;color:var(--text)!important}
+[data-theme="dark"] .card[style*="#EFE8D8;border-left"]{background:rgba(122,115,99,.12)!important;border-left-color:var(--teal-mid)!important}
+[data-theme="dark"] #mobileSidebarHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
+[data-theme="dark"] #mobileSidebarHint span[style*="676760"]{color:var(--muted)!important}
+[data-theme="dark"] .tag-gold{background:rgba(184,134,11,.18);color:#F0CE6E}
+[data-theme="dark"] .tag-gray{background:rgba(95,94,90,.2);color:var(--muted)}
+[data-theme="dark"] .bm-qr-note{background:rgba(122,115,99,.15);color:#E2D8C4;border-color:var(--teal-mid)}
+[data-theme="dark"] #privBox{background:rgba(122,115,99,.16)!important;border-color:var(--teal-mid)!important;color:var(--text)!important}
+[data-theme="dark"] #timetablePalette .btn{box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+@media(prefers-color-scheme:dark){}
+[data-theme="dark"] .card[style*="135deg"][style*="#6E4F37"]{background:linear-gradient(135deg,#5C4030,#3A271A)!important}
+</style>
+
+<!-- ═══════ v2.6 增强：复制链接 / 页脚署名 / 隐私与承载力首屏提示 / 热力图与考试说明 ═══════ -->
+<script>
+(function(){
+  function flashOk(m){try{window.flash&&window.flash(m);}catch(e){}}
+  function legacyCopy(t,ok){try{var ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-9999px;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);flashOk(ok||'已复制');}catch(e){flashOk('复制失败，请手动选择复制');}}
+  function copyText(t,ok){try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){flashOk(ok||'已复制');},function(){legacyCopy(t,ok)});}else{legacyCopy(t,ok);}}catch(e){legacyCopy(t,ok);}}
+  window.copyProductLink=function(){copyText('https://lumenplexus.github.io/centrove/','已复制产品链接，直接发给朋友即可打开');
+    return false;};
+
+  /* 页脚署名：致敬作者 + 防抄袭明示 + 隐私数据说明 */
+  function footer(){
+    var main=document.querySelector('.main');if(!main||main.querySelector('.pp-credit'))return;
+    var _n=new Date(),_Y=_n.getFullYear(),_MM=String(_n.getMonth()+1).padStart(2,'0');
+    var f=document.createElement('div');f.className='pp-credit';
+    f.style.cssText='position:relative;margin-top:26px;padding:30px 18px 20px;text-align:center;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,var(--primary-light) 0%,var(--surface) 100%);border:1px solid var(--border);box-shadow:var(--shadow-sm)';
+    f.innerHTML=
+      '<div style="position:absolute;left:26px;right:26px;top:0;height:2px;background:linear-gradient(90deg,rgba(124,100,60,0) 0%,rgba(124,100,60,.30) 25%,rgba(124,100,60,.30) 75%,rgba(124,100,60,0) 100%);border-radius:0 0 4px 4px;opacity:.55"></div>'+
+      '<div style="position:absolute;left:-40px;top:-40px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(179,133,70,.12),rgba(255,255,255,0) 70%)"></div>'+
+      '<div style="position:absolute;right:-56px;bottom:-56px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(179,133,70,.12),rgba(255,255,255,0) 70%)"></div>'+
+      '<div style="position:absolute;top:12px;left:16px">'+
+        '<span style="font-size:11px;letter-spacing:3px;color:var(--hint)">栖匣｜收纳成长诸事，步步趋近心中所向</span>'+
+      '</div>'+
+      '<div style="position:relative;margin:14px auto 0;width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--primary);background:var(--card);box-shadow:0 0 0 6px var(--primary-light);overflow:hidden">'+
+        '<img src="pwa/logo-chest20260911.png" alt="栖匣" style="width:60px;height:60px;border-radius:50%;display:block" onerror="logoFallback(this)">'+
+      '</div>'+
+      '<div style="margin-top:13px;font-size:22px;font-weight:800;letter-spacing:4px;color:var(--primary-strong)">栖匣<span style="font-size:12.5px;letter-spacing:3px;font-weight:400;color:var(--hint)"> · 心有所栖 · 匣纳成长</span></div>'+
+      '<div style="margin:10px auto 6px;font-size:14px;color:var(--text);line-height:1.85;max-width:520px">你见过很多工具。<br>而这一页，为长期记录成长的人而造。</div>'+
+      '<div style="margin:6px auto 16px;max-width:560px;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:12.5px;color:var(--muted);line-height:1.7">'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">🗂️</span><span><b style="color:var(--primary-strong)">一页收纳，长期不乱</b>——数十个板块，从入学规划到职业方向，全在这里。</span></div>'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">🔒</span><span><b style="color:var(--primary-strong)">只存你手，退出即散</b>——无账号、无云端、无后台，关掉页面，谁都不知道你的记录。</span></div>'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">♻️</span><span><b style="color:var(--primary-strong)">年份在走，信息不陈旧</b>——考试、政策、活动逐年自新，永远跟你学校的年历一起走。</span></div>'+
+      '</div>'+
+      '<div style="font-size:12.5px;color:var(--muted)">设计 · 开发 · <b style="font-size:15px;color:var(--primary-strong)">尹平平</b> · 独立原创</div>'+
+      '<div style="margin:16px auto;width:60%;height:1px;background:linear-gradient(90deg,rgba(0,0,0,0),var(--border-strong),rgba(0,0,0,0))"></div>'+
+      ''+
+      '<div style="padding:13px 15px;border-radius:13px;background:var(--card);border:1px solid var(--border-strong);font-size:12px;color:var(--muted);line-height:1.85;text-align:left;margin-top:14px">🔎 <b style="color:var(--text)">时效说明：</b>站内考试 / 报名 / 活动 / 政策等参考信息，均整理自各官方权威来源，核验于 <b style="color:var(--primary-strong);text-decoration:underline" id="ppReviewDate">'+_Y+' 年 '+_MM+' 月</b>；本声明随新学年 <b style="color:var(--primary-strong);font-weight:800">自动更新</b>，使用前请以各官方当年最新通知为准。</div>'+
+      '<div style="margin-top:13px;font-size:10.5px;color:var(--hint);line-height:1.7">© '+_Y+' 尹平平 · 栖匣 · 心有所栖 · 匣纳成长 · 保留所有权利 · 受《中华人民共和国著作权法》保护，未获书面授权禁止整站复制、搬运或另作商业用途。唯一正版地址即当前链接。</div>';
+    main.appendChild(f);
+  }
+
+  /* 隐私透明 + 多人在线承载说明：已合并进新版4步导览步骤1的「隐私透明声明」+「关于栖匣」，
+     不再单独弹顶栏横幅，避免首发时多套引导叠加、抢占首屏。函数保留备手动调用。 */
+  function priv(){
+    return;
+    /* 点击「知道了」后永久收起，不再重复打扰：优先 localStorage 持久标记，并做异常兜底 */
+    try{if(typeof localStorage==='undefined')return;}catch(e){return;}
+    try{if(localStorage.getItem('pp_priv_done'))return;}catch(e){return;}
+    var main=document.querySelector('.main');if(!main)return;
+    var box=document.createElement('div');box.id='privBox';
+    box.style.cssText='margin:10px 16px 0;padding:9px 12px;border-radius:10px;background:var(--teal-light);border:1px solid var(--border-strong);color:var(--teal);font-size:12.5px;line-height:1.75';
+    box.innerHTML='🔒 <b>隐私透明：</b>本应用是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span id="privDismiss" style="cursor:pointer;font-weight:700;text-decoration:underline;white-space:nowrap">知道了 ✕</span>';
+    main.insertBefore(box, main.firstChild);
+    var d=document.getElementById('privDismiss');
+    if(d)d.addEventListener('click',function(){var p=document.getElementById('privBox');if(p)p.remove();try{localStorage.setItem('pp_priv_done','1');}catch(e){}});
+  }
+
+  /* 「今日三件事」旧版上手指引：已完成使命，其“安放焦虑/锚定长线/拆分行动”内核由新版4步导览步骤2承接，
+     不再自动插入卡片，避免与导览叠层。函数保留备手动调用。 */
+  function quickstart(){
+    return;
+    try{if(typeof localStorage==='undefined'||localStorage.getItem('pp_quickstart_ok'))return;}catch(e){return;}
+    var main=document.querySelector('.main');if(!main)return;
+    if(document.getElementById('qsBox'))return;
+    var box=document.createElement('div');box.id='qsBox';
+    box.style.cssText='position:relative;margin:10px 16px 2px;padding:13px 15px;border-radius:13px;background:linear-gradient(135deg,var(--primary-light),var(--card));border:1px solid var(--border-strong);font-size:13px;line-height:1.7;color:var(--text)';
+    box.innerHTML=
+      '<div style="font-weight:700;font-size:14.5px;color:var(--text)">👋 刚进来，别急着逛完<span style="font-weight:400;opacity:.78;font-size:12.5px">——今天只慢慢做成这三件事</span></div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:9px">'+
+        '<button onclick="window.qsGo(\'timer\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary-mid);background:var(--card);color:var(--text);font-size:12.5px;cursor:pointer">1 · ⏱️ 先专注25分钟</button>'+
+        '<button onclick="window.qsGo(\'creative\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary-mid);background:var(--card);color:var(--text);font-size:12.5px;cursor:pointer">2 · 💡 记一条灵感</button>'+
+        '<button onclick="window.qsGo(\'journal\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary-mid);background:var(--card);color:var(--text);font-size:12.5px;cursor:pointer">3 · 📝 做完再复盘</button>'+
+      '</div>'+
+      '<div style="margin-top:9px;opacity:.8;font-size:11.5px;color:var(--text)">顺序是有讲究的：先专注做成一件小事，做的时候冒出想法就顺手记下，等今天收尾了再复盘这一天——复盘放在最后，才不会"什么都没做就急着交作业"。剩下的 30 多个板块<span style="font-weight:600">不用一次看完</span>——哪天想用了，再从侧边栏按需点开即可，不看也不影响。所有内容都能改、都能撤，数据只存在你自己的设备里。</div>'+
+      '<span style="position:absolute;top:9px;right:13px;cursor:pointer;font-size:11px;opacity:.6;color:var(--hint);background:none;border:0" onclick="window.qsGo(\'\')">跳过 ✕</span>';
+    main.insertBefore(box, main.firstChild);
+  }
+  function qsGo(v){
+    /* 点击「记灵感 / 写复盘 / 做专注」行动按钮：只跳转到对应板块，卡片保留，等待用户主动「跳过」 */
+    if(v){if(typeof switchView==='function')switchView(v);else{try{location.hash='#view-'+v;}catch(e){}}return;}
+    /* 点击「跳过 ✕」：才真正关闭卡片并永久标记，不再打扰 */
+    try{localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
+    var b=document.getElementById('qsBox');if(b)b.remove();
+  }
+  /* 暴露到全局：让“新手上手”3个按钮在行内 onclick 中可直接调用，修复「点了没反应」 */
+  window.qsGo=qsGo;
+
+  function init(){footer();quickstart();priv();}
+
+  /* ── 防盗用 / 溯源（防止被别人整站复制、套皮、冒名发布）────────────────── */
+  (function antiTheft(){
+    try{
+      /* 1) 破框防盗：若本页被人用 iframe 套进“壳”里展示（跨域），主动跳出，避免被拿来当自己的 */
+      if(window.self!==window.top){
+        var blocked=false;
+        try{ blocked=(window.top.location.host!==location.host); }
+        catch(e){ blocked=true; }
+        if(blocked){
+          try{ window.top.location=window.self.location.href; }
+          catch(e2){ try{window.location.href='about:blank';}catch(e3){} }
+        }
+      }
+    }catch(e){}
+    try{
+      /* 2) 溯源指纹：埋一条作者痕迹到 DOM 与 localStorage，判定“是否官方原版”可据此比对 */
+      var tag=document.createElement('div');
+      tag.className='pp-trace';
+      tag.style.cssText='display:none';
+      tag.setAttribute('data-author','尹平平');
+      tag.setAttribute('data-app','centrove');
+      tag.setAttribute('data-copyhost',location.host);
+      tag.setAttribute('data-birth',new Date().toISOString().slice(0,19));
+      document.body.appendChild(tag);
+    }catch(e){}
+    try{
+      /* 3) 控制台声明作者（视觉化的原创印记） */
+      if(window.console&&console.info){console.info('%c栖匣 %c原创作者：尹平平 · 请尊重原创著作权','color:#6E4F37;font-weight:bold;font-size:14px','color:#C2A15E;font-size:11px');}
+    }catch(e){}
+  })();
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+
+<!-- ═══════ v2.7 移动端表格横向滚动（修复中文竖向拆字） + 外链复制兜底 ═══════ -->
+<style>
+  /* 所有表格在窄屏下允许横向滑动，单元格不再被挤压成"单字竖排"；
+     但"综测/升学/材料清单"等含长文本的表格必须允许换行，否则内容被截断（"每门i"/"挑2-3"）。 */
+  @media (max-width:768px){
+    .view table{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-collapse:collapse}
+    /* 默认允许换行，避免长文本列被截断 */
+    .view table th,.view table td{white-space:normal;word-break:break-word}
+    /* 时间表/倒计时/打卡等"纯短格子"表格保留不换行，保持紧凑工整 */
+    #timetable td,#timetable th,
+    .grid table th,.grid table td{white-space:nowrap;word-break:keep-all}
+    /* 一周时间表：必须保持表格语义（display:table），否则格子点不了、无法填色 */
+    #timetable{display:table;overflow:visible}
+    #timetable td,#timetable th{white-space:normal;word-break:break-word}
+  }
+  .view table{max-width:100%}
+  /* 竞答表格：给"认证/入口"列留足空间 */
+  .view table td:first-child,.view table th:first-child{white-space:normal;min-width:72px}
+  .tbl-scroll-hint{display:none;font-size:11px;color:var(--hint);margin:2px 2px 8px;text-align:right;user-select:none}
+  @media (max-width:768px){ .tbl-scroll-hint.on{display:block} }
+</style>
+<script>
+(function(){
+  /* 宽表格横向滚动提示：仅当该表格在窄屏下确实横向溢出时，才在表格上方追加「左右滑动查看完整表格」小字 */
+  function hintTables(){
+    var hintEl=document.getElementById('qxTblHint');
+    if(!hintEl){hintEl=document.createElement('div');hintEl.id='qxTblHint';hintEl.className='tbl-scroll-hint';document.body.appendChild(hintEl);}
+    var tables=document.querySelectorAll('.view.active table');
+    var target=null;
+    if(window.innerWidth<=768){
+      for(var i=0;i<tables.length;i++){
+        var t=tables[i];if(t.className&&/timetable/.test(t.className||''))continue;
+        try{if(t.scrollWidth>t.clientWidth+4){target=t;break;}}catch(e){}
+      }
+    }
+    if(target){
+      hintEl.classList.add('on');
+      // 将提示插到目标表格同卡片内的表格正上方（若已有则不重复）
+      if(hintEl.dataTarget!==target){hintEl.dataTarget=target;hintEl.textContent='↔ 左右滑动查看完整表格';}
+      var p=target.parentNode;if(p&&p.firstChild!==hintEl&&!p.querySelector('.tbl-scroll-hint')){p.insertBefore(hintEl,target);}
+    }else{hintEl.classList.remove('on');hintEl.dataTarget=null;}
+  }
+  window.qxHintTables=hintTables;
+  var t0=null;
+  document.addEventListener('DOMContentLoaded',function(){clearTimeout(t0);t0=setTimeout(hintTables,400);});
+  // 板块切换/窗口缩放后重新计算
+  document.addEventListener('click',function(){clearTimeout(t0);t0=setTimeout(hintTables,250);});
+  window.addEventListener('resize',function(){clearTimeout(t0);t0=setTimeout(hintTables,200);});
+  // 切换视图后调用
+  var ov=window.switchView;
+  window.switchView=function(){clearTimeout(t0);var r=ov&&ov.apply(window,arguments);t0=setTimeout(hintTables,300);return r;};
+  // 兜底：动态渲染的表格（切换下拉/视角后）也会被识别
+  var ti=setInterval(function(){if(window.innerWidth<=768)hintTables();},1400);
+})();
+</script>
+<script>
+(function(){
+  /* 外链统一处理：所有链接"点击即打开"，不弹复制面板、不拦截跳转。
+     1) http 明文链接一律自动升级为 https（微信 WebView 会拦截 http ，升级后即可直接打开）；
+     2) 微信内点击外链 → 直接在本页跳转打开（不再提示"切换系统浏览器"）；
+     3) 普通浏览器 → 保留原 target=_blank 新标签打开。
+     链接的本体始终是"我原来的网址"，从不改写成中转/跳转地址，长按复制得到的也是原网址。 */
+  function isWeixin(){return /MicroMessenger/i.test(navigator.userAgent||'');}
+  function fix(){
+    try{
+      var links=document.querySelectorAll('a[href]');
+      for(var i=0;i<links.length;i++){
+        var a=links[i];if(a.getAttribute('data-extok'))continue;
+        var h=(a.getAttribute('href')||'').trim();
+        if(h.indexOf('http://')===0){h='https://'+h.slice(7);a.setAttribute('href',h);}
+        if(/^https?:\/\//.test(h)){
+          a.setAttribute('data-extok','1');
+          /* 外链打开统一由全局安全处理器接管（新窗口/新标签，本应用页始终存活可返回）；
+             不再在此处做 location 整页跳转，避免点击外链后整站退出。 */
+        }
+      }
+    }catch(e){}
+  }
+  fix();
+  setInterval(fix,3000);
+  /* 外链的「安全打开 / 安全直达」已统一收口到前面（约 7149 段）的全局点击处理器：
+     普通浏览器新标签直达官方站；微信/QQ 等内嵌浏览器弹「安全直达」面板（复制+搜索），
+     规避白屏与风险弹窗。此处不再单独注册捕获阶段处理器，以免与全局处理器冲突、
+     导致点击外链时无限递归爆栈（此前外链点击打不开的根因）。 */
+})();
+</script>
+
+<style>
+/* 今日知识 · 四个分类标签：统一分段式胶囊，图标居中、同尺寸、对齐基线（兼容浅/深主题） */
+.knowledge-tabs{display:flex;gap:8px;flex-wrap:nowrap;margin-bottom:14px}
+.k-tab{
+  flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:10px 4px 8px;border-radius:12px;border:1px solid transparent;
+  background:transparent;color:var(--muted,#8C7863);cursor:pointer;font-family:inherit;
+  font-size:12px;line-height:1;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .14s ease;
+}
+.k-tab svg{width:22px;height:22px;color:var(--muted,#8C7863);transition:color .18s ease}
+.k-tab span{font-size:12px;font-weight:600;letter-spacing:.02em}
+.k-tab:hover{background:rgba(179,133,70,.10);color:var(--text,#4A3427)}
+.k-tab:hover svg{color:#8A6A3A}
+.k-tab.active{
+  background:linear-gradient(140deg,#6E4F37,#57422F);border-color:#6E4F37;
+  color:#F5ECD8;box-shadow:0 6px 16px rgba(74,58,40,.22);
+}
+.k-tab.active svg{color:#F0D9A8}
+[data-theme="dark"] .k-tab{color:#B8A98E;border-color:#332A20}
+[data-theme="dark"] .k-tab svg{color:#B8A98E}
+[data-theme="dark"] .k-tab:hover{background:rgba(200,160,92,.12);color:#E8D5B8}
+[data-theme="dark"] .k-tab.active{background:linear-gradient(140deg,#7A5B39,#5C4430);border-color:#8A6A3A;color:#F0E7D8}
+[data-theme="dark"] .k-tab.active svg{color:#F0D9A8}
+/* 今日心语刷新按钮 */
+.mind-refresh{font-size:12.5px;border:1px solid var(--border,#E5DBC8);background:var(--card,#fff);color:var(--primary,#4A3427);padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+.mind-refresh:hover{background:var(--primary-light,#F1EBDD)}
+.mind-refresh.spinning{animation:spinr .45s ease}
+@keyframes spinr{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+/* ═══════════ 产品介绍弹窗 · 重构版（现代高级 · 品牌蓝绿 · 系统无衬线字体） ═══════════ */
+.pano-mask{position:fixed;inset:0;background:rgba(28,22,14,.62);z-index:14;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.pano{position:fixed;inset:0;z-index:16;color:#33291F;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .45s ease;line-height:1.8;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+  background:
+    radial-gradient(1000px 520px at 6% -8%,rgba(194,174,150,.12),transparent 58%),
+    radial-gradient(900px 480px at 100% 4%,rgba(173,124,63,.10),transparent 55%),
+    radial-gradient(1100px 640px at 50% 112%,rgba(194,174,150,.08),transparent 55%),
+    linear-gradient(180deg,#FAF7F0 0%,#FFFBF5 30%,#FCF9F3 62%,#F5F0E6 100%)}
+.pano.show,.pano-mask.show{opacity:1;pointer-events:auto}
+/* ── 封面首屏（轻透高级：留白呼吸·暖木匣纸点缀，与全站风格一致） ── */
+.pano-hero{position:relative;min-height:auto;padding:30px 20px 46px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;border-radius:26px 26px 42px 42px;border:1px solid rgba(168,132,72,.26);outline:1px solid rgba(111,79,55,.08);outline-offset:-7px;color:#4A3A2C;box-shadow:0 26px 60px rgba(74,58,40,.14)}
+.pano-hero::before{content:"";position:absolute;inset:0;z-index:0;background:
+  radial-gradient(720px 380px at 10% -14%,rgba(177,159,110,.16),transparent 62%),
+  radial-gradient(680px 400px at 100% -6%,rgba(148,120,58,.13),transparent 60%),
+  radial-gradient(900px 560px at 50% 132%,rgba(168,132,72,.12),transparent 56%),
+  linear-gradient(168deg,#F3ECDC 0%,#F7F1E3 38%,#F4F0E2 72%,#EDEFE2 100%)}
+.pano-hero::after{content:"";position:absolute;right:-90px;top:-90px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(148,120,58,.14),transparent 62%);z-index:0}
+.pano-hero>*{position:relative;z-index:1}
+.pano-hero .glow{position:absolute;left:-70px;bottom:-80px;transform:none;width:360px;height:230px;background:radial-gradient(60% 60% at 50% 50%,rgba(168,132,72,.10),transparent 68%);z-index:0}
+.pano-hero .eyebrow{font-size:12px;letter-spacing:.42em;color:#A07D3E;text-indent:.42em;margin:26px 0 20px;animation:panoUp .7s .1s both;text-transform:uppercase;background:rgba(168,132,72,.10);border:1px solid rgba(168,132,72,.32);display:inline-block;padding:7px 16px;border-radius:999px}
+/* ── 封面首屏：创意顶部造型（非单一平直边，垂坠丝带 Logo 印章 + 波浪上沿 + 漂浮装饰） ── */
+.pt-topscallop{position:absolute;top:0;left:0;right:0;height:30px;z-index:0;opacity:.8;background:
+  radial-gradient(24px 18px at 6% 2px,rgba(168,132,72,.16) 49%,transparent 51%),
+  radial-gradient(24px 18px at 16% 2px,rgba(158,132,84,.13) 49%,transparent 51%),
+  radial-gradient(24px 18px at 26% 2px,rgba(168,132,72,.16) 49%,transparent 51%),
+  radial-gradient(24px 18px at 36% 2px,rgba(158,132,84,.13) 49%,transparent 51%),
+  radial-gradient(24px 18px at 46% 2px,rgba(168,132,72,.16) 49%,transparent 51%),
+  radial-gradient(24px 18px at 56% 2px,rgba(158,132,84,.13) 49%,transparent 51%),
+  radial-gradient(24px 18px at 66% 2px,rgba(168,132,72,.16) 49%,transparent 51%),
+  radial-gradient(24px 18px at 76% 2px,rgba(158,132,84,.13) 49%,transparent 51%),
+  radial-gradient(24px 18px at 86% 2px,rgba(168,132,72,.16) 49%,transparent 51%),
+  radial-gradient(24px 18px at 96% 2px,rgba(158,132,84,.13) 49%,transparent 51%)}
+.pt-sash{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;margin:0 auto 20px;background:linear-gradient(120deg,#5B4532,#4A3A2C 60%,#5B4532);color:#F5F1E4;padding:6px 20px 7px 7px;border-radius:0 0 14px 14px;box-shadow:0 8px 20px rgba(40,48,42,.22);animation:panoUp .7s .02s both}
+.pt-sash::before{content:"";position:absolute;left:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top left,#5B4532 60%,transparent 60%);}
+.pt-sash::after{content:"";position:absolute;right:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top right,#5B4532 60%,transparent 60%);}
+.pt-seal{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#E0C188,#A9803F);color:#3A2C0F;font-weight:800;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.20)}
+.pt-name{font-weight:700;font-size:12.5px;letter-spacing:.3em;text-indent:.3em;color:#F5F1E4}
+.pt-name-premium{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px 16px;justify-content:center;align-items:center;margin:2px 0 20px;max-width:620px}
+.pm-pair{display:flex;align-items:baseline;gap:8px}
+.pm-pair b{font-family:Georgia,'Times New Roman',serif;font-weight:600;font-size:14px;letter-spacing:.16em;color:#A0813F}
+.pm-pair i{font-style:normal;font-size:11px;letter-spacing:.16em;text-indent:.16em;color:#7B8379}
+.pm-x{color:#93A08B;font-family:Georgia,serif;font-size:12px}
+.pm-verse{flex-basis:100%;font-size:12.5px;line-height:1.9;color:#5C645C;letter-spacing:.04em;margin-top:2px}
+.pm-verse em{font-style:normal;color:#A0813F;letter-spacing:.1em}
+.pt-sash i{width:26px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.6),transparent)}
+.pt-deco{position:absolute;z-index:0;border-radius:50%;border:1px solid rgba(109,136,115,.25);pointer-events:none}
+.pt-deco::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px dashed rgba(173,124,63,.22)}
+.pt-deco.d1{width:46px;height:46px;left:8%;top:34%;animation:panofloat 5s ease-in-out infinite}
+.pt-deco.d2{width:30px;height:30px;right:9%;top:28%;border-color:rgba(173,124,63,.26);animation:panofloat 6s .8s ease-in-out infinite}
+.pt-deco.d3{width:20px;height:20px;left:14%;bottom:26%;border-color:rgba(245,158,11,.3);animation:panofloat 4.6s .4s ease-in-out infinite}
+@keyframes panofloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.pano-hero h1.pano-h1{margin:0;font-weight:700;font-family:"Noto Serif SC","Songti SC","STSong",serif;font-size:clamp(27px,4.4vw,46px);line-height:1.42;letter-spacing:.04em;color:#33291F;animation:panoUp .7s .22s both;text-shadow:0 2px 14px rgba(120,110,80,.12)}
+.pano-hero h1 .thin{font-weight:400;color:#8C7863;display:inline-block;margin-top:4px}
+.pano-h1 .pano-grow{font-style:normal;color:#6A4E1F;position:relative;white-space:nowrap;text-shadow:0 2px 12px rgba(160,120,50,.16)}
+.pano-h1 .pano-grow::after{content:"";position:absolute;left:3%;right:6%;bottom:4px;height:14px;background:linear-gradient(90deg,rgba(184,142,60,0),rgba(184,142,60,.38),rgba(184,142,60,.22),rgba(184,142,60,0));border-radius:99px;z-index:-1}
+.pano-hero .dek{font-size:clamp(15px,2.4vw,17.5px);color:#4A5A56;max-width:640px;margin:28px auto 0;line-height:2.1;animation:panoUp .7s .34s both;text-shadow:none}
+.pano-hero .dek b,.pano-hero .dek em{color:#6A4E1F;font-weight:700}
+.pano-hero .hr-dot{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;animation:panoUp .7s .46s both}
+.pano-hero .hr-dot i{width:46px;height:2px;background:linear-gradient(90deg,transparent,rgba(148,120,58,.7));border-radius:2px}
+.pano-hero .hr-dot i.rt{background:linear-gradient(90deg,rgba(148,120,58,.7),transparent)}
+.pano-hero .hr-dot .dm{color:#8A6A2D;font-size:12px;letter-spacing:8px;text-indent:8px}
+.pano-stats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:760px;margin:42px auto 0;animation:panoUp .7s .58s both}
+.pano-stats span{display:flex;align-items:center;justify-content:center;gap:9px;flex:1 1 150px;max-width:220px;background:rgba(255,252,242,.75);border:1px solid rgba(140,118,70,.32);box-shadow:0 6px 18px rgba(80,75,55,.10);padding:14px 10px;border-radius:999px;font-size:12.5px;color:#4A5A56;letter-spacing:.5px;text-align:center;line-height:1.4}
+.pano-stats b{color:#8A6A2D;font-size:22px;font-weight:800;letter-spacing:.5px;line-height:1;font-family:Georgia,"Times New Roman",serif}
+/* 导览入场动画：默认可见底色，动画仅作增强；动画不生效时内容也不隐藏 */
+@keyframes panoUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* 正文容器：桌面大屏用更宽的画布，抵消空旷感 */
+.pano-inner{max-width:min(1120px,100%);margin:0 auto;padding:0 clamp(18px,4vw,46px) 40px;position:relative;z-index:2}
+/* 平板/电脑：封面纵向占满视口，内容垂直居中，消除“内容堆在上方、下方一大片空”的空洞感 */
+@media(min-width:769px){
+  .pano-inner{max-width:min(1260px,100%)}
+  .pano-hero{min-height:calc(100vh - 96px)}
+  .pano-lead{max-width:780px}      /* 桌面适度放宽说明文，减少两侧空隙 */
+  .pano-feat{max-width:1120px}     /* 桌面特性网格更好地铺满有效区域 */
+  .pano-matrix{max-width:1120px}
+}
+/* 导览在桌面/平板端与左侧导航栏完全对齐：内容居中于“边栏右侧”的有效区域，
+   避免左侧文字被边栏遮住、右侧因全窗居中而空出一大块（对应 .main 的 margin-left 偏移） */
+@media(min-width:1025px){#pano{left:184px}}                                 /* 桌面默认：边栏 184px */
+@media(min-width:769px) and (max-width:1024px){#pano{left:190px}}           /* 平板：边栏 190px */
+@media(min-width:1240px){#pano{left:210px}}                                 /* 宽屏：边栏 210px */
+body.sidebar-collapsed #pano{left:0}                                        /* 边栏收起时导览占满全宽 */
+.pano-sec{padding:64px 0 10px;position:relative}
+.pano-sec>h2,.pano-sec-ctr>h2{animation:panoUp .6s .05s both}
+/* 章节眉标 */
+.pano-no{display:flex;align-items:center;gap:12px;color:#4A3427;font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:700}
+.pano-no .rn{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:22px;font-weight:700;color:#B08A44;letter-spacing:0}
+.pano-no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#C9A45E,#E5DBC8);margin:0 4px}
+.pano-sec-ctr{text-align:center}
+.pano-sec-ctr .pano-no{justify-content:center}
+.pano-sec-ctr .pano-no::after{display:none}
+.pano-h2{font-weight:600;font-family:"Noto Serif SC","Songti SC","STSong",serif;font-size:clamp(23px,3.7vw,32px);margin:20px 0 16px;line-height:1.5;letter-spacing:.03em;color:#33291F}
+.pano-h2 em{font-style:normal;color:#6E4F37}
+.pano-lead{color:#6E6353;font-size:15px;max-width:680px;line-height:2.1;margin:0 auto}
+/* 它是什么 · 四重承诺 */
+.pano-feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:14px;margin:36px auto 0;max-width:960px;text-align:left}
+.pano-ft{background:#FFFFFF;border:1px solid #EBDCC2;border-radius:15px;padding:22px 20px 20px;box-shadow:0 10px 26px rgba(74,58,40,.06);transition:.25s}
+.pano-ft:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(74,58,40,.12)}
+.pano-ft .fi{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;background:linear-gradient(140deg,#FDF6E8,#F5EFE2);font-size:19px;margin-bottom:12px}
+.pano-ft b{display:block;color:#33291F;font-size:14px;font-weight:800;letter-spacing:.01em;margin-bottom:6px}
+.pano-ft p{color:#8C7863;font-size:12.5px;line-height:1.85;margin:0}
+.pano-lead b,.pano-lead strong{color:#4A3427;font-weight:700}
+/* 分隔线 */
+.pano-rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:38px 0 0;color:#B08A44}
+.pano-rule .ln{flex:0 0 30px;height:2px;background:linear-gradient(90deg,transparent,#C9A45E);border-radius:2px}
+.pano-rule .ln.r{background:linear-gradient(90deg,#C9A45E,transparent)}
+.pano-rule .d{font-size:13px;color:#B08A44;letter-spacing:6px;text-indent:6px}
+/* 大引言 */
+.pano-quote{margin:72px 0 6px;text-align:center;position:relative;padding:56px 40px;background:linear-gradient(150deg,#FBF4E6,#F6EDD8);border:1px solid rgba(173,124,63,.16);border-radius:20px;box-shadow:0 28px 56px rgba(74,58,40,.08)}
+.pano-quote::before{content:"“";position:absolute;left:34px;top:6px;font-size:90px;line-height:1;color:rgba(173,124,63,.14);font-family:Georgia,serif}
+.pano-quote p{font-size:clamp(20px,3.4vw,27px);color:#33291F;line-height:2;max-width:640px;margin:0 auto;letter-spacing:.03em;font-weight:700}
+.pano-quote .by{display:block;margin-top:26px;color:#6E4F37;font-size:11.5px;letter-spacing:.36em;text-transform:uppercase}
+/* 能力卡片 */
+.pano-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:32px}
+.pano-card{background:#FFFFFF;border:1px solid #EBDCC2;border-radius:16px;padding:28px 24px 24px;box-shadow:0 10px 28px rgba(74,58,40,.06);transition:.3s;cursor:default;position:relative;overflow:hidden}
+.pano-card::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,#C9A45E,#6E4F37);opacity:0;transition:.4s}
+.pano-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(74,58,40,.12)}
+.pano-card:hover::before{opacity:1}
+.pano-card .ic{width:48px;height:48px;border-radius:12px;background:linear-gradient(140deg,#4A3427,#C9A45E);display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:22px;line-height:1;box-shadow:0 10px 20px rgba(74,58,40,.26)}
+.pano-card .chip{position:absolute;right:16px;top:18px;font-size:10px;color:#6E4F37;border:1px solid rgba(122,115,99,.28);padding:2px 10px;letter-spacing:.14em;background:rgba(122,115,99,.06);border-radius:6px}
+.pano-card h4{font-size:17px;color:#33291F;margin:16px 0 8px;font-weight:700;letter-spacing:.02em}
+.pano-card p{font-size:13px;color:#677A6E;line-height:1.95;margin:0}
+/* 对比卡片 */
+.pano-compare{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pano-cp{padding:30px 28px 26px;position:relative;transition:.3s;border-radius:16px}
+.pano-cp.no{background:#FCF8EC;border:1px solid #E2D9C0;box-shadow:0 10px 26px rgba(100,90,60,.07)}
+.pano-cp.yes{background:linear-gradient(150deg,#FBF6E8,#F7F0DF 45%,#F4EDDB);border:1px solid #CFC29A;color:#33291F;box-shadow:0 22px 44px rgba(100,86,40,.10)}
+.pano-cp h4{font-size:18px;margin:8px 0 2px;letter-spacing:.02em;font-weight:800}
+.pano-cp .tag{font-size:10.5px;letter-spacing:.22em;color:#6E4F37;font-weight:700;text-transform:uppercase}
+.pano-cp.yes .tag{color:#8A6A2D}
+.pano-cp.no .tag{color:#8C7863}
+.pano-cp ul{list-style:none;margin:16px 0 0;padding:0}
+.pano-cp.no ul{color:#8C7863}
+.pano-cp.yes ul{color:#6B5E51}
+.pano-cp li{padding-left:18px;position:relative;font-size:13.8px;line-height:2.1}
+.pano-cp li::before{content:"";position:absolute;left:0;top:1.05em;width:8px;height:8px;border-radius:3px;transform:rotate(45deg);background:#C9A45E}
+.pano-cp.yes li::before{background:#B08A44}
+/* 持续回报 */
+.pano-habit{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px}
+.pano-hb{background:#FFFFFF;border:1px solid #EBDCC2;border-radius:16px;padding:28px 22px 24px;box-shadow:0 10px 26px rgba(74,58,40,.06);text-align:center;transition:.28s}
+.pano-hb:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(74,58,40,.12)}
+.pano-hb .medal{width:58px;height:58px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(140deg,#4A3427,#C9A45E);color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;box-shadow:0 10px 22px rgba(173,124,63,.36)}
+.pano-hb h5{color:#33291F;font-size:15.5px;margin:0 0 8px;font-weight:800;letter-spacing:.02em}
+.pano-hb p{color:#8C7863;font-size:12.8px;line-height:1.9;margin:0}
+/* 设计理念 · 栖 / 匣 */
+.pano-concept{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px auto 0;max-width:880px;text-align:left}
+.pano-cv{display:flex;gap:16px;align-items:flex-start;background:#FFFFFF;border:1px solid #E7DED0;border-radius:18px;padding:26px 24px;box-shadow:0 12px 30px rgba(110,79,55,.07);transition:.28s}
+.pano-cv:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(110,79,55,.13)}
+.pano-cv .cv-char{flex:none;display:flex;align-items:center;justify-content:center;width:74px;height:92px;border-radius:16px;background:linear-gradient(150deg,#F4EBDD,#EBE1CE);border:1px solid #E8DCC6;font-family:"Kaiti SC","KaiTi","STKaiti",serif;font-size:34px;font-weight:700;color:#6E4F37;line-height:1;box-shadow:inset 0 1px 0 #fff}
+.pano-cv[data-side="匣"] .cv-char{color:#5C4030;background:linear-gradient(150deg,#F0E4D2,#E7DAC2)}
+.pano-cv .cv-body h5{color:#33291F;font-size:15.5px;font-weight:800;letter-spacing:.03em;margin:2px 0 8px}
+.pano-cv .cv-body p{color:#6E5E4E;font-size:13px;line-height:1.95;margin:0}
+@media (max-width:560px){.pano-concept{grid-template-columns:1fr}.pano-cv .cv-char{width:60px;height:74px;font-size:28px}}
+/* 原则 */
+.pano-nolist{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px;margin-top:32px}
+.pano-ni{background:#FFFFFF;border:1px solid #EBDCC2;border-radius:14px;padding:18px 20px;font-size:13.8px;color:#6E6353;line-height:1.85;transition:.25s;cursor:default;box-shadow:0 8px 22px rgba(74,58,40,.08)}
+.pano-ni:hover{border-color:#C9A45E;box-shadow:0 10px 24px rgba(173,124,63,.12);transform:translateY(-2px)}
+.pano-ni .x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(122,115,99,.1);color:#6E4F37;font-weight:700;margin-right:10px;font-size:12px;flex:none}
+/* 适合谁 */
+.pano-who{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:32px}
+.pano-wi{background:#FFFFFF;border:1px solid #EBDCC2;border-radius:16px;padding:22px 24px;box-shadow:0 8px 24px rgba(74,58,40,.08);transition:.25s;position:relative;border-top:3px solid #C9A45E}
+.pano-wi:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(74,58,40,.12)}
+.pano-wi b{display:block;color:#4A3427;font-size:15px;margin-bottom:8px;font-weight:800;letter-spacing:.02em}
+.pano-wi span{color:#677A6E;font-size:13.5px;line-height:1.95}
+/* 上手步骤 */
+.pano-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:16px;margin-top:32px}
+.pano-step{background:#FFFFFF;border:1px solid #EBDCC2;border-radius:16px;padding:28px 26px;box-shadow:0 10px 26px rgba(74,58,40,.06);transition:.28s}
+.pano-step:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(74,58,40,.12)}
+.pano-step .num{width:44px;height:44px;border-radius:11px;background:linear-gradient(140deg,#4A3427,#C9A45E);color:#FFFFFF;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:16px;box-shadow:0 10px 20px rgba(173,124,63,.3)}
+.pano-step h5{color:#33291F;font-size:15.5px;margin:0 0 8px;font-weight:800;letter-spacing:.02em}
+.pano-step p{color:#8C7863;font-size:13px;line-height:1.95;margin:0}
+/* ── 收官 CTA · 回到产品本身「栖匣」 —— 暖木留白，与全站色调统一 ── */
+.pano-cta{margin:84px 0 0;padding:78px 40px 64px;border-radius:30px;position:relative;overflow:hidden;text-align:center;color:#33291F;
+  background:
+    radial-gradient(720px 470px at 88% -16%,rgba(201,168,95,.10),transparent 62%),
+    radial-gradient(700px 460px at 8% -10%,rgba(110,79,55,.10),transparent 60%),
+    radial-gradient(900px 540px at 50% 132%,rgba(110,79,55,.08),transparent 58%),
+    linear-gradient(168deg,#F8F2E8 0%,#FAF7F0 40%,#F5EFE2 100%);
+  border:1px solid rgba(173,124,63,.22);box-shadow:0 34px 72px rgba(74,58,40,.13)}
+/* 底纹：极淡暖木网格 */
+.pano-cta::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(180deg,rgba(110,79,55,.04) 0 1px,transparent 1px 46px),
+    radial-gradient(62% 56% at 50% 122%,rgba(110,79,55,.10),transparent 60%)}
+.pano-cta::after{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:60%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(173,124,63,.85),rgba(173,124,63,.25),rgba(173,124,63,.85),transparent);z-index:2}
+.pano-cta>*{position:relative;z-index:2;max-width:760px;margin-left:auto;margin-right:auto}
+
+/* 品牌印记：用栖匣标准 logo 取代朱印 */
+.ct-mark img{width:74px;height:74px;border-radius:22px;display:block;margin:0 auto 24px;
+  box-shadow:0 14px 30px rgba(74,58,40,.16),0 0 0 1px rgba(173,124,63,.22)}
+
+/* 眉标 */
+.ct-eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 22px;color:#8A6A2D;font-size:12px;letter-spacing:.48em;text-transform:uppercase}
+
+/* 主标：宋体 · 大字 */
+.ct-title{font-family:"Noto Serif SC","Songti SC","Source Han Serif SC","STSong","SimSun",serif;font-weight:900;
+  font-size:clamp(32px,6vw,50px);letter-spacing:.06em;line-height:1.36;color:#33291F;margin:0 0 12px}
+.ct-title em{font-style:normal;color:#B08A44;position:relative;white-space:nowrap}
+.ct-title em::after{content:"";position:absolute;left:2%;right:2%;bottom:5px;height:15px;
+  background:linear-gradient(90deg,rgba(201,168,95,0),rgba(201,168,95,.5),rgba(201,168,95,.25),rgba(201,168,95,0));
+  border-radius:99px;z-index:-1}
+
+/* 引语 */
+.ct-lead{color:#6E6353;font-size:15px;max-width:600px;margin:8px auto 24px;line-height:2.15}
+.ct-lead b,.ct-lead em{color:#4A3427;font-style:normal;font-weight:700}
+
+/* 承诺：暖木脚注 */
+.ct-vows{max-width:520px;margin:6px auto 26px;padding:16px 22px;text-align:left;border-radius:12px;
+  background:rgba(255,255,255,.74);border-left:3px solid rgba(173,124,63,.5);
+  box-shadow:0 10px 22px rgba(74,58,40,.08)}
+.ct-vows div{display:flex;align-items:center;gap:11px;font-size:13.5px;color:#5C4A3A;line-height:1.95}
+.ct-vows .vt{width:5px;height:5px;border-radius:50%;background:#6E4F37;flex-shrink:0;box-shadow:0 0 0 3px rgba(173,124,63,.12)}
+
+/* 签名横线 */
+.ct-sign{margin:6px auto 30px;color:#9C8F7E;font-size:12.5px;letter-spacing:.12em}
+.ct-sign .ln{display:inline-block;width:116px;border-bottom:1.5px dashed rgba(173,124,63,.35);margin:0 12px;vertical-align:middle}
+
+/* 按钮 */
+.pano-cta .btns{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
+.pano-cta .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 34px;font-size:15px;
+  cursor:pointer;pointer-events:auto;min-width:190px;letter-spacing:.06em;border-radius:13px;font-weight:700;font-family:inherit}
+.pano-cta .btn.btn-primary{background:linear-gradient(120deg,#6E4F37,#6E4F37);color:#fff;border:none;
+  box-shadow:0 18px 38px rgba(110,79,55,.25),inset 0 1px 0 rgba(255,255,255,.35)}
+.pano-cta .btn.btn-primary:hover{transform:translateY(-2px);box-shadow:0 24px 46px rgba(110,79,55,.32),inset 0 1px 0 rgba(255,255,255,.5)}
+.pano-cta .btn.btn-primary .arr{font-size:16px;display:inline-block;transition:transform .25s}
+.pano-cta .btn.btn-primary:hover .arr{transform:translateX(4px)}
+.pano-btn-ghost{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.9);color:#4A3427;
+  border:1.5px solid rgba(173,124,63,.55);padding:14.5px 26px;cursor:pointer;font-size:14px;font-family:inherit;transition:.25s;
+  pointer-events:auto;letter-spacing:.06em;border-radius:13px}
+.pano-btn-ghost:hover{background:#fff;border-color:#C9A45E;transform:translateY(-2px)}
+
+/* 角注 */
+.pano-note{text-align:center;color:#9C8F7E;font-size:11.5px;letter-spacing:.34em;margin:72px 0 0;text-transform:uppercase}
+@media (max-width:560px){
+  .pano-cta{padding:54px 20px 50px}
+  .pano-cta .btns{flex-direction:column;align-items:stretch}
+  .pano-cta .btn{min-width:auto}
+  .ct-seal{width:64px;height:64px}
+  .ct-seal .sm{letter-spacing:.22em}
+  .ct-sign .ln{width:64px;margin:0 8px}
+}
+.pano-close{position:sticky;top:20px;margin-left:auto;margin-right:28px;margin-top:20px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.95);border:1px solid rgba(74,58,40,.14);box-shadow:0 8px 24px rgba(74,58,40,.14);color:#4A3A2C;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.28s;z-index:6;pointer-events:auto}
+.pano-close:hover{background:#FFFFFF;transform:rotate(90deg);color:#4A3427;box-shadow:0 12px 28px rgba(74,58,40,.24)}
+/* ── 分步导览顶部进度条 ── */
+.pano-progress{position:sticky;top:-1px;z-index:8;background:rgba(255,255,255,.96);border-bottom:1px solid #EBDCC2;margin:0 -40px 8px;padding:12px 40px 10px}
+.pano-pp{display:flex;align-items:center;gap:14px;max-width:980px;margin:0 auto}
+.pano-pp .step{flex:1;text-align:center}
+.pano-pp .dots{display:flex;gap:6px;justify-content:center;align-items:center}
+.pano-pp .dot{width:9px;height:9px;border-radius:50%;background:#D2C5AA;cursor:pointer;transition:.3s;border:none;padding:0}
+.pano-pp .dot.on{background:#C9A45E;width:26px;border-radius:999px}
+.pano-pp .dot.done{background:#6E4F37}
+.pano-pp .pnum{font-size:12px;color:#6E6353;font-weight:700;white-space:nowrap}
+.pano-pp .pnum b{color:#C9A45E;font-size:15px;font-family:Georgia,serif}
+.pano-pp .pfrac{height:4px;flex:1;background:#EBDCC2;border-radius:999px;overflow:hidden;max-width:220px}
+.pano-pp .pfill{height:100%;background:linear-gradient(90deg,#C9A45E,#6E4F37);border-radius:999px;width:0;transition:width .5s ease}
+/* 底部 ＝上一屏 / 下一屏＝ 导航 */
+.pano-nav{position:sticky;bottom:16px;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:880px;margin:44px auto 10px;padding:14px 18px;background:rgba(255,255,255,.98);border:1px solid #EBDCC2;border-radius:16px;box-shadow:0 14px 34px rgba(74,58,40,.14)}
+.pano-nav .n-prev{background:#FDF6E8;color:#6E6353;border:1px solid #EBDCC2}
+.pano-nav .n-prev:hover{background:#F5EFE2}
+.pano-nav .n-next{background:linear-gradient(135deg,#4A3427,#C9A45E);color:#fff;border:none;box-shadow:0 10px 24px rgba(173,124,63,.3)}
+.pano-nav .n-next:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(173,124,63,.38)}
+.pano-nav button{cursor:pointer;font-family:inherit;font-size:13.5px;padding:11px 22px;border-radius:10px;transition:.25s;font-weight:700;letter-spacing:.03em}
+.pano-nav .n-cnt{font-size:12.5px;color:#7A6D5C;flex:1;text-align:center}
+.pano-nav .n-cnt b{color:#C9A45E}
+@media(max-width:560px){.pano-progress{margin:0 -20px 8px;padding:10px 20px 8px}.pano-nav{flex-wrap:wrap}.pano-nav .n-cnt{order:3;flex-basis:100%}.pano-nav button{flex:1}}
+.pano::-webkit-scrollbar{width:10px}
+.pano::-webkit-scrollbar-thumb{background:linear-gradient(#A98A5A,#6E4F37);border-radius:5px;border:2px solid transparent;background-clip:padding-box}
+@media (max-width:560px){.pano-hero{padding:20px 22px 50px;min-height:auto}.pano-compare{grid-template-columns:1fr}.pano-inner{padding:0 20px 60px}.pano-cta{padding:48px 22px}.pano-cta .btns{flex-direction:column;align-items:stretch}.pano-cta .btn{min-width:auto}.pano-grid{grid-template-columns:1fr 1fr}}
+/* 入座底栏：首次进入导览时固定在底部，引导用户「入座」后才进入产品 */
+.pano-seatbar{position:sticky;bottom:0;margin-top:10px;display:flex;justify-content:center;padding:16px 0 8px;background:linear-gradient(180deg,rgba(255,253,248,0),var(--card) 42%);z-index:6}
+.pano-seatbar .btn-seat{font-size:15px;padding:12px 28px;letter-spacing:1px;box-shadow:0 8px 24px rgba(74,58,40,.18)}
+/* 首次「入座」导览也保留 ✕ 关闭键：随时能退出，避免浮层盖住顶栏导致“点了没反应” */
+#pano.seat-lock .pano-close{display:flex;background:rgba(255,250,240,.9);border:1px solid rgba(111,79,55,.22);color:#4A3A2C;box-shadow:0 10px 26px rgba(74,58,40,.18)}
+#pano.seat-lock .pano-close:hover{background:#FFF8EA;transform:scale(1.05)}
+[data-theme="dark"] .mind-refresh{background:#312A20;color:#C9B38A;border-color:#4F4433}
+[data-theme="dark"] .mind-refresh:hover{background:#382F24}
+</style>
+<script>
+/* ═══════ 栖匣 · 全景导览展示逻辑 ═══════ */
+var __panoPrevTheme=null;  /* 记录导览打开前的主题，便于退出时还原 */
+function openPano(){
+  /* 产品导览 #pano：品牌长页沉浸式导览。恒为日间暖纸风格，不受日夜模式影响 */
+  var p=document.getElementById('pano');var m=document.getElementById('panoMask');
+  document.documentElement.classList.add('state-pano'); /* 导览期间隐藏顶栏 */
+  /* 恒定日间：打开导览时临时切回 light，使所有 [data-theme=dark] 覆盖失效，关闭时还原 */
+  try{
+    if(__panoPrevTheme==null)__panoPrevTheme=document.documentElement.getAttribute('data-theme')||'light';
+    document.documentElement.setAttribute('data-theme','light');
+  }catch(e){}
+  if(p)p.classList.add('show');if(m)m.classList.add('show');
+  try{document.body.style.overflow='hidden';}catch(e){}
+  try{if(p&&p.querySelector('.pano-inner'))p.querySelector('.pano-inner').scrollTop=0;}catch(e){}
+  /* 入座流程：首次进入（带 seat-lock）时，注入「入座」按钮，只有关闭按钮隐藏 */
+  if(p&&p.classList.contains('seat-lock')){ ensureSeatBar(); }
+}
+function closePano(force){
+  var p=document.getElementById('pano');
+  if(p&&p.classList.contains('seat-lock')&&!force)return;  /* 锁定中：非强制（非「入座」）不关 */
+  document.documentElement.classList.remove('state-pano'); /* 导览结束：恢复顶栏 */
+  /* 还原导览打开前的主题（用户原选择日间则回日间、夜间则回夜间） */
+  try{
+    if(__panoPrevTheme){document.documentElement.setAttribute('data-theme',__panoPrevTheme);__panoPrevTheme=null;}
+  }catch(e){}
+  if(p)p.classList.remove('show');
+  var m=document.getElementById('panoMask');if(m)m.classList.remove('show');
+  try{document.body.style.overflow='';}catch(e){}
+}
+function panoGo(dest){
+  if(dest==='about'||dest==='home'){
+    closePano(true);
+    setTimeout(function(){try{switchView(dest)}catch(e){}},100);
+  }
+}
+/* 入座底栏（首次进入导览时注入一次） */
+function ensureSeatBar(){
+  var p=document.getElementById('pano');if(!p)return;
+  if(p.querySelector('.pano-seatbar'))return;
+  var bar=document.createElement('div');bar.className='pano-seatbar';
+  bar.innerHTML='<button class="btn btn-primary btn-seat" data-pano="seat">✦ 入座 · 栖匣，开始使用</button>';
+  var inner=p.querySelector('.pano-inner');if(inner)inner.appendChild(bar);else p.appendChild(bar);
+}
+/* 点击「入座」：标记已看过导览，解除锁定，关闭导览进入产品 */
+function seatPano(){
+  try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
+  var p=document.getElementById('pano');if(p)p.classList.remove('seat-lock');
+  closePano(true);
+  /* 首次「入座」进入产品后：接着引导挑选常用模块（只触发一次） */
+  maybeOpenPrefPick();
+}
+/* 事件委托：统一接管导览内所有按钮，避免个别按钮不响应 */
+function panoWire(){
+  var p=document.getElementById('pano');if(!p)return;
+  if(p.getAttribute('data-wired'))return;
+  p.setAttribute('data-wired','1');
+  p.addEventListener('click',function(ev){
+    var t=ev.target.closest('[data-pano]');if(!t)return;
+    var act=t.getAttribute('data-pano');
+    if(act==='seat'){seatPano();return;}
+    /* 关闭/跳转始终可用：不再被首次「入座」锁死，并在关闭时记录“已看过”，
+       避免导览浮层每次重开盖住顶栏导致“点了没反应” */
+    if(act==='close'){
+      try{localStorage.setItem('pp_pano_seen','1');localStorage.setItem('pp_quickstart_ok','1');}catch(e){}
+      if(p)p.classList.remove('seat-lock');
+      closePano(true);
+      /* 首次关闭导览进入产品后：同样补一次「常用模块偏好」引导 */
+      maybeOpenPrefPick();
+      return;
+    }
+    if(act==='home'||act==='about')panoGo(act);
+  });
+}
+/* ── 导览为单屏长页：自由滚动浏览；关闭/跳转由 panoWire 处理 ── */
+function panoBoot(){
+  var p=document.getElementById('pano');if(!p)return;
+  var m=document.getElementById('panoMask');
+  if(m)m.addEventListener('click',function(){if(p.classList.contains('seat-lock'))return;closePano();});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){if(p.classList.contains('seat-lock'))return;closePano();}});
+  panoWire();
+  /* 注意：首次访客的导览弹出改由品牌启动屏 afterSplash 统一触发（锁定「入座」）。
+     这里不再自动弹，避免与闪屏流程重复或抢跑。 */
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',panoBoot);}else{panoBoot();}
+</script>
+
+<!-- ═══════════ 栖匣 · 全景导览（浅色高级产品介绍长页） ═══════════ -->
+<div class="pano-mask" id="panoMask"></div>
+<div class="pano" id="pano" role="dialog" aria-modal="true" aria-label="栖匣全景导览">
+  <button class="pano-close" data-pano="close" title="关闭导览">✕</button>
+  <div class="pano-inner">
+
+    <!-- 封面首屏 (步骤 1) -->
+    <section class="pano-hero" data-step="0">
+      <span class="pt-topscallop" aria-hidden="true"></span>
+      <div class="pt-sash"><span class="pt-seal" style="background:none;box-shadow:none;padding:0;width:40px;height:40px;border-radius:12px;overflow:hidden"><img src="pwa/logo-chest20260911.png" alt="栖匣" style="width:40px;height:40px;display:block" onerror="logoFallback(this)"></span><span class="pt-name">栖匣</span><i></i></div>
+      <i class="pt-deco d1" aria-hidden="true"></i><i class="pt-deco d2" aria-hidden="true"></i><i class="pt-deco d3" aria-hidden="true"></i>
+      <div class="glow"></div>
+      <div class="pt-name-premium">
+        <span class="pm-verse">一「栖」一「匣」：收纳成长诸事，锚定方向，落实眼前规划。<em>—— 栖匣，致每一位精进者</em></span>
+      </div>
+      <h1 class="pano-h1">把每一天，好好<em class="pano-grow">安放</em><br class="pano-hbr"><span class="thin">来有所栖，去有所成</span></h1>
+      <p class="dek"><em style="font-style:normal"><b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅——三四十个成长模块，分格收纳、各归其位，都收进这一只匣</b></em>，互相咬合、随点滴沉淀，主要面向大学生群体，同样支持更长周期的个人成长记录。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
+      <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
+      <div class="pano-stats">
+        <span><b>35+</b> 能力模块</span>
+        <span><b>0</b> 安装 · 0 登录</span>
+        <span><b>100%</b> 数据留在本机</span>
+        <span><b>365</b> 天随时相伴</span>
+      </div>
+    </section>
+
+    <!-- 定位：价值主张 (步骤 2) -->
+    <section class="pano-sec pano-sec-ctr" data-step="1">
+      <div class="pano-no"><span class="rn">壹</span><span>它为什么无可取代 · 你所得到的</span></div>
+      <h2 class="pano-h2">它不是又一个工具，<br>而是让成长<em>步步趋近所向</em>的栖身之处</h2>
+      <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康，以及成长、阅读与职业</b>，还让它们互相咬合。栖匣，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
+      <div class="pano-feat">
+        <div class="pano-ft"><span class="fi">⚡</span><b>双击即用 · 零安装零门槛</b><p>一个网页即是全部，点开就能用，不用下载、不用配置。</p></div>
+        <div class="pano-ft"><span class="fi">🔒</span><b>数据留在本机 · 不收集隐私</b><p>不注册、不联网上传，一切只存在你自己的浏览器里。</p></div>
+        <div class="pano-ft"><span class="fi">📱</span><b>手机电脑 · 处处顺手打开</b><p>跨端同页，还能「加到桌面」当 App 全屏使用。</p></div>
+        <div class="pano-ft"><span class="fi">🛡️</span><b>离线可用 · 首次联网打开后</b><p>在支持此功能的浏览器（Chrome/Edge/Safari 等）里，联网打开过一次后，断网也能继续查看已载入的内容与数据。</p></div>
+      </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
+    </section>
+
+    <!-- 之前 vs 之后 (步骤 3) -->
+    <section class="pano-sec" data-step="2">
+      <div class="pano-no"><span class="rn">贰</span><span>没有它 vs 有它 · 两种大学的活法</span></div>
+      <h2 class="pano-h2">同样的时间，<em>不同的落点</em></h2>
+      <div class="pano-compare">
+        <div class="pano-cp no">
+          <div class="tag">没有它的日子里</div>
+          <h4 style="color:#4A5A52">事情总在脑子里打转</h4>
+          <ul>
+            <li>说要每天背单词，临睡前却发现"明天再说"的念头又赢了</li>
+            <li>四六级、期末、实习的节点挤在一起，一个也没先准备好</li>
+            <li>月底望着账单发愁，这一个月其实都没认真记过账</li>
+            <li>读到的好句子、冒出的好点子，转头就忘了该存进哪里</li>
+            <li>"我得上进"反复起念，落到"今天就做这一件"却说不出来</li>
+          </ul>
+        </div>
+        <div class="pano-cp yes">
+          <div class="tag">有了它之后</div>
+          <h4>事情各归其位，走得踏实</h4>
+          <ul>
+            <li>目标拆成今天的一小步，勾掉一项就多一分笃定</li>
+            <li>考试与求职的日子排进同一张时间表，先做哪件事一眼看清</li>
+            <li>每天三十秒记一笔，钱花在哪，心里就有了底</li>
+            <li>灵感随手收进看板，习惯攒成一条连续的记录</li>
+            <li>不靠一时硬撑，靠每天稳稳往前的一小步</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 一天时间轴 (步骤 4) -->
+    <section class="pano-sec" data-step="3">
+      <div class="pano-no"><span class="rn">叁</span><span>它陪你的这一天 · 具体能做什么</span></div>
+      <h2 class="pano-h2">从早到晚，<em>它都有你的位置</em></h2>
+      <div class="pano-steps">
+        <div class="pano-step"><div class="num">晨</div><h5>写下今天最重要的一件事</h5><p>今日任务帮你锚定方向——做完它，今天就是赢。</p></div>
+        <div class="pano-step"><div class="num">昼</div><h5>专注与积累并行</h5><p>番茄专注学习、时间块安排节奏，顺手收下今日知识与一句心语。</p></div>
+        <div class="pano-step"><div class="num">暮</div><h5>复盘、记账、排明日</h5><p>睡前两分钟记下今天，四象限为明天排好，越用越省心。</p></div>
+      </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
+    </section>
+
+    <!-- 大引言 (步骤 5) -->
+    <div class="pano-quote" data-step="4">
+      <p>真正的自由，不是想做什么就做什么，<br>而是能把每一天，都落在实处、握在自己手里。</p>
+      <span class="by">— 栖匣 的设计哲学 —</span>
+    </div>
+
+    <!-- 八大能力 (步骤 6) -->
+    <section class="pano-sec pano-sec-ctr" data-step="5">
+      <div class="pano-no"><span class="rn">肆</span><span>八大力 · 你能亲手掌握什么</span></div>
+      <h2 class="pano-h2">八大支柱，<em>托起你的大学生活</em></h2>
+      <div class="pano-grid" style="text-align:left">
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎓</div><h4>学业精进</h4><p>绩点与专业筑基，到英语、数学、考级与保研考研，拆成一步步可执行的计划。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">⏳</div><h4>时间管理</h4><p>四象限轻重缓急、番茄专注、一周时间块，把一天排得明明白白。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🎯</div><h4>目标拆解</h4><p>大目标→里程碑→今天做什么，三步拆解，每天都能看见进度。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">💼</div><h4>职业与升学</h4><p>保研考研路径、竞赛科研、简历模板、求职渠道，一站式准备好未来。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">💰</div><h4>理财记账</h4><p>记账本、省钱技巧、消费指南、副业启蒙，让每一分钱都知道去向。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">❤️</div><h4>健康管理</h4><p>健康打卡、运动热力图、情绪记录，照顾身体，也照顾好自己。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">💡</div><h4>灵感珍藏</h4><p>灵感看板、决策复盘、人生一百目标，好想法在此沉淀、不轻易丢失。</p></div>
+        <div class="pano-card"><span class="chip">Ready</span><div class="ic">🌱</div><h4>自我成长</h4><p>周度档案与全景回看，一年后你会感谢今天认真留下的每一笔。</p></div>
+      </div>
+      <div class="pano-rule"><span class="ln"></span><span class="d">❦</span><span class="ln r"></span></div>
+    </section>
+
+    <!-- 为什么设计它 · 设计理念 (步骤 7) -->
+    <section class="pano-sec pano-sec-ctr" data-step="6">
+      <div class="pano-no"><span class="rn">伍</span><span>产品的理念 · 为什么会有它</span></div>
+      <p class="pano-lead">目标很多，计划也不少，真正难的，是先把它们安放妥帖、再一步步往前走。栖匣就是那只替你安放成长的地方——把学业、时间、理财、健康、阅读与职业，都收进一处、各归其位；迷茫、疲惫这些心情，也被稳稳接住。你尽管往前走，剩下的，匣子替你在记。</p>
+      <p class="pano-lead" style="margin-top:10px">自律不只有一种模样：不必等待心绪完全安顿才开始行动，整理规划与向前推进可以同步发生。它拒绝高压内卷式的一味催促，也不鼓励停滞与等待——收纳是载体，行动与规划同样重要。</p>
+      <div class="pano-concept">
+        <div class="pano-cv" data-side="栖">
+          <span class="cv-char">栖</span>
+          <div class="cv-body">
+            <h5>心绪 · 状态 · 落脚安放</h5>
+            <p>心绪与状态，可以在此落脚安放。迷茫、停顿、疲惫都是成长里的常态；未完成的计划，只是一份待续的记录，不代表失败。</p>
+          </div>
+        </div>
+        <div class="pano-cv" data-side="匣">
+          <span class="cv-char">匣</span>
+          <div class="cv-body">
+            <h5>收纳 · 咬合 · 点滴沉淀</h5>
+            <p>收纳学业、目标、时间、金钱、健康、阅读与职业……把成长的一条条线索收拢到一处，互相咬合，随日常点滴积累沉淀。</p>
+          </div>
+        </div>
+      </div>
+      <div class="pano-habit">
+        <div class="pano-hb"><div class="medal">燃</div><h5>越用回报越多</h5><p>连续打卡出勋章，坚持汇成热力图，一年后是你自己的成绩单。</p></div>
+        <div class="pano-hb"><div class="medal">册</div><h5>周度成长档案</h5><p>每周自动汇总进度与亮点，复盘不再无从下手，看得见自己在长大。</p></div>
+        <div class="pano-hb"><div class="medal">镜</div><h5>全景回看</h5><p>一年后的你回看今天，会发现每一笔认真都算数——比任何鸡汤都管用。</p></div>
+        <div class="pano-hb"><div class="medal">心</div><h5>日拱一卒</h5><p>不追求一天蜕变，只求每天向前一小步，持续沉淀自我。</p></div>
+      <

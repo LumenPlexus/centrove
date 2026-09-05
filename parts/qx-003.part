@@ -1,0 +1,1795 @@
+gt;3.5）、主修课程（与岗位相关的3-5门）</li>
+          <li><strong>实习经历（最重要！）：</strong>公司+职位+时间+用STAR法则写2-3条成果</li>
+          <li><strong>项目经验：</strong>项目名+你的角色+用了什么技术/方法+结果如何</li>
+          <li><strong>校园经历：</strong>学生会/社团职务+组织了什么活动+量化成果</li>
+          <li><strong>技能证书：</strong>语言能力（四级/六级分数）、计算机证书、职业资格证</li>
+          <li><strong>荣誉奖项：</strong>奖学金（注明比例如"前5%"）、竞赛获奖（注明级别）</li>
+        </ol>
+        <div class="callout callout-warn" style="margin-top:12px">
+          <strong>简历一页原则：</strong>应届生简历严格控制在1页A4内。HR平均每份简历浏览时间&lt;30秒，动作动词开头、量化优先。
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🧾 简历模板 · 一键复制 / 下载</h3>
+        <p style="font-size:12px;color:var(--hint)">按此结构填好内容，点下方按钮直接复制或下载成 txt，去各大招聘平台粘贴即可。</p>
+        <div id="resumeTemplate" style="white-space:pre-wrap;background:var(--bg);padding:14px;border-radius:10px;border:1px solid var(--border);font-size:12.5px;line-height:1.75;margin-bottom:10px">【姓名】｜目标岗位：＿＿＿＿＿＿
+电话：＿＿＿＿＿＿　邮箱：＿＿＿＿＿＿　城市：＿＿＿＿＿＿
+
+▍教育背景
+＿＿学校 · ＿＿专业 · ＿＿＿—＿＿＿ · GPA 3.__/4.0
+主修课程：＿＿＿＿＿＿＿＿＿＿
+
+▍实习经历（最重要）
+＿＿公司 · ＿＿岗位 · ＿＿＿—＿＿＿
+· 动词开头，用STAR量化：负责……，通过……，使……提升X%/节省X元/服务X人
+· 第二段成果……
+· 第三段成果……
+
+▍项目经验
+＿＿项目 · 你的角色：＿＿
+· 用了什么方法/工具：……
+· 结果如何：……
+
+▍校园经历
+＿＿职务 · 组织了什么：……
+· 量化成果：覆盖X人 / 举办X场
+
+▍技能证书
+· 英语：CET-4（XX）／CET-6（XX）
+· 计算机：＿＿　· 职业资格：＿＿
+
+▍荣誉奖项
+· 奖学金（前X%） · 竞赛获奖（国家级/省级/校级）</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" onclick="copyResume()">复制全文</button>
+          <button class="btn btn-sm" onclick="downloadResume()">下载为 txt</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>❓ 高频面试十二问（AI模拟练习）</h3>
+        <div id="interviewQuestions"></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎯 STAR法则模板</h3>
+        <p style="font-size:12px;color:var(--hint)">每个经历都用这个结构描述，让面试官看到你的思考过程和实际贡献。</p>
+        <div style="background:var(--bg);padding:14px;border-radius:10px;border:1px solid var(--border);font-size:13px;line-height:1.8">
+          <strong>S (Situation) 情境：</strong>当时是什么情况？什么背景下？<br>
+          <strong>T (Task) 任务：</strong>你面临什么任务/目标？<br>
+          <strong>A (Action) 行动：</strong>你具体做了什么？（用动词开头）<br>
+          <strong>R (Result) 结果：</strong>最终效果如何？尽量量化！（提升了XX%/节省了XX元/服务了XX人）
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎤 60秒自我介绍模板（面试开场直接套）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">结构="称呼+一句话定位+2个亮点+为什么是我+收尾"。照着填空，练3遍背到脱口而出，时长压进60秒。</p>
+        <div style="background:var(--bg);padding:14px;border-radius:10px;border:1px solid var(--border);font-size:13px;line-height:2.05">
+          <strong>「</strong>面试官您好，我是<u>＿＿大学＿＿专业</u>的<u>＿＿（姓名）</u>。我的定位是<u>＿＿（一句话：如"能独立运营公众号的新媒体方向应届生"）</u>。<br>
+          大学期间我最拿得出手的两点是：<strong>实习方面</strong>，我在<u>＿＿公司＿岗</u>实习，通过＿＿，最终<u>＿＿（量化结果：涨粉X/数据提升X%/独立负责X）</u>；<strong>项目方面</strong>，我主导了<u>＿＿项目</u>，用＿＿方法解决了＿＿问题，最后＿＿。<br>
+          我选择贵司，是因为<u>＿＿（结合JD说1-2个匹配点：业务/技术/团队/文化）</u>正好和我<u>＿＿</u>的经历契合。以上就是我的基本情况，谢谢。<strong>」</strong>
+        </div>
+        <div class="callout callout-ok" style="margin-top:10px"><strong>加分提示：</strong>亮点挑<strong>和岗位最相关</strong>的2个即可，别堆不相关奖项；"为什么选择我们"务必提前查官网，说出<strong>具体理由</strong>才显诚意，空话扣分。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📝 面试复盘表（面完2小时内填，进步最快）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">复盘比面试本身更能拉开差距：每场面完在"记忆还热"时填写，下一场针对性补齐。</p>
+        <table>
+          <thead><tr><th>复盘维度</th><th>今天的情况（点击填写·自动保存）</th></tr></thead>
+          <tbody>
+            <tr><td style="white-space:nowrap"><strong>公司/岗位</strong></td><td contenteditable="true" data-key="iv-company" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td><strong>被问到的题目</strong></td><td contenteditable="true" data-key="iv-q" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td><strong>答得好的1点</strong></td><td contenteditable="true" data-key="iv-good" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td><strong>卡壳/没答好的</strong></td><td contenteditable="true" data-key="iv-bad" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td><strong>正确答案/下次的说法</strong></td><td contenteditable="true" data-key="iv-fix" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td><strong>下一场要练的1个点</strong></td><td contenteditable="true" data-key="iv-next" style="cursor:text;background:var(--bg)"></td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info" style="margin-top:10px"><strong>用法：</strong>把"没答好的"和"下次怎么说"并排写，等于给下家公司准备参考答案。同一类问题错2次以上，就是你的必练项——单独立个"待补能力"集中突击。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📤 投递追踪表</h3>
+        <p style="font-size:12px;color:var(--hint)">记录每次投递，避免遗漏跟进。</p>
+        <table>
+          <thead><tr><th>公司/岗位</th><th>投递渠道</th><th>投递日期</th><th>状态</th><th>备注</th></tr></thead>
+          <tbody id="resumeTrackerBody">
+            <tr><td colspan="5" style="color:var(--hint);text-align:center;padding:20px">暂无记录，开始记录你的第一次投递吧</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <input id="rtCompany" placeholder="公司名" style="flex:1;min-width:100px">
+          <input id="rtPosition" placeholder="岗位" style="flex:1;min-width:100px">
+          <select id="rtStatus" style="width:90px">
+            <option>已投递</option><option>初筛通过</option><option>面试中</option><option>offer</option><option>已拒绝</option>
+          </select>
+          <button class="btn btn-primary btn-sm" onclick="addResumeTrack()">记录</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📊 <span data-qx-year>2026</span> 就业行情速览 · 心里有数不焦虑</h3>
+        <div class="grid grid-3">
+          <div>
+            <h4>规模与节奏</h4>
+            <ul style="font-size:12.5px;line-height:1.85;color:var(--muted)">
+              <li>近年校招主要面向当届毕业生（此处参考口径：2026届约 <strong>1270万</strong>），加滞留往届海归竞争激烈</li>
+              <li><strong>提前批/早鸟</strong> 6-7月启动，7月是黄金窗口，错过正式批竞争池更大</li>
+              <li><strong>9-10月是峰值</strong>（单月职位发布可占全年约24%）</li>
+              <li><strong>春招约秋招的30%</strong>，且考研/考公失利者加入，节奏快</li>
+            </ul>
+          </div>
+          <div>
+            <h4>起薪参考（2025口径）</h4>
+            <ul style="font-size:12.5px;line-height:1.85;color:var(--muted)">
+              <li>本科平均起薪约 <strong>8698元/月</strong>，专科约6387</li>
+              <li>硕士约 <strong>13749元/月</strong>（同比+10.5%），博士约25082</li>
+              <li>高需求赛道：机器人、智能制造、AI大模型、智能驾驶、半导体、新材料、储能</li>
+              <li>管培生连续三年居校招需求首位；算法工程师需求上升</li>
+            </ul>
+          </div>
+          <div>
+            <h4>AI 已进招聘</h4>
+            <ul style="font-size:12.5px;line-height:1.85;color:var(--muted)">
+              <li>约 <strong>65%</strong> 企业校招已用AI工具（简历筛选/AI初面）</li>
+              <li>AI筛选常抓"关键词+结构+量化"——简历务必<strong>数字化、STAR、对齐JD关键词</strong></li>
+              <li>发展前景(72.4%)成为择业首要考量，别只盯起薪</li>
+              <li>求职别只抱招聘App，叠加学校就业网/内推/企业官网更稳</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:10px"><strong>数据说明：</strong>毕业生规模/起薪、校招节奏与AI使用率（65%、72.4%等）为第三方年度报告口径，于 2026-08 整理；数据每年变化、口径不一，<strong>仅供参考，求职决策请以各校就业网、官方统计与企业当季招聘公告的最新发布为准</strong>。</div>
+        <div class="callout callout-warn" style="margin-top:10px"><strong>行动建议：</strong>大三起就把秋招当"主战场"经营——先修简历与作品集，6月起关注提前批，9月集中投递。别等到大四才"临时抱佛脚"，机会偏爱提前准备的人。</div>
+      </div>
+
+      <!-- 深·职业规划路线图：把「方向-简历-面试-投递」再下沉一层 -->
+      <div class="card" style="margin-top:16px">
+        <h3>🗺️ 职业规划行动路线图（大一 → 研三，逐级进阶）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">别把求职留到大四。这张表把每个阶段的"关键动作"和"可量化产出"写清楚，照着一步一步走，四年后简历自然厚实。</p>
+        <table>
+          <thead><tr><th style="width:92px">阶段</th><th>关键动作（照做）</th><th style="width:150px">本阶段明确产出</th></tr></thead>
+          <tbody>
+            <tr><td><strong>大一</strong></td><td>①做1次"兴趣-能力-行情"摸底（见下方摸底四步法）；②绩点打底（GPA 3.5+/专业前30%）；③加2-3个社团/部门并<strong>当上干事，主动接有成果的活儿</strong>；④过四六级；⑤学一门基础硬技能（Office/WPS、常用办公软件）</td><td>方向初选记录；绩点；至少1段社团成果</td></tr>
+            <tr><td><strong>大二</strong></td><td>①锁定1-2个候选方向；②参加1次学科竞赛/科研（争取获奖或发摘要）；③考1张对口的初级证书（如计算机二级、普通话、初级会计等）；④接触简历写作，积累可写入的素材</td><td>竞赛/科研经历；证书；简历V1.0</td></tr>
+            <tr><td><strong>大三</strong></td><td>①寒暑假各做1段<strong>对口实习</strong>；②升级简历到V2.0（STAR+量化）；③整理作品集/项目库；④关注秋招提前批（6-7月）；⑤考核心证书（如保研/考研/教资/专业资格证等二选一发力）</td><td>2段以上对口实习；简历V2.0；作品集</td></tr>
+            <tr><td><strong>大四上</strong></td><td>①秋招集中投递（9-11月黄金期）；②全力以赴准备面试与笔试；③考研/考公择一并行充底；④每周复盘投递与面试</td><td>投递30-80家；面试8场以上；offer或明确面试机会</td></tr>
+            <tr><td><strong>大四下/研三</strong></td><td>①春招补录（3-5月）；②谈薪与offer选择（见谈薪实战）；③办理三方协议/政审/档案等入坑流程；④善始善终完成毕业论文/实习答辩</td><td>正式offer；三方签订；顺利毕业</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info" style="margin-top:10px"><strong>节奏提醒：</strong>具体时间点（国考约11月、省考约次年3-4月、选调约10-12月、秋招提前批约6-7月）各校各行业每年略有不同，<strong>请以你所在学校就业指导中心、报考单位官网的当季官方通知为准</strong>，并把这些节点录入本页上方的投递追踪表。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>🔍 行业「摸底」四步法（选方向前先做，别拍脑袋）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">用2个晚上，用这套方法把"我不确定做什么"变成"我有具体方向+证据"。</p>
+        <ol>
+          <li><strong>列清单：</strong>写下你比较接受/有点兴趣的3-5个方向（岗位或行业），不评价先写完。</li>
+          <li><strong>找真实样本：</strong>去牛客、Boss直聘、知乎、各校就业网，搜每个方向的<strong>真实JD</strong>和<strong>某岗位的一天</strong>，各看3-5条，记录"每天到底做什么、要求什么能力"。</li>
+          <li><strong>对能力：</strong>把每条的硬性要求拆成清单，对照自己的专业/经历/证书，逐项标"已有 / 可短补 / 需长期积累"。</li>
+          <li><strong>做个小验证：</strong>选"可短补"最高的那个，用1-2周做一个<strong>最小产物</strong>（如：做1条运营分析、1份行业报告、1页作品集、答3道面试题），用真实结果检验兴趣与能力是否匹配。</li>
+        </ol>
+        <div class="callout callout-ok" style="margin-top:10px"><strong>产出建议：</strong>把四步的结果填进<a href="#view-career">上方方向卡</a>的"目标单位/差异化要求"，方向就具体落地了，简历也就有了骨血。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>💰 谈薪实战：别只比月薪，要看「总包」</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">offer到手后的谈薪/选择，帮你多算清每笔钱的真实价值。</p>
+        <ul>
+          <li><strong>算总包（Total Package）：</strong>月薪×12~15薪 + 年终奖 + 补贴（餐补/房补/交通/补贴）+ 落户/公积金缴纳基数与比例 + 福利（体检/团建/带薪假）。<strong>两家比，别只比"税前月薪"。</strong></li>
+          <li><strong>公积金很值钱：</strong>不同公司缴纳基数和比例差距很大，把它折进"到手收益"里算，往往影响几千元/年。</li>
+          <li><strong>开口时机：</strong>谈薪在<strong>确定录用、HR主动问期望</strong>时谈；先了解该岗位/城市市场区间（可在牛客、脉脉、各校就业报告查），报一个"区间"而非死价。</li>
+          <li><strong>少说个人困难：</strong>不要用"我房租高/要养家"来谈薪，用"行业行情 + 我的匹配度与产出"谈，更专业。</li>
+          <li><strong>留余地：</strong>拿到offer后常有1-2轮微调空间；若明显低于行情，礼貌给出依据再争取；谈不动可谈<strong>入职时间、补贴、岗位</strong>等次优条件。</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-top:10px"><strong>防踩坑：</strong>签约前务必看清合同里的试用期时长、薪资构成、违约金条款；警惕"培训贷""收押金""先交钱入职"——正规单位不会向求职者收费。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>📡 求职渠道清单（叠加用，别只用一个App）</h3>
+        <div class="grid grid-3">
+          <div><h4>官方 &amp; 校园</h4><ul style="font-size:12.5px;line-height:1.85"><li>学校就业指导中心官网/公众号</li><li>校内宣讲会、双选会</li><li>教育部/人社部专项招聘</li><li>公务员/选调等官方报名系统</li></ul></div>
+          <div><h4>实习 &amp; 校招 App</h4><ul style="font-size:12.5px;line-height:1.85"><li>牛客（笔试/面经/实习）</li><li>Boss直聘、智联、前程无忧(51job)、应届生求职网</li><li>企业官网/官方招聘公众号</li></ul></div>
+          <div><h4>人脉 &amp; 内推</h4><ul style="font-size:12.5px;line-height:1.85"><li>学长学姐、导师、院系就业老师</li><li>实习转正、校友内推</li><li>领英(LinkedIn)、脉脉、职场社群</li></ul></div>
+        </div>
+        <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。</div>
+      </div>
+    </section>
+
+    <!-- 论文写作 -->
+    <section class="view" id="view-paper">
+<div class="section-intro">论文与写作不必一次求成。把选题、框架、素材一步步收好，落笔会顺畅很多。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>论文写作</h1>
+        <p>从读到写 · 大学论文全流程 · 学业论文专项</p>
+      </div>
+      <div class="callout callout-info"><strong>论文是什么：</strong>大学论文不是高中议论文。它是基于文献/数据的<strong>学术论证</strong>，要求有明确论点+严谨论证+规范引用。学业论文还要结合法条、案例、学说。本科四年你会写：课程论文、学年论文、毕业论文，每种字数2000-10000+不等。</div>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>🎓 学术诚信提醒：</strong>请独立完成，<b>严禁抄袭、严禁代写、严禁伪造数据</b>。学术不端一经查实，轻则处分、重则取消学位甚至开除，无论找到几年级的"枪手"最后都要自己承担后果。本板块只提供方法与模板帮你写好，一切成果都应由你亲手完成。</div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>论文类型与字数</h3>
+          <table>
+            <thead><tr><th>类型</th><th>字数</th><th>何时写</th></tr></thead>
+            <tbody>
+              <tr><td>课程论文</td><td>2000-3000</td><td>每学期末</td></tr>
+              <tr><td>读书报告</td><td>1500-2500</td><td>专业课作业</td></tr>
+              <tr><td>学年论文</td><td>3000-5000</td><td>大二大三</td></tr>
+              <tr><td>毕业论文</td><td>8000-12000</td><td>大四下</td></tr>
+              <tr><td>期刊投稿</td><td>8000+</td><td>有志深造时</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>写作七步法</h3>
+          <ul>
+            <li><strong>1.选题：</strong>小切口深挖掘，"论X中的Y问题"</li>
+            <li><strong>2.查文献：</strong>知网/万方/CNKI，先读10篇综述</li>
+            <li><strong>3.列大纲：</strong>引言-问题-分析-结论-建议</li>
+            <li><strong>4.写初稿：</strong>一气呵成，不纠结措辞</li>
+            <li><strong>5.改二稿：</strong>补论据、修逻辑、删废话</li>
+            <li><strong>6.查重：</strong>知网/维普，本科要求&lt;30%</li>
+            <li><strong>7.规范引用：</strong>GB/T 7714或学业常用蓝皮书格式</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>学业论文特点</h3>
+          <ul>
+            <li><strong>论点：</strong>对某法律问题有独立见解</li>
+            <li><strong>论据：</strong>法条+判例+学说+比较法</li>
+            <li><strong>方法：</strong>规范分析/案例分析/实证研究</li>
+            <li><strong>禁忌：</strong>纯堆法条、无自己的分析、抄拼接</li>
+            <li><strong>选题：</strong>别选"论正当防卫"这种大题，选"正当防卫中'正在进行'的认定"这种小题</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+          <h3>权威资源入口</h3>
+          <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">最大中文学术库，学校IP免费下载</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">期刊/学位论文/会议</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://cn.bing.com/search?q=Google%20Scholar%20%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE%E6%A3%80%E7%B4%A2" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Google Scholar</div><div class="desc">外文文献检索 · 一键搜索直达</div></div><div class="arrow">↗</div></a>
+        </div>
+      <div style="margin-top:16px"></div>
+      <div class="card">
+          <h3>论文写作避坑</h3>
+          <div class="callout callout-warn"><strong>绝对不做：</strong>代写论文（开除学籍+撤销学位）、大面积抄袭、伪造数据/案例、AI生成整篇提交。</div>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>AI 红线：</strong>用 AI 生成全文直接提交存在学术不端风险；各校对 AI 内容的检测规则不一样，务必先弄清本校规定再谨慎使用。AI 只能辅助查文献、梳理想法、润色语言，不能代写观点与论证。</div>
+          <ul>
+            <li>AI可辅助：查文献、梳理想法、润色语言</li>
+            <li>AI不可代：核心论点、论证逻辑、原创观点</li>
+            <li>查重前自查：用PaperPass或学校系统预查</li>
+            <li>引用规范：直接引加引号注页码，间接引注来源</li>
+          </ul>
+        </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>论文写作时间线（倒排期，不赶工）</h3>
+          <table>
+            <thead><tr><th>节点</th><th>做什么</th><th>产出</th></tr></thead>
+            <tbody>
+              <tr><td>截止前8周</td><td>选题+查文献20篇，定大纲</td><td>选题说明+大纲</td></tr>
+              <tr><td>截止前6周</td><td>写引言+文献综述</td><td>初稿前1/3</td></tr>
+              <tr><td>截止前4周</td><td>完成主体论证</td><td>初稿2/3</td></tr>
+              <tr><td>截止前2周</td><td>补论据+改逻辑+查重降重</td><td>二稿</td></tr>
+              <tr><td>截止前1周</td><td>格式排版+引用核对+通读</td><td>终稿</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px">核心技巧：先写"最会写的部分"建立信心，卡住就跳；初稿允许烂——烂初稿好过没初稿。</div>
+        </div>
+        <div class="card">
+          <h3>文献阅读三步法（1篇顶10篇）</h3>
+          <ol style="font-size:13px;line-height:1.9">
+            <li><strong>读摘要+结论：</strong>3分钟判断这篇值不值得读（是否相关/结论是否可靠）</li>
+            <li><strong>读框架：</strong>看标题层级和图表，抓住论证主线，跳过无关细节</li>
+            <li><strong>精读可引用处：</strong>把要用的观点、数据、原话摘进笔记，标好出处页码</li>
+          </ol>
+          <div class="callout callout-info" style="margin-top:8px">文献笔记格式：作者+年份 → 核心观点（1句话）→ 论证方式 → 我能引用在哪 → 待查证点。攒10篇就能搭起文献综述的骨架。</div>
+        </div>
+      </div>
+            <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>从0到1写出一篇好论文 · 每周行动清单</h3>
+        <div class="grid grid-2">
+          <div class="essay-block">
+            <h4>选题五问（先回答再动笔）</h4>
+            <ol class="essay-list">
+              <li>这个题目3句话能讲清楚吗？（讲不清=太大）</li>
+              <li>我手里有什么材料/数据/案例支撑它？</li>
+              <li>导师或课程老师会感兴趣吗？</li>
+              <li>文献库里能找到10篇以上相关文献吗？</li>
+              <li>结论有"反常识"的余地吗？（有，才有写头）</li>
+            </ol>
+          </div>
+          <div class="essay-block">
+            <h4>每周节奏（按倒排期执行）</h4>
+            <ol class="essay-list">
+              <li><strong>W1 ·</strong> 选题+开题说明（300字）+文献清单10篇</li>
+              <li><strong>W2 ·</strong> 读文献做笔记，画出"别人研究到什么程度"地图</li>
+              <li><strong>W3 ·</strong> 搭大纲（引言/文献综述/主体/结论四段式）</li>
+              <li><strong>W4-5 ·</strong> 每天写500字初稿，卡住就跳着写</li>
+              <li><strong>W6 ·</strong> 改逻辑+补论据，删掉所有"正确的废话"</li>
+              <li><strong>W7 ·</strong> 查重降重+格式引用核对+找同学互读挑错</li>
+            </ol>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>给导师的第一封邮件模板：</strong>"老师您好，我是XX班XXX。我对XX问题很感兴趣，目前看了X篇文献，初步想法是……想请您指点方向是否可行。这是我的开题提纲（附上）。谢谢老师。"——附上提纲的邮件回复率，远高于空口提问。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📄 四段式正文结构模板（照着填就不空、不老生常谈）</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">论文不是"随便写"，每一段都有任务。写之前先把下面每段"要打满的分"列出来，动笔就不再卡壳。</p>
+        <div class="grid grid-2">
+          <div style="margin-bottom:8px">
+            <h4 style="color:var(--primary)">① 引言（150-300字，占5%-10%）</h4>
+            <ul style="font-size:13px;line-height:1.85;color:var(--muted)">
+              <li><strong>任务：</strong>背景→前人没解决/没做好→你的切入点→本文要论证什么</li>
+              <li><strong>示例句：</strong>"近年来X成为学界热点，但既有研究多集中于A，对B鲜有关注。本文拟从C角度切入，论证X应当如何……"</li>
+              <li><strong>禁忌：</strong>不要从"随着社会的发展"这类废话开头，第一句就要点出矛盾或问题</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:8px">
+            <h4 style="color:var(--teal)">② 文献综述（不是罗列，是"分门别类"）</h4>
+            <ul style="font-size:13px;line-height:1.85;color:var(--muted)">
+              <li><strong>任务：</strong>按"主题/流派"归类综述，而不是按作者挨个念</li>
+              <li><strong>示例句：</strong>"学界对X的讨论可大致分为三类：A派强调……，B派关注……，但对于C仍有争议。"</li>
+              <li><strong>落点：</strong>综述的最后一定要落到"前人没解决什么"，这就是你的留白和选题理由</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:8px">
+            <h4 style="color:var(--coral)">③ 主体论证（全文重心，占60%-70%）</h4>
+            <ul style="font-size:13px;line-height:1.85;color:var(--muted)">
+              <li><strong>任务：</strong>把大论点切成 2-3 个分论点，每段=一个论点+论据+小结</li>
+              <li><strong>段落结构：</strong>段首一句亮观点（中心句）→中间摆论据（法条/数据/案例）→段尾一句小结并过渡到下一段</li>
+              <li><strong>示例句：</strong>"从实证角度看，……（数据）。司法实践对此也有印证，……（案例）。因此……"</li>
+              <li><strong>禁忌：</strong>不要整段只有引用没有自己的分析——你的观点才是得分点</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:8px">
+            <h4 style="color:var(--primary)">④ 结论（呼应引言，不引入新观点）</h4>
+            <ul style="font-size:13px;line-height:1.85;color:var(--muted)">
+              <li><strong>任务：</strong>明确回答引言提出的"研究问题"，总结你的主要发现/主张</li>
+              <li><strong>示例句：</strong>"综上，X应……。本文仅讨论了……范畴，未来可从D角度进一步展开。"</li>
+              <li><strong>加分：</strong>诚恳写"本文的局限与未来方向"，比强行拔高显得更成熟</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:4px"><strong>自检清单：</strong>写完把"中心句"全部拎出来单独看一遍，如果连不起来、没有层层推进，说明逻辑断了，重新调结构比改句子更管用。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🛠 查重与降重实操（别等知网揭发你才发现）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>查重流程（先自查再交）</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>初稿写完，先用<b>学校自己的查重系统</b>（很多学校每年给免费次数）或低价平台预查一次</li>
+              <li>对照报告把"标红段落"逐条降重，而不是整体糊弄</li>
+              <li>本科通常要求&lt;30%，部分学校&lt;20%，先弄清本校红线再定目标</li>
+              <li>定稿前再复测一次，确认没有反复出现的高危句段</li>
+            </ul>
+          </div>
+          <div>
+            <h4>6 个真能过查重的降重手法</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>① <b>改语序 + 主被动互换</b>："学界普遍认为" → "在学界，……已成为普遍共识"</li>
+              <li>② <b>拆长句为 2-3 个短句</b>：长而密的句子最容易被整句标红</li>
+              <li>③ <b>近义词替换</b>：但关键法律术语/概念名不能换，换了就错了</li>
+              <li>④ <b>"直接引用"转"转述 + 注出处"</b>：长段原话拆解为观点转述，原话只留关键词并加引号</li>
+              <li>⑤ <b>删冗余连接词与"口水"</b>："可以看到""众所周知"这类词直接删</li>
+              <li>⑥ <b>调整段落内结构</b>：把引文打散、改换例证顺序，而不是整段复制</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>引用规范（红线）：</strong>直接引用他人的原话，必须加引号 + 标注页码；间接引用（转述观点）也必须注明来源。规范格式示例（GB/T 7714）：<span style="font-family:monospace">张三，《X问题研究》，北京大学出版社2024年版，第25页。</span>宁愿多注，不要漏注。</div>
+      </div>
+    </section>
+
+    <!-- 搞钱启蒙 -->
+    <section class="view" id="view-earn">
+<div class="section-intro">副业信息仅供参考，请以官方平台与学校政策为准。先看风险，再谈回报。精力和学业永远优先。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="18"></line></svg>搞钱启蒙</h1>
+        <p>适合学生的合法赚钱途径 · 网购平台省钱心法</p>
+      </div>
+      <div class="callout callout-warn"><strong>红线：</strong>不刷单、不代考、不卖个人信息、不碰校园贷、不卖盗版课（有人因卖盗版赚2元被索赔5万）。所有收入合法合规，学生阶段年收入低于12万无需汇算清缴。</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>按上手难度排序的路径（按推荐度排序）</h3>
+          <table>
+            <thead><tr><th>途径</th><th>投入</th><th>月收参考</th><th>何时启动</th></tr></thead>
+            <tbody>
+              <tr><td><strong>考证笔记售卖</strong></td><td>整理时间</td><td>500-2500</td><td>大三考证后</td></tr>
+              <tr><td><strong>法律内容创作</strong></td><td>持续输出</td><td>0-3000+</td><td>大二有积累后</td></tr>
+              <tr><td><strong>文书代写</strong></td><td>技能</td><td>50-200/单</td><td>大二学业有基础</td></tr>
+              <tr><td><strong>线上问卷/标注</strong></td><td>碎片时间</td><td>300-800</td><td>现在就能做</td></tr>
+              <tr><td><strong>家教</strong></td><td>时间</td><td>80-150/h</td><td>大一寒假</td></tr>
+              <tr><td><strong>校内勤工</strong></td><td>时间</td><td>500-1500</td><td>大一即可申请</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>知识付费起步路径</h3>
+          <ul>
+            <li><strong>第1步：</strong>选定细分领域（如"大学新生避坑指南"）</li>
+            <li><strong>第2步：</strong>把你的真实经验整理成PDF/思维导图</li>
+            <li><strong>第3步：</strong>闲鱼/小红书发布，定价9.9-29.9</li>
+            <li><strong>第4步：</strong>朋友圈/qq群精准触达目标用户</li>
+            <li><strong>第5步：</strong>积累口碑后开知识星球/小报童持续收费</li>
+          </ul>
+          <div class="callout callout-ok"><strong>可参考的经验：</strong>把整理好的"考研专业课笔记"等优质资料在线分享、或在二手平台出售学习资料，是把所学转化为价值的一条通路；具体收益因人而异，仅作思路参考、不构成收益承诺。真正的关键，是"精准解决一个具体问题"。</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>网购省钱心法（高性价比版）</h3>
+        <div class="grid grid-3">
+          <div>
+            <h4>识别真假性价比</h4>
+            <ul>
+              <li>看追评：好评可刷，追评难刷</li>
+              <li>看店铺评分：低于4.6慎买</li>
+              <li>看销量曲线：突然爆增可能是刷单</li>
+              <li>比价：装慢慢买/喵喵折插件看历史价</li>
+            </ul>
+          </div>
+          <div>
+            <h4>买什么值得</h4>
+            <ul>
+              <li>日用品：纸巾/洗衣液/垃圾袋（确实便宜）</li>
+              <li>基础款衣物：纯色T恤/袜子/内衣</li>
+              <li>学习用品：笔/本/文件夹</li>
+              <li>小家电：数据线/收纳盒（认准品牌店）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>什么别在网购平台买</h4>
+            <ul>
+              <li>护肤品/化妆品：假货重灾区</li>
+              <li>电子产品大件：售后无保障</li>
+              <li>食品散装：质量参差</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>零成本赚钱起步实操（学生/新手版）</h3>
+        <div class="grid grid-3">
+          <div>
+            <h4>小红书起步5步</h4>
+            <ol style="font-size:12px;line-height:1.8">
+              <li>选一个你真实擅长的领域（学习/护肤/做饭/考试）</li>
+              <li>先发10篇"干货合集"（清单型内容最好做）</li>
+              <li>标题用"数字+人群+结果"（如"考研人必存5个免费网站"）</li>
+              <li>坚持周更3篇，把评论区问题变成下一篇选题</li>
+              <li>粉丝500后开蒲公英接置换，1000后接广告</li>
+            </ol>
+          </div>
+          <div>
+            <h4>闲鱼变现3步</h4>
+            <ol style="font-size:12px;line-height:1.8">
+              <li>清闲置：教材/数码/衣物，拍照+一句话卖点</li>
+              <li>做信息差：9.9元的小神器挂15.9包邮</li>
+              <li>做服务：代做PPT/代排版/陪练口语，定价9.9-49</li>
+            </ol>
+          </div>
+          <div>
+            <h4>技能接单渠道</h4>
+            <ul style="font-size:12px;line-height:1.8">
+              <li>PPT：稻壳儿/淘宝店铺接单</li>
+              <li>写作：公众号投稿/知乎回答带货</li>
+              <li>翻译/设计：猪八戒/一品威客/Fiverr</li>
+              <li>家教：本地家教群/一对一平台</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:10px"><strong>铁律：</strong>一切先交钱的都是坑（押金/培训费/材料费）；<strong>平台外交易一律拒绝</strong>；警惕"接单先垫付材料费""克隆官方群/客服""诱导登录钓鱼页"三类常见骗局；学生小额收入通常免税，但超出部分如实申报。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>⚠️ <span data-qx-year>2026</span> 合规与真实行情 · 别踩线、别被坑</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>家教要懂"双减"边界</h4>
+            <ul style="font-size:13px;line-height:1.9;color:var(--muted)">
+              <li>个人名义给<strong>义务教育阶段</strong>学生做学科类辅导并形成稳定盈利，有合规风险；更稳妥是<strong>个人答疑、经验分享、项目式辅导</strong></li>
+              <li>家教通常与平台仅是撮合关系、非劳动关系，薪酬/维权靠自己留聊天记录与报价</li>
+              <li>网上"义务阶段学科类一对一"低价接单广告，可能涉及变相办学，慎接</li>
+              <li><strong>凡是要求先缴纳保证金、信息费、中介费、培训费的家教/兼职，一律属于骗局，请不要缴费。</strong>正规家教不向求职者收押金。</li>
+            </ul>
+          </div>
+          <div>
+            <h4>勤工/助教明码行情</h4>
+            <ul style="font-size:13px;line-height:1.9;color:var(--muted)">
+              <li>校内勤工：教育部标准每小时<strong>不低于12元</strong>，部分高校更高（如成都大学本专科 23元/小时）</li>
+              <li>课程助教：各科不同，常见本科<strong>每月上限约800元</strong>、研究生约1000元（看学院通知）</li>
+              <li>优先走<strong>学校学生资助管理中心/学院</strong>发布的正规岗位，别信校外"高薪代理"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:10px"><strong>高危勿碰：</strong>代写论文/作业（开除+撤销学位）、AI批量生成虚假"种草笔记"（2026年已有全国首例宣判）、搬运发帖"代发任务"、提供身份证件原件与银行卡密码。赚钱再快，碰了学术诚信和法律红线就全盘归零。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎓 学生阶段"高上限"的两条主线（别只看时薪）</h3>
+        <ul style="font-size:13px;line-height:1.9;color:var(--muted)">
+          <li><strong>竞赛奖金：</strong>2026年"挑战杯"揭榜挂帅擂台赛，擂主团队<strong>税后不低于10万元</strong>、特等奖超2万——站在专业高地上变现，比刷单强太多（详见「竞赛科研」）。</li>
+          <li><strong>知识沉淀复利：</strong>把考研/考证/专业课笔记整理成<strong>原创资料</strong>出售，一劳多得。<strong>禁止搬运他人付费教材、课程资料，谨防著作权侵权；只可发布本人原创整理的笔记与内容。</strong></li>
+          <li><strong>技能接单升级：</strong>PPT美化、视频剪辑、翻译、编程demo，单价从几十到上千不等，靠作品集涨客单，比"问卷刷单"可持续。</li>
+        </ul>
+        <div class="callout callout-ok" style="margin-top:10px"><strong>本台立场：</strong>真正能"搞钱"且不亏人情不踩线的，是<strong>把专业/技能/经验变现</strong>，而不是卖时间或卖身份。副业首选能给你简历加分的——钱和成长一起赚。</div>
+      </div>
+    </section>
+
+    <!-- 个人提升 -->
+    <section class="view" id="view-growth">
+<div class="section-intro">技能与认知的提升，比任何速成都结实。把每一次练习、每一份反思都收进这里，日积月累看得见。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83.83-2.5 2.5-2.5 4a2.5 2.5 0 1 0 5 0c0-1.5-1.67-3.17-2.5-4z"></path><path d="M12 2v6m0 0L8 4m4 4l4-4"></path></svg>个人提升</h1>
+        <p>执行力 · 作息矫正 · 技能成长，平心笃行</p>
+      </div>
+      <div class="callout callout-warn">
+        <strong>写给所有"想太多做得少"的人：</strong>"查而不做、计划成瘾"的根源，常常是<strong>拿"准备"缓解焦虑</strong>。AI一查就有答案，容易让大脑误以为"查到了=做到了"。解法不是"更努力地查"，而是把"查"和"做"绑在一起——每查到一个方法，就立刻配一个5分钟的小动作，让输入变成输出。
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>执行力提升训练</h3>
+          <h4>成长环境回顾</h4>
+          <ul>
+            <li>能坚持到底，靠的常常不是意志力，而是环境。把"学习场"和"休息场"物理分开：白天去图书馆/自习室，回宿舍只休息，切换环境就是切换状态。</li>
+            <li>高中时你能整段自律，不是大学"毁了你"，只是环境变了、没人监督——重建一套自己的系统即可，能力并没有消失。</li>
+          </ul>
+          <h4>最小可执行动作</h4>
+          <p>大任务先写下"最终交付物"，再倒推拆成能在25分钟内完成的小步（如何拆，见「高效方法」）。拆得越小，启动越容易。</p>
+          <h4>让进展看得见</h4>
+          <p>每完成一步，就在本子上打一个勾或记一笔。大脑需要看见"我做到了"，而不是反复盯着"还没做完"。</p>
+        </div>
+        <div class="card">
+          <h3>作息矫正（21天）</h3>
+          <p>晚睡晚起看似顽固，其实矫正原理很简单：生物钟靠<strong>起床时间</strong>固定，不是靠早睡。</p>
+          <table>
+            <thead><tr><th>阶段</th><th>起床时间</th><th>关键动作</th></tr></thead>
+            <tbody>
+              <tr><td>第1-7天</td><td>10:00</td><td>闹钟响立刻开灯下床，不许赖</td></tr>
+              <tr><td>第8-14天</td><td>8:00</td><td>起床后晒太阳10分钟校准生物钟</td></tr>
+              <tr><td>第15-21天</td><td>7:00</td><td>睡前1小时不碰手机，改看纸质书</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-ok">环境是习惯的隐形推手：把"学习场"和"休息场"分开，去图书馆/自习室学习，回宿舍只休息。</div>
+        </div>
+        <div class="card">
+          <h3>管控分心 · 专注力不是天赋</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>手机放远：</strong>学习时把手机放另一个房间或开专注模式（配合「专注」板块番茄钟）——看不见，才用不着强撑</li>
+            <li><strong>关通知：</strong>关闭非必要App的通知，只在固定时间集中看消息</li>
+            <li><strong>挑环境：</strong>人越静越容易深入，优先选自习室/图书馆</li>
+            <li><strong>记杂念：</strong>专注时脑中浮现的杂事，先写进「灵感」板块的灵感本，做完手头任务再处理——中断是专注的第一大敌</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>意志力是有限资源 · 靠系统不靠硬扛</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>别滥用意志力：</strong>整天做小选择（穿什么、吃什么、刷不刷）会不断消耗你，把容易的事固定成习惯，把意志力留给重要决定</li>
+            <li><strong>环境设计优先：</strong>想少刷手机就别让它在手边，想多喝水就把杯子放桌上——改变环境往往比改变自己更省力</li>
+            <li><strong>让难事变近、懒事变远：</strong>把书摊开放在眼前、把游戏放进更难打开的文件夹，用距离调节行为</li>
+            <li><strong>绑定"查"与"做"：</strong>每查完一个方法，立刻配一个5分钟的小动作，让输入迅速变成输出</li>
+          </ul>
+          <div class="callout callout-ok" style="margin-top:8px">记住：坚持不下去不是人品问题，是系统没搭好。搭好系统的人，看起来都比别人"自律"。</div>
+        </div>
+        <div class="card">
+          <h3>状态管理 · 没劲的时候温柔推进</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>先迈一小步：</strong>状态往往不是等来的，是先做出来的——告诉自己"只做5分钟"，做起来就续上了</li>
+            <li><strong>生理先行：</strong>困了/闷了先起身走走、喝水、晒会儿太阳，身体先动，头脑才会跟上</li>
+            <li><strong>分清"累"与"懒"：</strong>真累了就去休息、好好睡一觉；频繁把"懒"当成"累"，既没真休息也没推进</li>
+            <li><strong>允许低产日：</strong>状态平平也正常，只要这天保留了"最小进度"（比如背10个词、翻两页书），就不算白过</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>把坚持变成复利 · 微习惯</h3>
+        <p>很多人把坚持想成"每天猛干三小时"，其实更可持续的做法恰恰相反：</p>
+        <div class="grid grid-2">
+          <div>
+            <h4>把习惯缩到"小到不可能失败"</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>目标从"读30页书"降到"读1页"，从"跑5公里"降到"穿上鞋出门"</li>
+              <li>小到几乎不会放弃，你才能真正做到"几乎每天都做"</li>
+              <li>一旦启动，惯性往往会让你多做一点——但今天没多做也没关系</li>
+            </ul>
+          </div>
+          <div>
+            <h4>让记录与锚点帮衬</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><strong>记录可见：</strong>用「习惯打卡」每天打个勾，连续记录本身就是最好的动力</li>
+              <li><strong>挂靠锚点：</strong>把新习惯放在已有习惯之后，如"每晚洗漱后翻一页书"</li>
+              <li>长期做到"每天都做一点"，和"偶尔猛一下"拉开的差距，远比想象中大</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🛠 大学四年 · 越早越受益的技能清单</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>硬技能（能直接兑换）</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><b>Office三件套</b>：PPT排版、Excel函数(VLOOKUP/透视表)、Word长文档排版——简历加分项</li>
+              <li><b>信息检索</b>：善用学术搜索引擎、知网、Google Scholar找资料，别只会百度</li>
+              <li><b>一门可接单技能</b>：剪辑/设计/外语/编程/文案，任一都能暑期或课余兼职</li>
+              <li><b>数据素养</b>：看懂图表、用Excel做基础分析，各行业通用</li>
+            </ul>
+          </div>
+          <div>
+            <h4>软技能（走得远）</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><b>公众表达</b>：班会/小组汇报敢开口，练几次就不怕了</li>
+              <li><b>时间管理</b>：日历+待办+番茄钟，大学就开始沉淀</li>
+              <li><b>财商</b>：记账、储蓄、识别骗局（见「理财管理」板块）</li>
+              <li><b>自我驱动</b>：没人催你时也能往前走，这是拉开差距的长期优势</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:8px">建议：每学期刻意练 1 项硬技能 和 1 项软技能，四年下来会积累出差异化的优势。本台「高效方法」「习惯打卡」「专注」板块可配合着用。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🧩 把技能清单变成行动 · 每周4小时执行法</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">清单只是"知"，行动才是"到"。别一次学一堆，按下面这套每周固定 4 小时，一个学期就能尝到甜头。</p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">步骤</th><th style="padding:8px;border:1px solid var(--border)">怎么做</th><th style="padding:8px;border:1px solid var(--border)">验收标准</th></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>① 只选 2 项</b></td><td style="padding:8px;border:1px solid var(--border)">这学期就 1 个硬技能（如 Excel/剪辑/外语）+ 1 个软技能（如公开表达），其他先靠边</td><td style="padding:8px;border:1px solid var(--border)">写进本学期目标，别超过2个</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>② 定"可验收"目标</b></td><td style="padding:8px;border:1px solid var(--border)">不用"学好Excel"，用"能做出带透视表+VLOOKUP的报表"这种看得见结果的描述</td><td style="padding:8px;border:1px solid var(--border)">期末能拿一个"作品"出来</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>③ 拆成每周 4 小时</b></td><td style="padding:8px;border:1px solid var(--border)">每周 4 × 1小时固定时段（建议同一到周日选4天，用「专注」番茄钟执行），而不是靠状态"猛练一天"</td><td style="padding:8px;border:1px solid var(--border)">每周至少完成3次</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--border)"><b>④ 周日复盘 10 分钟</b></td><td style="padding:8px;border:1px solid var(--border)">问三句：这周练了什么？卡在哪？下周怎么调？（用「周复盘」模板记下来）</td><td style="padding:8px;border:1px solid var(--border)">周复盘写下来，不空想</td></tr>
+        </tbody></table>
+        <div class="grid grid-2" style="margin-top:12px">
+          <div>
+            <h4 style="color:var(--primary)">四年时间线 · 越早学越划算</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><b>大一</b>：Office三件套 + 信息检索（最万能，专业没定也不亏）</li>
+              <li><b>大二</b>：数据素养/一门外语细学 + 作报告不怯场</li>
+              <li><b>大三</b>：一门"可接单"技能（剪辑/设计/编程/文案）链向实习</li>
+              <li><b>大四</b>：把 2-3 项技能打包成"简历里的一句话优势"</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:var(--coral)">别学生踩的坑</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>❌ 收藏了10套教程一个没看完</li>
+              <li>❌ 同时报5个方向，每个只学3天就换</li>
+              <li>❌ 只"看会"不动手——技能必须上手做出来才算会</li>
+              <li>✅ 每学一个新技巧就做一个"小成品"，哪怕很糙</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:8px">关键不是"学得多"，而是"学一项、真的用出来一项"。"会"的标准很简单：能拿出手给别人看。练够这一条，四年后的简历就赢了大多数人。</div>
+      </div>
+    </section>
+
+    <!-- 时间管理方法 -->
+    <section class="view" id="view-tools">
+<div class="section-intro">拿来即用的效率方法，省去你重复摸索的时间。</div><div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>高效方法</h1>
+        <p>14 大高效工作法 · 选 1-2 个先练起来，专治"效率低、总拖延"</p>
+      </div>
+      <div class="callout callout-info">别一次贪多，<strong>本周只挑 1 种方法认真用</strong>，用出感觉了再换下一种。方法就在下方，配合本台「番茄专注」「每日四象限」「计划表」等板块即可落地。</div>
+      <div class="grid grid-2">
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">1. 番茄工作法（25+5）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>① 写下这一番茄要做什么 → ② 设25分钟倒计时（用右侧/「心流计时」板块的番茄钟）→ ③ 25分钟内只做这一件事，手机静音 → ④ 响了休息5分钟（站起来/喝水/远眺，不刷手机）→ ⑤ 4个番茄后休息15-30分钟。</p>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键：</strong>番茄内被打断，把念头写纸上继续；番茄断了不懊恼，下一个继续。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--primary)">
+          <h3 style="color:var(--primary)">2. 艾森豪威尔四象限</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>每天早上把任务填进4格（本台"每日四象限"已内置）：① 重要紧急→立即做 ② 重要不紧急→排进日程（保研/背单词/运动，这是拉开差距的关键）③ 不重要紧急→委托/批量做 ④ 不重要不紧急→尽量删。</p>
+          <div class="callout callout-info" style="margin-top:8px"><strong>核心：</strong>把最多时间花在"重要不紧急"上，而不是被紧急的事牵着走。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">3. 两分钟法则</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>任何一件事，如果2分钟内能做完，立刻做，不要写进待办清单。比如：回一条消息、把书放回书架、扔个垃圾、确认一个通知。</p>
+          <div class="callout callout-ok" style="margin-top:8px"><strong>效果：</strong>瞬间清掉一堆小事，大脑不再被"待办山"压着。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">4. 吃青蛙（先做最难的事）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>每天早上第一件事，先做你最不想做但最重要的事（=青蛙）。比如：先背完25个单词，再刷手机。青蛙吃完了，一天都轻松。</p>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>原理：</strong>意志力在早晨最高，把最难的事放意志力最满的时候做。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--primary)">
+          <h3 style="color:var(--primary)">5. 时间块法（Time Blocking）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>把一天切成固定时间块，每块只做一类事（本台"计划表"的周时间表已内置）。比如：8-10背单词、10-12专业课、14-16听力、16-18运动、19-21复盘。点格子标色就能排。</p>
+          <div class="callout callout-info" style="margin-top:8px"><strong>核心：</strong>不靠"想起来就做"，靠"时间到了就做"，减少决策疲劳。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">6. GTD（把事移出大脑）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>① 把所有待办/灵感/念头写下来（本台"灵感看板"+"任务清单"）→ ② 区分：2分钟内能做完的立刻做；不做的删除；要做的排进日程；等条件的放进"将来也许"。</p>
+          <div class="callout callout-ok" style="margin-top:8px"><strong>效果：</strong>大脑不再用"怕忘了"消耗你，专注力回到眼前的事。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">7. 周复盘（每周一次）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>每周日晚花20分钟，用本台"每日记录"回顾这周：① 做成了什么（给自己点赞）② 没做完什么（为什么）③ 下周最重要3件事是什么。写下来，下周照着排。</p>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键：</strong>不复盘的努力是盲目的，每周20分钟换一周清醒。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--primary)">
+          <h3 style="color:var(--primary)">8. 批处理（同类事一次做完）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>把同类小事攒一起，固定时间一次做完。比如：回消息集中每天12:00和18:00各一次；洗衣服固定周日；取快递固定每天回宿舍顺路。不要一件一件打断了专注。</p>
+          <div class="callout callout-info" style="margin-top:8px"><strong>核心：</strong>切换任务有成本，同类批处理省时间省脑力。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">9. 帕金森定律 · 给任务设死线</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>任务会自己膨胀直到占满所有可用时间。所以：① 给每个任务设一个比预期紧 20% 的截止时间（如 3 天的事 2.5 天完成）② 用番茄钟或定时器倒计时 ③ 到点就停，宁可交"90 分的完成版"也不拖"100 分的完美版"。</p>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键：</strong>拖延的尽头不是时间不够，是"没有死线"。给自己造一个会响的死线。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--primary)">
+          <h3 style="color:var(--primary)">10. 每天三件事（MIT）</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>① 每天只定 3 件"最重要的事"（Most Important Tasks）② 按重要性排序 ③ 上午先做第 1 件，做完再做第 2 件 ④ 其他一切琐事（消息/邮件/杂活）都排在 3 件事之后 ⑤ 3 件全完成，今天就是满分。</p>
+          <div class="callout callout-info" style="margin-top:8px"><strong>核心：</strong>少即是多。3 件完成 &gt; 10 件开了头。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">11. 深度工作 · 90 分钟无打扰</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>① 每天安排 1-2 段 90 分钟"深度工作"（学习/写作/最难任务）② 手机关静音放另一个房间，只留当前任务 ③ 关闭所有消息通知，告诉同事"这段时间勿扰" ④ 用"本应用番茄钟"计时，期间只做一件事 ⑤ 结束后奖励自己。</p>
+          <div class="callout callout-ok" style="margin-top:8px"><strong>效果：</strong>1 小时深度工作 ≈ 3 小时带打扰的浅工作。深度是稀缺品，要主动"抢占"。</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">12. 任务拆解 · 大到啃不动，小到能下口</h3>
+          <p style="font-size:14px"><strong>怎么做：</strong>① 大任务先写"最终交付物"是什么 ② 倒推拆成 5-7 个步骤 ③ 每步再拆成"25 分钟内能完成"的最小动作 ④ 按顺序写进今日任务，做一步勾一步 ⑤ 卡住就拆更小：从"写论文"拆到"打开文档写标题"。</p>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>原理：</strong>拖延的不是任务本身，是"任务太大带来的压迫感"。拆小了，压力就散了。</div>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">13. 拖延急救包 · 5分钟启动</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>5分钟法则：</strong>只承诺"做5分钟"，5分钟后想停就停——但惯性通常会让你继续</li>
+            <li><strong>最小动作：</strong>把"写论文"拆成"打开文档写标题"，把"背单词"拆成"翻开APP"</li>
+            <li><strong>环境预装：</strong>睡前把书桌摆好、文具放好，明早直接开始</li>
+            <li><strong>替代选择：</strong>拖延时允许做"次优但有意义"的事（不想学习就去运动/整理），别滑向刷手机</li>
+            <li><strong>公开承诺：</strong>把目标告诉一个会追问你的人，或发一条打卡动态</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">14. 精力管理 · 什么时候做什么</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>早晨（起床后2-3小时）：</strong>精力巅峰，做最难的事（学习/写作/深度工作）</li>
+            <li><strong>中午：</strong>午休20分钟，别超过30分钟，否则更昏沉</li>
+            <li><strong>下午（14-16点）：</strong>容易困，安排机械性任务（整理/回复/练习）</li>
+            <li><strong>傍晚（17-19点）：</strong>运动黄金期，运动后学习效率回升</li>
+            <li><strong>睡前1小时：</strong>不碰手机，阅读/复盘/准备明天</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 理财管理 -->
+    <section class="view" id="view-finance">
+<div class="section-intro">收支记账、存款规划、省钱方案、副业信息参考。慢慢建立适合大学生自己的金钱管理习惯。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>理财管理</h1>
+        <p>资金配置 · 不亏损优先 · 财富自由测算</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="metric"><div class="label">总资金</div><div class="value" contenteditable="true" style="cursor:text">—</div><div class="sub">备用+可投</div></div>
+        <div class="metric"><div class="label">月生活费</div><div class="value" contenteditable="true" style="cursor:text">—</div><div class="sub">点击填写</div></div>
+        <div class="metric"><div class="label">配置原则</div><div class="value" style="font-size:16px">不亏损</div><div class="sub">优先保本</div></div>
+      </div>
+      <div class="callout callout-warn" style="margin-top:12px;background:linear-gradient(135deg,#FDEDE3,#FBEBDD);border-color:#E8C29A"><strong>⚠️ 风险提示：</strong>本节内容为面向大学生的通用理财知识科普，<b>不构成任何投资建议或收益承诺</b>。市场有风险，任何宣称"保本高收益"的项目都极可能是骗局；请务必警惕刷单、杀猪盘、虚拟币、无资质"理财课"等各类高收益陷阱。投资前请以自己的判断为准。</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>可投资金配置方案</h3>
+          <div class="callout callout-warn"><strong>铁律：</strong>建议先放余额宝等货币基金，熟悉后再按下方方案执行。</div>
+          <table>
+            <thead><tr><th>渠道</th><th>金额</th><th>预期年化</th><th>风险</th><th>用途</th></tr></thead>
+            <tbody>
+              <tr><td>余额宝/零钱通</td><td contenteditable="true" data-key="fin-bal" style="cursor:text;background:var(--bg)" data-placeholder="">--</td><td>1.5-2%</td><td>极低</td><td>随取随用应急</td></tr>
+              <tr><td>银行定期(1年)</td><td contenteditable="true" data-key="fin-bank" style="cursor:text;background:var(--bg)" data-placeholder="">--</td><td>1.5-2%</td><td>极低</td><td>锁定收益</td></tr>
+              <tr><td>同业存单指数基金</td><td contenteditable="true" data-key="fin-cd" style="cursor:text;background:var(--bg)" data-placeholder="">--</td><td>2-2.5%</td><td>低</td><td>比货基略高、仍稳</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px;font-size:12.5px"><strong>低风险≠保本：</strong>同业存单指数基金仍然存在净值波动，极端市场可能短期浮亏，并非"稳赚不赔"。</div>
+          <p style="margin-top:8px"><strong>不碰：</strong>股票/股票基金/虚拟币/任何"保本高收益"——大一阶段你的本金比收益重要100倍。</p>
+        </div>
+        <div class="card">
+          <h3>备用金规划示例 <span style="font-weight:400;font-size:12px;color:var(--hint)">（金额双击即可修改 · 按你的实际情况调整）</span></h3>
+          <table>
+            <thead><tr><th>项目</th><th>预估金额（示例）</th></tr></thead>
+            <tbody>
+              <tr><td>学费 / 大额固定支出</td><td contenteditable="true" data-key="bk-tuition" style="cursor:text;background:var(--bg)">5000</td></tr>
+              <tr><td>房租或住宿相关</td><td contenteditable="true" data-key="bk-rent" style="cursor:text;background:var(--bg)">3000</td></tr>
+              <tr><td>3个月生活费缓冲</td><td contenteditable="true" data-key="bk-living" style="cursor:text;background:var(--bg)">6000</td></tr>
+              <tr><td>应急医疗</td><td contenteditable="true" data-key="bk-medical" style="cursor:text;background:var(--bg)">2000</td></tr>
+              <tr><td>交通 / 通讯</td><td contenteditable="true" data-key="bk-transport" style="cursor:text;background:var(--bg)">1000</td></tr>
+              <tr><td>机动（购物 / 人情）</td><td contenteditable="true" data-key="bk-misc" style="cursor:text;background:var(--bg)">2000</td></tr>
+              <tr><td>合计（示例）</td><td>约 1.9 万</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px">备用金原则：单独存放、只在应急时动用；剩余资金留作意外储备，不动。</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>财富自由测算</h3>
+        <p>按"4%法则"：年支出 × 25 = 财务自由本金。月支出与年支出请按你所在城市实际填写。</p>
+        <div class="callout callout-warn" style="margin-top:8px;font-size:12.5px"><strong>理论测算提示：</strong>"4%法则"源自海外退休规划理论，仅作参考思路，<b>不构成投资建议</b>；未纳入国内通胀、养老与医疗支出，也不含突发大额支出。请勿直接当作理财目标。</div>
+        <table>
+          <thead><tr><th>阶段</th><th>本金</th><th>被动收入(4%)</th><th>状态</th></tr></thead>
+          <tbody>
+            <tr><td>应急自由</td><td>12万</td><td>—</td><td>够1年不工作</td></tr>
+            <tr><td>基础自由</td><td>60万</td><td>2.4万/年</td><td>覆盖基本生存</td></tr>
+            <tr><td>半自由</td><td>150万</td><td>6万/年（示例）</td><td>可做喜欢的事不将就</td></tr>
+            <tr><td>完全自由</td><td>300万</td><td>12万/年</td><td>覆盖北京体面生活</td></tr>
+            <tr><td>从容自由</td><td>500万+</td><td>20万+/年</td><td>买房买车有底气</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px"><strong>路径：</strong>这不是靠理财省出来的，是靠<strong>提升主业收入</strong>赚出来的。理财的作用是守住你已经赚到的。先投资自己（学历+技能+考证），回报率最高。</p>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>每日理财知识</h3>
+        <div id="financeTip" style="background:var(--bg);padding:12px;border-radius:8px;font-size:13px"><strong>区分资产与负债</strong> — 资产=把钱放进你口袋的（基金/收租房/技能）；负债=把钱从口袋拿走的（超出消费能力的车/奢侈品）。多买资产，少买负债。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>我的支出记账本 <span style="font-weight:400;font-size:12px;color:var(--hint)">本地保存 · 即记即存</span></h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">不用记每一分，把常见大类记清楚就够用。本周/本月合计自动算，月底看一下就知道砍哪类最不心疼。</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <input id="expName" placeholder="买了啥（如：奶茶）" style="flex:1;min-width:120px">
+          <select id="expCat" style="flex:0 0 auto;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)">
+            <option>餐饮</option><option>交通</option><option>学习</option><option>数码</option><option>娱乐</option><option>服饰日用</option><option>其他</option>
+          </select>
+          <input id="expAmount" type="number" min="0" step="0.5" placeholder="金额(元)" style="width:96px">
+          <button class="btn btn-primary btn-sm" onclick="addExpense()">记一笔</button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <div class="metric" style="flex:1;min-width:120px"><div class="label">本月合计</div><div class="value" style="color:var(--coral)" id="expMonthTotal">¥0</div><div class="sub" id="expMonthLabel">0 笔</div></div>
+          <div class="metric" style="flex:1;min-width:120px"><div class="label">本周合计</div><div class="value" id="expWeekTotal" style="color:var(--primary)">¥0</div><div class="sub">最近7天</div></div>
+          <div class="metric" style="flex:1;min-width:120px"><div class="label">本月最多</div><div class="value" id="expTopCat" style="color:var(--gold);font-size:20px">--</div><div class="sub" id="expTopCatAmt">--</div></div>
+        </div>
+        <div id="expList" style="font-size:13px"></div>
+        <div style="margin-top:8px;font-size:11px;color:var(--hint)">双击记录可删除；数据自动保存在本地浏览器，换设备需通过系统设置里的导入/导出迁移。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>记账方法 · 先看清钱去哪了</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>三步记账法（不用每天记）</h4>
+            <ul>
+              <li><strong>周记：</strong>每周日5分钟，把本周大额支出（&gt;50元）记进微信记账本/Excel</li>
+              <li><strong>月结：</strong>每月1号看分类汇总，揪出"无意识支出"（奶茶/外卖/凑单）</li>
+              <li><strong>设红线：</strong>娱乐月支出不超生活费20%，超出当月封顶</li>
+            </ul>
+          </div>
+          <div>
+            <h4>理财防骗（守住本金第一）</h4>
+            <ul>
+              <li>任何"保本+高收益（&gt;5%）"=诈骗，收益越高骗局越像</li>
+              <li>不点陌生链接、不扫陌生码、不透露验证码/支付密码</li>
+              <li>校园贷/培训贷一律不碰，缺钱先和家里商量</li>
+              <li>只走银行APP/支付宝官方渠道，不跟"老师"私下转账</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>新手理财路线图（从零到第一笔投资）</h3>
+        <table>
+          <thead><tr><th>阶段</th><th>动作</th><th>目标</th></tr></thead>
+          <tbody>
+            <tr><td>第1个月</td><td>记账+分类复盘，找出"拿铁因子"</td><td>看清钱去哪了</td></tr>
+            <tr><td>第2-3个月</td><td>建立应急金（3-6个月支出），存货币基金</td><td>有钱能扛事</td></tr>
+            <tr><td>第4-6个月</td><td>学基础：了解基金/国债/存款利率，读1本理财入门书</td><td>不踩坑</td></tr>
+            <tr><td>第7-12个月</td><td>小额试水：指数基金定投，金额=每月可投的10%以内</td><td>用真钱学感觉</td></tr>
+            <tr><td>1年后</td><td>复盘收益与心态，决定加仓/维持/调整</td><td>形成自己的纪律</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>三条纪律：</strong>① 只用闲钱，不借钱不杠杆；② 年化承诺超5%一律怀疑；③ 涨跌不动摇，定投不预测。</div>
+      </div>
+
+      <div class="callout callout-info" style="margin-top:8px">学生/职场初期核心任务不是"钱生钱"，是"人升值"。把时间和本金投到学历、考证、技能上，才是回报率最高的"理财"。</div>
+    </section>
+
+    <!-- 省钱技巧 -->
+    <section class="view" id="view-save">
+<div class="section-intro">省钱不是抠门，是更清醒地知道钱花在了哪里。把方法一条条收好，慢慢变成习惯。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>省钱技巧</h1>
+        <p>学生党月省500+ · 不降低生活质量 · 12个实用渠道</p>
+      </div>
+      <div class="callout callout-info"><strong>核心原则：</strong>省钱不是抠门，是花得更聪明。每月省500元×12月=6000元，4年下来24000元，够考6个证+1台笔记本+1次远途旅行。</div>
+      
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>1. 学生认证 · 全网打折</h3>
+          <ul>
+            <li><strong>支付宝学生认证</strong>：搜索"学生认证"，认证后享专享价</li>
+            <li><strong>京东学生价</strong>：京东APP-我的-学生认证，部分商品9折</li>
+            <li><strong>淘宝学生购</strong>：搜"学生价"，部分数码/文具/服饰5-9折</li>
+            <li><strong>拼多多校园</strong>：搜索"学生专享"，部分品类直降</li>
+            <li><strong>当当读书</strong>：学生认证后图书5-7折</li>
+          </ul>
+          <div class="callout callout-warn" style="margin-top:8px">年省约500-1500元</div>
+        </div>
+        <div class="card">
+          <h3>2. 数码软件 · 学生版免费</h3>
+          <ul>
+            <li><strong>Office 365教育版</strong>：用学校邮箱申请，免费Word/Excel/PPT+1TB OneDrive</li>
+            <li><strong>JetBrains全家桶</strong>：学生免费（PyCharm/IntelliJ等）</li>
+            <li><strong>GitHub学生包</strong>：含50+服务免费（Copilot/Copilot Pro等）<span style="font-size:12px;color:var(--hint)">（GitHub Student Pack 权益与名额随时可能调整，以官方当前页面为准，仅供参考）</span></li>
+            <li><strong>Notion教育版</strong>：免费Personal Pro</li>
+            <li><strong>Adobe教育版</strong>：6折（学生+教师）</li>
+            <li><strong>AutoDesk</strong>：学生免费3年（AutoCAD/Maya等）</li>
+          </ul>
+          <div class="callout callout-warn" style="margin-top:8px">年省约2000+元</div>
+        </div>
+        <div class="card">
+          <h3>3. 学习资源 · 全免费</h3>
+          <ul>
+            <li><strong>中国大学MOOC</strong>：<a href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">icourse163.org ↗</a> 全国名校公开课</li>
+            <li><strong>B站学习区</strong>：高数/英语/编程全套免费</li>
+            <li><strong>知乎盐选文章</strong>：用学校邮箱注册享免费</li>
+            <li><strong>知网/万方</strong>：学校IP下载免费</li>
+            <li><strong>Google Scholar</strong>：免费查外文文献</li>
+            <li><strong>图书馆数据库</strong>：维普/超星/读秀/EBSCO全免费</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3>4. 餐饮省钱 · 月省300+</h3>
+          <ul>
+            <li><strong>食堂为主</strong>：6-12元吃饱，比外卖便宜60%</li>
+            <li><strong>美团/饿了么学生红包</strong>：认证后专享红包</li>
+            <li><strong>拼单外卖</strong>：和室友凑满减，省配送费</li>
+            <li><strong>牛奶按月订</strong>：订奶比超市单买便宜30%</li>
+            <li><strong>水果论斤买</strong>：超市晚上8点后打折</li>
+            <li><strong>调料囤大瓶</strong>：油盐酱醋大瓶装单价低50%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>5. 出行省钱 · 月省200+</h3>
+          <ul>
+            <li><strong>学生票火车硬座5折</strong>：每学年4次硬座/硬卧资格</li>
+            <li><strong>高铁学生票</strong>：二等座7.5折（家-学校区间）</li>
+            <li><strong>共享单车月卡</strong>：15-25元/月无限骑</li>
+            <li><strong>地铁公交月票</strong>：多数城市学生半价</li>
+            <li><strong>滴滴青桔学生包</strong>：打车9折+单车月卡</li>
+            <li><strong>飞猪学生价</strong>：部分机票学生专享</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>6. 购物省钱 · 月省300+</h3>
+          <ul>
+            <li><strong>拼多多"百亿补贴"</strong>：数码/日用直降</li>
+            <li><strong>京东PLUS学生版</strong>：5折+免费读书</li>
+            <li><strong>淘宝聚划算</strong>：凑满减+店铺券</li>
+            <li><strong>1688批发</strong>：纸巾/洗衣液/文具批量购</li>
+            <li><strong>咸鱼二手</strong>：教材/数码/家具半价</li>
+            <li><strong>转转官方验机</strong>：二手iPhone/平板靠谱</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3>7. 教材省钱 · 学期省500+</h3>
+          <ul>
+            <li><strong>二手教材</strong>：咸鱼/学长学姐8成新半价</li>
+            <li><strong>图书馆借</strong>：核心参考书图书馆免费借</li>
+            <li><strong>电子版PDF</strong>：知乎/豆瓣搜电子书</li>
+            <li><strong>图书馆电子资源</strong>：超星/读秀下载</li>
+            <li><strong>教材循环</strong>：用完卖给学弟学妹，回血50%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>8. 美妆护肤 · 月省200+</h3>
+          <ul>
+            <li><strong>屈臣氏学生价</strong>：会员+学生专享</li>
+            <li><strong>丝芙兰学生折扣</strong>：线下出示学生证</li>
+            <li><strong>品牌官网教育优惠</strong>：Apple/华为/小米/华硕</li>
+            <li><strong>韩国化妆品Gmarket</strong>：直邮比代购便宜</li>
+            <li><strong>试用装群</strong>：豆瓣"美妆试用"小组免费领</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>9. 娱乐省钱 · 不降低快乐</h3>
+          <ul>
+            <li><strong>电影学生票</strong>：万达/Cgv学生价35-45元</li>
+            <li><strong>B站大会员学生价</strong>：5折</li>
+            <li><strong>爱奇艺/腾讯视频学生</strong>：连续包月有专享</li>
+            <li><strong>网易云学生价</strong>：黑胶VIP学生5折</li>
+            <li><strong>博物馆/美术馆</strong>：学生半价或免费</li>
+            <li><strong>KTV下午场</strong>：比夜场便宜80%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3>10. 通讯省钱 · 月省50+</h3>
+          <ul>
+            <li><strong>校园卡套餐</strong>：39元/月含50G流量+200分通话</li>
+            <li><strong>携号转网</strong>：转网享新用户专享价</li>
+            <li><strong>WiFi优先</strong>：校园网+宿舍宽带，流量省着用</li>
+            <li><strong>双卡策略</strong>：主卡保号+副卡大流量</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>11. 健身省钱 · 月省200+</h3>
+          <ul>
+            <li><strong>校园健身</strong>：体育馆/操场免费</li>
+            <li><strong>Keep免费课</strong>：B站/抖音跟练</li>
+            <li><strong>跑步</strong>：0成本，校园操场最适合</li>
+            <li><strong>羽毛球/篮球</strong>：社团免费场地</li>
+            <li><strong>校医院</strong>：看病拿药几乎免费</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>12. 心理省钱 · 看不见的支出</h3>
+          <ul>
+            <li><strong>校心理咨询</strong>：免费且保密，比校外咨询省200-800元/次</li>
+            <li><strong>就业指导中心</strong>：免费简历修改+模拟面试</li>
+            <li><strong>校友资源</strong>：免费内推+学长答疑</li>
+            <li><strong>学校讲座</strong>：免费听名家/大牛</li>
+            <li><strong>校园招聘会</strong>：免排队+优先面试</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>省钱防坑提示（必读）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>❌ 不要碰</h4>
+            <ul>
+              <li>校园贷/裸贷（利息高达30%+）</li>
+              <li>分期买奢侈品（最终付2倍）</li>
+              <li>美容院/医美推销（先免费后宰客）</li>
+              <li>公众号"理财课"（99%是割韭菜）</li>
+              <li>虚假兼职（刷单/打字员，先收费的）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>✅ 应该做</h4>
+            <ul>
+              <li>每月做预算，月底复盘</li>
+              <li>强制储蓄：发生活费当天存10%</li>
+              <li>记3个月账，找到无意识支出</li>
+              <li>有"想买"清单，等3天再决定</li>
+              <li>用校园资源替代付费服务</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>我的省钱月度记录（点击填写·自动保存）</h3>
+        <div class="card" style="margin-top:16px">
+        <h3>30天省钱挑战 · 每天1个动作</h3>
+        <div class="grid grid-3">
+          <div>
+            <h4>第1周 · 看清</h4>
+            <ul style="font-size:12px;line-height:1.8">
+              <li>D1 下载记账APP，开始记每一笔</li>
+              <li>D2 整理微信/支付宝账单，标出大额支出</li>
+              <li>D3 找出3个"拿铁因子"（奶茶/凑单/打车）</li>
+              <li>D4 设一个本周娱乐预算上限</li>
+              <li>D5 查一遍各类订阅与自动扣费，关掉没用的</li>
+              <li>D6 对比2个平台的同款日用品价格</li>
+              <li>D7 复盘本周，写下下周3个省钱目标</li>
+            </ul>
+          </div>
+          <div>
+            <h4>第2周 · 替换</h4>
+            <ul style="font-size:12px;line-height:1.8">
+              <li>D8 奶茶换成自制/白开水，省下的钱记账</li>
+              <li>D9 外卖换食堂/自己做1次</li>
+              <li>D10 购物先加购物车，等3天再决定</li>
+              <li>D11 用图书馆/免费资源替代付费内容</li>
+              <li>D12 出行改步行/公交/拼车1次</li>
+              <li>D13 想买之前先想：能不能借/租/二手</li>
+              <li>D14 复盘：本周省了多少，成就感拍照存档</li>
+            </ul>
+          </div>
+          <div>
+            <h4>第3-4周 · 固化</h4>
+            <ul style="font-size:12px;line-height:1.8">
+              <li>D15 固定每周"零消费日"（只花必需）</li>
+              <li>D16 生活费/工资到账先存10%，再消费</li>
+              <li>D17 列"想买清单"，满月后再决定买不买</li>
+              <li>D18 大件套用"必要性三问"（必须吗/能替代吗/等1个月还想要吗）</li>
+              <li>D19 省下的钱存进单独账户，看数字涨</li>
+              <li>D20-30 重复+微调，月底统计总节省额</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:10px">一个月后：把省下的钱分成"奖励自己30%+储蓄70%"，既留住动力又不亏待自己。</div>
+      </div><table class="editable-table">
+          <thead><tr><th>月份</th><th>生活费</th><th>实际支出</th><th>省下</th><th>省下用途</th><th>反思</th></tr></thead>
+          <tbody>
+            <tr><td>9月</td><td contenteditable="true" data-key="sav-9-budget" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-9-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-9-saved" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-9-use" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-9-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>10月</td><td contenteditable="true" data-key="sav-10-budget" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-10-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-10-saved" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-10-use" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-10-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>11月</td><td contenteditable="true" data-key="sav-11-budget" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-11-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-11-saved" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-11-use" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-11-note" style="cursor:text;background:var(--bg)"></td></tr>
+
+      
+
+            <tr><td>12月</td><td contenteditable="true" data-key="sav-12-budget" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-12-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-12-saved" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-12-use" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="sav-12-note" style="cursor:text;background:var(--bg)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 运动健康 -->
+    <section class="view" id="view-health">
+<div class="section-intro">作息、运动、身心状态，生活琐事清单。关照好自己的身体与情绪，经营一份松弛稳定的校园日常。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>运动健康</h1>
+        <p>当前→目标（点击填写） · 可持续跟练 · 饮食红绿灯</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="metric"><div class="label">身高 (cm)</div><div class="value" id="userHeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub">决定 BMI 基准</div></div>
+        <div class="metric"><div class="label">当前体重(kg)</div><div class="value" id="curWeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub" id="curBmi">BMI待测算</div></div>
+        <div class="metric"><div class="label">目标体重</div><div class="value" id="goalWeight" contenteditable="true" style="cursor:text">点击填写</div><div class="sub" id="goalBmi">待测算</div></div>
+        <div class="metric"><div class="label">周期</div><div class="value" id="planWeeks" contenteditable="true" style="cursor:text">点击填写</div><div class="sub" id="weeklyPace">每周节奏自定</div></div>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>每日跟练视频（B站直链）</h3>
+          <p>零基础也能跟、强度循序渐进、对关节友好。每次运动结构：热身10分钟 + 主练40分钟 + 拉伸10分钟。</p>
+          <a class="res-link" href="https://www.bilibili.com/search?keyword=%E8%B7%B3%E7%BB%B3%E5%87%8F%E8%82%A5%E5%88%9D%E5%AD%A6%E8%80%85" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></div>
+            <div class="info"><div class="name">跳绳燃脂（初学者）</div><div class="desc">大体重先从无绳/慢跳开始，保护膝盖</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.bilibili.com/search?keyword=%E7%91%9C%E4%BC%BD%E5%9E%AB%E8%B7%9F%E7%BB%83%E5%87%8F%E8%82%A5" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></div>
+            <div class="info"><div class="name">瑜伽垫跟练</div><div class="desc">无跑跳、不扰民、适合宿舍和家里</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.bilibili.com/search?keyword=%E8%BF%90%E5%8A%A8%E5%90%8E%E6%8B%89%E4%BC%B8%E5%85%A8%E8%BA%AB" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></div>
+            <div class="info"><div class="name">运动后拉伸</div><div class="desc">必做！防止粗腿、缓解酸痛</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.bilibili.com/search?keyword=%E5%B8%95%E6%A2%85%E6%8B%89+%E5%87%8F%E8%82%A5%E8%BF%90%E5%8A%A8" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></div>
+            <div class="info"><div class="name">帕梅拉/刘畊宏跟练</div><div class="desc">选低冲击版本，量力而行</div></div><div class="arrow">↗</div>
+          </a>
+        </div>
+        <div class="card">
+          <h3>饮食红绿灯</h3>
+          <div class="callout callout-warn"><strong>红灯（少碰）：</strong>含糖饮料、油炸、外卖重油、零食；精面主食（煎饼/馒头/面条）控制总量、别过量，早餐仍建议正常吃主食</div>
+          <div class="callout callout-ok"><strong>绿灯（多吃）：</strong>鸡蛋、紫薯、鸡胸、鱼、绿叶菜、番茄、豆腐、牛奶</div>
+          <h4>低成本健康餐升级版</h4>
+          <ul>
+            <li>煎饼→改做鸡蛋蔬菜饼（少面粉+多菜+蛋）</li>
+            <li>西红柿炒蛋→少油版，糖减半</li>
+            <li>蒸紫薯+水煮蛋→优质早餐组合</li>
+            <li>空气炸锅：烤鸡胸/烤蔬菜，无油健康</li>
+          </ul>
+          <h4>管不住嘴的对策</h4>
+          <ul>
+            <li>不囤零食：家里没有=吃不到</li>
+            <li>饭前喝水：增加饱腹感</li>
+            <li>细嚼慢咽：饱腹信号需20分钟</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>每日运动打卡 <span style="font-weight:400;font-size:11px;color:var(--hint)">点一下即打卡，可自由添加你想做的运动</span></h3>
+        <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap" id="workoutBtns"></div>
+        <div id="workoutStreak"></div>
+        <div style="margin-top:4px;font-size:11px;color:var(--muted)">💡 「运动」通用一项会同步到首页习惯与连续天数；「＋ 自定义」可录入你的专属运动项目。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🏃 运动可视化 · 30天热力图</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每完成1次运动点亮一格，颜色越深代表强度越高。连续打卡越多，方块越亮。</p>
+        <div id="sportHeatmap" style="display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px;margin-bottom:14px;min-width:0;overflow:hidden"><div title="2026-07-24" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">24</div><div title="2026-07-25" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">25</div><div title="2026-07-26" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">26</div><div title="2026-07-27" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">27</div><div title="2026-07-28" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">28</div><div title="2026-07-29" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">29</div><div title="2026-07-30" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">30</div><div title="2026-07-31" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">31</div><div title="2026-08-01" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">1</div><div title="2026-08-02" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">2</div><div title="2026-08-03" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">3</div><div title="2026-08-04" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">4</div><div title="2026-08-05" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">5</div><div title="2026-08-06" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">6</div><div title="2026-08-07" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">7</div><div title="2026-08-08" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">8</div><div title="2026-08-09" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">9</div><div title="2026-08-10" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">10</div><div title="2026-08-11" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">11</div><div title="2026-08-12" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">12</div><div title="2026-08-13" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">13</div><div title="2026-08-14" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">14</div><div title="2026-08-15" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">15</div><div title="2026-08-16" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">16</div><div title="2026-08-17" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">17</div><div title="2026-08-18" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">18</div><div title="2026-08-19" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">19</div><div title="2026-08-20" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">20</div><div title="2026-08-21" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">21</div><div title="2026-08-22" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:700;border:2px solid var(--primary)">22</div></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--hint);align-items:center">
+          <span>本月已完成 <strong id="sportMonthCount" style="color:var(--teal);font-size:14px">0</strong> 次</span>
+          <span>连续 <strong id="sportStreak" style="color:var(--coral);font-size:14px">0</strong> 天</span>
+          <span>累计 <strong id="sportTotal" style="color:var(--primary);font-size:14px">0</strong> 次</span>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn btn-sm" onclick="logSport(&#39;light&#39;)">轻量（拉伸/散步）</button>
+          <button class="btn btn-sm" onclick="logSport(&#39;medium&#39;)">中量（30分钟有氧）</button>
+          <button class="btn btn-sm" onclick="logSport(&#39;heavy&#39;)">大量（力量/超60分钟）</button>
+          <button class="btn btn-sm" onclick="clearSportLog()" style="color:var(--hint)">清空记录</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>睡眠 · 被忽略的减重关键</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>为什么睡不够会胖</h4>
+            <ul>
+              <li>睡眠不足→饥饿素升、瘦素降，第二天特别馋碳水</li>
+              <li>熬夜时容易饿，容易吃多高热量夜宵；长期熬夜会影响食欲调节，发胖风险更高</li>
+              <li>皮质醇升高→腰腹脂肪优先堆积</li>
+            </ul>
+          </div>
+          <div>
+            <h4>平台期应对（卡重量不动）</h4>
+            <ul>
+              <li>先确认是不是吃多了/强度没变→微调饮食或换动作</li>
+              <li>欺骗餐：每10天一顿正常餐重启代谢（不是暴食）</li>
+              <li>加力量训练：肌肉多=基础代谢高，躺着也多消耗</li>
+              <li>量围度别只称体重：肌肉增加体重可能不变但人瘦了</li>
+            </ul>
+          </div>
+        </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>零器械居家训练 · 宿舍/家里就能做</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>新手动作库：</strong>靠墙静蹲（腿）、平板支撑（核心）、跪姿俯卧撑（上肢）、臀桥（臀腿）、开合跳（有氧）</li>
+            <li><strong>每次结构：</strong>热身5分钟 → 每个动作3组×30秒 → 拉伸5分钟，全程30-40分钟</li>
+            <li><strong>强度自测：</strong>微喘但能说话=合适；上气不接下气=降强度</li>
+            <li><strong>进阶路径：</strong>每周每组加5秒或加组数，一个月后换更难的动作</li>
+            <li><strong>坚持技巧：</strong>固定时间（如每晚8点）、提前铺好垫子、找家人互相监督</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>一周运动计划参考（每天30-40分钟）</h3>
+          <table>
+            <thead><tr><th>星期</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td>周一</td><td>快走/慢跑 30分钟</td></tr>
+              <tr><td>周二</td><td>零器械力量训练（动作库）</td></tr>
+              <tr><td>周三</td><td>跳绳/有氧操 25分钟 + 拉伸</td></tr>
+              <tr><td>周四</td><td>零器械力量训练（侧重腿臀）</td></tr>
+              <tr><td>周五</td><td>快走/骑行 40分钟</td></tr>
+              <tr><td>周六</td><td>瑜伽/拉伸放松 20分钟</td></tr>
+              <tr><td>周日</td><td>休息或轻松散步（不设目标）</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-info" style="margin-top:8px">原则：动比不动强，规律比强度重要。连续中断别自责，第二天继续就行。</div>
+        </div>
+      </div>
+
+        <div class="callout callout-ok" style="margin-top:8px">健康减重建议每周 0.5-0.8kg。别信"7天瘦10斤"，掉的都是水和肌肉，反弹更快。科学方法：吃练结合 + 充足睡眠 + 记录复盘。<strong>（体重基数因人而异；有慢性基础疾病请先咨询医生，不要盲目节食减重。）</strong></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>📋 减肥执行周计划（按你的目标体重起步）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">在健康板块顶部填好你的「当前体重 / 目标体重」后，从现体重出发、按周推进，每周可减 0.5-0.8kg。每完成一周打 ✓，连续4周为一个周期复盘。</p>
+        <div class="grid grid-2" style="gap:12px">
+          <div style="border-left:3px solid var(--primary);padding-left:12px">
+            <h4 style="color:var(--primary)">第1周 · 建立习惯</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>饮食：</strong>戒掉含糖饮料（奶茶/可乐→无糖茶/水），晚餐减1/3量</li>
+              <li><strong>运动：</strong>每天快走30分钟（早晚各15分钟也可），不用跑</li>
+              <li><strong>饮水：</strong>每天喝够 2000ml（约8杯），饭前一杯增加饱腹感</li>
+              <li><strong>睡眠：</strong>23:00前躺下，保证7小时</li>
+              <li><strong>记录：</strong>每天早上空腹称体重，记入健康板块</li>
+            </ul>
+          </div>
+          <div style="border-left:3px solid var(--teal);padding-left:12px">
+            <h4 style="color:var(--teal)">第2周 · 加量提效</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>饮食：</strong>主食换一半为粗粮（玉米/红薯/燕麦），蛋白质每餐有（蛋/鸡胸/鱼/豆腐）</li>
+              <li><strong>运动：</strong>快走升级为慢跑20分钟+跳绳5分钟（分两组）</li>
+              <li><strong>新增：</strong>帕梅拉/刘畊宏跟练15分钟（B站直链已在上方的「每日跟练视频」中）</li>
+              <li><strong>饮水：</strong>提升到 2500ml</li>
+              <li><strong>陷阱：</strong>周末不暴食，可以吃一顿好的但不过量</li>
+            </ul>
+          </div>
+          <div style="border-left:3px solid var(--coral);padding-left:12px">
+            <h4 style="color:var(--coral)">第3-4周 · 稳定燃脂</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>饮食：</strong>16+8 轻断食尝试（8小时内吃完三餐，其余时间只喝水）</li>
+              <li><strong>运动：</strong>每周4次有氧（30-40分钟）+2次力量（自重深蹲/平板支撑/俯卧撑）</li>
+              <li><strong>力量：</strong>肌肉提高基础代谢——深蹲3组×15个、平板撑3组×30秒、臀桥3组×20个</li>
+              <li><strong>休息：</strong>每周1天完全休息日（不做运动但饮食照常）</li>
+              <li><strong>心态：</strong>平台期正常！体重不变≠没瘦，围度才是真指标</li>
+            </ul>
+          </div>
+          <div style="border-left:3px solid #A9803F;padding-left:12px">
+            <h4 style="color:#A9803F">长期维持 · 不反弹</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>80/20原则：</strong>80%时间认真吃练，20%允许放松（朋友聚餐/偶尔零食）</li>
+              <li><strong>目标：</strong>先定小目标——70kg → 68kg → 65kg，每个目标完成后奖励自己（非食物奖励）</li>
+              <li><strong>复盘：</strong>每周日晚花5分钟回顾本周饮食/运动/体重变化，调整下周计划</li>
+              <li><strong>作弊餐：</strong>每两周一次，不是放纵日，是"吃一顿想吃的然后继续"</li>
+              <li><strong>提醒：</strong>减重是一年以上的事，别急。你才18岁，代谢好，方法对了效果很快。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    
+
+    <!-- 入团入党 -->
+    <section class="view" id="view-party">
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5"></path></svg>入团入党</h1>
+        <p>两条路径 · 步骤详细 · 时间节点清晰</p>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>先看你是哪一种：</strong>大一新生通常分两种情况——尚未入团（多数）或已在中学入团。请对照下方方案执行，不要走错流程。
+      </div>
+      <div class="callout callout-warn" style="margin-top:8px"><strong>重要提示：</strong>本页《入党/入团申请书》《思想汇报》等模板仅提供写作思路与结构参考，请用自己的真实经历与语言撰写，<strong>严禁直接复制粘贴</strong>；抄袭成文的材料会被退回，且影响考察评价。</div>
+
+      <div class="grid grid-2">
+        <!-- 方案1：未入团 -->
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">方案一 · 尚未入团 → 大学入团 → 入党</h3>
+          <p style="font-size:13px;color:var(--muted)">适合：高中未入团、想在大一补入团并最终入党的同学。</p>
+          <h4>第一阶段：入团（大一上）</h4>
+          <ul>
+            <li><strong>9月开学第1周：</strong>向班级团支部递交《入团申请书》（手写1500字以上，写清对共青团的认识、入团动机、个人优缺点）</li>
+            <li><strong>9-10月：</strong>参加团校学习（共8-12学时，包括团章、团史、政治理论）</li>
+            <li><strong>10-11月：</strong>经团支部推荐确定为入团积极分子，培养考察期3个月</li>
+            <li><strong>11-12月：</strong>团支部大会讨论接收，过半数赞成通过</li>
+            <li><strong>12月-次年1月：</strong>上级团委审批，举行入团宣誓，正式成为团员</li>
+          </ul>
+          <h4>第二阶段：申请入党（大二）</h4>
+          <ul>
+            <li><strong>大一结束/大二开学：</strong>向所在党支部递交《入党申请书》（手写2000字以上）</li>
+            <li><strong>大二上：</strong>参加党课初级班、中级班学习，考核合格</li>
+            <li><strong>大二下：</strong>经团组织"推优"（团组织推荐优秀团员入党），支部大会确定为入党积极分子</li>
+            <li><strong>培养考察1年：</strong>指定2名正式党员作为培养联系人，每季度写一次思想汇报</li>
+          </ul>
+          <h4>第三阶段：发展对象与预备党员（大三）</h4>
+          <ul>
+            <li><strong>大三上：</strong>经支委会讨论、上级党组织预审，确定为发展对象</li>
+            <li><strong>大三下：</strong>政审通过、双学时培训合格，支部大会讨论接收为预备党员</li>
+            <li><strong>预备期1年：</strong>每季度向支部汇报思想，参加支部组织生活</li>
+          </ul>
+          <h4>第四阶段：转正（大四）</h4>
+          <ul>
+            <li><strong>大四：</strong>预备期满前1个月，向支部递交《转正申请书》</li>
+            <li><strong>支部大会讨论：</strong>过半数赞成通过转正</li>
+            <li><strong>上级党组织审批：</strong>正式成为中共党员</li>
+          </ul>
+        </div>
+
+        <!-- 方案2：已入团 -->
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">方案二 · 已入团 → 大学入党</h3>
+          <p style="font-size:13px;color:var(--muted)">适合：中学已入团、入学时团组织关系已转入大学的同学。</p>
+          <h4>第一阶段：团组织关系转入（开学第1周）</h4>
+          <ul>
+            <li><strong>9月：</strong>到所在学院团委办理团组织关系转入（携带团员证+入团志愿书原件）</li>
+            <li><strong>9月：</strong>参加所在班级团支部第一次大会，登记个人信息</li>
+            <li><strong>每月：</strong>按时缴纳团费（一般每季度5元，由团支部收）</li>
+            <li><strong>每月：</strong>参加团组织生活（理论学习/志愿服务/团日活动）</li>
+          </ul>
+          <h4>第二阶段：申请入党（大一-大二）</h4>
+          <ul>
+            <li><strong>大一上：</strong>年满18周岁即可递交《入党申请书》（建议大一开学就交，越早排队越靠前）</li>
+            <li><strong>大一全年：</strong>参加党校初级班、中级班学习（一般每学期开班1次）</li>
+            <li><strong>大二上：</strong>团组织"推优"（团员入党必经环节，团组织推荐+支部大会通过）</li>
+            <li><strong>大二下：</strong>支部大会确定为入党积极分子，开始1年培养考察期</li>
+          </ul>
+          <h4>第三阶段：发展对象与预备党员（大二下-大三下）</h4>
+          <ul>
+            <li><strong>大三上：</strong>满1年考察期，经支委会讨论+上级党组织预审，确定为发展对象</li>
+            <li><strong>政审：</strong>直系亲属政治面貌、本人现实表现，由组织部办理</li>
+            <li><strong>双学时：</strong>参加短期集中培训（24学时以上）</li>
+            <li><strong>大三下：</strong>2名正式党员介绍人推荐，支部大会讨论接收为预备党员，上级党组织审批</li>
+          </ul>
+          <h4>第四阶段：转正（大四）</h4>
+          <ul>
+            <li><strong>预备期1年：</strong>每季度汇报思想，参加组织生活会</li>
+            <li><strong>大四预备期满前1月：</strong>递交《转正申请书》</li>
+            <li><strong>支部大会讨论：</strong>过半数赞成通过转正</li>
+            <li><strong>上级党组织审批：</strong>正式成为中共党员</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>关键材料清单（提前准备，不拖延）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>入团阶段</h4>
+            <ul>
+              <li>《入团申请书》手写原件（1500字+）</li>
+              <li>近期1寸免冠照片2张</li>
+              <li>本人身份证、学生证复印件</li>
+              <li>入团志愿书（团支部提供模板）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>入党阶段</h4>
+            <ul>
+              <li>《入党申请书》手写原件（2000字+）</li>
+              <li>团组织推优表（团组织提供）</li>
+              <li>政审材料（直系亲属+主要社会关系）</li>
+              <li>每季度思想汇报（手写）</li>
+              <li>《转正申请书》（预备期满前）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>我的入团入党进度（点击填写·自动保存）</h3>
+        <table class="editable-table">
+          <thead><tr><th>阶段</th><th>计划完成时间</th><th>实际完成时间</th><th>状态</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td>递交入团申请书</td><td contenteditable="true" data-key="pty-stage1-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage1-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage1-status" style="cursor:text;background:var(--bg)" data-placeholder="待办/进行中/完成"></td><td contenteditable="true" data-key="pty-stage1-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>入团积极分子</td><td contenteditable="true" data-key="pty-stage2-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage2-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage2-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage2-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>正式入团</td><td contenteditable="true" data-key="pty-stage3-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage3-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage3-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage3-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>递交入党申请书</td><td contenteditable="true" data-key="pty-stage4-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage4-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage4-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage4-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>入党积极分子</td><td contenteditable="true" data-key="pty-stage5-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage5-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage5-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage5-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>发展对象</td><td contenteditable="true" data-key="pty-stage6-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage6-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage6-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage6-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>预备党员</td><td contenteditable="true" data-key="pty-stage7-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage7-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage7-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage7-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>正式党员</td><td contenteditable="true" data-key="pty-stage8-plan" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage8-real" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage8-status" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="pty-stage8-note" style="cursor:text;background:var(--bg)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 购物指南 -->
+    <section class="view" id="view-shop">
+<div class="section-intro">购物前多看一眼，把钱花在真正需要的地方。资讯仅供参考。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>购物指南</h1>
+        <p>每日推荐 · 平台对比 · 选购决策树 · 售后维权</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>平台选择策略</h3>
+          <table>
+            <thead><tr><th>买什么</th><th>去哪买</th></tr></thead>
+            <tbody>
+              <tr><td>日用品/小物</td><td>网购平台品牌店</td></tr>
+              <tr><td>书籍</td><td>京东/当当</td></tr>
+              <tr><td>电子产品</td><td>京东自营/天猫旗舰</td></tr>
+              <tr><td>衣物</td><td>优衣库/淘宝原单</td></tr>
+              <tr><td>护肤</td><td>天猫旗舰/京东自营</td></tr>
+              <tr><td>二手</td><td>闲鱼/转转</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>洗护与日常消耗品推荐</h3>
+          <h4>固发去油</h4>
+          <ul>
+            <li><strong>洗发水：</strong>且初生姜洗发水（无硅油、固发）</li>
+            <li><strong>护发素：</strong>且初护发精油小金刚（角蛋白修护）</li>
+            <li><strong>沐浴露：</strong>半亩花田氨基酸（温和不紧绷）</li>
+            <li><strong>身体乳：</strong>适乐肤神经酰胺（修护屏障）</li>
+            <li><strong>防晒：</strong>安耐晒金瓶（军训必备）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>宿舍神器清单</h3>
+          <ul>
+            <li>床帘+支架（隐私+遮光）</li>
+            <li>记忆棉床垫（5cm，腰不疼）</li>
+            <li>排插（长线带USB）</li>
+            <li>护眼台灯（无频闪）</li>
+            <li>收纳箱×3（衣物/书籍/杂物）</li>
+            <li>挂钩S钩×10（门后/床边）</li>
+            <li>沥水篮（洗漱台共用）</li>
+            <li>降噪耳塞+眼罩（午休必备）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>每日好物推荐</h3>
+        <div id="dailyShop" style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px"><strong>护发素</strong><br>资生堂红椿护发素200ml，京东约120元。搭配固发洗发水，发尾顺滑不打结。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>购物维权 · 不被坑也不忍气吞声</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>退换货时效（法定）</h4>
+            <ul>
+              <li><strong>7天无理由：</strong>收货起7天内可无理由退（定制/生鲜/拆封音像除外）<strong>；贴身衣物（内衣裤袜等）、定制类商品不在七天无理由范围内</strong></li>
+              <li><strong>质量问题：</strong>15天内退换，1年内可要求修理</li>
+              <li><strong>拼多多：</strong>先"官方客服"介入，再申请"仅退款"（平台偏买家）</li>
+              <li><strong>淘宝/京东：</strong>退货运费险覆盖来回，凭证齐全秒退</li>
+            </ul>
+          </div>
+          <div>
+            <h4>维权实操</h4>
+            <ul>
+              <li>收到货先<strong>录开箱视频</strong>，证明瑕疵非人为</li>
+              <li>聊天记录、订单截图全部留档</li>
+              <li>平台不管→12315小程序/网站投诉（商家最怕这个）</li>
+              <li>遇假货→平台假一赔十，直接举证索赔</li>
+            </ul>
+          </div>
+        </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>购物决策树 · 下单前过一遍</h3>
+          <ol style="font-size:13px;line-height:1.9">
+            <li><strong>真的需要吗：</strong>没有它，我的生活真的会变差吗？（否则进"想买清单"等3天）</li>
+            <li><strong>有替代吗：</strong>能借/租/二手/平替吗？同类已有的够不够用</li>
+            <li><strong>买对版本：</strong>按使用频率买——天天用的买好的，偶尔用的买便宜的</li>
+            <li><strong>比价：</strong>用历史价插件（慢慢买/喵喵折）看最低价，避开"先涨后降"假促销</li>
+            <li><strong>售后确认：</strong>退换政策、保修年限、运费险——大件一定要发票</li>
+          </ol>
+          <div class="callout callout-info" style="margin-top:8px">口诀：需要 &gt; 替代 &gt; 版本 &gt; 比价 &gt; 售后。5步走完再付款，冲动消费减半。</div>
+        </div>
+        <div class="card">
+          <h3>大促（618/双11）省钱策略</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>提前2周加购物车：</strong>记录原价，大促当天对比，防止"先涨后降"</li>
+            <li><strong>只买清单内的：</strong>大促前写采购清单（必买/可买/不买三档）</li>
+            <li><strong>凑满减：</strong>满300减50≈83折，先算好再凑，凑单用可退品</li>
+            <li><strong>领券顺序：</strong>平台券→店铺券→会员券→支付立减，可叠加的先领齐</li>
+            <li><strong>尾款陷阱：</strong>付定金前看清尾款时间，错过定金不退；算总价别只看定金</li>
+          </ul>
+        </div>
+      </div>
+
+        <div class="callout callout-warn" style="margin-top:8px">买前看"店铺评分+追评+历史价"，比买后维权省心。维权是底线能力，但该花的精力优先花在"买对"上。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎓 学生专属优惠与权益 · 不知道就真的亏</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">学生身份能省一大笔，前提是你知道去哪领。以下为常见官方渠道，具体以各平台当年最新规则为准。</p>
+        <div class="grid grid-2">
+          <div>
+            <h4>数码 & 软件（最值钱）</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><b>GitHub Student Pack：</b>学生认证后可免费领开发/办公/云服务等上百款工具，官网 education.github.com 认证（需学生邮箱或学籍证明）</li>
+              <li><b>Apple 教育优惠：</b>官网教育商店认证，买 Mac/iPad 直降几百到上千，返校季常送耳机</li>
+              <li><b>微软 Office 365：</b>很多高校提供免费学生版，先去学校信息化处/官网看有没有"正版化"入口，别急着花钱</li>
+              <li><b>Adobe / 各正版软件：</b>部分高校有校园版授权，能省则省</li>
+            </ul>
+          </div>
+          <div>
+            <h4>出行 & 餐食 & 娱乐</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li><b>12306 学生票：</b>凭学生证每年可买 4 次家庭与学校区间优惠，记得先在 12306 做资质绑定</li>
+              <li><b>平台学生认证：</b>支付宝、京东、饿了么、美团、B站、网易云、腾讯视频等都有学生认证新人/专属折扣，用学信网在校验证即可</li>
+              <li><b>餐饮学生价：</b>不少连锁餐企对学生有折扣（凭学生证/学生认证），吃前先问一句</li>
+              <li><b>城市交通：</b>部分城市地铁公交有学生月卡/半价，去当地交通 App 或市民卡查</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:8px">省钱的本质是"该花的才花、能省的正规渠道都走"。认证前先确认是官方平台，别为了优惠去点陌生链接、交"认证费"——那是骗局。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎒 开学采购决策清单（该买 / 可缓 / 别买）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--teal)">✅ 落地就买</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>床垫/被褥床品、排插、护眼台灯、收纳、洗护、基础药品（感冒/肠胃/创可贴）</li>
+              <li>锁（贵重物）、拖鞋牙刷、挂钩衣架、驱蚊用品</li>
+              <li>校园卡/水卡充值、办一张自己名下的银行卡（奖学金发放用）</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:var(--coral)">🕐 到校看空间再买</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+              <li>大件收纳架、装饰品、健身器材——先看宿舍尺寸和室友分工再下单，避免买来占地</li>
+              <li>电脑桌搭/显示器支架等非必需，等真正需要再入</li>
+            </ul>
+          </div>
+        </div>
+        <div style="background:#FBF1EA;border-radius:8px;padding:12px 16px;font-size:13px;color:#7a4a2a;line-height:1.9;margin-top:8px">
+          <b>慎重 / 别买：</b>校门口或个人推销的"路由器/电话卡/考察队用品"多为坑；被子枕头可网购到校、别硬扛长途；被"满减"凑出的"你以为会用"先缓入；任何"先交钱才能领福利"的学生优惠都是骗局。
+        </div>
+      </div>
+    </section>
+
+    <!-- 校园生活 -->
+    <section class="view" id="view-campus">
+<div class="section-intro">课程、社团、校园手续、生活琐事，都收在这里，不用再来回找。个别政策类资讯仅供参考，请以学校与国家官方最新通知为准。</div><div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活</h1>
+        <p>入学准备 · 课程表 · 社团选择 · 室友公约 · 节假日规划 · 实习日历 · 自动保存</p>
+      </div><div class="card" style="margin-bottom:16px">
+        <h3>我的大学课程表 · 本周</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">双击任意格子直接填课程名+教室+老师，自动保存，不用点保存按钮。</p>
+        <div style="overflow-x:auto">
+          <table class="editable-table" id="myCourseTable">
+            <thead>
+              <tr>
+                <th style="min-width:60px">时段</th>
+                <th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th><th>周日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1-2节 8:00-9:35</td>
+                <td contenteditable="true" data-key="course-mon-12"></td>
+                <td contenteditable="true" data-key="course-tue-12"></td>
+                <td contenteditable="true" data-key="course-wed-12"></td>
+                <td contenteditable="true" data-key="course-thu-12"></td>
+                <td contenteditable="true" data-key="course-fri-12"></td>
+                <td contenteditable="true" data-key="course-sat-12"></td>
+                <td contenteditable="true" data-key="course-sun-12"></td>
+              </tr>
+              <tr><td>3-4节 10:00-11:35</td>
+                <td contenteditable="true" data-key="course-mon-34"></td>
+                <td contenteditable="true" data-key="course-tue-34"></td>
+                <td contenteditable="true" data-key="course-wed-34"></td>
+                <td contenteditable="true" data-key="course-thu-34"></td>
+                <td contenteditable="true" data-key="course-fri-34"></td>
+                <td contenteditable="true" data-key="course-sat-34"></td>
+                <td contenteditable="true" data-key="course-sun-34"></td>
+              </tr>
+              <tr><td>5-6节 14:00-15:35</td>
+                <td contenteditable="true" data-key="course-mon-56"></td>
+                <td contenteditable="true" data-key="course-tue-56"></td>
+                <td contenteditable="true" data-key="course-wed-56"></td>
+                <td contenteditable="true" data-key="course-thu-56"></td>
+                <td contenteditable="true" data-key="course-fri-56"></td>
+                <td contenteditable="true" data-key="course-sat-56"></td>
+                <td contenteditable="true" data-key="course-sun-56"></td>
+              </tr>
+              <tr><td>7-8节 16:00-17:35</td>
+                <td contenteditable="true" data-key="course-mon-78"></td>
+                <td contenteditable="true" data-key="course-tue-78"></td>
+                <td contenteditable="true" data-key="course-wed-78"></td>
+                <td contenteditable="true" data-key="course-thu-78"></td>
+                <td contenteditable="true" data-key="course-fri-78"></td>
+                <td contenteditable="true" data-key="course-sat-78"></td>
+                <td contenteditable="true" data-key="course-sun-78"></td>
+              </tr>
+              <tr><td>9-11节 19:00-21:30</td>
+                <td contenteditable="true" data-key="course-mon-9"></td>
+                <td contenteditable="true" data-key="course-tue-9"></td>
+                <td contenteditable="true" data-key="course-wed-9"></td>
+                <td contenteditable="true" data-key="course-thu-9"></td>
+                <td contenteditable="true" data-key="course-fri-9"></td>
+                <td contenteditable="true" data-key="course-sat-9"></td>
+                <td contenteditable="true" data-key="course-sun-9"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-sm" onclick="clearTable(&#39;myCourseTable&#39;)">清空课表</button>
+          <button class="btn btn-sm" onclick="exportTable(&#39;myCourseTable&#39;)">导出图片</button>
+          <span style="font-size:11px;color:var(--hint);align-self:center">填课程名+教室，例：高数 教2-301 王老师</span>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>我的一周日程规划（点击填写·自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">固定作息+固定学习时段，是大学高绩点的基本盘。空白格子双击即可填具体内容。</p>
+        <div style="overflow-x:auto">
+          <table class="editable-table" id="myWeekTable">
+            <thead>
+              <tr><th style="min-width:90px">时段</th><th>周一-周五</th><th>周六</th><th>周日</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>6:30-7:00 起床晨读</td>
+                <td contenteditable="true" data-key="wk-wd-morning"></td>
+                <td contenteditable="true" data-key="wk-sa-morning"></td>
+                <td contenteditable="true" data-key="wk-su-morning"></td>
+              </tr>
+              <tr><td>8:00-11:30 上午课/自习</td>
+                <td contenteditable="true" data-key="wk-wd-am"></td>
+                <td contenteditable="true" data-key="wk-sa-am"></td>
+                <td contenteditable="true" data-key="wk-su-am"></td>
+              </tr>
+              <tr><td>14:00-17:30 下午课/自习</td>
+                <td contenteditable="true" data-key="wk-wd-pm"></td>
+                <td contenteditable="true" data-key="wk-sa-pm"></td>
+                <td contenteditable="true" data-key="wk-su-pm"></td>
+              </tr>
+              <tr><td>19:00-21:30 晚自习</td>
+                <td contenteditable="true" data-key="wk-wd-eve"></td>
+                <td contenteditable="true" data-key="wk-sa-eve"></td>
+                <td contenteditable="true" data-key="wk-su-eve"></td>
+              </tr>
+              <tr><td>22:30-23:30 复盘+洗漱</td>
+                <td contenteditable="true" data-key="wk-wd-night"></td>
+                <td contenteditable="true" data-key="wk-sa-night"></td>
+                <td contenteditable="true" data-key="wk-su-night"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>实习投递日历（按节点·点击填写进度）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">寒暑期实习投递窗口集中在放假前2-3个月，错过就要等下个假期。</p>
+        <table>
+          <thead><tr><th>时间窗口</th><th>投递目标</th><th>简历/作品</th><th>面试</th><th>结果</th></tr></thead>
+          <tbody>
+            <tr><td><strong>3-4月</strong> 暑期实习网申</td>
+              <td contenteditable="true" data-key="int-summer-target" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-summer-resume" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-summer-interview" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-summer-result" style="cursor:text;background:var(--bg)"></td>
+            </tr>
+            <tr><td><strong>9-10月</strong> 寒假实习+秋招</td>
+              <td contenteditable="true" data-key="int-winter-target" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-winter-resume" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-winter-interview" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-winter-result" style="cursor:text;background:var(--bg)"></td>
+            </tr>
+            <tr><td><strong>3-4月</strong> 春招补录</td>
+              <td contenteditable="true" data-key="int-spring-target" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-spring-resume" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-spring-interview" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="int-spring-result" style="cursor:text;background:var(--bg)"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info" style="margin-top:10px"><strong>实习投递平台：</strong>
+          <a href="https://www.shixiseng.com/" target="_blank" rel="noopener noreferrer">实习僧 ↗</a> · 
+          <a href="https://cn.bing.com/search?q=%E5%BA%94%E5%B1%8A%E7%94%9F%E6%B1%82%E8%81%8C%E7%BD%91%20%E5%AE%98%E7%BD%91" target="_blank" rel="noopener noreferrer">应届生求职网↗</a> · 
+          <a href="https://www.zhaopin.com/" target="_blank" rel="noopener noreferrer">智联招聘 ↗</a> · 
+          <a href="https://www.liepin.com/" target="_blank" rel="noopener noreferrer">猎聘 ↗</a> · 
+          <a href="https://campus.51job.com/" target="_blank" rel="noopener noreferrer">前程无忧校园 ↗</a>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px;border-left:3px solid var(--primary)">
+        <h3>🏆 全年竞赛日历（含报名链接）</h3>
+        <p style="font-size:12.5px;color:var(--hint);line-height:1.8">高质量的学科竞赛全年节点、报名窗口与官方报名点，统一集中在 <strong>「竞赛科研」</strong>板块，点击直达官网。点下面直接去：</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <button class="btn btn-primary btn-sm" onclick="switchView('contest')">前往「竞赛科研」日历 →</button>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>每周心理调适打卡（点击填写·自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每周日晚上花5分钟自检，连续2周低于3分请寻求专业帮助。数据存本地，只有你看。</p>
+        <table>
+          <thead><tr><th>周次</th><th>睡眠(1-5)</th><th>情绪(1-5)</th><th>效率(1-5)</th><th>社交(1-5)</th><th>本周大事+反思</th></tr></thead>
+          <tbody id="mentalTable">
+            <tr><td>第1周</td><td contenteditable="true" data-key="m-w1-s" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w1-e" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w1-p" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w1-so" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w1-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>第2周</td><td contenteditable="true" data-key="m-w2-s" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w2-e" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w2-p" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w2-so" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w2-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>第3周</td><td contenteditable="true" data-key="m-w3-s" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w3-e" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w3-p" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w3-so" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w3-note" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>第4周</td><td contenteditable="true" data-key="m-w4-s" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w4-e" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w4-p" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w4-so" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="m-w4-note" style="cursor:text;background:var(--bg)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>个人成长时间胶囊（每月1问·年底回看）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每月初写一句话，年底回看会发现自己已经走了很远。</p>
+        <table>
+          <thead><tr><th>月份</th><th>本月想完成的最重要1件事</th><th>本月最想感谢的人</th><th>想对下个月的自己说</th></tr></thead>
+          <tbody>
+            <tr><td>1月</td><td contenteditable="true" data-key="cap-1-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-1-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-1-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>2月</td><td contenteditable="true" data-key="cap-2-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-2-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-2-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>3月</td><td contenteditable="true" data-key="cap-3-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-3-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-3-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>4月</td><td contenteditable="true" data-key="cap-4-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-4-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-4-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>5月</td><td contenteditable="true" data-key="cap-5-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-5-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-5-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>6月</td><td contenteditable="true" data-key="cap-6-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-6-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-6-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>7月</td><td contenteditable="true" data-key="cap-7-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-7-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-7-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>8月</td><td contenteditable="true" data-key="cap-8-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-8-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-8-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>9月</td><td contenteditable="true" data-key="cap-9-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-9-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-9-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>10月</td><td contenteditable="true" data-key="cap-10-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-10-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-10-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>11月</td><td contenteditable="true" data-key="cap-11-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-11-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-11-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr><td>12月</td><td contenteditable="true" data-key="cap-12-thing" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-12-thank" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="cap-12-msg" style="cursor:text;background:var(--bg)"></td></tr>
+            <tr id="capsuleAddRow"><td colspan="4" style="text-align:center"><button class="btn btn-sm" onclick="addCapsuleMonth()" style="background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)">＋ 添加自定义月份/时段胶囊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>健康日历（点击填写·到点提醒）</h3>
+        <div class="grid grid-3">
+          <div>
+            <h4>每学期固定项</h4>
+            <ul>
+              <li>开学体检：9月/3月</li>
+              <li>视力检查：每学期1次</li>
+              <li>口腔检查：每学期1次</li>
+              <li>女生HPV疫苗：适龄抓紧打</li>
+              <li>心理自测：开学/期末各1次</li>
+            </ul>
+          </div>
+          <div>
+            <h4>我的健康待办（点击填写）</h4>
+            <div contenteditable="true" data-key="health-todo" style="background:var(--bg);padding:10px;border-radius:8px;min-height:80px;font-size:13px;cursor:text" data-placeholder="例：9月底补HPV第二针 / 10月牙医复查 / 12月配新眼镜"></div>
+          </div>
+          <div>
+            <h4>常用药箱清单</h4>
+            <ul>
+              <li>感冒灵、布洛芬、藿香正气水</li>
+              <li>创可贴、碘伏棉签、晕车药</li>
+              <li>女生必备：红糖/暖宝宝/痛经理疗贴</li>
+              <li>润喉糖、维C泡腾片</li>
+              <li>体温计+电子血压计（可选）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>节假日规划（点击填写·自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">国庆/寒假/暑假是弯道超车的最佳窗口，提前规划才不会"假期结束发现什么都没做"。</p>
+        <table>
+          <thead><tr><th>假期</th><th>时间</th><th>主任务</th><th>次任务</th><th>已确认</th></tr></thead>
+          <tbody>
+            <tr><td>国庆7天</td><td>10.1-10.7</td>
+              <td contenteditable="true" data-key="hol-gq-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-gq-sub" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-gq-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+            <tr><td>元旦3天</td><td>1.1-1.3</td>
+              <td contenteditable="true" data-key="hol-yd-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-yd-sub" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-yd-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+            <tr><td>寒假30天</td><td>1月中-2月底</td>
+              <td contenteditable="true" data-key="hol-hj-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-hj-sub" style="cursor:text;b

@@ -1,0 +1,960 @@
+n;text-overflow:ellipsis">即兴演讲</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b40262&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#43524A,#6B7A72);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">远见</div><div style="font-size:9px;opacity:.8;text-align:center">布赖恩·费瑟斯通豪</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">职业</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">远见</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b96046&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#43524A,#6B7A72);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">深度工作</div><div style="font-size:9px;opacity:.8;text-align:center">卡尔·纽波特</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">职业</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">深度工作</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b10872&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#3A4038,#6B7267);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">乌合之众</div><div style="font-size:9px;opacity:.8;text-align:center">古斯塔夫·勒庞</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">社会</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">乌合之众</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b55288&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#3A4038,#6B7267);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">社会性动物</div><div style="font-size:9px;opacity:.8;text-align:center">埃利奥特·阿伦森</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">社会</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">社会性动物</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b72184&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#92400E,#D97706);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">指数基金投资指南</div><div style="font-size:9px;opacity:.8;text-align:center">银行螺丝钉</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">理财</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">指数基金投资指南</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b64898&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#7A5426,#C2A15E);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">三体</div><div style="font-size:9px;opacity:.8;text-align:center">刘慈欣</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">文学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">三体</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b52186&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#7A5426,#C2A15E);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">小王子</div><div style="font-size:9px;opacity:.8;text-align:center">圣埃克苏佩里</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">文学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">小王子</div></div></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>添加我的书 · 想读什么加什么（自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">第一步：点下方"去选书"进微信读书挑书（或复制任意阅读链接）；第二步：把书名（和链接）填进表单点"加入"；以后在精选书单里点封面→"点击阅读"直接开读。</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+          <a class="btn btn-sm btn-primary" href="https://weread.qq.com/" target="_blank" rel="noopener noreferrer">去选书 · 微信读书 ↗</a>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+          <input id="bookTitleIn" placeholder="书名（必填）" style="flex:2;min-width:150px">
+          <input id="bookAuthorIn" placeholder="作者" style="flex:1;min-width:100px">
+          <select id="bookCatIn" style="width:96px">
+            <option value="学习">学习</option><option value="认知">认知</option><option value="心理">心理</option><option value="成长">成长</option><option value="沟通">沟通</option><option value="职业">职业</option><option value="社会">社会</option><option value="理财">理财</option><option value="文学">文学</option><option value="国学">国学</option>
+          </select>
+        </div>
+        <input id="bookLinkIn" placeholder="阅读链接（选填，不填则自动跳微信读书搜索该书）" style="margin-bottom:8px">
+        <input id="bookQuotesIn" placeholder="书中语录（选填，用逗号分隔多条）" style="margin-bottom:8px">
+        <button class="btn btn-primary btn-sm" onclick="addBook()">加入我的书架</button>
+        <span style="font-size:12px;color:var(--hint);margin-left:8px">加入后显示在上方"精选书单"里，永久保存、点封面即可阅读</span>
+      </div>
+
+      <div class="card" style="margin-top:16px;display:none" id="bookDetailBox">
+        <h3 id="bookDetailTitle"></h3>
+        <button class="btn btn-sm" style="float:right" onclick="document.getElementById(&#39;bookDetailBox&#39;).style.display=&#39;none&#39;">关闭</button>
+        <div id="bookDetailContent" style="margin-top:12px"></div>
+      </div>
+          <div class="card" style="margin-top:16px">
+        <h3>读书笔记（随手记 · 与书架联动）</h3>
+        <p style="font-size:13px;color:var(--muted)">随手记录金句 / 观点 / 应用 / 行动，与书架联动。</p>
+        <div style="margin-top:10px">
+          <input id="bookNoteTitle" placeholder="书名" style="margin-bottom:8px">
+          <textarea id="bookNoteText" placeholder="金句摘抄 / 核心观点 / 可应用场景 / 顿悟时刻" style="min-height:80px"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn btn-primary btn-sm" onclick="addBookNote()">保存笔记</button>
+          </div>
+        </div>
+        <div id="bookNoteList" style="margin-top:12px"><p style="color:var(--hint);font-size:13px">还没有读书笔记</p></div>
+      </div>
+    </section>
+
+    <!-- 数据设置 -->
+
+    <section class="view" id="view-tpl">
+<div class="section-intro">拿来即用的专项模板，省去你重复制作表格的时间。直接填、随时改，都是你自己的积累。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>专项模板</h1>
+        <p>考研 / 考公 / 法考 · 阶段计划 + 每日任务 + 复盘表</p>
+      </div>
+            <div id="tplContent" style="display: block;">
+        <div class="tabs" style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+          <button class="btn btn-sm btn-primary" onclick="switchTpl(&#39;ky&#39;)">考研模板</button>
+          <button class="btn btn-sm" onclick="switchTpl(&#39;gk&#39;)">考公模板</button>
+          <button class="btn btn-sm" onclick="switchTpl(&#39;fk&#39;)">法考模板</button>
+          <button class="btn btn-sm" onclick="switchTpl(&#39;fx&#39;)">通用模板</button>
+          <button class="btn btn-sm" onclick="switchTpl(&#39;lw&#39;)">课程论文</button>
+        </div>
+
+        <!-- ═══════════ 考研 ═══════════ -->
+        <div id="tplKy">
+          <div class="card">
+            <h3>📚 考研 · 全年四阶段作战计划</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">阶段</th><th style="padding:8px;border:1px solid var(--border)">时间</th><th style="padding:8px;border:1px solid var(--border)">每日任务</th><th style="padding:8px;border:1px solid var(--border)">月底自检</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>基础期</b></td><td style="padding:8px;border:1px solid var(--border)">3-6月</td><td style="padding:8px;border:1px solid var(--border)">单词80个/天+长难句5句；数学教材20页+例题；专业课第一遍通读</td><td style="padding:8px;border:1px solid var(--border)">单词过完1轮；数学过半；专业课框架图完成</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>强化期</b></td><td style="padding:8px;border:1px solid var(--border)">7-8月</td><td style="padding:8px;border:1px solid var(--border)">英语真题阅读2篇精做；数学真题按套刷；政治网课1节；专业课背诵</td><td style="padding:8px;border:1px solid var(--border)">英语真题到2015年；数学完成一轮；专业课背完一遍</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>冲刺期</b></td><td style="padding:8px;border:1px solid var(--border)">9-11月</td><td style="padding:8px;border:1px solid var(--border)">英语作文每周2篇；数学二刷三刷；政治背诵30页/天；专业课二轮</td><td style="padding:8px;border:1px solid var(--border)">英语刷完2遍；肖八完成；专业课真题过1遍</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>考前</b></td><td style="padding:8px;border:1px solid var(--border)">12月</td><td style="padding:8px;border:1px solid var(--border)">全真模拟；错题重刷；肖四背诵；调作息到考试节奏</td><td style="padding:8px;border:1px solid var(--border)">模拟3次以上；肖四大题背完</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>考研避坑指南（过来人的经验）</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li>❌ 不要"收藏即学会"：资料存了10个G，一个没看完=0</li>
+              <li>❌ 不要比进度：别人二轮了不用慌，按自己节奏来</li>
+              <li>❌ 不要三天打鱼：宁可每天6小时雷打不动，也别一天12小时歇三天</li>
+              <li>✅ 英语单词每天不能断，断了就断崖</li>
+              <li>✅ 数学真题至少刷2遍，错题本比新题重要</li>
+              <li>✅ 每周日留半天复盘+休息，防 burnout</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🎤 考研 · 复试面试避坑 + 准备清单</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li>✅ 中英文自我介绍各1分钟+3分钟版，背到脱口而出</li>
+              <li>✅ 必准备3问：为什么选这个学校/专业？读研规划？本科代表经历？</li>
+              <li>✅ 专业课问答：初试笔记过一遍+看导师近3年论文摘要</li>
+              <li>❌ 别背"空话模板"（"我热爱学习"），用具体事例说话</li>
+              <li>❌ 别答非所问：先复述问题再答，冷静慢说</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🧰 考研 · 备考工具箱（免费为主）</h3>
+            <div class="grid grid-2">
+              <div>
+                <h4>APP / 网站</h4>
+                <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+                  <li><b>墨墨背单词</b>：艾宾浩斯自动排期，考研词库全</li>
+                  <li><b>Anki</b>：自制错题卡，数学公式/专业课背诵神器</li>
+                  <li><b>中国研究生招生信息网（研招网）</b>：报名+调剂唯一官方入口 yz.chsi.com.cn</li>
+                  <li><b>B站</b>：唐迟阅读、徐涛政治、汤家凤数学，全程免费</li>
+                </ul>
+              </div>
+              <div>
+                <h4>每月重点资源</h4>
+                <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+                  <li><b>3-5月</b>：目标院校官网下载近3年招生简章+专业课大纲</li>
+                  <li><b>7-8月</b>：各科强化网课+真题第一轮</li>
+                  <li><b>9月</b>：关注研招网招生简章变动+预报名</li>
+                  <li><b>10月</b>：正式报名（只报一次，逾期不可补）</li>
+                  <li><b>11月</b>：网上确认（拍照+证件，逾期不能考试）</li>
+                  <li><b>12月</b>：打印准考证（多打几份备用）</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout callout-ok" style="margin-top:8px">信息差就是分数差：每年都有人因漏看"网上确定"错过考试。把研招网、目标院校研究生院官网加进浏览器收藏夹，每周刷一次。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🍱 考研党健康底线（别熬垮）</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li>每天睡够6.5小时，比多学2小时划算——睡眠是记忆固化时间</li>
+              <li>每坐1小时起身3分钟，护腰也护专注力</li>
+              <li>焦虑时别刷"考研倒计时"毒鸡汤，按计划走自己的</li>
+              <li>每周留半天彻底休息，防 burnout（耗尽）比冲刺更重要</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>✏️ 我的周学习计划表（可填·可存·可打印）</h3>
+            <p style="font-size:12px;color:var(--hint);margin-bottom:10px">填好点"保存"，下次打开还在；点"打印"可导出纸质版贴桌上。</p>
+            <div id="kyWeekPlan">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <tbody><tr style="background:#EFE8D8"><th style="padding:6px;border:1px solid var(--border);width:64px">星期</th><th style="padding:6px;border:1px solid var(--border)">上午（专注时段）</th><th style="padding:6px;border:1px solid var(--border)">下午</th><th style="padding:6px;border:1px solid var(--border)">晚上复盘</th></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周一</td><td style="border:1px solid var(--border)"><input id="ky_1a" placeholder="如 08-10 数学强化"></td><td style="border:1px solid var(--border)"><input id="ky_1p" placeholder="如 14-16 英语阅读"></td><td style="border:1px solid var(--border)"><input id="ky_1e" placeholder="错题整理"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周二</td><td style="border:1px solid var(--border)"><input id="ky_2a" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_2p" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_2e" placeholder=""></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周三</td><td style="border:1px solid var(--border)"><input id="ky_3a" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_3p" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_3e" placeholder=""></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周四</td><td style="border:1px solid var(--border)"><input id="ky_4a" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_4p" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_4e" placeholder=""></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周五</td><td style="border:1px solid var(--border)"><input id="ky_5a" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_5p" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_5e" placeholder=""></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周六</td><td style="border:1px solid var(--border)"><input id="ky_6a" placeholder="真题模考"></td><td style="border:1px solid var(--border)"><input id="ky_6p" placeholder=""></td><td style="border:1px solid var(--border)"><input id="ky_6e" placeholder="本周总结"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border);font-weight:600">周日</td><td style="border:1px solid var(--border)"><input id="ky_7a" placeholder="休整"></td><td style="border:1px solid var(--border)"><input id="ky_7p" placeholder="下周计划"></td><td style="border:1px solid var(--border)"><input id="ky_7e" placeholder=""></td></tr>
+              </tbody></table>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <button class="btn btn-primary btn-sm" onclick="saveTplForm('kyWeekPlan')">保存</button>
+              <button class="btn btn-ghost btn-sm" onclick="printTpl('kyWeekPlan')">打印</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ 考公 ═══════════ -->
+        <div id="tplGk" style="display:none">
+          <div class="card">
+            <h3>🏛 考公 · 行测申论双线作战计划</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">阶段</th><th style="padding:8px;border:1px solid var(--border)">时间</th><th style="padding:8px;border:1px solid var(--border)">行测</th><th style="padding:8px;border:1px solid var(--border)">申论</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>打基础</b></td><td style="padding:8px;border:1px solid var(--border)">第1-2月</td><td style="padding:8px;border:1px solid var(--border)">言语/判断/数量/资料四模块听课+专项刷题（每天50题）</td><td style="padding:8px;border:1px solid var(--border)">了解题型；每周2篇小题练习</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>刷题期</b></td><td style="padding:8px;border:1px solid var(--border)">第3-4月</td><td style="padding:8px;border:1px solid var(--border)">每日一套真题（掐90分钟）；错题按模块整理</td><td style="padding:8px;border:1px solid var(--border)">大作文每周1篇；积累规范表达</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>冲刺期</b></td><td style="padding:8px;border:1px solid var(--border)">考前1月</td><td style="padding:8px;border:1px solid var(--border)">全真模拟（含涂卡）；攻薄弱模块</td><td style="padding:8px;border:1px solid var(--border)">背时政+素材；按考场时间写大作文</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>行测五大模块 · 提分策略</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">模块</th><th style="padding:8px;border:1px solid var(--border)">分值占比</th><th style="padding:8px;border:1px solid var(--border)">提分策略</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">常识判断</td><td style="padding:8px;border:1px solid var(--border)">20%</td><td style="padding:8px;border:1px solid var(--border)">平时积累为主，考前过时政，不强求</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">言语理解</td><td style="padding:8px;border:1px solid var(--border)">32%</td><td style="padding:8px;border:1px solid var(--border)">逻辑填空靠积累，片段阅读学"结构法"</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">数量关系</td><td style="padding:8px;border:1px solid var(--border)">13%</td><td style="padding:8px;border:1px solid var(--border)">只做擅长题型，其余蒙C保时间</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">判断推理</td><td style="padding:8px;border:1px solid var(--border)">25%</td><td style="padding:8px;border:1px solid var(--border)">图形推理刷题型库，逻辑判断学方法</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">资料分析</td><td style="padding:8px;border:1px solid var(--border)">10%</td><td style="padding:8px;border:1px solid var(--border)">最易拿分！练到90%正确率，背速算技巧</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>申论提分要点</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li>✅ 小题答案抄原文关键词，不自己发挥</li>
+              <li>✅ 大作文用"总-分-总"结构，开头点题结尾升华</li>
+              <li>✅ 每周积累10条规范表达（乡村振兴/民生/法治）</li>
+              <li>✅ 字迹工整=隐形加分，练字20分钟/天</li>
+              <li>❌ 别背万能模板，阅卷老师一眼识破</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🎯 考公 · 面试（结构化）每日一练</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">题型</th><th style="padding:8px;border:1px solid var(--border)">答题框架</th><th style="padding:8px;border:1px solid var(--border)">高频真题</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>综合分析</b></td><td style="padding:8px;border:1px solid var(--border)">亮明观点→分析原因/影响→提对策→结合自身</td><td style="padding:8px;border:1px solid var(--border)">"对基层干部'躺平'现象怎么看"</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>组织计划</b></td><td style="padding:8px;border:1px solid var(--border)">事前→事中→事后</td><td style="padding:8px;border:1px solid var(--border)">"组织一次社区反诈宣传"</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>应急应变</b></td><td style="padding:8px;border:1px solid var(--border)">先稳现场→分情况→事后反思</td><td style="padding:8px;border:1px solid var(--border)">"群众在大厅情绪激动大吵，你怎么办"</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>人际沟通</b></td><td style="padding:8px;border:1px solid var(--border)">态度诚恳→换位思考→主动沟通</td><td style="padding:8px;border:1px solid var(--border)">"领导批评你工作不细致，你怎么办"</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>岗位认知</b></td><td style="padding:8px;border:1px solid var(--border)">为什么考→我能做什么→入职后怎么做</td><td style="padding:8px;border:1px solid var(--border)">"你报考本岗位的优势和不足"</td></tr>
+            </tbody></table>
+            <div style="background:#FFF8EF;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--muted);margin-top:8px"><b>每日一练：</b>每天挑1题，对着手机录3分钟答题视频，回看找口头禅和眼神飘忽，练21天形成肌肉记忆。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🗺 考公 · 选岗策略（考得好不如报得巧）</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">策略</th><th style="padding:8px;border:1px solid var(--border)">怎么用</th><th style="padding:8px;border:1px solid var(--border)">效果</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>限制越多越好</b></td><td style="padding:8px;border:1px solid var(--border)">优先选"仅限应届+党员+专业对口"的岗，竞争比直线降</td><td style="padding:8px;border:1px solid var(--border)">报录比可从1000:1降到30:1</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>看历年进面分</b></td><td style="padding:8px;border:1px solid var(--border)">查近3年该岗进面分数线，对照自己模考水平</td><td style="padding:8px;border:1px solid var(--border)">避免"高分岗"炮灰</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>地域权衡</b></td><td style="padding:8px;border:1px solid var(--border)">家乡岗热、偏远岗冷，结合自身意愿选</td><td style="padding:8px;border:1px solid var(--border)">性价比优先</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>避开"三不限"</b></td><td style="padding:8px;border:1px solid var(--border)">不限专业/学历/户籍的岗神仙打架，非必要不报</td><td style="padding:8px;border:1px solid var(--border)">减少无谓内卷</td></tr>
+            </tbody></table>
+            <div class="callout callout-info" style="margin-top:8px"><b>报名节奏：</b>报名前3天别急着报（看每天报名人数统计选竞争小的时段），但也别拖到最后一天——万一审核不通过没时间改。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>📅 考公 · 全年关键节点</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li><b>国考</b>：10月报名 → 11月底笔试 → 次年1月面试</li>
+              <li><b>省考</b>：多在2-3月报名 → 3-4月笔试（联考省份同日）</li>
+              <li><b>选调生</b>：11-12月报名（仅限应届，竞争小、起点高，重点关注！）</li>
+              <li><b>事业单位</b>：各地全年分散，关注人社局官网</li>
+              <li><b>应届身份</b>：毕业2年内未就业仍算应届，是考公最大红利，别轻易放弃</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>✏️ 我的选岗对比表（可填·可存·可打印）</h3>
+            <p style="font-size:12px;color:var(--hint);margin-bottom:10px">把心仪岗位列出来横向对比，别凭感觉报。填好可保存/打印。</p>
+            <div id="gkJobs">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <tbody><tr style="background:#EFE8D8"><th style="padding:6px;border:1px solid var(--border)">岗位</th><th style="padding:6px;border:1px solid var(--border)">限制条件</th><th style="padding:6px;border:1px solid var(--border)">历年进面分</th><th style="padding:6px;border:1px solid var(--border)">我的胜算</th></tr>
+                <tr><td style="border:1px solid var(--border)"><input id="gk_j1" placeholder="如 某市局-科员"></td><td style="border:1px solid var(--border)"><input id="gk_c1" placeholder="应届+法学"></td><td style="border:1px solid var(--border)"><input id="gk_s1" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_w1" placeholder="高/中/低"></td></tr>
+                <tr><td style="border:1px solid var(--border)"><input id="gk_j2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_c2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_s2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_w2" placeholder=""></td></tr>
+                <tr><td style="border:1px solid var(--border)"><input id="gk_j3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_c3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_s3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="gk_w3" placeholder=""></td></tr>
+              </tbody></table>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <button class="btn btn-primary btn-sm" onclick="saveTplForm('gkJobs')">保存</button>
+              <button class="btn btn-ghost btn-sm" onclick="printTpl('gkJobs')">打印</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ 法考 ═══════════ -->
+        <div id="tplFk" style="display:none">
+          <div class="card">
+            <h3>⚖ 法考 · 客观题+主观题全程计划</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">阶段</th><th style="padding:8px;border:1px solid var(--border)">时间</th><th style="padding:8px;border:1px solid var(--border)">任务</th><th style="padding:8px;border:1px solid var(--border)">自检标准</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>先修轮</b></td><td style="padding:8px;border:1px solid var(--border)">3-4月</td><td style="padding:8px;border:1px solid var(--border)">刑法/民法精讲+真题；民诉/刑诉听精讲</td><td style="padding:8px;border:1px solid var(--border)">刑法民法正确率60%+</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>系统轮</b></td><td style="padding:8px;border:1px solid var(--border)">5-7月</td><td style="padding:8px;border:1px solid var(--border)">八科系统过一遍；每日刷题100道；背诵卷开背</td><td style="padding:8px;border:1px solid var(--border)">真题4000+完成；背诵卷过2遍</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>冲刺轮</b></td><td style="padding:8px;border:1px solid var(--border)">8-9月</td><td style="padding:8px;border:1px solid var(--border)">真题二刷错题；主观题案例练习；法条定位训练</td><td style="padding:8px;border:1px solid var(--border)">客观题模拟200分+；主观题每天1道</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>客观题八大科目 · 复习顺序建议</h3>
+            <p style="font-size:13.5px;color:var(--muted);line-height:1.9"><b>第一梯队（拿分主力）</b>：刑法→民法→民诉→刑诉<br><b>第二梯队</b>：行政法→商经知<br><b>第三梯队（性价比）</b>：理论法→三国法（背多分，后期突击）</p>
+            <div style="background:#EFE8D8;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--muted);margin-top:8px"><b>每日刷题节奏：</b>早30道刑法/民法→午20道民诉/刑诉→晚30道行政/商经+复盘→周末各科轮一遍</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>主观题答题模板（案例题）</h3>
+            <div style="background:#EFE8D8;border-radius:8px;padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.9">
+              <b>结构：结论→法律依据→案情分析→结论重申</b><br>
+              ① <b>结论</b>：本案中张三构成/不构成XX罪；<br>
+              ② <b>依据</b>：依据《刑法》第XX条，……（引用法条关键词）；<br>
+              ③ <b>分析</b>：张三实施了……，符合/不符合该罪构成要件；<br>
+              ④ <b>重申</b>：应以XX罪定罪处罚。<br><br>
+              <b>练习频率</b>：每天1道刑法案例+1道民法案例，20天见效。
+            </div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>📌 法考 · 每日一题 + 学习避坑</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li>❌ 不要"只听不练"：听完课当天刷对应真题</li>
+              <li>❌ 不要盲目刷题量：错题不复盘=白刷，每周重做一遍</li>
+              <li>✅ 优先保"背多分"科目：理论法/三国法/商经知后期最快</li>
+              <li>✅ 主观题从7月就开练，别等客观题考完</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🎓 法考 · 主流老师推荐（按科目）</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">科目</th><th style="padding:8px;border:1px solid var(--border)">推荐老师</th><th style="padding:8px;border:1px solid var(--border)">特点</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">刑法</td><td style="padding:8px;border:1px solid var(--border)">柏浪涛 / 徐光华</td><td style="padding:8px;border:1px solid var(--border)">体系清晰、二选一即可</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">民法</td><td style="padding:8px;border:1px solid var(--border)">李建伟 / 张翔</td><td style="padding:8px;border:1px solid var(--border)">精讲细致，适合打基础</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">刑诉</td><td style="padding:8px;border:1px solid var(--border)">左宁 / 向高甲</td><td style="padding:8px;border:1px solid var(--border)">口诀好记</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">民诉</td><td style="padding:8px;border:1px solid var(--border)">戴鹏</td><td style="padding:8px;border:1px solid var(--border)">图表化，理解派首选</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">行政法</td><td style="padding:8px;border:1px solid var(--border)">李佳</td><td style="padding:8px;border:1px solid var(--border)">幽默通俗</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">商经知</td><td style="padding:8px;border:1px solid var(--border)">郄鹏恩</td><td style="padding:8px;border:1px solid var(--border)">结构强</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">理论法</td><td style="padding:8px;border:1px solid var(--border)">马峰 / 杜洪波</td><td style="padding:8px;border:1px solid var(--border)">背多分科目，后期突击</td></tr>
+            </tbody></table>
+            <div class="callout callout-warn" style="margin-top:8px">选老师遵循"一科一师、跟到底"，别中途换，也别贪多——资料在精不在全。B站均有免费精讲，先试听再决定。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>📖 主观题 · 法条定位训练</h3>
+            <ul style="font-size:13.5px;color:var(--muted);line-height:2">
+              <li><b>主观题开卷</b>：可查《法律法规汇编》，但考场上翻不到=没带</li>
+              <li><b>训练法</b>：每刷一道案例，先默想要引用的法条，再翻书定位，记"目录层级"而非全文</li>
+              <li><b>高频法条</b>：刑法总则犯罪构成、民法典合同/侵权、行政处罚法、公司法重点条</li>
+              <li><b>电子版</b>：电脑端用 Ctrl+F 搜关键词，平时就用电子法条练习，适应机考</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>✏️ 我的法考打卡表（可填·可存·可打印）</h3>
+            <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每天勾一勾学了哪科，坚持看得见。填好可保存/打印。</p>
+            <div id="fkTrack">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <tbody><tr style="background:#EFE8D8"><th style="padding:6px;border:1px solid var(--border)">日期</th><th style="padding:6px;border:1px solid var(--border)">刑法</th><th style="padding:6px;border:1px solid var(--border)">民法</th><th style="padding:6px;border:1px solid var(--border)">诉讼法</th><th style="padding:6px;border:1px solid var(--border)">做题量</th></tr>
+                <tr><td style="border:1px solid var(--border)"><input id="fk_d1" placeholder="今日"></td><td style="border:1px solid var(--border)"><input id="fk_x1" placeholder="✓/时长"></td><td style="border:1px solid var(--border)"><input id="fk_m1" placeholder="✓/时长"></td><td style="border:1px solid var(--border)"><input id="fk_s1" placeholder="✓/时长"></td><td style="border:1px solid var(--border)"><input id="fk_q1" placeholder="题数"></td></tr>
+                <tr><td style="border:1px solid var(--border)"><input id="fk_d2" placeholder="明日"></td><td style="border:1px solid var(--border)"><input id="fk_x2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_m2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_s2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_q2" placeholder=""></td></tr>
+                <tr><td style="border:1px solid var(--border)"><input id="fk_d3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_x3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_m3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_s3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fk_q3" placeholder=""></td></tr>
+              </tbody></table>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <button class="btn btn-primary btn-sm" onclick="saveTplForm('fkTrack')">保存</button>
+              <button class="btn btn-ghost btn-sm" onclick="printTpl('fkTrack')">打印</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ 通用 ═══════════ -->
+        <div id="tplFx" style="display:none">
+          <div class="card">
+            <h3>📋 通用 · 每周复盘模板（学习/工作通用）</h3>
+            <div style="background:#EFE8D8;border-radius:8px;padding:14px 18px;font-size:13.5px;color:var(--muted);line-height:2">
+              ✅ <b>本周完成</b>：＿＿＿＿＿＿＿＿＿＿＿＿<br>
+              ❌ <b>未完成</b>：＿＿＿＿＿＿＿＿＿＿＿＿（原因：＿＿＿）<br>
+              📌 <b>下周最重要3件事</b>：①＿＿＿ ②＿＿＿ ③＿＿＿<br>
+              💡 <b>本周学到</b>：＿＿＿＿＿＿＿＿＿＿＿＿<br>
+              🔧 <b>下周改进</b>：＿＿＿＿＿＿＿＿＿＿＿＿<br>
+              📊 <b>本周效率打分</b>（1-10）：＿＿（低于6分思考原因）
+            </div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>每日任务清单模板（通用）</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">优先级</th><th style="padding:8px;border:1px solid var(--border)">任务</th><th style="padding:8px;border:1px solid var(--border)">预计用时</th><th style="padding:8px;border:1px solid var(--border)">完成✓</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><span class="tag tag-coral">高</span></td><td style="padding:8px;border:1px solid var(--border)">＿＿＿＿＿＿</td><td style="padding:8px;border:1px solid var(--border)">＿＿min</td><td style="padding:8px;border:1px solid var(--border)">□</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><span class="tag tag-blue">中</span></td><td style="padding:8px;border:1px solid var(--border)">＿＿＿＿＿＿</td><td style="padding:8px;border:1px solid var(--border)">＿＿min</td><td style="padding:8px;border:1px solid var(--border)">□</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><span class="tag tag-gray">低</span></td><td style="padding:8px;border:1px solid var(--border)">＿＿＿＿＿＿</td><td style="padding:8px;border:1px solid var(--border)">＿＿min</td><td style="padding:8px;border:1px solid var(--border)">□</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🎯 通用 · 高效学习法（任何备考都适用）</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">方法</th><th style="padding:8px;border:1px solid var(--border)">怎么用</th><th style="padding:8px;border:1px solid var(--border)">适合场景</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>费曼学习法</b></td><td style="padding:8px;border:1px solid var(--border)">学完用大白话讲给"小学生"听，卡壳处就是没懂</td><td style="padding:8px;border:1px solid var(--border)">所有科目复习</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>番茄钟+主动回想</b></td><td style="padding:8px;border:1px solid var(--border)">25分钟专注+5分钟休息；休息时合书回想</td><td style="padding:8px;border:1px solid var(--border)">刷题/背诵</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>艾宾浩斯复习</b></td><td style="padding:8px;border:1px solid var(--border)">第1/2/4/7/15天各复习一次</td><td style="padding:8px;border:1px solid var(--border)">单词/公式/法条</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>错题四步法</b></td><td style="padding:8px;border:1px solid var(--border)">①抄错题②写原因③写思路④一周后重做</td><td style="padding:8px;border:1px solid var(--border)">刷题阶段</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>📝 通用 · 期末考试冲刺模板（考前2周）</h3>
+            <div style="background:#EFE8D8;border-radius:8px;padding:14px 18px;font-size:13.5px;color:var(--muted);line-height:2">
+              📌 <b>第1步 列范围</b>：把每科老师划的重点/往年真题整理成"必背清单"<br>
+              📌 <b>第2步 排优先级</b>：分值的科目先搞，1分选择题不值得熬通宵<br>
+              📌 <b>第3步 做真题</b>：近3年期末卷限时做，错题标红进"急救本"<br>
+              📌 <b>第4步 组队互考</b>：和同学互相抽背，比自己看效率高3倍<br>
+              📌 <b>第5步 调作息</b>：考前3天开始按考试时间作息，别熬大夜<br>
+              ⚠️ <b>考场策略</b>：先易后难，不留空白；主观题写满逻辑框架也比空白得分高
+            </div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>👥 通用 · 小组作业分工模板</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">角色</th><th style="padding:8px;border:1px solid var(--border)">职责</th><th style="padding:8px;border:1px solid var(--border)">Deadline</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">组长</td><td style="padding:8px;border:1px solid var(--border)">拆任务、定节点、汇总统稿、盯进度</td><td style="padding:8px;border:1px solid var(--border)">全程</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">资料员</td><td style="padding:8px;border:1px solid var(--border)">查文献/数据，建共享文档</td><td style="padding:8px;border:1px solid var(--border)">第3天</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">撰写员</td><td style="padding:8px;border:1px solid var(--border)">写初稿，统一格式</td><td style="padding:8px;border:1px solid var(--border)">第7天</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)">汇报人</td><td style="padding:8px;border:1px solid var(--border)">做PPT+答辩演练</td><td style="padding:8px;border:1px solid var(--border)">第10天</td></tr>
+            </tbody></table>
+            <div class="callout callout-ok" style="margin-top:8px">防 free rider：所有节点提前3天，群内公开进度。有人划水，及时重分或如实写进"分工说明"让老师看见。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>📚 通用 · 读书笔记模板（专业课/闲书都适用）</h3>
+            <div style="background:#EFE8D8;border-radius:8px;padding:14px 18px;font-size:13.5px;color:var(--muted);line-height:2">
+              📖 <b>书名 / 作者</b>：＿＿＿＿＿＿<br>
+              ⭐ <b>一句话核心</b>：＿＿＿＿＿＿<br>
+              🔑 <b>3个关键点</b>：①＿＿＿ ②＿＿＿ ③＿＿＿<br>
+              💡 <b>对我有用的1个点</b>：＿＿＿＿＿＿<br>
+              🔧 <b>准备怎么用</b>：＿＿＿＿＿＿<br>
+              <span style="font-size:12px;color:var(--hint)">（用"对我有用"逼自己关联自身，否则看完就忘）</span>
+            </div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>✏️ 我的每日任务清单（可填·可存·可打印）</h3>
+            <p style="font-size:12px;color:var(--hint);margin-bottom:10px">把上面的模板变成你能直接用的清单。填好可保存/打印。</p>
+            <div id="fxTodo">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <tbody><tr style="background:#EFE8D8"><th style="padding:6px;border:1px solid var(--border)">优先级</th><th style="padding:6px;border:1px solid var(--border)">任务</th><th style="padding:6px;border:1px solid var(--border)">用时</th><th style="padding:6px;border:1px solid var(--border)">完成</th></tr>
+                <tr><td style="border:1px solid var(--border);font-weight:600;color:#8B4513">高</td><td style="border:1px solid var(--border)"><input id="fx_t1" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fx_u1" placeholder="min" style="width:60px"></td><td style="border:1px solid var(--border)"><input id="fx_d1" placeholder="✓"></td></tr>
+                <tr><td style="border:1px solid var(--border);font-weight:600;color:#8B4513">高</td><td style="border:1px solid var(--border)"><input id="fx_t2" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fx_u2" placeholder="min" style="width:60px"></td><td style="border:1px solid var(--border)"><input id="fx_d2" placeholder="✓"></td></tr>
+                <tr><td style="border:1px solid var(--border);font-weight:600;color:#4A3427">中</td><td style="border:1px solid var(--border)"><input id="fx_t3" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fx_u3" placeholder="min" style="width:60px"></td><td style="border:1px solid var(--border)"><input id="fx_d3" placeholder="✓"></td></tr>
+                <tr><td style="border:1px solid var(--border);font-weight:600;color:#5F5E5A">低</td><td style="border:1px solid var(--border)"><input id="fx_t4" placeholder=""></td><td style="border:1px solid var(--border)"><input id="fx_u4" placeholder="min" style="width:60px"></td><td style="border:1px solid var(--border)"><input id="fx_d4" placeholder="✓"></td></tr>
+              </tbody></table>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <button class="btn btn-primary btn-sm" onclick="saveTplForm('fxTodo')">保存</button>
+              <button class="btn btn-ghost btn-sm" onclick="printTpl('fxTodo')">打印</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ 课程论文 ═══════════ -->
+        <div id="tplLw" style="display:none">
+          <div class="card">
+            <h3>🎓 课程论文 · 两周倒排时间表（最常用，别拖到最后三天）</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">时间</th><th style="padding:8px;border:1px solid var(--border)">任务</th><th style="padding:8px;border:1px solid var(--border)">交付物</th></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>D-14</b></td><td style="padding:8px;border:1px solid var(--border)">定选题（切小）+ 查文献 5 篇</td><td style="padding:8px;border:1px solid var(--border)">选题理由 + 文献清单</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>D-11</b></td><td style="padding:8px;border:1px solid var(--border)">搭四段式大纲</td><td style="padding:8px;border:1px solid var(--border)">一页大纲（见下方模板）</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>D-8</b></td><td style="padding:8px;border:1px solid var(--border)">写完引言 + 文献综述</td><td style="padding:8px;border:1px solid var(--border)">初稿前 1/3</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>D-5</b></td><td style="padding:8px;border:1px solid var(--border)">完成主体论证（2-3 个分论点）</td><td style="padding:8px;border:1px solid var(--border)">初稿 2/3</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>D-2</b></td><td style="padding:8px;border:1px solid var(--border)">改逻辑 + 查重降重</td><td style="padding:8px;border:1px solid var(--border)">二稿</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>D-Day</b></td><td style="padding:8px;border:1px solid var(--border)">格式排版 + 引用核对 + 全文通读 + 按时提交</td><td style="padding:8px;border:1px solid var(--border)">终稿</td></tr>
+            </tbody></table>
+            <div class="callout callout-warn" style="margin-top:8px">宁可提前 1 天交格式完整的稿，也不要卡点交可能缺格式分的稿。很多老师给"按时+格式"的保底分。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>📝 四段式大纲模板（填空式，照着写就立得住）</h3>
+            <div style="background:#EFE8D8;border-radius:8px;padding:14px 18px;font-size:13.5px;color:var(--muted);line-height:2">
+              🔹 <b>题目（小切口）</b>：论"＿＿＿＿＿＿"中的＿＿＿＿＿＿问题<br>
+              🔹 <b>引言</b>：背景＿→ 前人没做/没做好＿→ 我的切入点＿→ 本文要论证＿<br>
+              🔹 <b>文献综述</b>：按主题分＿类，学界主要分歧＿，本文承接＿<br>
+              🔹 <b>主体论证</b>：分论点①＿，②＿，③＿（每段=中心句+论据+小结）<br>
+              🔹 <b>结论</b>：回答引言问题，结论是＿，局限与未来＿<br>
+              🔹 <b>参考文献</b>：＿＿＿篇（按学校要求，GB/T 7714）
+            </div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>🎯 格式与细节 · 信息差就在这些地方</h3>
+            <div class="grid grid-2">
+              <div>
+                <h4>Word 排版基础</h4>
+                <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+                  <li>题目：黑体三号居中；一级标题黑体四号</li>
+                  <li>正文：宋体小四，1.5 倍行距，首行缩进 2 字符</li>
+                  <li>图表：加编号（图1/表1）+ 来源标注，不要"图见下页"</li>
+                  <li>页眉页脚加论文题目或页码，观感立刻专业</li>
+                </ul>
+              </div>
+              <div>
+                <h4>引用与提交细节</h4>
+                <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+                  <li>直接引用加引号 + 标页码；间接引用注明出处（GB/T 7714）</li>
+                  <li>参考文献数量和课程要求对齐，别多也别少</li>
+                  <li>先弄清楚提交方式：邮箱/学习通/打印纸质？格式要求写在老师给的说明里</li>
+                  <li>卡点前 1 天先发一次给同学互读，挑错比独审有效</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout callout-ok" style="margin-top:8px">别小看格式分：同样内容，排版规范可以差出 3-5 分。把上面这条当检查清单，提交前逐项过。</div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>✏️ 我的课程论文任务书（可填·可存·可打印）</h3>
+            <p style="font-size:12px;color:var(--hint);margin-bottom:10px">开题前填好这张表，思路就清晰了一半。填好可保存/打印。</p>
+            <div id="lwPlan">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <tbody><tr style="background:#EFE8D8"><th style="padding:6px;border:1px solid var(--border);width:140px">字段</th><th style="padding:6px;border:1px solid var(--border)">填写（开题前想清楚）</th></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">课程 / 老师</td><td style="border:1px solid var(--border)"><input id="lw_c1" placeholder=""></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">拟定题目</td><td style="border:1px solid var(--border)"><input id="lw_c2" placeholder="论＿＿中的＿＿问题"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">一句话论点</td><td style="border:1px solid var(--border)"><input id="lw_c3" placeholder="本文要论证：＿＿＿＿"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">手头材料/数据/案例</td><td style="border:1px solid var(--border)"><input id="lw_c4" placeholder="能撑住论点吗？"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">需查文献（≥5篇）</td><td style="border:1px solid var(--border)"><input id="lw_c5" placeholder="列出3-5篇"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">三个分论点</td><td style="border:1px solid var(--border)"><input id="lw_c6" placeholder="①＿＿ ②＿＿ ③＿＿"></td></tr>
+                <tr><td style="padding:6px;border:1px solid var(--border)">截止时间</td><td style="border:1px solid var(--border)"><input id="lw_c7" placeholder="倒排期到 D-Day"></td></tr>
+              </tbody></table>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <button class="btn btn-primary btn-sm" onclick="saveTplForm('lwPlan')">保存</button>
+              <button class="btn btn-ghost btn-sm" onclick="printTpl('lwPlan')">打印</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;background:#FFF8EF;border-color:#F2DDB8">
+          <h3 style="color:var(--gold)">使用提示</h3>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9">模板是"骨架"，结合你自己的专业和进度填写血肉。建议：① 打印或抄到本子上贴书桌前；② 每晚在「时光札记」复盘；③ 每周日固定30分钟用上面的复盘模板做周检，比闷头学有效得多。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-help">
+<div class="section-intro">新手怎么用 · 当作 App · 常见问题与排查 —— 在这里一站式解决。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>帮助中心</h1>
+        <p>从打开到上手、安装到排查，一步步带你走通栖匣。</p>
+      </div>
+
+      <div class="card" style="background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2;margin-bottom:16px">
+        <h3 style="color:var(--primary);font-size:16px">🔧 实用功能 · 查找与使用</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">把最能省事的功能集中列在这里，每条都写清<b style="color:var(--primary)">去哪个板块、点哪里、怎么用</b>。不需要的都跳过，用你需要的就行。</p>
+        <div class="help-grid" style="display:grid;gap:10px">
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🔍 全局搜索：一次搜遍所有板块</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">不用记内容放在哪。点页面顶部的<b>搜索框</b>，输入关键词，能一次性跨全部板块搜出任务、单词、笔记、书单、账目与活动；点结果直接跳转。适合"我记得写过，但想不起在哪个板块"的瞬间。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🗂️ 自动每日备份：基本不用你操心</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">栖匣<b>每个自然日自动备份一次</b>，保留最近 7 天且自动覆盖。觉得"好像改错了/手滑清空了"？到 <b>系统设置 → 从最近自动备份恢复</b>，选一个时间点即可找回，几乎零成本救回数据。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">☁️ 坚果云云端备份：换设备也不用从头再来</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">可选把整份数据同步到<b>你自己的坚果云</b>（免费注册即可），换手机 / 电脑一键从云端恢复，数据仍然只属于你、不上传第三方。<b>系统设置 → 可选云端备份（WebDAV · 坚果云）</b>配置一次即可。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🧩 单板块独立重置：只要清掉我要的那一块</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">想重背一遍单词、或把某个板块清空重来？不必清掉全部数据。去 <b>系统设置 → 数据管理 → 单模块重置</b>，只重置选中的那一个板块，其余记录原样保留。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">📦 导出的是「真 · 可读数据」，永不锁死</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">导出的备份是<b>普通、可被读懂</b>的开放格式：就算哪天不用栖匣，也能直接打开、看懂、迁移到任意工具。你的数据永远来去自由，这不是口号，真能做到。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🌙 深浅双主题 + 离线也能用</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">顶栏或设置里可一键切换<b>深色 / 浅色</b>，夜间阅读不刺眼。首次<b>联网打开过</b>后即可离线浏览，配合"当作 App 添加到桌面"，断网时也像原生应用一样照常打开。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">📊 周报一键生成图片：成长看得见</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">在 <b>系统设置 → 周报 PNG 导出</b>，一键把本周的坚持与成果生成一张干净图片，可保存、可分享给家人朋友。不用自己截图、裁切、拼接，一张图讲清你这周。</p>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><b>小提示：</b>上面这些都是看起来不起眼、但实际很省事的功能。用顺一个，就能明显省时省力。</div>
+      </div>
+
+      <div class="card" style="background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2;margin-bottom:16px">
+        <h3 style="color:var(--primary);font-size:16px">🧩 版面安排 · 界面更合你的习惯</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">界面想要清爽还是丰富、常用板块想怎么安排，都由你说了算。每一条都说明<b style="color:var(--primary)">它是什么、按下去会发生什么</b>。</p>
+        <div class="help-grid" style="display:grid;gap:10px">
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🧩 板块显示开关（模板显示开关）：界面想清爽还是丰富</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">这个开关决定<b>侧边栏与首页显示哪些板块</b>，包括「专项模板」等参考内容要不要出现，按一下立即生效、想换随时换。<b>极简模式</b>只保留最核心的板块（今日概览、今日待办、轻重缓急、行进罗盘、目标拆解、习惯养成、专注计时、札记、灵感、眼界珍藏、系统设置），把备考干货、职业、理财、专项模板等参考攻略类大板块一并收起，界面安静，适合只想踏实记录、不想看海量指南的人。<b>完整模式</b>则把全部板块与参考攻略都展开。到「系统设置 → 数据安全与使用模式」一键切换，切换只影响「看不看得见」，<b>不会删除也不影响你记下的任何一条数据</b>。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">⭐ 板块收藏：常用板块顺手钉在侧边栏顶部</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">在任意板块页面右上角点「★ 收藏」，就能把这个板块钉进左侧「★ 我的收藏」。之后想快速回去，不用在长长的侧边栏里翻，点一下即跳转；再点一次即为取消。收藏只是快捷入口，<b>不复制内容、不占数据</b>，每个板块占一行随时可移除，你的收藏清单也会随备份一起保存。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3 style="color:var(--primary);font-size:16px">📱 当作一个 App 使用（添加到桌面 / 主屏幕）</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">栖匣是网页，但你可以把它<b>添加到手机桌面或电脑桌面</b>，像原生 App 一样全屏打开、独立图标、无地址栏，还能离线使用已打开过的内容。</p>
+        <div id="installHost" style="font-size:13px;color:var(--muted);line-height:1.8;padding:12px 14px;border:1px dashed var(--border-strong);border-radius:12px;background:var(--bg);min-height:56px"></div>
+        <div style="font-size:12.5px;color:var(--hint);line-height:1.8;margin-top:10px">📌 手机 / 电脑怎么添加：直接看<b>你正在用的那一台设备 / 浏览器</b>那一条即可。若上方灰色框内已出现「一键安装」按钮，点它最快。</div>
+        <div class="help-grid" style="display:grid;gap:8px;margin-top:6px">
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">苹果手机 iPhone（仅 Safari）：</b>① 用 <b>Safari</b> 打开本页；② 点屏幕底部工具栏的「<b>分享</b>」图标（带向上箭头的方框）；③ 向下滑动菜单，点「<b>添加到主屏幕</b>」（没有这项？点菜单最底部「<b>编辑操作</b>」，把它加进菜单）；④ 确认 / 修改名称，点右上角「<b>添加</b>」，桌面即生成图标。以后从主屏幕图标打开，就是全屏 App 体验。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">安卓 · Chrome（手机）：</b>打开网页后点右上角「<b>⋮ / 三条横线</b>」→「添加到主屏幕」或「收藏网址」→「手机桌面」→ 自定义名称确认。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">电脑 · Chrome / Edge：</b>点右上角或地址栏右侧的<b>「安装」图标（电脑 / 加号）</b>→ 点「安装」。这是网页真正可"一键安装"的入口，浏览器会弹授权，点安装即可；Firefox / Safari 桌面版暂不能把网页装成 App。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">华为浏览器：</b>方法一：打开网页后点页面右下角「<b>∷ / 四个点</b>」菜单 →「<b>添加至桌面</b>」。方法二：在「<b>我的 → 书签收藏 / 历史记录</b>」里长按目标网站 →「添加至桌面」（注：桌面快捷方式上限为 10 个）。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">QQ浏览器：</b>方法一：打开网页，点右下角「<b>三横线</b>」菜单 →「<b>工具箱 → 添加快捷方式 → 手机桌面</b>」。方法二：点菜单「添加书签」，在编辑界面点「<b>发送到桌面</b>」。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">UC浏览器：</b>方法一：打开网页，点中间菜单键 →「收藏网址」→ 在弹出的选项里点「<b>手机桌面</b>」。方法二：在「<b>我的 → 收藏 / 历史</b>」里长按网址 → 弹窗点「<b>发送至桌面</b>」。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">vivo / 360 / 百度 / 搜狗浏览器：</b>点菜单键 →「添加书签 / 收藏网址 / 添加收藏」→ 后点「<b>添加到手机桌面 / 添加至桌面</b>」确认。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">夸克浏览器：</b>① 点<b>屏幕下方 / 右下角的菜单（☰ 三条杠）</b>，找「<b>工具箱 → 添加到桌面</b>」或「<b>添加到主屏幕</b>」；② 菜单里没有就<b>长按地址栏里的网址</b> → 选「<b>创建快捷方式 / 添加到桌面</b>」；③ 都没有？先进夸克<b>设置 → 常用设置</b>打开<b>「网页快捷方式」开关</b>再试。提示：夸克这类浏览器不允许网页自动一键安装，只能用它自己的入口创建快捷方式；真正能网页一键安装的是 Chrome / Edge。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">Firefox：</b>打开网页后点菜单 →「<b>Add to Home Screen</b>」（添加到主屏幕）→ 修改名称 → 点「Add」确认。</div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.9;color:var(--text)"><b style="color:var(--primary)">微信内打开：</b>微信不提供「添加到主屏幕」。先点右上角「<b>···</b>」→「<b>在浏览器中打开</b>」，再用上面对应设备的浏览器方法添加。</div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:10px"><b>💡 安卓通用提示：</b>如果操作时提示「权限不足 / 无法添加到桌面」，进手机 <b>「设置 → 应用管理」（或「权限管理」）</b>，找到对应浏览器，把<b>「创建桌面快捷方式」</b>权限打开再试。</div>
+        <div id="installHost2" style="font-size:12.5px;color:var(--muted);margin-top:8px;display:none"></div>
+        <div class="callout callout-warn" style="margin-top:12px"><b>小知识：</b>首次<b>联网打开过</b>后，已用内容即可离线查看，离线时从桌面图标打开依然是全屏 App。iOS 与微信限制最严，若某个浏览器怎么都找不到入口，说明该浏览器不允许网页自行添加，改成 Chrome / Edge / Safari 打开即可，数据完全不受影响。</div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3 style="color:var(--primary);font-size:16px">❓ 常见问题（FAQ）</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:6px 0 12px">没找到答案？往下翻还有排查技巧，或到「系统设置」的<b>用户反馈</b>直接告诉作者。</p>
+        <div class="help-grid">
+          <details><summary>后台 / 网站后台能看到我的隐私吗？</summary><p><b>看不到，也不存在能看的"后台"。</b>栖匣是<b>纯前端网页、零后端</b>：没有服务器、没有数据库、不需要账号。你写下的任务、打卡、笔记、日记只存在你自己设备的浏览器里；作者本人或任何后台都没有读取通道，也不会上传、收集、追踪任何数据。</p></details>
+          <details><summary>这么多人同时打开，网站承载得了、会变卡吗？</summary><p><b>完全承载得住，也不会变卡。</b>栖匣没有后台服务器，每个人打开的<b>都是一份运行在自己设备浏览器里的独立副本</b>，互不抢占资源——哪怕 100、1000、上万人同时在线，各人的体验彼此独立、同样流畅。你的数据也只存于本地，<u>绝不会汇总到任何中心</u>。唯一用到网络的只是「打开页面」这一刻，而且首次打开后还能<b>离线再用</b>。</p></details>
+          <details><summary>换手机 / 换电脑，数据能带走吗？</summary><p>可以，用「导出备份」+「导入恢复」即可。到 <b>系统设置 → 导出全部数据</b>下载 JSON 文件，在新设备打开同一页面 → <b>导入恢复</b>选中该文件即可完整搬走。建议每周日导出一次、双存备份。</p></details>
+          <details><summary>清理缓存 / 用无痕模式，会不会丢数据？</summary><p>会。数据存在浏览器本地，清缓存、无痕模式（关闭后清空）、卸载浏览器都会导致记录丢失。请务必<b>定期导出备份</b>；栖匣也会<b>自动每日备份</b>一次，误清空可在「系统设置 → 从最近自动备份恢复」找回。</p></details>
+          <details><summary>不联网能用吗？</summary><p>能。首次联网打开过页面后，已用过的内容即可离线查看；用"当作 App"方式添加到桌面后，离线也能像原生应用一样打开。</p></details>
+          <details><summary>怎么切换深色 / 浅色主题？</summary><p>主题切换在页面顶部的主题按钮，或到「系统设置」里切换。深色主题专门为夜间使用调过色，护眼不刺眼。</p></details>
+          <details><summary>考试 / 报名 / 政策信息可靠吗？</summary><p>站内考试、报名、活动、政策等参考信息均整理自各官方权威来源，每次排版都会核验时间；但信息每年变化，<b>使用前请务必以各官方当年最新通知为准</b>。页脚「时效说明」标注了本次核验时间，并会随新学年自动更新。</p></details>
+          <details><summary>不小心清空了数据，还能恢复吗？</summary><p>如果开启了自动备份（默认开启），到「系统设置 → 从最近自动备份恢复」可找回最近 7 天内的备份；若之前手动导出了备份文件，用「导入恢复」即可。</p></details>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="color:var(--primary);font-size:16px">🛠 遇到问题 · 快速排查</h3>
+        <div class="help-grid" style="display:grid;gap:8px">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:13px;color:var(--muted);line-height:1.8"><b style="color:var(--text)">页面打不开 / 一直转圈？</b>换一个浏览器再试，或刷新重试；手机网络不稳定时，等网络恢复再打开。</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:13px;color:var(--muted);line-height:1.8"><b style="color:var(--text)">内容看着是旧的 / 按钮没反应？</b>多半是浏览器缓存了旧版本。做一次<b>强制刷新</b>（电脑 Ctrl+F5 / Mac Cmd+Shift+R；手机在浏览器菜单选"刷新"），或清一下网页缓存再打开。</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:13px;color:var(--muted);line-height:1.8"><b style="color:var(--text)">想恢复到默认示例？</b>到「系统设置」底部点「清空我的填写数据」，产品框架与预置板块会保留、刷新后恢复默认示例（请先导出备份）。</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:13px;color:var(--muted);line-height:1.8"><b style="color:var(--text)">还有疑问？</b>到「系统设置 → 用户反馈」写下你的问题，作者会逐条认真看并回复。</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><b>提醒：</b>帮助中心只聚合"怎么用、怎么装、怎么排错"；关于栖匣的产品理念、隐私与跨设备说明，见左栏<b>「关于产品」</b>。</div>
+      </div>
+    </section>
+
+    <section class="view" id="view-about">
+<div class="section-intro">关于栖匣·产品介绍·隐私与服务说明。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品</h1>
+        <p>它是什么 · 能帮你什么 · 怎么用</p>
+      </div>
+
+      <div class="card about-hero" style="background:linear-gradient(135deg,var(--surface),#F1EADE);border:1px solid var(--border)">
+        <h3 style="color:var(--primary);font-size:17px">栖匣 · 心有所栖，万象入匣</h3>
+        <p style="font-size:13.5px;color:var(--text);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:var(--primary)">完全本地运行</b>的大学生成长园地：不下载 App、不注册账号、打开浏览器即用，离线也能正常工作。<br>一段漫长的大学旅程，会生出数不清的目标、计划与期待——学业备考、竞赛科研、实习求职、复盘感悟、理财规划。栖匣把这些重要的成长印记拢到一处、各归其位：<b style="color:var(--primary)">当一件事项找到了安稳的归处，你就能腾出心力，专注把当下这一件做好。</b></p>
+        <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>核心特点</h3>
+        <div class="grid grid-2" style="margin-top:8px">
+          <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 零安装 · 零登录 · 网页直接打开</strong><br><strong>✅ 数据全在本机</strong>——不上传服务器，隐私由你掌握，请定期自行导出备份<br><strong>✅ 一站式覆盖</strong>：学业、备考、求职、理财、健康、情绪、灵感全套模板与干货</p>
+          <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 高度自定义</strong>——自由填写、修改、新增自己的记录<br><strong>✅ 不制造内卷压力</strong>，尊重每个人自己的节奏与步调<br><strong>✅ 离线可用</strong>　<span style="font-size:11.5px;color:var(--hint)">提示：考试/奖学金/竞赛/政策资讯仅供参考，以学校与国家官方最新通知为准</span></p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>适合使用栖匣的同学</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:2;margin-top:6px">
+          · 有保研、升学长线规划，事务繁多、需要统一管理的本科生<br>
+          · 容易计划落空、产生内耗，反感严苛打卡工具、想要温和陪伴式工具的同学<br>
+          · 学习、生活、金钱、情绪分散管理，不想来回切换多款 App 的同学<br>
+          · 希望留存完整成长记录，毕业回看自己一路变化的同学
+        </p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>你遇到的这些问题，它正好都能解决</h3>
+        <div class="grid grid-2" style="margin-top:6px">
+          <div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9"><strong>😵 四六级没规划？</strong> → 单词按日计划 + 艾宾浩斯复习，听力精听四步法，阅读写作模板齐备。<br><br>
+            <strong>⏰ 时间总不够用？</strong> → 四象限轻重缓急、番茄专注、时间块，把一天排得明明白白。<br><br>
+            <strong>🎯 目标立了就倒？</strong> → 拆解三步法：大目标→里程碑→今天做什么，每天看得见进度。</p>
+          </div>
+          <div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9"><strong>💰 钱不知道花哪了？</strong> → 记账本 + 省钱技巧 + 购物指南，钱花得明明白白。<br><br>
+            <strong>❤️ 身体心态失衡？</strong> → 健康打卡、情绪记录、运动热力图，身心一起照顾。<br><br>
+            <strong>✨ 灵感总记不住？</strong> → 灵感看板、决策日记、感恩日记、人生100目标，好想法不丢。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>它怎么帮到你</h3>
+        <div class="grid grid-2" style="margin-top:6px">
+          <div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9"><strong>⚡ 省时间</strong>——别人还在找工具、配模板，你已开箱即用。模板全部搭好，改改就能用。<br><br>
+            <strong>🔒 真隐私</strong>——不注册、不向平台上传、不上传你的任何数据，数据 100% 在你本地。不像 App 偷偷收集你的行为数据。</p>
+          </div>
+          <div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9"><strong>📱 全平台</strong>——一个文件，Windows / Mac / 手机浏览器通用，换设备导出导入即可搬走。<br><br>
+            <strong>🛡️ 本地运行</strong>——你的数据只存在自己的设备浏览器里，不上传、不后台收集，随时离线可用。</p>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><strong>关于免费与边界：</strong>栖匣现阶段面向大学生<strong>公益免费开放</strong>，没有广告、不收集你的任何数据，核心功能开箱即用。你的所有记录存储于你的浏览器本地，平台无法访问你的个人数据，隐私安全可控。本站所有经验攻略仅作为大学生成长参考，不替代学校官方通知、专业法律咨询建议。</div>
+      </div>
+
+            <div class="card" style="margin-top:16px">
+        <div style="font-size:13px;color:var(--muted);line-height:1.95">
+          <p style="font-size:17px;color:var(--primary);font-weight:700;margin-bottom:14px;letter-spacing:1px">写给来到栖匣的你</p>
+          <p>你好，我是<strong style="color:var(--primary)">尹平平</strong>，栖匣的创作者。</p>
+          <p>站在大学生活开启的起点之前，我常常会畅想崭新旅程里无数想要完成的目标。心里积攒了许许多多的规划与期待，偶尔却会陷入无从下手的迷茫。繁杂零散的想法四处散落，一直找不到一处可以稳稳安放它们的空间。</p>
+          <p><strong style="color:var(--primary)">于是我亲手打造了栖匣。</strong></p>
+          <p>这里将<strong>学业备考、时间规划、日常储蓄、身心状态、灵感随笔</strong>收纳于一处。我不想填充空洞的鸡汤口号，栖匣里所有的清单、计划与指引，都力求<strong style="color:var(--primary)">具体落地、打开便可上手执行</strong>。</p>
+          <p>每一次更新迭代，我都会以使用者的视角从头到尾亲自体验一遍。操作不顺手就调整布局，内容不够实用就打磨优化，一点点补齐所有细节。无论你是正要奔赴校园的新生，或是已经走在大学路上，筹备考证、学业、实习与长远未来，栖匣都希望能够踏踏实实地陪伴你一路前行。</p>
+          <p>愿这里成为一处专属于你的小角落，安放你全部的计划、思绪与期待。</p>
+          <p style="font-size:14.5px;color:var(--primary);font-weight:700;margin-top:14px;padding:12px 14px;background:var(--surface);border-radius:10px;border-left:4px solid var(--primary);line-height:1.9">沉下心走好当下的每一步，前路自会慢慢明朗。</p>
+        </div>
+      </div>
+
+            <div class="card" style="margin-top:16px">
+        <h3>怎么开始用（三步）</h3>
+        <ol style="font-size:13.5px;color:var(--muted);line-height:2">
+          <li><strong>初次进入</strong>：可以从侧边栏或顶部导览，快速了解各板块都有什么，再选一个用起来。</li>
+          <li><strong>下载/在线使用</strong>：电脑或手机浏览器打开即用，无需安装。</li>
+          <li><strong>按侧边栏开始</strong>：从「今日概览」看起，每天填一点，数据自动保存。</li>
+        </ol>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <button class="btn btn-primary btn-sm" onclick="openPano()">✦ 入座 · 栖匣导览</button>
+          <button class="btn btn-sm" onclick="shareProduct()">📤 分享给朋友</button>
+        </div>
+        <p style="font-size:12px;color:var(--hint);margin-top:8px">换设备：设置 → 导出备份 JSON → 新设备导入，数据无缝搬走。</p>
+      </div>
+
+
+      <div class="card" style="margin-top:16px;background:linear-gradient(160deg,var(--primary-light),var(--surface));border-color:var(--border-strong)">
+        <h3 style="color:var(--primary-strong)">使用与隐私说明（请阅读）</h3>
+        <p style="font-size:12.5px;color:var(--muted);line-height:1.9">
+          <strong>免费原则</strong>：现阶段所有功能直接可用，无会员、无内购、无广告。你在用的核心记录功能始终保持免费、已有数据不会被突然收费；若有任何调整，都会提前让人知情，绝不悄悄变动。<br>
+          <strong>本地运行</strong>：新功能、新模板会一点点持续加入，刷新即可看到最新版，不会改动你已填写的任何数据。<br>
+          <strong>数据安全</strong>：你的数据永远存在自己的浏览器里（localStorage 本地存储），<strong>作者/后台完全看不到、也绝不会上传或收集任何信息</strong>。换设备时通过"导出备份→导入"带走，主动权100%在你手里。<br>
+          <strong>🔒 隐私透明：</strong>本产品是纯前端单文件应用，没有任何后端数据库。你写下的日记、打卡、目标、单词本，除了你自己，没有任何人能读取。<br>
+          <strong>如实提醒：</strong>"数据在本地"不等于"永远安全"——若清空浏览器缓存/换设备，本地数据会丢失；本地存储容量也有限（约数MB量级）。<strong>所以请善用「系统设置」里的导出/导入</strong>：定期导出一份 JSON 备份，换设备时导入即可无缝搬家，这是最稳妥的防丢方式。
+        </p>
+      </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(160deg,var(--primary-light),var(--surface));border-color:var(--border-strong)">
+        <h3 style="color:var(--primary-strong)">版权 · 许可 · 信息说明（诚实声明）</h3>
+        <p style="font-size:12.5px;color:var(--muted);line-height:1.9">
+          <strong>© 2026 尹平平 · 栖匣，保留所有权利。</strong>本项目为原创作品，整体架构、界面与内容受《中华人民共和国著作权法》保护；未获作者书面授权，请勿整站搬用、二次开发后冒名发布或用于牟利。<br>
+          <strong>公开许可：</strong>源码以 CC BY-NC-ND 4.0（署名—非商业性使用—禁止演绎）公开：你可以自由 <u>分享</u>（需注明出处、原作者与许可证），但不可 <u>商用</u>、不可 <u>改动后再分发</u>。详细条文见仓库 `LICENSE`。<br>
+          <strong>信息核验：</strong>站内涉及就业行情、保研政策、考试日程、助学标准等<span style="font-weight:600">时效性内容</span>，来源可能有变化，请以官方最新发布为准；引用外部观点仅作参考，作者不担保绝对正确，重要决策请再核实。
+        </p>
+      </div>
+    </section>
+
+    <section class="view" id="view-settings">
+<div class="section-intro">数据备份导入、主题切换、项目介绍、各项系统设置。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置</h1>
+        <p>数据导出/导入/清空 · 跨设备同步说明</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>导出备份</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:10px">把所有数据导出为 JSON 文件，建议每周备份一次</p>
+          <button class="btn btn-primary" onclick="exportAll()">导出全部数据</button>
+        </div>
+        <div class="card">
+          <h3>导入恢复</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:10px">从备份 JSON 恢复数据（会覆盖当前数据）</p>
+          <label class="btn btn-primary" style="cursor:pointer">选择备份文件<input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display:none"></label>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>数据自检</h3>
+        <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px">网页每次打开都会自动在本地做一次轻量自检，只检查你浏览器里的数据是否完整，绝不读取、上传任何个人内容。</p>
+        <div id="qxSelfReport" style="margin-top:12px;font-size:13.5px;color:var(--text);padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);line-height:1.7">正在自检…</div>
+        <div id="qxSystemMeta" style="margin-top:12px;font-size:12px;color:var(--hint);line-height:1.9"></div>
+      </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#E2D8C4">
+        <h3 style="color:var(--teal)">🛟 自动保存 + 自动备份（防丢失保险）</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.85">你的每次输入都会<b>自动保存到本机</b>，无需手动点保存；同时会<b>每自然日自动备份一次</b>（保留最近 7 天），即使误清空或出现异常也能一键找回来。</p>
+        <div id="autoBackupInfo" style="font-size:12.5px;color:var(--teal);font-weight:600;margin-bottom:10px">正在检查自动备份状态…</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="performAutoBackup(true)">🔁 立即备份一次</button>
+          <button class="btn" style="border-color:var(--teal);color:var(--teal);background:transparent" onclick="restoreAutoBackup()">♻️ 从最近自动备份恢复</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;background:#FFF5F0;border-color:#F5C6B0">
+        <h3 style="color:var(--coral)">清空我的填写数据（危险操作）</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">仅删除你填写的内容（任务/打卡/单词/笔记/记录/自定义项等），<strong>产品框架与预置板块全部保留</strong>，刷新后自动恢复默认示例。仍建议先导出备份。</p>
+        <button class="btn" style="background:var(--coral-light);color:var(--coral);border-color:var(--coral)" onclick="uiConfirm(&#39;确认清空你填写的数据？产品框架与预置内容会保留，此操作仅删除你的输入记录。&#39;,clearAll)">确认清空</button>
+      </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#CFC9B8">
+        <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:7px"><path d="M6 9a6 6 0 0 1 12 0"></path><path d="M4 9h16l-1 10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 9z"></path><path d="M8 9V7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"></path><path d="M9 15h6"></path></svg>开学准备清单设置</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">入学后「开学准备」会自动收起归档。如果误收或还想再查看，点下面按钮重新开启（首页即可见）。</p>
+        <button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="restorePrepare()">重新开启开学准备清单</button>
+      </div>
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F3EDDE,#F3EDDE);border-color:#E0D5BF">
+        <h3 style="color:var(--primary)">⭐ 常用模块偏好</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时会让你挑选最常用、最关心的板块；已选板块会优先展示在首页「轻松上手 · 分类导航」，其余板块只是暂时藏起，仍可随时从侧边栏或「显示全部板块」进去。这里可随时重新调整。</p>
+        <div>
+          <button class="btn btn-primary" onclick="openModulePick()">调整我的常用模块</button>
+          <span id="prefStatus" style="display:inline-block;font-size:12px;color:var(--hint);margin-left:10px;vertical-align:middle"></span>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📊 周报 PNG 导出</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">一键生成本周任务报告图片（PNG），可保存/分享到朋友圈、发给家人朋友看你的成长。</p>
+        <button class="btn btn-primary" onclick="exportWeekPNG()">生成本周报告 PNG</button>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>跨设备同步说明</h3>
+        <p style="font-size:13px;color:var(--text);line-height:1.9">
+          <strong>数据只存你手</strong>：本站是纯前端工具，<strong>不做云端备份、不收集、不上传你任何数据</strong>。你写下的任务、打卡、笔记，都只存在你自己设备的浏览器里。<br>
+          <strong>换设备 / 手机↔电脑搬运</strong>：用「导出备份 JSON」→ 新设备「导入恢复」这一条路径，把你的记录完整搬走，主动权完全在你手里，无需上传到任何地方。<br>
+          <strong>多设备同用一份正版页面</strong>：在你常用的手机、电脑浏览器里，各自打开当前的同一个正版页面即可使用；本站不要求你注册账号，也不替你存任何内容到云端。<br>
+          <strong>备份频率建议</strong>：每周日导出一次备份，重要数据双存（本机一份 + 网盘一份），万无一失。
+        </p>
+      </div>
+            <div class="card" style="margin-top:16px">
+        <h3>用户反馈 · 直接告诉作者</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.85;margin-bottom:10px">用下来的真实感受如何？<strong>每一份留言作者都会逐条认真看</strong>（<strong>只你和他之间可见</strong>，不公开展示）。<strong>提交后自动发送到作者邮箱</strong>。可以从下面这些问题挑着回答，也可以自由写：</p>
+        <div style="background:#EFE8D8;border-left:3px solid var(--primary);border-radius:8px;padding:11px 14px;margin-bottom:12px;font-size:13px;color:var(--text);line-height:1.9">
+          📌 <b>用起来整体感觉怎么样</b>？愿不愿意推荐给朋友？<br>
+          ✨ <b>最喜欢哪个功能</b>？有没有哪个板块给你带来实际帮助？<br>
+          🔧 <b>有没有遇到什么问题</b>（卡顿、打不开、看不懂、找不到某个按钮…）？<br>
+          🎨 <b>哪些地方做得比较好</b>（设计/排版/文案/功能/速度…）？<br>
+          ❌ <b>哪些地方还需要修改</b>？哪里看着别扭、用着不顺？<br>
+          🚀 <b>想看到什么 / 想加什么新功能</b>？还缺什么板块、缺什么场景？<br>
+          💬 <b>想对作者说什么</b>？吐槽、鼓励、问问题、随便聊都行
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+          <select id="fbType" style="width:140px">
+            <option value="整体感受">整体感受</option>
+            <option value="遇到问题">遇到问题</option>
+            <option value="功能建议">功能建议</option>
+            <option value="做得不错">做得不错</option>
+            <option value="需要修改">需要修改</option>
+            <option value="随便说说&lt;/option&gt;
+            &lt;option value=" 其他"="">其他</option>
+          </select>
+          <input id="fbContact" placeholder="联系方式（选填，方便作者回复你）" style="flex:1;min-width:180px">
+        </div>
+        <textarea id="fbText" placeholder="比如：我用了 XX 模块感觉挺顺的；但 XX 那块打开有点慢；希望加一个 XX 功能……随便写，不用客气！哪怕只写一句也行 ✍️" style="width:100%;min-height:110px;padding:12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;line-height:1.7"></textarea>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" onclick="sendFeedback()">提交反馈</button>
+          <button class="btn btn-sm" onclick="copyFeedback()">复制反馈内容</button>
+          <button class="btn btn-sm" onclick="showMyFeedback()">查看我提交过的</button>
+          <span id="fbMsg" style="font-size:12px;color:var(--hint)"></span>
+        </div>
+        <div id="fbHistory" style="margin-top:12px"></div>
+      </div>
+
+    </section>
+
+    <!-- 每日记录 -->
+    <section class="view" id="view-journal">
+<div class="section-intro">写下日常的感悟、成长当中的得失，记录一路的变化。这里没有评判标准，你可以安心记录所有真实的心情。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记</h1>
+        <p>复盘 · 随笔 · 随想，所有记录云端保存可回看</p>
+      </div>
+      <div class="card">
+        <h3>今日复盘 <span style="font-weight:400;color:var(--muted);font-size:12px" id="journalDate"></span></h3>
+        <div class="grid grid-2" style="margin-bottom:12px">
+          <div>
+            <label style="font-size:12px;color:var(--muted)">今天完成了什么</label>
+            <textarea id="jDone" placeholder="记录今天的实际产出，越具体越好"></textarea>
+          </div>
+          <div>
+            <label style="font-size:12px;color:var(--muted)">今天学到了什么</label>
+            <textarea id="jLearn" placeholder="一个知识点、一个感悟、一个方法"></textarea>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-bottom:12px">
+          <div>
+            <label style="font-size:12px;color:var(--muted)">哪里没做好/可以改进</label>
+            <textarea id="jImprove" placeholder="诚实面对自己，不批判只记录"></textarea>
+          </div>
+          <div>
+            <label style="font-size:12px;color:var(--muted)">明天最重要的3件事</label>
+            <textarea id="jTomorrow" placeholder="1. ... 2. ... 3. ..."></textarea>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <label style="font-size:12px;color:var(--muted)">随笔·心情·随想（想写什么写什么）</label>
+          <textarea id="jFree" placeholder="自由书写区" style="min-height:100px"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="saveJournal()">保存今日记录</button>
+        <span id="journalSaveHint" style="font-size:12px;color:var(--teal);margin-left:10px"></span>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>一份结构模板 · 照着填就不会空</h3>
+        <div style="background:var(--bg);padding:16px;border-radius:10px;font-size:13px;line-height:1.9">
+          <p style="color:var(--primary);font-weight:600">今天完成了什么 —— 写一件真正做成的事</p>
+          <p style="color:var(--muted)">结果越具体越好，例如：完成了＿＿＿＿＿＿</p>
+          <p style="color:var(--teal);font-weight:600;margin-top:10px">今天学到了什么 —— 一个能用的知识点或方法</p>
+          <p style="color:var(--muted)">记下一个下次真能用上的东西：＿＿＿＿＿＿</p>
+          <p style="color:var(--coral);font-weight:600;margin-top:10px">哪里没做好 / 可以改进 —— 诚实记一条，不批判</p>
+          <p style="color:var(--muted)">只描述事实，想一句下次换种做法：＿＿＿＿＿＿</p>
+          <p style="color:var(--primary);font-weight:600;margin-top:10px">明天最重要的 3 件事</p>
+          <p style="color:var(--muted)">写下 3 件明天最想推进的事：1. ＿＿＿ 2. ＿＿＿ 3. ＿＿＿</p>
+        </div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>为什么复盘有用：</strong>每天几分钟，把「做过什么、学到什么、下次怎么改」记下来，过段时间回看，就能清晰看到自己的成长轨迹。所有记录仅存在你自己的设备里，可从「系统设置」导出备份。</div>
+      </div>      <div class="card" style="margin-top:16px">
+        <h3>历史记录</h3>
+        <div id="journalHistory"></div>
+      </div>
+    </section>
+
+    <!-- ═══════ 每日四象限 ═══════ -->
+    <section class="view" id="view-quadrant">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好，随时回头都能看见自己走过的轨迹。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急</h1>
+        <p>重要·紧急矩阵 — 把精力放在「重要不紧急」（Q2）才是长期赢家</p>
+      </div>
+      <div class="callout callout-info">用法：Q1 立即做 · Q2 排进日程固定做 · Q3 委托/批量做 · Q4 尽量少做。每天清空 Q1，守护 Q2。内容按当天日期保存，可自由增删。</div>
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>四象限使用指南 · 每个格子怎么用</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--coral)">Q1 重要且紧急 · 立即做</h4>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:6px">今天的作业/考试、生病就医、临时会议。做完一件勾一件，当天尽量清空，否则会被它绑架一整天。</p>
+            <ul style="font-size:12px;line-height:1.8">
+              <li><strong>示例：</strong>今晚要交的作业 · 明早的课要展示 · 身体不舒服去看校医</li>
+              <li><strong>动作：</strong>拆成"25分钟能做完"的小块，先做最烦的那件</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:var(--teal)">Q2 重要不紧急 · 排进日程固定做</h4>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:6px">背单词/运动/复习/搞竞赛——拉开差距的地方。它们不催你，但决定你一年后在哪。</p>
+            <ul style="font-size:12px;line-height:1.8">
+              <li><strong>示例：</strong>每天背25个单词 · 每周运动4次 · 每周末写1篇复盘</li>
+              <li><strong>动作：</strong>写进时间表固定时段，用番茄钟守护，雷打不动</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:var(--primary)">Q3 紧急不重要 · 委托或批量做</h4>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:6px">别人的急事、取快递、回消息。看着急，其实和你的长期目标无关。</p>
+            <ul style="font-size:12px;line-height:1.8">
+              <li><strong>示例：</strong>帮同学带饭 · 无关紧要的群消息 · 凑单优惠</li>
+              <li><strong>动作：</strong>能推就推，能合并就合并（固定时间集中回消息）</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:var(--hint)">Q4 不重要不紧急 · 尽量删</h4>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:6px">刷短视频、无目的逛购物App、无效社交。它们偷走时间还不留痕迹。</p>
+            <ul style="font-size:12px;line-height:1.8">
+              <li><strong>示例：</strong>刷2小时短视频 · 漫无目的逛购物App · 熬夜看直播</li>
+              <li><strong>动作：</strong>设限额（每天娱乐≤1小时），用运动/阅读替代</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>每周日 Q2 审计 · 10 分钟让重要的事真的推进</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>审计三步（每周日晚做一次）</h4>
+            <ol style="font-size:13px;line-height:1.9;padding-left:18px">
+              <li><strong>回看：</strong>翻这周的四象限，数一数 Q2 占了几天？有没有被 Q1/Q3 挤掉？</li>
+              <li><strong>追问：</strong>被挤掉的 Q2 是真的没时间，还是"觉得不急所以一直拖"？</li>
+              <li><strong>排期：</strong>把下周最重要的 1 件 Q2 事，直接写进具体的时间块（周几几点）</li>
+            </ol>
+          </div>
+          <div>
+            <h4>三个常见误区</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>把"紧急"当"重要"：</strong>整天救火的人，往往一事无成——先判断是不是真重要</li>
+              <li><strong>Q2 没有固定时间：</strong>重要的事不预约时间，就等于预约了"永远不做"</li>
+              <li><strong>一天塞太多：</strong>Q2 每天守护 1-2 件就够，贪多嚼不烂</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-ok" style="margin-top:8px"><strong>记住：</strong>四象限不是把事分四堆，而是教你"把时间花在让你成长的地方"。每天清空 Q1，守护 Q2，人生就不会被琐事推着走。</div>
+      </div>
+      <div class="grid grid-2" id="quadrantGrid"><div class="card" style="border-top:3px solid var(--coral)"><h3 style="color:var(--coral)">重要 · 紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">立即做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.1218)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.1218" onblur="editQuad(&#39;q1&#39;,1787374832149.1218,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">今天想优先处理好的紧要事项</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.1218)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.5122)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.5122" onblur="editQuad(&#39;q1&#39;,1787374832149.5122,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">截止日临近的重要任务</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.5122)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q1&#39;,1787374832149.2058)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q1" data-qid="1787374832149.2058" onblur="editQuad(&#39;q1&#39;,1787374832149.2058,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">需要立即回复/处理的消息</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q1&#39;,1787374832149.2058)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q1" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q1&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--teal)"><h3 style="color:var(--teal)">重要 · 不紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">排进日程固定做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.2742)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.2742" onblur="editQuad(&#39;q2&#39;,1787374832149.2742,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">读书 30 分钟并做笔记</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.2742)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.657)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.657" onblur="editQuad(&#39;q2&#39;,1787374832149.657,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">运动 30 分钟</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.657)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.5776)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.5776" onblur="editQuad(&#39;q2&#39;,1787374832149.5776,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">推进本周最重要的一件事</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.5776)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q2&#39;,1787374832149.077)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q2" data-qid="1787374832149.077" onblur="editQuad(&#39;q2&#39;,1787374832149.077,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">为下周制定计划</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q2&#39;,1787374832149.077)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q2" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q2&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--primary-mid)"><h3 style="color:var(--primary)">不重要 · 紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">委托 / 批量做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.7273)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.7273" onblur="editQuad(&#39;q3&#39;,1787374832149.7273,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">处理常规邮件/消息</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.7273)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.276)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.276" onblur="editQuad(&#39;q3&#39;,1787374832149.276,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">整理房间或桌面</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.276)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q3&#39;,1787374832149.452)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q3" data-qid="1787374832149.452" onblur="editQuad(&#39;q3&#39;,1787374832149.452,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">安排日常琐事（取件/缴费）</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q3&#39;,1787374832149.452)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q3" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q3&#39;)">添加</button></div></div><div class="card" style="border-top:3px solid var(--border-strong)"><h3 style="color:var(--muted)">不重要 · 不紧急 <span class="tag tag-gray" style="margin-left:6px;font-weight:400">尽量少做</span></h3><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q4&#39;,1787374832149.0947)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q4" data-qid="1787374832149.0947" onblur="editQuad(&#39;q4&#39;,1787374832149.0947,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">无目的刷短视频</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q4&#39;,1787374832149.0947)">删</button></div><div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><input type="checkbox" onchange="toggleQuad(&#39;q4&#39;,1787374832149.4834)" style="width:15px;height:15px"><span contenteditable="true" data-qk="q4" data-qid="1787374832149.4834" onblur="editQuad(&#39;q4&#39;,1787374832149.4834,this)" style="flex:1;font-size:13px;cursor:text;outline:none;color:var(--text)">漫无目的逛网购平台</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(&#39;q4&#39;,1787374832149.4834)">删</button></div><div style="display:flex;gap:6px;margin-top:8px"><input id="qin_q4" placeholder="添加任务..."><button class="btn btn-sm btn-primary" onclick="addQuad(&#39;q4&#39;)">添加</button></div></div></div>
+    </section>
+
+    <!-- ═══════ 计划表 ═══════ -->
+    <section class="view" id="view-plans">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘</h1>
+        <p>年 / 月 / 周 / 日 目标拆解 + 一周时间表（可标色）</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card"><h3>年度计划</h3><textarea id="planYear" placeholder="今年最重要的3件事..."></textarea></div>
+        <div class="card"><h3>月度计划</h3><textarea id="planMonth" placeholder="本月聚焦..."></textarea></div>
+        <div class="card"><h3>周计划</h3><textarea id="planWeek" placeholder="本周三件大事..."></textarea></div>
+        <div class="card"><h3>日计划</h3><textarea id="planDay" placeholder="今天想安排处理好的一两件事..."></textarea></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>计划黄金法则 · 年→月→周→日这样拆才不落空</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>四层拆解示例（以"一次通过英语四级"为例）</h4>
+            <ol style="font-size:13px;line-height:1.9;padding-left:18px">
+              <li><strong>年度：</strong>12月英语四级一次通过（拆出听力/阅读/写作/翻译四块分别达标）</li>
+              <li><strong>月度：</strong>本月完成听力精听20篇 + 阅读精读15篇 + 背完高频词800个</li>
+              <li><strong>周度：</strong>本周每天听力1篇，周六做1套真题，周日复盘错题</li>
+              <li><strong>日度：</strong>今天：背25个词 + 精听1篇 + 记3个错题</li>
+            </ol>
+          </div>
+          <div>
+            <h4>写计划的三个铁律</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>可量化：</strong>"多背单词"没用，"每天25个"才有用</li>
+              <li><strong>有截止：</strong>每件事配一个日期，没有日期的计划是愿望清单</li>
+              <li><strong>留缓冲：</strong>每天只排 70% 时间，剩下 30% 应对意外</li>
+            </ul>
+            <h4>常见坑（提前避）</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>年初写"宏伟目标"、月底没拆成动作→落空</li>
+              <li>把时间表排满 24 小时→坚持不了 3 天就放弃</li>
+              <li>计划写完就藏起来→每周日晚重读一遍并微调</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>执行心法：</strong>计划的意义不是"预言未来"，而是"每天醒来知道今天该干什么"。完成率 80% 就是好计划，别为了完美而放弃。</div>
+      </div>      <div class="card" style="margin-top:16px">
+        <h3>一周时间表 <span style="font-weight:400;color:var(--muted);font-size:12px">① 先选上方颜色 → ② 再点格子填充</span></h3>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px" id="timetablePalette"></div>
+<div style="font-size:11px;color:var(--hint);margin-top:4px" id="ttSelectedColor">当前未选择颜色，请先点上方色块</div>
+        <div style="overflow-x:auto"><table id="timetable"><tbody><tr><th style="width:56px">时间</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th><th>周日</th></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">06:00</td><td data-key="06:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周一&#39;)"><input value="" data-key="06:00|周一" oninput="ttText(&#39;06:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="06:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周二&#39;)"><input value="" data-key="06:00|周二" oninput="ttText(&#39;06:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="06:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周三&#39;)"><input value="" data-key="06:00|周三" oninput="ttText(&#39;06:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="06:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周四&#39;)"><input value="" data-key="06:00|周四" oninput="ttText(&#39;06:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="06:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周五&#39;)"><input value="" data-key="06:00|周五" oninput="ttText(&#39;06:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="06:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周六&#39;)"><input value="" data-key="06:00|周六" oninput="ttText(&#39;06:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="06:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;06:00|周日&#39;)"><input value="" data-key="06:00|周日" oninput="ttText(&#39;06:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">07:00</td><td data-key="07:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周一&#39;)"><input value="" data-key="07:00|周一" oninput="ttText(&#39;07:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="07:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周二&#39;)"><input value="" data-key="07:00|周二" oninput="ttText(&#39;07:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="07:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周三&#39;)"><input value="" data-key="07:00|周三" oninput="ttText(&#39;07:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="07:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周四&#39;)"><input value="" data-key="07:00|周四" oninput="ttText(&#39;07:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="07:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周五&#39;)"><input value="" data-key="07:00|周五" oninput="ttText(&#39;07:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="07:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周六&#39;)"><input value="" data-key="07:00|周六" oninput="ttText(&#39;07:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="07:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;07:00|周日&#39;)"><input value="" data-key="07:00|周日" oninput="ttText(&#39;07:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">08:00</td><td data-key="08:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周一&#39;)"><input value="" data-key="08:00|周一" oninput="ttText(&#39;08:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="08:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周二&#39;)"><input value="" data-key="08:00|周二" oninput="ttText(&#39;08:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="08:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周三&#39;)"><input value="" data-key="08:00|周三" oninput="ttText(&#39;08:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="08:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周四&#39;)"><input value="" data-key="08:00|周四" oninput="ttText(&#39;08:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="08:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周五&#39;)"><input value="" data-key="08:00|周五" oninput="ttText(&#39;08:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="08:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周六&#39;)"><input value="" data-key="08:00|周六" oninput="ttText(&#39;08:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="08:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;08:00|周日&#39;)"><input value="" data-key="08:00|周日" oninput="ttText(&#39;08:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">09:00</td><td data-key="09:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周一&#39;)"><input value="" data-key="09:00|周一" oninput="ttText(&#39;09:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="09:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周二&#39;)"><input value="" data-key="09:00|周二" oninput="ttText(&#39;09:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="09:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周三&#39;)"><input value="" data-key="09:00|周三" oninput="ttText(&#39;09:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="09:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周四&#39;)"><input value="" data-key="09:00|周四" oninput="ttText(&#39;09:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="09:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周五&#39;)"><input value="" data-key="09:00|周五" oninput="ttText(&#39;09:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="09:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周六&#39;)"><input value="" data-key="09:00|周六" oninput="ttText(&#39;09:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="09:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;09:00|周日&#39;)"><input value="" data-key="09:00|周日" oninput="ttText(&#39;09:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">10:00</td><td data-key="10:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周一&#39;)"><input value="" data-key="10:00|周一" oninput="ttText(&#39;10:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="10:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周二&#39;)"><input value="" data-key="10:00|周二" oninput="ttText(&#39;10:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="10:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周三&#39;)"><input value="" data-key="10:00|周三" oninput="ttText(&#39;10:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="10:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周四&#39;)"><input value="" data-key="10:00|周四" oninput="ttText(&#39;10:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="10:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周五&#39;)"><input value="" data-key="10:00|周五" oninput="ttText(&#39;10:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="10:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周六&#39;)"><input value="" data-key="10:00|周六" oninput="ttText(&#39;10:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="10:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;10:00|周日&#39;)"><input value="" data-key="10:00|周日" oninput="ttText(&#39;10:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">11:00</td><td data-key="11:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周一&#39;)"><input value="" data-key="11:00|周一" oninput="ttText(&#39;11:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="11:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周二&#39;)"><input value="" data-key="11:00|周二" oninput="ttText(&#39;11:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="11:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周三&#39;)"><input value="" data-key="11:00|周三" oninput="ttText(&#39;11:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="11:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周四&#39;)"><input value="" data-key="11:00|周四" oninput="ttText(&#39;11:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="11:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周五&#39;)"><input value="" data-key="11:00|周五" oninput="ttText(&#39;11:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="11:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周六&#39;)"><input value="" data-key="11:00|周六" oninput="ttText(&#39;11:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="11:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;11:00|周日&#39;)"><input value="" data-key="11:00|周日" oninput="ttText(&#39;11:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">12:00</td><td data-key="12:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周一&#39;)"><input value="" data-key="12:00|周一" oninput="ttText(&#39;12:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="12:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周二&#39;)"><input value="" data-key="12:00|周二" oninput="ttText(&#39;12:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="12:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周三&#39;)"><input value="" data-key="12:00|周三" oninput="ttText(&#39;12:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="12:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周四&#39;)"><input value="" data-key="12:00|周四" oninput="ttText(&#39;12:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="12:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周五&#39;)"><input value="" data-key="12:00|周五" oninput="ttText(&#39;12:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="12:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周六&#39;)"><input value="" data-key="12:00|周六" oninput="ttText(&#39;12:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="12:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;12:00|周日&#39;)"><input value="" data-key="12:00|周日" oninput="ttText(&#39;12:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">13:00</td><td data-key="13:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周一&#39;)"><input value="" data-key="13:00|周一" oninput="ttText(&#39;13:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="13:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周二&#39;)"><input value="" data-key="13:00|周二" oninput="ttText(&#39;13:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="13:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周三&#39;)"><input value="" data-key="13:00|周三" oninput="ttText(&#39;13:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="13:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周四&#39;)"><input value="" data-key="13:00|周四" oninput="ttText(&#39;13:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="13:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周五&#39;)"><input value="" data-key="13:00|周五" oninput="ttText(&#39;13:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="13:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周六&#39;)"><input value="" data-key="13:00|周六" oninput="ttText(&#39;13:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="13:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;13:00|周日&#39;)"><input value="" data-key="13:00|周日" oninput="ttText(&#39;13:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">14:00</td><td data-key="14:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周一&#39;)"><input value="" data-key="14:00|周一" oninput="ttText(&#39;14:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="14:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周二&#39;)"><input value="" data-key="14:00|周二" oninput="ttText(&#39;14:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="14:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周三&#39;)"><input value="" data-key="14:00|周三" oninput="ttText(&#39;14:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="14:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周四&#39;)"><input value="" data-key="14:00|周四" oninput="ttText(&#39;14:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="14:00|周五" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周五&#39;)"><input value="" data-key="14:00|周五" oninput="ttText(&#39;14:00|周五&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="14:00|周六" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周六&#39;)"><input value="" data-key="14:00|周六" oninput="ttText(&#39;14:00|周六&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="14:00|周日" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;14:00|周日&#39;)"><input value="" data-key="14:00|周日" oninput="ttText(&#39;14:00|周日&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td></tr><tr><td style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap">15:00</td><td data-key="15:00|周一" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周一&#39;)"><input value="" data-key="15:00|周一" oninput="ttText(&#39;15:00|周一&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="15:00|周二" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周二&#39;)"><input value="" data-key="15:00|周二" oninput="ttText(&#39;15:00|周二&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="15:00|周三" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周三&#39;)"><input value="" data-key="15:00|周三" oninput="ttText(&#39;15:00|周三&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="15:00|周四" style="height:30px;min-width:84px;background:#FFFFFF;color:#5F5E5A;cursor:pointer" onclick="selectTT(this,&#39;15:00|周四&#39;)"><input value="" data-key="15:00|周四" oninput="ttText(&#39;15:00|周四&#39;,this.value)" onclick="event.stopPropagation()" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td><td data-key="15:00|周�

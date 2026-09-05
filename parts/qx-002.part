@@ -1,0 +1,1483 @@
+   try { if (typeof window.toggleTbMore === 'function') window.toggleTbMore(); } catch (e3) {}
+        return;
+      }
+    } catch (e) {}
+    showInstallSheet();
+  };
+  window.installApp = window.openInstall; // 兼容旧调用名
+
+  var sheetInjected = false;
+  function injectSheetStyle() {
+    if (sheetInjected) return; sheetInjected = true;
+    var css =
+      '.cios{position:fixed!important;left:0!important;right:0!important;top:0!important;bottom:0!important;z-index:120000!important;background:rgba(45,34,22,.5)!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;opacity:0;transition:opacity .18s;}\n' +
+      '.cios.show{opacity:1}\n' +
+      '.cios-box{width:100%;max-width:540px;background:var(--card,#fffdf8);border-radius:20px 20px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.28);padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:86vh;overflow-y:auto;transform:translateY(26px);transition:transform .2s;}\n' +
+      '.cios.show .cios-box{transform:none}\n' +
+      '.cios h3{margin:2px 0 12px;font-size:17px;color:var(--head,#4A3427);font-weight:700;line-height:1.4}\n' +
+      '.cios-card{background:var(--bg,#F4EDDF);border:1px solid var(--border,#E0D4BE);border-radius:12px;padding:11px 13px;margin-bottom:10px;font-size:13.5px;line-height:1.8;color:var(--muted,#6E5B44)}\n' +
+      '.cios-card b{color:var(--primary,#8A5A2B)}\n' +
+      '.cios-warn{background:#FFF6DE;border-color:#E9C96B;color:#6B5220}\n' +
+      '.cios-btn{display:block;width:100%;text-align:center;padding:12px;margin:4px 0 11px;border:none;border-radius:12px;background:var(--primary,#7A5330);color:#fff;font-size:15px;font-weight:600}\n' +
+      '.cios-btn.ghost{background:var(--bg,#F0E7D5);color:var(--primary,#7A5330);border:1px solid var(--border,#D8C8A8)}\n' +
+      '.cios-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}\n' +
+      '.cios-x{border:none;background:none;font-size:18px;color:var(--muted,#8A7658);cursor:pointer;padding:0;line-height:1}';
+    var st = document.createElement('style');
+    st.textContent = css;
+    document.head.appendChild(st);
+  }
+  function showInstallSheet() {
+    injectSheetStyle();
+    var weixin = inWeixin(), ios = isIos(), standalone = isStandalone();
+    var html = '<div class="cios-box"><div class="cios-top"><h3>把栖匣安装到桌面 / 主屏幕</h3><button class="cios-x" onclick="closeInstallSheet()" aria-label="关闭">✕</button></div>';
+    if (standalone) {
+      html += '<div class="cios-card">✅ 你现在已经以 <b>App 全屏方式</b> 使用栖匣（没有浏览器地址栏）。如还需再加一台设备，用下面的方法即可。</div>';
+    }
+    // 浏览器支持系统一键安装时（Chrome / Edge / 安卓系），第一优先给"一键安装"
+    if (window.installPrompt && typeof window.installPrompt.prompt === 'function') {
+      html += '<button class="cios-btn" onclick="try{var p=window.installPrompt;p.prompt();try{p.userChoice.then(function(){window.installPrompt=null;});}catch(e){}window.closeInstallSheet();}catch(e){alert(\'该浏览器暂不支持一键安装，请按下方手动方法操作\')}">⬇ 一键安装到桌面（无需手动步骤）</button>';
+    }
+    if (weixin) {
+      html += '<div class="cios-card cios-warn"><b>当前在微信里，无法直接添加。</b><br>最快做法：点本页右上角 <b>「···」→「在浏览器中打开」</b>，再用下方针对浏览器的方法添加（一般 3 步内搞定）。想自己处理链接？点下方按钮复制，粘贴到 Safari / Chrome 打开再添加。</div>';
+      html += '<button class="cios-btn" onclick="return copyThisLink()">📋 复制链接（粘贴到浏览器打开）</button>';
+    } else if (ios) {
+      html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，用 Safari 打开</button>';
+      html += '<div class="cios-card"><b>iPhone / iPad（Safari）：</b><br>① 用 Safari 打开本页；<br>② 点底部<b>「分享」按钮 ⤴</b>；<br>③ 选<b>「添加到主屏幕」</b>；<br>④ 点右上角<b>「添加」</b>，桌面即出现栖匣图标，之后全屏像 App 一样使用。</div>';
+    } else {
+      if (isDesktop()) {
+        html += '<div class="cios-card"><b>电脑（Chrome / Edge）：</b>点右上角或地址栏右侧的<b>「安装」图标</b> → 点「安装」即可；页面顶部若已出现「一键安装」，点它最快。</div>';
+      } else {
+        var br = browserName();
+        var steps = {
+          quark: '<b>夸克浏览器：</b>① 先点页面<b>屏幕下方 / 右下角的菜单（☰ 三条杠）</b>，在菜单里找「<b>工具箱 → 添加到桌面</b>」或「<b>添加到主屏幕</b>」；② 若菜单里没有，就<b>长按地址栏里的网址</b>，从弹出的菜单里选「<b>创建快捷方式 / 添加到桌面</b>」；③ 都没有？先进夸克<b>设置 → 常用设置</b>，把<b>「网页快捷方式」开关打开</b>再试。说明：夸克这类浏览器不允许网页自动一键安装，只能用它自己这个入口创建快捷方式（真正能网页一键安装的是 Chrome / Edge）。',
+          uc: '<b>UC浏览器：</b>点中间菜单键 →<b>「收藏网址」→「手机桌面」</b>。',
+          qq: '<b>QQ浏览器：</b>点右下角<b>「三横线」→「工具箱 → 添加快捷方式 → 手机桌面」</b>。',
+          huawei: '<b>华为浏览器：</b>点页面右下角<b>「∷ / 四个点」→「添加至桌面」</b>；或在「我的 → 书签 / 历史」里长按网址 → 添加至桌面。</b>',
+          samsung: '<b>三星浏览器：</b>右上角<b>「⋯」→「添加至主屏幕」→「添加」</b>。',
+          edge: '<b>Edge / Chrome（手机）：</b>右上角<b>「⋮」→「安装此网站 / 添加到主屏幕」</b>→ 安装。',
+          firefox: '<b>Firefox（手机）：</b>点菜单 →<b>「Add to Home Screen」</b>→ 改好名称 → Add。',
+          chrome: '<b>Chrome / Edge / 安卓系统浏览器（手机）：</b>右上角<b>「⋮」→「安装应用 / 添加到主屏幕」</b>→ 确认名称；安卓上有时会自动弹出安装提示，点「安装」即可。'
+        };
+        var s = steps[br] || steps.chrome;
+        html += '<div class="cios-card">' + s + '</div>';
+      }
+      html += '<button class="cios-btn ghost" onclick="return copyThisLink()">📋 复制链接，换到支持一键的浏览器 / 设备打开</button>';
+    }
+    html += '<button class="cios-btn" onclick="closeInstallSheet()">知道了</button></div>';
+    var ov = document.createElement('div');
+    ov.className = 'cios';
+    ov.id = 'ciSheet';
+    ov.innerHTML = html;
+    document.body.appendChild(ov);
+    requestAnimationFrame(function () { ov.classList.add('show'); });
+    ov.addEventListener('click', function (e) { if (e.target === ov) window.closeInstallSheet(); });
+  }
+  window.closeInstallSheet = function () {
+    var el = document.getElementById('ciSheet');
+    if (el) { el.classList.remove('show'); setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 220); }
+  };
+})();
+</script>
+<div id="brandSplash" style="position: fixed; inset: 0px; z-index: 40; background: radial-gradient(70% 55% at 50% 30%, rgba(198,164,112,.26), transparent 60%), linear-gradient(172deg,#FEFBF4 0%,#F7F0E0 52%,#F1E7D0 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.55s; cursor: pointer; opacity: 1; overflow:hidden;">
+  <!-- 栖匣启动屏：暖米白 × 赭金 × 深棕，与产品主界面同色调体系，明亮不暗沉 -->
+  <div style="position:absolute;inset:0;opacity:.5;background:radial-gradient(rgba(110,79,55,.11) 1.2px,transparent 1.2px);background-size:24px 24px;pointer-events:none"></div>
+  <div style="position:relative;width:132px;height:132px;display:flex;align-items:center;justify-content:center">
+    <span style="position:absolute;inset:-10px;border:1.5px solid rgba(178,132,70,.58);border-radius:50%;animation:bins .9s .15s both,srr 3.6s ease-in-out 1s infinite"></span>
+    <span style="position:absolute;inset:7px;border:1.5px dashed rgba(178,132,70,.48);border-radius:50%;animation:bins .9s .28s both,srr 4.6s ease-in-out 1.3s infinite reverse"></span>
+    <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(198,164,112,.5),rgba(198,164,112,0) 70%);filter:blur(8px);animation:bins .6s both"></div>
+    <img src="pwa/logo-chest20260911.png" alt="栖匣" draggable="false" style="width:104px;height:104px;border-radius:30px;transform:none;opacity:0;animation:bins .7s .12s forwards,bf 3.6s ease-in-out 1.2s infinite;position:relative" onerror="logoFallback(this)"></div>
+  <div style="font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:46px;font-weight:800;color:#4A3427;letter-spacing:12px;margin-top:30px;opacity:0;animation:bins .9s .45s forwards">栖匣</div>
+  <div style="font-size:13px;letter-spacing:6px;color:#8A6236;margin-top:10px;opacity:0;animation:bins .9s .62s forwards">一只匣 · 安放成长</div>
+  <div style="margin-top:20px;height:1px;width:60px;background:linear-gradient(90deg,transparent,#C2A15E,transparent);opacity:0;animation:bins .9s .78s forwards"></div>
+  <div style="margin-top:18px;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:16px;color:#5C4030;letter-spacing:5px;opacity:0;animation:bins .9s .92s forwards">收纳诸事，步履向前</div>
+  <div style="margin-top:22px;display:flex;gap:0;align-items:flex-end;opacity:0;animation:bins .9s 1.08s forwards">
+    <span style="display:flex;gap:7px;align-items:flex-end">
+      <span style="width:14px;height:26px;border-radius:4px;background:#6E4F37"></span>
+      <span style="width:14px;height:38px;border-radius:4px;background:#6E4F37"></span>
+      <span style="width:14px;height:50px;border-radius:4px;background:#4A3427"></span>
+      <span style="width:1px;height:54px;background:#C2A15E"></span>
+    </span>
+  </div>
+  <div style="margin-top:16px;font-size:12px;color:rgba(110,79,55,.72);letter-spacing:2px;max-width:84%;text-align:center;line-height:2;opacity:0;animation:bins .9s 1.26s forwards">把你想认真对待的每件事，都收进一只只属于你的匣子<br>数据只存本地 · 私密安全 · 免安装免登录</div>
+  <div style="position:absolute;bottom:58px;font-size:12px;letter-spacing:3px;color:rgba(110,79,55,.55);opacity:0;animation:bins .9s 1.5s forwards">轻触任意处 · 进入</div>
+  <style>@keyframes bins{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes bf{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1deg)}}@keyframes srr{0%,100%{transform:scale(.94);opacity:.4}50%{transform:scale(1.05);opacity:1}}</style>
+</div>
+<script>
+/* 品牌启动屏：
+   ① 每次打开都优雅亮相约 2.5 秒（可轻触跳过），保证「一点开链接就有品牌闪屏」的体感；
+   ② 首次进入（未看过导览）时，闪屏结束自动弹出产品导览，并锁定为「入座」流程——
+      必须点「入座·栖匣」才关闭、才能查看完整内容；
+   ③ 非首访用户，闪屏结束后直接进入产品，不再重复打扰。 */
+(function(){
+  function bs(){var e=document.getElementById('brandSplash');return e||null;}
+  function firstVisit(){
+    try{return localStorage.getItem('pp_pano_seen')!=='1' && localStorage.getItem('pp_quickstart_ok')!=='1';}catch(e){return false;}
+  }
+  function chrome(hide){
+    /* 强隐/恢复顶栏与底部导航：用 hidden 属性做到 DOM 级不渲染，再以内联样式双保险，任何 WebView/CSS 异常下都必然生效 */
+    var nodes=[document.querySelector('.topbar'),document.querySelector('.bottom-nav')];
+    nodes.forEach(function(n){ if(!n)return;
+      if(hide){ n.setAttribute('hidden',''); n.style.display='none'; }
+      else{ n.removeAttribute('hidden'); n.style.display=''; }
+    });
+  }
+  function dismiss(e){
+    if(!e)return;
+    document.documentElement.classList.remove('state-splash'); /* 闪屏结束：恢复顶栏 */
+    chrome(false);
+    e.style.opacity='0';
+    setTimeout(function(){e.style.display='none'; afterSplash(); },420);
+  }
+  function afterSplash(){
+    /* 首次访问：自动弹出产品导览，锁定为「入座」流程 */
+    if(firstVisit()){
+      try{
+        var p=document.getElementById('pano');
+        if(p) p.classList.add('seat-lock');  /* 锁定：必须点「入座」才关 */
+        if(typeof openPano==='function') openPano();
+      }catch(err){}
+    }else{
+      /* 闪屏结束后定位到当前界面：
+         若地址栏带合法板块 hash（例如从外部链接返回、浏览器后退/前进、或点了带 #view 的链接），
+         则回到对应板块而非首页；若为彻底冷启动（地址无 hash 或为 #view-home），仍展示首页。 */
+      try{
+        var _hh=''+(location.hash||'');
+        _hh=_hh.replace(/^#view-/,'');
+        var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
+        if(typeof switchView==='function'){ switchView(_hasHash?_hh:'home'); }
+      }catch(e){ try{if(typeof switchView==='function')switchView('home');}catch(e2){} }
+    }
+  }
+  function show(){
+    var e=bs();if(!e)return;
+    document.documentElement.classList.add('state-splash'); /* 闪屏期间隐藏顶栏 */
+    chrome(true);   /* 内联强隐顶栏+底栏，确保闪屏期间不出现 */
+    e.style.display='flex';e.style.opacity='1';
+    e.setAttribute('data-gone','');
+    /* 轻触任意处跳过闪屏（不影响后续导览/直接进入逻辑） */
+    e.onclick=function(){dismiss(e);};
+    /* 标准闪屏时长 3 秒（约1.5秒内容完全呈现，留足阅读时间），轻触可跳过；
+       结束时按首访与否决定弹导览或直接进产品 */
+    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },3000);
+  }
+  show();
+})();
+</script>
+<div class="app">
+
+    <div class="topbar" hidden>
+    <button class="icon-btn mobile-toggle" onclick="toggleSidebar()" title="打开全部板块">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="tb-brand" onclick="switchView('home');setBottomActive(null,'home')" style="cursor:pointer" title="回到今日概览">
+      <img src="pwa/logo-chest20260911.png" alt="栖匣" class="tb-logo" onerror="logoFallback(this)"><span class="tb-name">栖匣</span>
+    </div>
+    <div class="tb-slogan">心有所栖 · 匣纳成长</div>
+    <div class="tools">
+      <!-- 顶栏（搜索 + 帮助 + 产品导览 + 夜间 + 更多，共五键，精简去重；“换一批灵感”已并入各卡片内按钮，不再占顶栏入口） -->
+      <button class="icon-btn" onclick="tbSearchGo()" title="搜索板块与内容" aria-label="全局搜索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-btn" onclick="switchView('help')" title="帮助中心" aria-label="帮助中心">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </button>
+      <button class="icon-btn" onclick="openPano()" title="查看产品导览" aria-label="查看产品导览">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="7" y1="4.4" x2="12" y2="2"></line></svg>
+      </button>
+      <button class="icon-btn" id="themeToggleBtn" onclick="toggleTheme()" title="切换日间 / 夜间模式" aria-label="切换日间 / 夜间模式">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIconMoon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIconSun" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <!-- 更多工具：换一批灵感 / 产品导览 / 分享 / 导出 / 导入 / PDF / 设置 / 关于 / 重置（分组展示，点击空白处收起） -->
+      <div class="tb-more" id="tbMore">
+        <button class="icon-btn tb-more-dots" id="tbMoreBtn" type="button" data-hint="更多工具" title="更多工具" aria-label="更多工具">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.5" fill="currentColor"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/></svg>
+        </button>
+        <div class="tb-more-menu" id="tbMoreMenu">
+          <!-- 更多工具已去重：仅保留顶栏所没有的独有功能；全局搜索/帮助/产品导览/换一批灵感均在顶栏或卡片内，不再重复罗列 -->
+          <div class="tb-more-label">数据与工具</div>
+          <button class="tb-more-item" onclick="openInstall();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><path d="M9 8l3-3 3 3"></path><line x1="12" y1="9" x2="12" y2="15"></line></svg>
+            安装到桌面 / 下载应用
+          </button>
+          <button class="tb-more-item" onclick="shareProduct();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.51"></line></svg>
+            分享给朋友
+          </button>
+          <button class="tb-more-item" onclick="exportAll();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            导出数据备份
+          </button>
+          <button class="tb-more-item" onclick="document.getElementById(&apos;importFileMenu&apos;).click();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            导入数据
+          </button>
+          <button class="tb-more-item" onclick="exportCurrentPDF();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
+            导出 PDF
+          </button>
+          <button class="tb-more-item" onclick="if(typeof exportWeekPNG==='function'){exportWeekPNG();}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            导出本周报告图
+          </button>
+          <button class="tb-more-item" onclick="try{switchView(&apos;stats&apos;)}catch(e){}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            数据统计概览
+          </button>
+          <div class="tb-more-sep"></div>
+          <div class="tb-more-label">系统</div>
+          <button class="tb-more-item" onclick="try{switchView(&apos;settings&apos;)}catch(e){}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            系统设置
+          </button>
+          <button class="tb-more-item" onclick="try{switchView(&apos;changelog&apos;)}catch(e){}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
+            更新日志
+          </button>
+          <button class="tb-more-item" onclick="try{switchView(&apos;about&apos;)}catch(e){}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            关于产品
+          </button>
+          <div class="tb-more-sep"></div>
+          <button class="tb-more-item tb-more-danger" onclick="resetLocalData();toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            重置本地数据
+          </button>
+        </div>
+      </div>
+<script>
+/* ── 三点菜单·独立启动器 ──
+   放在按钮正下方、最靠前执行。不依赖任何外部/后续脚本：
+   即使下方超大主脚本因数据等任何原因报错中断，这里已定义 setTbMore/toggleTbMore
+   并挂好委托监听，右上角菜单也必定可点。防重复绑定：__tbmoreReady。 */
+(function(){
+  if(window.__tbmoreReady)return;
+  window.__tbmoreReady=true;
+  /* 层级修复：把菜单移出 .topbar（其 z-index:20 会形成层叠上下文，把菜单 9995 封顶造成被遮挡），
+     改为挂到 body 顶层，配合高 z-index 确保任何情况下都不被盖住。 */
+  (function(){
+    var _m=document.getElementById('tbMoreMenu');
+    if(_m && _m.parentNode && _m.parentNode!==document.body){ try{ document.body.appendChild(_m); }catch(e){} }
+  })();
+  function set(open){
+    var m=document.getElementById('tbMoreMenu'),b=document.getElementById('tbMoreBtn');
+    if(!m)return;
+    if(open){m.classList.add('show');m.style.display='flex';if(b)b.classList.add('is-open');}
+    else{m.classList.remove('show');m.style.display='none';if(b)b.classList.remove('is-open');}
+  }
+  window.setTbMore=set;
+  window.toggleTbMore=function(){var m=document.getElementById('tbMoreMenu');set(!(m&&m.classList.contains('show')));};
+  /* 直接绑定在按钮上（比全文档委托更稳，任何 WebView 都能命中）；
+     用防抖避免触屏设备 "touchend → click" 重复触发导致"开了又关"。 */
+  var lastTs=0;
+  function fire(){
+    var now=Date.now();
+    if(now-lastTs<300)return;
+    lastTs=now;
+    (window.toggleTbMore||function(){} )();
+  }
+  var _b=document.getElementById('tbMoreBtn');
+  if(_b){
+    _b.addEventListener('click',fire);
+    _b.addEventListener('pointerup',fire);
+    _b.addEventListener('touchend',fire);   /* 兜底：个别 WebView 只派 touch */
+  }
+  window.__tbmoreModern=true;
+})();
+</script>
+      <input type="file" id="importFileMenu" accept=".json" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;z-index:-1" onchange="importAll(event)">
+    </div>
+  </div>
+
+    <nav class="sidebar" id="sidebar">
+    <div class="logo">
+      <img src="pwa/logo-chest20260911.png" alt="栖匣" style="width:22px;height:22px;border-radius:6px;flex-shrink:0" onerror="logoFallback(this)">
+      栖匣
+    </div>
+    <input id="navSearch" placeholder="🔍 搜索板块…" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:10px;font-size:13px;margin-bottom:6px;background:var(--bg);color:var(--text)" oninput="filterNav(this.value)">
+
+    <div class="nav-item" data-view="home" onclick="switchView(&#39;home&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>今日概览
+    </div>
+
+    <div class="nav-section">锚愿匣 · 目标与行动</div>
+    <div class="nav-item" data-view="quadrant" onclick="switchView(&#39;quadrant&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急
+    </div>
+    <div class="nav-item" data-view="plans" onclick="switchView(&#39;plans&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘
+    </div>
+    <div class="nav-item" data-view="goals" onclick="switchView(&#39;goals&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解
+    </div>
+    <div class="nav-item" data-view="life" onclick="switchView(&#39;life&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3z"></path><path d="M9 3v15"></path><path d="M15 5.5v15"></path></svg>生涯蓝图
+    </div>
+
+    <div class="nav-section">时栖录 · 时间与打卡</div>
+    <div class="nav-item" data-view="habits" onclick="switchView(&#39;habits&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>习惯养成
+    </div>
+    <div class="nav-item" data-view="timer" onclick="switchView(&#39;timer&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时
+    </div>
+
+    <div class="nav-section">学业栖仓 · 学业成长</div>
+    <div class="nav-item" data-view="study" onclick="switchView(&#39;study&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进
+    </div>
+    <div class="nav-item" data-view="exam" onclick="switchView(&#39;exam&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>考试规划
+    </div>
+    <div class="nav-item" data-view="contest" onclick="switchView(&#39;contest&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>竞赛科研
+    </div>
+    <div class="nav-item" data-view="paper" onclick="switchView(&#39;paper&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>论文写作
+    </div>
+    <div class="nav-item" data-view="tpl" onclick="switchView(&#39;tpl&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>专项模板
+    </div>
+    <div class="nav-item" data-view="campus" onclick="switchView(&#39;campus&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M4 21V8l8-5 8 5v13"></path><path d="M9 21v-7h6v7"></path></svg>校园生活
+    </div>
+
+    <div class="nav-section">职途匣 · 职业与技能</div>
+    <div class="nav-item" data-view="career" onclick="switchView(&#39;career&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展
+    </div>
+    <div class="nav-item" data-view="growth" onclick="switchView(&#39;growth&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83.83-2.5 2.5-2.5 4a2.5 2.5 0 1 0 5 0c0-1.5-1.67-3.17-2.5-4z"></path><path d="M12 2v6m0 0L8 4m4 4l4-4"></path></svg>个人提升
+    </div>
+
+    <div class="nav-section">安养隅 · 生活与健康</div>
+    <div class="nav-item" data-view="health" onclick="switchView(&#39;health&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>运动健康
+    </div>
+    <div class="nav-item" data-view="mind" onclick="switchView(&#39;mind&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>心灵成长
+    </div>
+    <div class="nav-item" data-view="safety" onclick="switchView(&#39;safety&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航
+    </div>
+
+    <div class="nav-section">时光贮格 · 记录与成长</div>
+    <div class="nav-item" data-view="journal" onclick="switchView(&#39;journal&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记
+    </div>
+    <div class="nav-item" data-view="stats" onclick="switchView(&#39;stats&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长档案
+    </div>
+
+    <div class="nav-section">灵拾槽 · 阅读与休闲</div>
+    <div class="nav-item" data-view="creative" onclick="switchView(&#39;creative&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.2 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>灵感看板
+    </div>
+    <div class="nav-item" data-view="shelf" onclick="switchView(&#39;shelf&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"></path><path d="M12 6v14"></path><path d="M8 8v12"></path><path d="M4 4v16"></path></svg>书海拾贝
+    </div>
+    <div class="nav-item" data-view="podcast" onclick="switchView(&#39;podcast&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>耳畔星河
+    </div>
+    <div class="nav-item" data-view="movie" onclick="switchView(&#39;movie&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>幕间观澜
+    </div>
+    <div class="nav-item" data-view="vision" onclick="switchView(&#39;vision&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>眼界珍藏
+    </div>
+    <div class="nav-item" data-view="fun" onclick="switchView(&#39;fun&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>轻松一下
+    </div>
+
+    <div class="nav-section">贮金格 · 理财与副业</div>
+    <div class="nav-item" data-view="finance" onclick="switchView(&#39;finance&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>理财管理
+    </div>
+    <div class="nav-item" data-view="save" onclick="switchView(&#39;save&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>省钱技巧
+    </div>
+    <div class="nav-item" data-view="earn" onclick="switchView(&#39;earn&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2.5"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path></svg>搞钱副业
+    </div>
+    <div class="nav-item" data-view="shop" onclick="switchView(&#39;shop&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>购物指南
+    </div>
+    <div class="nav-item" data-view="perk" onclick="switchView(&#39;perk&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.42 10.92a2 2 0 0 1-.02 3.64l-7.01 3.01a2 2 0 0 1-1.77 0l-7.02-3.01a2 2 0 0 1-.02-3.64l7-3.01a2 2 0 0 1 1.72 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>助学帮扶
+    </div>
+
+    <div class="nav-section">慧诀匣 · 工具与查询</div>
+    <div class="nav-item" data-view="tools" onclick="switchView(&#39;tools&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>高效方法
+    </div>
+    <div class="nav-item" data-view="ai" onclick="switchView(&#39;ai&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>智造工坊
+    </div>
+
+    <div class="nav-section">设置 · 栖匣系统</div>
+    <div class="nav-item" style="cursor:pointer;color:var(--primary);font-weight:600" onclick="openModulePick()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 3.6 3.9.3-3 2.6 1 3.8-3.5-2-3.5 2 1-3.8-3-2.6 3.9-.3z"></path><path d="M5 14c.6 1.2 1.6 2.1 2.8 2.7"></path><path d="M19 14c-.6 1.2-1.6 2.1-2.8 2.7"></path></svg>常用模块偏好
+    </div>
+    <div class="nav-item" data-view="agent" onclick="switchView(&#39;agent&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"></path><path d="M9 17h6v3H9z"></path><circle cx="9" cy="11.5" r=".5" fill="currentColor"></circle><circle cx="15" cy="11.5" r=".5" fill="currentColor"></circle></svg>栖匣 助手
+    </div>
+    <div class="nav-item active" data-view="settings" onclick="switchView(&#39;settings&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置
+    </div>
+    <div class="nav-item" data-view="changelog" onclick="switchView(&#39;changelog&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>更新日志
+    </div>
+    <div class="nav-item" data-view="about" onclick="switchView(&#39;about&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品
+    </div>
+    <div class="nav-item" data-view="help" onclick="switchView(&#39;help&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>帮助中心
+    </div>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <main class="main">
+      <div id="mobileSidebarHint" style="display:none;margin:8px 16px;padding:6px 12px;border-radius:9px;background:#F1EADE;border:1px solid #D8CBB2;font-size:12.5px;color:#5A4B38;line-height:1.5"><span style="flex-shrink:0">☰</span> <span style="flex:1"><strong>提示：</strong>点左上角 ☰ 打开板块导航</span> <span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#5A4B38;padding:0 4px;border-radius:4px;cursor:pointer" onclick="event.stopPropagation();this.parentElement.style.display='none';sessionStorage.setItem('pp_nav_guide_closed','1');">✕</span></div>
+
+    <!-- 首页 -->
+    <section class="view active" id="view-home">
+      <!-- 栖匣品牌主视觉区 -->
+      <div class="home-hero card" style="margin-bottom:16px;background:linear-gradient(135deg,#F5EFE2,#EDE5D4);border:1px solid #E5DBC8;color:#4A3B2E">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="pwa/logo-chest20260911.png" alt="栖匣" style="width:84px;height:84px;border-radius:24px;box-shadow:0 3px 12px rgba(74,59,46,.22)" onerror="logoFallback(this)">
+            <div>
+              <div style="font-size:24px;font-weight:800;letter-spacing:6px;line-height:1.2;color:var(--primary)">栖匣</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px;letter-spacing:1px">心有所栖 · 匣纳成长 · 为大学生打造的成长园地</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <div style="font-size:11.5px;color:var(--hint);text-align:right;line-height:1.7">零安装 · 零登录 · 数据仅存你的设备 · 打开即可开始规划与执行</div>
+            <button id="heroToggle" type="button" onclick="toggleHeroCollapse()" title="折叠/展开品牌介绍" aria-expanded="true" style="padding:3px 9px;border:1px solid rgba(74,59,46,.25);border-radius:8px;background:rgba(255,255,255,.55);color:var(--primary);font-size:11px;line-height:1.6;cursor:pointer;white-space:nowrap">▾ 收起</button>
+          </div>
+        </div>
+        <div id="heroBody">
+        <p style="margin-top:14px;font-size:13.5px;line-height:2;color:var(--text)">
+          <em style="font-style:normal;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:15.5px;color:var(--primary);letter-spacing:1px">把每一天好好安放，心有所栖，万象入匣。</em><br>
+          一段漫长的大学旅程，会生出数不清的目标、计划与期待。<b style="color:var(--primary)">学业备考 · 竞赛科研 · 实习求职 · 复盘感悟 · 理财规划</b>——栖匣便是属于你的一方园地，帮你把一路重要的成长印记一一承载。<br>
+          不必让繁多的任务与计划日复一日盘旋在脑海。将各项规划妥善收纳，卸下内心重担，从容前行。<br>
+          <span style="color:var(--primary-mid)">打开栖匣，就可以立刻开始规划与执行</span>——目标拆解、备考路线、时间安排、复盘总结，各归其位。<br>
+          零安装、零登录，全部数据仅保存在你的本地设备。<em style="font-style:normal;color:var(--gold)">心有所栖，匣纳成长。</em>
+        </p>
+        </div>
+      </div>
+
+      <!-- 💡 常驻备份提醒（首页显眼位置，永久展示） -->
+      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,#F6E4CF,#FBEEE1);border:1px solid #E0BE92;color:#5C4328;font-size:12.5px;line-height:2;box-shadow:var(--shadow-xs)">
+        <b>⚠️ 重要提醒 · 数据只存在你的浏览器本地：</b>清除浏览器缓存、更换设备、<b>无痕浏览</b>、以及 iOS 长时间未打开页面，都会导致全部记录丢失。<b>请勿在图书馆、机房等公共电脑上留存隐私内容</b>；务必<b>定期导出备份</b>（顶栏「导出数据备份」，建议每周一次并双重保存到网盘）。
+      </div>
+
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
+        <p>安顿好当下，今天就从容迈出最关键的一小步。</p>
+      </div>
+      <!-- 轻松上手：包含侧边栏全部板块，一键直达；可选方向做个性化排序 -->
+      <div class="card" id="focusCard" style="margin-bottom:16px;background:linear-gradient(135deg,#F1EADE,#F1EADE);border-color:#D8CBB2">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0;line-height:1.6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3z"></path><rect x="14" y="20" width="7" height="7" rx="1.5" transform="translate(-3 -8)"></rect></svg>轻松上手 · 分类导航<button id="focusToggle" type="button" onclick="toggleFocusCollapse()" title="折叠/展开导航" aria-expanded="true" style="margin-left:8px;padding:2px 8px;border:1px solid var(--border-strong);border-radius:8px;background:var(--card);color:var(--primary);font-size:11px;line-height:1.6;cursor:pointer;vertical-align:middle">▾ 收起</button></h3>
+          <span style="font-size:11.5px;color:var(--hint)">循领域而入 · 逐层抵达你的细分规划</span>
+        </div>
+        <div id="focusBody">
+          <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(111,84,64,.08);border:1px dashed rgba(111,84,64,.28);color:#6E665C;font-size:13px;line-height:1.9"><b style="color:var(--primary)">不必事事求全</b>　挑一个当下最想打理的大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——安放好当下，立刻行动。</div>
+          <div id="focusStart" style="margin-top:12px"></div>
+        </div>
+      </div>
+      <!-- 今日第一目标 + 提醒（放最前面，一打开就锚定今天最要紧的事，执行力才有抓手） -->
+      <div class="card" data-goalcard style="margin-bottom:16px;background:linear-gradient(135deg,#F8F2E4 0%,#F1E7D2 55%,#EBDDC0 100%);border:1px solid rgba(139,105,20,.16);border-left:4px solid #B08A54">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:12px;color:#7A6E5C;line-height:1.9">今日<br>不必给自己安排满满当当的任务。挑好一件今天最要紧的小事，踏实做完，今天便已经足够好了。</div>
+            <div style="font-size:14px;color:var(--primary);font-weight:600;margin-top:8px">🎯 今天，你最想优先完成的一件事</div>
+            <input id="todayGoalInput" placeholder="写下来，比如：背完 50 个单词" style="width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:15px;color:var(--text);background:var(--card);outline:none" onkeydown="if(event.key===&#39;Enter&#39;)saveTodayGoal()">
+          </div>
+          <button class="btn btn-primary btn-sm" style="font-size:14px;padding:10px 18px" onclick="saveTodayGoal()">定下今天的目标</button>
+        </div>
+        <div id="todayGoalShow" style="margin-top:10px;font-size:14px;color:#5C4A3A;display:none"></div>
+        <div style="margin-top:10px;font-size:12px;color:#7A6E5C;line-height:1.7">💡 小提醒：目标别写太多，<b style="color:var(--primary)">只安放一件最要紧的</b>便好。完成了，今天就算安放妥当。</div>
+      </div>
+      <!-- 删除六个功能直达卡：与底栏/侧边栏重复，全部并入导航，避免冗余 -->
+
+      <div class="grid grid-4" style="margin-bottom:16px">
+        <div class="metric"><div class="label">距下个倒数日</div><div class="value" id="nextCountdown" style="color:var(--coral)">--</div><div class="sub" id="nextCountdownName">未设置</div></div>
+        <div class="metric"><div class="label">今日安放</div><div class="value" id="todayCheckin">0/5</div><div class="sub" id="streakInfo">连续 0 天</div></div>
+        <div class="metric"><div class="label">本周小结</div><div class="value" id="weekCheckinCount">0/35</div><div class="sub">7天便签</div></div>
+        <div class="metric"><div class="label">今日任务</div><div class="value" id="todayTaskCount">0</div><div class="sub">件待办</div></div>
+      </div>
+
+      <!-- 今日心语 · 每日一句（金句＋鼓励合成一卡，可换新、不重复、按日期自动轮换） -->
+      <div class="card mind-card" style="margin-bottom:16px;background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 2l2.9 7.5L22 10l-6 5 2 8-6-4-6 4 2-8-6-5 7.1-.5z"></path></svg>今日心语 <span style="font-weight:400;font-size:12px;color:var(--hint)">一句 · 陪你一整天</span></h3>
+          <button class="mind-refresh" onclick="refreshMind(true);spinMindReload()" title="换一句新的（不重复）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;vertical-align:-2px;margin-right:3px"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>换一句</button>
+        </div>
+        <div id="dailyMind" style="font-size:16.5px;color:var(--text);line-height:1.95;margin-top:12px;font-weight:600">“把今天走稳，把长线走远；安放当下，即刻启程”</div>
+        <div id="dailyGreeting" style="font-size:13px;color:var(--muted);margin-top:8px"></div>
+
+      </div>
+
+      <!-- 今日知识 · 每天四条（健康 / 认知 / 社会 / 财商），点「换一批」全体换新，标签页展示更省空间 -->
+      <div class="card" style="margin-bottom:10px;background:linear-gradient(135deg,#F1EADE,#EFE8D8);border-color:#D8CBB2">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 6.5C10 4.5 6.5 5 5 5.5v13c1.5-.5 5-1 7 1 2-2 5.5-1.5 7-1v-13c-1.5-.5-5-1-7 1z"></path><path d="M12 6.5v13"></path></svg>今日知识 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天四条 · 不重复 · 换一批</span></h3>
+          <button class="mind-refresh" onclick="refreshHomeDaily();spinInspire()" title="四条一起换一批新的"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;vertical-align:-2px;margin-right:3px"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>换一批</button>
+        </div>
+      </div>
+      <div class="card knowledge-card" style="margin-bottom:14px">
+        <div class="knowledge-tabs">
+          <button class="k-tab active" data-k="health" onclick="switchKnowledge('health')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span>健康</span></button>
+          <button class="k-tab" data-k="cognition" onclick="switchKnowledge('cognition')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>认知</span></button>
+          <button class="k-tab" data-k="life" onclick="switchKnowledge('life')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>社会</span></button>
+          <button class="k-tab" data-k="finance" onclick="switchKnowledge('finance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 6.5v11"></path><path d="M14.6 9.3c0-.6-.9-1-2.6-1-1.5 0-2.3.5-2.3 1.1 0 1.4 4.6.6 4.6 2.3 0 .7-1.2 1.3-2.6 1.3-1.8 0-2.8-.5-2.8-1.2"></path></svg><span>财商</span></button>
+        </div>
+        <div id="knowledgeBody" style="font-size:13.5px;line-height:1.85;color:var(--text)">
+          <strong>午睡时长</strong><br>10-20分钟短时午睡能恢复精力、提升下午专注力；超过30分钟易进入深睡，醒来更昏沉。定好闹钟，别睡过头。<br><span style="font-size:11px;color:var(--hint)">出处：健康小知识 · 按日期轮换不重复</span>
+          <div style="margin-top:10px"><span class="tag tag-teal">每日一记</span></div>
+        </div>
+      </div>
+      <!-- 专业倒数日板块（参考市面上倒数日app设计） -->
+<div class="card daily-card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>今日 · 生活刻度 <span style="font-weight:400;font-size:12px;color:var(--hint)">节假日 · 生日 · 今年进度</span></h3>
+        <div class="grid grid-3">
+          <div>
+            <h4>最近节假日</h4>
+            <div id="holidayBox" style="background:var(--bg);padding:12px;border-radius:8px;font-size:13px;min-height:104px"><div style="font-size:15px;font-weight:600;color:var(--coral)">中秋节</div><div style="font-size:12px;color:var(--muted);margin:4px 0">2026-09-25</div><div style="font-size:16px;font-weight:700;color:var(--primary)">还有 <span style="font-size:22px">34</span> 天</div><div style="font-size:11px;color:var(--hint);margin-top:6px">下个节假日 · 记得提前规划</div></div>
+          </div>
+          <div>
+            <h4 style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">我的生日 <span style="font-size:12px;color:var(--muted);font-weight:400;white-space:nowrap">选择生日：</span><input type="date" id="birthdayInput" style="max-width:140px;font-size:12px;padding:4px 6px" onchange="saveBirthday(this.value)"></h4>
+            <div id="birthdayBox" style="background:var(--bg);padding:12px;border-radius:8px;font-size:13px;min-height:104px"><p style="color:var(--hint)">选择你的生日，自动计算距生日还有几天</p></div>
+          </div>
+          <div>
+            <h4>今年进度</h4>
+            <div id="yearBox" style="background:var(--bg);padding:12px;border-radius:8px;font-size:13px;min-height:104px"><div style="font-size:15px;font-weight:600;color:var(--primary)">2026 年已过 <span style="font-size:20px">64.1</span>%</div><div style="margin:8px 0 4px"><div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div style="height:100%;width:64.1%;background:linear-gradient(90deg,#B38546,#96692F);border-radius:4px"></div></div></div><div style="font-size:12px;color:var(--muted)">第 234 / 365 天 · 距年底还有 132 天</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>我的倒数日 · 重要事件倒计时</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:14px">添加你的重要事件，系统每天自动算"距事件还有多少天"，已过会显示"已过X天"，今天会显示"就是今天"。</p>
+        <div id="countdownList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px"><div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--hint);font-size:13px">还没有倒数日 · 在下方添加你的第一个重要事件</div></div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+          <input id="newCountdownName" placeholder="事件名称（如：四级考试）" style="flex:1;min-width:160px">
+          <input id="newCountdownDate" type="date" style="min-width:140px">
+          <button class="btn btn-primary btn-sm" onclick="addCountdown()">添加倒数日</button>
+          <button class="btn btn-sm" onclick="examPreset()" title="一键预填『期末冲刺』，改好日期再点添加">🧭 期末冲刺</button>
+        </div>
+        <div class="callout callout-info" style="margin-top:10px;font-size:12px"><strong>提示：</strong>双击事件名可改名，点击日期可改日期。所有数据自动保存到本地，换设备需手动迁移。</div>
+      </div>
+
+      <!-- 开学准备进度（面向准大一新生 · 可勾选清单 + 自动进度条；入学后自动归档收起） -->
+      <div class="card" id="prepareCard" style="margin-top:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#CFC9B8">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>开学准备进度 <span style="font-weight:400;font-size:12px;color:var(--hint)">准大一新生 · 勾选已完成项</span></h3>
+          <button class="btn btn-sm" style="color:var(--coral);border:1px solid var(--coral);background:transparent" onclick="archivePrepare(true)">✅ 我已入学 · 收起清单</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:10px 0;line-height:1.7">离大学报到还有一段时间，把证件、物资、到校安排逐项勾掉，进度条涨起来，开学不慌。这些一次性内容在你入学后将<b style="color:var(--coral)">自动归档收起</b>，不占用首页空间。</p>
+        <div id="prepareList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px"></div>
+        <div style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+            <span style="font-size:12px;color:var(--muted)">完成进度</span>
+            <span style="font-size:13px;font-weight:700;color:var(--primary)" id="preparePercent">0%</span>
+          </div>
+          <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div class="bar" id="prepareBar" style="height:100%;width:0%;background:linear-gradient(90deg,#B38546,#96692F);border-radius:4px;transition:width .3s"></div></div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--hint)">进度自动保存到本地；点击任意条目即可切换「已完成 / 待办」。需要再次查看时，可在「系统设置」里重新开启。</div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>今日待办</h3>
+          <p style="font-size:12px;color:var(--hint);margin-bottom:8px">一次性今天的待办清单，做完可勾选、随手删；和下方「长期习惯打卡」不同，它不跨天累计。</p>
+          <div id="todayTasks"><p style="color:var(--hint);font-size:13px">今天还没有任务，添加第一个吧</p></div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="newTaskInput" placeholder="添加一个今日任务..." onkeydown="if(event.key===&#39;Enter&#39;)addTask()">
+            <button class="btn btn-primary btn-sm" onclick="addTask()">添加</button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center">
+            <span style="font-size:12px;color:var(--hint)">快捷添加：</span>
+            <button class="btn btn-sm" onclick="addPresetTask(&#39;背单词一组&#39;)">背单词</button>
+            <button class="btn btn-sm" onclick="addPresetTask(&#39;听力真题 1 套&#39;)">听力</button>
+            <button class="btn btn-sm" onclick="addPresetTask(&#39;英语精读 1 篇&#39;)">精读</button>
+            <button class="btn btn-sm" onclick="addPresetTask(&#39;运动 30 分钟&#39;)">运动</button>
+            <button class="btn btn-sm" onclick="addPresetTask(&#39;写今日复盘日记&#39;)">复盘</button>
+            <button class="btn btn-sm" onclick="addPresetTask(&#39;读书 30 分钟&#39;)">读书</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>每日打卡（长期习惯）</h3>
+          <div id="checkinList"><div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--border)"><input type="checkbox" onchange="toggleCheckin(&#39;cet&#39;)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-ci="0" onblur="saveCheckinName(0,this)" style="flex:1;font-size:13px;cursor:text;outline:none">四级学习打卡</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delCheckinDef(0)">删</button></div><div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--border)"><input type="checkbox" onchange="toggleCheckin(&#39;word&#39;)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-ci="1" onblur="saveCheckinName(1,this)" style="flex:1;font-size:13px;cursor:text;outline:none">背单词25个</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delCheckinDef(1)">删</button></div><div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--border)"><input type="checkbox" onchange="toggleCheckin(&#39;exercise&#39;)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-ci="2" onblur="saveCheckinName(2,this)" style="flex:1;font-size:13px;cursor:text;outline:none">运动30分钟</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delCheckinDef(2)">删</button></div><div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--border)"><input type="checkbox" onchange="toggleCheckin(&#39;journal&#39;)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-ci="3" onblur="saveCheckinName(3,this)" style="flex:1;font-size:13px;cursor:text;outline:none">今日复盘</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delCheckinDef(3)">删</button></div><div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--border)"><input type="checkbox" onchange="toggleCheckin(&#39;sleep&#39;)" style="width:15px;height:15px;flex-shrink:0"><span contenteditable="true" data-ci="4" onblur="saveCheckinName(4,this)" style="flex:1;font-size:13px;cursor:text;outline:none">11点前睡觉</span><button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delCheckinDef(4)">删</button></div></div>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <input id="newCheckinInput" placeholder="添加自定义打卡项..." style="flex:1;min-width:0">
+            <button class="btn btn-primary btn-sm" onclick="addCheckinDef()">添加</button>
+          </div>
+          <h4 style="margin-top:14px">近 7 天打卡日历</h4>
+          <div id="checkinCalendar" style="display:flex;gap:6px;margin-top:6px"><div style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:10px;color:var(--hint)">日</div><div style="font-size:13px;color:var(--text);font-weight:600;margin:2px 0">16</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--hint);margin-top:2px">0/5</div></div><div style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:10px;color:var(--hint)">一</div><div style="font-size:13px;color:var(--text);font-weight:600;margin:2px 0">17</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--hint);margin-top:2px">0/5</div></div><div style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:10px;color:var(--hint)">二</div><div style="font-size:13px;color:var(--text);font-weight:600;margin:2px 0">18</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--hint);margin-top:2px">0/5</div></div><div style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:10px;color:var(--hint)">三</div><div style="font-size:13px;color:var(--text);font-weight:600;margin:2px 0">19</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--hint);margin-top:2px">0/5</div></div><div style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:10px;color:var(--hint)">四</div><div style="font-size:13px;color:var(--text);font-weight:600;margin:2px 0">20</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--hint);margin-top:2px">0/5</div></div><div style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:10px;color:var(--hint)">五</div><div style="font-size:13px;color:var(--text);font-weight:600;margin:2px 0">21</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--hint);margin-top:2px">0/5</div></div><div class="cal-today" style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:var(--primary);border:1px solid var(--primary)"><div style="font-size:10px;color:var(--cal-on,#fff)">六</div><div style="font-size:13px;color:var(--cal-on,#fff);font-weight:600;margin:2px 0">22</div><div style="width:8px;height:8px;border-radius:50%;background:var(--border-strong);margin:0 auto"></div><div style="font-size:9px;color:var(--cal-on,#fff);margin-top:2px">0/5</div></div></div>
+          <h4 style="margin-top:14px">本周完成率</h4>
+          <div class="progress"><div class="bar" id="weekProgress" style="width:0%"></div></div>
+          <p style="font-size:11px;color:var(--hint);margin-top:6px" id="weekProgressText">本周打卡 0/35 · 完成率 0%</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>今日时间节奏 <span style="font-weight:400;color:var(--hint);font-size:12px">按你的节奏走 · 只填你真正想做的</span></h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">不用把每分每秒排满。只在下方添加对你真正重要的 2-3 个时段块（比如复习、运动、放空），其余时间留白。点击时间/内容可改，右上角 × 删除。</p>
+        <div class="grid grid-4" id="timeBlockGrid" style="gap:8px"></div>
+        <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap">
+          <input id="tbTime" placeholder="时间，如 08:00" style="width:96px">
+          <input id="tbTask" placeholder="这一刻想做什么" style="flex:1;min-width:160px">
+          <input id="tbTag" placeholder="标签" style="width:80px">
+          <button class="btn btn-primary btn-sm" onclick="addTimeBlock()">添加一个时段</button>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:var(--muted)">💡 一天抓住 2-3 段专注就够，不用把整张表排满才叫自律。</div>
+      </div>
+
+      </section>
+
+    <!-- 学业精进 -->
+    <section class="view" id="view-study">
+<div class="section-intro">课程进度、绩点追踪、四六级、保研、考研、法考、各类学科竞赛相关规划，都可以放在这里。踏实走好求学路上的每一小步，慢慢沉淀你的学业成果。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进</h1>
+        <p>绩点 · 英语 · 数学 · 专业课 · 保研考研，循序渐进、学有章法</p>
+      </div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,&#39;t-cet&#39;)">英语四级</div>
+        <div class="tab" onclick="switchTab(this,&#39;t-cet6&#39;)">英语六级</div>
+        <div class="tab" onclick="switchTab(this,&#39;t-law&#39;)">大学数学</div>
+        <div class="tab" onclick="switchTab(this,&#39;t-major&#39;)">专业课筑基</div>
+        <div class="tab" onclick="switchTab(this,&#39;t-baoyan&#39;)">保研/考研</div>
+      </div>
+
+      <div class="tab-pane active" id="t-cet">
+        <div class="grid grid-3" style="margin-bottom:16px">
+          <div class="metric"><div class="label">目标分数</div><div class="value"><input type="text" id="cetGoalInput" placeholder="" style="border:none;background:transparent;font-size:inherit;font-weight:inherit;color:inherit;width:80px;text-align:center;outline:none;border-bottom:2px solid var(--primary)"></div><div class="sub" contenteditable="true" data-key="cet-exam-label" style="cursor:text">考试时间（如：12月）</div></div>
+          <div class="metric"><div class="label">当前基础</div><div class="value"><input type="text" id="cetBaseInput" placeholder="" style="border:none;background:transparent;font-size:inherit;font-weight:inherit;color:inherit;width:80px;text-align:center;outline:none;border-bottom:2px solid var(--primary)"></div><div class="sub" contenteditable="true" data-key="cet-base-label" style="cursor:text" data-placeholder="来源（高考/模考）">来源（高考/模考）</div></div>
+          <div class="metric"><div class="label">每日单词</div><div class="value" id="wordProgress">0/25</div><div class="sub">艾宾浩斯复习</div></div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>四级报名入口</h3>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+            <a class="res-link" href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+              <div class="info"><div class="name">CET报名官网</div><div class="desc">cet-bm.neea.edu.cn · 报名+查分唯一入口</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://cet.neea.edu.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+              <div class="info"><div class="name">教育部考试中心</div><div class="desc">cet.neea.edu.cn · 考试公告/政策</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+          <div class="callout callout-warn"><strong>时间节点：</strong>9月报名·12月考试；3月报名·6月考试。报名48小时内完成缴费，否则名额释放。</div>
+          <h3 style="margin-top:18px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>标准听力训练</h3>
+            <p>点击下方平台直达真题音频，均为官方标准发音、真实考试语速：</p>
+            <a class="res-link" href="https://www.kekenet.com/cet4/" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon></svg></div>
+              <div class="info"><div class="name">可可英语 · CET4真题听力频道（分套分类）</div><div class="desc">网页内按年份/套别分类，可直接在线播放真题音频</div></div>
+              <div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://m.kekenet.com/course/884" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg></div>
+              <div class="info"><div class="name">可可英语 · 四级听力真题MP3+中英字幕</div><div class="desc">历年真题MP3逐题精听，配中英字幕，免费、无需登录</div></div>
+              <div class="arrow">↗</div>
+            </a>
+          </div>
+          <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>今日听力精练</h3>
+            <p>每天从真题中选一组，按"预读选项→听音→核对→精听"四步法：</p>
+            <div class="callout callout-info">
+              <strong>四步精听法：</strong><br>
+              1. 预读选项30秒，划关键词、猜主题<br>
+              2. 整段听音一遍，选答案<br>
+              3. 对照原文，标出没听懂的连读/弱读<br>
+              4. 精听盲听至100%听懂
+            </div>
+            <p style="margin-top:10px"><strong>常见陷阱：</strong></p>
+            <ul>
+              <li>听到原词不一定是答案，同义替换才是</li>
+              <li>but/however/actually后常出考点</li>
+              <li>数字题听清楚是价格/时间/数量哪个</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>每日真题精练</h3>
+          <p>四级题型分值：听力35% · 阅读35% · 翻译15% · 写作15%。听力+阅读占70%，是拿分主战场。按题型轮流训练，量力而行、贵在坚持。</p>
+          <table>
+            <thead><tr><th>题型</th><th>分值</th><th>训练方式</th><th>提分要点</th><th>练习入口</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tag tag-blue">听力</span></td><td>35%</td><td>每日真题精听</td><td>预读选项+四步精听</td><td><a href="https://search.bilibili.com/all?keyword=%E5%9B%9B%E7%BA%A7%E5%90%AC%E5%8A%9B%E7%9C%9F%E9%A2%98" target="_blank" rel="noopener noreferrer">B站·听力真题 ↗</a></td></tr>
+              <tr><td><span class="tag tag-teal">阅读</span></td><td>35%</td><td>每日精读训练</td><td>先题后文+定位+同义替换</td><td><a href="https://search.bilibili.com/all?keyword=%E5%9B%9B%E7%BA%A7%E9%98%85%E8%AF%BB%E7%9C%9F%E9%A2%98%E7%B2%BE%E8%AE%B2" target="_blank" rel="noopener noreferrer">B站·阅读精讲 ↗</a></td></tr>
+              <tr><td><span class="tag tag-coral">翻译</span></td><td>15%</td><td>每日翻译训练</td><td>积累中国传统文化词汇</td><td><a href="https://search.bilibili.com/all?keyword=%E5%9B%9B%E7%BA%A7%E7%BF%BB%E8%AF%91%E7%9C%9F%E9%A2%98" target="_blank" rel="noopener noreferrer">B站·翻译真题 ↗</a></td></tr>
+              <tr><td><span class="tag tag-gray">写作</span></td><td>15%</td><td>每日写作积累</td><td>套模板+高级句式+不跑题</td><td><a href="https://search.bilibili.com/all?keyword=%E8%8B%B1%E8%AF%AD%E5%9B%9B%E7%BA%A7%E5%86%99%E4%BD%9C" target="_blank" rel="noopener noreferrer">B站·写作模板 ↗</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>备考资料避坑指南 · 少花冤枉钱</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>核心备考三件套 · 真题 / 单词 / 网课</h4>
+              <ul>
+                <li><strong>真题为王：</strong>星火英语/华研外语真题（近10年，含解析册+听力音频），模拟题不必碰——出题思路与真题差很远</li>
+                <li><strong>单词APP选1个：</strong>墨墨背单词（艾宾浩斯自动复习）/不背单词（影视例句），别同时开2个以上</li>
+                <li><strong>免费网课就行：</strong>B站"烤鸭TV"听力（视听一致原则）、"唐迟阅读逻辑"、王江涛写作（背范文），一分钱不用花</li>
+              </ul>
+            </div>
+            <div>
+              <h4>真题这样刷才有效</h4>
+              <ul>
+                <li>留2-3套最新真题考前模考，别一口气全做完</li>
+                <li>每套至少做2遍：第1遍限时模考，第2遍精读精析+错题进错题本</li>
+                <li>翻译热词关注"中国日报双语新闻"公众号；泛听BBC Learning English磨耳朵</li>
+                <li>官网 cet.neea.edu.cn 可免费下载官方真题电子版</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M9 4v16M4 9h5"></path></svg>每日25词 · 艾宾浩斯</h3>
+            <p>按遗忘曲线复习：1天·2天·4天·7天·15天。今日新词+复习词：</p>
+            <div id="wordList"><div style="padding:16px;background:var(--bg);border-radius:8px;text-align:center"><p style="color:var(--hint);font-size:15px;margin-bottom:8px">今日还没添加单词 · 点击"载入今日25词"自动推荐四级高频词</p><p style="font-size:13px;color:var(--hint)">词库共100+词，每日按日期循环推荐25词，含熟词生义+巧记+真题例句+有道标准发音</p></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center">
+              <input id="newWordInput" placeholder="输入英文单词(自动校验拼写)" style="max-width:200px" onkeydown="if(event.key===&#39;Enter&#39;)addWord()">
+              <button class="btn btn-sm btn-primary" onclick="addWord()">+ 添加今日新词</button>
+              <button class="btn btn-sm btn-teal" onclick="markWordDone()">标记今日完成</button>
+              <button class="btn btn-sm" onclick="loadPresetWords()">载入今日25词</button>
+              <button class="btn btn-sm" onclick="dictationMode()">开始听写</button>
+            </div>
+            <div id="dictationBox" style="display:none;margin-top:12px;padding:12px;background:var(--bg);border-radius:8px">
+              <h4 style="margin:0 0 8px">听写模式 · 看释义拼单词</h4>
+              <div id="dictationWord" style="font-size:14px;color:var(--text);margin-bottom:8px"></div>
+              <div style="display:flex;gap:6px">
+                <input id="dictationInput" placeholder="输入单词拼写..." onkeydown="if(event.key===&#39;Enter&#39;)checkDictation()">
+                <button class="btn btn-sm btn-primary" onclick="checkDictation()">核对</button>
+                <button class="btn btn-sm" onclick="playWordAudio()">听发音</button>
+                <button class="btn btn-sm" onclick="nextDictation()">下一个</button>
+              </div>
+              <div id="dictationResult" style="margin-top:8px;font-size:13px"></div>
+            </div>
+          </div>
+      <div style="margin-top:16px"><div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>高分作文模板 · 每日刷新</h3>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+              <span class="tag tag-teal" id="essayType">问题解决型 · 议论文 / 社会问题</span>
+              <span style="font-size:12px;color:var(--hint)">类型 · 适用题型</span>
+              <button class="btn btn-sm btn-primary" onclick="nextEssayTpl()" style="margin-left:auto">换一篇 ↻</button>
+              <button class="btn btn-sm" onclick="toggleEssayHistory()">查看历史</button>
+            </div>
+            <p style="font-size:14px;line-height:1.9;background:var(--bg);padding:12px;border-radius:8px;font-family:monospace;white-space:pre-wrap" id="essayBody">Nowadays, [问题现象] has become a matter of great concern. It not only [危害一], but also [危害二].
+
+To address this issue, several measures should be taken. First and foremost, [措施一]. Moreover, [措施二]. Last but not least, [措施三].
+
+Only through the joint efforts of [主体] can we [升华]. As a college student, I will [个人行动].</p>
+            <h4>高级句式储备</h4>
+            <ul id="essaySentences"><li>危害：not only... but also...</li><li>措施：First / Moreover / Last but not least</li><li>升华：Only through... can we...</li></ul>
+            <div class="callout callout-info" style="margin-top:8px"><strong>使用方法：</strong>每天一篇不同类型模板，先背结构再填内容；点"换一篇"可立即刷新；点"查看历史"可回顾最近30天看过的模板，便于复盘积累。</div>
+            <div id="essayHistoryBox" style="display:none;margin-top:12px;border-top:1px dashed var(--border);padding-top:12px">
+              <h4 style="margin-bottom:8px">最近查看过的模板</h4>
+              <div id="essayHistoryList" style="font-size:13px"></div>
+            </div>
+          </div></div>
+    
+
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>错题本</h3>
+          <p>记录做错的题，标注错因，定期复盘。错题不复盘=白做。</p>
+          <div style="display:flex;gap:8px;margin-bottom:10px">
+            <input id="wrongQType" placeholder="题型(听力/阅读/翻译)" style="max-width:140px">
+            <input id="wrongQDesc" placeholder="错题描述与错因">
+            <button class="btn btn-primary btn-sm" onclick="addWrong()">记录</button>
+          </div>
+          <div id="wrongList"><p style="color:var(--hint);font-size:13px">还没有错题记录</p></div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>英语精读 · CET4 真题风格文章</h3>
+          <p style="font-size:13px;color:var(--muted)">词汇 / 译文 / 长难句 / 我的笔记 · 每天精读1篇胜过泛读10篇</p>
+          <div id="readingContainer"><div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><span style="font-size:13px;color:var(--hint)">第 6 篇 / 共 6 篇 · 每日轮换 · 点"换一篇"切换</span><button class="btn btn-sm btn-primary" onclick="nextReadingArticle()">换一篇</button></div><div class="card" style="margin-bottom:16px"><h3>Passage 6 · 大学生与独立思考（难度 ★★★）</h3><h4>原文</h4><p style="line-height:2.0;color:var(--text);font-size:16px">University is not merely a place to acquire professional knowledge, but a training ground for independent thinking. In high school, students are often given standard answers, while in college, they are expected to question assumptions, evaluate evidence, and construct their own arguments. A student who merely memorizes textbooks will struggle in an era where information is instantly available online. The most valuable skill a graduate can carry away is the ability to learn how to learn—to update one's knowledge continuously and adapt to a rapidly changing world.</p><h4>重点词汇</h4><div style="margin-bottom:6px"><span class="tag tag-blue" style="margin:2px 4px 2px 0;display:inline-block">merely adv.仅仅；只是</span><span class="tag tag-blue" style="margin:2px 4px 2px 0;display:inline-block">assumption n.假设；假定</span><span class="tag tag-blue" style="margin:2px 4px 2px 0;display:inline-block">evaluate v.评估；评价</span><span class="tag tag-blue" style="margin:2px 4px 2px 0;display:inline-block">construct v.构建；建立</span><span class="tag tag-blue" style="margin:2px 4px 2px 0;display:inline-block">adapt v.适应；调整</span></div><h4>中文译文</h4><p style="background:var(--bg);padding:14px;border-radius:8px;line-height:2.0;font-size:15px">大学不仅仅是获取专业知识的地方，更是独立思考的训练场。高中时学生常被给予标准答案，而大学里，他们被期望去质疑假设、评估证据、构建自己的论证。一个只会死记课本的学生，在信息随手可得的网络时代会举步维艰。毕业生能带走的最有价值的技能，是"学会如何学习"的能力——持续更新知识、适应快速变化的世界。</p><h4>长难句精析</h4><p style="color:var(--muted);line-height:1.9;font-size:15px">长难句：The most valuable skill a graduate can carry away is the ability to learn how to learn—to update one's knowledge continuously and adapt to a rapidly changing world. 主干 The skill is the ability；a graduate can carry away 为省略 that 的定语从句修饰 skill；破折号后解释 ability。</p><h4>思考题</h4><div style="padding:6px 0;border-top:1px dashed var(--border);font-size:14px"><strong style="color:var(--primary)">Q：</strong> 大学最重要的能力是什么？<br><strong style="color:var(--teal)">A：</strong> 学会如何学习——持续更新知识、适应变化。</div><h4>我的笔记</h4><textarea id="rn_5_Passage " placeholder="写下你的理解、生词、仿写句...（自动保存）" style="font-size:15px;line-height:1.8" onblur="saveReadingNoteKey(&#39;5_Passage &#39;,this.value)"></textarea><button class="btn btn-sm btn-primary" style="margin-top:8px" onclick="saveReadingNoteKey(&#39;5_Passage &#39;,document.getElementById(&#39;rn_5_Passage &#39;).value)">保存笔记</button><span style="font-size:12px;color:var(--teal);margin-left:10px" id="rnSaved_5_Passage "></span></div></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="t-cet6">
+        <div class="callout callout-info">
+          <strong>六级定位：</strong>过四级即可报六级，建议大一/大二趁热打铁考掉。六级550+是保研/求职强加分项，越早过越主动。
+        </div>
+        <div class="grid grid-3" style="margin-bottom:16px">
+          <div class="metric"><div class="label">目标分数</div><div class="value"><input type="text" id="cet6GoalInput" placeholder="" style="border:none;background:transparent;font-size:inherit;font-weight:inherit;color:inherit;width:80px;text-align:center;outline:none;border-bottom:2px solid var(--primary)"></div><div class="sub" contenteditable="true" data-key="cet6-exam-label" style="cursor:text">考试时间（如：6月）</div></div>
+          <div class="metric"><div class="label">当前基础</div><div class="value"><input type="text" id="cet6BaseInput" placeholder="" style="border:none;background:transparent;font-size:inherit;font-weight:inherit;color:inherit;width:80px;text-align:center;outline:none;border-bottom:2px solid var(--primary)"></div><div class="sub" contenteditable="true" data-key="cet6-base-label" style="cursor:text">基础分数（选填）</div></div>
+          <div class="metric"><div class="label">每日单词</div><div class="value" id="cet6WordProgress">0/40</div><div class="sub">六级词汇量6000+</div></div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>六级报名入口</h3>
+            <ol style="font-size:13px;line-height:1.9;padding-left:18px">
+              <li><strong>报名时间：</strong>每年3月、9月开放报名，报名后48小时内完成缴费，逾期名额自动释放</li>
+              <li><strong>报名资格：</strong>四级425+即可报六级，在读本专科、研究生均可参加</li>
+              <li><strong>考试时间：</strong>每年6月、12月各一次全国统一笔试，一年有两次机会</li>
+              <li><strong>准备材料：</strong>身份证+学籍信息，报名前先在系统核对个人信息与照片</li>
+            </ol>
+            <a class="res-link" href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer" style="margin-top:10px">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+              <div class="info"><div class="name">CET报名官网</div><div class="desc">cet-bm.neea.edu.cn · 报名+查分唯一入口</div></div><div class="arrow">↗</div>
+            </a>
+            <div class="callout callout-warn" style="margin-top:8px"><strong>时间节点：</strong>过四级后即可报六级，9月报名12月考，3月报名6月考。</div>
+          </div>
+          <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>六级听力精听四步法</h3>
+            <ol style="font-size:13px;line-height:1.9;padding-left:18px">
+              <li><strong>预听：</strong>先读题干划关键词，预测话题与问题类型（长对话/讲座/新闻）</li>
+              <li><strong>精听：</strong>逐句暂停跟读，划出连读、弱读、数字与转折词（but/however后常是考点）</li>
+              <li><strong>对照：</strong>对照原文标出听错点，把生词按"听力词汇"记入单词本</li>
+              <li><strong>复听：</strong>第二天盲听同一篇，直到100%听懂为止</li>
+            </ol>
+            <a class="res-link" href="https://m.kekenet.com/course/885" target="_blank" rel="noopener noreferrer" style="margin-top:10px">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></div>
+              <div class="info"><div class="name">可可英语 · 六级听力真题</div><div class="desc">历年MP3+字幕，免费、无需登录，配合四步法精听</div></div><div class="arrow">↗</div>
+            </a>
+            <div class="callout callout-info" style="margin-top:8px"><strong>避坑：</strong>听力别只"听"不"写"——边听边记关键词，训练手耳同步；听不懂的句子当天解决，攒着会变成"听力盲区"。</div>
+          </div>
+          
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>六级全题型训练 · 一卡直达</h3>
+          <p>六级共六大题型，每个题型一个直达入口（B站免费真题讲解），点击即学：</p>
+          <table>
+            <thead><tr><th>题型</th><th>分值</th><th>训练要点</th><th>直达入口</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tag tag-blue">听力</span><br>长对话·篇章·讲座</td><td>35%</td><td>每日1套真题精听，预读选项+同义替换</td><td><a href="https://search.bilibili.com/all?keyword=%E5%85%AD%E7%BA%A7%E5%90%AC%E5%8A%9B%E7%9C%9F%E9%A2%98" target="_blank" rel="noopener noreferrer">B站·听力真题 ↗</a></td></tr>
+              <tr><td><span class="tag tag-teal">选词填空</span></td><td>5%</td><td>先标词性再填，积累固定搭配</td><td><a href="https://search.bilibili.com/all?keyword=%E5%85%AD%E7%BA%A7%E9%80%89%E8%AF%8D%E5%A1%AB%E7%A9%BA" target="_blank" rel="noopener noreferrer">B站·选词填空 ↗</a></td></tr>
+              <tr><td><span class="tag tag-teal">信息匹配</span></td><td>10%</td><td>先题后文，关键词定位，忌通读全文</td><td><a href="https://search.bilibili.com/all?keyword=%E5%85%AD%E7%BA%A7%E4%BF%A1%E6%81%AF%E5%8C%B9%E9%85%8D" target="_blank" rel="noopener noreferrer">B站·信息匹配 ↗</a></td></tr>
+              <tr><td><span class="tag tag-teal">仔细阅读</span></td><td>20%</td><td>同义替换+长难句拆解，定位句精读</td><td><a href="https://search.bilibili.com/all?keyword=%E5%85%AD%E7%BA%A7%E4%BB%94%E7%BB%86%E9%98%85%E8%AF%BB" target="_blank" rel="noopener noreferrer">B站·仔细阅读 ↗</a></td></tr>
+              <tr><td><span class="tag tag-coral">翻译</span></td><td>15%</td><td>积累文化/社会类表达，整段练习</td><td><a href="https://search.bilibili.com/all?keyword=%E5%85%AD%E7%BA%A7%E7%BF%BB%E8%AF%91%E7%9C%9F%E9%A2%98" target="_blank" rel="noopener noreferrer">B站·翻译真题 ↗</a></td></tr>
+              <tr><td><span class="tag tag-gray">写作</span></td><td>15%</td><td>背模板+高级句式，每周写2篇</td><td><a href="https://search.bilibili.com/all?keyword=%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E5%86%99%E4%BD%9C" target="_blank" rel="noopener noreferrer">B站·写作模板 ↗</a></td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-info" style="margin-top:10px"><strong>刷题节奏：</strong>每天 听力1套 + 阅读2篇（轮换三种题型）+ 翻译1段 + 每周写作2篇；考前2周全部改为限时整套模考。</div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>英语精读 · CET6 真题风格文章</h3>
+          <p style="font-size:13px;color:var(--muted)">六级真题风格 · 更长更难的长难句 + 学术话题词汇 / 译文 / 精析 / 我的笔记 · 每天精读1篇</p>
+          <div id="cet6ReadingContainer"><div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><span style="font-size:13px;color:var(--hint)">第 6 篇 / 共 6 篇 · 六级真题风格 · 点"换一篇"切换</span><button class="btn btn-sm btn-primary" onclick="nextCet6Reading()">换一篇</button></div><div class="card" style="margin-bottom:16px"><h3>Passage 6 · 城市化与生活质量（难度 ★★★☆）</h3><h4>原文</h4><p style="line-height:2.0;color:var(--text);font-size:16px">Urbanization has long been associated with economic progress, yet its impact on quality of life is far from straightforward. Megacities attract talent and capital, fostering innovation and cultural vitality; simultaneously, they confront overcrowding, soaring housing costs, and environmental strain. Recent studies suggest that well-designed public spaces and efficient transit systems can significantly mitigate these pressures, enhancing residents' well-being without sacrificing urban dynamism. The future of cities thus hinges less on their size than on the wisdom of their planning.</p><h4>重点词汇</h4><div style="margin-bottom:6px"><span class="tag tag-teal" style="margin:2px 4px 2px 0;display:inline-block">urbanization n.城市化</span><span class="tag tag-teal" style="margin:2px 4px 2px 0;display:inline-block">vitality n.活力；生命力</span><span class="tag tag-teal" style="margin:2px 4px 2px 0;display:inline-block">mitigate v.缓解；减轻</span><span class="tag tag-teal" style="margin:2px 4px 2px 0;display:inline-block">well-being n.幸福感；福祉</span><span class="tag tag-teal" style="margin:2px 4px 2px 0;display:inline-block">dynamism n.活力；动态性</span></div><h4>中文译文</h4><p style="background:var(--bg);padding:14px;border-radius:8px;line-height:2.0;font-size:15px">城市化长期以来与经济发展相关联，但它对生活质量的影响远非简单明了。特大城市吸引人才与资本，激发创新与文化活力；与此同时，它们也面临拥挤、房价飙升和环境压力。近期研究表明，设计良好的公共空间与高效的交通系统能显著缓解这些压力，在提升居民福祉的同时不牺牲城市的活力。因此，城市的未来更多取决于规划智慧，而非规模大小。</p><h4>长难句精析</h4><p style="color:var(--muted);line-height:1.9;font-size:15px">长难句：Recent studies suggest that well-designed public spaces and efficient transit systems can significantly mitigate these pressures, enhancing residents' well-being without sacrificing urban dynamism. 主干 studies suggest that...；enhancing... 为结果状语。</p><h4>思考题</h4><div style="padding:6px 0;border-top:1px dashed var(--border);font-size:14px"><strong style="color:var(--primary)">Q：</strong> 城市化对生活质量的真实影响？<br><strong style="color:var(--teal)">A：</strong> 利弊并存——促创新增活力，也带来拥挤房价压力；关键在规划智慧。</div><h4>我的笔记</h4><textarea id="c6n_5_Passage " placeholder="写下你的理解、生词、仿写句...（自动保存）" style="font-size:15px;line-height:1.8" onblur="saveCet6NoteKey(&#39;5_Passage &#39;,this.value)"></textarea><button class="btn btn-sm btn-primary" style="margin-top:8px" onclick="saveCet6NoteKey(&#39;5_Passage &#39;,document.getElementById(&#39;c6n_5_Passage &#39;).value)">保存笔记</button><span style="font-size:12px;color:var(--teal);margin-left:10px" id="c6nSaved_5_Passage "></span></div></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="t-law">
+        <div class="callout callout-info">
+          <strong>学习路径：</strong>高等数学（极限→微分→中值定理→积分→多元函数→微分方程）→ 线性代数（行列式→矩阵→向量组→特征值→二次型）→ 概率论（随机事件→一维变量→二维分布→数字特征→大数定律）。三科是理工经管几乎所有专业的"地基"，决定后续专业课的天花板。
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>B站优质数学UP主（可点击直达）</h3>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=%E5%AE%8B%E6%B5%8A%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">宋浩老师 · 高等数学</div><div class="desc">辽宁工程技术大学教授，高数/线代/概率全套精讲，讲课节奏稳，适合零基础</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=%E4%B9%90%E7%BB%8F%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">乐经 · 高等数学</div><div class="desc">高校名师系列，知识点拆解细，配套例题丰富，适合应试冲刺</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=%E7%8C%B4%E5%8D%9A%E5%A3%AB%E9%AB%98%E6%95%B0" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">猴博士 · 高数/线代/概率速成</div><div class="desc">"考前抢救"型UP，几小时梳理一门课，期末冲刺必备</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=3Blue1Brown" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">3Blue1Brown · 数学直觉</div><div class="desc">用动画讲清线性代数、微积分的本质，建立数学直觉</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=%E6%B1%A4%E5%AE%B6%E5%87%A4%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">汤家凤 · 高等数学</div><div class="desc">考研高数权威，基础+强化+冲刺全套，逻辑严密</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=%E5%BC%A0%E5%AE%87%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">张宇 · 高等数学</div><div class="desc">考研高数"段子手"，激励性强，适合有一定基础者</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=%E6%9D%8E%E5%BA%9C%E4%B9%90%E7%BB%8F%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg></div>
+              <div class="info"><div class="name">李永乐 · 数学+物理</div><div class="desc">从基础到拓展，例题丰富，搭配知识广度极佳</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+          <div class="card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>大学数学三科学习重点</h3>
+            <table>
+              <thead><tr><th>科目</th><th>核心内容</th><th>生活/专业场景</th></tr></thead>
+              <tbody>
+                <tr><td>高等数学</td><td>极限·导数·积分·微分方程</td><td>变化率、面积、优化问题</td></tr>
+                <tr><td>线性代数</td><td>矩阵·向量·特征值·二次型</td><td>数据降维、机器学习基础</td></tr>
+                <tr><td>概率论</td><td>分布·期望·大数定律·统计</td><td>风险评估、抽样调查</td></tr>
+                <tr><td>离散数学</td><td>集合·图论·数理逻辑</td><td>计算机算法、密码学</td></tr>
+                <tr><td>复变函数</td><td>解析函数·留数·积分变换</td><td>信号处理、电气工程</td></tr>
+                <tr><td>数值计算</td><td>误差分析·方程求根·数值积分</td><td>工程仿真、建模</td></tr>
+              </tbody>
+            </table>
+            <h4>数学在各专业的应用场景</h4>
+            <ul>
+              <li>理工类：微积分用于力学/电学/控制理论，线代用于计算机图形/算法</li>
+              <li>经管类：微积分用于边际分析/最优化，概率论用于风险/决策</li>
+              <li>计算机：线代+概率+离散是数据/AI/算法的"地基"</li>
+              <li>医农类：概率统计用于实验设计/数据分析，微积分用于药物代谢</li>
+              <li>人文社科：统计方法用于问卷调查/社会研究，量化分析</li>
+            </ul>
+          </div>
+        </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg>权威学习资源入口</h3>
+          <div class="grid grid-3">
+            <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国大学MOOC</div><div class="desc">全国高校公开课，免费学</div></div><div class="arrow">↗</div></a>
+            <a class="res-link" href="https://www.chsi.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">学信网</div><div class="desc">学籍/学历/学信档案</div></div><div class="arrow">↗</div></a>
+            
+            <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">学术论文/期刊，学校IP免费</div></div><div class="arrow">↗</div></a>
+            <a class="res-link" href="https://www.ncss.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">国家大学生就业服务平台</div><div class="desc">全国校招/实习/就业服务</div></div><div class="arrow">↗</div></a>
+            <a class="res-link" href="https://www.wolframalpha.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Wolfram Alpha</div><div class="desc">数学计算引擎 · 公式推导/绘图</div></div><div class="arrow">↗</div></a>
+          </div>
+          <p style="font-size:11px;color:var(--hint);margin-top:10px">注：学院/教务处等校内站点以学校最新域名为准，若某链接调整，请以官网导航页为准。</p>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>数学高分方法论（满分学长学姐亲测）</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>日常三闭环</h4>
+              <ul>
+                <li><strong>课前预习：</strong>通读课本+例题，带着问题听课；课上听"思路"而非只抄板书</li>
+                <li><strong>课后复盘：</strong>当天独立完成作业再对答案；习题课提前做题，讲题跟助教/同学讨论</li>
+                <li><strong>错题分类：</strong>按"计算失误/概念混淆/思路盲区"三类记错题本，期末直接复习错题本</li>
+              </ul>
+            </div>
+            <div>
+              <h4>期末拿分捷径</h4>
+              <ul>
+                <li><strong>往年卷最值钱：</strong>找学长学姐/班级群要近3年试卷，考前限时刷2-3套</li>
+                <li>高数重点：积分与级数；线代重点：矩阵运算+特征值；概率重点：分布公式列表对比记忆</li>
+                <li>B站"宋浩老师"高数/线代/概率全套；"3Blue1Brown"用动画理解本质</li>
+                <li>计算题慢下来写清楚步骤，检查符号正负——失分多是粗心不是不会</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-ok" style="margin-top:8px">番茄法：专注40分钟+休息10分钟，数学卡壳时换科目学，回来思路更清晰。保持节奏 &gt; 考前突击；每门课设"今天做对3道典型题"的小目标。</div>
+        </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>数学避坑指南 + 一周学习节奏表</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>四大雷区（踩一个掉一档）</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>只看不练：</strong>看懂≠会做。每节至少独立做5道例题，做错才是真学到</li>
+              <li><strong>跳过基础：</strong>极限没搞懂就学积分=空中楼阁。卡壳就回到教材对应章节重看定义</li>
+              <li><strong>只刷难题：</strong>考试70%是基础题。先把课本例题+课后基础题做透，再碰难题</li>
+              <li><strong>从不复盘：</strong>错题不归类等于白错。按"计算失误/概念混淆/思路盲区"三色标记</li>
+            </ul>
+          </div>
+          <div>
+            <h4>一周节奏（每周固定，练出肌肉记忆）</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>周一到周五：</strong>每天"课前预习10分钟 + 课中跟框架 + 当天独立完成作业"</li>
+              <li><strong>周六：</strong>用1小时把本周所有公式自己默写一遍（不看课本）</li>
+              <li><strong>周日：</strong>刷1套往年卷限时2小时，只统计错题类型，不追求数量</li>
+              <li><strong>考前28天：</strong>每周2套限时真题 + 错题本三遍过（当天/第3天/考前）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>经验提醒：</strong>数学挂科的往往不是"不会的人"，而是"作业靠抄、考前突击"的人。每章学完当天闭环，期末就能从容许多。</div>
+      </div>
+      </div>
+
+      <div class="tab-pane" id="t-baoyan">
+        <div class="callout callout-warn">
+          <strong>提示：</strong>各校保研率、考证/考研通过率差异大，请查本校官网或问学长学姐获取真实数据。
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>保研路径</h3>
+            <ul>
+              <li><strong>大一：</strong>绩点为王，专业前10%是底线</li>
+              <li><strong>大二：</strong>参加挑战杯/模拟法庭竞赛加分</li>
+              <li><strong>大三：</strong>夏令营投递，6-9月关键期</li>
+              <li><strong>大四上：</strong>9月确定推免资格</li>
+            </ul>
+            <p>保研看：绩点（60%）+ 综测（20%）+ 科研竞赛（20%）</p>
+          </div>
+          <div class="card">
+            <h3>考研路径（备选）</h3>
+            <p>考研公共科目：</p>
+            <ul>
+              <li>101 思想政治理论</li>
+              <li>201 英语（一）或 204 英语（二）</li>
+              <li>303 数学（一/二/三）按专业要求</li>
+              <li>专业课（按目标院校招生目录）</li>
+            </ul>
+            <p>研究方向：<span contenteditable="true" data-key="ky-direction" style="background:var(--bg);padding:2px 6px;border-radius:4px;cursor:text" data-placeholder="如计算机/金融/管理"></span></p>
+            <div class="callout callout-info" style="margin-top:8px"><strong>提示：</strong>具体科目代码与参考书请到目标院校研究生院官网"招生目录"查询，每年9月发布当年版本。</div>
+          </div>
+          <div class="card">
+            <h3>两条路的真实对比</h3>
+            <p style="font-size:13px;line-height:1.9">保研拼的是 <strong>绩点60% + 综测20% + 科研竞赛20%</strong>，从大一到大三持续经营；考研拼的是大三下到大四上的集中冲刺。保研名额有限（约10%），考研一次考试定胜负。</p>
+            <div class="callout callout-warn" style="margin-top:8px"><strong>真诚提醒：</strong>别为竞赛丢绩点（绩点是大头）；材料文书别拖到投递季才写；提前1年加目标院校学长学姐微信，信息差就是机会差。</div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>保研全流程 · 三个 offer 窗口期</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>三个 offer 窗口期</h4>
+              <ul>
+                <li><strong>夏令营（大三下3-7月）：</strong>黄金窗口，七成推免名额在此放出；分批投递10-15所，拿到"优秀营员"≈提前录取</li>
+                <li><strong>预推免（大三暑假8-9月）：</strong>补录批次，材料审核+面试，流程更短、门槛更低，适合夏令营失手者</li>
+                <li><strong>九推（9.28-10.20）：</strong>捡漏窗口；推免系统填3个平行志愿，收到待录取须1-2小时内确认</li>
+              </ul>
+            </div>
+            <div>
+              <h4>大一现在就能做</h4>
+              <ul>
+                <li>9月开学去学院官网翻《推免实施细则》，摸清绩点/竞赛/科研的加分规则</li>
+                <li>绩点为王：高数/英语等学分高的课冲90+，专业前10%是底线</li>
+                <li>四级一次过；六级趁热刷550+（保研硬加分项）</li>
+                <li>大二起：进课题组、申报大创项目、打挑战杯/模拟法庭竞赛</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-warn" style="margin-top:8px">材料清单提前备：成绩单+排名证明+四六级成绩单+简历+个人陈述（1000/1500/2000字三版）+推荐信2封。文书大三寒假打磨，别拖到3月投递季。</div>
+        </div>
+        <!-- 保研全旅程 · 3D 时间轴 -->
+        <div class="card" style="margin-top:16px">
+          <h3 style="display:flex;align-items:center;gap:8px">🗓 保研全旅程 · 时间轴
+            <span style="font-size:11px;color:var(--hint);font-weight:400">点下面的阶段按钮或左右箭头切换</span></h3>
+          <div class="baoyan3d">
+            <div class="b3d-stage">
+              <div class="b3d-ring" id="b3dRing">
+                <div class="b3d-cell"><div class="b3d-c"><b>大一</b><span>筑基期 · 绩点为王</span></div></div>
+                <div class="b3d-cell"><div class="b3d-c"><b>大二</b><span>积累期 · 进组/竞赛</span></div></div>
+                <div class="b3d-cell"><div class="b3d-c"><b>大三上</b><span>冲刺期 · 材料打磨</span></div></div>
+                <div class="b3d-cell"><div class="b3d-c"><b>大三下</b><span>夏令营 3-7月</span></div></div>
+                <div class="b3d-cell"><div class="b3d-c"><b>大三暑</b><span>预推免 8-9月</span></div></div>
+                <div class="b3d-cell"><div class="b3d-c"><b>大四上</b><span>九推确认 9.28</span></div></div>
+                <div class="b3d-cell"><div class="b3d-c"><b>录取</b><span>待录取确认</span></div></div>
+              </div>
+              <div class="b3d-nav">
+                <button class="icon-btn" onclick="b3dSpin(-1)" title="上一阶段">‹</button>
+                <div class="b3d-dots" id="b3dDots"></div>
+                <button class="icon-btn" onclick="b3dSpin(1)" title="下一阶段">›</button>
+              </div>
+              <div class="b3d-chips" id="b3dChips"></div>
+            </div>
+            <div class="b3d-panel" id="b3dPanel">
+              <div class="b3d-phase">阶段导读</div>
+              <div class="b3d-title" id="b3dTitle"></div>
+              <div class="b3d-list" id="b3dList"></div>
+            </div>
+          </div>
+        </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13"></path><path d="M3 6h.01M3 12h.01M3 18h.01"></path></svg>保研 vs 考研 · 双线作战决策表</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>两条路的真实对比</h4>
+            <table>
+              <thead><tr><th>维度</th><th>保研</th><th>考研</th></tr></thead>
+              <tbody>
+                <tr><td>决定因素</td><td>绩点60%+综测20%+竞赛20%</td><td>初试分数+复试表现</td></tr>
+                <tr><td>时间成本</td><td>大一到大三持续经营</td><td>大三下到大四上集中冲刺</td></tr>
+                <tr><td>风险</td><td>名额有限（约10%）</td><td>一次考试定胜负</td></tr>
+                <tr><td>适合人群</td><td>绩点稳、能长期坚持</td><td>爆发力强、想跨专业</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h4>最优策略：双线作战不裸奔</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>大一到大三上：</strong>全力冲绩点（保研资格线前10%），同时攒竞赛/科研——两条路都加分</li>
+              <li><strong>大三暑假前：</strong>按保研流程投夏令营（不冲突的话，同时开始背考研公共课打底）</li>
+              <li><strong>9月结果出来：</strong>拿到推免资格→安心走保研；没拿到→立即转入考研冲刺，公共课已打过底，不亏</li>
+            </ul>
+            <div class="callout callout-info" style="margin-top:8px"><strong>避坑：</strong>① 别为竞赛丢绩点（绩点是大头）；② 文书别拖到投递季才写；③ 提前1年加目标院校学长学姐微信，信息差就是机会差。</div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>📋 保研材料准备清单（大三寒假开始打磨）</h3>
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <tbody><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">材料</th><th style="padding:8px;border:1px solid var(--border)">说明</th><th style="padding:8px;border:1px solid var(--border)">准备时机</th></tr>
+            <tr><td style="padding:8px;border:1px solid var(--border)">本科成绩单+排名证明</td><td style="padding:8px;border:1px solid var(--border)">教务处盖章，前6学期</td><td style="padding:8px;border:1px solid var(--border)">大三下</td></tr>
+            <tr><td style="padding:8px;border:1px solid var(--border)">四六级/雅思托福</td><td style="padding:8px;border:1px solid var(--border)">六级550+是加分项</td><td style="padding:8px;border:1px solid var(--border)">大二前刷</td></tr>
+            <tr><td style="padding:8px;border:1px solid var(--border)">个人陈述</td><td style="padding:8px;border:1px solid var(--border)">1000/1500/2000字三版</td><td style="padding:8px;border:1px solid var(--border)">大三寒假</td></tr>
+            <tr><td style="padding:8px;border:1px solid var(--border)">简历</td><td style="padding:8px;border:1px solid var(--border)">1页，突出科研/竞赛/实习</td><td style="padding:8px;border:1px solid var(--border)">大三寒假</td></tr>
+            <tr><td style="padding:8px;border:1px solid var(--border)">推荐信2封</td><td style="padding:8px;border:1px solid var(--border)">副教授及以上，提前联系</td><td style="padding:8px;border:1px solid var(--border)">大三下</td></tr>
+            <tr><td style="padding:8px;border:1px solid var(--border)">科研/竞赛证明</td><td style="padding:8px;border:1px solid var(--border)">大创结项、挑战杯奖状等</td><td style="padding:8px;border:1px solid var(--border)">持续积累</td></tr>
+          </tbody></table>
+          <div class="callout callout-warn" style="margin-top:8px"><b>法学方向特别提示：</b>五院四系（中国政法、华东政法、西南政法、西北政法、中南财经政法 + 北大/人大/武大/吉大）是法硕保研主战场；模拟法庭（Jessup/贸仲杯）、大创、期刊发文都是硬通货。大一开始练法律文书写作和英语口语，受益四年。</div>
+        </div>
+        </div>
+
+        <!-- 新增：保研/考研 定位自测（冲·稳·保） -->
+        <div class="card" style="margin-top:16px">
+          <h3>🎯 保研 / 考研 路线定位自测（按你的现状一键评测冲·稳·保）</h3>
+          <div class="grid grid-2" style="align-items:start">
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+              <label>专业排名区间
+                <select id="bq-rank" style="width:100%;margin-top:2px">
+                  <option value="4">前 5%（可冲顶尖）</option>
+                  <option value="3" selected>前 10%（保研资格线附近）</option>
+                  <option value="1">前 30%</option>
+                  <option value="0">30% 以后</option>
+                </select>
+              </label>
+              <label>平均绩点区间
+                <select id="bq-gpa" style="width:100%;margin-top:2px">
+                  <option value="3">90+（很稳）</option>
+                  <option value="2" selected>85–90</option>
+                  <option value="1">80–85</option>
+                  <option value="0">80 以下</option>
+                </select>
+              </label>
+              <label>科研 / 竞赛
+                <select id="bq-res" style="width:100%;margin-top:2px">
+                  <option value="3">省奖 + 论文/专利（很能打）</option>
+                  <option value="1" selected>校级奖或无重量级</option>
+                  <option value="0">暂时没有</option>
+                </select>
+              </label>
+              <label>英语六级
+                <select id="bq-cet" style="width:100%;margin-top:2px">
+                  <option value="2">550+（硬加分）</option>
+                  <option value="1" selected>425–550</option>
+                  <option value="0">还没过</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-primary" onclick="baoyanGuess()" style="margin-top:4px">评测我的路线与建议</button>
+            </div>
+            <div id="bq-result" style="font-size:13px;line-height:1.9;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;min-height:100px">
+              <strong>评测结果会显示在这里。</strong><br>说明：仅作参考自测，最终以本校《推免实施细则》和名次为准。
+            </div>
+          </div>
+        </div>
+
+        <!-- 新增：考研择校·2+2+2 筛选 -->
+        <div class="card" style="margin-top:16px">
+          <h3>🏁 考研择校 · “2+2+2”层次筛选法</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>先按"冲 / 稳 / 保"各挑 2 所</h4>
+              <ul style="font-size:13px;line-height:1.9">
+                <li><strong>冲×2：</strong>你跳一跳够得着的院校（报录比高的名校）</li>
+                <li><strong>稳×2：</strong>与你实力相匹配、往年有同校上岸案例</li>
+                <li><strong>保×2：</strong>大概率能上、不亏的保底院校</li>
+                <li>定下来后 <strong>9 月前</strong>锁定 1–2 所主攻，避免目标涣散</li>
+              </ul>
+            </div>
+            <div>
+              <h4>怎么查"报录比 / 真题 / 上岸难度"</h4>
+              <ul style="font-size:13px;line-height:1.9">
+                <li><strong>报录比：</strong>研招网 + 目标校研究生院官网"招生/历年数据"</li>
+                <li><strong>真题：</strong>研招网下载 + 淘宝/咸鱼/考研帮 + 直系学长学姐笔记</li>
+                <li><strong>难度：</strong>复试线趋势（看 3 年）、一志愿上岸率、专业课压不压分</li>
+                <li>关注目标校官方公众号，历年复试线/招生简章第一时间知道</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-info" style="margin-top:8px"><strong>经验：</strong>选校不是"越多越好"，而是"层次分明"。6 所里保底那 2 所一旦稳住心态，你就赢了 50% 对手——他们大多在广撒网里内耗。</div>
+        </div>
+
+        <!-- 新增：公共课三科分阶段计划 -->
+        <div class="card" style="margin-top:16px">
+          <h3>📚 考研公共课三科 · 分阶段作战</h3>
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead><tr style="background:#EFE8D8"><th style="padding:8px;border:1px solid var(--border)">科目</th><th style="padding:8px;border:1px solid var(--border)">基础期(3-6月)</th><th style="padding:8px;border:1px solid var(--border)">强化期(7-9月)</th><th style="padding:8px;border:1px solid var(--border)">冲刺期(10-12月)</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>数学</b>（分数大头）</td><td style="padding:8px;border:1px solid var(--border)">过一遍基础课+课本例题，建立知识框架</td><td style="padding:8px;border:1px solid var(--border)">刷真题分题型，错题本每周归类</td><td style="padding:8px;border:1px solid var(--border)">限时整套卷模拟，复盘计算失误</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>英语</b>（过线即胜利）</td><td style="padding:8px;border:1px solid var(--border)">背单词+长难句，专项练阅读</td><td style="padding:8px;border:1px solid var(--border)">精做历年真题阅读+作文模板</td><td style="padding:8px;border:1px solid var(--border)">作文模板默写，巩固高频词</td></tr>
+              <tr><td style="padding:8px;border:1px solid var(--border)"><b>政治</b>（性价比最高）</td><td style="padding:8px;border:1px solid var(--border)">暂不投入或只看马原</td><td style="padding:8px;border:1px solid var(--border)">跟一轮强化课+选择题刷题</td><td style="padding:8px;border:1px solid var(--border)">冲刺押题+时政+主观题背诵</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>应急：</strong>二战/在职或基础薄弱，可"政治保中上、英语保过线、数学拉差距、专业课定胜负"——把有限时间花在刀口上。</div>
+        </div>
+
+        <!-- 新增：调剂指南 -->
+        <div class="card" style="margin-top:16px">
+          <h3>🔄 考研调剂 · 别让一年的努力落空（4 月窗口）</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>时间线（每年）</h4>
+              <ul style="font-size:13px;line-height:1.9">
+                <li><strong>2 月中下旬：</strong>出分，对照历年分数线预估是否进复试/够调剂</li>
+                <li><strong>3 月上旬：</strong>国家线公布，查目标校调剂缺额（每天刷官网+官方群）</li>
+                <li><strong>3 月下旬，系统开放：</strong>调剂系统一次可填 3 个平行志愿，留意锁定时间</li>
+                <li><strong>4–5 月：</strong>复试/录取，越到后面名额越少，尽早锁定</li>
+              </ul>
+            </div>
+            <div>
+              <h4>信息源 + 捡漏策略</h4>
+              <ul style="font-size:13px;line-height:1.9">
+                <li><strong>官方源：</strong>研招网调剂系统 + 目标校研究生院/招生工办公告</li>
+                <li><strong>民间源：</strong>院校官网调剂信息汇总公众号、考研群、直系学长——信息差决定手速</li>
+                <li><strong>捡漏方向：</strong>B 区院校、新设专业、专项计划（少干/士兵）、非全</li>
+                <li><strong>两手抓：</strong>调剂上岸与二战/就业并行准备，别把所有希望押一处</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>警惕：</strong>调剂只认"研招网正式系统"和个人账户操作。凡是要"付费内推/保录取/先交押金"的一律是骗局。</div>
+        </div>
+      </div>
+      <div class="tab-pane" id="t-major">
+        <div class="callout callout-info">
+          <strong>核心心法：</strong>把"听懂"变成"能讲"，把"笔记"变成"体系"，把"作业"变成"作品"。下面这套方法适用于所有专业的专业课（替换专业名词即可）。
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>专业课学习闭环 · 一科不落</h3>
+            <ol style="font-size:13px;line-height:1.9">
+              <li><strong>课前10分钟：</strong>扫讲义目录+标题，标出 3 个"看不懂"的点</li>
+              <li><strong>课堂跟框架：</strong>记"框架+疑问+例子"，不记原话（原话在 PPT 里）</li>
+              <li><strong>课后2小时内：</strong>"合书回想"过一遍本节课讲了什么</li>
+              <li><strong>每周输出：</strong>费曼学习法——讲给别人听或写一页 A4 总结</li>
+              <li><strong>考前闭环：</strong>平时攒的"问号清单"+"错题本"是最好的复习资料</li>
+            </ol>
+            <div class="callout callout-warn" style="margin-top:8px">真相：专业课80%的差距不在智商，在"每节课闭环"。从第一节课就开始，期末自然轻松。</div>
+          </div>
+          <div class="card">
+            <h3>笔记法 · 选一套用到底</h3>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>康奈尔法：</strong>右记内容/左侧关键词/底部 3 行总结——课后立即整理</li>
+              <li><strong>思维导图：</strong>适合体系型课程，每周画一页本周知识地图</li>
+              <li><strong>卡片法：</strong>适合概念/公式/定义密集的课，正面问题反面答案</li>
+              <li><strong>电子笔记：</strong>Notion/飞书/语雀——支持搜索+图片，期末检索秒开</li>
+              <li>原则：笔记用"自己的话"写，照抄 PPT = 抄了没进脑</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:16px">
+          <div class="card">
+            <h3>资源清单 · 课后还能去哪学</h3>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>中国大学MOOC / 学堂在线：</strong>找本校或名校同名课程，听不懂换个老师讲</li>
+              <li><strong>B站：</strong>搜"课程名+期末/精讲"，考前突击、平时补课都好用</li>
+              <li><strong>图书馆数据库：</strong>知网/万方/读秀，专业文献免费下载</li>
+              <li><strong>学长学姐：</strong>期末前要往年卷+重点笔记，比埋头啃书效率高 10 倍</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>课程展示 / 小组作业 / 实验报告 · 高分套路</h3>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>小组作业：</strong>先定"交付物+截止日"再分工；主动认领"汇报人"角色（加分最多）</li>
+              <li><strong>课程展示：</strong>开头讲一个案例/故事抓注意力；一页只讲一个观点；结尾总结 3 条</li>
+              <li><strong>实验/实践报告：</strong>"目的→过程→数据→分析→结论"五段写，图表比文字多</li>
+              <li><strong>读书报告：</strong>"书的核心观点+你的评价+对你的启发"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>不同专业的高效复习法</h3>
+          <div class="grid grid-3">
+            <div>
+              <h4>理工科</h4>
+              <ul style="font-size:12px;line-height:1.8">
+                <li>作业当天完成，错题当天订正</li>
+                <li>公式每周默写一遍，不看答案</li>
+                <li>大题先抄答案思路，再盖住自己写</li>
+                <li>考前一晚只刷错题，不刷新题</li>
+              </ul>
+            </div>
+            <div>
+              <h4>文科</h4>
+              <ul style="font-size:12px;line-height:1.8">
+                <li>知识框架用思维导图，周复盘</li>
+                <li>重点段落到能背诵+默写</li>
+                <li>论述题备 3-5 个万能案例</li>
+                <li>考场上先列大纲再下笔</li>
+              </ul>
+            </div>
+            <div>
+              <h4>法学</h4>
+              <ul style="font-size:12px;line-height:1.8">
+                <li>法条三段背：原文+释义+典型案例</li>
+                <li>"请求权基础分析法"反复练</li>
+                <li>真题重在理由（why），不在结论</li>
+                <li>每个制度问"立法目的+实践漏洞"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>课堂笔记模板 · 让笔记可以直接复习</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>一页康奈尔示范</h4>
+              <ul style="font-size:13px;line-height:1.9">
+                <li><strong>左栏 关键词：</strong>写下本页的 3-5 个核心概念</li>
+                <li><strong>右栏 内容：</strong>老师的精要解释、典型例题、特别提示</li>
+                <li><strong>底部 总结：</strong>课后立即用 2-3 句话总结本页要点</li>
+                <li><strong>复习节奏：</strong>当天晚上+第 3 天+第 7 天+第 14 天 四次回看</li>
+              </ul>
+            </div>
+            <div>
+              <h4>听课时的心动记录法</h4>
+              <ul style="font-size:13px;line-height:1.9">
+                <li>「！」= 老师说了一个让我没想到的点</li>
+                <li>「？」= 我没听懂（课后必须问）</li>
+                <li>「☆」= 这点可能考/会用</li>
+                <li>「⇒」= 这个例子让我想到自己经历过的事</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>期末冲刺 28 天倒排计划（考前照做，稳稳不慌）</h3>
+        <div class="grid grid-4" style="gap:10px">
+          <div><strong>第1周 · 摸底</strong><br><span style="font-size:12px;color:var(--muted)">收集所有课件/笔记/往年卷，列出"考点清单"，标出会/半会/不会三档</span></div>
+          <div><strong>第2周 · 补漏</strong><br><span style="font-size:12px;color:var(--muted)">集中攻"不会"档：看网课对应章节+B站精讲，每天补1个知识点配上例题</span></div>
+          <div><strong>第3周 · 刷题</strong><br><span style="font-size:12px;color:var(--muted)">每天1套限时模拟，错题当天归入错题本，标注错因</span></div>
+          <div><strong>第4周 · 收官</strong><br><span style="font-size:12px;color:var(--muted)">只复习错题本+背诵清单，考前1晚睡好，不刷新题不熬夜</span></div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>平时版：</strong>每章学完当天"合书回想5分钟"+周末画一页知识地图，期末冲刺效率翻倍。别把所有压力都压给最后28天。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🧮 加权平均分 / 平均绩点计算器（学分衡算）</h3>
+        <p style="font-size:12.5px;color:var(--hint);line-height:1.7;margin-bottom:4px">上面讲了绩点为什么重要，这里是把它算清的工具。逐门录入「学分 + 分数」，即可算出加权平均分与绩点；参考口径多种，正式核算请以本校教务系统为准。</p>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">操作：点「＋ 添加课程」逐门录入 → 改分数/学分即时重算 → 换绩点口径看差异。想看清"重高学分课程"的作用，可用「载入示例」对比。</p>
+        <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+          <span style="font-size:12.5px;color:var(--muted);align-self:center">绩点口径：</span>
+          <select id="gpaScale" onchange="gpaCalc()" style="width:150px">
+            <option value="5">五分制（百分→5.0GPA）</option>
+            <option value="4">四分制（百分→4.0GPA）</option>
+          </select>
+          <button class="btn btn-sm btn-primary" onclick="gpaAddRow()">＋ 添加课程</button>
+          <button class="btn btn-sm" onclick="gpaAddRow(true)">载入示例</button>
+          <button class="btn btn-sm" onclick="gpaClear()">清空</button>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border);width:42%">课程</th><th style="padding:7px;border:1px solid var(--border);width:16%">学分</th><th style="padding:7px;border:1px solid var(--border);width:20%">分数(0-100)</th><th style="padding:7px;border:1px solid var(--border)">绩点</th></tr></thead>
+          <tbody id="gpaRows"></tbody>
+        </table>
+        <div id="gpaResult" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"></div>
+        <div class="callout callout-ok" style="margin-top:12px"><strong>说明：</strong>加权平均分＝Σ(学分×分数)÷Σ学分；平均绩点＝Σ(学分×单科绩点)÷Σ学分。绩点换算各校口径不一，这里用最常见的五分制/四分制对照表；重修的课程是否计入、体育/选修是否计入等，都要以本校教务处规定为准。用它搭配上面的"高学分课程优先冲90+"策略，学期末心里就有数。</div>
+      </div>
+      </div>
+    </section>
+
+    <!-- 职业发展 -->
+    <section class="view" id="view-career">
+<div class="section-intro">实习投递、简历打磨、技能学习、行业方向探索。提前一点点布局，慢慢搭建属于自己未来的职业竞争力。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展</h1>
+        <p>方向 · 简历 · 面试 · 投递 · 谈薪，一站到底</p>
+      </div>
+      <div class="callout callout-info">
+        <strong>使用说明：</strong>本页已整合「职业发展 + 简历面试」全流程：先定方向，再写简历、准备面试、投递追踪、谈薪收offer。下方四个方向框架（央国企/事务所/公务员/民企互联网）标注了通用准入门槛与求职建议，请结合自己的专业补充"目标单位/起薪/差异化要求"；所有可编辑字段双击即可改。
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>央国企/事业单位</h3>
+          <div style="margin-bottom:10px"><span class="tag tag-blue">主流方向</span> <span class="tag tag-teal">稳定型</span></div>
+          <table>
+            <tbody>
+              <tr><td>代表单位</td><td contenteditable="true" style="cursor:text;background:var(--bg)">目标单位</td></tr>
+              <tr><td>起薪参考</td><td contenteditable="true" style="cursor:text;background:var(--bg)">（按地区/行业）</td></tr>
+              <tr><td>日常工作</td><td>行政管理、合同审查、合规、报告撰写</td></tr>
+              <tr><td>准入门槛</td><td>本科及以上 + 党员/学生干部加分</td></tr>
+              <tr><td>招聘渠道</td><td>春秋招官网 + 校园招聘 + 应届统考</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键加分项：</strong>党员身份、学生干部经历、对口实习、普通话二甲、计算机二级。</div>
+        </div>
+        <div class="card">
+          <h3>专业事务所（律所/会计所/咨询）</h3>
+          <div style="margin-bottom:10px"><span class="tag tag-coral">专业型</span> <span class="tag tag-blue">需持证</span></div>
+          <table>
+            <tbody>
+              <tr><td>代表单位</td><td contenteditable="true" style="cursor:text;background:var(--bg)">目标所</td></tr>
+              <tr><td>起薪参考</td><td contenteditable="true" style="cursor:text;background:var(--bg)"></td></tr>
+              <tr><td>日常工作</td><td>项目协助、文档梳理、客户沟通</td></tr>
+              <tr><td>准入门槛</td><td>对口专业 + 对口资格证 + 实习经历</td></tr>
+              <tr><td>招聘渠道</td><td>寒暑期实习留用 + 内推 + 校招</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键加分项：</strong>相关证书（法考/CPA/CFA等）、英语六级500+、有红圈/八大/MBB实习。</div>
+        </div>
+        <div class="card">
+          <h3>公务员/选调</h3>
+          <div style="margin-bottom:10px"><span class="tag tag-teal">稳定型</span> <span class="tag tag-gray">需应试</span></div>
+          <table>
+            <tbody>
+              <tr><td>代表单位</td><td>各级党政机关、选调生</td></tr>
+              <tr><td>起薪参考</td><td contenteditable="true" style="cursor:text;background:var(--bg)">（按地区）</td></tr>
+              <tr><td>日常工作</td><td>政策研究、行政管理、文稿撰写</td></tr>
+              <tr><td>准入门槛</td><td>本科 + 党员（选调必备）+ 应届身份</td></tr>
+              <tr><td>招聘渠道</td><td>国考11月/省考3-4月/选调10-12月</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键加分项：</strong>党员、学生干部、基层实习、申论行测长期训练。</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+          <h3>民企/互联网/外企</h3>
+          <div style="margin-bottom:10px"><span class="tag tag-blue">高薪型</span> <span class="tag tag-coral">竞争激烈</span></div>
+          <table>
+            <tbody>
+              <tr><td>代表单位</td><td contenteditable="true" style="cursor:text;background:var(--bg)">目标企业</td></tr>
+              <tr><td>起薪参考</td><td contenteditable="true" style="cursor:text;background:var(--bg)"></td></tr>
+              <tr><td>日常工作</td><td>产品/运营/开发/市场/职能</td></tr>
+              <tr><td>准入门槛</td><td>学校+实习+作品集/项目</td></tr>
+              <tr><td>招聘渠道</td><td>春秋招官网+实习留用+内推</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键加分项：</strong>2-3段对口实习、有可展示作品/项目、英语流利、能接受加班。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+          <h3>通用求职策略</h3>
+          <div style="margin-bottom:8px"><span class="tag tag-teal">所有方向通用</span></div>
+          <ul>
+            <li><strong>大一：</strong>探索兴趣方向，加2-3个社团</li>
+            <li><strong>大二：</strong>定方向，开始寒暑期实习投递</li>
+            <li><strong>大三：</strong>对口实习2段以上，参加秋招宣讲</li>
+            <li><strong>大四上：</strong>秋招集中投递（9-11月是黄金期）</li>
+            <li><strong>大四下：</strong>春招补录，备考研/考公兜底</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>简历、面试、投递：</strong>已整合到本页下方「简历 · 面试 · 投递作战区」，看完方向直接往下滚，不用跳页面。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+          <h3>谈薪与offer · 别亏待自己</h3>
+          <ul style="font-size:13px;line-height:1.9">
+            <li><strong>先查行情：</strong>同岗位薪资区间取中位数作底线（猎聘/脉脉/招聘软件）</li>
+            <li><strong>先让对方出价：</strong>被问期望薪资，回"我更看重岗位匹配，贵司这个岗位的预算范围是？"</li>
+            <li><strong>算总包：</strong>底薪+绩效+补贴+五险一金基数+年终奖，别只看月薪数字</li>
+            <li><strong>offer对比清单：</strong>薪资/发展/通勤/加班强度/团队氛围，列表打分再决定</li>
+            <li><strong>礼貌拒绝法：</strong>"感谢贵司认可，经过慎重考虑，我选择了另一个更契合的方向"——留好口碑</li>
+          </ul>
+      </div>
+            <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>暑期实习申请全流程 · 步骤拆解 + 避坑</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>七步走（按顺序执行）</h4>
+            <ol style="font-size:13px;line-height:1.9;padding-left:18px">
+              <li><strong>定目标：</strong>3-4月确定"行业+岗位+城市"，列10家目标单位清单</li>
+              <li><strong>改简历：</strong>一页纸，每段经历STAR+数字，投不同岗位各出一版</li>
+              <li><strong>找渠道：</strong>实习僧/BOSS直聘/公司官网/老师内推四路并进，每天投5-10家</li>
+              <li><strong>备面试：</strong>自我介绍60秒背熟，查公司3个亮点，准备2-3个"作品/项目"细节</li>
+              <li><strong>同步笔试：</strong>行测/专业题提前刷，笔试不过一切白搭</li>
+              <li><strong>谈offer：</strong>问清薪资结构/是否留用/租房补贴，别只盯数字</li>
+              <li><strong>入职准备：</strong>提前学岗位工具（Office/检索/行业报告），第一天不迟到</li>
+            </ol>
+          </div>
+          <div>
+            <h4>避坑清单</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>投递时间：暑期实习3-5月集中开放，5月中旬后岗位锐减，别拖</li>
+              <li>简历别群发：同一模板投所有公司=石沉大海，匹配度是王道</li>
+              <li>警惕"付费实习"：正规实习不收费，收费内推多是骗局</li>
+              <li>面试后24小时内发感谢邮件，顺便问一句"下一步流程"</li>
+              <li>入职前3天主动问"有没有培训材料/带教安排"，主动的人留用率高</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;display:flex;align-items:center;gap:12px"><div style="height:1px;flex:1;background:var(--border-strong)"></div><span style="font-size:15px;font-weight:800;color:var(--primary);white-space:nowrap">📄 简历 · 面试 · 投递作战区</span><div style="height:1px;flex:1;background:var(--border-strong)"></div></div>
+      <div class="card" style="margin-top:14px">
+        <h3>📄 简历核心模块（按顺序排列）</h3>
+        <ol>
+          <li><strong>基本信息：</strong>姓名、电话、邮箱、城市（不要写性别/生日/照片除非要求）</li>
+          <li><strong>教育背景：</strong>学校+专业+时间+GPA（如果&

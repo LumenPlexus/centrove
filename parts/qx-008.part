@@ -1,0 +1,1843 @@
+dth;b.classList.add('spinning');
+}
+/* ═══════ 今日财商知识（首页每日随机·不重复·有用） ═══════ */
+var MONEY_TIPS=[
+  {t:'先存后花，而不是花剩才存',d:'每月生活费到账，先划出 10%–20% 进一个「碰不到」的账户（或单独银行卡），剩下的才用来花。哪怕一个月只存 100 块，一年也有 1200，还养成了不月光的习惯。今天做：把下月要存的钱先转走。'},
+  {t:'警惕「9.9 包邮」的拿铁因子',d:'每天一杯奶茶、每样「便宜」的小东西，加起来可能吃掉你 1/3 生活费。记账一周你会发现：真正的大头往往不是大件，而是无数「无所谓」的小花销。今天做：记一天账，看看钱花哪了。'},
+  {t:'复利是世界第八大奇迹',d:'每月存 200，年化 4%，大学毕业时（4年）大约能攒下 1 万+。早开始一年，结果差很多。大学生时间最多，正是定投习惯的黄金期。今天做：算算你每月能稳定存多少。'},
+  {t:'免费的东西，往往最贵',d:'「免费试用」到期自动扣费、「砍一刀」耗光你时间、校园贷「零门槛」背后是高利。任何「先免费后收费/先收费后服务」都要先问：退出机制是什么？今天做：检查手机有没有「免密支付/自动续费」并关掉不必要的。'},
+  {t:'买「需要的」不买「想要的」',d:'下单前问自己：没有它，我的生活会不会变差？如果需要，再等 24 小时——大部分「想要」的冲动会在一天后消失。今天做：把购物车里一样东西延迟一天再决定。'},
+  {t:'学生证是隐藏优惠卡',d:'电影、景区、博物馆、铁路、不少软件（办公/设计/云存储）都有教育优惠，甚至免费。用学生邮箱认证能省不少。今天做：查查你常用的 1 个软件有没有教育版。'},
+  {t:'兼职先防骗，再谈赚钱',d:'「刷单返利」「押金兼职」「培训贷」基本是坑。正规兼职不收押金、不让你先垫钱。校园勤工助学岗最稳。今天做：把「任何要先交钱的兼职」拉黑。'},
+  {t:'记账不是为了省，是为了看清',d:'不用记到每一分，记大类就行：饮食/交通/学习/娱乐/其他。一个月后你就知道钱去哪了，砍掉哪类最不心疼。今天做：建一个只分 5 类的记账表。'},
+  {t:'应急金比理财更重要',d:'先攒够「3 个月生活费」的应急金（放活期/货币基金，随时能取），再去想基金股票。没应急金就进场，一次意外就会让你割肉离场。今天做：算算你的应急金还差多少。'},
+  {t:'别碰看不懂的投资',d:'有人拉你「稳赚」「内部消息」，99% 是杀猪盘或传销。记住：高收益必然高风险，承诺保本高息的，大概率是骗局。今天做：把「承诺保本且收益>6%」的项目一律当诈骗看。'},
+  {t:'信用是无形资产',d:'花呗/白条按时还，别逾期——逾期上征信，影响以后房贷车贷。额度不是你的钱，是借的。今天做：查一下自己有没有未还清的账单，设个还款提醒。'},
+  {t:'技能是最稳的「理财」',d:'与其纠结怎么用 100 块生钱，不如投资自己：考个有用的证、学门能接单的技能（PPT/剪辑/外语/编程），未来变现能力远超理财收益。今天做：列一个「能换钱的小技能」清单。'},
+  {t:'比价 30 秒，省下的都是赚的',d:'大件（电脑/手机/教材）买前用比价工具看历史价格，避开「先涨后降」的伪促销。二手教材、闲鱼好物也能省一半。今天做：下次买东西前先比价。'},
+  {t:'「沉没成本」别纠结',d:'办了用不上的健身卡、买了不好用的课，已经花的钱回不来。别因为「钱都交了」继续往里搭时间。及时止损也是省钱。今天做：放弃一件你早就不该继续的事。'},
+  {t:'学会看「真实价格」',d:'分期免息才划算，分期收手续费的实际年利率可能 15%+；「满 300 减 50」逼你多买，算下来单价未必低。今天做：下次看到「分期/满减」，先算真实到手价。'},
+  {t:'室友拼单，省运费也省单价',d:'纸巾、洗衣液、零食这类消耗品，和室友拼单买大包装，单价低还省运费。但别为了拼单买用不完的量。今天做：看看宿舍有什么能一起囤的。'},
+  {t:'用书代替报班',d:'想学的大部分技能，图书馆/公开课/B站都有免费或极便宜的资源。先免费学到 80 分，再决定要不要花大钱报班。今天做：找一门你想学技能的免费资源。'},
+  {t:'「收入-储蓄=支出」公式',d:'大部分人用「收入-支出=储蓄」，结果总是存不下。反过来：发钱先定储蓄目标，剩下的才是能花的。今天做：把公式反过来试一个月。'},
+  {t:'小心「校园贷」换皮',d:'「培训分期」「美容分期」「手机分期」本质都是贷，利率和违约金可能很高。任何要你签「分期协议」的，先让爸妈看一眼。今天做：把「签分期前必须问爸妈」设为铁律。'},
+  {t:'钱要花在「杠杆」上',d:'能放大你未来能力的钱（好书、好课、健康、人脉）值得花；纯消费（炫耀性吃喝穿）要克制。今天做：回顾上月开销，标出哪些是「杠杆型」。'}
+];
+function renderFinanceKnowledge(){
+  var el=document.getElementById('dailyFinance');
+  if(!el)return;
+  var day=Math.floor(Date.now()/86400000);
+  /* 按日期选，保证同日同内容；%length 自然轮换，隔天不同，长期看不重复 */
+  var tip=MONEY_TIPS[day%MONEY_TIPS.length];
+  el.innerHTML='<strong>'+tip.t+'</strong><br>'+tip.d+'<br><span style="font-size:11px;color:var(--hint)">每天一条财商常识 · 按日期轮换不重复</span>';
+}
+
+/* ═══════ 今日知识 · 标签页展示（健康 / 认知 / 社会 / 财商） ═══════ */
+var _knowledgeIdx={health:0,cognition:0,life:0,finance:0};
+var _knowledgeActive='health';
+var _KNOWLEDGE_MAP={
+  health:{arr:LAWS,tag:'每日一记',tagClass:'tag-teal',src:'健康小知识'},
+  cognition:{arr:COGNITIONS,tag:'思维升级',tagClass:'tag-blue',src:'认知升级'},
+  life:{arr:LIFE_TIPS,tag:'打破信息差',tagClass:'tag-coral',src:'社会常识'},
+  finance:{arr:MONEY_TIPS,tag:'财商启蒙',tagClass:'tag-gold',src:'财商知识'}
+};
+function renderKnowledge(type){
+  var c=_KNOWLEDGE_MAP[type]; if(!c) return;
+  var idx=_knowledgeIdx[type] || 0;
+  var item=c.arr[idx % c.arr.length];
+  var body=document.getElementById('knowledgeBody'); if(!body) return;
+  body.innerHTML='<strong>'+item.t+'</strong><br>'+item.d+'<br><span style="font-size:11px;color:var(--hint)">出处：'+(item.src||c.src)+' · 按日期轮换不重复</span>'+
+    '<div style="margin-top:10px"><span class="tag '+c.tagClass+'">'+c.tag+'</span></div>';
+}
+function switchKnowledge(type){
+  _knowledgeActive=type;
+  document.querySelectorAll('.k-tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-k')===type);});
+  renderKnowledge(type);
+}
+function pickKnowledgeIndices(seedFn){
+  return {
+    health:seedFn(LAWS.length),
+    cognition:seedFn(COGNITIONS.length),
+    life:seedFn(LIFE_TIPS.length),
+    finance:seedFn(MONEY_TIPS.length)
+  };
+}
+
+var _breathOn=false;
+function breathe(){
+  var dot=document.getElementById('breathDot');
+  var tip=document.getElementById('breathTip');
+  if(!dot)return;
+  _breathOn=!_breathOn;
+  if(_breathOn){
+    dot.style.transform='scale(1.6)';
+    if(tip)tip.textContent='屏住…然后慢慢呼气';
+    setTimeout(function(){if(_breathOn){dot.style.transform='scale(1)';if(tip)tip.textContent='呼气～ 再来一次就点我';_breathOn=false;}},4000);
+  }else{
+    dot.style.transform='scale(1)';
+    if(tip)tip.textContent='点一下，开始吸气';
+  }
+}
+var FUN_PICKS=['背 20 个单词，然后心安理得刷会儿手机','去操场走两圈，晒晒太阳','整理一下桌面和书包，心情会好','给家里人发条消息','看一集喜欢的剧，别 guilt','做一组拉伸，肩颈会感谢你','写三行今天的小确幸','什么都不做，发呆 10 分钟也行'];
+function funPick(){
+  var el=document.getElementById('funRandom');
+  if(!el)return;
+  el.textContent=FUN_PICKS[Math.floor(Math.random()*FUN_PICKS.length)];
+}
+
+/* 主题已固定为默认配色，不再提供切换 */
+
+/* ═══════ 周报 PNG 导出（设置里用） ═══════ */
+function exportWeekPNG(){
+  var d=new Date();
+  var mon=new Date(d);mon.setDate(d.getDate()-d.getDay()+1);
+  var sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  var label=mon.getMonth()+1+'月'+mon.getDate()+'日 - '+sun.getMonth()+1+'月'+sun.getDate()+'日';
+  var tasks=getTasks?getTasks():[];
+  var weekTasks=tasks.filter(function(t){return t.date>=todayKey(mon)&&t.date<=todayKey(sun)});
+  var done=weekTasks.filter(function(t){return t.done}).length;
+  var all=weekTasks.length;
+  var checkins=[];
+  try{var cl=JSON.parse(localStorage.getItem('pp_checkins')||'{}');for(var k in cl){if(k>=todayKey(mon)&&k<=todayKey(sun))checkins.push(cl[k]);}}catch(e){}
+  var cw=document.createElement('canvas');cw.width=900;cw.height=1100;
+  var ctx=cw.getContext('2d');
+  /* 圆角矩形：老式安卓/微信 WebView 无 ctx.roundRect，需手绘路径兜底，否则导出直接抛错·点击无反应 */
+  function rr(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+  function rrFill(x,y,w,h,r){ if(ctx.roundRect){ctx.beginPath();ctx.roundRect(x,y,w,h,r);} else{rr(x,y,w,h,r);} ctx.fill(); }
+  /* 背景 */
+  var g=ctx.createLinearGradient(0,0,0,1100);g.addColorStop(0,'#4A3427');g.addColorStop(1,'#6E4F37');
+  ctx.fillStyle=g;ctx.fillRect(0,0,900,1100);
+  ctx.fillStyle='#fff';ctx.font='bold 44px sans-serif';ctx.textAlign='center';
+  ctx.fillText('栖匣 · 本周报告',450,90);
+  ctx.font='26px sans-serif';ctx.fillStyle='rgba(255,255,255,.8)';
+  ctx.fillText(label,450,140);
+  /* 统计卡 */
+  ctx.fillStyle='rgba(255,255,255,.12)';
+  var cards=[['本周任务',all+' 件'],['已完成',done+' 件'],['完成率',all?(Math.round(done/all*100))+'%':'0%'],['打卡天数',checkins.length+' 天']];
+  for(var i=0;i<4;i++){
+    var x=60+i*200,y=200,w=170,h=120;
+    rrFill(x,y,w,h,14);
+    ctx.fillStyle='rgba(255,255,255,.75)';ctx.font='22px sans-serif';ctx.fillText(cards[i][0],x+w/2,y+52);
+    ctx.fillStyle='#fff';ctx.font='bold 40px sans-serif';ctx.fillText(cards[i][1],x+w/2,y+100);
+  }
+  /* 本周任务明细 */
+  ctx.fillStyle='#fff';ctx.font='bold 28px sans-serif';ctx.textAlign='left';ctx.fillText('本周任务明细',60,390);
+  ctx.font='24px sans-serif';
+  if(weekTasks.length){
+    weekTasks.slice(0,10).forEach(function(t,i){
+      ctx.fillStyle=t.done?'rgba(255,255,255,.5)':'rgba(255,255,255,.9)';
+      ctx.fillText((t.done?'✓ ':'○ ')+t.text,80,435+i*52);
+    });
+  }else{
+    ctx.fillStyle='rgba(255,255,255,.6)';ctx.fillText('本周还没有记录任务，下周加油！',80,435);
+  }
+  /* 金句 */
+  var q=QUOTES&&QUOTES[(Math.floor(Date.now()/86400000))%QUOTES.length]||'坚持就是胜利';
+  ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='italic 24px sans-serif';ctx.textAlign='center';
+  ctx.fillText('“'+q+'”',450,980);
+  ctx.fillStyle='rgba(255,255,255,.5)';ctx.font='20px sans-serif';
+  ctx.fillText('生成时间：'+new Date().toLocaleString(),450,1030);
+  /* 显示页内预览：WebView 里 <a download> 常不触发，改为本地全屏看图，
+     支持「保存图片」下载与「长按/分享」保存，任何环境都有响应 */
+  try{
+    var imgData=cw.toDataURL('image/png');
+    var box=document.getElementById('pprImgBox');
+    if(!box){
+      box=document.createElement('div');box.id='pprImgBox';
+      box.style.cssText='position:fixed;inset:0;z-index:99999;background:rgba(24,16,10,.86);display:none;flex-direction:column;align-items:center;padding:14px 10px 22px;overflow:auto;-webkit-overflow-scrolling:touch';
+      box.innerHTML='<div style="width:100%;max-width:420px;display:flex;align-items:center;gap:10px;color:#fff;margin-bottom:10px"><b style="flex:1">🖼 本周报告图</b><button id="pprClose" style="background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:9px;padding:7px 14px;font-size:13px;flex-shrink:0">关闭</button></div>'+
+        '<img id="pprImg" alt="本周报告图" style="width:100%;max-width:400px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.45);pointer-events:none">'+
+        '<div style="width:100%;max-width:420px;margin-top:12px;display:flex;flex-direction:column;gap:9px">'+
+          '<button id="pprDl" style="background:#fff;color:#4A3427;border:none;border-radius:11px;padding:12px;font-size:15px;font-weight:600">保存图片</button>'+
+          '<div style="color:rgba(255,255,255,.85);font-size:12.5px;text-align:center;line-height:1.7">若未自动下载，请<b>长按上方图片</b>选择「保存 / 分享」，或点「保存图片」调起系统下载。</div>'+
+        '</div>';
+      document.body.appendChild(box);
+      box.addEventListener('click',function(e){if(e.target===box){box.style.display='none';}});
+      document.getElementById('pprClose').onclick=function(){box.style.display='none';};
+      var dl=document.getElementById('pprDl');
+      dl.onclick=function(){
+        try{
+          var a=document.createElement('a');a.href=imgData;a.download='栖匣-本周报告-'+todayKey()+'.png';
+          document.body.appendChild(a);a.click();setTimeout(function(){try{document.body.removeChild(a);}catch(e){}},300);
+          flash('已尝试保存；若未下载，请长按预览图保存');
+        }catch(e){flash('请在预览中长按图片保存');}
+      };
+    }
+    var pi=document.getElementById('pprImg');
+    pi.src=imgData;pi.style.opacity='0';pi.onload=function(){pi.style.opacity='1';};
+    box.style.display='flex';box.scrollTop=0;
+    flash('本周报告图已生成，可长按图片保存或分享');
+  }catch(e2){
+    try{flash('本周报告图生成失败，请稍后重试');}catch(e3){}
+  }
+}
+function todayKey(dt){
+  var d=dt||new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+/* 今日金句卡渲染 */
+function renderDailyQuoteCard(){
+  var q=QUOTES&&QUOTES[(Math.floor(Date.now()/86400000))%QUOTES.length];
+  var el=document.getElementById('dailyQuoteCard');
+  if(el&&q)el.innerHTML='“'+q+'”';
+  renderDailyEncourage();
+  refreshMind(false);
+}
+
+/* ═══════ 首页「轻松上手」：分类导航，大板块 → 细分板块 ═══════ */
+/* 全部板块：与侧边栏一一对应，按大板块分组，点击展开进入其细分板块 */
+var NAV_ALL=[{
+  g:'锚愿匣 · 目标与行动',items:[['quadrant','🗂','轻重缓急'],['plans','🗓','行进罗盘'],['goals','🎯','目标拆解'],['life','🧭','生涯蓝图']]
+},{
+  g:'时栖录 · 时间与打卡',items:[['habits','✅','习惯养成'],['timer','🍅','心流计时']]
+},{
+  g:'学业栖仓 · 学业成长',items:[['study','📘','学业精进'],['exam','⏳','考试规划'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['tpl','🧩','专项模板'],['campus','🎒','校园生活']]
+},{
+  g:'职途匣 · 职业与技能',items:[['career','💼','职业发展'],['growth','📈','个人提升']]
+},{
+  g:'安养隅 · 生活与健康',items:[['health','💪','运动健康'],['mind','🧠','心灵成长'],['safety','🛡','平安护航']]
+},{
+  g:'时光贮格 · 记录与成长',items:[['journal','📖','时光札记'],['stats','📊','成长档案']]
+},{
+  g:'灵拾槽 · 阅读与休闲',items:[['creative','💡','灵感看板'],['shelf','📚','书海拾贝'],['podcast','🎧','耳畔星河'],['movie','🎬','幕间观澜'],['vision','👁️','眼界珍藏'],['fun','😄','轻松一下']]
+},{
+  g:'贮金格 · 理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','助学帮扶']]
+},{
+  g:'慧诀匣 · 工具与查询',items:[['tools','🛠','高效方法'],['ai','🤖','智造工坊']]
+},{
+  g:'设置 · 栖匣系统',items:[['agent','🤖','栖匣 助手'],['settings','⚙️','系统设置'],['changelog','📜','更新日志'],['about','ℹ️','关于产品'],['help','❓','帮助中心']]
+}];
+/* 复用侧边栏已有的线性图标，避免首页另用 emoji 造成风格割裂；
+   直接从 DOM 取，保证「改侧边栏图标 → 首页自动同步」。 */
+var _navIconCache={};
+function navIconFor(view){
+  if(_navIconCache[view]!==undefined) return _navIconCache[view];
+  var n=document.querySelector('.nav-item[data-view="'+view+'"] svg');
+  _navIconCache[view]=n?n.outerHTML:'';
+  return _navIconCache[view];
+}
+/* 常用模块偏好：首次入座后引导挑选最常用板块；首页「轻松上手」据此聚焦展示，其余板块仍可在
+   侧边栏/「显示全部板块」中随时找到（满足“隐藏但不消失、想用自会点进去”）。设置里可随时重选。 */
+var PREF_KEY='pp_pref_modules', PREF_DONE='pp_pref_done', PREF_MODE='pp_pref_mode';
+var PREF_SYS={agent:1,settings:1,changelog:1,about:1,help:1};  /* 系统类板块：不属于可选“常用”，恒常展示 */
+function prefModules(){try{var a=JSON.parse(localStorage.getItem(PREF_KEY)||'[]');return Array.isArray(a)?a:[];}catch(e){return[];}}
+function prefMode(){try{return localStorage.getItem(PREF_MODE)||'fav';}catch(e){return'fav';}}
+function prefDoneFlag(){try{return localStorage.getItem(PREF_DONE)==='1';}catch(e){return false;}}
+function savePref(arr,mode){try{localStorage.setItem(PREF_KEY,JSON.stringify(arr||[]));localStorage.setItem(PREF_MODE,mode||'fav');localStorage.setItem(PREF_DONE,'1');}catch(e){}}
+function focusModeAll(){ savePref(prefModules(),'all'); renderFocus(); }
+function focusModeFav(){ savePref(prefModules(),'fav'); renderFocus(); }
+function updatePrefStatus(){
+  try{
+    var s=document.getElementById('prefStatus');if(!s)return;
+    var sel=prefModules(),done=prefDoneFlag();
+    if(!done){s.textContent='尚未挑选 · 默认展示全部板块';}
+    else if(sel.length===0){s.textContent='已选择“展示全部板块”';}
+    else{s.textContent='已选 '+sel.length+' 个常用模块 · 首页优先展示';}
+  }catch(e){}
+}
+function renderFocus(){
+  var cont=document.getElementById('focusStart');if(!cont)return;
+  var sel=prefModules(), mode=prefMode(), done=prefDoneFlag();
+  var favOnly=done && mode==='fav' && sel.length>0;
+  var html='';
+  /* 模式工具条：聚焦常用 vs 展示全部 + 随时调整 */
+  html+='<div class="focus-toolbar">'
+    +'<span class="ft-label">'+(favOnly?('只显示你常用 '+sel.length+' 个 · 其余已藏入侧边栏'):'已显示全部板块 · 也可只看常用')+'</span>'
+    +'<span class="ft-btns">';
+  if(favOnly){ html+='<button class="ft-btn" onclick="focusModeAll()">显示全部板块</button>'; }
+  else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看常用</button>'; }
+  html+='<button class="ft-btn ghost" onclick="openModulePick()">调整常用</button>';
+  html+='</span></div>';
+  /* 两级导航：先一组「大板块」，点击展开进入其「细分板块」；聚焦模式只渲染已选常用，系统板块恒常保留 */
+  for(var si=0;si<NAV_ALL.length;si++){
+    var sec=NAV_ALL[si];
+    var isSys=!!PREF_SYS[sec.items[0]&&sec.items[0][0]];
+    var items=[];var k;
+    for(k=0;k<sec.items.length;k++){
+      if(isSys || !favOnly || sel.indexOf(sec.items[k][0])>=0){ items.push(sec.items[k]); }
+    }
+    if(items.length===0){ continue; }   /* 聚焦模式下整组无常用模块 → 整组隐藏 */
+    html+='<div class="focus-group'+(si===0?' open':'')+'">'
+      +'<button class="fg-head" role="button" aria-expanded="'+(si===0?'true':'false')+'" onclick="toggleFocusGroup(this)">'
+      +'<span class="fg-caret">'+((si===0)?'–':'+')+'</span>'
+      +'<span class="fg-name">'+sec.g+'</span>'
+      +(isSys?'':'<span class="fg-count">'+items.length+' 个板块</span>')
+      +'</button>'
+      +'<div class="fg-body"><div class="focus-grid">';
+    for(var j=0;j<items.length;j++){
+      var it=items[j];
+      var _ic=navIconFor(it[0]);
+      html+='<div class="focus-board" data-go="'+it[0]+'" tabindex="0" role="button" onclick="switchView(\''+it[0]+'\')" title="前往『"+it[2]+"』"><span class="fb-ico'+( _ic?' fb-svg':'')+'">'+(_ic||it[1])+'</span><span class="fb-na">'+it[2]+'</span></div>';
+    }
+    html+='</div></div></div>';
+  }
+  cont.innerHTML=html;
+  cont.style.display='block';
+  updatePrefStatus();
+  applyHeroCollapse(); applyFocusCollapse(); applySidebarFilter();
+}
+/* 模块偏好选择浮层 */
+function openModulePick(){
+  var el=document.getElementById('modulePick');if(!el)return;
+  var m=document.getElementById('modulePickMask');if(!m)return;
+  var wrap=document.getElementById('modulePickBody');if(!wrap)return;
+  var sel=prefModules();
+  var groups=[];
+  for(var gi=0;gi<NAV_ALL.length;gi++){ if(!PREF_SYS[NAV_ALL[gi].items[0]&&NAV_ALL[gi].items[0][0]]){ groups.push(NAV_ALL[gi]); } }
+  var html='';
+  for(var g2=0;g2<groups.length;g2++){
+    var sec=groups[g2];
+    html+='<div class="mp-group"><div class="mp-gname">'+sec.g+'</div><div class="mp-grid">';
+    for(var j=0;j<sec.items.length;j++){
+      var it=sec.items[j];
+      var on=sel.indexOf(it[0])>=0;
+      var _ic=navIconFor(it[0]);
+      html+='<div class="mp-chip'+(on?' on':'')+'" data-v="'+it[0]+'" role="button" tabindex="0" onclick="mpChip(this)"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span></div>';
+    }
+    html+='</div></div>';
+  }
+  wrap.innerHTML=html;
+  var cnt=document.getElementById('modulePickCount');if(cnt)cnt.textContent=sel.length;
+  m.classList.add('show'); el.classList.add('show');
+  try{document.body.style.overflow='hidden';}catch(e){}
+}
+function closeModulePick(){
+  var el=document.getElementById('modulePick'),m=document.getElementById('modulePickMask');
+  if(m)m.classList.remove('show'); if(el)el.classList.remove('show');
+  try{document.body.style.overflow='';}catch(e){}
+}
+function mpChip(el){ if(!el)return; el.classList.toggle('on'); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=document.querySelectorAll('.mp-chip.on').length; }
+function mpSelectAll(){ document.querySelectorAll('#modulePick .mp-chip').forEach(function(c){c.classList.add('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=document.querySelectorAll('#modulePick .mp-chip').length; }
+function mpClear(){ document.querySelectorAll('#modulePick .mp-chip').forEach(function(c){c.classList.remove('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=0; }
+function mpConfirm(showAll){
+  var sel=[];document.querySelectorAll('#modulePick .mp-chip.on').forEach(function(e){sel.push(e.getAttribute('data-v'));});
+  savePref(sel, showAll?'all':'fav');
+  closeModulePick(); renderFocus();
+  try{window.flash&&window.flash(showAll?'已展示全部板块':'已按你的选择整理首页常用模块');}catch(e){}
+}
+/* 首页品牌主视觉区：可折叠（记住用户选择） */
+function heroCollapsed(){try{return localStorage.getItem('pp_hero_collapsed')==='1';}catch(e){return false;}}
+function applyHeroCollapse(){
+  var b=document.getElementById('heroBody'),t=document.getElementById('heroToggle');
+  if(!b)return; var col=heroCollapsed();
+  b.style.display=col?'none':'';
+  if(t){t.innerHTML=col?'▸ 展开':'▾ 收起';t.setAttribute('aria-expanded',col?'false':'true');}
+}
+function toggleHeroCollapse(){ try{localStorage.setItem('pp_hero_collapsed',heroCollapsed()?'0':'1');}catch(e){localStorage.setItem('pp_hero_collapsed','1');} applyHeroCollapse(); }
+/* 首页「轻松上手 · 分类导航」区域：可折叠（记住用户选择） */
+function focusCollapsed(){try{return localStorage.getItem('pp_focus_collapsed')==='1';}catch(e){return false;}}
+function applyFocusCollapse(){
+  var b=document.getElementById('focusBody'),t=document.getElementById('focusToggle');
+  if(!b)return; var col=focusCollapsed();
+  b.style.display=col?'none':'';
+  if(t){t.innerHTML=col?'▸ 展开':'▾ 收起';t.setAttribute('aria-expanded',col?'false':'true');}
+}
+function toggleFocusCollapse(){ try{localStorage.setItem('pp_focus_collapsed',focusCollapsed()?'0':'1');}catch(e){localStorage.setItem('pp_focus_collapsed','1');} applyFocusCollapse(); }
+/* 侧边栏联动常用偏好：只看常用时隐藏未选模块（系统设置类恒常保留），并隐藏无可见项的分组标题 */
+function applySidebarFilter(){
+  try{
+    var sel=prefModules(),done=prefDoneFlag(),mode=prefMode();
+    var favOnly=done && mode==='fav' && sel.length>0;
+    var sb=document.getElementById('sidebar'); if(!sb)return;
+    var items=sb.querySelectorAll('.nav-item');
+    for(var i=0;i<items.length;i++){
+      var v=items[i].getAttribute('data-view');
+      items[i].classList.toggle('nav-hidden', !!favOnly && !!v && !PREF_SYS[v] && sel.indexOf(v)<0);
+    }
+    var secs=sb.querySelectorAll('.nav-section');
+    for(var s=0;s<secs.length;s++){
+      var sec=secs[s],any=false,node=sec.nextElementSibling;
+      while(node&&node.classList&&!node.classList.contains('nav-section')){
+        if(node.classList.contains('nav-item')&&!node.classList.contains('nav-hidden')){any=true;break;}
+        node=node.nextElementSibling;
+      }
+      sec.classList.toggle('nav-hidden',!any);
+    }
+  }catch(e){}
+}
+/* 手风琴：点大板块展开/收起其细分板块（同一时间只开一个，聚焦不铺开） */
+function toggleFocusGroup(btn){
+  var grp=btn.parentNode;
+  var wasOpen=grp.classList.contains('open');
+  var all=document.querySelectorAll('#focusStart .focus-group');
+  for(var i=0;i<all.length;i++){
+    all[i].classList.remove('open');
+    var h=all[i].querySelector('.fg-head');
+    if(h){h.setAttribute('aria-expanded','false');var ca=h.querySelector('.fg-caret');if(ca)ca.textContent='+';}
+  }
+  if(!wasOpen){
+    grp.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    var care=btn.querySelector('.fg-caret');if(care)care.textContent='–';
+  }
+}
+/* 事件委托：保证「轻松上手」板块卡片在移动端/触摸下也能稳定跳转（不依赖内联 onclick） */
+(function(){
+  function focusGo(e){
+    var t=(e.target&&e.target.closest)?e.target.closest('.focus-board[data-go]'):null;
+    if(!t)return;
+    /* 板块已自带内联 onclick 直达 switchView（与侧边栏一致，最稳）；这里只当没有内联处理时才兜底，
+       避免同一点击触发两次跳转造成扰动。 */
+    if(t.onclick)return;
+    var v=t.getAttribute('data-go');if(!v)return;
+    if(e.type==='keydown'){if(e.key!=='Enter'&&e.key!==' '){return;}e.preventDefault();}
+    else{e.preventDefault();}
+    try{if(window.switchView)window.switchView(v);}catch(err){}
+  }
+  document.addEventListener('click',focusGo);
+  document.addEventListener('keydown',focusGo);
+})();
+/* ═══════ 首页「轻松上手」 ═══════ */
+function init(){
+
+
+  var d=new Date();
+  var _td=document.getElementById('todayDate');if(_td)_td.textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+'日一二三四五六'[d.getDay()];
+  var q=QUOTES[(Math.floor(Date.now()/86400000))%QUOTES.length];
+  var _dq=document.getElementById('dailyQuote');if(_dq)_dq.textContent='“'+q+'”';
+
+  
+    
+    
+  
+  /* 今日知识：按日期统一初始化，保持每天一致 */
+  var daySeed=Math.floor(Date.now()/86400000);
+  _knowledgeIdx=pickKnowledgeIndices(function(len){return daySeed%len;});
+  switchKnowledge('health');
+
+  var fin=FINANCES[daySeed%FINANCES.length];
+  document.getElementById('financeTip').innerHTML='<strong>'+fin.t+'</strong> — '+fin.d;
+
+  var shop=SHOPS[Math.floor(Math.random()*SHOPS.length)];
+  var ds=document.getElementById('dailyShop');if(ds)ds.innerHTML='<strong>'+shop.t+'</strong><br>'+shop.d;
+
+  renderAll();
+  applyExpiry();
+  applyPrepareAutoClean();
+  renderPodcasts2();
+  renderPitfall();
+  renderDrivingQ();
+  renderInspire();
+  renderDecisions();
+  renderGrateful();
+  renderGoal100();
+  initDefaultCountdowns();
+  mobileHint();
+  loadTodayGoal();
+  renderMood();
+  renderBlessInputs();
+  renderBlessMood();
+  renderBlessStreak();
+  renderSoundBtns();
+  renderNotes();
+  nextSoftLine();
+  renderFinanceKnowledge();
+  renderTpl();
+  renderDailyQuoteCard();
+  /* 冷启动一律回到首页：闪屏结束后固定展示「今日概览」，不再恢复上次所在板块与滚动位置 */
+  
+  /* 返回轻提示：每天一句不重复的暖心鼓励，等闪屏结束(约3.4s)后直接渲染一次、停留约4.2秒可看清，
+     不再经 flash 双重渲染、也不被启动屏遮挡 */
+  try{
+    if(localStorage.getItem('pp_last_view')){
+      setTimeout(function(){try{
+        var GREETS=[
+          '回来啦——今天想在哪个板块安放一点新东西？',
+          '欢迎回来，愿你今天稳稳往前挪一小步。',
+          '匣子已经为你打开，想记点什么，随时开始。',
+          '不必逼自己一天完成所有事，今天推进最重要的一件就好。',
+          '把心里那件盘旋的事，先写进匣子吧。',
+          '每一天都是新的留白，正等着你落笔。',
+          '慢一点没关系，别停下来就好。',
+          '今天的你，也值得为自己留下一行字。',
+          '说点什么、记点什么，都由你来做主。',
+          '愿今天的你，比昨天更清楚自己要去哪里。'
+        ];
+        var _gi=Math.floor(Date.now()/86400000)%GREETS.length;
+        var _mf=document.getElementById('flash');
+        if(_mf){
+          _mf.textContent=GREETS[_gi];
+          _mf.classList.remove('is-ok','is-warn','is-err');
+          _mf.classList.add('show');
+          if(_mf.__ppT)clearTimeout(_mf.__ppT);
+          _mf.__ppT=setTimeout(function(){_mf.classList.remove('show');},4200);
+        }else if(typeof flash==='function'){ flash(GREETS[_gi]); }
+      }catch(e){}},3500);
+    }
+  }catch(e){}
+  
+  /* 关注方向引导：还原用户上次选的推荐模块 */
+  try{renderFocus();}catch(e){}
+  /* 支出记账本 */
+  try{renderExpenses();}catch(e){}
+}
+/* init() 已移至脚本块末尾：必须等 BOOKS_LIB / BIGQUOTES / renderPodcasts2 / renderPitfall 等
+   全部数据数组与函数定义完毕后再执行，否则 renderShelf/renderBigQuote 会因引用未赋值变量而抛错，
+   导致书架金句、今日金句、避坑提醒、播客笔记全部空白。 */
+
+/* ═══════ 增量板块：暑假作息表 + 打卡日历 + 番茄钟 + 灵感看板 + 书架金句 + 设置 ═══════ */
+
+/* 暑假版今日时间块作息表（来源：Yolo 知识库精华） */
+var TIME_BLOCKS=[
+  {t:'06:30',n:'起床+喝水+拉伸',tag:'生活',color:'#4A3427'},
+  {t:'07:00',n:'早餐+听新闻/播客',tag:'生活',color:'#4A3427'},
+  {t:'07:40',n:'英语晨读/单词背诵',tag:'学习',color:'#6E4F37'},
+  {t:'08:30',n:'第一节专业课预习+笔记',tag:'学习',color:'#6E4F37'},
+  {t:'10:00',n:'课间休息+远眺护眼',tag:'休息',color:'#6B7267'},
+  {t:'10:20',n:'第二节专业课/公共课',tag:'学习',color:'#6E4F37'},
+  {t:'12:00',n:'午餐（七分饱）',tag:'生活',color:'#4A3427'},
+  {t:'12:40',n:'午休/冥想20分钟',tag:'休息',color:'#6B7267'},
+  {t:'14:00',n:'下午实验/作业/自习',tag:'学习',color:'#6E4F37'},
+  {t:'16:00',n:'社团活动/小组讨论',tag:'社交',color:'#A9803F'},
+  {t:'17:30',n:'运动健身（跑步/瑜伽/球类）',tag:'运动',color:'#B07F63'},
+  {t:'18:30',n:'晚餐+洗澡+洗衣',tag:'生活',color:'#4A3427'},
+  {t:'19:30',n:'晚自习/深度阅读/论文写作',tag:'学习',color:'#6E4F37'},
+  {t:'21:00',n:'技能充电（编程/外语/考证）',tag:'成长',color:'#8A6D48'},
+  {t:'21:45',n:'放松时间（音乐/聊天/追剧）',tag:'休闲',color:'#B0855A'},
+  {t:'22:30',n:'今日复盘+明日计划+感恩日记',tag:'复盘',color:'#C9A24E'},
+  {t:'23:00',n:'放下手机·准备入睡',tag:'睡眠',color:'#6B7267'}
+];
+function getTimeBlocks(){
+  var d=DB.get('timeBlocks',null);
+  /* 默认留白：一上来就强行排满一张"作息表"反而让人有压力，绝大多数人做不到。
+     仅当用户自己主动添加时段时才展示。旧版预置的 20 段作息自动不再预填。 */
+  if(!d||!d.length)return [];
+  /* 迁移：若本地仍是旧版预置作息，判定为"未自定义"，改为留白 */
+  if(d.length===TIME_BLOCKS.length&&d.every(function(b,i){return b&&TIME_BLOCKS[i]&&b.t===TIME_BLOCKS[i].t&&b.n===TIME_BLOCKS[i].n;})){
+    saveTimeBlocks([]);
+    return [];
+  }
+  return d;
+}
+function saveTimeBlocks(a){DB.set('timeBlocks',a);}
+function renderTimeBlocks(){
+  var box=document.getElementById('timeBlockGrid');if(!box)return;
+  var list=getTimeBlocks();
+  if(!list.length){
+    box.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:18px 10px;color:var(--hint);font-size:13px;background:var(--bg);border:1px dashed var(--border);border-radius:10px">今天还没安排时段。想到 1-2 件对你重要的事，就在下方添加，别一次排满。</div>';
+    return;
+  }
+  box.innerHTML=list.map(function(b,i){
+    return '<div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--card);position:relative;min-width:0">'+
+      '<button class="btn btn-sm" style="position:absolute;top:5px;right:5px;font-size:11px;padding:1px 5px;color:var(--hint);background:transparent;border:none;cursor:pointer" onclick="delTimeBlock('+i+')">×</button>'+
+      '<div contenteditable="true" data-tb="t" data-tb-idx="'+i+'" onblur="saveTimeBlock('+i+')" style="font-size:11px;color:var(--hint);font-weight:600;cursor:text;outline:none;padding-right:14px">'+escapeHtml(b.t)+'</div>'+
+      '<div contenteditable="true" data-tb="n" data-tb-idx="'+i+'" onblur="saveTimeBlock('+i+')" style="font-size:12px;color:var(--text);margin-top:4px;line-height:1.4;cursor:text;outline:none">'+escapeHtml(b.n)+'</div>'+
+      '<span contenteditable="true" data-tb="tag" data-tb-idx="'+i+'" onblur="saveTimeBlock('+i+')" style="display:inline-block;background:transparent;color:var(--hint);border:1px dashed var(--border);margin-top:6px;font-size:10px;padding:2px 8px;border-radius:10px;cursor:text;outline:none">'+escapeHtml(b.tag)+'</span>'+
+    '</div>';
+  }).join('');
+}
+function saveTimeBlock(i){
+  var list=getTimeBlocks();if(!list[i])return;
+  var box=document.getElementById('timeBlockGrid');if(!box)return;
+  box.querySelectorAll('[data-tb-idx="'+i+'"]').forEach(function(el){
+    var k=el.getAttribute('data-tb');var v=el.textContent.trim();
+    if(k==='t'&&!v)return;
+    list[i][k]=v;
+  });
+  saveTimeBlocks(list);
+}
+function delTimeBlock(i){
+  uiConfirm('要移除这个时间段吗？',function(){
+    var list=getTimeBlocks();list.splice(i,1);saveTimeBlocks(list);renderTimeBlocks();
+  });
+}
+function addTimeBlock(){
+  var t=document.getElementById('tbTime'),n=document.getElementById('tbTask'),tag=document.getElementById('tbTag');
+  if(!t||!n)return;
+  if(!t.value.trim()||!n.value.trim()){uiAlert('请填写时间和任务内容');return;}
+  var list=getTimeBlocks();
+  list.push({t:t.value.trim(),n:n.value.trim(),tag:(tag&&tag.value.trim())||'自定义',color:'#7C5B38'});
+  saveTimeBlocks(list);
+  t.value='';n.value='';if(tag)tag.value='';
+  renderTimeBlocks();
+}
+
+/* 打卡近7天日历 + 本周完成率 */
+var backfillKey=null;
+function renderCheckinCalendar(){
+  var box=document.getElementById('checkinCalendar');if(!box)return;
+  var c=getCheckins();var today=new Date();
+  var defs=getCheckinDefs();
+  var days=[];
+  for(var i=6;i>=0;i--){
+    var d=new Date(today);d.setDate(d.getDate()-i);
+    var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    var dc=c[key]||{};
+    var done=Object.keys(dc).filter(function(k){return dc[k]}).length;
+    var isToday=i===0;
+    days.push({key:key,done:done,isToday:isToday,wd:'日一二三四五六'[d.getDay()],day:d.getDate()});
+  }
+  /* 回填日期滑出7天窗口则自动清除选择 */
+  if(backfillKey!==null&&!days.some(function(dd){return dd.key===backfillKey}))backfillKey=null;
+  box.innerHTML=days.map(function(d){
+    var pct=defs.length?d.done/defs.length:0;
+    var sel=d.key===backfillKey;
+    var bg=d.isToday?'var(--primary)':sel?'rgba(122,115,99,.16)':'var(--bg)';
+    var color=d.isToday?'var(--cal-on,#fff)':'var(--text)';
+    var dotColor=pct===1?'var(--teal)':pct>=0.5?'var(--primary-mid)':'var(--border-strong)';
+    var on=d.isToday?'':' style="cursor:pointer" onclick="setBackfill(\''+d.key+'\')" title="点击可补回那天的打卡"';
+    return '<div'+(d.isToday?' class="cal-today"':'')+' style="flex:1;min-width:36px;text-align:center;padding:6px 4px;border-radius:6px;background:'+bg+';border:1px solid '+(d.isToday?'var(--primary)':sel?'var(--teal)':'var(--border)')+'"'+on+'>'+
+      '<div style="font-size:10px;color:'+(d.isToday?'var(--cal-on,#fff)':'var(--hint)')+'">'+d.wd+'</div>'+
+      '<div style="font-size:13px;color:'+color+';font-weight:600;margin:2px 0">'+d.day+'</div>'+
+      '<div style="width:8px;height:8px;border-radius:50%;background:'+dotColor+';margin:0 auto"></div>'+
+      '<div style="font-size:9px;color:'+(d.isToday?'var(--cal-on,#fff)':'var(--hint)')+';margin-top:2px">'+d.done+'/'+defs.length+'</div>'+
+    '</div>';
+  }).join('');
+  /* 补卡面板 */
+  if(backfillKey!==null){
+    var dc2=c[backfillKey]||{};
+    var p=backfillKey.split('-');
+    var label=(p.length===3)?p[1]+'月'+p[2]+'日':'该日';
+    var chips=defs.map(function(it){
+      var on=dc2[it.id]===true;
+      return '<span onclick="toggleBackfill(\''+it.id+'\')" style="cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:14px;font-size:12.5px;border:1px solid '+(on?'var(--teal)':'var(--border)')+';background:'+(on?'rgba(122,115,99,.1)':'var(--bg)')+';color:var(--text)">'+(on?'✓':'☐')+escapeHtml(it.n)+'</span>';
+    }).join('');
+    box.innerHTML+='<div style="margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(135deg,#EFE8D8,#F1EBDD);border:1px solid #E2D8C4">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px">'+
+        '<b style="font-size:13px;color:var(--primary)">补卡 · '+label+'</b>'+
+        '<span style="font-size:11.5px;color:var(--muted)">点一下即勾/取消该项</span>'+
+      '</div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:6px">'+chips+'</div>'+
+      '<button class="btn btn-sm" style="margin-top:10px;color:var(--hint)" onclick="setBackfill(null)">收起补卡</button>'+
+    '</div>';
+  }
+  /* 本周完成率 */
+  var total=0,done=0;
+  days.forEach(function(d){var dc=c[d.key]||{};total+=defs.length;done+=Object.keys(dc).filter(function(k){return dc[k]}).length;});
+  var bar=document.getElementById('weekProgress');
+  var text=document.getElementById('weekProgressText');
+  if(bar)bar.style.width=(total>0?Math.round(done/total*100):0)+'%';
+  if(text)text.textContent='本周打卡 '+done+'/'+total+' · 完成率 '+(total>0?Math.round(done/total*100):0)+'%'+' · 点过去某天可补卡';
+}
+function setBackfill(key){backfillKey=key;renderCheckinCalendar();}
+function toggleBackfill(k){
+  if(!backfillKey)return;
+  var c=getCheckins();if(!c[backfillKey])c[backfillKey]={};
+  c[backfillKey][k]=!c[backfillKey][k];
+  saveCheckins(c);renderCheckinCalendar();refreshHomeStats();
+}
+
+/* 番茄钟 */
+var pomoTimer=null,pomoRemain=25*60,pomoMode_=25,pomoRunning=false;
+/* 番茄钟 → 习惯联动：把"关联习惯"下拉与当前习惯列表同步 */
+function refreshPomoHabitOpts(){
+  var sel=document.getElementById('pomoHabitSel');if(!sel)return;
+  var cur=sel.value;
+  var habits=getHabits();
+  sel.innerHTML='<option value="">关联习惯（可选）· 完成后 +1 专注</option>'+habits.map(function(h,i){
+    return '<option value="'+i+'">'+escapeHtml(h.name)+(((h.focus||0)>0)?('（已专注 '+(h.focus||0)+' 次）'):'')+'</option>';
+  }).join('');
+  if(cur!==''&&habits[Number(cur)])sel.value=cur;
+}
+function renderPomo(){
+  var el=document.getElementById('pomoBig');if(!el)return;
+  var m=Math.floor(pomoRemain/60),s=pomoRemain%60;
+  el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  var c=DB.get('pomoCount',{});var today=todayKey();
+  var n=c[today]||0;
+  var pc=document.getElementById('pomoCount');if(pc)pc.textContent=n;
+  /* 中断原因饼图 */
+  var br=DB.get('pomoBreaks',{});var sum=0;
+  Object.keys(br).forEach(function(k){sum+=br[k]||0});
+  var svg=document.getElementById('pomoChart');if(!svg)return;
+  if(sum===0){svg.innerHTML='<text x="160" y="90" text-anchor="middle" fill="#6B7267" font-size="12">暂无中断记录 · 开始第一个番茄</text>';var bl0=document.getElementById('pomoBreaks');if(bl0)bl0.innerHTML='';return}
+  var colors={手机:'#B07F63',消息:'#7C5B38',困倦:'#6E4F37',被打扰:'#C9A24E',走神:'#A9803F',吃饭:'#6B7267'};
+  var cx=100,cy=90,r=70,startAngle=-Math.PI/2;
+  var paths='';
+  Object.keys(br).forEach(function(k){
+    var v=br[k]||0;if(v===0)return;
+    var ang=(v/sum)*Math.PI*2;
+    var x1=cx+r*Math.cos(startAngle),y1=cy+r*Math.sin(startAngle);
+    var x2=cx+r*Math.cos(startAngle+ang),y2=cy+r*Math.sin(startAngle+ang);
+    var large=ang>Math.PI?1:0;
+    paths+='<path d="M'+cx+','+cy+' L'+x1+','+y1+' A'+r+','+r+' 0 '+large+' 1 '+x2+','+y2+' Z" fill="'+(colors[k]||'#888')+'" stroke="#fff" stroke-width="2"/>';
+    startAngle+=ang;
+  });
+  paths+='<circle cx="'+cx+'" cy="'+cy+'" r="30" fill="#fff"/>';
+  paths+='<text x="'+cx+'" y="'+(cy-4)+'" text-anchor="middle" fill="#4A3427" font-size="20" font-weight="600">'+sum+'</text>';
+  paths+='<text x="'+cx+'" y="'+(cy+12)+'" text-anchor="middle" fill="#6B7267" font-size="10">次中断</text>';
+  /* 图例 */
+  var lx=200,ly=20;
+  Object.keys(br).forEach(function(k){
+    var v=br[k]||0;if(v===0)return;
+    paths+='<rect x="'+lx+'" y="'+ly+'" width="10" height="10" fill="'+(colors[k]||'#888')+'"/>';
+    paths+='<text x="'+(lx+16)+'" y="'+(ly+9)+'" fill="#1A1A1A" font-size="11">'+k+' '+v+'次</text>';
+    ly+=18;
+  });
+  svg.innerHTML=paths;
+  var bl=document.getElementById('pomoBreaks');
+  if(bl){
+    var html='共记录 <strong>'+sum+'</strong> 次中断 · 今日番茄数 '+(c[today]||0);
+    var bk=Object.keys(br).filter(function(k){return (br[k]||0)>0;});
+    if(bk.length){
+      html+='<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">'+bk.map(function(k){
+        return '<span style="display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:2px 8px;font-size:12px">'+escapeHtml(k)+' ×'+br[k]+' <span style="cursor:pointer;color:var(--coral);font-weight:700" title="删除该条记录（仅误点时使用）" onclick="pomoDelBreak(\''+k.replace(/'/g,"\\'")+'\')">✕</span></span>';
+      }).join('')+'</div>';
+    }
+    bl.innerHTML=html;
+  }
+}
+function pomoToggle(){
+  if(pomoRunning){
+    clearInterval(pomoTimer);pomoRunning=false;
+    var btn=document.querySelector('#view-timer .btn-primary');if(btn)btn.textContent='继续';
+    var ov=document.getElementById('pomoFullscreen');if(ov)ov.style.display='none';
+  }else{
+    pomoRunning=true;
+    var btn=document.querySelector('#view-timer .btn-primary');if(btn)btn.textContent='暂停';
+    /* 全屏专注覆盖层 */
+    var ov=document.getElementById('pomoFullscreen');
+    if(ov){
+      ov.style.display='flex';
+      var taskName=document.getElementById('pomoTaskInput')?document.getElementById('pomoTaskInput').value.trim():'';
+      var tn=document.getElementById('pomoFsTask');if(tn)tn.textContent=taskName||'深度专注中';
+    }
+    pomoTimer=setInterval(function(){
+      pomoRemain--;
+      if(pomoRemain<=0){
+        clearInterval(pomoTimer);pomoRunning=false;
+        var c=DB.get('pomoCount',{});var today=todayKey();
+        c[today]=(c[today]||0)+1;DB.set('pomoCount',c);
+        /* 习惯联动：若关联了某个习惯，则其「专注次数」+1 */
+        var sel=document.getElementById('pomoHabitSel');
+        if(sel&&sel.value!==''){
+          var hi=Number(sel.value),habits=getHabits();
+          if(habits[hi]){habits[hi].focus=(habits[hi].focus||0)+1;saveHabits(habits);renderHabits();refreshPomoHabitOpts();}
+        }
+        var ov=document.getElementById('pomoFullscreen');if(ov)ov.style.display='none';
+        uiAlert('番茄完成！休息5分钟，站起来走走');
+        pomoRemain=pomoMode_*60;
+        var b=document.querySelector('#view-timer .btn-primary');if(b)b.textContent='开始专注';
+        renderPomo();refreshHomeStats();
+      }else{
+        renderPomo();
+        /* 同步全屏倒计时 */
+        var fs=document.getElementById('pomoFsTime');if(fs){
+          var m=Math.floor(pomoRemain/60),s=pomoRemain%60;
+          fs.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+        }
+      }
+    },1000);
+  }
+}
+function pomoReset(){
+  /* 重置后 → 按钮显示"开始专注"（不是"继续"） */
+  clearInterval(pomoTimer);pomoRunning=false;pomoRemain=pomoMode_*60;
+  var btn=document.querySelector('#view-timer .btn-primary');if(btn)btn.textContent='开始专注';
+  renderPomo();
+}
+function pomoMode(m){clearInterval(pomoTimer);pomoRunning=false;pomoMode_=m;pomoRemain=m*60;renderPomo();}
+function pomoBreak(reason){
+  var br=DB.get('pomoBreaks',{});
+  br[reason]=(br[reason]||0)+1;
+  DB.set('pomoBreaks',br);
+  renderPomo();
+  flash('已记录中断：'+reason);
+}
+function pomoBreakCustom(){
+  var inp=document.getElementById('pomoBreakCustom');if(!inp)return;
+  var v=inp.value.trim();if(!v){flash('请先输入中断原因');return;}
+  pomoBreak(v);inp.value='';
+}
+function pomoDelBreak(reason){
+  var br=DB.get('pomoBreaks',{});
+  if(!br[reason]){renderPomo();return;}
+  delete br[reason];
+  // 顺手清理所有值为 0 的脏键，确保彻底
+  Object.keys(br).forEach(function(k){ if(!br[k]||br[k]<=0) delete br[k]; });
+  DB.set('pomoBreaks',br);
+  renderPomo();
+  flash('已移除「'+reason+'」中断记录');
+}
+function pomoClearBreaks(){
+  DB.set('pomoBreaks',{});
+  renderPomo();
+  flash('已清空全部中断记录');
+}
+
+/* 灵感收集器 */
+function getInspire(){return DB.get('inspire',[])}
+function renderInspire(){
+  var list=document.getElementById('inspireList');if(!list)return;
+  var is=getInspire();
+  if(!is.length){list.innerHTML='<p style="color:var(--hint);font-size:13px">还没有灵感 · 随时记下脑子里冒出的想法</p>';return}
+  list.innerHTML=is.map(function(it,i){
+    return '<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px">'+
+      '<div style="font-size:13px;color:var(--text);margin-bottom:4px">'+it.text+'</div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center">'+
+        '<span style="font-size:10px;color:var(--hint)">'+it.date+'</span>'+
+        '<button class="btn btn-sm" style="font-size:10px;padding:2px 8px" onclick="delInspire('+i+')">删</button>'+
+      '</div></div>';
+  }).join('');
+}
+function addInspire(){
+  var inp=document.getElementById('inspireInput');var v=inp.value.trim();
+  if(!v)return;
+  var is=getInspire();is.unshift({text:v,date:todayKey()+' '+new Date().toTimeString().slice(0,5)});
+  DB.set('inspire',is);inp.value='';renderInspire();flash('已记录灵感');
+}
+function delInspire(i){var is=getInspire();is.splice(i,1);DB.set('inspire',is);renderInspire()}
+
+/* 决策日记 */
+function getDecisions(){return DB.get('decisions',[])}
+function renderDecisions(){
+  var box=document.getElementById('decList');if(!box)return;
+  var ds=getDecisions();
+  if(!ds.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有决策记录 · 每做一次犹豫的决策都写下来</p>';return}
+  box.innerHTML=ds.map(function(d,i){
+    return '<div style="background:var(--bg);border-radius:8px;padding:12px;margin-bottom:8px">'+
+      '<div style="font-weight:600;color:var(--primary);margin-bottom:6px">'+d.title+' <span style="font-size:10px;color:var(--hint);font-weight:400">'+d.date+'</span></div>'+
+      '<div class="grid grid-2" style="gap:8px">'+
+        '<div style="font-size:12px;color:var(--teal)"><strong>利：</strong>'+d.pro+'</div>'+
+        '<div style="font-size:12px;color:var(--coral)"><strong>弊：</strong>'+d.con+'</div>'+
+      '</div>'+
+      '<button class="btn btn-sm" style="margin-top:6px;font-size:10px;padding:2px 8px" onclick="delDecision('+i+')">删除</button>'+
+    '</div>';
+  }).join('');
+}
+function addDecision(){
+  var t=document.getElementById('decTitle');var p=document.getElementById('decPro');var c=document.getElementById('decCon');
+  if(!t.value.trim())return;
+  var ds=getDecisions();ds.unshift({title:t.value.trim(),pro:p.value.trim(),con:c.value.trim(),date:todayKey()});
+  DB.set('decisions',ds);t.value=p.value=c.value='';renderDecisions();flash('已记录决策');
+}
+function delDecision(i){var ds=getDecisions();ds.splice(i,1);DB.set('decisions',ds);renderDecisions()}
+
+/* 感恩日记 */
+function getGrateful(){return DB.get('grateful',[])}
+function renderGrateful(){
+  var box=document.getElementById('gratefulList');if(!box)return;
+  var gs=getGrateful();
+  if(!gs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有记录 · 每天写3件感恩的事，6周后幸福感显著提升</p>';return}
+  box.innerHTML=gs.slice(0,7).map(function(g,i){
+    return '<div style="background:var(--bg);border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:12px">'+
+      '<div style="color:var(--hint);font-size:10px;margin-bottom:2px">'+g.date+'</div>'+
+      '<div style="color:var(--text);white-space:pre-wrap">'+g.text+'</div>'+
+    '</div>';
+  }).join('');
+}
+function saveGrateful(){
+  var inp=document.getElementById('gratefulInput');var v=inp.value.trim();
+  if(!v)return;
+  var gs=getGrateful();gs.unshift({text:v,date:todayKey()});
+  DB.set('grateful',gs);inp.value='';renderGrateful();flash('感恩已存');
+}
+
+/* 人生100个目标 */
+function getGoal100(){return DB.get('goal100',[])}
+function renderGoal100(){
+  var box=document.getElementById('goal100List');if(!box)return;
+  var gs=getGoal100();
+  if(!gs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有目标 · 把"想做的事"具体写下来，写下的目标实现率高42%</p>';return}
+  var catColors={学业:'#6E4F37',职业:'#4A3427',体验:'#B07F63',财富:'#7C5B38',健康:'#6E4F37',其他:'#6B7267'};
+  box.innerHTML=gs.map(function(g,i){
+    return '<div style="display:flex;align-items:center;gap:8px;background:var(--bg);padding:8px 10px;border-radius:6px">'+
+      '<span class="tag" style="background:'+(catColors[g.cat]||'#888')+'10;color:'+(catColors[g.cat]||'#888')+';flex-shrink:0">'+g.cat+'</span>'+
+      '<span style="font-size:13px;flex:1">'+g.text+'</span>'+
+      '<button class="btn btn-sm" style="font-size:10px;padding:2px 8px" onclick="toggleGoal100('+i+')">'+(g.done?'已完成':'待完成')+'</button>'+
+      '<button class="btn btn-sm" style="font-size:10px;padding:2px 8px" onclick="delGoal100('+i+')">删</button>'+
+    '</div>';
+  }).join('');
+}
+function addGoal100(){
+  var inp=document.getElementById('goal100Input');var cat=document.getElementById('goal100Cat');
+  if(!inp.value.trim())return;
+  var gs=getGoal100();gs.push({text:inp.value.trim(),cat:cat.value,done:false});
+  DB.set('goal100',gs);inp.value='';renderGoal100();flash('目标已加入');
+}
+function toggleGoal100(i){var gs=getGoal100();gs[i].done=!gs[i].done;DB.set('goal100',gs);renderGoal100()}
+function delGoal100(i){var gs=getGoal100();gs.splice(i,1);DB.set('goal100',gs);renderGoal100()}
+
+/* 书架 + 今日金句（前8本为公版/经典，点进去直接读全文） */
+var BOOKS_LIB=[
+  {t:'《论语》',a:'孔子',cat:'国学',link:'https://www.gushiwen.cn/guwen/lunyu.aspx',desc:'儒家经典 · 二十篇全文 · 古诗文网',quotes:['学而不思则罔，思而不学则殆','己所不欲，勿施于人']},
+  {t:'《道德经》',a:'老子',cat:'国学',link:'https://www.daodejing.org/',desc:'道家根本经典 · 81章全文 · 逐章译文',quotes:['上善若水，水善利万物而不争','千里之行，始于足下']},
+  {t:'《沉思录》',a:'马可·奥勒留',cat:'哲学',link:'https://weread.qq.com/web/search/books?keyword=沉思录',desc:'罗马皇帝的日记',quotes:['你能控制的是自己的内心，不是外界','活好当下，因为过去和未来都不属于你']},
+  {t:'《认知觉醒》',a:'周岭',cat:'成长',link:'https://weread.qq.com/web/search/books?keyword=认知觉醒',desc:'个人成长经典：改变源于认知升级',quotes:['真正的成长是认知的觉醒','行动力是认知与情绪的结果']},
+  {t:'《大脑喜欢听你这么说》',a:'杰瑞德·库尼·霍瓦斯',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=大脑喜欢听你这么说',desc:'大脑记忆机制',quotes:['大脑通过故事而非逻辑记忆','具象胜过抽象，情感胜过理性']},
+  {t:'《原子习惯》',a:'詹姆斯·克利尔',cat:'习惯',link:'https://weread.qq.com/web/search/books?keyword=原子习惯',desc:'1%的力量',quotes:['每天进步1%，一年后是37倍','你不是你的目标，你是你的系统']},
+  {t:'《刻意练习》',a:'安德斯·埃利克森',cat:'学习',link:'https://weread.qq.com/web/search/books?keyword=刻意练习',desc:'10000小时理论的修正',quotes:['刻意练习=目标+反馈+走出舒适区','天赋不是决定因素，练习方法才是']},
+  {t:'《自控力》',a:'凯利·麦格尼格尔',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=自控力 凯利',desc:'斯坦福最受欢迎心理学课',quotes:['意志力是有限的，像肌肉一样会疲劳','我想要 vs 我不要 vs 我要做']},
+  {t:'《被讨厌的勇气》',a:'岸见一郎',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=被讨厌的勇气',desc:'阿德勒心理学入门',quotes:['一切烦恼都来自人际关系','自由就是被讨厌']},
+  {t:'《非暴力沟通》',a:'马歇尔·卢森堡',cat:'沟通',link:'https://weread.qq.com/web/search/books?keyword=非暴力沟通',desc:'观察+感受+需要+请求',quotes:['不带评论的观察是人类智力的最高形式','评判是暴力，请求才是沟通']},
+  {t:'《心流》',a:'米哈里',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=心流 米哈里',desc:'最优体验心理学',quotes:['专注是幸福的源泉','心流比享乐更让人满足']},
+  {t:'《思考快与慢》',a:'卡尼曼',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=思考快与慢 卡尼曼',desc:'系统1和系统2',quotes:['我们以为自己理性，其实大多是直觉','损失厌恶比获得驱动更强']},
+  {t:'《人类简史》',a:'赫拉利',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=人类简史 赫拉利',desc:'人类三大革命',quotes:['人类靠虚构故事建立大规模合作','农业革命是史上最大的骗局']},
+  {t:'《穷爸爸富爸爸》',a:'清崎',cat:'理财',link:'https://weread.qq.com/web/search/books?keyword=穷爸爸富爸爸',desc:'财务启蒙',quotes:['资产是把钱放进你口袋的东西','负债是把钱从你口袋拿走的东西']},
+  {t:'《小狗钱钱》',a:'舍费尔',cat:'理财',link:'https://weread.qq.com/web/search/books?keyword=小狗钱钱',desc:'理财入门童话',quotes:['储蓄是鹅，利息是金蛋','先付给自己']},
+  {t:'《原则》',a:'达利欧',cat:'决策',link:'https://weread.qq.com/web/search/books?keyword=原则 达利欧',desc:'生活和工作原则',quotes:['痛苦+反思=进步','极度透明+极度真实']},
+  {t:'《平凡的世界》',a:'路遥',cat:'文学',link:'https://weread.qq.com/web/search/books?keyword=平凡的世界 路遥',desc:'奋斗者的精神坐标',quotes:['人就得奋斗，无奋斗即无幸福','生活不能等待别人来安排，要自己去争取']},
+  {t:'《活着》',a:'余华',cat:'文学',link:'https://weread.qq.com/web/search/books?keyword=活着 余华',desc:'生命韧性的极致书写',quotes:['活着本身就是意义','人是为活着本身而活']},
+  {t:'《月亮与六便士》',a:'毛姆',cat:'文学',link:'https://weread.qq.com/web/search/books?keyword=月亮与六便士 毛姆',desc:'理想与现实的撕扯',quotes:['满地都是六便士，他却抬头看见了月亮','魔鬼要总是走极端']},
+
+  {t:'《学习之道》',a:'芭芭拉·奥克利',cat:'学习',link:'https://weread.qq.com/web/search/books?keyword=学习之道 奥克利',desc:'用脑科学教你“怎么学才记得住”：专注/发散模式、回想式复习',quotes:['学习不是拼时长，是拼方法','主动回想比反复阅读有效得多']},
+  {t:'《如何阅读一本书》',a:'莫提默·艾德勒',cat:'学习',link:'https://weread.qq.com/web/search/books?keyword=如何阅读一本书',desc:'阅读的四个层次，从泛读到主题阅读，大学生必读的方法论经典',quotes:['阅读越主动，收获越大','读不懂的地方才最值得读']},
+  {t:'《考试脑科学》',a:'池谷裕二',cat:'学习',link:'https://weread.qq.com/web/search/books?keyword=考试脑科学',desc:'记忆的规律与复习的最佳时机，期末冲刺直接能用',quotes:['复习的黄金时机：学后第1、2、4、7、15天','睡眠是记忆的巩固期，熬夜复习最亏']},
+  {t:'《超越感觉：批判性思考指南》',a:'文森特·鲁格里奥',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=超越感觉 批判性思考',desc:'独立思考的入门教材，学会不被带节奏',quotes:['批判性思考不是抬杠，是评估证据','感觉会骗人，逻辑不会']},
+  {t:'《影响力》',a:'罗伯特·西奥迪尼',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=影响力 西奥迪尼',desc:'六大说服原理：互惠/承诺一致/社会认同/喜好/权威/稀缺',quotes:['你被说服时，往往自己都不知道','先答应小请求的人，更容易答应大请求']},
+  {t:'《清醒思考的艺术》',a:'罗尔夫·多贝里',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=清醒思考的艺术',desc:'52个思维偏误清单，做决策前翻一翻',quotes:['幸存者偏差：你看到的成功只是活下来的那部分','沉没成本不是成本，是陷阱']},
+  {t:'《穷查理宝典》',a:'查理·芒格',cat:'认知',link:'https://weread.qq.com/web/search/books?keyword=穷查理宝典',desc:'多元思维模型：用各学科的底层规律看问题',quotes:['手里拿着锤子，看什么都像钉子','反过来想，总是反过来想']},
+  {t:'《蛤蟆先生去看心理医生》',a:'罗伯特·戴博德',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=蛤蟆先生去看心理医生',desc:'一本讲明白心理咨询是怎么回事的入门书',quotes:['能帮你的人是你自己，也只有你自己','理解自己的情绪，才谈得上管理情绪']},
+  {t:'《也许你该找个人聊聊》',a:'洛莉·戈特利布',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=也许你该找个人聊聊',desc:'心理治疗师自己也需要治疗，温暖又真实',quotes:['痛苦没有高低贵贱之分','说出来，就成功了一半']},
+  {t:'《自卑与超越》',a:'阿尔弗雷德·阿德勒',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=自卑与超越 阿德勒',desc:'自卑不是缺陷，而是成长的引擎',quotes:['我们都想让自己变得更优秀，这是自卑的来源','生活的意义由你赋予']},
+  {t:'《亲密关系》',a:'罗兰·米勒',cat:'心理',link:'https://weread.qq.com/web/search/books?keyword=亲密关系 罗兰米勒',desc:'亲密关系的科学：友情爱情如何建立与经营',quotes:['亲密关系需要经营，就像花园需要照料','依恋风格决定你如何看待和回应对方']},
+  {t:'《高效能人士的七个习惯》',a:'史蒂芬·柯维',cat:'成长',link:'https://weread.qq.com/web/search/books?keyword=高效能人士的七个习惯',desc:'主动积极、以终为始、要事第一……受益一生的习惯系统',quotes:['以终为始：先想清楚你要去哪里','要事第一：重要不紧急的事决定人生走向']},
+  {t:'《把时间当作朋友》',a:'李笑来',cat:'成长',link:'https://weread.qq.com/web/search/books?keyword=把时间当作朋友',desc:'时间不可管理，能管理的只有自己',quotes:['时间不可管理，能管理的只有自己','用正确的方法做正确的事']},
+  {t:'《斯坦福大学人生设计课》',a:'比尔·博内特',cat:'成长',link:'https://weread.qq.com/web/search/books?keyword=斯坦福大学人生设计课',desc:'用设计思维设计人生：多版本人生，小步试错',quotes:['人生设计没有标准答案，只有不断试错','立刻行动，比想清楚再行动更重要']},
+  {t:'《拆掉思维里的墙》',a:'古典',cat:'成长',link:'https://weread.qq.com/web/search/books?keyword=拆掉思维里的墙',desc:'打破限制性思维，看见更多可能',quotes:['限制你的不是能力，是思维里的墙','有意思比有意义更重要']},
+  {t:'《金字塔原理》',a:'芭芭拉·明托',cat:'沟通',link:'https://weread.qq.com/web/search/books?keyword=金字塔原理',desc:'表达与写作的逻辑框架：结论先行，以上统下',quotes:['结论先行，以上统下','先讲结论，再讲理由，最后讲细节']},
+  {t:'《即兴演讲》',a:'朱迪思·汉弗莱',cat:'沟通',link:'https://weread.qq.com/web/search/books?keyword=即兴演讲 汉弗莱',desc:'抓住每一次开口的机会，把话说到点子上',quotes:['领导力来自即兴发挥的能力','时刻准备着，机会只给有准备的口才']},
+  {t:'《远见》',a:'布赖恩·费瑟斯通豪',cat:'职业',link:'https://weread.qq.com/web/search/books?keyword=远见 职业生涯',desc:'职业生涯三阶段规划，提前看清35岁之后的路',quotes:['积累三种燃料：可迁移技能、有意义的经验、持久的关系','职业生涯是一场马拉松，不是百米冲刺']},
+  {t:'《深度工作》',a:'卡尔·纽波特',cat:'职业',link:'https://weread.qq.com/web/search/books?keyword=深度工作 纽波特',desc:'专注力是最稀缺的资源，学会深度工作拉开差距',quotes:['深度工作是一种稀缺能力，比努力更值钱','浅工作正在填满你的人生']},
+  {t:'《乌合之众》',a:'古斯塔夫·勒庞',cat:'社会',link:'https://weread.qq.com/web/search/books?keyword=乌合之众 勒庞',desc:'群体心理经典：为什么人在群体里会失去理智',quotes:['群体中累加的是愚蠢，而不是智慧','情绪会传染，理性不会']},
+  {t:'《社会性动物》',a:'埃利奥特·阿伦森',cat:'社会',link:'https://weread.qq.com/web/search/books?keyword=社会性动物',desc:'社会心理学入门圣经，看懂人为什么这样行事',quotes:['人首先是社会性动物，然后才是理性动物','态度和行为互相塑造']},
+  {t:'《指数基金投资指南》',a:'银行螺丝钉',cat:'理财',link:'https://weread.qq.com/web/search/books?keyword=指数基金投资指南',desc:'定投指数基金的正确姿势，学生党理财第一课',quotes:['定投指数基金，是普通人参与市场的正确姿势','慢慢变富，才是真变富']},
+  {t:'《三体》',a:'刘慈欣',cat:'文学',link:'https://weread.qq.com/web/search/books?keyword=三体 刘慈欣',desc:'中国科幻巅峰之作，关于宇宙、文明与人性',quotes:['给岁月以文明，而不是给文明以岁月','弱小和无知不是生存障碍，傲慢才是']},
+  {t:'《小王子》',a:'圣埃克苏佩里',cat:'文学',link:'https://weread.qq.com/web/search/books?keyword=小王子',desc:'写给大人的童话，关于爱与责任',quotes:['重要的东西用眼睛是看不见的，要用心去看','你在玫瑰身上花费的时间，使你的玫瑰变得重要']},
+];
+/* 书架辅助：分配稳定 id + 用户自添书 + 阅读链接兜底 + 每本书读书笔记 */
+BOOKS_LIB.forEach(function(b){ if(!b.id) b.id='b'+String(Math.abs((b.t+'|'+(b.a||'')).split('').reduce(function(h,c){return ((h<<5)-h+c.charCodeAt(0))|0},7))%89999+10000); });
+function getUserBooks(){return DB.get('userBooks',[]);}
+function saveUserBooks(a){DB.set('userBooks',a);}
+function allBooks(){return BOOKS_LIB.concat(getUserBooks());}
+function getBookById(id){var all=allBooks();for(var i=0;i<all.length;i++){if(all[i].id===id)return all[i];}return null;}
+function bookReadUrl(b){
+  if(b.link&&b.link!=='待补充'&&b.link!=='') return b.link;
+  var kw=b.t.replace(/[《》]/g,'');
+  return 'https://weread.qq.com/web/search/books?keyword='+encodeURIComponent(kw);
+}
+function getBookNote(id){var n=DB.get('bookNotes',{});return n[id]||'';}
+function saveBookNote(id,txt){var n=DB.get('bookNotes',{});n[id]=txt;DB.set('bookNotes',n);}
+function addBook(){
+  var t=document.getElementById('bookTitleIn').value.trim();
+  var a=document.getElementById('bookAuthorIn').value.trim();
+  var c=document.getElementById('bookCatIn').value;
+  var l=document.getElementById('bookLinkIn').value.trim();
+  var q=document.getElementById('bookQuotesIn').value.trim();
+  if(!t)return;
+  t='《'+t.replace(/[《》]/g,'')+'》';
+  var ub=getUserBooks();
+  ub.push({id:'u'+Date.now(),t:t,a:a||'佚名',cat:c,link:l||'待补充',desc:'我自己添加的书',quotes:q?q.split(/[,，]/).map(function(x){return x.trim()}).filter(Boolean):['（读完再来填金句）']});
+  saveUserBooks(ub);
+  document.getElementById('bookTitleIn').value='';document.getElementById('bookAuthorIn').value='';document.getElementById('bookLinkIn').value='';document.getElementById('bookQuotesIn').value='';
+  renderShelf();flash('已加入书架');
+}
+var BIGQUOTES=[
+  {q:'你以为的极限，只是别人的起点',a:'佚名',e:'你以为自己已经拼尽全力了，其实只是普通人的常态。别拿"我已经尽力了"麻痹自己——真正的极限远未到来。每当你想停下来时，再坚持5分钟，那是你真正成长的地方。'},
+  {q:'所有的毫不费力，背后都是拼尽全力',a:'佚名',e:'别人轻松的样子是结果不是过程。你看到的是人家台上三分钟，看不到的是台下十年功。别嫉妒别人的成果，先复制别人的努力。'},
+  {q:'人生最大的悲哀，是配不上自己的野心',a:'佚名',e:'想得很大，做得很少，这是大多数人的通病。要么降低野心安心过日子，要么把行动量提到能匹配野心的级别。中间状态最痛苦。'},
+  {q:'你背不下来的书，总有人替你背；你过不上的生活，总有人替你过',a:'佚名',e:'世界不会因为你不努力就停下来等你。你不背的书，竞争对手在背；你不过的关，别人在过。这不是制造焦虑，是提醒你选择是有代价的。'},
+  {q:'你的同龄人正在抛弃你，而且不会跟你说一声',a:'佚名',e:'没有告别，没有提醒。今天还在同一起跑线，三年后已是天壤之别。不是因为别人多厉害，而是因为日复一日的累积差距。今天少做的事，三年后会被放大10倍。'},
+  {q:'自由不是想做什么就做什么，而是不想做什么就能不做什么',a:'佚名',e:'真正的自由是有拒绝权——拒绝不喜欢的工作、不喜欢的人、不喜欢的应酬。这种权利不是天上掉的，是你用能力和存款换来的。先有筹码，再有自由。'},
+  {q:'当你的才华还撑不起你的野心，就应该静下心来学习',a:'佚名',e:'焦虑时最该做的不是发泄而是沉淀。才华和野心的差距越大，越要少说多做。沉下心学3年，再回头看，你会发现当初焦虑的事根本不值一提。'},
+  {q:'没有伞的孩子，必须努力奔跑',a:'佚名',e:'没有家庭背景托底，意味着你不能失败也输不起。但你比有伞的孩子多一个优势：你必须靠自己，所以你比他们更早学会独立。这种能力是你终身的伞。'},
+  {q:'努力到无能为力，拼搏到感动自己',a:'佚名',e:'别问结果，先问自己有没有真的拼过。如果你自己都感动不了自己，凭什么让结果感动你？真正的努力会让人流泪，不会让人后悔。'},
+  {q:'不必艳羡他人的月亮，你有自己的六便士',a:'毛姆',e:'别总盯着别人拥有的，低头看看自己手里的。别人的月亮再亮也是别人的，你的六便士再小也是你的起点。从你拥有的开始，比仰望别人的更实际。'},
+  {q:'你能扛过多少无人问津的日子，就能配多少掌声雷动的未来',a:'佚名',e:'所有惊艳出场的背后，都是寂寞独行的日子。没人关注的时光不要浪费，那正是你蓄力的黄金期。等到机会来时，你的实力已经甩开别人几条街。'},
+  {q:'你今天偷的懒，都将成为明天的难',a:'佚名',e:'懒是有复利的。今天少背10个单词，明天少看1小时书，后天少做1次复盘——三年下来你和努力的自己差出一个阶层。别小看每天那点偷懒。'},
+  {q:'所谓奇迹，不过是努力的另一个名字',a:'佚名',e:'别人眼里的奇迹，是你日复一日枯燥坚持的结果。没有巧合，只有积累。把"等奇迹"换成"造奇迹"，主动权才在你手里。'},
+  {q:'与其焦虑未来，不如专注当下',a:'佚名',e:'焦虑的本质是想到太多未来不可控的事。把注意力拉回当下这一小时能做什么，做完一件划一件。专注当下是治疗焦虑最便宜也最有效的药。'},
+  {q:'不要用战术上的勤奋，掩盖战略上的懒惰',a:'雷军',e:'起得最早睡得最晚，但不去想方向对不对，这是低质量勤奋。真正的勤奋包括"想清楚做什么"和"埋头做"两步，缺一步都是白费。'},
+  {q:'种一棵树最好的时间是十年前，其次是现在',a:'佚名',e:'别再纠结"现在开始还来得及吗"。十年前没种树你管不了，但今天种下十年后就有树。每天问自己：今天我种了什么树？'},
+  {q:'所有打不倒你的，终将使你更强大',a:'尼采',e:'痛苦是有价值的——它要么摧毁你，要么锻造你。选择后者的人，会把每次打击当成训练。三年后回头看，那些差点击垮你的事，反而成了你最硬的盔甲。'},
+  {q:'成年人的世界，没有容易二字',a:'佚名',e:'长大就是发现没有人替你扛。父母会老，朋友会远，伴侣也有自己的难。能扛住的人不是不累，是知道扛过去才有未来。'},
+  {q:'心若没有栖息的地方，到哪里都是流浪',a:'三毛',e:'外在漂泊不可怕，内心空虚才致命。给自己一个能安放内心的东西——目标、爱好、信念，任选一个。心有了归宿，外在再怎么变都不慌。'},
+  {q:'人生没有白走的路，每一步都算数',a:'李宗盛',e:'走过的弯路不是浪费，是积累。你以为没用的经历，未来某天会用上。乔布斯说"connecting the dots"——你只能回头看时把它们连起来。所以现在做的事，认真做就对了。'},
+  {q:'弱者等待时机，强者创造时机',a:'佚名',e:'机会不是等来的，是造出来的。等机会的人永远慢半拍，造机会的人才能抢到第一波红利。主动出击，比被动等待胜算大10倍。'},
+  {q:'人生最大的悲哀，是配不上自己的野心',a:'佚名',e:'要么降野心，要么提能力。两者都不做，只剩内耗。'},
+  {q:'走得太慢不要紧，只要你一直在走',a:'佚名',e:'别和别人比速度，比你快的人可能半路就停了。坚持到最后的人，往往是中速但不停的人。慢就是快，稳就是赢。'},
+  {q:'别人嘲笑的不是你的梦想，是你的实力',a:'佚名',e:'同样说"我要当CEO"，马云说没人笑，普通大学生说被群嘲。差别在实力不在梦想。所以别争辩，把实力提上来，自然没人笑。'},
+  {q:'不是命运亏待了你，是你亏待了命运',a:'佚名',e:'命运给你机会时你犹豫，给你挑战时你逃避，给你好运时你不珍惜。然后你说命运不公？先问问自己配不配得上更好的命运。'},
+  {q:'真正的成熟，是明白没有任何人能为你的人生买单',a:'佚名',e:'父母的安排、老师的建议、朋友的鼓励——都是参考。最终决定是你做，最终结果是你扛。别把锅甩给别人，那是拒绝长大的表现。'},
+  {q:'比失败的痛苦更可怕的，是从未尝试的悔恨',a:'佚名',e:'失败可以重来，错过不能。三年后让你后悔的，不是做错的事，而是没做的事。勇敢一点，做了再说。'},
+  {q:'万物皆有裂痕，那是光照进来的地方',a:'莱昂纳德·科恩',e:'不完美不可怕，那是改变的可能。完美的人没动力成长，有缺陷的人才有向上的空间。你的弱点，就是你最大的进步余地。'},
+  {q:'山高路远，看世界，也找自己',a:'佚名',e:'走出去不是为了炫耀去过哪里，而是为了在陌生中重新认识自己。离开熟悉的环境，你才会看清自己真正想要什么。'},
+  {q:'那些杀不死我的，必使我更强大',a:'尼采',e:'痛苦有复利效应。扛过去一次，下一次同类困难对你就是小儿科。所以别怕吃苦，那是在为未来攒抵抗力。'},
+  {q:'别让明天的你，讨厌今天的自己',a:'佚名',e:'每天睡前问一句：今天的我，明天的我会感激吗？会，安心睡；不会，明天就改。这个简单的自检能让你少走一半弯路。'},
+  {q:'所有的惊艳，都来自长久的准备',a:'佚名',e:'别人眼里的"突然爆发"，是你看不见的"长期积累"。没有突然的成功，只有突然被发现。把"等机会"换成"做准备"，机会来了你才能接得住。'},
+  {q:'愿你有前进一寸的勇气，亦有后退一尺的从容',a:'佚名',e:'前进是冲劲，后退是智慧。知道什么时候该冲、什么时候该停，比一味猛冲更难也更重要。'},
+  {q:'你现在的生活，是过去所有选择的总和',a:'佚名',e:'别怨现状，那都是你过去一个个选择累积的结果。想改变未来，就从今天的选择开始改。每天选对一点，三年后就是另一种人生。'},
+  {q:'不是所有的鱼都会生活在同一片海里',a:'村上春树',e:'别勉强融入不属于你的圈子。找到自己的海，比游遍所有的海更重要。'},
+  {q:'黑夜给了我黑色的眼睛，我却用它寻找光明',a:'顾城',e:'环境再差，选择权还在你手里。同样的处境，有人选择躺平，有人选择找光。差别不在环境，在选择。'}
+];
+var bigQIdx=0;
+var bookFilterCat='全部';
+/* 书脊配色（按分类） */
+var BOOK_COVERS={
+  '学习':'linear-gradient(135deg,#6E4F37,#6E4F37)',
+  '认知':'linear-gradient(135deg,#4A3427,#7C5B38)',
+  '心理':'linear-gradient(135deg,#B07F63,#C2956B)',
+  '沟通':'linear-gradient(135deg,#A87F3C,#A9803F)',
+  '自我':'linear-gradient(135deg,#6B4D33,#B45309)',
+  '投资':'linear-gradient(135deg,#4A3427,#8A6D48)',
+  '理财':'linear-gradient(135deg,#92400E,#D97706)',
+  '习惯':'linear-gradient(135deg,#4A3427,#6B4D33)',
+  '决策':'linear-gradient(135deg,#8A5422,#8A5422)',
+  '哲学':'linear-gradient(135deg,#3A4038,#6B7267)',
+  '国学':'linear-gradient(135deg,#6B4D33,#8B4513)',
+  '社会':'linear-gradient(135deg,#3A4038,#6B7267)',
+  '学业':'linear-gradient(135deg,#4A5D2E,#6B7A46)',
+  '文学':'linear-gradient(135deg,#7A5426,#C2A15E)',
+  '成长':'linear-gradient(135deg,#4A3427,#8A6D48)',
+  '职业':'linear-gradient(135deg,#43524A,#6B7A72)',
+  '财富':'linear-gradient(135deg,#713F12,#CA8A04)'
+};
+var recIdx=-1;
+function nextRecBook(){ recIdx++; renderShelf(); }
+function renderShelf(){
+  var box=document.getElementById('bookList');if(!box)return;
+  var today=todayKey();
+  var all=allBooks();
+  if(recIdx<0){ var day=Math.floor(Date.now()/86400000); recIdx=day%all.length; }
+  var rec=all[recIdx%all.length];
+  var recBox=document.getElementById('bookRec');
+  if(recBox){
+    var linkHtml='<a href="'+bookReadUrl(rec)+'" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">点击阅读 ↗</a>';
+    recBox.innerHTML='<div style="display:flex;gap:14px;align-items:center">'+
+      '<div style="width:54px;height:72px;background:'+(BOOK_COVERS[rec.cat]||'#888')+';border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:4px;box-shadow:2px 2px 6px rgba(0,0,0,.2);flex-shrink:0">'+rec.t.replace(/[《》]/g,'').slice(0,5)+'</div>'+
+      '<div style="flex:1">'+
+        '<div style="font-size:12px;color:var(--hint);margin-bottom:4px">今日推荐 · '+rec.cat+'</div>'+
+        '<div style="font-size:17px;font-weight:600;color:var(--primary);margin-bottom:4px">'+rec.t+'</div>'+
+        '<div style="font-size:13px;color:var(--muted);margin-bottom:8px">'+rec.a+' · '+rec.desc+'</div>'+
+        '<div style="font-size:13px;color:var(--teal);margin-bottom:8px"><strong>书中语录：</strong>「'+rec.quotes[0]+'」</div>'+
+        linkHtml+' <button class="btn btn-sm" style="margin-left:8px" onclick="nextRecBook()">换一本</button>'+
+      '</div>'+
+    '</div>';
+    var sd=document.getElementById('shelfDate');if(sd)sd.textContent=today;
+  }
+  var list=bookFilterCat==='全部'?all:all.filter(function(b){return b.cat===bookFilterCat});
+  box.innerHTML=list.map(function(b,i){
+    var coverBg=BOOK_COVERS[b.cat]||'#888';
+    var shortTitle=b.t.replace(/[《》]/g,'');
+    return '<div style="cursor:pointer" onclick="showBookDetail(\''+b.id+'\')">'+
+      '<div style="width:100%;aspect-ratio:3/4;background:'+coverBg+';border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=\'translateY(-4px)\'" onmouseout="this.style.transform=\'none\'">'+
+        '<div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word">'+shortTitle+'</div>'+
+        '<div style="font-size:9px;opacity:.8;text-align:center">'+b.a+'</div>'+
+        '<div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div>'+
+        '<div style="font-size:9px;opacity:.7">'+b.cat+'</div>'+
+      '</div>'+
+      '<div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word">'+shortTitle+'</div>'+
+    '</div>';
+  }).join('');
+}
+function filterBooks(cat){
+  bookFilterCat=cat;
+  document.querySelectorAll('#bookFilter .btn').forEach(function(b,i){
+    if(i===0&&cat==='全部')b.className='btn btn-sm btn-primary';
+    else if(b.textContent===cat)b.className='btn btn-sm btn-primary';
+    else b.className='btn btn-sm';
+  });
+  renderShelf();
+}
+function showBookDetail(id){
+  var b=getBookById(id);if(!b)return;
+  var box=document.getElementById('bookDetailBox');
+  document.getElementById('bookDetailTitle').textContent=b.t+' · '+b.a;
+  var linkHtml='<a href="'+bookReadUrl(b)+'" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">点击阅读 ↗</a>';
+  var quotesHtml=b.quotes.map(function(q,i){return '<div style="padding:10px 14px;background:var(--bg);border-left:3px solid var(--primary);margin-bottom:8px;font-size:15px;color:var(--text);font-style:italic;line-height:1.7">「'+q+'」</div>'}).join('');
+  var note=getBookNote(b.id);
+  document.getElementById('bookDetailContent').innerHTML=
+    '<div style="margin-bottom:16px">'+
+      '<div style="font-size:13px;color:var(--hint);margin-bottom:6px">分类：'+b.cat+' · 作者：'+b.a+'</div>'+
+      '<div style="font-size:15px;color:var(--muted);margin-bottom:12px;line-height:1.7">'+b.desc+'</div>'+linkHtml+
+    '</div>'+
+    '<h4 style="color:var(--primary)">书中语录（'+b.quotes.length+'条）</h4>'+
+    '<div style="margin-bottom:16px">'+quotesHtml+'</div>'+
+    '<h4 style="color:var(--primary)">我的读书笔记</h4>'+
+    '<textarea id="bookNote_'+b.id+'" placeholder="读完一章就记一句：核心观点 / 对我有什么用 / 我要怎么做..." style="width:100%;min-height:100px;padding:12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:15px;line-height:1.8" onblur="saveBookNote(\''+b.id+'\',this.value)">'+note+'</textarea>'+
+    '<div class="callout callout-info" style="margin-top:12px"><strong>阅读建议：</strong>这本书'+(b.cat==='学业'?'是大学生的必读基础，建议精读+做笔记+标注法条出处':b.cat==='理财'?'适合理财入门，读完能建立基础财富观念，建议边读边对照自己的资金做规划':b.cat==='心理'?'适合自我觉察，读时联系自己的实际情境反思，不要只记理论':'值得精读，建议用四栏笔记法：核心内容/应用场景/思考感悟/行动清单')+'。</div>';
+  box.style.display='block';
+  box.scrollIntoView({behavior:'smooth'});
+}
+
+function renderBigQuote(){
+  var el=document.getElementById('bigQuote');if(!el)return;
+  var daySeed=Math.floor(Date.now()/86400000);
+  var idx=(daySeed+bigQIdx)%BIGQUOTES.length;
+  var q=BIGQUOTES[idx];
+  el.innerHTML='<div style="font-size:18px;font-weight:500;line-height:1.7;color:var(--text);letter-spacing:0.5px;font-style:italic;text-align:center">「'+q.q+'」</div>'+
+    '<div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">—— '+q.a+'</div>';
+  var ex=document.getElementById('bigQuoteExtras');
+  if(ex){
+    ex.innerHTML=
+      '<div style="border-left:3px solid var(--primary);background:#EFE8D8;padding:10px 14px;border-radius:0 6px 6px 0">'+
+        '<div style="font-weight:600;color:var(--primary);font-size:13px;margin-bottom:5px">深度解读</div>'+
+        '<div style="font-size:13px;line-height:1.8;color:var(--text)">'+q.e+'</div>'+
+      '</div>'+
+      '<div style="border-left:3px solid var(--teal);background:#EFE8D8;padding:10px 14px;border-radius:0 6px 6px 0">'+
+        '<div style="font-weight:600;color:var(--teal);font-size:13px;margin-bottom:5px">今日行动</div>'+
+        '<div style="font-size:13px;line-height:1.8;color:var(--text)">把这句话写在便签上贴在看得见的地方，或用它提醒自己今天做一件相关的小事。</div>'+
+      '</div>';
+  }
+}
+function nextBigQuote(){bigQIdx++;renderBigQuote()}
+
+/* 设置面板：导出/导入/清空 */
+function _UI_PRESERVED(){return ['pp_theme_v2','pp_splash_seen','pp_quickstart_ok','pp_last_view','pp_last_scroll','pp_pano_v4_seen','pp_prepare_archived','pp_pref_modules','pp_pref_done','pp_pref_mode','pp_hero_collapsed','pp_focus_collapsed'];}
+/* 收集所有“用户填写的数据”键：DB 层(pp_*)、直存键、动态日期键(pp_mood_/pp_bless_)、模板(pp_tpl_)、随笔(pp_notes)、
+   内容可编辑(pp_edit_)、清单(pp_safety_list/相关)、准备进度(pp_prepare_done)、成就(pp_unlockedAchievements)、首次使用(pp_firstUseDate)……
+   一律纳入备份，确保换机恢复不丢任何记录。仅排除纯界面/导航状态键。 */
+function _userDataKeyList(){
+  var keys=[],p=_UI_PRESERVED();
+  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(!k)continue;
+    if(p.indexOf(k)>=0)continue;if(k.indexOf('pp_tab_')===0)continue;
+    keys.push(k);}}catch(e){}
+  return keys;
+}
+function exportAll(){
+  var data={"_app":"栖匣","_author":"尹平平","_site":"https://lumenplexus.github.io/centrove/","_v":2,"_exportTime":new Date().toISOString()};
+  /* 以“原样字符串快照”导出全部用户数据，杜绝白名单漏项 */
+  var dataKeys=[];
+  _userDataKeyList().forEach(function(k){try{var raw=localStorage.getItem(k); if(raw!=null){data[k]=raw; dataKeys.push(k);} }catch(e){}});
+  /* 完整性校验：先做序列化-解析回读，损坏则中止导出，不生成受损备份 */
+  try{
+    var _check=JSON.stringify(data);
+    var _back=JSON.parse(_check);
+    if(!_back||_back._v!==2) throw 'bad';
+    var _ok=0,_tot=0;
+    Object.keys(data).forEach(function(k){ if(k[0]!=='_'){ _tot++; try{ if(String(_back[k])===String(data[k])) _ok++; }catch(e){} } });
+    if(_tot>0 && _ok < Math.max(2, Math.floor(_tot*0.9))) throw 'mismatch';
+  }catch(err){
+    uiAlert('⚠️ 导出已中止：本地数据完整性自检未通过（可能存在损坏）。\n\n建议先用「系统设置 → 从最近自动备份恢复」找回数据，确认正常后再导出，避免生成损坏备份。');
+    return;
+  }
+  var blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='栖匣-全量备份-'+todayKey()+'.json';
+  a.click();
+  try{ localStorage.setItem('pp_last_export',String(Date.now())); }catch(e){}
+  flash('✅ 已导出全量备份（含 '+dataKeys.length+' 类填写数据）· 请及时复制到网盘双重保存');
+}
+function importAll(ev){
+  var f=ev.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      if(!data||typeof data!=='object')throw 0;
+      if(data._app&&data._app!=='栖匣')throw 0;
+      if(data._v===2){
+        /* 新版：原样字符串逐键还原 */
+        Object.keys(data).forEach(function(k){
+          if(k==='_v'||k==='_exportTime')return;
+          try{localStorage.setItem(k,data[k]);}catch(e2){}
+        });
+      }else{
+        /* 兼容旧版备份：直存键 + DB 键 */
+        var direct=['sportLog','myCountdowns','essayHistory','autoSaveEditable','userMetrics','birthday'];
+        Object.keys(data).forEach(function(k){
+          if(k==='_exportTime')return;
+          if(direct.indexOf(k)>-1){try{localStorage.setItem(k,JSON.stringify(data[k]));}catch(e2){}}
+          else{try{DB.set(k,data[k]);}catch(e2){}}
+        });
+      }
+      renderAll();flash('导入成功 · 刷新页面查看全部');
+    }catch(err){uiAlert('导入失败：文件格式错误')}
+  };
+  r.readAsText(f);
+}
+function clearAll(){
+  /* 高危操作：二次确认，杜绝误点导致数据全清 */
+  uiConfirm('⚠️ 此操作将【清空】任务、打卡、笔记、记账等全部填写数据，且不可恢复。\n\n请先到「导出备份」留一份底，确认无误再继续。仍然要清空吗？',function(){
+    /* 只清空【用户填写的数据】，框架与预置内容（计划表默认、四象限示例、目标示例、时间块模板等）全部保留；
+       界面/导航状态与主题保留，用户体验不被打断 */
+    _userDataKeyList().forEach(function(k){
+      if(k.indexOf('pp_tab_')===0)return;
+      try{localStorage.removeItem(k);}catch(e){}
+    });
+    uiAlert('已清空你填写的数据（任务/打卡/笔记/心情/记录等）。产品框架与预置内容已保留，3秒后刷新页面');
+    setTimeout(function(){location.reload()},3000);
+  });
+}
+
+function getPodcasts2(){return DB.get('pods2',[])}
+function savePodcasts2(p){DB.set('pods2',p)}
+
+/* 每日避坑提醒 */
+var PITFALLS=[
+  '今天的"再玩5分钟"是明天手忙脚乱的开始。现在就做。',
+  '想清楚再决定，决定了就执行。最怕想一半做一半。',
+  '买课前先问：我真的会看完吗？90%的课买了不看。',
+  '恋爱前先问：他/她让我变得更好还是更差？',
+  '熬夜不是努力，是第二天效率减半的开始。',
+  '朋友圈少发，多做事。成果比点赞值钱100倍。',
+  '别人的人生是参考题不是标准答案。',
+  '焦虑时去运动，运动时不要带手机。',
+  '存钱比赚钱更难，从今天开始存10%。',
+  '拒绝别人不需要理由，"不"就是完整的句子。',
+  '提前5分钟比踩点优雅10倍。',
+  '健康是1，其他是0。1没了，0再多也白搭。',
+  '不要为了"合群"做不喜欢的事。孤独比虚伪的合群值钱。',
+  '计划赶不上变化？那是因为计划不够具体。',
+  '今天的偷懒，是明天的焦虑。',
+  '背单词别等"有空"，每天固定 25 个，碎片时间就够。',
+  '四级不是大一来才准备的，开学第一次模拟就定基线。',
+  '绩点没有"后悔药"，大一的课最容易被轻敌。',
+  '社团加 1-2 个深的，比加 5 个都水强。',
+  '简历从大一就开始攒，别等大四才现编。',
+  '和室友处好关系，大学四年最长期的关系是室友。',
+  '想提升表达，从"每天和一个人多说一句话"开始。',
+  '减肥靠每天 30 分钟运动+晚饭少一口，不靠节食。',
+  '钱分三份：生活费/储蓄/小投资，满 18 岁再碰理财。',
+  '遇到不懂的学业术语，当场查，别攒成山。',
+  '别人在卷的时候，你按自己的节奏走，反而更稳。',
+  '听完播客不写一句话，等于没听。',
+  '刷短视频的"5分钟"，最后都是50分钟。',
+  '记笔记不是抄书，是用自己的话转述一遍。',
+  '睡前不看手机，第二天效率高30%。',
+  '别在情绪上头时做决定，睡一觉再说。',
+  '免费的最贵——占便宜的课、占便宜的群，多半是坑。'
+];
+function renderPitfall(random){
+  var el=document.getElementById('dailyPitfall');
+  if(el){
+    var p= random ? PITFALLS[Math.floor(Math.random()*PITFALLS.length)] : PITFALLS[Math.floor(Date.now()/86400000)%PITFALLS.length];
+    el.textContent=p;
+  }
+}
+function spinInspire(){
+  var b=document.getElementById('btnInspire');
+  if(!b)return;
+  var svg=b.querySelector('svg');
+  if(!svg)return;
+  svg.classList.add('spin');
+  setTimeout(function(){svg.classList.remove('spin');},650);
+}
+function refreshHomeDaily(){
+  /* 今日金句：不重复选取 */
+  var qi=_unusedIndex(QUOTES,'pp_quote_used');_curQuoteIdx=qi;
+  var q=QUOTES[qi];
+  var dq=document.getElementById('dailyQuote');if(dq)dq.textContent='“'+q+'”';
+  var dqc=document.getElementById('dailyQuoteCard');if(dqc)dqc.innerHTML='“'+q+'”';
+  /* 今日心语：同步换新且不重复 */
+  refreshMind(true);
+  /* 今日知识：换一批时四个标签一起随机，但保持当前标签可见 */
+  _knowledgeIdx=pickKnowledgeIndices(function(len){return Math.floor(Math.random()*len);});
+  renderKnowledge(_knowledgeActive);
+  var fin=FINANCES[Math.floor(Math.random()*FINANCES.length)];
+  var ft=document.getElementById('financeTip');if(ft)ft.innerHTML='<strong>'+fin.t+'</strong> — '+fin.d;
+  var shop=SHOPS[Math.floor(Math.random()*SHOPS.length)];
+  var ds=document.getElementById('dailyShop');if(ds)ds.innerHTML='<strong>'+shop.t+'</strong><br>'+shop.d;
+  /* 今日鼓励：同步换新且不重复 */
+  renderDailyEncourage(true);
+  renderPitfall(true);
+  flash('已换一批今日灵感');
+}
+
+/* 简历复制/下载 */
+function copyResume(){
+  var t=document.getElementById('resumeTemplate').innerText;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(t).then(function(){flash('简历已复制到剪贴板')});
+  }else{
+    var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);flash('简历已复制');
+  }
+}
+function downloadResume(){
+  var t=document.getElementById('resumeTemplate').innerText;
+  var blob=new Blob([t],{type:'text/plain;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='my_resume.txt';a.click();
+  flash('简历已下载');
+}
+function renderPodcasts2(){
+  var ps=getPodcasts2();
+  var box=document.getElementById('podcastList2');if(!box)return;
+  if(!ps.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有播客笔记，参考上方示范笔记格式记录</p>';return}
+  box.innerHTML=ps.slice(-6).reverse().map(function(p){
+    return '<div style="padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px"><div style="font-weight:600;font-size:13px;color:var(--teal)">'+escapeHtml(p.name)+'</div><div style="font-size:12px;color:var(--muted);margin-top:4px;white-space:pre-wrap">'+escapeHtml(p.note)+'</div><div style="font-size:11px;color:var(--hint);margin-top:4px">'+escapeHtml(String(p.date==null?'':p.date))+'</div></div>'
+  }).join('');
+}
+function addPodcast2(){
+  var n=document.getElementById('podcastName2').value.trim();
+  var note=document.getElementById('podcastNote2').value.trim();
+  if(!n||!note)return;
+  var ps=getPodcasts2();ps.push({name:n,note:note,date:todayKey()});
+  savePodcasts2(ps);
+  document.getElementById('podcastName2').value='';document.getElementById('podcastNote2').value='';
+  renderPodcasts2();flash('播客笔记已保存');
+}
+function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+/* ═══════════ 成长报告：一键汇总并导出成文（可复制分享） ═══════════ */
+function growthCount(v){if(v==null)return 0;if(Array.isArray(v))return v.length;if(typeof v==='object')return Object.keys(v).filter(function(k){return !!v[k]}).length;return v?1:0;}
+function exportGrowth(){
+  var d=new Date(),today=todayKey();
+  var _st=document.getElementById('growthLiveStamp');
+  if(_st)_st.textContent='已同步 · 更新于 '+String(('0'+(d.getMonth()+1)).slice(-2))+'月'+String(('0'+d.getDate()).slice(-2))+'日 '+String(('0'+d.getHours()).slice(-2))+':'+String(('0'+d.getMinutes()).slice(-2));
+  /* 各数据源（缺失一律安全回退为 0） */
+  var tasks=DB.get('tasks',[])||[];
+  var doneTasks=tasks.filter(function(t){return t.done}).length;
+  var pomoObj=DB.get('pomoCount',{})||{};
+  var pomoTotal=0;Object.keys(pomoObj).forEach(function(k){pomoTotal+=(pomoObj[k]||0)});
+  var habits=getHabits()||[];
+  var maxStreak=0,habFocus=0,habLeft=0;
+  habits.forEach(function(h){habLeft+=(h.focus||0);if((h.streak||0)>maxStreak)maxStreak=h.streak||0;});
+  var checkins=getCheckins()||{};
+  var recDays=0,todayDone=0;
+  Object.keys(checkins).forEach(function(k){var dc=checkins[k]||{};var n=Object.keys(dc).filter(function(x){return dc[x]}).length;if(n>0)recDays++;if(k===today)todayDone=n;});
+  var wordsN=growthCount(DB.get('words',null)),wrongsN=growthCount(DB.get('wrongs',null));
+  var booksN=growthCount(DB.get('userBooks',null))||growthCount(DB.get('books',null));
+  var jN=growthCount(DB.get('journals',null));
+  var rN=growthCount(DB.get('readingNotes',null))+growthCount(DB.get('cet6ReadingNotes',null));
+  var goalChecks=growthCount(DB.get('goalChecks',null))+growthCount(DB.get('goal100',null));
+  var pomoH=pomoTotal*25/60;
+  function tick(v){return v>0?(' ✓'):'';}
+  var lines=[];
+  lines.push('我的成长报告 · 栖匣');
+  lines.push('生成时间：'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
+  lines.push('');
+  lines.push('📌 这一路，我认真来过');
+  lines.push('· 完成任务：'+doneTasks+' 件（共登记 '+tasks.length+' 件）'+tick(tasks.length));
+  lines.push('· 深度专注：'+pomoTotal+' 个番茄钟（约 '+pomoH.toFixed(1)+' 小时）'+tick(pomoTotal));
+  lines.push('· 坚持习惯：'+habits.length+' 个，最长连续 '+maxStreak+' 天，累计专注 '+habFocus+' 次');
+  lines.push('· 学习积累：单词 '+wordsN+'｜错题 '+wrongsN+' 条'+tick(wordsN+wrongsN));
+  lines.push('· 阅读成长：'+booksN+' 本｜随记 '+rN+' 条'+tick(booksN+rN));
+  lines.push('· 目标兑现：'+goalChecks+' 次目标打卡'+tick(goalChecks));
+  lines.push('');
+  lines.push('🗓️ 打卡足迹');
+  lines.push('· 今天完成打卡：'+todayDone+' 项');
+  lines.push('· 累计有记录天数：'+recDays+' 天');
+  lines.push('');
+  lines.push('💡 我想对自己说：把每一天，过出掌控感。');
+  lines.push('每一件小事都有迹可循，这份成长存档正被我一点一滴写厚。');
+  lines.push('');
+  lines.push('（由「栖匣」自动汇总 · 仅存于你的设备）');
+  var text=lines.join('\n');
+  /* 生成排版精美的 HTML 报告，在页面内直接预览（不下载文件 → 微信/移动端即开即看，无“暂无可用打开方式”） */
+  var esc=function(s){return (s==null?0:s);};
+  function pct(a,b){return b>0?Math.round(a/b*100)+'%':'—';}
+  function rrow(label,val,ok){return '<div class="mrow"><span class="ml">'+label+'</span><span class="mv">'+val+'</span></div>';}
+  /* 近 7 天打卡完成率 */
+  var wkDone=0,wkTot=0;
+  for(var wi=-6;wi<=0;wi++){
+    var wd=new Date();wd.setDate(wd.getDate()+wi);
+    var dk=checkins[todayKey(wd)]||{};var keys=Object.keys(dk);
+    wkTot+=keys.length;keys.forEach(function(x){if(dk[x])wkDone++;});
+  }
+  var html=
+  '<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+
+  '<title>我的成长报告</title>'+
+  '<style>'+
+  'body{margin:0;background:#F5F2EA;font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;color:#33291F;line-height:1.7}'+
+  '.page{max-width:720px;margin:0 auto;padding:34px 24px 60px}'+
+  '.head{border:1px solid #E3D3B6;border-radius:18px;background:linear-gradient(140deg,#FCF7EF,#F5EFE3);padding:26px 24px;text-align:center}'+
+  '.head .brand{font-size:13px;letter-spacing:2px;color:#8A6A2D;font-weight:600}'+
+  '.head h1{margin:8px 0 4px;font-size:26px;color:#5C4A1E}'+
+  '.head .date{font-size:13px;color:#A08B5F}'+
+  '.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}'+
+  '.kcard{background:#fff;border:1px solid #E7E0D2;border-radius:14px;padding:16px 12px;text-align:center}'+
+  '.kcard b{display:block;font-size:24px;color:#6E4F37;font-weight:800}.kcard span{font-size:12px;color:#8A8A80}'+
+  '.sec{background:#fff;border:1px solid #E9E2D4;border-radius:14px;padding:18px 20px;margin-top:16px}'+
+  '.sec h2{font-size:15px;color:#5C4A1E;margin:0 0 8px;border-bottom:1px dashed #E9E2D4;padding-bottom:8px}'+
+  '.mrow{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #F2EEE5;font-size:14px}'+
+  '.mrow:last-child{border-bottom:0}.ml{color:#5A6A66}.mv{font-weight:700;color:#33291F}'+
+  '.sign{margin-top:22px;text-align:center;font-size:14px;color:#6A7A76;border-top:1px dashed #E0D9C8;padding-top:18px}'+
+  '.foot{text-align:center;font-size:11px;color:#B0A890;margin-top:26px}'+
+  '.ok{color:#6E4F37;font-weight:700}'+
+  '</style></head><body><div class="page">'+
+    '<div class="head"><div class="brand">栖匣</div><h1>🌱 我的成长报告</h1>'+
+    '<div class="date">'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' · 由你亲手写出的成长</div></div>'+
+    '<div class="kpi">'+
+      '<div class="kcard"><b>'+esc(doneTasks)+'</b><span>完成任务（件）</span></div>'+
+      '<div class="kcard"><b>'+esc(pomoTotal)+'</b><span>深度专注（番茄）</span></div>'+
+      '<div class="kcard"><b>'+esc(recDays)+'</b><span>有记录天数</span></div>'+
+    '</div>'+
+    '<div class="sec"><h2>📌 这一路，我认真来过</h2>'+
+      rrow('完成 / 共登记任务', doneTasks+' / '+tasks.length+' 件', tasks.length)+
+      rrow('深度专注时长', '约 '+pomoH.toFixed(1)+' 小时（'+pomoTotal+' 个番茄）', pomoTotal)+
+      rrow('坚持习惯', habits.length+' 个 · 最长连续 '+maxStreak+' 天', maxStreak)+
+      rrow('习惯累计专注', habFocus+' 次', habFocus)+
+      rrow('学习积累', '单词 '+wordsN+' ｜ 错题 '+wrongsN+' 条', wordsN+wrongsN)+
+      rrow('阅读成长', booksN+' 本 ｜ 随记 '+rN+' 条', booksN+rN)+
+      rrow('目标兑现', goalChecks+' 次目标打卡', goalChecks)+
+    '</div>'+
+    '<div class="sec"><h2>🗓️ 打卡足迹</h2>'+
+      rrow('今天完成打卡', todayDone+' 项', todayDone)+
+      rrow('近 7 天完成率', (wkTot>0?Math.round(wkDone/(wkTot||1)*100):100)+'%（'+wkDone+'/'+wkTot+'）', wkDone)+
+    '</div>'+
+    '<div class="sign">每一件小事都有迹可循。<br><b>把每一天，过出掌控感。</b></div>'+
+    '<div class="foot">数据由「栖匣」自动汇总 · 仅存于你的设备</div>'+
+  '</div></body></html>';
+  showPdfReport('我的成长报告', html, text);
+}
+
+/* ═══════════ 每日四象限 ═══════════ */
+var QUAD_META=[
+  {key:'q1',title:'重要 · 紧急',hint:'立即做',color:'var(--coral)',bg:'var(--coral-light)',border:'var(--coral)'},
+  {key:'q2',title:'重要 · 不紧急',hint:'排进日程固定做',color:'var(--teal)',bg:'var(--teal-light)',border:'var(--teal)'},
+  {key:'q3',title:'不重要 · 紧急',hint:'委托 / 批量做',color:'var(--primary)',bg:'var(--primary-light)',border:'var(--primary-mid)'},
+  {key:'q4',title:'不重要 · 不紧急',hint:'尽量少做',color:'var(--muted)',bg:'#F1EFE8',border:'var(--border-strong)'}
+];
+var QUAD_SEED={
+  q1:['今天想优先处理好的紧要事项','临近截止、需要推进的任务','需要尽快回复/确认的消息'],
+  q2:['读书 30 分钟并做笔记','运动 30 分钟','推进本周最重要的一件事','为下周制定计划'],
+  q3:['处理常规邮件/消息','整理房间或桌面','安排日常琐事（取件/缴费）'],
+  q4:['无目的刷短视频','漫无目的逛网购平台']
+};
+function getQuadrant(){
+  var all=DB.get('quadrants',{});var t=todayKey();
+  if(!all[t]){
+    var seed={};
+    QUAD_META.forEach(function(m){seed[m.key]=QUAD_SEED[m.key].map(function(x){return {id:Date.now()+Math.random(),text:x,done:false}})});
+    all[t]=seed;DB.set('quadrants',all);
+  }
+  return all[t];
+}
+function saveQuadrant(q){var all=DB.get('quadrants',{});all[todayKey()]=q;DB.set('quadrants',all);}
+function renderQuadrant(){
+  var q=getQuadrant();var box=document.getElementById('quadrantGrid');if(!box)return;
+  box.innerHTML=QUAD_META.map(function(m){
+    var items=q[m.key]||[];
+    var list=items.length?items.map(function(it){
+      return '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">'+
+        '<input type="checkbox" '+(it.done?'checked':'')+' onchange="toggleQuad(\''+m.key+'\','+it.id+')" style="width:15px;height:15px">'+
+        '<span contenteditable="true" data-qk="'+m.key+'" data-qid="'+it.id+'" onblur="editQuad(\''+m.key+'\','+it.id+',this)" style="flex:1;font-size:13px;cursor:text;outline:none;'+(it.done?'color:var(--hint);text-decoration:line-through':'color:var(--text)')+'">'+escapeHtml(it.text)+'</span>'+
+        '<button class="btn btn-sm" style="font-size:10px;padding:2px 6px" onclick="delQuad(\''+m.key+'\','+it.id+')">删</button>'+
+      '</div>'
+    }).join(''):'<p style="font-size:12px;color:var(--hint)">暂无，添加一项</p>';
+    return '<div class="card" style="border-top:3px solid '+m.border+'">'+
+      '<h3 style="color:'+m.color+'">'+m.title+' <span class="tag tag-gray" style="margin-left:6px;font-weight:400">'+m.hint+'</span></h3>'+
+      list+
+      '<div style="display:flex;gap:6px;margin-top:8px">'+
+        '<input id="qin_'+m.key+'" placeholder="添加任务...">'+
+        '<button class="btn btn-sm btn-primary" onclick="addQuad(\''+m.key+'\')">添加</button>'+
+      '</div>'+
+    '</div>'
+  }).join('');
+}
+function addQuad(k){var inp=document.getElementById('qin_'+k);if(!inp)return;var v=inp.value.trim();if(!v)return;var q=getQuadrant();q[k].push({id:Date.now()+Math.random(),text:v,done:false});saveQuadrant(q);renderQuadrant();}
+function editQuad(k,id,el){
+  var q=getQuadrant();if(!q[k])return;
+  var v=el.textContent.trim();if(!v)return;
+  q[k]=q[k].map(function(it){if(it.id===id)it.text=v;return it});
+  saveQuadrant(q);
+}
+function toggleQuad(k,id){var q=getQuadrant();q[k].forEach(function(it){if(it.id===id)it.done=!it.done});saveQuadrant(q);renderQuadrant();}
+function delQuad(k,id){var q=getQuadrant();q[k]=q[k].filter(function(it){return it.id!==id});saveQuadrant(q);renderQuadrant();}
+
+/* ═══════════ 计划表 ═══════════ */
+var DEFAULT_PLANS={
+  year:'【年度总纲】\n1. 定一件年度大事：一年后最想看到自己完成什么？（写具体、可衡量）\n2. 拆成 2-3 个核心习惯：每天/每周稳定做的小动作\n3. 补 1 项硬技能：语言/办公/专业，全年坚持\n【年度复盘】年底回答：最拿得出手的成果？最大教训？明年补什么？',
+  month:'【本月聚焦】\n1. 定 3 个具体目标（一个主攻 + 两个辅助）\n2. 把主攻目标拆成本周就能启动的第一步\n3. 月末花 10 分钟复盘：完成度 / 卡点 / 下月调整\n【提醒】目标越具体越容易执行：把"多读书"改成"读完 2 本书并写笔记"',
+  week:'【本周三件大事】\n1. 最重要的一件事（每天优先做）\n2. 固定 2-3 次运动 + 2 次整块学习/充电\n3. 一次复盘 + 一次主动社交或家庭时间\n【原则】先把大事排进时间表，再用碎片时间填小事',
+  day:'【今日必做】\n1. 最重要的一件事（先做）\n2. 一件推进长期目标的事（哪怕 15 分钟）\n3. 一次运动或休息\n4. 睡前 3 分钟复盘 + 写下明日计划'
+};
+function loadPlans(){
+  [['year','Year'],['month','Month'],['week','Week'],['day','Day']].forEach(function(p){
+    var el=document.getElementById('plan'+p[1]);if(!el)return;
+    var v=DB.get('plan_'+p[0],null);
+    if(v===null){v=DEFAULT_PLANS[p[0]];DB.set('plan_'+p[0],v)}
+    el.value=v;
+    el.oninput=function(){DB.set('plan_'+p[0],el.value);flash('已保存'+p[0]+'计划')};
+  });
+}
+var TT_SLOTS=['06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00'];
+var TT_DAYS=['周一','周二','周三','周四','周五','周六','周日'];
+var TT_COLORS=[
+  {k:'course',n:'📘 课程',bg:'#F1EBDD',fg:'#4A3427'},
+  {k:'study',n:'📝 学习',bg:'#EEF1E5',fg:'#6E4F37'},
+  {k:'sport',n:'🏃 运动',bg:'#FBEEE6',fg:'#8B4513'},
+  {k:'club',n:'🤝 社团',bg:'#EFE7CF',fg:'#A87F3C'},
+  {k:'meal',n:'🍚 吃饭',bg:'#FFF4D6',fg:'#8a6d00'},
+  {k:'rest',n:'😴 休息',bg:'#F1EFE8',fg:'#5F5E5A'},
+  {k:'fun',n:'🎮 娱乐',bg:'#FBEEE6',fg:'#8A5422'},
+  {k:'commute',n:'🚌 通勤',bg:'#FEF3C7',fg:'#92400E'},
+  {k:'clear',n:'🗑️ 清除',bg:'#FFFFFF',fg:'#6B7267'}
+];
+var ttSelected=null;
+var ttSelectedColor=null;
+var ttMode='color';
+function getTT(){return DB.get('timetable',{});}
+function saveTT(t){DB.set('timetable',t);}
+/* 时段自定义标签（如把 06:00 改成「晨读」）；未设置时显示原时段 */
+function getSlotLabels(){var t=getTT();return (t._labels)||{};}
+function saveSlotLabels(labels){var t=getTT();t._labels=labels;saveTT(t);}
+function editSlotLabel(slot){
+  var labels=getSlotLabels();
+  var cur=labels[slot]||slot;
+  var v=window.prompt('给这个时段起个名字（可留空恢复为原时间，如：晨读 / 午休 / 熄灯）：',cur);
+  if(v===null)return;
+  v=v.trim();
+  if(v===''){delete labels[slot];}else{labels[slot]=v;}
+  saveSlotLabels(labels);
+  renderPlans();
+  flash('时段名称已更新');
+}
+function renderPlans(){
+  loadPlans();
+  var pal=document.getElementById('timetablePalette');
+  if(pal){pal.innerHTML='<span style="font-size:11px;color:var(--hint);width:100%;margin-bottom:2px">🎨 先选颜色，再点格子填色（参考大学课程表：上课/自习/运动/社团/休息…不必细分到每节课）</span>'+
+    TT_COLORS.map(function(c){return '<button class="btn btn-sm'+(c.k==='clear'?' tt-clear-btn':'')+'" data-color="'+c.k+'" style="background:'+c.bg+';color:'+c.fg+';border-color:'+c.bg+'" onclick="paintTT(\''+c.k+'\')">'+c.n+'</button>'}).join('')+
+    '<button class="btn btn-sm" id="ttModeBtn" onclick="toggleTTMode()" style="background:var(--primary-light);color:var(--primary);border-color:var(--primary-mid)">'+(ttMode==='color'?'✏️ 切换文字模式':'🎨 切换填色模式')+'</button>'+
+    '<button class="btn btn-sm" onclick="flash(&#39;点击左侧时间列（如 06:00）即可编辑时段名称&#39;)" style="background:var(--bg);color:var(--muted);border-color:var(--border)">✏️ 改时段名</button>';}
+  var tbl=document.getElementById('timetable');if(!tbl)return;
+  var t=getTT();var labels=getSlotLabels();
+  var head='<tr><th style="width:56px">时间</th>'+TT_DAYS.map(function(d){return '<th>'+d+'</th>'}).join('')+'</tr>';
+  var rows=TT_SLOTS.map(function(slot){
+    var sLabel=labels[slot]||slot;
+    var cells=TT_DAYS.map(function(day){
+      var key=slot+'|'+day;var cell=t[key]||{text:'',color:''};
+      var col=TT_COLORS.filter(function(c){return c.k===cell.color})[0]||{k:'',n:'',bg:'#FFFFFF',fg:'#5F5E5A'};
+      if(ttMode==='text'){
+        return '<td data-key="'+key+'" style="height:30px;min-width:84px;background:'+col.bg+';color:'+col.fg+';cursor:text">'+
+          '<input value="'+escapeHtml(cell.text)+'" data-key="'+key+'" oninput="ttText(\''+key+'\',this.value)" style="width:100%;border:none;background:transparent;font-size:11px;padding:2px;color:inherit" placeholder=""></td>';
+      }
+      var label=cell.text?escapeHtml(cell.text):'';
+      return '<td data-key="'+key+'" title="'+(col.n||'')+(label?'：'+label:'')+'" style="height:30px;min-width:84px;background:'+col.bg+';color:'+col.fg+';cursor:pointer;font-size:11px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" onclick="fillTT(this,\''+key+'\')">'+label+'</td>';
+    }).join('');
+    return '<tr><td onclick="editSlotLabel(\''+slot+'\')" title="点击编辑这个时段名称" style="font-size:11px;color:var(--muted);background:var(--bg);font-weight:600;white-space:nowrap;cursor:pointer">'+escapeHtml(sLabel)+'</td>'+cells+'</tr>';
+  }).join('');
+  tbl.innerHTML=head+rows;
+}
+function fillTT(td,key){
+  if(!ttSelectedColor){flash('先点上方颜色，再点格子');return;}
+  var t=getTT();var cell=t[key]||{text:'',color:''};
+  if(ttSelectedColor==='clear'){cell.color='';}else{cell.color=ttSelectedColor;}
+  t[key]=cell;saveTT(t);
+  /* 立即把当前格子刷成所选颜色（即使后续重绘，也不会无反馈） */
+  if(td){var c0=TT_COLORS.filter(function(c){return c.k===cell.color})[0]||{bg:'#FFFFFF',fg:'#5F5E5A'};td.style.background=c0.bg;td.style.color=c0.fg;}
+  renderPlans();
+}
+/* 页面加载后务必渲染一次交互式一周时间表，否则格子只有静态文本、无法填色 */
+function initTimetableOnce(){try{renderPlans();}catch(e){}}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initTimetableOnce);}else{initTimetableOnce();}
+function selectTT(td,key){ttSelected=key;document.querySelectorAll('#timetable td').forEach(function(c){c.style.outline=''});td.style.outline='2px solid var(--coral)';}
+function paintTT(colorKey){ttSelectedColor=colorKey;var sel=document.getElementById('ttSelectedColor');if(sel)sel.textContent='已选「'+(TT_COLORS.filter(function(c){return c.k===colorKey})[0]||{n:colorKey}).n+'」→ 现在点格子填色';document.querySelectorAll('#timetablePalette .btn').forEach(function(b){b.style.outline=''});}
+function toggleTTMode(){ttMode=ttMode==='color'?'text':'color';renderPlans();flash(ttMode==='color'?'已切到填色模式':'已切到文字模式（点格子可输入内容）');}
+function ttText(key,v){var t=getTT();var cell=t[key]||{text:'',color:''};cell.text=v;t[key]=cell;saveTT(t);}
+function clearTimetable(){uiConfirm('确定清空整周时间表？',function(){DB.set('timetable',{});renderPlans();flash('已清空');});}
+
+/* ═══════════ 目标拆解 ═══════════ */
+var GOALS=[];
+function getGoalChecks(){return DB.get('goalChecks',{});}
+function saveGoalChecks(c){DB.set('goalChecks',c);}
+function getGoalDefs(){
+  var d=DB.get('goalDefs',null);
+  if(d===null||d.length===0){
+    /* 预置 3 个通用示例目标：覆盖学习/健康/职业，演示"目标→拆解→打勾"用法，可自行修改或删除 */
+    d=[
+      {id:'demo-reading',title:'示例1：3 个月内读完 4 本书并输出读书笔记（可修改或删除）',desc:'任何专业的成长都需要"持续输入+输出"。用这个目标训练"读完→写出来→形成自己的观点"的完整闭环。',milestones:['第 1 周：选 4 本书（1 本专业+1 本认知+1 本历史+1 本文学），按难度排序','第 1 个月：读完第 1 本专业书，写 1 篇 1500 字读书笔记发到公众号/小红书','第 2 个月：读完第 2 本认知书，做 1 页思维导图，记住 3 个核心概念','第 3 个月：读完剩下 2 本（每月 1 本），各写 1 篇短评','复盘：把 4 篇笔记整理成合集，看看哪些观点改变了你的行动']},
+      {id:'demo-health',title:'示例2：90 天养成每周 3 次运动的习惯（可修改或删除）',desc:'健康是所有目标的地基。这个目标训练"小到不可能失败"的习惯搭建：从 1 周 1 次开始，3 个月后自然变成每周 3 次。',milestones:['第 1 周：挑 1 项运动（跑步/跳绳/瑜伽/快走），每周 1 次，每次 20 分钟','第 2 周：每周 2 次，时间加到 30 分钟','第 3-4 周：每周 3 次，30-40 分钟，记录心率/时长/体感','第 5-8 周：每周 3 次稳定，给自己设小奖励（完赛奖牌/新装备/泡澡）','第 9-12 周：维持节奏，月底复盘体重/精神/睡眠的变化','结业：把"运动 90 天"的截图发朋友圈，建立长期形象']},
+      {id:'demo-career',title:'示例3：6 个月内找到一份满意实习或副业（可修改或删除）',desc:'求职/找副业不是"投简历+等结果"，而是"输出+连接+迭代"的系统动作。这套拆解可直接复用。',milestones:['第 1-2 周：定 3 个目标岗位/副业方向，分析招聘要求','第 3-4 周：打磨简历+作品集，投 20 家，先拿面试经验','第 5-6 周：复盘被拒原因，针对性补短板（技能/案例/表达）','第 7-10 周：拿到 offer 后选最优；如果还无 offer，进模拟面试','第 11-16 周：进入工作，前 2 周只观察+提问，之后才上手','第 18-24 周：积累 1-2 个可写进简历的成果，准备下一份']}
+    ];
+    saveGoalDefs(d);
+  }
+  return d;
+}
+function saveGoalDefs(d){DB.set('goalDefs',d);}
+function renderGoals(){
+  var gc=getGoalChecks();var box=document.getElementById('goalsContainer');if(!box)return;
+  var goals=getGoalDefs();
+  if(goals.length){
+    box.innerHTML=goals.map(function(g,i){
+      var checks=gc[g.id]||g.milestones.map(function(){return false});
+      var done=checks.filter(Boolean).length;var pct=Math.round(done/(g.milestones.length||1)*100);
+      var ms=g.milestones.map(function(m,j){
+        return '<div style="display:flex;align-items:center;gap:6px;padding:3px 0">'+
+          '<input type="checkbox" '+(checks[j]?'checked':'')+' onchange="toggleGoal(\''+g.id+'\','+j+')" style="width:15px;height:15px;flex-shrink:0">'+
+          '<span contenteditable="true" data-gm="'+i+'-'+j+'" onblur="editGoalMs('+i+','+j+',this)" style="flex:1;font-size:13px;cursor:text;outline:none">'+escapeHtml(m)+'</span>'+
+          '<button class="btn btn-sm" style="font-size:10px;padding:2px 6px;color:var(--hint)" onclick="delGoalMs('+i+','+j+')">×</button>'+
+        '</div>'
+      }).join('');
+      return '<div class="card" style="margin-bottom:16px">'+
+        '<div style="display:flex;align-items:center;gap:8px">'+
+          '<span contenteditable="true" data-gt="'+i+'" onblur="editGoalTitle('+i+',this)" style="flex:1;font-weight:700;font-size:16px;cursor:text;outline:none">'+escapeHtml(g.title)+'</span>'+
+          '<button class="btn btn-sm" style="font-size:11px;color:var(--hint)" onclick="delGoal('+i+')">删除目标</button>'+
+        '</div>'+
+        '<p contenteditable="true" data-gd="'+i+'" onblur="editGoalDesc('+i+',this)" style="font-size:13px;color:var(--muted);margin:6px 0;cursor:text;outline:none">'+escapeHtml(g.desc)+'</p>'+
+        '<div style="display:flex;align-items:center;gap:10px;margin:8px 0">'+
+          '<div class="progress" style="flex:1"><div class="bar" style="width:'+pct+'%"></div></div>'+
+          '<span style="font-size:13px;font-weight:600;color:var(--teal)">'+pct+'%</span>'+
+        '</div>'+
+        ms+
+        '<div style="display:flex;gap:6px;margin-top:8px">'+
+          '<input id="gmi_'+i+'" placeholder="添加里程碑..." style="flex:1">'+
+          '<button class="btn btn-primary btn-sm" onclick="addGoalMs('+i+')">添加</button>'+
+        '</div>'+
+      '</div>'
+    }).join('')+'<div style="height:16px"></div>';
+  }else{
+    box.innerHTML='<div class="card" style="text-align:center;padding:34px 16px;color:var(--hint);font-size:13px">还没有目标 · 在下方添加你的第一个人生目标</div>';
+  }
+  box.innerHTML+='<div class="card" style="border:1px dashed var(--border)">'+
+    '<h3 style="margin-bottom:10px">＋ 添加新目标</h3>'+
+    '<input id="newGoalTitle" placeholder="目标名称，如：考取职业资格证" style="width:100%;margin-bottom:6px">'+
+    '<input id="newGoalDesc" placeholder="目标描述（选填）" style="width:100%;margin-bottom:6px">'+
+    '<input id="newGoalMs" placeholder="首个里程碑（选填）" style="width:100%;margin-bottom:6px">'+
+    '<textarea id="newGoalSteps" placeholder="目标拆解步骤（选填）：每行写一条，添加后自动变成可勾选的里程碑。&#10;例如：&#10;第1周：完成调研&#10;第2周：完成初稿&#10;第3周：修改定稿" style="min-height:90px;margin-bottom:6px"></textarea>'+
+    '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'+
+      '<button class="btn btn-primary" onclick="addGoal()">添加目标</button>'+
+      '<span style="font-size:11px;color:var(--hint)">也可只填名称先创建，之后随时逐条补充里程碑</span>'+
+    '</div>'+
+  '</div>';
+}
+function editGoalTitle(i,el){var g=getGoalDefs();if(!g[i])return;var v=el.textContent.trim();if(v)g[i].title=v;saveGoalDefs(g);}
+function editGoalDesc(i,el){var g=getGoalDefs();if(!g[i])return;var v=el.textContent.trim();g[i].desc=v;saveGoalDefs(g);}
+function editGoalMs(i,j,el){var g=getGoalDefs();if(!g[i]||!g[i].milestones[j])return;var v=el.textContent.trim();if(v)g[i].milestones[j]=v;saveGoalDefs(g);}
+function delGoalMs(i,j){var g=getGoalDefs();if(!g[i])return;g[i].milestones.splice(j,1);saveGoalDefs(g);renderGoals();}
+function addGoalMs(i){var inp=document.getElementById('gmi_'+i);if(!inp)return;var v=inp.value.trim();if(!v)return;var g=getGoalDefs();g[i].milestones.push(v);saveGoalDefs(g);renderGoals();}
+function addGoal(){
+  var t=document.getElementById('newGoalTitle'),d=document.getElementById('newGoalDesc'),ms=document.getElementById('newGoalMs'),steps=document.getElementById('newGoalSteps');
+  if(!t||!t.value.trim()){uiAlert('请填写目标名称');return;}
+  var g=getGoalDefs();
+  var msList=[];
+  if(steps&&steps.value.trim()){
+    msList=steps.value.split(/\n+/).map(function(s){return s.trim()}).filter(Boolean);
+  }
+  if(!msList.length&&ms&&ms.value.trim()){msList.push(ms.value.trim());}
+  if(!msList.length){msList=['第一步：开始行动'];}
+  g.push({id:'g'+Date.now(),title:t.value.trim(),desc:(d&&d.value.trim())||'',milestones:msList});
+  saveGoalDefs(g);
+  if(t)t.value='';if(d)d.value='';if(ms)ms.value='';if(steps)steps.value='';
+  renderGoals();
+}
+function delGoal(i){
+  uiConfirm('要移除这个目标吗？',function(){
+    var g=getGoalDefs();if(!g[i])return;
+    var gc=getGoalChecks();delete gc[g[i].id];saveGoalChecks(gc);
+    g.splice(i,1);saveGoalDefs(g);renderGoals();
+  });
+}
+function toggleGoal(id,i){
+  var gc=getGoalChecks();
+  var g=getGoalDefs().filter(function(x){return x.id===id})[0];if(!g)return;
+  var checks=gc[id]||g.milestones.map(function(){return false});
+  checks[i]=!checks[i];gc[id]=checks;saveGoalChecks(gc);renderGoals();
+}
+
+/* ═══════════ 英语精读 ═══════════ */
+var READINGS=[
+  {title:'Passage 1 · 习惯的力量（难度 ★★☆）',
+   en:'Good habits are the key to success in college. When students form a regular study routine, they spend less time worrying and more time learning. Research shows that people who exercise every morning are more productive during the day. Besides, writing a short daily journal helps clarify thoughts and reduce stress. The most successful learners are not the smartest, but those who persist with small, consistent efforts.',
+   vocab:[{w:'routine',m:'n.常规；例行程序'},{w:'productive',m:'adj.高效的；多产的'},{w:'clarify',m:'v.澄清；阐明'},{w:'persist',m:'v.坚持；持续'},{w:'consistent',m:'adj.始终如一的；一致的'}],
+   zh:'好习惯是大学成功的关键。当学生形成规律的学习习惯，他们花在焦虑上的时间更少，花在学习上的时间更多。研究表明，每天早晨锻炼的人在白天更高效。此外，写简短的每日日记有助于理清思路、减轻压力。最成功的学习者不是最聪明的，而是那些用微小而持续的努力坚持下来的人。',
+   notes:'长难句：Research shows that people who exercise every morning are more productive during the day. 主干 Research shows that + 宾语从句；从句主语 people，后接 who 引导定语从句修饰 people。翻译时先翻主干"研究表明……"，再把定语"每天早晨锻炼的"前置。',
+   qa:[{q:'作者认为最成功的学习者具备什么特质？',a:'坚持微小而持续的努力（persist with small, consistent efforts），而非最聪明。'}]},
+  {title:'Passage 2 · 数字时代的注意力（难度 ★★★）',
+   en:'In the digital age, our attention is constantly pulled in different directions by phones, social media, and endless notifications. A growing number of students find it hard to focus on a single task for more than twenty minutes. Experts suggest that deep work—the ability to concentrate without distraction—is becoming a rare and valuable skill. By turning off unnecessary alerts and planning focused blocks of time, anyone can train their attention like a muscle.',
+   vocab:[{w:'constantly',m:'adv.不断地；时常地'},{w:'notification',m:'n.通知；提醒'},{w:'distraction',m:'n.分心；干扰'},{w:'concentrate',m:'v.集中（注意力）；专注'},{w:'valuable',m:'adj.有价值的；珍贵的'}],
+   zh:'在数字时代，我们的注意力不断被手机、社交媒体和无尽的通知拉向不同方向。越来越多的学生发现很难把注意力集中在一件事上超过二十分钟。专家建议，深度工作——即不受干扰地专注的能力——正在成为一种稀缺而有价值的技能。通过关闭不必要的提醒、规划专注时间段，任何人都能像锻炼肌肉一样训练自己的注意力。',
+   notes:'长难句：Experts suggest that deep work—the ability to concentrate without distraction—is becoming a rare and valuable skill. 破折号之间为同位语解释 deep work；宾语从句主语 deep work，谓语 is becoming。',
+   qa:[{q:'如何训练注意力？',a:'关闭不必要的提醒 + 规划专注时间段，像练肌肉一样训练。'}]},
+  {title:'Passage 3 · 阅读的力量（难度 ★★☆）',
+   en:'Reading is one of the most effective ways to expand our knowledge and improve our thinking. Unlike short videos that deliver information passively, reading requires us to actively engage with the text, question the author\'s arguments, and form our own opinions. Studies have shown that students who read at least thirty minutes a day tend to write more clearly and reason more logically. The habit of reading does not develop overnight, but once established, it benefits a person for a lifetime.',
+   vocab:[{w:'expand',m:'v.扩展；扩大'},{w:'passively',m:'adv.被动地'},{w:'engage',m:'v.参与；投入'},{w:'reason',m:'v.推理；论证'},{w:'overnight',m:'adv.一夜之间；突然'}],
+   zh:'阅读是拓展知识、提升思维最有效的方式之一。与被动传递信息的短视频不同，阅读要求我们主动与文本互动、质疑作者的观点、形成自己的见解。研究表明，每天至少阅读三十分钟的学生往往写得更清晰、推理更合乎逻辑。阅读习惯并非一朝一夕养成，但一旦建立，将使人终身受益。',
+   notes:'长难句：Unlike short videos that deliver information passively, reading requires us to actively engage with the text, question the author\'s arguments, and form our own opinions. 介词短语 Unlike ... 作状语；主语 reading，谓语 requires，宾语 us to engage...。三个并列不定式 engage/question/form 作宾补。',
+   qa:[{q:'阅读与短视频的核心区别？',a:'阅读要求主动参与、质疑、形成观点；短视频被动接收信息。'}]},
+  {title:'Passage 4 · 时间管理的智慧（难度 ★★★）',
+   en:'Time management is not about doing more things in less time, but about doing the right things at the right moment. Many people spend hours making detailed plans, yet fail to follow them. The key lies in prioritizing tasks according to their importance rather than their urgency. A useful method is to identify one most important task each morning and complete it before handling anything else. This single habit can dramatically improve productivity and reduce the anxiety of unfinished work.',
+   vocab:[{w:'prioritize',m:'v.优先处理；排序'},{w:'urgency',m:'n.紧急；紧迫'},{w:'identify',m:'v.识别；确定'},{w:'dramatically',m:'adv.显著地；大幅度地'},{w:'productivity',m:'n.生产力；效率'}],
+   zh:'时间管理不是在更短时间内做更多事，而是在对的时刻做对的事。许多人花数小时制定详细计划，却无法执行。关键在于按重要性而非紧迫性来排列任务优先级。一个有用的方法是每天早上确定一件最重要的事，在处理任何其他事之前先完成它。这一个习惯就能显著提升效率，减轻未完成工作带来的焦虑。',
+   notes:'长难句：A useful method is to identify one most important task each morning and complete it before handling anything else. 主干 A method is to identify... and complete...；before handling 作时间状语。',
+   qa:[{q:'时间管理的核心是什么？',a:'按重要性而非紧迫性排序，每天先完成最重要的一件事。'}]},
+  {title:'Passage 5 · 坚持与复利（难度 ★★☆）',
+   en:'The power of compounding applies not only to money but also to personal growth. If you improve by just one percent every day, you will be thirty-seven times better after a year. The challenge is that progress is nearly invisible in the short term, which causes many people to give up too early. Those who achieve remarkable results are usually not the most talented, but the ones who persist long enough for the compounding effect to appear. Patience and consistency are the true secrets behind overnight success.',
+   vocab:[{w:'compounding',m:'n.复利；复合增长'},{w:'invisible',m:'adj.看不见的；无形的'},{w:'persist',m:'v.坚持；持续'},{w:'remarkable',m:'adj.显著的；非凡的'},{w:'consistency',m:'n.一致性；连贯性'}],
+   zh:'复利的力量不仅适用于金钱，也适用于个人成长。如果你每天只进步百分之一，一年后你会变强三十七倍。挑战在于进步在短期内几乎看不见，这导致许多人过早放弃。取得非凡成就的人通常不是最有天赋的，而是坚持得足够久、让复利效应显现的人。耐心与一致是"一夜成功"背后真正的秘密。',
+   notes:'长难句：Those who achieve remarkable results are usually not the most talented, but the ones who persist long enough for the compounding effect to appear. 主干 Those are not... but...；两个 who 引导定语从句分别修饰 Those 和 the ones；for...to appear 表结果。',
+   qa:[{q:'为什么很多人过早放弃？',a:'因为短期内进步几乎看不见，复利效应还没显现。'}]},
+  {title:'Passage 6 · 大学生与独立思考（难度 ★★★）',
+   en:'University is not merely a place to acquire professional knowledge, but a training ground for independent thinking. In high school, students are often given standard answers, while in college, they are expected to question assumptions, evaluate evidence, and construct their own arguments. A student who merely memorizes textbooks will struggle in an era where information is instantly available online. The most valuable skill a graduate can carry away is the ability to learn how to learn—to update one\'s knowledge continuously and adapt to a rapidly changing world.',
+   vocab:[{w:'merely',m:'adv.仅仅；只是'},{w:'assumption',m:'n.假设；假定'},{w:'evaluate',m:'v.评估；评价'},{w:'construct',m:'v.构建；建立'},{w:'adapt',m:'v.适应；调整'}],
+   zh:'大学不仅仅是获取专业知识的地方，更是独立思考的训练场。高中时学生常被给予标准答案，而大学里，他们被期望去质疑假设、评估证据、构建自己的论证。一个只会死记课本的学生，在信息随手可得的网络时代会举步维艰。毕业生能带走的最有价值的技能，是"学会如何学习"的能力——持续更新知识、适应快速变化的世界。',
+   notes:'长难句：The most valuable skill a graduate can carry away is the ability to learn how to learn—to update one\'s knowledge continuously and adapt to a rapidly changing world. 主干 The skill is the ability；a graduate can carry away 为省略 that 的定语从句修饰 skill；破折号后解释 ability。',
+   qa:[{q:'大学最重要的能力是什么？',a:'学会如何学习——持续更新知识、适应变化。'}]}
+];
+function getReadingNotes(){return DB.get('readingNotes',{});}
+function saveReadingNotes(n){DB.set('readingNotes',n);}
+var readingIdx=-1;
+function nextReadingArticle(){readingIdx++;renderReading();}
+function renderReading(){
+  var rn=getReadingNotes();var box=document.getElementById('readingContainer');if(!box)return;
+  if(readingIdx<0){var day=Math.floor(Date.now()/86400000);readingIdx=day%READINGS.length;}
+  var idx=readingIdx%READINGS.length;
+  var r=READINGS[idx];
+  /* 笔记按文章内容指纹存（避免换文章后笔记串台） */
+  var key=idx+'_'+r.title.slice(0,8);
+  var noteVal=rn[key]||'';
+  var nv=r.vocab.map(function(v){return '<span class="tag tag-blue" style="margin:2px 4px 2px 0;display:inline-block">'+v.w+' '+(v.m||'')+'</span>'}).join('');
+  var qa=r.qa?r.qa.map(function(x){return '<div style="padding:6px 0;border-top:1px dashed var(--border);font-size:14px"><strong style="color:var(--primary)">Q：</strong> '+x.q+'<br><strong style="color:var(--teal)">A：</strong> '+x.a+'</div>'}).join(''):'';
+  box.innerHTML='<div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">'+
+      '<span style="font-size:13px;color:var(--hint)">第 '+(idx+1)+' 篇 / 共 '+READINGS.length+' 篇 · 每日轮换 · 点"换一篇"切换</span>'+
+      '<button class="btn btn-sm btn-primary" onclick="nextReadingArticle()">换一篇</button>'+
+    '</div>'+
+    '<div class="card" style="margin-bottom:16px">'+
+      '<h3>'+r.title+'</h3>'+
+      '<h4>原文</h4><p style="line-height:2.0;color:var(--text);font-size:16px">'+r.en+'</p>'+
+      '<h4>重点词汇</h4><div style="margin-bottom:6px">'+nv+'</div>'+
+      '<h4>中文译文</h4><p style="background:var(--bg);padding:14px;border-radius:8px;line-height:2.0;font-size:15px">'+r.zh+'</p>'+
+      '<h4>长难句精析</h4><p style="color:var(--muted);line-height:1.9;font-size:15px">'+r.notes+'</p>'+
+      (qa?'<h4>思考题</h4>'+qa:'')+
+      '<h4>我的笔记</h4>'+
+      '<textarea id="rn_'+key+'" placeholder="写下你的理解、生词、仿写句...（自动保存）" style="font-size:15px;line-height:1.8" onblur="saveReadingNoteKey(\''+key+'\',this.value)">'+escapeHtml(noteVal)+'</textarea>'+
+      '<button class="btn btn-sm btn-primary" style="margin-top:8px" onclick="saveReadingNoteKey(\''+key+'\',document.getElementById(\'rn_'+key+'\').value)">保存笔记</button>'+
+      '<span style="font-size:12px;color:var(--teal);margin-left:10px" id="rnSaved_'+key+'"></span>'+
+    '</div>';
+}
+function saveReadingNoteKey(key,val){
+  var rn=getReadingNotes();rn[key]=val;saveReadingNotes(rn);
+  var el=document.getElementById('rnSaved_'+key);if(el){el.textContent='已保存';setTimeout(function(){el.textContent=''},1500);}
+}
+function saveReadingNote(idx){
+  /* 兼容旧调用：按当前文章存 */
+  var r=READINGS[readingIdx%READINGS.length];
+  var key=idx+'_'+(r?r.title.slice(0,8):'');
+  var el=document.getElementById('rn_'+key);
+  if(el)saveReadingNoteKey(key,el.value);
+}
+
+/* ═══════════ 英语精读 · 六级真题风格模块 ═══════════ */
+var CET6_READINGS=[
+  {title:'Passage 1 · AI与就业变革（难度 ★★★★）',
+   en:'Artificial intelligence is reshaping the global labor market at an unprecedented pace. While automation has historically displaced workers in manufacturing, the current wave of intelligent systems is penetrating white-collar professions once considered immune to technological disruption. Economists argue, however, that the primary challenge is not the elimination of jobs but the transformation of skill requirements. Employees who embrace lifelong learning and acquire digital literacy will not merely survive this transition but thrive in it, whereas those who resist adaptation risk being marginalized.',
+   vocab:[{w:'unprecedented',m:'adj.史无前例的'},{w:'displacement',m:'n.取代；转移'},{w:'penetrate',m:'v.渗透；进入'},{w:'marginalize',m:'v.使边缘化'},{w:'adaptation',m:'n.适应；调整'}],
+   zh:'人工智能正以前所未有的速度重塑全球劳动力市场。虽然历史上自动化取代了制造业工人，但当前这轮智能系统正在渗透那些曾被认为不受技术冲击影响的白领职业。然而，经济学家认为，主要挑战并非就业岗位的消失，而是技能要求的转变。拥抱终身学习并掌握数字素养的员工不仅能安然度过这场变革，还会在其中茁壮成长；而那些抗拒适应的人则面临被边缘化的风险。',
+   notes:'长难句：Employees who embrace lifelong learning and acquire digital literacy will not merely survive this transition but thrive in it, whereas those who resist adaptation risk being marginalized. 主干 Employees will not merely survive... but thrive...；两个 who 从句分别修饰 Employees 与 those；whereas 连接对比句。',
+   qa:[{q:'作者认为 AI 对就业的主要挑战是什么？',a:'不是岗位消失，而是技能要求转变——需要终身学习与数字素养。'}]},
+  {title:'Passage 2 · 共享经济的双刃剑（难度 ★★★★）',
+   en:'The sharing economy, exemplified by ride-hailing and short-term rental platforms, has fundamentally altered how urban residents consume services. Proponents celebrate its efficiency in utilizing idle resources, while critics point to the erosion of labor protections and the widening gap between platform operators and frontline workers. A balanced perspective suggests that regulation should evolve alongside innovation, ensuring that convenience does not come at the expense of social equity. Ultimately, the trajectory of this economic model depends on whether stakeholders can reconcile efficiency with fairness.',
+   vocab:[{w:'exemplify',m:'v.例证；是…的典范'},{w:'erosion',m:'n.侵蚀；削弱'},{w:'reconcile',m:'v.调和；使一致'},{w:'stakeholder',m:'n.利益相关者'},{w:'trajectory',m:'n.轨迹；发展态势'}],
+   zh:'以网约车和短租平台为代表的共享经济，从根本上改变了城市居民的消费方式。支持者称赞其在利用闲置资源方面的高效，而批评者则指出劳工保障被侵蚀、平台运营者与一线工作者之间的差距在扩大。一种平衡的视角认为，监管应当与创新同步演进，确保便利不以牺牲社会公平为代价。归根结底，这一经济模式的走向取决于各方能否在效率与公平之间取得调和。',
+   notes:'长难句：A balanced perspective suggests that regulation should evolve alongside innovation, ensuring that convenience does not come at the expense of social equity. 主干 A perspective suggests that...；ensuring that... 为结果状语，其内嵌宾语从句。',
+   qa:[{q:'共享经济的利弊分别是什么？',a:'利：高效利用闲置资源；弊：劳工保障被侵蚀、公平受损。'}]},
+  {title:'Passage 3 · 环境可持续的个体责任（难度 ★★★☆）',
+   en:'Environmental sustainability is often framed as a matter of national policy, yet individual behavior constitutes the foundation upon which systemic change rests. Research indicates that household consumption accounts for a substantial share of carbon emissions, ranging from energy use to dietary choices. Small adjustments—such as reducing food waste, choosing public transportation, and supporting sustainable brands—may appear insignificant in isolation, but their cumulative effect is considerable. The challenge lies not in knowing what to do, but in converting awareness into consistent action.',
+   vocab:[{w:'sustainability',m:'n.可持续性'},{w:'constitute',m:'v.构成；组成'},{w:'substantial',m:'adj.大量的；可观的'},{w:'cumulative',m:'adj.累积的'},{w:'convert',m:'v.转变；转化'}],
+   zh:'环境可持续性常被视为国家政策层面的议题，然而个人行为构成了系统性变革赖以存在的根基。研究表明，家庭消费在碳排放中占比可观，从能源使用到饮食选择皆涵盖其中。微小的调整——如减少食物浪费、选择公共交通、支持可持续品牌——单独看似乎微不足道，但其累积效应相当可观。挑战不在于知道该做什么，而在于把认知转化为持续的行动。',
+   notes:'长难句：Research indicates that household consumption accounts for a substantial share of carbon emissions, ranging from energy use to dietary choices. 主干 Research indicates that...；ranging from...to... 为现在分词短语作后置定语，修饰 emissions。',
+   qa:[{q:'个人行为对环保的意义是什么？',a:'个人行为构成系统性变革的根基，微小调整的累积效应可观。'}]},
+  {title:'Passage 4 · 跨学科学习的价值（难度 ★★★★）',
+   en:'In an era of accelerating specialization, the value of interdisciplinary learning is increasingly recognized by both educators and employers. Disciplines do not exist in isolation; breakthroughs frequently emerge at the intersections where different fields of knowledge converge. A student who combines legal expertise with technological literacy, for instance, is uniquely positioned to address the regulatory challenges of artificial intelligence. Universities are accordingly restructuring curricula to encourage such synthesis, recognizing that the capacity to integrate diverse perspectives has become a defining skill of the modern workforce.',
+   vocab:[{w:'interdisciplinary',m:'adj.跨学科的'},{w:'breakthrough',m:'n.突破'},{w:'intersection',m:'n.交叉点'},{w:'converge',m:'v.汇聚；集中'},{w:'synthesis',m:'n.综合；整合'}],
+   zh:'在专业化不断加速的时代，跨学科学习的价值日益得到教育工作者和雇主的认可。学科并非孤立存在；突破性成果往往出现在不同知识领域交汇之处。例如，一个兼具法学专长与科技素养的学生，在应对人工智能的监管挑战时具有独特优势。大学因此正在重构课程以鼓励这种综合，认识到整合多元视角的能力已成为现代劳动力的标志性技能。',
+   notes:'长难句：A student who combines legal expertise with technological literacy, for instance, is uniquely positioned to address the regulatory challenges of artificial intelligence. 主干 A student is positioned to address...；who 从句修饰 student，for instance 为插入语。',
+   qa:[{q:'为什么跨学科能力日益重要？',a:'突破常出现在学科交叉处，整合多元视角成为现代劳动力标志性技能。'}]},
+  {title:'Passage 5 · 教育的数字鸿沟（难度 ★★★★）',
+   en:'The rapid shift toward digital education has exposed and exacerbated the digital divide, the gap between those with reliable access to technology and those without. While online platforms offer unprecedented learning opportunities, students in underprivileged regions often struggle with insufficient devices, unstable connectivity, and limited digital guidance. This disparity threatens to entrench existing inequalities rather than alleviate them. Policymakers and educators therefore face the urgent task of designing inclusive solutions that ensure no learner is left behind in the digital transformation.',
+   vocab:[{w:'exacerbate',m:'v.加剧；恶化'},{w:'underprivileged',m:'adj.贫困的；弱势的'},{w:'disparity',m:'n.差距；不均'},{w:'entrench',m:'v.使根深蒂固'},{w:'inclusive',m:'adj.包容的；普惠的'}],
+   zh:'向数字化教育的快速转型暴露并加剧了数字鸿沟——即有可靠技术条件者与没有者之间的差距。尽管在线平台提供了前所未有的学习机会，贫困地区的学生却常常面临设备不足、网络不稳定和数字指导匮乏的困境。这种差距恐将固化而非缩小现有的不平等。因此，政策制定者和教育工作者面临紧迫任务：设计包容性方案，确保数字化进程中不落下任何学习者。',
+   notes:'长难句：Policymakers and educators therefore face the urgent task of designing inclusive solutions that ensure no learner is left behind in the digital transformation. 主干 ...face the task of designing...；that 从句修饰 solutions。',
+   qa:[{q:'数字鸿沟指的是什么？',a:'有可靠技术条件者与没有者之间的差距，数字化教育加剧了它。'}]},
+  {title:'Passage 6 · 城市化与生活质量（难度 ★★★☆）',
+   en:'Urbanization has long been associated with economic progress, yet its impact on quality of life is far from straightforward. Megacities attract talent and capital, fostering innovation and cultural vitality; simultaneously, they confront overcrowding, soaring housing costs, and environmental strain. Recent studies suggest that well-designed public spaces and efficient transit systems can significantly mitigate these pressures, enhancing residents\' well-being without sacrificing urban dynamism. The future of cities thus hinges less on their size than on the wisdom of their planning.',
+   vocab:[{w:'urbanization',m:'n.城市化'},{w:'vitality',m:'n.活力；生命力'},{w:'mitigate',m:'v.缓解；减轻'},{w:'well-being',m:'n.幸福感；福祉'},{w:'dynamism',m:'n.活力；动态性'}],
+   zh:'城市化长期以来与经济发展相关联，但它对生活质量的影响远非简单明了。特大城市吸引人才与资本，激发创新与文化活力；与此同时，它们也面临拥挤、房价飙升和环境压力。近期研究表明，设计良好的公共空间与高效的交通系统能显著缓解这些压力，在提升居民福祉的同时不牺牲城市的活力。因此，城市的未来更多取决于规划智慧，而非规模大小。',
+   notes:'长难句：Recent studies suggest that well-designed public spaces and efficient transit systems can significantly mitigate these pressures, enhancing residents\' well-being without sacrificing urban dynamism. 主干 studies suggest that...；enhancing... 为结果状语。',
+   qa:[{q:'城市化对生活质量的真实影响？',a:'利弊并存——促创新增活力，也带来拥挤房价压力；关键在规划智慧。'}]}
+];
+function getCet6Notes(){return DB.get('cet6ReadingNotes',{});}
+function saveCet6Notes(n){DB.set('cet6ReadingNotes',n);}
+var cet6ReadingIdx=-1;
+function nextCet6Reading(){cet6ReadingIdx++;renderCet6Reading();}
+function renderCet6Reading(){
+  var rn=getCet6Notes();var box=document.getElementById('cet6ReadingContainer');if(!box)return;
+  if(cet6ReadingIdx<0){var day=Math.floor(Date.now()/86400000);cet6ReadingIdx=day%CET6_READINGS.length;}
+  var idx=cet6ReadingIdx%CET6_READINGS.length;
+  var r=CET6_READINGS[idx];
+  var key=idx+'_'+r.title.slice(0,8);
+  var noteVal=rn[key]||'';
+  var nv=r.vocab.map(function(v){return '<span class="tag tag-teal" style="margin:2px 4px 2px 0;display:inline-block">'+v.w+' '+(v.m||'')+'</span>'}).join('');
+  var qa=r.qa?r.qa.map(function(x){return '<div style="padding:6px 0;border-top:1px dashed var(--border);font-size:14px"><strong style="color:var(--primary)">Q：</strong> '+x.q+'<br><strong style="color:var(--teal)">A：</strong> '+x.a+'</div>'}).join(''):'';
+  box.innerHTML='<div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">'+
+      '<span style="font-size:13px;color:var(--hint)">第 '+(idx+1)+' 篇 / 共 '+CET6_READINGS.length+' 篇 · 六级真题风格 · 点"换一篇"切换</span>'+
+      '<button class="btn btn-sm btn-primary" onclick="nextCet6Reading()">换一篇</button>'+
+    '</div>'+
+    '<div class="card" style="margin-bottom:16px">'+
+      '<h3>'+r.title+'</h3>'+
+      '<h4>原文</h4><p style="line-height:2.0;color:var(--text);font-size:16px">'+r.en+'</p>'+
+      '<h4>重点词汇</h4><div style="margin-bottom:6px">'+nv+'</div>'+
+      '<h4>中文译文</h4><p style="background:var(--bg);padding:14px;border-radius:8px;line-height:2.0;font-size:15px">'+r.zh+'</p>'+
+      '<h4>长难句精析</h4><p style="color:var(--muted);line-height:1.9;font-size:15px">'+r.notes+'</p>'+
+      (qa?'<h4>思考题</h4>'+qa:'')+
+      '<h4>我的笔记</h4>'+
+      '<textarea id="c6n_'+key+'" placeholder="写下你的理解、生词、仿写句...（自动保存）" style="font-size:15px;line-height:1.8" onblur="saveCet6NoteKey(\''+key+'\',this.value)">'+escapeHtml(noteVal)+'</textarea>'+
+      '<button class="btn btn-sm btn-primary" style="margin-top:8px" onclick="saveCet6NoteKey(\''+key+'\',document.getElementById(\'c6n_'+key+'\').value)">保存笔记</button>'+
+      '<span style="font-size:12px;color:var(--teal);margin-left:10px" id="c6nSaved_'+key+'"></span>'+
+    '</div>';
+}
+function saveCet6NoteKey(key,val){
+  var rn=getCet6Notes();rn[key]=val;saveCet6Notes(rn);
+  var el=document.getElementById('c6nSaved_'+key);if(el){el.textContent='已保存';setTimeout(function(){el.textContent=''},1500);}
+}
+
+/* ═══════════ 时效性内容自动清理 ═══════════ */
+function applyExpiry(){
+  var now=new Date();
+  document.querySelectorAll('[data-expire]').forEach(function(el){
+    var exp=new Date(el.getAttribute('data-expire')+'T23:59:59');
+    if(!isNaN(exp)&&now>exp){
+      var label=el.getAttribute('data-expire-label')||'该时效';
+      el.innerHTML='<p style="font-size:12px;color:var(--hint);margin:0">'+label+'内容已过期，已自动清理。</p>';
+      el.style.opacity='0.7';
+    }
+  });
+}
+
+/* 驾考每日一题 */
+var DRIVING_Q=[
+  {sub:'科一',q:'驾驶机动车在路口遇有交通信号灯和交通警察指挥不一致时，应当遵循？',opts:['A.信号灯','B.交通警察指挥','C.自己判断','D.鸣笛示意'],a:'B',exp:'交通警察指挥优先级高于信号灯，必须服从交警指挥。',tip:'科目一核心：交警指挥>信号灯>标志标线。'},
+  {sub:'科一',q:'在没有中心线的道路上，机动车相对方向行驶，安全距离是多少？',opts:['A.保持安全距离即可','B.靠右行驶并保持必要安全距离','C.靠左行驶','D.加速通过'],a:'B',exp:'无中心线路段，双方都应靠右行驶并保持必要安全距离。',tip:'科目一易错：无中心线=靠右+安全距离。'},
+  {sub:'科一',q:'机动车在夜间通过没有交通信号灯的路口时，应当如何使用灯光？',opts:['A.开远光灯','B.开近光灯并交替使用远近光灯示意','C.关灯通过','D.开雾灯'],a:'B',exp:'夜间通过无信号灯路口应开近光灯，并交替使用远近光灯示意。',tip:'远近光交替=通过路口/超车/急弯/坡路。'},
+  {sub:'科一',q:'在同车道行驶中，与前车保持安全距离的主要目的是？',opts:['A.便于超车','B.防止追尾','C.节省燃油','D.提高车速'],a:'B',exp:'保持安全距离的核心目的是防止前车紧急制动时追尾。',tip:'安全距离=反应距离+制动距离。'},
+  {sub:'科一',q:'驾驶机动车下陡坡时，最高车速不得超过多少？',opts:['A.30公里/小时','B.40公里/小时','C.50公里/小时','D.60公里/小时'],a:'A',exp:'下陡坡最高时速30公里/小时，防止制动失效。',tip:'特殊路段统一限速30：陡坡/窄路/窄桥/铁道/弯道/冰雪。'},
+  {sub:'科四',q:'行车中遇对向来车占道行驶，应当怎样做？',opts:['A.坚决占道对峙','B.减速避让，必要时停车','C.鸣笛不让','D.加速抢行'],a:'B',exp:'安全文明驾驶核心：礼让三先（先慢、先让、先停），减速避让。',tip:'科目四核心：安全礼让优先，宁停三分不抢一秒。'},
+  {sub:'科四',q:'夜间会车应当在距对方来车多远改用近光灯？',opts:['A.50米','B.100米','C.150米','D.200米'],a:'C',exp:'夜间会车应在距对向150米外改用近光灯，避免炫目。',tip:'150米是夜间会车改近光的距离标准。'},
+  {sub:'科四',q:'在高速公路上发生故障需要停车时，应当怎样做？',opts:['A.立即停车','B.开启危险报警闪光灯，移至应急车道，设警告标志','C.减速继续行驶','D.原地等待救援'],a:'B',exp:'高速故障：开双闪→移至应急车道→车后150米设警告标志→人员撤离到护栏外→报警。',tip:'高速故障五步：双闪、移车、设标、撤离、报警。'},
+  {sub:'科一',q:'机动车驾驶证有效期分为？',opts:['A.6年、10年、长期','B.1年、3年、5年','C.3年、6年、10年','D.5年、10年、永久'],a:'A',exp:'驾驶证有效期：初次6年→10年→长期。',tip:'换证时间：6年/10年/长期。'},
+  {sub:'科四',q:'雨天行车，应当怎样使用灯光和车速？',opts:['A.开远光，加速','B.开近光/雾灯，减速慢行','C.关灯，正常行驶','D.开双闪，停车'],a:'B',exp:'雨天开近光灯或雾灯，减速慢行，保持车距。',tip:'恶劣天气：开灯+减速+拉大车距。'}
+];
+var drivingIdx=-1;
+function nextDrivingQ(){drivingIdx++;renderDrivingQ();}
+function renderDrivingQ(){
+  var el=document.getElementById('drivingQ');if(!el)return;
+  var all=DRIVING_Q;
+  if(drivingIdx<0){var day=Math.floor(Date.now()/86400000);drivingIdx=day%all.length;}
+  var q=all[drivingIdx%all.length];
+  var optsHtml=q.opts.map(function(o,i){
+    var isAns=o.charAt(0)===q.a;
+    return '<div style="padding:8px 12px;margin-bottom:6px;border-radius:6px;cursor:pointer" onclick="this.style.background=\''+(isAns?'var(--teal-light)':'var(--coral-light)')+'\'" '+(isAns?'':'')+'>'+o+(isAns?' <span style="font-size:12px;color:var(--teal);font-weight:600">✓ 正确答案</span>':'')+'</div>';
+  }).join('');
+  el.innerHTML=
+    '<div style="font-size:12px;color:var(--hint);margin-bottom:6px">'+q.sub+' · 第'+(drivingIdx%all.length+1)+'题（共'+all.length+'题）</div>'+
+    '<div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px;line-height:1.7">'+q.q+'</div>'+
+    optsHtml+
+    '<div class="callout callout-info" style="margin-top:10px"><strong>解析：</strong>'+q.exp+'</div>'+
+    '<div class="callout callout-warn" style="margin-top:8px"><strong>考试注意：</strong>'+q.tip+'</div>';
+  var d=document.getElementById('drivingDate');if(d)d.textContent=todayKey();
+}
+
+
+/* ═══════ BMI 自动测算 ═══════ */
+function calcBmi(){
+  var h=document.getElementById('userHeight');
+  var w=document.getElementById('curWeight');
+  var g=document.getElementById('goalWeight');
+  if(!h||!w)return;
+  var cb=document.getElementById('curBmi');
+  var gbox=document.getElementById('goalBmi');
+  var pb=document.getElementById('weeklyPace');
+  var hv=parseFloat(h.textContent);var wv=parseFloat(w.textContent);
+  var gv=parseFloat(g?g.textContent:'0');
+  /* 身高或体重被清空 → 相关测算一并复位，不留残留的旧值 */
+  if(!(hv>0)||!(wv>0)){
+    if(cb)cb.textContent='BMI待测算';
+    if(gbox)gbox.textContent='待测算';
+    if(pb)pb.textContent='每周节奏自定';
+    markMetricPlaceholders();
+    return;
+  }
+  var bmi=(wv/((hv/100)*(hv/100))).toFixed(1);
+  if(cb)cb.textContent='BMI '+bmi;
+  if(gv>0){
+    var gbmi=(gv/((hv/100)*(hv/100))).toFixed(1);

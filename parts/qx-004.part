@@ -1,0 +1,1418 @@
+ackground:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-hj-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+            <tr><td>清明3天</td><td>4月初</td>
+              <td contenteditable="true" data-key="hol-qm-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-qm-sub" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-qm-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+            <tr><td>五一5天</td><td>5.1-5.5</td>
+              <td contenteditable="true" data-key="hol-wy-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-wy-sub" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-wy-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+            <tr><td>端午3天</td><td>6月初</td>
+              <td contenteditable="true" data-key="hol-dw-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-dw-sub" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-dw-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+            <tr><td>暑假60天</td><td>7月-8月底</td>
+              <td contenteditable="true" data-key="hol-sj-main" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-sj-sub" style="cursor:text;background:var(--bg)"></td>
+              <td contenteditable="true" data-key="hol-sj-done" style="cursor:text;background:var(--bg)" data-placeholder="是/否"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>社团选择 · 选1-2个不贪多</h3>
+        <div class="callout callout-info" style="margin-bottom:10px"><strong>核心原则：</strong>选1-2个深入参与，比加5个都成"透明人"强。社团的核心价值不是"参加了什么"，而是"在里面做了什么、做成了什么"。</div>
+        <div class="grid grid-3">
+          <div>
+            <h4>7类社团与适配</h4>
+            <table>
+              <thead><tr><th>类型</th><th>代表</th><th>适合</th></tr></thead>
+              <tbody>
+                <tr><td>学术科技</td><td>辩论队/模联</td><td>思维表达</td></tr>
+                <tr><td>学生组织</td><td>学生会/团委</td><td>组织+人脉</td></tr>
+                <tr><td>志愿公益</td><td>青协/支教</td><td>综测+情怀</td></tr>
+                <tr><td>文艺特长</td><td>合唱/舞蹈/书法</td><td>放松+特长</td></tr>
+                <tr><td>体育运动</td><td>篮球/瑜伽</td><td>锻炼+社交</td></tr>
+                <tr><td>创业实践</td><td>创协/KAB</td><td>商业嗅觉</td></tr>
+                <tr><td>新媒体</td><td>校媒体/公众号</td><td>求职加分</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h4>推荐组合</h4>
+            <ul>
+              <li><strong>专业相关社团+志愿类</strong>：技能+情怀双线加分</li>
+              <li><strong>专业社团+新媒体</strong>：作品集+实习素材</li>
+              <li><strong>不建议</strong>：娱乐社团（动漫/游戏）+ 学生会干事（事务杂回报慢）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>报名与面试</h4>
+            <ul>
+              <li><strong>时间：</strong>开学1-2周百团大战，关注海报</li>
+              <li><strong>笔试：</strong>多数简单，写见解+字迹清楚</li>
+              <li><strong>面试：</strong>自我介绍1分钟+为什么想加入</li>
+              <li><strong>技巧：</strong>说具体目标，不说空话</li>
+              <li><strong>退出：</strong>不合适就退，别耗着</li>
+            </ul>
+          </div>
+        </div>
+        <h4 style="margin-top:14px">我已加入/计划加入的社团（点击填写）</h4>
+        <div id="myClubsList" contenteditable="true" data-key="myClubsList" style="background:var(--bg);padding:10px;border-radius:8px;min-height:60px;font-size:14px;cursor:text" data-placeholder="双击这里填写：社团名 + 担任角色 + 加入时间，例如：辩论队 成员 2026.9"></div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>室友公约（共建·避免后期冲突）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">开学第一周和室友讨论后填写，张贴宿舍门后。改了又改没关系，自动保存。</p>
+        <div class="grid grid-2">
+          <div>
+            <h4>作息时间</h4>
+            <ul>
+              <li>工作日熄灯时间：<span contenteditable="true" data-key="rm-light-off" style="background:var(--bg);padding:2px 6px;border-radius:4px;cursor:text">23:00</span></li>
+              <li>周末熄灯时间：<span contenteditable="true" data-key="rm-light-off-wk" style="background:var(--bg);padding:2px 6px;border-radius:4px;cursor:text">23:30</span></li>
+              <li>起床闹钟只设1个，不连环</li>
+              <li>夜聊截止：<span contenteditable="true" data-key="rm-chat-end" style="background:var(--bg);padding:2px 6px;border-radius:4px;cursor:text">23:00</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4>清洁与公共</h4>
+            <ul>
+              <li>值日表：周一 / 周二 / 周三…（按人数轮排）</li>
+              <li>垃圾谁值日谁倒</li>
+              <li>不外放音乐/视频</li>
+              <li>带客来访提前通知</li>
+              <li>共享物品（如纸巾/洗衣液）用完补充</li>
+            </ul>
+          </div>
+        </div>
+        <h4 style="margin-top:14px">我们的额外约定（点击填写）</h4>
+        <div contenteditable="true" data-key="rm-extra" style="background:var(--bg);padding:10px;border-radius:8px;min-height:50px;font-size:14px;cursor:text" data-placeholder="双击填写：比如不许养宠物、不许在宿舍吸烟、空调温度26度等"></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>快递寄送操作 <span style="font-weight:400;color:var(--coral);font-size:12px">开学报到前使用</span></h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>寄件平台对比（学生价 5 折起）</h4>
+            <table>
+              <thead><tr><th>平台</th><th>价格</th><th>适用</th></tr></thead>
+              <tbody>
+                <tr><td>菜鸟裹裹</td><td>5-6 元起</td><td>通票 · 大件上门</td></tr>
+                <tr><td>京东快递</td><td>6 元起</td><td>文件 + 小件快</td></tr>
+                <tr><td>中通/申通</td><td>4 元起</td><td>普通件 2-3 天</td></tr>
+                <tr><td>顺丰</td><td>10 元起</td><td>贵重 + 次日达</td></tr>
+                <tr><td>极兔</td><td>3 元起</td><td>通票便宜</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h4>学生党寄件 5 个实用技巧</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>称重再下单，别让快递员代称（虚高）</li>
+              <li>下单时收件地址填"XX 大学菜鸟驿站"或具体宿舍楼号</li>
+              <li>贵重物品勾"保价"（0.5% 保价费，比丢件赔得多）</li>
+              <li>大件用"送货上门"比自提省事，但多 3-5 元</li>
+              <li>寄件时拍照存档（避免少件纠纷）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>学生优惠：</strong>认证学生身份后，多数平台首单立减 5-15 元，关注公众号即可领取。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>毕业季时间线 <span style="font-weight:400;color:var(--coral);font-size:12px" id="gradSeasonTag">毕业季专属 · 过期自动归档</span></h3>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">大四/研三专用，过期自动清理，需要可重新启用</p>
+        <table>
+          <thead><tr><th>时间</th><th>任务</th><th>产出</th></tr></thead>
+          <tbody>
+            <tr><td>3月</td><td>毕业论文定稿/查重/盲审</td><td>论文终稿</td></tr>
+            <tr><td>4月</td><td>提交材料+答辩准备</td><td>答辩PPT</td></tr>
+            <tr><td>5月</td><td>答辩+拍毕业照+行李打包</td><td>毕业证书</td></tr>
+            <tr><td>6月</td><td>毕业典礼+入职/入学准备</td><td>入职材料/录取通知书</td></tr>
+            <tr><td>7月</td><td>职场/研究生第一周</td><td>第一份工作笔记</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-top:16px;border-left:3px solid var(--teal)">
+        <h3>🎒 开学报到 + 军训必带清单（逐日逐项核销）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">自主打包不怕漏，带全了开学才能顺。必带项按"报到当天"和"军训"两类拆开，勾选核销后自动保存本地，只有你自己可见。</p>
+        <div class="grid grid-2">
+          <div>
+            <h4>报到必带（证件类，补办很麻烦）</h4>
+            <label class="chk"><span class="chk-t">录取通知书 + 身份证 + 身份证复印件</span><input type="checkbox" data-key="pck-idcard"></label>
+            <label class="chk"><span class="chk-t">一寸/二寸免冠照（各1寸，多备蓝底）</span><input type="checkbox" data-key="pck-photo"></label>
+            <label class="chk"><span class="chk-t">学籍档案（部分院校要求自带，务必密封勿拆）</span><input type="checkbox" data-key="pck-file"></label>
+            <label class="chk"><span class="chk-t">党团组织关系转接函（团员证/介绍信）</span><input type="checkbox" data-key="pck-party"></label>
+            <label class="chk"><span class="chk-t">银行卡 + 少量现金（100-300元应急）</span><input type="checkbox" data-key="pck-money"></label>
+            <label class="chk"><span class="chk-t">笔记本电脑 + 充电器 + U盘</span><input type="checkbox" data-key="pck-laptop"></label>
+          </div>
+          <div>
+            <h4>军训必带（决定你几天舒服）</h4>
+            <label class="chk"><span class="chk-t">防晒霜（SPF50+，休息时补涂）</span><input type="checkbox" data-key="pck-sun"></label>
+            <label class="chk"><span class="chk-t">厚软军训鞋垫/卫生巾鞋垫</span><input type="checkbox" data-key="pck-insole"></label>
+            <label class="chk"><span class="chk-t">大容量水杯 + 淡盐水/葡萄糖（防中暑）</span><input type="checkbox" data-key="pck-water"></label>
+            <label class="chk"><span class="chk-t">藿香正气水 + 清凉油 + 冰袖</span><input type="checkbox" data-key="pck-cool"></label>
+            <label class="chk"><span class="chk-t">中筒棉袜（多备几双，易磨脚）</span><input type="checkbox" data-key="pck-sock"></label>
+            <label class="chk"><span class="chk-t">创可贴 + 润喉糖（喊口号用）</span><input type="checkbox" data-key="pck-pad"></label>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>选课策略（第一年别踩的4个坑）</h3>
+        <ul style="font-size:13px;line-height:1.95">
+          <li><strong>抢课看"学分结构"而非"火不火"</strong>：先算毕业需学分，必修优先，选修按兴趣+给分风评配比，别为凑满堂去挤热门水课。</li>
+          <li><strong>第一学期别全选难度课</strong>：给适应期留白，高绩点的基础是最初一个月不崩，而非一开始就拉满。</li>
+          <li><strong>当天课表留缝隙</strong>：连续4节以上高密排课到后面必瘫，把背诵/复习类课均匀分散。</li>
+          <li><strong>提前问"给分与考核方式"</strong>：期末考?结课论文?平时分占比?加社团/实验多的人优先选论文结课，避免期末扎堆。</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>宿舍空间规划（人均不足1.5㎡也要住舒服）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>收纳优先级</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>床下/桌上分层收纳盒，竖放比叠放利用率高30%</li>
+              <li>墙面挂钩+床边挂篮：随取随放，减少桌面堆积</li>
+              <li>学期性物品（厚被/行李箱）放在最高层或床底深处</li>
+              <li>公共区定"一人一格"，避免东西混放引发摩擦</li>
+            </ul>
+          </div>
+          <div>
+            <h4>提升幸福感物件</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>床帘（遮光+隐私）与耳塞/眼罩</li>
+              <li>桌面小台灯（护眼），充电多口排插（带USB）</li>
+              <li>挂式收纳袋 + 折叠小桌（床上学习位）</li>
+              <li>加湿器/小风扇视气候定，问清宿舍限电再买电器</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </section>
+
+    <!-- AI工具选型 -->
+    <section class="view" id="view-ai">
+<div class="section-intro">用合适的工具，把重复的活儿交出去，把精力留给真正重要的事。</div>      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>智造工坊</h1>
+        <p>不是"哪个最强"，而是"哪个帮我把事做成" · 步骤 + 场景 + 提示词，照抄就能用</p>
+      </div>
+
+      <div class="callout callout-info"><strong>写给爱钻研的你：</strong>爱钻研、信息检索强的人，正好是 AI 的黄金使用者。AI 是你的"外脑+陪练+资料员"，不是替你思考。下面每一步都给你可直接复制的提示词，换成自己的真实情况就能用。</div>
+
+      <!-- A. 先想清楚 -->
+      <div class="card" style="margin-bottom:16px">
+        <h3>第一步：先想清楚"你要 AI 帮你干什么"</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">不同事用不同 AI，别用一个工具硬刚所有场景。对照表（按需求排）：</p>
+        <table>
+          <thead><tr><th>你要做的事</th><th>首选 AI</th><th>它具体帮你</th></tr></thead>
+          <tbody>
+            <tr><td>学业分析 / 逻辑拆解 / 写提纲</td><td><strong>DeepSeek</strong></td><td>推理强、免费、给结论也给推导</td></tr>
+            <tr><td>读长论文 / 法条整理 / 文献综述</td><td><strong>Kimi</strong></td><td>200万字长文、PDF 直接喂</td></tr>
+            <tr><td>口语练习 / 语音备忘 / 碎片问答</td><td><strong>豆包</strong></td><td>能对话、能语音、反应快</td></tr>
+            <tr><td>中文写作 / 做 PPT / 改公文</td><td><strong>通义千问</strong></td><td>中文语感好、配套 PPT 生成</td></tr>
+            <tr><td>存你的课件笔记 / 私人知识库问答</td><td><strong>ima</strong></td><td>读你自己的资料、不串味</td></tr>
+            <tr><td>搭工具 / 做文档 / 自动化任务</td><td><strong>WorkBuddy</strong></td><td>能干活（写代码、出文件、调度）</td></tr>
+            <tr><td>找权威资料出处 / 学术论文搜索</td><td><strong>秘塔 AI 搜索</strong></td><td>带引用、可溯源、不瞎编</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- B. 每个AI能干什么 -->
+      <h3 style="margin:18px 0 10px">第二步：每个 AI 到底能干什么（详细版）</h3>
+      <div class="grid grid-2">
+        <div class="card" style="border-top:3px solid var(--primary)">
+          <h3 style="color:var(--primary)">DeepSeek · 推理之王</h3>
+          <p style="font-size:12px;color:var(--muted)">定位：免费、强推理、会"一步步想"。学业和逻辑型任务首选。</p>
+          <ul style="font-size:13px">
+            <li>拆解复杂案例：把"案情→争议焦点→法律适用→可能的判决"拆给你看</li>
+            <li>对比观点：同一问题给 A/B/C 三种论证路径，帮你写论文提纲</li>
+            <li>改作文：指出逻辑漏洞、替换高级表达、压字数</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>示例提示词：</strong>"我是一名大一新生，请用'争议焦点—法律条文—推理过程—结论'四步，分析【高空抛物】的责任认定，每步用大白话讲清。"</div>
+        </div>
+
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">Kimi · 长文阅读器</h3>
+          <p style="font-size:12px;color:var(--muted)">定位：一次喂 200 万字，PDF/Word 直接读，适合你和论文、法条死磕。</p>
+          <ul style="font-size:13px">
+            <li>上传老师课件 PDF，让它出"考点清单 + 背诵口诀"</li>
+            <li>把 10 篇论文丢进去，让它写 300 字文献综述</li>
+            <li>文献对比：把两篇论文贴进去，让它列差异表/观点对比</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>示例提示词：</strong>"上传的 PDF 是我的课件，请提取 15 个最可能考的名词解释，并给每个配一句好记的例子。"</div>
+        </div>
+
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">豆包 · 语音陪练</h3>
+          <p style="font-size:12px;color:var(--muted)">定位：能说话、反应快。适合你"不擅开口"的痛点——拿它练口语和表达。</p>
+          <ul style="font-size:13px">
+            <li>英语口语陪练：设定"四级考官"角色，每天聊 5 分钟</li>
+            <li>模拟面试：让它当 HR，问你"为什么选这个专业/这份工作"</li>
+            <li>语音转文字记灵感：走路想到啥直接说，它帮你整理</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>示例提示词：</strong>"请你扮演英语四级口语考官，用简单问题跟我对话，我每句说完你先纠错再接着问，全程英文。"</div>
+        </div>
+
+        <div class="card" style="border-top:3px solid var(--primary)">
+          <h3 style="color:var(--primary)">通义千问 · 中文写作 + PPT</h3>
+          <p style="font-size:12px;color:var(--muted)">定位：中文语感自然，能直接生成 PPT 大纲和幻灯片。</p>
+          <ul style="font-size:13px">
+            <li>把读书笔记扩写成公众号/汇报稿</li>
+            <li>给主题自动出 PPT 结构（配套的 PPT 课程可对照练习）</li>
+            <li>润色简历、改自我介绍</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>示例提示词：</strong>"我要做'大学生时间管理'主题班会 PPT，给我 8 页大纲，每页有标题+3个要点+一个互动环节。"</div>
+        </div>
+
+        <div class="card" style="border-top:3px solid var(--teal)">
+          <h3 style="color:var(--teal)">ima · 私人知识库</h3>
+          <p style="font-size:12px;color:var(--muted)">定位：把你的课件、笔记、书摘存进去，问它只基于"你的资料"回答，不会串。</p>
+          <ul style="font-size:13px">
+            <li>期末复习：问"我这学期专业课重点有哪些"，它从你笔记里找</li>
+            <li>写论文：让它只引用你上传的文献，避免瞎编</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>用法：</strong>建一个"学业资料"库，把课件、法条、读书笔记全拖进去，复习时直接问。</div>
+        </div>
+
+        <div class="card" style="border-top:3px solid var(--coral)">
+          <h3 style="color:var(--coral)">WorkBuddy · 干活搭子</h3>
+          <p style="font-size:12px;color:var(--muted)">定位：能写代码、出文件、做网页、跑任务——你眼前这个应用就是它搭的。</p>
+          <ul style="font-size:13px">
+            <li>做个人系统/计划表/打卡页（像这个应用）</li>
+            <li>批量整理资料、生成报告、做可视化</li>
+            <li>把重复活自动化，省下时间做更重要的事</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px"><strong>适合这类人：</strong>想"打造属于自己的 AI"，WorkBuddy 是最直接的落脚点。</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>秘塔 AI 搜索 · 找"有出处"的资料</h3>
+        <p style="font-size:13px;color:var(--muted)">写论文、查法条、找数据时用它——每个结论都带来源链接，不怕编造，比你直接百度靠谱 10 倍。</p>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>请记住：</strong>凡是写进论文/作业的内容，优先用秘塔或知网找带出处的，再让 AI 帮你组织语言。直接让聊天 AI 编数据 = 学术事故。</div>
+      </div>
+
+      <!-- C. 照抄的操作步骤 -->
+      <h3 style="margin:20px 0 10px">第三步：照抄就能用的操作步骤（按你的场景）</h3>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="color:var(--primary)">场景 1 · 课程预习（每天 20 分钟）</h3>
+        <ol style="font-size:13px;line-height:1.9">
+          <li>把老师发的课件 PDF 丢进 <strong>Kimi</strong>，提示："提取本章 10 个核心概念，每个给一句大白话解释 + 一个生活例子。"</li>
+          <li>拿概念去问 <strong>DeepSeek</strong>："用案例讲清【善意取得】，并出 2 道小题考我。"</li>
+          <li>错题和例子记进"灵感看板"或读书笔记，上课对照听。</li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="color:var(--primary)">场景 2 · 写课程论文 / 读书报告</h3>
+        <ol style="font-size:13px;line-height:1.9">
+          <li>用 <strong>秘塔</strong> 搜 5 篇相关文献，存进 <strong>ima</strong> 资料库。</li>
+          <li>让 <strong>DeepSeek</strong>："基于我上传的资料，给我论文三级提纲，论点+可能的论据。"</li>
+          <li>逐段写，写一段让 <strong>通义千问</strong> 润色："把这段改得更学术，但别改意思。"</li>
+          <li>最后让 <strong>DeepSeek</strong> 当审稿人："挑逻辑漏洞和抄袭风险点。"</li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="color:var(--primary)">场景 3 · 四级备考（每天 1 小时）</h3>
+        <ol style="font-size:13px;line-height:1.9">
+          <li>听力：用本应用"英语精读/听力"板块 + 可可英语真题，每天 1 套。</li>
+          <li>写作：让 <strong>DeepSeek</strong>："给我 5 个四级高频作文模板，每个配 1 篇范文和替换词表。"</li>
+          <li>口语：每天用 <strong>豆包</strong> 英文对话 5 分钟（设定四级考官角色）。</li>
+          <li>词汇：选一款背单词 App（墨墨/不背/扇贝等任选）每日打卡，遇到不会的让 AI 用"例句+谐音梗"帮你记。</li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="color:var(--primary)">场景 4 · 做简历 / 准备面试</h3>
+        <ol style="font-size:13px;line-height:1.9">
+          <li>把经历写粗稿，让 <strong>通义千问</strong>："用 STAR 法则重写，每条加数字。"</li>
+          <li>让 <strong>DeepSeek</strong>："模拟目标岗位 HR，问 8 个压力面问题并给标准答。"</li>
+          <li>用本应用"职业发展"的简历模板一键复制，套进去。</li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="color:var(--primary)">场景 5 · 读书 + 做笔记</h3>
+        <ol style="font-size:13px;line-height:1.9">
+          <li>每读完一章，让 <strong>DeepSeek</strong>："用'核心观点/和我有什么关系/我明天能做的一件小事'三栏，总结这一章。"</li>
+          <li>记进书架里这本书的"我的读书笔记"（见书架金句板块，每本都能写）。</li>
+          <li>每周用 <strong>通义千问</strong> 把零散笔记合成一篇"周复盘"。</li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="color:var(--primary)">场景 6 · 做计划 / 对抗拖延</h3>
+        <ol style="font-size:13px;line-height:1.9">
+          <li>把"想做的事"丢给 <strong>DeepSeek</strong>："拆成今天就能开始的 3 个小步，每步不超过 25 分钟。"</li>
+          <li>同步填进本应用"计划表 + 每日四象限"，勾掉就有成就感。</li>
+          <li>拖延时问它："我现在不想动，给我一个 2 分钟就能做的启动动作。"</li>
+        </ol>
+      </div>
+
+      <!-- D. 避坑指南 -->
+      <h3 style="margin:20px 0 10px">第四步：避坑指南（这 7 条比工具本身更重要）</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 style="color:var(--coral)">1. 查而不做</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>AI 给了完美方案，你"收藏了=做了"，第二天还是原样。<br><strong>对策：</strong>任何 AI 答案，当场用自己话复述一遍 + 立刻做最小一步。知识不进你脑子，等于没学。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">2. 信了编造的内容</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>AI 一本正经编法条、编数据、编参考文献。<br><strong>对策：</strong>法条/数据/引用用秘塔或知网二次核对；关键结论务必溯源。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">3. 隐私泄露</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>把身份证、家庭住址、手机号、账号密码喂给不明 AI。<br><strong>对策：</strong>敏感信息打码/脱敏；私人资料放 ima 本地库，不随便上传公开 AI。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">4. 学术诚信翻车</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>直接把 AI 生成当作业交，被查重/AI 检测判违规。<br><strong>对策：</strong>AI 做"思路和初稿"，你重写、加自己的例子和观点；核心观点必须自己想。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">5. 过度依赖变傻</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>连"今晚吃什么"都问 AI，自己不动脑。<br><strong>对策：</strong>先自己想 3 分钟再问 AI；让 AI 挑战你的想法，而不是替你决定。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">6. 信息茧房</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>只听 AI 顺着你说，越来越偏执。<br><strong>对策：</strong>常问"反对的观点是什么""我可能错在哪"，主动找不同意见。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">7. 提示词太烂</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>"帮我写论文"——AI 回一堆正确的废话。<br><strong>对策：</strong>给角色+背景+任务+格式+例子。上面的示例提示词就是模板，照着填。</p>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--coral)">8. 囤了一堆不会用</h3>
+          <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>每个 AI 都注册，结果每天还是只用 1 个。<br><strong>对策：</strong>固定"主力 1 个 + 场景补充 2 个"就够。推荐组合：DeepSeek（主力）+ Kimi（长文）+ 豆包（口语）。</p>
+        </div>
+      </div>
+
+      <div class="callout callout-ok" style="margin-top:16px">
+        <strong>AI 使用准则（建议设为手机壁纸）：</strong><br>
+        ① AI 是外脑不是替脑，答案必须过自己脑子；② 关键事实二次溯源；③ 敏感信息脱敏；④ 先想再做，收藏≠完成；⑤ 每周清理：只留真正在用的 2–3 个。
+      </div>
+
+    </section>
+
+    <!-- 平安护航 -->
+    <section class="view" id="view-safety">
+<div class="section-intro">把出行、财产、健康防护这些底线的知识收好，安心生活。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航</h1>
+        <p>防骗反诈 · 人身与财产 · 求助通道——把风险挡在校门之外</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>🛡️ 开学第一件事：装好"防诈三件套"（人人必做）</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="res-link" href="https://www.12321.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <div class="info"><div class="name">12321 网络不良与垃圾信息举报受理中心</div><div class="desc">www.12321.cn · 工信部指导，举报骚扰/诈骗短信电话</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.12377.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <div class="info"><div class="name">12377 网络违法与不良信息举报</div><div class="desc">www.12377.cn · 中央网信办官方举报入口</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.piyao.org.cn/" target="_blank" rel="noopener noreferrer" style="flex:1;min-width:200px">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></div>
+            <div class="info"><div class="name">中国互联网联合辟谣平台</div><div class="desc">www.piyao.org.cn · 查谣言、求证信息真伪</div></div><div class="arrow">↗</div>
+          </a>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><strong>再加三样：</strong>① 手机下载「国家反诈中心 APP」（应用商店搜索、认准公安部官方蓝色盾牌、开启来电预警）；② 记住两个电话：<b>96110</b>（反诈专线，来电务必接）、<b>110</b>（报警）；③ 收到「12381」开头的涉诈预警短信要当真，立即停止转账并核实。</div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>💣 高发电信诈骗套路：看懂话术，一眼识破</h3>
+        <table>
+          <thead><tr><th>套路</th><th>常见话术 / 表现</th><th>怎么识别</th></tr></thead>
+          <tbody>
+            <tr><td><strong>刷单 / 做任务返利</strong></td><td>"动动手指日入几百""先垫付、返本金+佣金"</td><td>凡是先让你掏钱的"外快"都是诈骗；刷单本身违法，还可能涉"帮信罪"</td></tr>
+            <tr><td><strong>冒充客服退款</strong></td><td>"您的快递丢件""商品有质量问题给补偿"，让你开"屏幕共享"、扫不明二维码</td><td>退款只在原平台走官方退款流程；索要验证码、让你共享屏幕的一律是骗子</td></tr>
+            <tr><td><strong>冒充公检法</strong></td><td>"你涉嫌洗钱，配合调查"，要求转到"安全账户"</td><td>公检法不会电话办案、更不存在"安全账户"，直接挂断并拨 110 核实</td></tr>
+            <tr><td><strong>注销校园贷 / 修复征信</strong></td><td>"你的学生贷款影响征信，需清空额度"</td><td>个人征信不对个人收费，任何"帮你修复征信"的都是骗局</td></tr>
+            <tr><td><strong>游戏账号 / 交易"保证金"</strong></td><td>"先交手续费/解冻费才能提现"</td><td>正规交易只走官方交易平台，绕过平台加"客服"即诈骗</td></tr>
+            <tr><td><strong>考试答案 / 论文代写</strong></td><td>"内部答案""包过"；"代写论文保通过"</td><td>没有"内部答案"；代写涉学术不端+可能被二次勒索</td></tr>
+            <tr><td><strong>网恋 / 杀猪盘</strong></td><td>网上"谈对象"后引导你投资、借钱</td><td>只谈感情不谈现实、诱导大额转账的多为杀猪盘</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warn" style="margin-top:12px"><strong>反诈"三不一多"：</strong>不点击不明链接、不轻信"稳赚/高返利"、不透露验证码 / 密码 / 人脸信息；转账汇款前务必多方核实。<b>已经把钱转出去了？</b>别慌，立刻拨 <b>96110 / 110</b> 申请止付，同时联系发卡银行挂失冻结，并截图保留聊天记录、转账凭证。</div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>💳 校园贷 / 网贷：这些坑别踩</h3>
+          <ul style="font-size:13px;line-height:1.95">
+            <li><strong>正规出路只有一条：</strong>确需用钱的助学贷款，走学校学生资助管理中心 / 生源地学生资助部门办理，利率低、官方承办，<b>千万别碰任何私人"校园贷"</b>。</li>
+            <li><strong>三不碰：</strong>不碰学生证抵押贷、不碰"0门槛秒批"的网贷、不碰任何先收"手续费/保证金"的借款。</li>
+            <li><strong>被催收恐吓？</strong>及时告诉辅导员、家长，必要时报警，不要一个人扛着用别的贷款去填窟窿。</li>
+            <li><strong>保管两张卡：</strong>别把自己的银行卡、电话卡出租、出借、出卖给别人，否则可能涉嫌"帮信罪"。断卡行动，丢了责任会很重。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>👷 兼职 & 租房：安全第一</h3>
+          <ul style="font-size:13px;line-height:1.95">
+            <li><strong>找正规渠道：</strong>优先学校学生资助中心 / 勤工助学岗，或大型正规招聘平台。任何"先交押金 / 培训费 / 服装费"的都是骗局。</li>
+            <li><strong>不碰"垫资"：</strong>让你先垫钱、再去高额返利的兼职，本质是刷单诈骗。</li>
+            <li><strong>租房警惕"二房东"：</strong>签合同前核实房东产权与身份，不轻信"先交定金房间被抢"的催促。</li>
+            <li><strong>出行坐正规平台：</strong>用有资质的网约车/出租车，行程分享给亲友，深夜少乘黑车。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>✅ 开学安全自查清单（点一下打勾，自动保存）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:8px">把入库要做的安全小事逐项点掉，全绿才算安心入住。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px" id="safetyCheckList">
+          <div data-k="s1" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 已装「国家反诈中心 APP」并开启来电预警</div>
+          <div data-k="s2" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 记住 96110 / 110 两个号码</div>
+          <div data-k="s3" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 已向辅导员存 1 个紧急联系人电话</div>
+          <div data-k="s4" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 身份证 / 学生证 / 银行卡已妥善保管并备份</div>
+          <div data-k="s5" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 宿舍不私拉电线、人走断电</div>
+          <div data-k="s6" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 不把手机验证码告诉任何人</div>
+          <div data-k="s7" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 外出记得锁门、贵重物品随身</div>
+          <div data-k="s8" class="pp-sitem" onclick="ppCheck(this)" style="padding:8px 10px;border:1px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer">□ 夜晚尽量结伴、返宿准时</div>
+        </div>
+        <div class="callout callout-info" style="margin-top:12px"><strong>求助通道速记：</strong><b>110</b> 报警 ｜ <b>96110</b> 反诈专线 ｜ <b>119</b> 火警 ｜ <b>120</b> 急救 ｜ 校内：辅导员（生活/学习/纠纷）→ 学校保卫处（人身财产、门禁监控）→ 校医院（身体不适）→ 学生资助中心（经济困难、助学贷款）。遇到任何拿不准的事，第一时间联系辅导员或家人，别一个人硬扛。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>🚑 人身安全与急救常识 · 关键时刻能救命</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>宿舍与用电安全</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.95">
+              <li>拒绝大功率电器（热得快/电炉/大功率吹风机），识别插排鼓包、电线发烫立即停用</li>
+              <li>人离断电，充电宝/电脑别长时间充电过夜放床上</li>
+              <li>手机充电用原装/正品充电器，劣质快充是宿舍起火头号隐患</li>
+            </ul>
+          </div>
+          <div>
+            <h4>现场急救 · 常见伤应对</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.95">
+              <li><b>烫伤：</b>立即用流动凉水冲 15-20 分钟，别涂牙膏/酱油，水泡别挑破</li>
+              <li><b>中暑：</b>转移到阴凉处、解衣散热，意识清醒就少量多次补淡盐水，昏迷立即送医</li>
+              <li><b>低血糖：</b>出冷汗、心慌、手抖→立刻吃糖/含糖饮料，几分钟内缓解</li>
+              <li><b>小割伤出血：</b>用干净布按压止血 5-10 分钟，别来回擦拭；大出血立即按压并呼叫120</li>
+            </ul>
+          </div>
+          <div>
+            <h4>海姆立克急救（气道梗阻）</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.95">
+              <li><b>自己呛住没人在旁：</b>用椅背或桌沿顶住上腹（肚脐上方），用力快速冲击</li>
+              <li><b>别人呛住：</b>站其背后，一手握拳虎口对肚脐上方，另一手抱拳快速向内上方冲击，直到异物排出</li>
+              <li>能咳就鼓励用力咳，不能说话/呼吸困难时再上手急救，同时叫人打120</li>
+            </ul>
+          </div>
+          <div>
+            <h4>出行与个人信息</h4>
+            <ul style="font-size:13px;color:var(--muted);line-height:1.95">
+              <li>深夜少走僻静处，乘车把行程分享给亲友，坚决不坐"顺风车"私下交易</li>
+              <li>快递单、外卖单撕掉姓名电话再扔，身份证/学生证复印件注明用途</li>
+              <li>别把银行卡、电话卡、收款码借给别人"走账"——涉嫌帮信罪，后果严重</li>
+              <li>人脸识别前先看是什么 App、是否必要，别为"领福利"随便做刷脸</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>全网通用求助口径：</strong>短信报警编辑"地理位置+事发经过+求助"发送到 <b>12110</b>；出国留学遇险可联系中国驻当地使领馆领保电话（外交部全球领事保护与服务应急呼叫中心 +86-10-12308）。紧急时刻，能报具体地理位置，就是救命关键。</div>
+      </div>
+
+      <script>
+      function ppCheck(el){
+        var k='pp_safety_list';var arr=[];try{arr=JSON.parse(localStorage.getItem(k)||'[]');}catch(e){arr=[];}
+        var id=el.getAttribute('data-k');
+        if(el.classList.contains('done')){
+          el.classList.remove('done');el.style.borderColor='var(--border)';el.style.background='transparent';
+          el.innerHTML='□ '+el.innerHTML.replace(/^[□✓]\s*/,'');
+          arr=arr.filter(function(x){return x!==id;});
+        }else{
+          el.classList.add('done');el.style.borderColor='var(--teal)';el.style.background='var(--teal-light)';
+          el.innerHTML='✓ '+el.innerHTML.replace(/^[□✓]\s*/,'');
+          arr.push(id);
+        }
+        try{localStorage.setItem(k,JSON.stringify(arr));}catch(e){}
+      }
+      function ppInit(){
+        var arr=[];try{arr=JSON.parse(localStorage.getItem('pp_safety_list')||'[]');}catch(e){}
+        document.querySelectorAll('#view-safety [data-k]').forEach(function(el){
+          if(arr.indexOf(el.getAttribute('data-k'))>-1){
+            el.classList.add('done');el.style.borderColor='var(--teal)';el.style.background='var(--teal-light)';
+            el.innerHTML='✓ '+el.innerHTML.replace(/^□ /,'');
+          }
+        });
+      }
+      if(document.readyState!=='loading')ppInit();else document.addEventListener('DOMContentLoaded',ppInit);
+      </script>
+    </section>
+
+    <!-- 入学指南 -->
+    <section class="view" id="view-college">
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>入学指南</h1>
+        <p>从学习方式到人际规则，从绩点到保研，从奖学金到心理调适——所有大学里"高中老师没讲、但必须懂"的事，一次性梳理清楚</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>大学与高中的根本区别</h3>
+          <table>
+            <thead><tr><th>维度</th><th>高中</th><th>大学</th></tr></thead>
+            <tbody>
+              <tr><td>学习</td><td>老师盯</td><td>自己规划</td></tr>
+              <tr><td>成绩</td><td>期中期末</td><td>绩点GPA</td></tr>
+              <tr><td>时间</td><td>排满</td><td>大量自主</td></tr>
+              <tr><td>人际</td><td>同班</td><td>跨班跨院</td></tr>
+              <tr><td>目标</td><td>高考</td><td>多元出口</td></tr>
+              <tr><td>评价</td><td>分数</td><td>综测+绩点+实践</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>绩点GPA是什么</h3>
+          <ul>
+            <li><strong>定义：</strong>每门课成绩换算成4分或5分制，加权平均</li>
+            <li><strong>关键：</strong>90分=4.0，80分=3.0，70分=2.0——一分差很多</li>
+            <li><strong>影响：</strong>保研/出国/奖学金都看GPA</li>
+            <li><strong>策略：</strong>学分高的课（高数/英语/专业课）重点抓</li>
+            <li><strong>避坑：</strong>别信"60分万岁"，那是给不学的人的</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>大学四年关键节点</h3>
+        <table>
+          <thead><tr><th>时间</th><th>关键事项</th><th>错过代价</th></tr></thead>
+          <tbody>
+            <tr><td>大一上</td><td>四级报名、入团申请、选社团</td><td>四级晚过挤占后续时间</td></tr>
+            <tr><td>大一下</td><td>六级报名、暑期实习投递</td><td>错过暑期实习窗口</td></tr>
+            <tr><td>大二全年</td><td>挑战杯/大创报名、专业分流</td><td>综测少加分项</td></tr>
+            <tr><td>大三上</td><td>考证客观题备考、保研材料准备</td><td>保研错过夏令营</td></tr>
+            <tr><td>大三下</td><td>考证客观题考试、暑期实习</td><td>考证延后影响秋招</td></tr>
+            <tr><td>大四上</td><td>考证主观题、秋招、保研/考研</td><td>秋招错过=春招更难</td></tr>
+            <tr><td>大四下</td><td>毕业论文、春招补录、毕业</td><td>论文不通过延毕</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>转专业 · 辅修 · 双学位 <span style="font-weight:400;font-size:12px;color:var(--hint)">想转专业的同学，越早了解越主动</span></h3>
+        <div class="grid grid-2" style="gap:12px">
+          <div style="border-left:3px solid var(--primary);padding-left:12px">
+            <h4 style="color:var(--primary)">转专业</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>时机：</strong>多数学校在大一结束、个别在大二，通常只有<strong>1次机会</strong>，错过即永久</li>
+              <li><strong>门槛：</strong>普遍要求绩点排名靠前（常见前30%-50%）、无挂科、通过目标院系笔试/面试</li>
+              <li><strong>动作：</strong>入学后尽早找目标学院的学长问"转专业评定细则"，大一就要<strong>保绩点</strong></li>
+              <li><strong>免责：</strong>各校政策差异大，务必以你学校教务处当年通知为准</li>
+            </ul>
+          </div>
+          <div style="border-left:3px solid var(--teal);padding-left:12px">
+            <h4 style="color:var(--teal)">辅修·二学位·双学位</h4>
+            <ul style="font-size:13px;line-height:1.8">
+              <li><strong>辅修：</strong>在主修外学另一专业核心课，一般修满一定学分发辅修证书（学信网通常不可查）</li>
+              <li><strong>双学位：</strong>修满两套学士学位课程并写好学位论文，可获<strong>第二学位证书</strong>，含金量与"辅修"不同，务必核对学校口径</li>
+              <li><strong>成本：</strong>多出的学费+额外时间（晚自习/周末），大二大三课业会加重</li>
+              <li><strong>建议：</strong>先想清楚目标（补专业短板？还是纯兴趣？），再决定值不值得投入</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3>大学常见"坑"</h3>
+          <ul>
+            <li>沉迷游戏/短视频，绩点崩盘</li>
+            <li>盲目加5个社团，没一个深入</li>
+            <li>跟风考证，考一堆没用的</li>
+            <li>大三才想保研，发现绩点不够</li>
+            <li>不实习，毕业简历空白</li>
+            <li>超前消费，欠网贷</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>该主动争取的</h3>
+          <ul>
+            <li>当课代表/学习委员（老师记住你）</li>
+            <li>参加学科竞赛（挑战杯/模拟法庭）</li>
+            <li>进老师课题组（科研经历）</li>
+            <li>暑期实习（别等大四才找）</li>
+            <li>保研夏令营信息（大三上关注）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>资源要用足</h3>
+          <ul>
+            <li>图书馆：纸质书+数据库免费用</li>
+            <li>知网：学校IP下载论文</li>
+            <li>就业指导中心：免费简历修改</li>
+            <li>心理咨询：免费且保密</li>
+            <li>校友资源：学长学姐内推</li>
+          </ul>
+        </div>
+      </div>
+          <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>学习方法 · 大学版</h3>
+          <ul>
+            <li><strong>预习-听课-复习-作业-小结</strong>五步法，每门课周内闭环</li>
+            <li><strong>费曼学习法：</strong>把刚学的讲给同学听一遍，讲不清=没懂</li>
+            <li><strong>康奈尔笔记：</strong>页面分3栏（笔记/线索/总结），课后立即整理</li>
+            <li><strong>间隔重复：</strong>1天-3天-7天-21天-60天五次复习，抗遗忘</li>
+            <li><strong>主动检索：</strong>合上书自问自答，比反复读更有效</li>
+            <li><strong>组块学习：</strong>把零散知识点打包成"模块"，便于提取</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>选课与上课策略</h3>
+          <ul>
+            <li><strong>选课三看：</strong>看学分（高学分优先）/ 看老师（学长口碑）/ 看自己（短板补强）</li>
+            <li><strong>前排效应：</strong>坐前3排，老师能记住你，平时分高</li>
+            <li><strong>课堂笔记别记原话：</strong>记框架+疑问+例子，原话有PPT</li>
+            <li><strong>课后2小时内复习：</strong>这是黄金窗口，遗忘曲线刚起步</li>
+            <li><strong>答疑要主动：</strong>每周1次找老师问问题，期末印象分</li>
+            <li><strong>小组作业别划水：</strong>承担汇报人/组长，综测加分项</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3>奖学金 · 综测</h3>
+          <ul>
+            <li><strong>国家奖学金：</strong>10000元/年（2024.10起上调），成绩排名前10%左右+综合突出</li>
+            <li><strong>国家励志奖学金：</strong>5000元/年，需家庭经济困难认定（与国奖不可兼得）</li>
+            <li><strong>校级奖学金：</strong>一二三等，金额500-3000不等</li>
+            <li><strong>勤工助学：</strong>学校资助类岗位参考教育部标准（每小时不低于12元），各校可能更高，具体以学校学生资助管理中心通知为准</li>
+            <li><strong>综测构成：</strong>学业60-80% + 思政 + 科创 + 实践 + 文体职务（各校权重不同）</li>
+            <li><strong>提醒：</strong>助学金与生源地助学贷款详见下方「奖学金 · 资助」卡</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>人际关系与边界</h3>
+          <ul>
+            <li><strong>室友相处：</strong>早睡、不外放、不打扰，是底线</li>
+            <li><strong>分组作业：</strong>选靠谱的人&gt;选好朋友</li>
+            <li><strong>师兄师姐：</strong>主动加微信，他们手里有真题和资源</li>
+            <li><strong>辅导员关系：</strong>不惹事也不怕事，遇问题先报备</li>
+            <li><strong>恋爱：</strong>不强求不排斥，别因为恋爱误学业</li>
+            <li><strong>学会拒绝：</strong>无效社交比孤独更消耗</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>心理调适</h3>
+          <ul>
+            <li><strong>同辈压力：</strong>别只看头部，关注自己的进步</li>
+            <li><strong>孤独感：</strong>独处≠孤立，独处是大学最重要的能力</li>
+            <li><strong>焦虑：</strong>运动/冥想/写日记三件套</li>
+            <li><strong>拖延：</strong>2分钟法则+番茄钟+任务拆小</li>
+            <li><strong>失眠：</strong>固定起床时间比早睡更关键</li>
+            <li><strong>求助：</strong>学校心理咨询免费且保密，别硬扛</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>时间管理 · 一周日程模板</h3>
+          <table>
+            <thead><tr><th>时段</th><th>周一-周五</th><th>周末</th></tr></thead>
+            <tbody>
+              <tr><td>6:30-7:00</td><td>起床 + 洗漱</td><td>起床 + 洗漱</td></tr>
+              <tr><td>7:00-7:30</td><td>早餐（营养均衡）</td><td>早餐</td></tr>
+              <tr><td>8:00-11:30</td><td>上课 / 自习</td><td>整块深度学习</td></tr>
+              <tr><td>11:30-13:30</td><td>午餐 + 午休</td><td>午餐 + 午休</td></tr>
+              <tr><td>14:00-17:30</td><td>上课 / 自习</td><td>社团 / 运动</td></tr>
+              <tr><td>17:30-19:00</td><td>晚餐 + 散步放松</td><td>晚餐 + 散步放松</td></tr>
+              <tr><td>19:00-21:30</td><td>晚自习（整理 + 作业）</td><td>复盘 + 规划下周</td></tr>
+              <tr><td>21:30-22:30</td><td>洗漱 + 放空</td><td>洗漱 + 放空</td></tr>
+              <tr><td>22:30-23:30</td><td>复盘 + 放松</td><td>复盘 + 放松</td></tr>
+              <tr><td>23:30-24:00</td><td>入睡准备</td><td>入睡准备</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>金钱管理 · 月度预算参考</h3>
+          <table>
+            <thead><tr><th>项目</th><th>占比</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td>餐饮</td><td>50-60%</td><td>食堂为主，外卖节制</td></tr>
+              <tr><td>生活日用</td><td>10-15%</td><td>洗护文具水电</td></tr>
+              <tr><td>学习投资</td><td>10-15%</td><td>书/网课/考证</td></tr>
+              <tr><td>社交娱乐</td><td>5-10%</td><td>聚餐活动，有节制</td></tr>
+              <tr><td>应急储蓄</td><td>≥10%</td><td>强制存下，不动用</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>红线：</strong>不碰网贷，不开信用卡套现，超前消费是大学生最大陷阱。</div>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>安全须知</h3>
+          <ul>
+            <li>宿舍防火：不用大功率电器，离开拔插头</li>
+            <li>反诈防骗：陌生电话要钱一律挂断，辅导员不会让你转账</li>
+            <li>出行安全：夜间不走偏僻路，结伴更稳</li>
+            <li>饮食安全：校外小摊少吃，肠胃炎很影响学习</li>
+            <li>心理健康：连续2周情绪低落请寻求专业帮助</li>
+            <li>证件安全：身份证不外借，复印件写明用途</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>数字化工具箱</h3>
+          <ul>
+            <li><strong>笔记：</strong>Notion / 印象笔记 / 飞书文档</li>
+            <li><strong>思维导图：</strong>XMind / 幕布</li>
+            <li><strong>时间管理：</strong>Forest / 番茄ToDo / 滴答清单</li>
+            <li><strong>查文献：</strong>知网 / 万方 / Google Scholar</li>
+            <li><strong>学英语：</strong>墨墨背单词 / 不背单词 / 每日英语听力</li>
+            <li><strong>错题本：</strong>Anki（间隔重复神器）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>💰 奖学金 · 资助 · 助学贷款（大一就该知道）</h3>
+        <p style="font-size:12.5px;color:var(--hint);line-height:1.8">奖学金、助学金与助学贷款是大学的"隐形收入"，规则因校而异，先看懂再争取。</p>
+        <table>
+          <thead><tr><th>类型</th><th>金额（年）</th><th>核心条件</th><th>时间</th></tr></thead>
+          <tbody>
+            <tr><td>国家奖学金</td><td><strong>10000元</strong><br><span style="font-size:11px;color:var(--hint)">2024.10 由 8000 上调</span></td><td>成绩前10%左右+综合表现突出</td><td>9–10月</td></tr>
+            <tr><td>国家励志奖学金</td><td>5000元</td><td>家庭经济困难+成绩良好</td><td>9–10月</td></tr>
+            <tr><td>校级一/二/三等奖</td><td>2000–5000 / 1000–3000 / 500–1500</td><td>按本校GPA排名比例（前5%/15%/35%不等）</td><td>每学期初</td></tr>
+            <tr><td>单项奖学金</td><td>500–2000</td><td>科研/文体/志愿某一项突出</td><td>全年滚动</td></tr>
+            <tr><td>国家助学金（无偿）</td><td>2000–4500</td><td>需《家庭经济困难认定表》</td><td>每学期</td></tr>
+            <tr><td>生源地助学贷款</td><td>本专科最高<strong>20000元</strong>、研究生25000（2025现行）</td><td>户籍地县资助中心办理，在校免息、毕业再还本</td><td>每年7–9月</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info" style="margin-top:10px"><strong>保研视角：</strong>国奖、国励志在保研综评里是"硬通货"。大一的绩点一旦低了很难拉回——从大一就盯紧GPA。特困难新生可走"绿色通道"先报到注册，之后再办贷款/缓缴。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🪪 户口 · 档案 · 党团关系（开学前弄明白）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>户口迁移（自愿，非强制）</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>迁到学校=集体户口，毕业无单位接收则打回原籍</li>
+              <li><strong>农村户口慎迁：</strong>迁出后难再迁回农村集体经济，可能影响征地/分红权益</li>
+              <li>打算在就读城市考公/落户/买房的，迁过去办证更方便</li>
+            </ul>
+          </div>
+          <div>
+            <h4>档案 & 党团关系</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>档案<strong>严禁个人自带</strong>，由高中通过机要渠道寄到大学</li>
+              <li>团员：带<strong>团员证+入团志愿书</strong>办组织关系转入；党员：由县级党委开介绍信转接</li>
+              <li>想入党？见《入团入党》板块，大一开始交申请书最稳妥</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🛏️ 宿舍 & 军训（大学生活第一课）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>宿舍相处潜规则</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>熄灯、外放音量、卫生轮值，开学第一周就<strong>和室友定好规矩</strong></li>
+              <li>不打听隐私，借钱要还，隔夜矛盾当天说开</li>
+              <li>床帘+记忆棉床垫+排插+护眼灯+降噪耳塞=宿舍"五件套"</li>
+              <li>大功率电器（电煮锅/卷发棒）多数学校禁用，违者断电甚至处分</li>
+            </ul>
+          </div>
+          <div>
+            <h4>军训避雷</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>高倍防晒+晒后修复，鞋垫买软的，多喝水防中暑</li>
+              <li>心脏病/慢性病凭三甲证明可申请<strong>免训/观训</strong>，别硬扛</li>
+              <li>表现积极可能拿"优秀标兵"，算综测加分</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🎓 保研速览（大一开始的马拉松）</h3>
+        <p style="font-size:12.5px;color:var(--hint);line-height:1.8">保研不看考研分数，看<strong>前6学期绩点+综测+科研/竞赛</strong>。</p>
+        <table>
+          <thead><tr><th>路径</th><th>要点</th></tr></thead>
+          <tbody>
+            <tr><td>成绩保研（最主流）</td><td>拼绩点+综测排名，名额约占10%</td></tr>
+            <tr><td>破格/拔尖保研</td><td>有重大科研/国家级竞赛一等奖等成果</td></tr>
+            <tr><td>支教/补偿保研</td><td>西部支教一年回校读研，竞争小</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>别为竞赛丢绩点：</strong>绩点是大头（约占60%），竞赛/科研是加分项。六年三证别拖到投递季才写，提前1年加目标院校学长学姐微信，信息差就是机会差。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>⚠️ 学业预警红线（碰了会很麻烦）</h3>
+        <ul style="font-size:13px;line-height:1.9">
+          <li><strong>挂科：</strong>补考不过=重修，重修不过可能影响毕业，GPA直接拉低</li>
+          <li><strong>学分预警：</strong>长期欠修学分达标会收到学业预警甚至退学警告</li>
+          <li><strong>违纪：</strong>作弊/代考/夜不归宿/打架——轻则处分重则开除，记入档案伴随终身</li>
+          <li><strong>体测：</strong>部分学校体测不达标影响毕业，别忽视平时锻炼</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📊 综合素质测评（综测）：看不见的"第二成绩单"</h3>
+        <p style="font-size:12.5px;color:var(--hint);line-height:1.8">很多同学以为"成绩好就行"，结果保研、评优时被综测卡住。综测一般这样构成（权重因校而异）：</p>
+        <ul style="font-size:13px;line-height:1.9">
+          <li><strong>学业成绩（60%–80%）：</strong>GPA是地基，每门都重视，别信"60分万岁"</li>
+          <li><strong>思想品德（5%–15%）：</strong>政治表现、纪律、志愿服务时长</li>
+          <li><strong>科技创新（5%–15%）：</strong>大创、论文、专利、学科竞赛获奖</li>
+          <li><strong>社会实践（5%–15%）：</strong>寒暑假实践、调研报告、实习证明</li>
+          <li><strong>文体与职务（5%–10%）：</strong>运动会、社团、班干部/学生会任职</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-top:8px"><strong>大一就要懂：</strong>综测加分有"天花板"和"认定机构"——不是你写了就算，得有盖章证明。把《学生手册》里综测细则读三遍。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>📚 选课 & 转专业：大学最像"自助餐"的地方</h3>
+        <p style="font-size:12.5px;color:var(--hint);line-height:1.8">选课与转专业是大学里最能"把自己的大学过成自己想要的"的两件事。</p>
+        <div class="grid grid-2" style="font-size:13px;line-height:1.9">
+          <div>
+            <h4>选课补充</h4>
+            <ul>
+              <li>先必修后选修，学分不够不能毕业</li>
+              <li>前两周多数学校允许试听/退补选</li>
+              <li>难度搭配：别一学期全是硬课</li>
+            </ul>
+          </div>
+          <div>
+            <h4>转专业：第二次选专业的机会</h4>
+            <ul>
+              <li>多数高校大一/大二末开放，要求原专业绩点前10%–30%</li>
+              <li>热门专业竞争激烈，需笔试+面试</li>
+              <li><strong>绩点是门票</strong>——想转就大一就把绩点抓起来</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🧰 大学四年远离的资源 & 工具</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>学习资源</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>中国大学MOOC / 学堂在线：</strong>名校公开课免费学，跨校可认学分</li>
+              <li><strong>国家图书馆 / 知网：</strong>写论文查文献，学校一般买了数据库权限</li>
+              <li><strong>B站：</strong>四六级/考研/PS·PR 教程免费质量高</li>
+            </ul>
+          </div>
+          <div>
+            <h4>效率工具</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>Notion / 飞书文档：</strong>笔记+知识库+协作一站</li>
+              <li><strong>番茄ToDo：</strong>专注计时+习惯打卡治拖延</li>
+              <li><strong>扫描全能王：</strong>拍课件/扫证件/转PDF</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>工具在精不在多：</strong>先用熟栖匣，比囤20个App更有用。</div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>校园防骗手册 · 大学生必看的诈骗识别清单</h3>
+        <div class="callout callout-warn" style="margin-top:2px"><strong>一句话识破常见骗局：</strong>刷单返利、冒充客服/公检法、校园贷/培训贷、兼职押金、杀猪盘、门票代购。凡"要你先掏钱/要你身份信息/承诺马上暴富"的，先挂断、先向官方核实。</div>
+        <div class="grid grid-2">
+          <div>
+            <h4>高频骗局（遇到立刻警惕）</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>刷单返利：</strong>"动动手指日入几百"全是骗局，刷单本身违法，先小单返利再大单吞钱</li>
+              <li><strong>冒充客服/公检法：</strong>说"退款/涉案/冻结"让你转账的，一律挂断，走官方渠道核实</li>
+              <li><strong>校园贷/培训贷：</strong>"零利息""包就业"诱导贷款，逾期利滚利毁征信，缺钱先找家里和学校</li>
+              <li><strong>兼职押金/服装费：</strong>正规兼职不收费，任何先交钱的兼职都是坑</li>
+              <li><strong>网恋投资/杀猪盘：</strong>只网聊不见面就带你"投资"的，钱进得去出不来</li>
+              <li><strong>门票代购/二手低价：</strong>演唱会票认准官方渠道，二手"超低价"多是假票骗局</li>
+            </ul>
+          </div>
+          <div>
+            <h4>三不一多 · 防骗口诀</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>不轻信：</strong>天上不会掉馅饼，好事轮到你前先问一句"凭什么是我"</li>
+              <li><strong>不透露：</strong>验证码、密码、身份证号，谁要都不给</li>
+              <li><strong>不转账：</strong>任何理由让你转账/扫码付款，先冷静24小时再说</li>
+              <li><strong>多核实：</strong>打官方电话、问辅导员、问学长——多问一句能止损90%</li>
+            </ul>
+            <h4>万一被骗了怎么办</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li>第一时间拨打 <strong>96110</strong>（反诈专线）或 <strong>110</strong>，越早越可能止付追回</li>
+              <li>保留聊天/转账记录配合警方；下载"国家反诈中心"App并开启来电预警</li>
+              <li>别因为"丢人"而瞒着——骗子最爱利用羞耻心拖住你</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="16 13 8 13 8 17 16 17 16 13"></polyline></svg>异地实习 / 就业 · 证件与权益别踩坑</h3>
+        <div class="callout callout-info" style="margin-top:2px"><strong>大学里没人教、但离校一定会用到的办事常识。</strong>实习或毕业去外地，居住证、社保、医保衔接、档案四件事处理对了省心，错了要跑好几趟。以下为自己核对与办事方向，具体办理标准请以<strong>当地政务 / 学校就业办 / 国家最新政策</strong>为准。</div>
+        <div class="grid grid-2">
+          <div>
+            <h4>证件与居住</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>居住证：</strong>在实习/就业城市实际居住（一般连续满半年，或凭就业/租房手续办理）即可申领。影响考驾照、异地办事、部分城市落户/人才积分。去当地公安派出所或政务服务网办理。</li>
+              <li><strong>学生证/校园卡：</strong>毕业前可补办一次；火车票学生优惠、景区半价等学生权益以官方当年规定为准。</li>
+              <li><strong>身份证到期：</strong>提前 3 个月办理，异地也可在居住地派出所换领，别拖到要用才发现过期。</li>
+            </ul>
+          </div>
+          <div>
+            <h4>权益与三大件</h4>
+            <ul style="font-size:13px;line-height:1.9">
+              <li><strong>社保：</strong>正式入职签劳动合同后应由单位正常缴纳，<strong>别信"放弃社保换补贴"</strong>——不缴社保既违法也影响医保/买房/落户。可在"国家社会保险公共服务平台"查自己的权益记录。</li>
+              <li><strong>医保衔接：</strong>学生在校参加的是居民医保，就业后转职工医保；去外地就医先办<strong>异地就医备案</strong>即可直接结算，流程在"国家医保服务平台"App 办。</li>
+              <li><strong>档案：</strong>毕业前把档案去向定下来（单位/人才市场/回原籍），<strong>档案不能自己拿、不能拆封</strong>；三方协议、报到证等走向可咨询学校就业办与户籍地人才中心。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:8px"><strong>通用提醒：</strong>凡"代办社保/包落户/兼职交押金"一类，多为中介或骗局，先问学校就业办、当地 12333（社保热线）与正规政务渠道确认，可少走很多弯路。</div>
+      </div>
+    </section>
+
+    <!-- 生涯蓝图 -->
+    <section class="view" id="view-life">
+<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图</h1>
+        <p>证书时间线 · 人生阶段 · 复盘 · 读书 · 播客 · 不设限</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>大学四年证书规划时间线（含金量排序+报名链接）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">按时间节点排列 · 点击报名链接直达官网 · 标注含金量和竞争力</p>
+        <table>
+          <thead><tr><th>时间</th><th>证书</th><th>含金量</th><th>怎么报名</th><th>报名链接</th></tr></thead>
+          <tbody>
+            <tr><td><strong>大一上 12月</strong></td><td>英语四级 CET-4</td><td><span class="tag tag-coral">必考·核心</span></td><td>学校统一组织·9月报名·12月考试</td><td><a href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">cet-bm.neea.edu.cn ↗</a></td></tr>
+            <tr><td>大一下 6月</td><td>英语四级(若未过)</td><td><span class="tag tag-coral">必考</span></td><td>3月报名·6月考试</td><td><a href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">同上 ↗</a></td></tr>
+            <tr><td>大一下 6月</td><td>英语六级 CET-6</td><td><span class="tag tag-blue">强烈推荐</span></td><td>过四级后即可报·3月/9月报名</td><td><a href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">cet-bm.neea.edu.cn ↗</a></td></tr>
+            <tr><td>大一全年</td><td>计算机二级 MS Office</td><td><span class="tag tag-teal">推荐</span></td><td>3月/9月/12月三次考试·提前1月报名</td><td><a href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener noreferrer">ncre.neea.edu.cn ↗</a></td></tr>
+            <tr><td>大一/大二</td><td>普通话二甲</td><td><span class="tag tag-gray">基础</span></td><td>学校语委办·每月可考</td><td><a href="https://www.cltt.org/" target="_blank" rel="noopener noreferrer">cltt.org ↗</a></td></tr>
+            <tr><td><strong>大二上 9月</strong></td><td>英语六级(若大一未过)</td><td><span class="tag tag-blue">强烈推荐</span></td><td>3月/9月报名</td><td><a href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">同上 ↗</a></td></tr>
+            <tr><td>大二全年</td><td>教师资格证(高中政治)</td><td><span class="tag tag-teal">备选·保底</span></td><td>笔试3月/10月·面试1月/5月</td><td><a href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">ntce.neea.edu.cn ↗</a></td></tr>
+            <tr><td>大二全年</td><td>初级会计职称</td><td><span class="tag tag-gray">备选</span></td><td>5月考试·11月报名</td><td><a href="https://kzp.mof.gov.cn/" target="_blank" rel="noopener noreferrer">kzp.mof.gov.cn ↗</a></td></tr>
+            <tr><td><strong>大三全年</strong></td><td>专业资格证</td><td><span class="tag tag-coral">专业核心</span></td><td>6月客观题报名·9月客观题·10月主观题</td><td><a href="https://www.moj.gov.cn/" target="_blank" rel="noopener noreferrer">司法部 moj.gov.cn ↗</a></td></tr>
+            <tr><td>大三下</td><td>考研(若不保研)</td><td><span class="tag tag-coral">升学必考</span></td><td>10月报名·12月考试</td><td><a href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer">yz.chsi.com.cn ↗</a></td></tr>
+            <tr><td>大四上 9月</td><td>国考(公务员)</td><td><span class="tag tag-blue">就业方向</span></td><td>10月报名·11月笔试</td><td><a href="https://www.scs.gov.cn/" target="_blank" rel="noopener noreferrer">scs.gov.cn ↗</a></td></tr>
+            <tr><td>大四上 9月</td><td>专业资格证(补考)</td><td><span class="tag tag-coral">专业必考</span></td><td>9月报名·10月考试</td><td><a href="https://www.moj.gov.cn/" target="_blank" rel="noopener noreferrer">司法部 moj.gov.cn ↗</a></td></tr>
+            <tr><td>大四下</td><td>省考/选调生</td><td><span class="tag tag-blue">就业方向</span></td><td>各省时间不同·关注本省人事考试网</td><td>各省人事考试网</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info" style="margin-top:10px"><strong>报名入口说明：</strong>政府官方站的证书/跳转在部分手机浏览器会有提示，为绝对稳妥，以上「国考、会计」改为<b>一键搜索官方入口</b>（必应直达，任何浏览器/微信都能秒开、无白屏无风险）；其余官方站点了后如偶发白屏，长按链接选「在浏览器打开」即可。</div>
+        <div class="callout callout-info" style="margin-top:12px">
+          <strong>证书优先级建议：</strong><br>
+          1. <strong>大一上12月：四级目标分（点击填写）</strong><br>
+          2. <strong>大一下6月：六级</strong>（保研加分项，六级500+有竞争力）<br>
+          3. <strong>大一/大二：计算机二级Office</strong>（报课或自学均可，性价比高）<br>
+          4. <strong>大二：普通话二甲</strong>（学业/教资/公务员都看，轻松拿）<br>
+          5. <strong>大二下：教资高中政治</strong>（保底职业，文科背景适合）<br>
+          6. <strong>大三：考证</strong>（学业核心竞争力之一，保研/考研/就业都看重）<br>
+          7. <strong>大四上：国考/省考</strong>（若走公务员路线）<br>
+          <strong>不推荐考</strong>：导游证/心理咨询师/各种乱七八糟证——投入产出比低，浪费时间
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>大学四年+毕业10年详细时间线（每阶段干什么·怎么干） <span id="academicYearHint" style="font-weight:400;font-size:11px;color:var(--hint)"></span></h3>
+        <table>
+          <thead><tr><th>阶段</th><th>核心任务</th><th>怎么干</th><th>关键产出</th></tr></thead>
+          <tbody>
+            <tr><td><strong>大一上</strong></td><td>过四级目标分（点击填写）·适应大学·入团</td><td>每日25词+3真题+3听力;参加1个核心社团(辩论队/模法);写入党申请书</td><td>四级目标分（点击填写）·入团·绩点前3</td></tr>
+            <tr><td>大一下</td><td>六级·计算机二级·绩点保持</td><td>3月报六级6月考;3月报计算机二级;选1-2门专业课深读</td><td>六级500+·二级证书·绩点前3</td></tr>
+            <tr><td><strong>大二上</strong></td><td>六级刷分·教资笔试·专业深耕</td><td>9月报六级12月刷分;10月教资笔试;读5本学业经典</td><td>六级目标分·教资笔试过·专业书5本</td></tr>
+            <tr><td>大二下</td><td>教资面试·普通话二甲·找暑期实习</td><td>5月教资面试;考普通话;3-5月投递暑期律所/法务实习</td><td>教资证·普通话二甲·暑期实习offer</td></tr>
+            <tr><td><strong>大三上</strong></td><td>考证客观题备考·保研申请启动</td><td>6月报考证9月考客观题;关注保研夏令营信息;准备保研材料</td><td>考证客观题过·保研夏令营offer</td></tr>
+            <tr><td>大三下</td><td>考证主观题·保研冲刺·考研备考(备选)</td><td>9-10月考证主观题;7-9月保研夏令营;同步准备考研专业课</td><td>考证证·保研结果·考研专业课基础</td></tr>
+            <tr><td><strong>大四上</strong></td><td>保研确认/考研/国考·秋招</td><td>9月保研确认;12月考研(若需);10-11月国考;9-11月秋招投简历</td><td>研究生offer或工作offer</td></tr>
+            <tr><td>大四下</td><td>毕业论文·省考/选调·春招</td><td>3-4月毕业论文;3月省考;2-4月春招补投</td><td>毕业证·学位证·工作/升学落实</td></tr>
+            <tr><td><strong>毕业1-3年</strong></td><td>职业起步·深耕一个方向</td><td>若读研:发论文+考证(若本科未过)+实习;若工作:央国企法务/律所助理/公务员入职</td><td>硕士毕业证或3年工作经验·月薪1.5-2.5万</td></tr>
+            <tr><td>毕业3-5年</td><td>职业进阶·开始理财</td><td>晋升主管/独立办案/考公上岸;每月定投指数基金;攒首付</td><td>月薪2.5-4万·存款30-50万</td></tr>
+            <tr><td>毕业5-10年</td><td>职业成熟·财富积累·可选副业</td><td>晋升中层/合伙人/转管理;副业(自媒体/培训/咨询);买房或投资</td><td>月薪4-8万·被动收入覆盖生活·资产200-500万</td></tr>
+            <tr><td>毕业10年+(2040+)</td><td>财富自由·有底气地活</td><td>被动收入&gt;生活支出·可选择性工作·健康和家庭优先</td><td>资产500万+·被动收入&gt;20万/年</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>人生阶段指南（有弹性，不设限）</h3>
+        <table>
+          <thead><tr><th>阶段</th><th>核心目标</th><th>证书/技能</th><th>收入参考</th></tr></thead>
+          <tbody>
+            <tr><td>大一(18-19)</td><td>打基础·过四级·入团</td><td>四级·计算机二级</td><td>生活费3000</td></tr>
+            <tr><td>大二(19-20)</td><td>绩点冲刺·六级·竞赛</td><td>六级·考证预备</td><td>实习2000-4000</td></tr>
+            <tr><td>大三(20-21)</td><td>考证·实习·保研/考研定型</td><td>考证客观题</td><td>实习3000-8000</td></tr>
+            <tr><td>大四(21-22)</td><td>考证主观·秋招·毕业</td><td>考证证·学位证</td><td>起薪8-20k</td></tr>
+            <tr><td>毕业后1-3年</td><td>站稳脚跟·积累人脉</td><td>律师执业证</td><td>10-25k</td></tr>
+            <tr><td>3-5年</td><td>独当一面·副业起步</td><td>专业领域深耕</td><td>20-40k</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>副业方向</h3><ul><li><strong>内容创作：</strong>公众号/小红书/抖音分享你的专业或兴趣</li><li><strong>线上家教：</strong>擅长学科辅导学弟学妹</li><li><strong>技能变现：</strong>PPT/设计/翻译/写作接单</li><li><strong>校园代理：</strong>正规品牌校园推广</li><li><strong>知识付费：</strong>考过的证做辅导课</li></ul><div class="callout callout-warn"><strong>避坑：</strong>大一先把主业做扎实，副业大三后再说。远离刷单/代购/任何先交钱的"兼职"。</div></div>
+        <div class="card"><h3>时间观（现阶段最重要）</h3><p>大学正处于能力建设期，时间是最稀缺的资源。</p><ul><li>把最多时间投在能增值的事上</li><li>不因合群消耗时间，按自己节奏走</li><li>经济独立是一切选择的底气</li><li>真正的吸引力来自你成为更好的自己</li></ul></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>避坑清单（绝对不做 · 必须做 · 常见坑）</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--coral)">绝对不做（一票否决）</h4>
+            <ul>
+              <li>裸贷/校园贷/任何超前消费借贷</li>
+              <li>代人考试/替考（开除学籍+犯罪）</li>
+              <li>网贷投资"保本高收益"骗局</li>
+              <li>熬夜伤身体换短期成绩</li>
+              <li>为合群放弃自己的节奏</li>
+              <li>学术不端（抄袭/代写/买卖论文）——保研资格取消+学位证没了</li>
+              <li>挂科——保研一票否决+补考重修浪费时间</li>
+              <li>违法违纪（打架斗殴/盗窃/醉驾）——档案污点影响终身</li>
+              <li>卖个人信息/帮人洗钱/出借银行卡——可能构成帮信罪</li>
+              <li>盲目考研逃避就业——读完研还是失业，且少了3年工作经验</li>
+              <li>过度消费买奢侈品/名牌——学生阶段没收入，负债起步最惨</li>
+              <li>无效社交——天天陪人喝酒唱K的"朋友"毕业就散</li>
+              <li>拖延症——明日复明日，明日何其多</li>
+              <li>感情用事放弃事业——为一个人放弃好学校/好工作是最大的傻</li>
+              <li>轻信"学长学姐"推销——卖课/卖卡/卖会员90%是坑</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:var(--teal)">值得长期坚持</h4>
+            <ul>
+              <li>每学期复盘一次目标偏离度</li>
+              <li>维护3-5个高质量深交朋友</li>
+              <li>定期给爸妈妹妹打电话</li>
+              <li>每年体检一次</li>
+              <li>保留所有证书/成绩单电子版</li>
+              <li>每月读1本专业书+1本认知书</li>
+              <li>每周运动3次以上</li>
+              <li>每天复盘今日+计划明日</li>
+              <li>每月备份一次重要数据</li>
+              <li>每学期至少参加1次高质量竞赛/活动</li>
+              <li>每学年找1次实习（哪怕短期）</li>
+              <li>建立个人作品集（论文/案例/项目）</li>
+              <li>维护LinkedIn/脉脉职业档案</li>
+              <li>学一项硬技能（Excel/PPT/Python/英语）</li>
+              <li>存钱——每月至少存生活费10%</li>
+            </ul>
+          </div>
+        </div>
+        <h4 style="margin-top:14px;color:var(--primary)">常见坑（容易踩但不致命）</h4>
+        <ul>
+          <li><strong>盲目考证</strong>：导游证/心理咨询师/各种证——投入产出比低，不如把核心证考好</li>
+          <li><strong>报班陷阱</strong>：四六级保过班/考研全程班——很多只是焦虑营销，自学 + 优质网课通常已足够</li>
+          <li><strong>社团过多</strong>：加3个以上社团——每个都半吊子，不如深耕1个核心社团</li>
+          <li><strong>恋爱脑</strong>：大一就投入恋爱——倘若缺乏边界感，容易挤占黄金学习期，需要审慎管理精力</li>
+          <li><strong>熬夜党</strong>：凌晨3点睡中午起——昼夜节律紊乱，效率减半</li>
+          <li><strong>外卖党</strong>：天天外卖——又贵又不健康，学会做饭省一半钱</li>
+          <li><strong>囤课党</strong>：买一堆课不看——报课/囤课不等于学会，买了不看=没买</li>
+          <li><strong>完美主义</strong>：等准备好了再做——永远准备不好，先做60分再迭代</li>
+          <li><strong>跟风考研</strong>：别人考我也考——想清楚为什么考，不考也行</li>
+          <li><strong>忽视健康</strong>：年轻不养生——25岁后身体滑坡，大学是打底子的关键期</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-top:12px">
+          <strong>每日避坑提醒（随机轮换）：</strong>
+          <span id="dailyPitfall">背单词别等"有空"，每天固定 25 个，碎片时间就够。</span>
+          <button class="btn btn-sm" style="float:right;margin-top:-4px" onclick="renderPitfall(true)">换一条</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="callout callout-info" style="margin:0">
+          <strong>简历模板已移至「职业发展 → 简历技巧」下方</strong>（同页可一键复制/下载）。简历突出技巧、优秀简历模板、实习渠道、四年成长路径都已整合在「职业发展」视图，方便你一站式准备求职。
+        </div>
+      </div>
+    </section>
+
+    <!-- 播客精读 -->
+    <section class="view" id="view-podcast">
+<div class="section-intro">把听过的声音、记下的观点留存下来，时间久了自有回甘。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path></svg>耳畔星河</h1>
+        <p>一档节目一档笔记 · 四栏笔记法 · 带示范笔记</p>
+      </div>
+      <div class="callout callout-info"><strong>普遍困扰：</strong>"听完就忘、只记个大概"是大多数人的通病。解法：用<strong>四栏笔记法</strong>——核心内容/可应用场景/思考感悟/行动清单。听时随手记关键词，听完24小时内整理。</div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>示范笔记：纵横四海《大脑喜欢听你这么说》</h3>
+        <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
+          <h4 style="color:var(--primary);margin-bottom:8px">核心内容</h4>
+          <p style="margin-bottom:10px">大脑通过讲故事的方式记忆信息，而不是逻辑框架。具象&gt;抽象、情感&gt;理性、重复&gt;新颖。听者会对有"画面感"的内容产生记忆锚点。</p>
+          <h4 style="color:var(--teal);margin-bottom:8px">可应用场景</h4>
+          <ul style="margin-bottom:10px">
+            <li>论文写作：用案例引入而非直接堆理论</li>
+            <li>课堂展示：开头讲一个故事而非念PPT</li>
+            <li>面试自我介绍：用具体事例而非"我很努力"</li>
+            <li>辩论/法庭陈述：用故事线带动评委情绪</li>
+          </ul>
+          <h4 style="color:var(--coral);margin-bottom:8px">思考感悟</h4>
+          <p style="margin-bottom:10px">难怪高中老师讲题总爱举例子，原来不只是为了让课有趣，而是大脑的硬件就是这么设计的。我自己背单词记不住，是不是因为太抽象了？改成"单词+一个画面"可能更牢。</p>
+          <h4 style="color:var(--primary);margin-bottom:8px">行动清单</h4>
+          <ul>
+            <li>本周做一次课堂展示，用故事开头</li>
+            <li>背单词时给每个生词配一个画面/场景</li>
+            <li>写读书笔记时先复述故事再讲道理</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <h3>示范笔记：一档"学习方法/职业规划"访谈——四栏法怎么用</h3>
+        <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
+          <h4 style="color:var(--primary);margin-bottom:8px">核心内容</h4>
+          <p style="margin-bottom:10px">嘉宾是某行业从业10年的前辈，核心三点：① 应届生第一份工作，选"能学到稀缺技能的平台"优先于"钱多事少"；② 简历里写"我做了某事"不如写"我用什么方法把某事做到什么结果"；③ 想清楚"三年后要成为什么样的人"，倒推现在该补什么。</p>
+          <h4 style="color:var(--teal);margin-bottom:8px">可应用场景</h4>
+          <ul style="margin-bottom:10px">
+            <li>大二大三找实习：优先选能上手做项目、能学到技能的岗位</li>
+            <li>写简历/面试：把"做了"改成"用什么方法、做到什么结果"（配合「简历核心模块」用）</li>
+            <li>选方向迷茫时：先写"三年后想成为的人"，再倒推本学期的学科与实习</li>
+          </ul>
+          <h4 style="color:var(--coral);margin-bottom:8px">思考感悟</h4>
+          <p style="margin-bottom:10px">和我也正纠结"实习选钱多还是选成长"完全对口。原来根本不该看时薪，该看"这段经历能不能沉淀到简历里"。听完决定：这学期主攻一门能写进作品集的技能。</p>
+          <h4 style="color:var(--primary);margin-bottom:8px">行动清单</h4>
+          <ul>
+            <li>本周把简历里的一个经历，改成"方法+结果"句式</li>
+            <li>写一张"三年后想成为的人"，倒推3件下学期要做的事</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>什么样的播客值得听 · 四栏笔记模板</h3>
+          <h4>值得听的三条标准</h4>
+          <ul>
+            <li><strong>有增量信息</strong>：能讲出你不知道的规律、数据或经历，而不是情绪共鸣</li>
+            <li><strong>能落地</strong>：听完能变成明天的一个动作（方法/清单/习惯）</li>
+            <li><strong>主讲人有真积累</strong>：十年从业者讲行业，胜过网红念稿</li>
+          </ul>
+          <h4>四栏笔记模板（照抄即可用）</h4>
+          <div style="background:var(--bg);padding:10px;border-radius:8px;font-size:12px">
+            核心内容：这一期讲了什么（3句话内概括）<br>
+            可应用场景：我能用在哪（写论文/面试/理财/带娃/工作）<br>
+            思考感悟：跟我原来认知哪里不一样<br>
+            行动清单：听完24小时内做的1件小事
+          </div>
+        </div>
+        <div class="card">
+          <h3>新增播客笔记</h3>
+          <input id="podcastName2" placeholder="播客名+单集标题" style="margin-bottom:8px">
+          <textarea id="podcastNote2" placeholder="四栏：核心内容/可应用场景/思考感悟/行动清单" style="min-height:100px"></textarea>
+          <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="addPodcast2()">保存笔记</button>
+          <div id="podcastList2" style="margin-top:12px"><p style="color:var(--hint);font-size:13px">还没有播客笔记，参考上方示范笔记格式记录</p></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>推荐播客 · 点链接直接听</h3>
+        <div class="grid grid-2">
+          <div>
+            <a class="res-link" href="https://www.ximalaya.com/search/%E7%BA%B5%E6%A8%AA%E5%9B%9B%E6%B5%B7" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg></div>
+              <div class="info"><div class="name">纵横四海</div><div class="desc">商业/认知/方法论，适合通勤路上听</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.ximalaya.com/search/%E4%B8%80%E6%8A%8A%E5%8D%B7%E5%B0%BA" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+              <div class="info"><div class="name">一把卷尺</div><div class="desc">财经/投资，理财观念与避坑</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.ximalaya.com/search/%E5%87%B9%E5%87%B8%E7%94%B5%E6%B3%A2" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>
+              <div class="info"><div class="name">凹凸电波</div><div class="desc">文化/生活，观点启发与素材</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.xiaoyuzhoufm.com/podcast/625635587bfca4e73e990703" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg></div>
+              <div class="info"><div class="name">岩中花述</div><div class="desc">小宇宙直达 · 女性成长访谈，自我认知与勇气</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+          <div>
+            <a class="res-link" href="https://www.xiaoyuzhoufm.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+              <div class="info"><div class="name">小宇宙（播客App官网）</div><div class="desc">高质量播客聚集地，可搜全部节目</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.ximalaya.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></div>
+              <div class="info"><div class="name">喜马拉雅（音频平台）</div><div class="desc">播客/有声书/课程全品类</div></div><div class="arrow">↗</div>
+            </a>
+            <div class="callout callout-info" style="margin-top:8px"><strong>怎么用：</strong>点击链接直接在浏览器听；手机端装"小宇宙/喜马拉雅"App，搜索播客名即可订阅，每天通勤20分钟就是最好的输入时间。听完用上方四栏笔记法记一条，才算真正"听过"。</div>
+          </div>
+        </div>
+      </div>
+          <div class="card" style="margin-top:16px">
+        <h3>播客整理（我的单集笔记）</h3>
+        <p style="font-size:13px;color:var(--muted)">无论哪档节目：听时记关键词，听完24小时内整理。</p>
+        <div style="margin-top:10px">
+          <input id="podcastName" placeholder="播客名+单集" style="margin-bottom:8px">
+          <textarea id="podcastNote" placeholder="核心内容 / 可应用场景 / 思考感悟" style="min-height:80px"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn btn-primary btn-sm" onclick="addPodcast()">保存</button>
+          </div>
+        </div>
+        <div id="podcastNoteList" style="margin-top:12px"><p style="color:var(--hint);font-size:13px">还没有播客笔记</p></div>
+      </div>
+    </section>
+
+    <!-- 番茄专注 -->
+    <section class="view" id="view-timer">
+<div class="section-intro">专注不用靠硬撑，用对节奏即可。时间是你自己的，慢慢用。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时</h1>
+        <p>25 分钟深度专注 + 5 分钟休息 · 中断原因记录生成饼图 · 今日累计番茄数</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card" style="text-align:center">
+          <h3>番茄钟 <span style="font-weight:400;font-size:12px;color:var(--hint)">完成会自动记入关联习惯</span></h3>
+          <input id="pomoTaskInput" placeholder="这次专注做什么？（如：背单词25个）" style="margin-bottom:10px;text-align:center">
+          <select id="pomoHabitSel" style="margin-bottom:10px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;max-width:100%"><option value="">关联习惯（可选）· 完成后 +1 专注</option></select>
+          <div id="pomoBig" style="font-size:64px;font-family:ui-monospace,Consolas,monospace;color:var(--primary);font-weight:700;margin:18px 0">25:00</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="pomoToggle()">开始专注</button>
+            <button class="btn" onclick="pomoReset()">重置</button>
+            <button class="btn" onclick="pomoMode(25)">工作25</button>
+            <button class="btn" onclick="pomoMode(50)">长专注50</button>
+          </div>
+          <div class="metric" style="margin-top:18px;background:var(--bg)"><div class="label">今日已完成</div><div class="value" id="pomoCount" style="font-size:32px">0</div><div class="sub">个番茄钟</div></div>
+        </div>
+        <div class="card">
+          <h3>中断原因记录（生成饼图）</h3>
+          <p style="font-size:12px;color:var(--hint)">每次中断点对应原因，月末分析你最大的专注敌人</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0">
+            <button class="btn btn-sm" onclick="pomoBreak(&#39;手机&#39;)">手机</button>
+            <button class="btn btn-sm" onclick="pomoBreak(&#39;消息&#39;)">消息</button>
+            <button class="btn btn-sm" onclick="pomoBreak(&#39;困倦&#39;)">困倦</button>
+            <button class="btn btn-sm" onclick="pomoBreak(&#39;被打扰&#39;)">被打扰</button>
+            <button class="btn btn-sm" onclick="pomoBreak(&#39;走神&#39;)">走神</button>
+            <button class="btn btn-sm" onclick="pomoBreak(&#39;吃饭&#39;)">吃饭</button>
+          </div>
+          <div style="display:flex;gap:6px;margin:6px 0 4px">
+            <input id="pomoBreakCustom" placeholder="自定义原因（如：家人来电）" onkeydown="if(event.key===&#39;Enter&#39;)pomoBreakCustom()">
+            <button class="btn btn-sm btn-primary" onclick="pomoBreakCustom()">记录</button>
+          </div>
+          <div class="callout callout-warn" style="margin-top:6px;font-size:12px"><strong>诚实提醒：</strong>如果不小心点错了、实际没有中断，可以删除该条记录；如果确实中断了、只是碍于面子不想承认——请保留它，直面中断原因才是提升专注的第一步。</div>
+          <svg id="pomoChart" width="100%" height="180" viewBox="0 0 320 180" style="display:block;margin-top:8px"><text x="160" y="90" text-anchor="middle" fill="#6B7267" font-size="12">暂无中断记录 · 开始第一个番茄</text></svg>
+          <div id="pomoBreaks" style="color:var(--muted);font-size:13px;margin-top:8px"></div>
+          <button class="btn btn-sm" onclick="pomoClearBreaks()" style="margin-top:8px;color:var(--hint)" title="一键清空所有中断记录">清空全部中断记录</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>专注执行铁律</h3>
+        <ul>
+          <li><strong>启动前</strong>：手机调静音放抽屉，关掉所有非学习页签，桌面只留当前任务材料</li>
+          <li><strong>启动时</strong>：在心里默念"接下来25分钟只做这一件事"，输入命令即开始</li>
+          <li><strong>专注中</strong>：被任何念头打断（想起要买东西/要回消息），写在旁边的便签上，不分心处理</li>
+          <li><strong>休息时</strong>：站起来走动、喝水、远眺窗外，<strong>不刷手机</strong>——刷手机不叫休息叫换种方式消耗</li>
+          <li><strong>中断后</strong>：不责备自己，记录原因，下一个番茄继续。番茄断了一天不亏，断了一周才亏</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 灵感看板 -->
+    <section class="view" id="view-creative">
+<div class="section-intro">读书笔记、碎片灵感、兴趣收获、休闲时刻的所思所想。把一闪而过、不想遗失的想法妥善留存下来。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path></svg>灵感看板</h1>
+        <p>灵感收集器 · 决策日记 · 感恩日记 · 人生100个目标</p>
+      </div>
+      <div class="card">
+        <h3>灵感收集器（随手记，可转任务）</h3>
+        <div style="background:var(--bg);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--muted)">
+          <strong style="color:var(--primary)">示例：</strong>"四级作文万能开头句式合集" · "把《认知觉醒》'舒适区边缘'画成一张图" · "攒10个学长学姐的联系方式"。照这个格式记下你的灵感，点"记下"即自动保存，所有记录永久保留、不会覆盖。
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <input id="inspireInput" placeholder="记下一个灵感..." onkeydown="if(event.key===&#39;Enter&#39;)addInspire()">
+          <button class="btn btn-primary btn-sm" onclick="addInspire()">记下</button>
+        </div>
+        <div id="inspireList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px"><p style="color:var(--hint);font-size:13px">还没有灵感 · 随时记下脑子里冒出的想法</p></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>决策日记（选项 · 利 · 弊 · 结果 · 复盘）</h3>
+        <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每做一个有犹豫的决策都写下来，半年后回看能识别你的决策盲区。点"记录决策"即自动保存，历史记录永久保留、不会覆盖。</p>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;margin-bottom:12px;font-size:12px">
+          <div style="font-weight:600;color:var(--primary);margin-bottom:6px">示例：暑假要不要先报驾校？ <span style="font-size:10px;color:var(--hint);font-weight:400">2026-07-20</span></div>
+          <div class="grid grid-2" style="gap:8px">
+            <div style="color:var(--teal)"><strong>利：</strong>开学前拿证，大一寒假可自驾/兼职；暑假时间长，每天能练</div>
+            <div style="color:var(--coral)"><strong>弊：</strong>费用4000+；占暑假学习时间；练车往返耗时</div>
+          </div>
+        </div>
+        <input id="decTitle" placeholder="决策事项（如：选C1还是C2驾校）" style="margin-bottom:8px">
+        <div class="grid grid-2" style="margin-bottom:8px">
+          <textarea id="decPro" placeholder="利（好处）" style="min-height:60px"></textarea>
+          <textarea id="decCon" placeholder="弊（代价）" style="min-height:60px"></textarea>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="addDecision()">记录决策</button>
+        <div id="decList" style="margin-top:14px"><p style="color:var(--hint);font-size:13px">还没有决策记录 · 每做一次犹豫的决策都写下来</p></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>感恩日记（每天写3件 · 坚持6周幸福感显著提升）</h3>
+        <div style="background:var(--bg);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--muted)">
+          <strong style="color:var(--teal)">示例：</strong>① 今天食堂阿姨多给了一勺菜；② 室友帮我带了快递；③ 下午的课听懂了，做对了2道题。——照这个格式写你自己的，点击"存下"后自动保存，所有记录永久保留、不会覆盖。
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <input id="gratefulInput" placeholder="今天值得感恩的一件事..." onkeydown="if(event.key===&#39;Enter&#39;)saveGrateful()">
+          <button class="btn btn-primary btn-sm" onclick="saveGrateful()">存下</button>
+        </div>
+        <div id="gratefulList"><p style="color:var(--hint);font-size:13px">还没有记录 · 每天写3件感恩的事，6周后幸福感显著提升</p></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>人生100个目标（写下目标，实现率提高42%）</h3>
+        <div style="background:var(--bg);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--muted)">
+          <strong style="color:var(--primary)">示例（人人可写的100个目标）：</strong>读50本书 · 旅行10座城市 · 拿一次奖学金 · 学会游泳 · 存下第一笔1万元 · 跑一次半马 · 养一盆植物并养活 · 给爸妈买礼物 · 学会做5道菜 · 完整写完一本日记 · 考一个证书 · 交3个能交心的朋友……在下方写下你自己的，勾选即标记完成，全部自动保存。
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <input id="goal100Input" placeholder="写下你的下一个目标..." style="flex:1;min-width:0" onkeydown="if(event.key===&#39;Enter&#39;)addGoal100()">
+          <select id="goal100Cat" style="width:88px">
+            <option value="学业">学业</option><option value="职业">职业</option><option value="体验">体验</option><option value="财富">财富</option><option value="健康">健康</option><option value="其他">其他</option>
+          </select>
+          <button class="btn btn-primary btn-sm" onclick="addGoal100()">加入</button>
+        </div>
+        <div id="goal100List"><p style="color:var(--hint);font-size:13px">还没有目标 · 把"想做的事"具体写下来，写下的目标实现率高42%</p></div>
+      </div>
+    </section>
+
+    <!-- 书海·金句笔记 -->
+    <section class="view" id="view-shelf">
+<div class="section-intro">把读过的书、想读的书、触动你的句子都收进来，慢慢攒成你自己的书房。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>书海拾贝</h1>
+        <p>精选书库 · 点击封面看金句和读书笔记 · 今日金句 · 可自主添加</p>
+      </div>
+
+      <div class="card daily-card" style="margin-bottom:16px;background:linear-gradient(135deg,#EFE8D8,#FBF7EE);border:1px solid var(--border)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><h3 style="margin:0;color:var(--primary)">晨光寄语</h3><button class="btn btn-sm" onclick="nextBigQuote()">换一句</button></div>
+        <div id="bigQuote" style="background:#FFFFFF;border-radius:10px;padding:18px 22px;margin-bottom:14px;border-left:4px solid var(--primary);border-right:1px solid var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div style="font-size:18px;font-weight:500;line-height:1.7;color:var(--text);letter-spacing:0.5px;font-style:italic;text-align:center">「别人嘲笑的不是你的梦想，是你的实力」</div><div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center">—— 佚名</div></div>
+        <div id="bigQuoteExtras" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px"><div style="border-left:3px solid var(--primary);background:#EFE8D8;padding:10px 14px;border-radius:0 6px 6px 0"><div style="font-weight:600;color:var(--primary);font-size:13px;margin-bottom:5px">深度解读</div><div style="font-size:13px;line-height:1.8;color:var(--text)">同样说"我要当CEO"，马云说没人笑，普通大学生说被群嘲。差别在实力不在梦想。所以别争辩，把实力提上来，自然没人笑。</div></div><div style="border-left:3px solid var(--teal);background:#EFE8D8;padding:10px 14px;border-radius:0 6px 6px 0"><div style="font-weight:600;color:var(--teal);font-size:13px;margin-bottom:5px">今日行动</div><div style="font-size:13px;line-height:1.8;color:var(--text)">把这句话写在便签上贴在看得见的地方，或用它提醒自己今天做一件相关的小事。</div></div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>今日推荐书目 <span class="tag tag-teal" style="margin-left:8px" id="shelfDate">2026-08-22</span></h3>
+        <div id="bookRec" style="background:var(--bg);border-radius:8px;padding:16px"><div style="display:flex;gap:14px;align-items:center"><div style="width:54px;height:72px;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:4px;box-shadow:2px 2px 6px rgba(0,0,0,.2);flex-shrink:0">大脑喜欢听</div><div style="flex:1"><div style="font-size:12px;color:var(--hint);margin-bottom:4px">今日推荐 · 认知</div><div style="font-size:17px;font-weight:600;color:var(--primary);margin-bottom:4px">《大脑喜欢听你这么说》</div><div style="font-size:13px;color:var(--muted);margin-bottom:8px">杰瑞德·库尼·霍瓦斯 · 大脑记忆机制</div><div style="font-size:13px;color:var(--teal);margin-bottom:8px"><strong>书中语录：</strong>「大脑通过故事而非逻辑记忆」</div><a href="https://weread.qq.com/web/search/books?keyword=%E5%A4%A7%E8%84%91%E5%96%9C%E6%AC%A2%E5%90%AC%E4%BD%A0%E8%BF%99%E4%B9%88%E8%AF%B4" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">点击阅读 ↗</a> <button class="btn btn-sm" style="margin-left:8px" onclick="nextRecBook()">换一本</button></div></div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>免费读书网站 · 公开正版免费，点开就能读</h3>
+        <div class="grid grid-2">
+          <a class="res-link" href="https://weread.qq.com/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+            <div class="info"><div class="name">微信读书</div><div class="desc">海量正版电子书 · 免费领书/组队读书，大学生最常用</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.gushiwen.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+            <div class="info"><div class="name">古诗文网</div><div class="desc">诗词古文全文免费读，国学/文言文必备</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.nlc.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v10l-8 4-8-4V7z"></path><path d="M12 3v18"></path></svg></div>
+            <div class="info"><div class="name">国家图书馆</div><div class="desc">国家级免费数字资源 · 电子书/期刊/公开课</div></div><div class="arrow">↗</div>
+          </a>
+          <a class="res-link" href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+            <div class="info"><div class="name">古登堡计划</div><div class="desc">6万+英文公版书免费读，练英语阅读的宝藏</div></div><div class="arrow">↗</div>
+          </a>
+        </div>
+        <div class="callout callout-info" style="margin-top:8px"><strong>小贴士：</strong>上面都是公开、免费、正规的渠道。想读的书在微信读书里基本都能免费找到；想读英文原版，古登堡计划书最全。</div>
+      </div>
+      <div class="card">
+        <h3>精选书单 · 读完一本，再挑下一本</h3>
+        <p style="font-size:13px;color:var(--hint);margin-bottom:12px">既有精选推荐书目，也有你自己添加的书 · 点封面看金句和读书笔记，点"阅读"直接开读 · 想读新书？用下方表单一键加入</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="bookFilter">
+          <button class="btn btn-sm btn-primary" onclick="filterBooks(&#39;全部&#39;)">全部</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;学习&#39;)">学习</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;认知&#39;)">认知</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;心理&#39;)">心理</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;理财&#39;)">理财</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;国学&#39;)">国学</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;文学&#39;)">文学</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;成长&#39;)">成长</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;沟通&#39;)">沟通</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;职业&#39;)">职业</button>
+          <button class="btn btn-sm" onclick="filterBooks(&#39;社会&#39;)">社会</button>
+        </div>
+        <div id="bookList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px"><div style="cursor:pointer" onclick="showBookDetail(&#39;b73445&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#6B4D33,#8B4513);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">论语</div><div style="font-size:9px;opacity:.8;text-align:center">孔子</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">国学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">论语</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b85506&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#6B4D33,#8B4513);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">道德经</div><div style="font-size:9px;opacity:.8;text-align:center">老子</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">国学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">道德经</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b91998&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#3A4038,#6B7267);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">沉思录</div><div style="font-size:9px;opacity:.8;text-align:center">马可·奥勒留</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">哲学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">沉思录</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b33594&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#8A6D48);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">认知觉醒</div><div style="font-size:9px;opacity:.8;text-align:center">周岭</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">成长</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">认知觉醒</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b62501&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">大脑喜欢听你这么说</div><div style="font-size:9px;opacity:.8;text-align:center">杰瑞德·库尼·霍瓦斯</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">大脑喜欢听你这么说</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b76139&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#6B4D33);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">原子习惯</div><div style="font-size:9px;opacity:.8;text-align:center">詹姆斯·克利尔</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">习惯</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">原子习惯</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b32163&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#6E4F37,#6E4F37);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">刻意练习</div><div style="font-size:9px;opacity:.8;text-align:center">安德斯·埃利克森</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">学习</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">刻意练习</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b33515&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">自控力</div><div style="font-size:9px;opacity:.8;text-align:center">凯利·麦格尼格尔</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">自控力</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b97450&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">被讨厌的勇气</div><div style="font-size:9px;opacity:.8;text-align:center">岸见一郎</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">被讨厌的勇气</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b76115&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#A87F3C,#A9803F);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">非暴力沟通</div><div style="font-size:9px;opacity:.8;text-align:center">马歇尔·卢森堡</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">沟通</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">非暴力沟通</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b79713&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">心流</div><div style="font-size:9px;opacity:.8;text-align:center">米哈里</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">心流</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b57300&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">思考快与慢</div><div style="font-size:9px;opacity:.8;text-align:center">卡尼曼</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">思考快与慢</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b99384&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">人类简史</div><div style="font-size:9px;opacity:.8;text-align:center">赫拉利</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">人类简史</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b75932&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#92400E,#D97706);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">穷爸爸富爸爸</div><div style="font-size:9px;opacity:.8;text-align:center">清崎</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">理财</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">穷爸爸富爸爸</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b96447&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#92400E,#D97706);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">小狗钱钱</div><div style="font-size:9px;opacity:.8;text-align:center">舍费尔</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">理财</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">小狗钱钱</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b60465&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#8A5422,#8A5422);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">原则</div><div style="font-size:9px;opacity:.8;text-align:center">达利欧</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">决策</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">原则</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b82826&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#7A5426,#C2A15E);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">平凡的世界</div><div style="font-size:9px;opacity:.8;text-align:center">路遥</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">文学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">平凡的世界</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b96020&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#7A5426,#C2A15E);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">活着</div><div style="font-size:9px;opacity:.8;text-align:center">余华</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">文学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">活着</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b59996&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#7A5426,#C2A15E);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">月亮与六便士</div><div style="font-size:9px;opacity:.8;text-align:center">毛姆</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">文学</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">月亮与六便士</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b44789&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#6E4F37,#6E4F37);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">学习之道</div><div style="font-size:9px;opacity:.8;text-align:center">芭芭拉·奥克利</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">学习</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">学习之道</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b87383&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#6E4F37,#6E4F37);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">如何阅读一本书</div><div style="font-size:9px;opacity:.8;text-align:center">莫提默·艾德勒</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">学习</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">如何阅读一本书</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b35405&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#6E4F37,#6E4F37);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">考试脑科学</div><div style="font-size:9px;opacity:.8;text-align:center">池谷裕二</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">学习</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">考试脑科学</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b15686&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">超越感觉：批判性思考指南</div><div style="font-size:9px;opacity:.8;text-align:center">文森特·鲁格里奥</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">超越感觉：批判性思考指南</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b88712&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">影响力</div><div style="font-size:9px;opacity:.8;text-align:center">罗伯特·西奥迪尼</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">影响力</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b35990&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">清醒思考的艺术</div><div style="font-size:9px;opacity:.8;text-align:center">罗尔夫·多贝里</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">清醒思考的艺术</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b14313&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#7C5B38);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">穷查理宝典</div><div style="font-size:9px;opacity:.8;text-align:center">查理·芒格</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">认知</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">穷查理宝典</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b85099&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">蛤蟆先生去看心理医生</div><div style="font-size:9px;opacity:.8;text-align:center">罗伯特·戴博德</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">蛤蟆先生去看心理医生</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b43734&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">也许你该找个人聊聊</div><div style="font-size:9px;opacity:.8;text-align:center">洛莉·戈特利布</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">也许你该找个人聊聊</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b72938&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">自卑与超越</div><div style="font-size:9px;opacity:.8;text-align:center">阿尔弗雷德·阿德勒</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">自卑与超越</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b29528&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#B07F63,#C2956B);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">亲密关系</div><div style="font-size:9px;opacity:.8;text-align:center">罗兰·米勒</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">心理</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">亲密关系</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b47798&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#8A6D48);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">高效能人士的七个习惯</div><div style="font-size:9px;opacity:.8;text-align:center">史蒂芬·柯维</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">成长</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">高效能人士的七个习惯</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b22886&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#8A6D48);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">把时间当作朋友</div><div style="font-size:9px;opacity:.8;text-align:center">李笑来</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">成长</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">把时间当作朋友</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b70200&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#8A6D48);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">斯坦福大学人生设计课</div><div style="font-size:9px;opacity:.8;text-align:center">比尔·博内特</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">成长</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">斯坦福大学人生设计课</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b10893&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#4A3427,#8A6D48);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">拆掉思维里的墙</div><div style="font-size:9px;opacity:.8;text-align:center">古典</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">成长</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">拆掉思维里的墙</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b77036&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#A87F3C,#A9803F);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">金字塔原理</div><div style="font-size:9px;opacity:.8;text-align:center">芭芭拉·明托</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">沟通</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">金字塔原理</div></div><div style="cursor:pointer" onclick="showBookDetail(&#39;b82701&#39;)"><div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#A87F3C,#A9803F);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:8px;box-shadow:2px 2px 8px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform=&#39;translateY(-4px)&#39;" onmouseout="this.style.transform=&#39;none&#39;"><div style="font-size:12px;font-weight:700;text-align:center;line-height:1.3;margin-bottom:6px">即兴演讲</div><div style="font-size:9px;opacity:.8;text-align:center">朱迪思·汉弗莱</div><div style="width:30px;height:1px;background:rgba(255,255,255,.4);margin:6px 0"></div><div style="font-size:9px;opacity:.7">沟通</div></div><div style="font-size:11px;color:var(--hint);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidde
