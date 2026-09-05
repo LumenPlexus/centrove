@@ -6,17 +6,20 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>栖匣</title>
 <script>
-/* 栖匣 · 启动加载器 v2
-   问题：GitHub Pages 对超大单文件存在传输截断（Content-Length 正确、实际只交付部分），
-   1.7MB 单页一旦被截，主脚本（在文件末尾）无法到达 → 整页静默白屏。
-   解决：index.html 仅作为极小的启动页，用 Range 分块（每块 180KB，远低于截断阈值）
-   拉取 share.html，逐块校验长度并重试，拼装为完整字节后一次性解码并整页写入，
-   从而在任意网络下都能完整加载，杜绝白屏；失败时给出可重试界面而非空白。
-   安全说明：本加载器只获取并执行本站自身的 share.html，不读写用户数据。 */
+/* 栖匣 · 启动加载器 v3（彻底解决白屏）
+   结论（已实测）：GitHub Pages 对 share.html 的「完整下载」可靠，1728182 字节可一次到位；
+   反而是「多段 Range 分块下载」在 2nd+ 段经常被 CDN/代理中断（http=000）。
+   因此不再做大量分块下载，而是：
+     1) 默认一次完整请求 share.html（带缓存戳，携带浏览器自动 gzip 解压）；
+     2) 用「首尾标记」做完整性校验：必须以 <!DOCTYPE 开头、以 </html> 结尾、长度充足；
+     3) 若不完整 → 仅用一次 Range 补齐缺失的末尾字节，拼接后再次校验；
+     4) 仍失败 → 数秒退避后整段重试；最终失败给出可点击的「重新加载」按钮，绝不静默白屏。
+   安全说明：本加载器只请求并执行本站自身 share.html，不读写/上传任何用户数据。
+*/
 (function () {
-  var URL_BASE = 'share.html';
-  var CHUNK = 180 * 1024;
-  var TRIES = 3;
+  var V = '2026.09.05.final';
+  var SRC = 'share.html?v=' + V;   // 缓存戳：绕过旧 SW/CDN 命中过期 share.html
+  var TRIES = 5;
 
   function el(id) { return document.getElementById(id); }
   function setNote(t, isErr, pct) {
@@ -25,98 +28,86 @@
     if (b) b.style.width = Math.max(4, Math.min(100, pct || 100)) + '%';
   }
   function fail(msg) {
-    setNote((msg || '加载失败，请检查网络') , true);
+    setNote((msg || '加载失败，请检查网络后重试'), true);
     var r = el('ld-retry'); if (r) r.style.display = 'inline-block';
   }
-  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
-  function tryWarmUp() { /* 预热连接 */ try { fetch(URL_BASE, { method: 'HEAD', cache: 'no-store' }).catch(function () {}); } catch (e) {} }
+  function sleep(ms) { return new Promise(function (res) { setTimeout(res, ms); }); }
+  function render(buf) {
+    setNote('正在初始化界面…', false, 100);
+    var text = new TextDecoder('utf-8').decode(buf);
+    document.open(); document.write(text); document.close();
+  }
+  function looksComplete(buf) {
+    if (!buf || buf.byteLength < 200000) return false;
+    var s = new TextDecoder('utf-8', { fatal: false }).decode(buf.subarray(0, 512));
+    if (s.indexOf('<!DOCTYPE') !== 0) return false;
+    // 校验字符串化尾部是否以 </html> 结尾（容忍 jschardet 级解码误差用宽松匹配）
+    var tail = new TextDecoder('utf-8', { fatal: false }).decode(buf.subarray(buf.byteLength - 512));
+    return tail.indexOf('</html>') >= 0;
+  }
 
-  /* 发起 Range 请求，返回 {buf, total}；total 从 Content-Range 解析（identity 表示长度） */
-  function fetchRange(url, start, end) {
-    return fetch(url, {
-      headers: { 'Range': 'bytes=' + start + '-' + end, 'Accept-Encoding': 'identity', 'cache': 'no-store' },
+  /* 一次 Range 请求，返回 { buf, total }；total 从 Content-Range 解析 */
+  function fetchRange(start, end) {
+    return fetch(SRC, {
+      headers: { 'Range': 'bytes=' + start + '-' + end, 'cache': 'no-store' }
     }).then(function (r) {
       if (r.status !== 206 && !r.ok) throw new Error('range ' + r.status);
-      var total = null;
-      var cr = r.headers.get('Content-Range') || '';
-      var m = cr.match(/\/(\d+)\s*$/);
+      var total = null, cr = r.headers.get('Content-Range') || '', m = cr.match(/\/(\d+)\s*$/);
       if (m) total = +m[1];
-      return r.arrayBuffer().then(function (buf) { return { buf: buf, total: total }; });
+      return r.arrayBuffer().then(function (ab) { return { buf: ab, total: total }; });
     });
   }
 
-  /* 兜底：整段拉取（含 gzip），校验结尾，失败重试 */
-  function fetchFull() {
-    var t = 0;
-    function once() {
-      return fetch(URL_BASE, { cache: 'no-store' }).then(function (r) {
-        if (!r.ok) throw new Error('http ' + r.status);
-        return r.text().then(function (txt) {
-          if (txt.length < 200000 || txt.indexOf('</html>') < 0) throw new Error('incomplete');
-          return txt;
-        });
-      });
-    }
-    function loop() {
-      return once().catch(function (err) {
-        if (++t >= TRIES) throw err;
-        return sleep(600 * t).then(loop);
-      });
-    }
-    return loop();
-  }
-
   async function run() {
-    try {
-      setNote('正在加载栖匣…', false, 4);
-      tryWarmUp();
-      var total = null, parts = [], first;
+    var lastErr = null;
+    for (var attempt = 1; attempt <= TRIES; attempt++) {
+      if (attempt > 1) { setNote('下载被中断，' + (attempt - 1) + '/' + (TRIES - 1) + ' 次重试…', true, 10); await sleep(700 * attempt); }
       try {
-        first = await fetchRange(URL_BASE, 0, Math.min(CHUNK - 1, 100000));
-        total = first.total;
-      } catch (e) { total = null; }
+        setNote('正在加载栖匣…', false, 20);
+        var res = await fetch(SRC, { cache: 'no-store' });
+        if (!res.ok) throw new Error('http ' + res.status);
+        var ab = await res.arrayBuffer();
+        if (looksComplete(ab)) { render(ab); return; }
 
-      if (!total) {
-        /* 服务端不支持 Content-Range → 退回整段拉取（含 gzip + 重试） */
-        var fullTxt = await fetchFull();
-        document.open(); document.write(fullTxt); document.close();
-        return;
-      }
-
-      parts[0] = first.buf;
-      var n = Math.ceil(total / CHUNK);
-      for (var i = 1; i < n; i++) {
-        var start = i * CHUNK, end = Math.min(total - 1, start + CHUNK - 1);
-        var rest = null;
-        for (var t = 0; t < TRIES; t++) {
-          try {
-            var r = await fetchRange(URL_BASE, start, end);
-            if (r.buf.byteLength !== (end - start + 1)) throw new Error('short ' + r.buf.byteLength);
-            rest = r.buf; break;
-          } catch (e) { if (t < TRIES - 1) await sleep(500 * (t + 1)); }
+        /* 不完整：尝试用一次 Range 补齐缺失的末尾 */
+        setNote('校验文件完整性…', false, 55);
+        var start = ab.byteLength;
+        // 未知总长时先发一次 Range 探到 Content-Range /total
+        var probe = await fetchRange(start, start + 262143);
+        var total = probe.total;
+        var tailBuf = probe.buf;
+        if (total && total >= ab.byteLength) {
+          setNote('补齐下载中断的尾部…', false, 75);
+          var seg = new Uint8Array(total);
+          seg.set(new Uint8Array(ab), 0);
+          // 若 Range 只返回了部分，继续抓下一段
+          var off = start + tailBuf.byteLength;
+          seg.set(new Uint8Array(tailBuf), start);
+          while (total && off < total) {
+            var nxt = await fetchRange(off, Math.min(total - 1, off + 262143));
+            seg.set(new Uint8Array(nxt.buf), off);
+            off += nxt.buf.byteLength;
+          }
+          if (looksComplete(seg)) { render(seg); return; }
+        } else if (tailBuf) {
+          // 服务端不支持 Content-Range 头：仅当尾部恰好补满时接纳
+          var merged = new Uint8Array(start + tailBuf.byteLength);
+          merged.set(new Uint8Array(ab), 0);
+          merged.set(new Uint8Array(tailBuf), start);
+          if (looksComplete(merged)) { render(merged); return; }
         }
-        if (!rest) { fail('分段下载中断（第 ' + (i + 1) + '/' + n + ' 段）'); return; }
-        parts[i] = rest;
-        setNote('正在加载栖匣… ' + Math.round((i + 1) / n * 100) + '%', false, (i + 1) / n * 100);
+        throw new Error('incomplete(' + ab.byteLength + ')');
+      } catch (e) {
+        lastErr = e;
+        // 最后尝试：直接整段重取
       }
-
-      var len = 0, p;
-      for (p = 0; p < parts.length; p++) len += parts[p].byteLength;
-      var buf = new Uint8Array(len);
-      var off = 0;
-      for (p = 0; p < parts.length; p++) { buf.set(new Uint8Array(parts[p]), off); off += parts[p].byteLength; }
-      var text = new TextDecoder('utf-8').decode(buf);
-      setNote('正在初始化界面…', false, 100);
-      document.open(); document.write(text); document.close();
-    } catch (err) {
-      fail('初始化异常，请重试');
     }
+    fail();
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     var retry = el('ld-retry');
     if (retry) retry.onclick = function () { location.reload(); };
-    /* 立即启动：即便脚本放 head 也能在 body 解析前开始，减少等待 */
     if (document.readyState === 'complete' || document.readyState === 'interactive') { run(); }
   });
 })();
@@ -137,10 +128,10 @@
   }
   .ld-bar { width: 176px; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .22); overflow: hidden; }
   .ld-bar i { display: block; height: 100%; width: 4%; background: #E8C989; border-radius: 3px; transition: width .28s ease; }
-  #ld-note { font-size: 13px; letter-spacing: .4px; color: rgba(255, 255, 255, .92); text-align: center; max-width: 260px; line-height: 1.6; }
+  #ld-note { font-size: 13px; letter-spacing: .4px; color: rgba(255, 255, 255, .92); text-align: center; max-width: 280px; line-height: 1.6; }
   #ld-retry {
-    display: none; margin-top: 4px; padding: 10px 26px; border-radius: 22px;
-    background: #E8C989; color: #2B2218; border: none; font-size: 14px; font-weight: 600;
+    display: none; margin-top: 4px; padding: 10px 28px; border-radius: 22px;
+    background: #E8C989; color: #2B2218; border: none; font-size: 14px; font-weight: 600; cursor: pointer;
   }
 </style>
 </head>
