@@ -6,13 +6,14 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.05.content10';
+var VERSION = '2026.09.05.content11';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
 var PRECACHE_URLS = [
   './',
   './index.html',
+  './share.html',
   './css/upgrade.css',
   './js/upgrade.js',
   './pwa/manifest.json',
@@ -88,6 +89,17 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin !== location.origin) return; // 只处理同源，外链不拦截
+
+  // 0) 带 Range 的请求（启动器的分段拉取）：原样转交网络，绝不重建丢头；
+  //    断网时回退完整缓存（离线场景由加载器自动降级为整段拉取）。
+  if (req.headers.get('range')) {
+    e.respondWith(
+      fetch(req).catch(function () {
+        return caches.match('./share.html');
+      })
+    );
+    return;
+  }
 
   // 1) 页面导航：网络优先，断网回退缓存（离线可打开）
   if (req.mode === 'navigate') {
