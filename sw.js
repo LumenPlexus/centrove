@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.06.07';
+var VERSION = '2026.09.06.08';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -24,6 +24,7 @@ var PRECACHE_URLS = [
   './favicon-chest20260910-180.png',
   './pwa/icon-chest20260910-192.png',
   './pwa/icon-chest20260910-512.png',
+  './pwa/logo-chest20260910.png',
   './pwa/share-chest20260910.png',
   './favicon.ico',
   './favicon-16.png',
@@ -32,6 +33,7 @@ var PRECACHE_URLS = [
   './favicon-96.png',
   './favicon.svg',
   './pwa/apple-touch-icon.png',
+  './pwa/logo.png',
   './pwa/icon-20260910-192.png',
   './pwa/icon-20260910-512.png',
   './pwa/logo.png',
