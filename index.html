@@ -7755,6 +7755,55 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
       <div class="callout callout-ok" style="margin-top:10px"><strong>提醒：</strong>勾选不是目的，是用来显形"我到底推进了多少"。如果连续两周周卡基本没勾，说明计划过载或反馈不够——别硬扛，砍掉一项非核心任务。</div>
     </div>
+    <div class="card" style="margin-top:16px;border-left:3px solid var(--primary)">
+      <h3>🎯 绩点 GPA 计算器 · 一次看懂加权平均</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">
+        <strong>公式：</strong>加权平均绩点 = Σ（课程绩点 × 学分）÷ Σ 学分。不同学校算法略有差异（常见 4.0 制见下表），以下按最常见标准算作参考，最终以你校《学生手册》/教务处的官方算法为准。
+      </p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px" id="gpaTable">
+        <thead><tr style="background:#EFE8D8"><th style="padding:7px;border:1px solid var(--border);text-align:left">课程</th><th style="padding:7px;border:1px solid var(--border);width:90px">学分</th><th style="padding:7px;border:1px solid var(--border);width:110px">成绩(0-100)</th><th style="padding:7px;border:1px solid var(--border);width:70px">绩点</th><th style="padding:7px;border:1px solid var(--border);width:40px">×</th></tr></thead>
+        <tbody id="gpaBody"></tbody>
+      </table>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="gpaAddRow()">＋ 添加课程</button>
+        <button class="btn btn-sm" style="border-color:var(--primary-mid);color:var(--primary)" onclick="gpaCalc()">计算我的 GPA</button>
+        <button class="btn btn-ghost btn-sm" onclick="gpaReset()">清空重填</button>
+      </div>
+      <div id="gpaResult" class="callout" style="display:none;margin-top:12px"></div>
+      <div class="callout callout-info" style="margin-top:12px">
+        <strong>3 个必须知道的真相（打破信息差）：</strong><br>
+        ① <b>GPA 不是平均分</b>——高学分的公共/必修课拖分最狠，别只盯着单科高分；<br>
+        ② <b>保研看"专业排名"胜于绝对 GPA</b>——3.6 在 A 专业可能靠前，在 B 专业可能掉队，排名才是硬指标；<br>
+        ③ <b>刷分要趁早</b>——重修/刷分的成本很高，大一大二基础课（学分大）就是拉高 GPA 的最佳窗口，别拖到大三大四。
+      </div>
+      <script>
+        (function(){
+          function gpaPoint(s){s=parseFloat(s);if(isNaN(s))return 0;if(s>=90)return 4.0;if(s>=85)return 3.7;if(s>=82)return 3.3;if(s>=78)return 3.0;if(s>=75)return 2.7;if(s>=72)return 2.3;if(s>=68)return 2.0;if(s>=64)return 1.5;if(s>=60)return 1.0;return 0;}
+          window.gpaPoint=gpaPoint;
+          function rowHTML(name,credit,score){
+            return '<tr class="gpa-row"><td style="padding:6px;border:1px solid var(--border)"><input placeholder="课程名" value="'+(name||'')+'" style="width:100%;background:transparent;border:none;color:var(--text)"></td>'+
+              '<td style="padding:6px;border:1px solid var(--border)"><input type="number" min="0" max="30" step="0.5" value="'+(credit||'')+'" placeholder="学分" style="width:60px;background:transparent;border:none;color:var(--text)"></td>'+
+              '<td style="padding:6px;border:1px solid var(--border)"><input type="number" min="0" max="100" value="'+(score||'')+'" placeholder="0-100" style="width:80px;background:transparent;border:none;color:var(--text)"></td>'+
+              '<td style="padding:6px;border:1px solid var(--border);color:var(--primary);font-weight:600" class="gpa-pt">—</td>'+
+              '<td style="padding:6px;border:1px solid var(--border);text-align:center"><button onclick="this.closest(\'tr\').remove()" style="border:none;background:none;color:#B3603F;cursor:pointer;font-size:15px" title="删除">✕</button></td></tr>';
+          }
+          window.gpaReset=function(){var b=document.getElementById('gpaBody');if(b)b.innerHTML=rowHTML('高等数学',4,85)+rowHTML('大学英语',3,88)+rowHTML('思修',2,92);var r=document.getElementById('gpaResult');if(r)r.style.display='none';};
+          window.gpaAddRow=function(){var b=document.getElementById('gpaBody');if(b){var tr=document.createElement('tbody');b.insertAdjacentHTML('beforeend',rowHTML('','',''));}};
+          window.gpaCalc=function(){var rows=document.querySelectorAll('#gpaBody .gpa-row');var sum=0,tot=0,valid=0,missing=0;
+            rows.forEach(function(r){var c=parseFloat((r.cells[1].querySelector('input')||{}).value);var s=parseFloat((r.cells[2].querySelector('input')||{}).value);
+              var p=gpaPoint(s);var pt=r.querySelector('.gpa-pt');if(pt)pt.textContent=(s&&s>0)?p.toFixed(1):'—';
+              if(c>0&&(!isNaN(s)&&s>0)){sum+=p*c;tot+=c;valid++;}else if(c>0)missing++;});
+            var res=document.getElementById('gpaResult');if(!res)return;
+            if(tot<=0){res.style.display='block';res.className='callout callout-warn';res.innerHTML='<strong>还没有有效成绩</strong>：请至少填一门课的学分和成绩，再点计算。';return;}
+            var g=(sum/tot).toFixed(2);
+            var level=g>=3.7?'很能打（保研/奖学金热门区间）':(g>=3.0?'中上（稳定达标区间）':(g>=2.0?'及格线附近（要抓紧拉一拉）':'偏低，大一大二正是拉分窗口'));
+            res.className='callout callout-ok';res.style.display='block';
+            res.innerHTML='<strong>你的加权平均绩点 ≈ '+g+'</strong>（按常见4.0制估算，'+valid+' 门有效课程）。'+level+'。若与你成绩单不一致，请按本校官方算法核对。';
+          };
+          window.gpaReset();
+        })();
+      </script>
+    </div>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
