@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="sBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF7EF"/><stop offset="1" stop-color="#F3ECDD"/>
+    </linearGradient>
+    <linearGradient id="sLid" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#9E713D"/><stop offset="1" stop-color="#885B2F"/>
+    </linearGradient>
+    <linearGradient id="sFront" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#774E24"/><stop offset="1" stop-color="#5D3D1D"/>
+    </linearGradient>
+    <linearGradient id="sRight" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#4E371F"/><stop offset="1" stop-color="#3C2A17"/>
+    </linearGradient>
+    <linearGradient id="sGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5D688"/><stop offset="1" stop-color="#DFAF50"/>
+    </linearGradient>
+    <filter id="sBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+
+  <rect x="0" y="0" width="512" height="512" fill="url(#sBg)"/>
+
+  <!-- 最外层：细金线圆环 -->
+  <circle cx="256" cy="256" r="216" fill="none" stroke="#D9C9A6" stroke-width="2.5"/>
+
+  <!-- 中层的白色圆角方形 + 金色描边 -->
+  <rect x="90" y="90" width="332" height="332" rx="64" fill="#FFFFFF" stroke="#D9C9A6" stroke-width="2.5"/>
+  <rect x="100" y="100" width="312" height="312" rx="56" fill="#FFFFFF"/>
+
+  <!-- 底部投影 + 木匣（复用 master 的 3D 木质圆框金锁木匣） -->
+  <ellipse cx="268" cy="330" rx="118" ry="30" fill="#3A2A18" opacity="0.12" filter="url(#sBlur)"/>
+  <g transform="translate(256,266) scale(3.05) translate(-52,-47)">
+    <ellipse cx="52" cy="70" rx="26" ry="6" fill="#000000" opacity="0.16" filter="url(#xblur2)"/>
+    <polygon points="28,42 70,42 80,31 38,31" fill="url(#sLid)"/>
+    <polygon points="36,33 52,33 60,31 44,31" fill="#FFFFFF" opacity="0.12"/>
+    <circle cx="54" cy="36.5" r="3.4" fill="url(#sGold)" stroke="#B98A35" stroke-width="0.6"/>
+    <circle cx="53" cy="35.6" r="1.1" fill="#FFFFFF" opacity="0.65"/>
+    <polygon points="28,42 70,42 70,66 28,66" fill="url(#sFront)"/>
+    <circle cx="49" cy="54" r="4.4" fill="url(#sGold)" stroke="#B7872F" stroke-width="0.7"/>
+    <circle cx="49" cy="54" r="2.4" fill="#8A6A2C"/>
+    <circle cx="47.9" cy="52.8" r="1" fill="#FFFFFF" opacity="0.6"/>
+    <polygon points="70,42 80,31 80,55 70,66" fill="url(#sRight)"/>
+    <path d="M28,42 L70,42 L80,31" fill="none" stroke="#2A1A0C" stroke-width="2" opacity="0.4" stroke-linejoin="round"/>
+    <path d="M70,42 L70,66" fill="none" stroke="#241609" stroke-width="2.2" opacity="0.5" stroke-linejoin="round"/>
+  </g>
+</svg>

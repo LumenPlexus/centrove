@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E6D9BF"/><stop offset="1" stop-color="#D3C2A0"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8F2E9"/><stop offset="1" stop-color="#F0E8D8"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#9E713D"/><stop offset="1" stop-color="#885B2F"/>
+    </linearGradient>
+    <linearGradient id="front" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#774E24"/><stop offset="1" stop-color="#5D3D1D"/>
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#4E371F"/><stop offset="1" stop-color="#3C2A17"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5D688"/><stop offset="1" stop-color="#DFAF50"/>
+    </linearGradient>
+    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.4"/></filter>
+  </defs>
+
+  <!-- 分层圆角框（品牌识别区） -->
+  <rect x="4" y="4" width="88" height="88" rx="23" fill="url(#ring)"/>
+  <rect x="7" y="7" width="82" height="82" rx="20" fill="url(#inner)"/>
+
+  <!-- 木匣投影 -->
+  <ellipse cx="52" cy="70" rx="26" ry="6" fill="#000000" opacity="0.16" filter="url(#blur)"/>
+
+  <!-- 顶盖 -->
+  <polygon points="28,42 70,42 80,31 38,31" fill="url(#lid)"/>
+  <!-- 顶盖高光 -->
+  <polygon points="36,33 52,33 60,31 44,31" fill="#FFFFFF" opacity="0.12"/>
+  <!-- 顶盖金钮（小圆钮） -->
+  <circle cx="54" cy="36.5" r="3.4" fill="url(#gold)" stroke="#B98A35" stroke-width="0.6"/>
+  <circle cx="53" cy="35.6" r="1.1" fill="#FFFFFF" opacity="0.65"/>
+
+  <!-- 正面 -->
+  <polygon points="28,42 70,42 70,66 28,66" fill="url(#front)"/>
+  <!-- 正面金锁扣（圆形） -->
+  <circle cx="49" cy="54" r="4.4" fill="url(#gold)" stroke="#B7872F" stroke-width="0.7"/>
+  <circle cx="49" cy="54" r="2.4" fill="#8A6A2C"/>
+  <circle cx="47.9" cy="52.8" r="1" fill="#FFFFFF" opacity="0.6"/>
+
+  <!-- 右侧面 -->
+  <polygon points="70,42 80,31 80,55 70,66" fill="url(#right)"/>
+
+  <!-- 面与面之间的暗缝 -->
+  <path d="M28,42 L70,42 L80,31" fill="none" stroke="#2A1A0C" stroke-width="2" opacity="0.4" stroke-linejoin="round"/>
+  <path d="M70,42 L70,66" fill="none" stroke="#241609" stroke-width="2.2" opacity="0.5" stroke-linejoin="round"/>
+</svg>

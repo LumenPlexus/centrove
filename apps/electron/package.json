@@ -33,7 +33,7 @@
     ],
     "win": {
       "target": ["nsis"],
-      "icon": "assets/icon-chest20260911-512.png"
+      "icon": "assets/icon-chest20260907-512.png"
     },
     "nsis": {
       "oneClick": false,
@@ -42,12 +42,12 @@
     },
     "mac": {
       "target": ["dmg"],
-      "icon": "assets/icon-chest20260911-512.png",
+      "icon": "assets/icon-chest20260907-512.png",
       "category": "public.app-category.education"
     },
     "linux": {
       "target": ["AppImage"],
-      "icon": "assets/icon-chest20260911-512.png",
+      "icon": "assets/icon-chest20260907-512.png",
       "category": "Education"
     }
   }

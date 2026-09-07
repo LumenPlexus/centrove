@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.06.v4';
+var VERSION = '2026.09.06.v5';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -19,15 +19,15 @@ var PRECACHE_URLS = [
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',
-  './favicon-chest20260911-16.png',
-  './favicon-chest20260911-32.png',
-  './favicon-chest20260911-96.png',
-  './favicon-chest20260911-192.png',
-  './favicon-chest20260911-180.png',
-  './pwa/icon-chest20260911-192.png',
-  './pwa/icon-chest20260911-512.png',
-  './pwa/logo-chest20260911.png',
-  './pwa/share-chest20260911.png',
+  './favicon-chest20260907-16.png',
+  './favicon-chest20260907-32.png',
+  './favicon-chest20260907-96.png',
+  './favicon-chest20260907-192.png',
+  './favicon-chest20260907-180.png',
+  './pwa/icon-chest20260907-192.png',
+  './pwa/icon-chest20260907-512.png',
+  './pwa/logo-chest20260907.png',
+  './pwa/share-chest20260907.png',
   './favicon.ico',
   './favicon-16.png',
   './favicon-32.png',
