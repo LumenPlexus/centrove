@@ -1,0 +1,54 @@
+{
+  "name": "qixia-desktop",
+  "productName": "栖匣",
+  "version": "1.0.0",
+  "description": "栖匣 · 心有所栖 · 匣纳成长（桌面端）",
+  "main": "main.js",
+  "private": true,
+  "author": "栖匣",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "dist:win": "electron-builder --win nsis",
+    "dist:mac": "electron-builder --mac dmg",
+    "dist:linux": "electron-builder --linux AppImage"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "cn.qixia.desktop",
+    "productName": "栖匣",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "config.js",
+      "assets/**"
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "assets/icon-chest20260911-512.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "栖匣-Setup-${version}.${ext}"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "assets/icon-chest20260911-512.png",
+      "category": "public.app-category.education"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "assets/icon-chest20260911-512.png",
+      "category": "Education"
+    }
+  }
+}

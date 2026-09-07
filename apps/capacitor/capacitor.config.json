@@ -1,0 +1,11 @@
+{
+  "appId": "cn.qixia.growth",
+  "appName": "栖匣",
+  "webDir": "web",
+  "backgroundColor": "#F6F1E6",
+  "androidScheme": "https",
+  "server": {
+    "url": "https://YOUR-HOST/qi-xia/",
+    "cleartext": false
+  }
+}
