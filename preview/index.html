@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" href="favicon-96.png">
+<title>栖匣 · Logo 预览确认</title>
+<style>
+  :root{
+    --paper:#f6f0e6; --card:#fffdf8; --ink:#5d4037; --sub:#8d6e63; --muted:#a8967f;
+    --gold:#c5a35c; --line:#e5d8bf;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Songti SC","Noto Serif CJK SC","STSong","SimSun",serif;
+    background:var(--paper);
+    background-image:radial-gradient(circle at 50% 0%, rgba(197,163,92,.08), transparent 55%);
+    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px 18px;
+  }
+  .wrap{ width:100%; max-width:460px; }
+  .card{
+    background:var(--card); border-radius:24px; border:1px solid var(--line);
+    box-shadow:0 18px 50px rgba(93,64,55,.12);
+    padding:44px 34px 40px; text-align:center; position:relative;
+  }
+  .badge{
+    position:absolute; top:18px; left:50%; transform:translateX(-50%);
+    background:var(--gold); color:#fff; font-size:12px; letter-spacing:2px;
+    padding:5px 14px; border-radius:999px; font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+    box-shadow:0 4px 12px rgba(197,163,92,.4); white-space:nowrap;
+  }
+  .logo-hold{
+    margin:34px auto 26px; width:190px; height:190px; border-radius:46px;
+    background:radial-gradient(circle at 50% 32%, #fbf7ee, #f0e6d3);
+    box-shadow:inset 0 2px 8px rgba(93,64,55,.08), 0 14px 30px rgba(93,64,55,.16);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .logo-hold img{ width:150px; height:150px; object-fit:contain; display:block; }
+  h1{
+    font-size:42px; font-weight:700; color:var(--ink); letter-spacing:12px;
+    text-shadow:0 1px 0 rgba(255,255,255,.6);
+  }
+  .sub{ margin-top:10px; color:var(--sub); font-size:16px; letter-spacing:3px; }
+  .rule{ width:120px; height:1px; background:var(--gold); margin:24px auto; }
+  .slogan{ color:var(--ink); font-size:20px; letter-spacing:4px; }
+  .desc{ margin-top:10px; color:var(--muted); font-size:14px; letter-spacing:1px; }
+  .checks{
+    margin-top:26px; padding-top:22px; border-top:1px dashed var(--line);
+    display:flex; flex-direction:column; gap:9px; align-items:center;
+    font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-size:13px; color:var(--sub);
+  }
+  .checks b{ color:var(--ink); }
+  .ok{ color:#8aa36a; font-weight:700; margin-right:6px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="badge">已按参考图还原 · 待你确认</div>
+      <div class="logo-hold"><img src="logo-chest.png" alt="栖匣 Logo"></div>
+      <h1>栖匣</h1>
+      <div class="sub">心有所栖 · 匣纳成长</div>
+      <div class="rule"></div>
+      <div class="slogan">收纳诸事，步履向前</div>
+      <div class="desc">一只匣 · 安放你认真对待的每件事</div>
+      <div class="checks">
+        <div><span class="ok">✔</span><b>深棕 3D 木匣</b> · 顶面/正面/侧面 三面可见</div>
+        <div><span class="ok">✔</span><b>盒盖微启</b> · 带开口缝隙</div>
+        <div><span class="ok">✔</span><b>正面金色锁扣</b> · 门钉装饰</div>
+        <div><span class="ok">✔</span><b>浅米色圆底</b> · 外圆内方</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
