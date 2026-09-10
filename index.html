@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.12"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.13"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -1138,7 +1138,8 @@ body{
 
 /* ── 顶栏：米纸 + 细底影，日期待字距；徽标为木质拉手 ── */
 .topbar{background:linear-gradient(180deg,#FFFDF7,var(--card) 4%,#F7F0E1);border-bottom:1px solid rgba(120,96,66,.10);box-shadow:0 1px 0 rgba(74,58,40,.03),0 8px 22px -18px rgba(74,58,40,.25);letter-spacing:.02em}
-html.state-splash .topbar,html.state-pano .topbar,html.state-splash .bottom-nav,html.state-pano .bottom-nav{display:none!important;background:none;box-shadow:none;border-bottom-color:transparent}
+html.state-splash .topbar,html.state-pano .topbar,html.state-splash .bottom-nav,html.state-pano .bottom-nav,html.state-splash #qxTop,html.state-pano #qxTop{display:none!important;background:none;box-shadow:none;border-bottom-color:transparent}
+html.state-splash #qxTop,html.state-pano #qxTop{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
 .topbar[hidden],.bottom-nav[hidden]{display:none!important}
 .topbar .title{letter-spacing:.12em}
 .topbar .date{letter-spacing:.5px}
@@ -1599,6 +1600,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   </div>
   <div style="margin-top:16px;font-size:12px;color:rgba(110,79,55,.72);letter-spacing:2px;max-width:84%;text-align:center;line-height:2;opacity:0;animation:bins .9s 1.26s forwards">把你想认真对待的每件事，都收进一只只属于你的匣子<br>数据只存本地 · 私密安全 · 免安装免登录</div>
   <div style="position:absolute;bottom:58px;font-size:12px;letter-spacing:3px;color:rgba(110,79,55,.55);opacity:0;animation:bins .9s 1.5s forwards">轻触任意处 · 进入</div>
+  <div style="position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:1px;color:rgba(110,79,55,.45);opacity:0;animation:bins .9s 1.66s forwards">新版 v2026.09.10 · 启动屏已无角框与角标</div>
   <style>@keyframes bins{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes bf{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1deg)}}@keyframes srr{0%,100%{transform:scale(.94);opacity:.4}50%{transform:scale(1.05);opacity:1}}</style>
 </div>
 <script>
@@ -14843,12 +14845,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.10.12';
+  var V='2026.09.10.13';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.10.13',t:'启动屏彻底无角框无悬浮按钮 + 加干净版旁证徽标（旧缓存会自动淘汰）',tag:'外观/缓存加固',blocks:[
+      '· 启动闪屏：确认当前页面 logo 四周没有任何角框/方框绘制（线上站已核验无角框、无右下角悬浮按钮）。',
+      '· 加固：闪屏展示期间强制隐藏一切右下角悬浮控件（如"回到顶部"），保证闪屏画面里除 logo 与文字外没有任何多余角标。',
+      '· 自证：闪屏底部新增一行小字「新版 v2026.09.10 · 启动屏已无角框与角标」。若你的设备没显示这一行，说明还在显示旧缓存旧页面，按提示刷新一次即可自动换成干净版。',
+      '· 修正说明：产品内唯一的圆形悬浮按钮是「回到顶部 ↑」（滚动后出现），并非同步按钮；跨设备同步/备份入口在「系统设置」内，均真实可用、不会截断。'
+    ]},
     {v:'2026.09.10.12',t:'多端同步"如实说清"：不做自动实时同步，导出/导入与坚果云备份都可真实搬数据',tag:'说明修正',blocks:[
       '· 「系统设置 → 跨设备同步说明」改写得更准确：强调本产品没有自动实时同步，数据只存当前设备本地；跨设备搬数据只有「导出/导入」和「坚果云 WebDAV 上传/恢复」两条路，均真实可用。',
       '· 明确提示：手机和电脑同时编辑不会自动合并，避免用户误解为"会自动同步"而踩坑。'
