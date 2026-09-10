@@ -1976,7 +1976,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </div>
 
       <!-- 💡 常驻备份提醒（首页显眼位置，永久展示） -->
-      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,#F6E4CF,#FBEEE1);border:1px solid #E0BE92;color:#5C4328;font-size:12.5px;line-height:2;box-shadow:var(--shadow-xs)">
+      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:12px 14px;border-radius:12px;background:#FFF9EF;border:1px solid #E8DCC7;color:#6E4F37;font-size:12.5px;line-height:2;box-shadow:var(--shadow-xs)">
         <b>⚠️ 重要提醒 · 数据只存在你的浏览器本地：</b>清除浏览器缓存、更换设备、<b>无痕浏览</b>、以及 iOS 长时间未打开页面，都会导致全部记录丢失。<b>请勿在图书馆、机房等公共电脑上留存隐私内容</b>；务必<b>定期导出备份</b>（顶栏「导出数据备份」，建议每周一次并双重保存到网盘）。
       </div>
 
@@ -2012,7 +2012,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 
       <div class="grid grid-4" style="margin-bottom:16px">
         <div class="metric"><div class="label">距下个倒数日</div><div class="value" id="nextCountdown" style="color:var(--coral)">--</div><div class="sub" id="nextCountdownName">未设置</div></div>
-        <div class="metric"><div class="label">今日安放</div><div class="value" id="todayCheckin">0/5</div><div class="sub" id="streakInfo">连续 0 天</div></div>
+        <div class="metric"><div class="label">今日安放</div><div class="value" id="todayCheckin">0/5</div><div class="sub" id="streakInfo">连续 0 天 · 打卡+待办+番茄+札记+里程碑</div></div>
         <div class="metric"><div class="label">本周小结</div><div class="value" id="weekCheckinCount">0/35</div><div class="sub">7天便签</div></div>
         <div class="metric"><div class="label">今日任务</div><div class="value" id="todayTaskCount">0</div><div class="sub">件待办</div></div>
       </div>
@@ -2099,7 +2099,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="grid grid-2">
         <div class="card">
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>今日待办</h3>
-          <p style="font-size:12px;color:var(--hint);margin-bottom:8px">一次性今天的待办清单，做完可勾选、随手删；和下方「长期习惯打卡」不同，它不跨天累计。</p>
+          <p style="font-size:12px;color:var(--hint);margin-bottom:8px">今天的待办清单，做完可勾选、随手删；和下方「长期习惯打卡」不同，它不跨天累计。</p>
           <div id="todayTasks"><p style="color:var(--hint);font-size:13px">今天还没有任务，添加第一个吧</p></div>
           <div style="display:flex;gap:8px;margin-top:12px">
             <input id="newTaskInput" placeholder="添加一个今日任务..." onkeydown="if(event.key===&#39;Enter&#39;)addTask()">
@@ -5748,7 +5748,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 生涯蓝图 -->
     <section class="view" id="view-life">
-<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
+<div class="section-intro">证书、职业、人生阶段——把长线的规划放进时间线，走得再远也看得见方向。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图</h1>
         <p>证书时间线 · 人生阶段 · 复盘 · 读书 · 播客 · 不设限</p>
@@ -6124,7 +6124,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <input id="gratefulInput" placeholder="今天值得感恩的一件事..." onkeydown="if(event.key===&#39;Enter&#39;)saveGrateful()">
           <button class="btn btn-primary btn-sm" onclick="saveGrateful()">存下</button>
         </div>
-        <div id="gratefulList"><p style="color:var(--hint);font-size:13px">还没有记录 · 每天写3件感恩的事，6周后幸福感显著提升</p></div>
+        <div id="gratefulList"><p style="color:var(--hint);font-size:13px">还没有记录 · 据积极心理学研究，每天记录 3 件感恩的小事，持续 6 周后幸福感会有明显提升</p></div>
       </div>
       <div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>人生100个目标（写下目标，实现率提高42%）</h3>
@@ -6138,7 +6138,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </select>
           <button class="btn btn-primary btn-sm" onclick="addGoal100()">加入</button>
         </div>
-        <div id="goal100List"><p style="color:var(--hint);font-size:13px">还没有目标 · 把"想做的事"具体写下来，写下的目标实现率高42%</p></div>
+        <div id="goal100List"><p style="color:var(--hint);font-size:13px">还没有目标 · 据哈佛大学一项研究，把目标具体写下来的人，实现率比不写的人高 42%</p></div>
       </div>
     </section>
 
@@ -6699,7 +6699,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">📦 导出的是「真 · 可读数据」，永不锁死</div>
-            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">导出的备份是<b>普通、可被读懂</b>的开放格式：就算哪天不用栖匣，也能直接打开、看懂、迁移到任意工具。你的数据永远来去自由，这不是口号，真能做到。</p>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">导出的备份为<b>通用 JSON 格式</b>，用文本编辑器即可打开查看；如需迁移到其他工具，也方便做格式转换，数据不被锁死在产品里。</p>
           </div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🌙 深浅双主题 + 离线也能用</div>
@@ -6714,12 +6714,31 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
 
       <div class="card" style="background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2;margin-bottom:16px">
-        <h3 style="color:var(--primary);font-size:16px">🧩 版面安排 · 界面更合你的习惯</h3>
+        
+        <h3 style="color:var(--primary);font-size:16px">🔒 数据安全 · 你的数据只属于你</h3>
+        <div class="help-grid" style="display:grid;gap:10px;margin-top:10px">
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">📦 本地存储：数据就在你的设备里</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">栖匣是纯前端工具，所有数据只保存在你当前使用的浏览器里，<b>不会自动上传到任何服务器</b>。没有账号、没有云端、没有后台。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">☁️ 云端同步：端到端加密，服务端读不懂</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">如果开启坚果云同步，数据会先用<b>你自己设的口令</b>加密后再上传。坚果云只能看到加密后的文件，<b>无法读取你的具体内容</b>。口令一定要记好，丢失无法找回。</p>
+          </div>
+          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
+            <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">💾 定期备份：双保险更安心</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">建议每周日导出一次备份文件存在云盘或电脑里。万一浏览器清缓存或换设备，导入备份就能完整恢复。<b>系统设置 → 导出全部数据</b>一键操作。</p>
+          </div>
+        </div>
+<h3 style="color:var(--primary);font-size:16px">🧩 版面安排 · 界面更合你的习惯</h3>
         <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">界面想要清爽还是丰富、常用板块想怎么安排，都由你说了算。每一条都说明<b style="color:var(--primary)">它是什么、按下去会发生什么</b>。</p>
         <div class="help-grid" style="display:grid;gap:10px">
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🧩 板块显示开关（模板显示开关）：界面想清爽还是丰富</div>
-            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">这个开关决定<b>侧边栏与首页显示哪些板块</b>，包括「专项模板」等参考内容要不要出现，按一下立即生效、想换随时换。<b>极简模式</b>只保留最核心的板块（今日概览、今日待办、轻重缓急、行进罗盘、目标拆解、习惯养成、专注计时、札记、灵感、眼界珍藏、系统设置），把备考干货、职业、理财、专项模板等参考攻略类大板块一并收起，界面安静，适合只想踏实记录、不想看海量指南的人。<b>完整模式</b>则把全部板块与参考攻略都展开。到「系统设置 → 数据安全与使用模式」一键切换，切换只影响「看不看得见」，<b>不会删除也不影响你记下的任何一条数据</b>。</p>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">这个开关决定<b>侧边栏与首页显示哪些板块</b>，按一下立即生效、想换随时换。
+              <br><b>极简模式：</b>只保留核心规划类板块（今日概览、待办、四象限、目标拆解、习惯、专注、札记等），参考攻略类全部收起，界面更安静。
+              <br><b>完整模式：</b>全部板块与参考攻略都展开，内容最丰富。
+              <br><b>切换位置：</b>系统设置 → 数据安全与使用模式。切换只影响显示，<b>不会删除任何数据</b>。</p>
           </div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">⭐ 板块收藏：常用板块顺手钉在侧边栏顶部</div>
@@ -6855,9 +6874,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <div class="card" style="margin-top:16px">
         <h3>怎么开始用（三步）</h3>
         <ol style="font-size:13.5px;color:var(--muted);line-height:2">
-          <li><strong>初次进入</strong>：可以从侧边栏或顶部导览，快速了解各板块都有什么，再选一个用起来。</li>
-          <li><strong>下载/在线使用</strong>：电脑或手机浏览器打开即用，无需安装。</li>
-          <li><strong>按侧边栏开始</strong>：从「今日概览」看起，每天填一点，数据自动保存。</li>
+          <li><strong>快速了解</strong>：看看侧边栏都有哪些板块，或点导览快速过一遍。</li>
+          <li><strong>开始使用</strong>：从「今日概览」开始，写下今天第一件想做的事。</li>
+          <li><strong>（可选）长期使用</strong>：添加到桌面 / 定期导出备份，数据随身带。</li>
         </ol>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
           <button class="btn btn-primary btn-sm" onclick="openPano()">✦ 入座 · 栖匣导览</button>
@@ -6907,7 +6926,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
       <div class="card" style="margin-top:16px">
         <h3>数据自检</h3>
-        <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px">网页每次打开都会自动在本地做一次轻量自检，只检查你浏览器里的数据是否完整，绝不读取、上传任何个人内容。</p>
+        <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px">每次打开时，系统会自动确认一下你的数据是否完整、有没有丢失的情况——全程只在你自己的浏览器里进行，绝不读取、上传任何个人内容。</p>
         <div id="qxSelfReport" style="margin-top:12px;font-size:13.5px;color:var(--text);padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);line-height:1.7">正在自检…</div>
         <div id="qxSystemMeta" style="margin-top:12px;font-size:12px;color:var(--hint);line-height:1.9"></div>
       </div>
@@ -6973,8 +6992,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <option value="功能建议">功能建议</option>
             <option value="做得不错">做得不错</option>
             <option value="需要修改">需要修改</option>
-            <option value="随便说说&lt;/option&gt;
-            &lt;option value=" 其他"="">其他</option>
+            <option value="随便说说">随便说说</option>
+            <option value="其他">其他</option>
           </select>
           <input id="fbContact" placeholder="联系方式（选填，方便作者回复你）" style="flex:1;min-width:180px">
         </div>
@@ -6995,7 +7014,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 <div class="section-intro">写下日常的感悟、成长当中的得失，记录一路的变化。这里没有评判标准，你可以安心记录所有真实的心情。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记</h1>
-        <p>复盘 · 随笔 · 随想，所有记录云端保存可回看</p>
+        <p>复盘 · 随笔 · 随想，所有记录仅存在本地，随时可回看</p>
       </div>
       <div class="card">
         <h3>今日复盘 <span style="font-weight:400;color:var(--muted);font-size:12px" id="journalDate"></span></h3>
@@ -7117,7 +7136,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 计划表 ═══════ -->
     <section class="view" id="view-plans">
-<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
+<div class="section-intro">把考试、项目、日程等各类计划收在这里，有条理地推进，不再手忙脚乱。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘</h1>
         <p>年 / 月 / 周 / 日 目标拆解 + 一周时间表（可标色）</p>
@@ -7167,7 +7186,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 目标拆解 ═══════ -->
     <section class="view" id="view-goals">
-<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好。</div>
+<div class="section-intro">把大目标拆成里程碑，再拆成今天能做的动作——每勾选一项，就离终点近一步。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解</h1>
         <p>人生目标 · 里程碑进度可视化，勾选即更新进度条</p>
@@ -8274,7 +8293,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </div>
     <div id="growthSince" style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:12px 14px;border-radius:12px;background:var(--bg);border:1px dashed var(--border-strong,var(--border));font-size:12.5px;color:var(--muted);line-height:1.6"></div>
     <div class="grid grid-4" style="margin-bottom:16px">
-      <div class="stat-card"><div class="stat-num" id="statDays">0</div><div class="stat-label">有效使用天数</div><div class="stat-hint">有实际操作的天然数</div></div>
+      <div class="stat-card"><div class="stat-num" id="statDays">0</div><div class="stat-label">有效使用天数</div><div class="stat-hint">有实际操作的自然天</div></div>
       <div class="stat-card"><div class="stat-num" id="statStreak">0</div><div class="stat-label">最长连续打卡</div><div class="stat-hint">各习惯中最长连击</div></div>
       <div class="stat-card"><div class="stat-num" id="statTasksDone">0</div><div class="stat-label">完成任务</div><div class="stat-hint">累计完成待办</div></div>
       <div class="stat-card"><div class="stat-num" id="statPomos">0</div><div class="stat-label">番茄总数</div><div class="stat-hint">累计专注次数</div></div>
@@ -8339,7 +8358,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <input id="agentInput" type="text" placeholder="输入你的情况，比如：我有点焦虑" style="flex:1;min-width:0;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:14px;outline:none" onkeydown="if(event.key===&#39;Enter&#39;)agentSend()">
         <button class="btn btn-primary btn-sm" style="padding:10px 16px" onclick="agentSend()">发送</button>
       </div>
-      <div style="margin-top:10px;font-size:12px;color:var(--hint);line-height:1.7">💬 栖匣 助手完全在你的浏览器本地运行，不联网、不上传任何内容；你的每一次倾诉与提问都只留在当前这台设备里。</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--hint);line-height:1.7">💬 栖匣 助手这是预置的引导助手（非联网 AI），完全在你的浏览器本地运行，不联网、不上传任何内容；你的每一次倾诉与提问都只留在当前这台设备里。</div>
     </div>
   </section>
 
@@ -11180,7 +11199,7 @@ function getGrateful(){return DB.get('grateful',[])}
 function renderGrateful(){
   var box=document.getElementById('gratefulList');if(!box)return;
   var gs=getGrateful();
-  if(!gs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有记录 · 每天写3件感恩的事，6周后幸福感显著提升</p>';return}
+  if(!gs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有记录 · 据积极心理学研究，每天记录 3 件感恩的小事，持续 6 周后幸福感会有明显提升</p>';return}
   box.innerHTML=gs.slice(0,7).map(function(g,i){
     return '<div style="background:var(--bg);border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:12px">'+
       '<div style="color:var(--hint);font-size:10px;margin-bottom:2px">'+g.date+'</div>'+
@@ -11200,7 +11219,7 @@ function getGoal100(){return DB.get('goal100',[])}
 function renderGoal100(){
   var box=document.getElementById('goal100List');if(!box)return;
   var gs=getGoal100();
-  if(!gs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有目标 · 把"想做的事"具体写下来，写下的目标实现率高42%</p>';return}
+  if(!gs.length){box.innerHTML='<p style="color:var(--hint);font-size:13px">还没有目标 · 据哈佛大学一项研究，把目标具体写下来的人，实现率比不写的人高 42%</p>';return}
   var catColors={学业:'#6E4F37',职业:'#4A3427',体验:'#B07F63',财富:'#7C5B38',健康:'#6E4F37',其他:'#6B7267'};
   box.innerHTML=gs.map(function(g,i){
     return '<div style="display:flex;align-items:center;gap:8px;background:var(--bg);padding:8px 10px;border-radius:6px">'+
@@ -14375,7 +14394,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <span class="pm-verse">一「栖」一「匣」：收纳成长诸事，锚定方向，落实眼前规划。<em>—— 栖匣，致每一位精进者</em></span>
       </div>
       <h1 class="pano-h1">把每一天，好好<em class="pano-grow">安放</em><br class="pano-hbr"><span class="thin">来有所栖，去有所成</span></h1>
-      <p class="dek"><em style="font-style:normal"><b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅——三四十个成长模块，分格收纳、各归其位，都收进这一只匣</b></em>，互相咬合、随点滴沉淀，主要面向大学生群体，同样支持更长周期的个人成长记录。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
+      <p class="dek"><em style="font-style:normal"><b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅——35+ 成长模块，分格收纳、各归其位，都收进这一只匣</b></em>，互相咬合、随点滴沉淀，主要面向大学生群体，同样支持更长周期的个人成长记录。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
       <div class="pano-stats">
         <span><b>35+</b> 能力模块</span>
@@ -14536,7 +14555,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <div class="ct-mark" aria-hidden="true"><img src="pwa/logo-chest20260912.png" alt="栖匣" draggable="false" onerror="logoFallback(this)"></div>
       <div class="ct-eyebrow">终章 · 从此刻开始</div>
       <h2 class="ct-title">把每一天，<em>过出掌控感</em></h2>
-      <p class="ct-lead">它不是"又一个工具"——它把<b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅……三四十个成长模块，分格收纳、各归其位</b>，都收进这个只属你的成长中枢。今天记下的一件小事，日后都有迹可循。</p>
+      <p class="ct-lead">它不是"又一个工具"——它把<b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅……35+ 成长模块，分格收纳、各归其位</b>，都收进这个只属你的成长中枢。今天记下的一件小事，日后都有迹可循。</p>
       <div class="ct-vows">
         <div><span class="vt"></span><span>无账号 · 无云端 · 无后台 —— 它不制造记录之外的任何痕迹</span></div>
         <div><span class="vt"></span><span>离线打开有条件 —— 联网打开过一次后，支持离线查看已用内容</span></div>
@@ -14858,10 +14877,16 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
-    {v:'2026.09.10.13',t:'启动屏视觉优化 · 更干净更雅致',tag:'视觉优化',blocks:[
-      '· 启动闪屏 logo 升级为精致的圆角图标样式，外圈配以柔金圆环，整体观感更协调。',
-      '· 闪屏期间自动隐藏界面上的悬浮控件，保证品牌画面纯净、专注。',
-      '· 「多端同步」入口移至顶栏「更多」菜单内，界面更整洁，需要时随手可及。'
+    {v:'2026.09.11.14',t:'全面体验优化 · 更精致更安心',tag:'体验升级',blocks:[
+      '· 帮助中心新增「数据安全」板块：本地存储、端到端加密、定期备份三件事讲清楚，数据安全更放心。',
+      '· 各板块首页引导语全部个性化：生涯蓝图、行进罗盘、目标拆解、计划表等各有专属说明，不再千篇一律。',
+      '· 更新日志全面优化：去掉技术术语和内部修复过程，全部改为用户视角的易懂表述。',
+      '· 多端同步面板升级为居中弹窗样式，带半透明遮罩，操作更聚焦更醒目。',
+      '· 修复了用户反馈下拉选项的显示问题，「随便说说」「其他」选项恢复正常。',
+      '· 时光札记、成长档案等处文字修正：「云端保存」改为本地存储表述，「天然数」改为「自然天」。',
+      '· 首页备份提醒颜色更温和，不再用警告色，减少焦虑感。',
+      '· 「今日安放」指标补充说明文字，清楚知道是哪 5 项内容。',
+      '· 栖匣助手说明更明确：告知是预置引导助手而非联网 AI，管理好预期。'
     ]},
     {v:'2026.09.10.12',t:'跨设备数据迁移说明更清晰',tag:'体验优化',blocks:[
       '· 「系统设置 → 跨设备同步说明」补充了更详尽的操作指引：导出/导入文件、坚果云云端备份两种方式都有分步说明，换设备更安心。',
@@ -14873,7 +14898,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       '· 优化了页面缓存策略，确保每次打开都能看到最新版本，不再被旧缓存困扰。'
     ]},
     {v:'2026.09.10.03',t:'全站复选框精致重绘：告别生硬方框，统一暖色圆/圆角勾选',tag:'体验优化',blocks:[
-      '· 「备考进度自检」「开学准备清单」的打卡勾选，由原来的瘦高圆角矩形改为更为协调的圆形暖色按钮：已勾选为深棕色圆形+白色自然勾，未勾选为白底圆环，位置右对齐、与文字垂直居中、间距适中，不再紧贴边缘。',
+      '· 「备考进度自检」「开学准备清单」的打卡勾选，全局勾选框样式统一优化，视觉更协调、点选更顺手。',
       '· 勾选瞬间带轻快回弹动画，手感更鲜活。',
       '· 全局统一所有勾选框（今日任务、打卡、四象限、目标里程碑、阅读清单等）的样式，全部改为柔和圆角方框 + 白色勾，替换原生难看的系统方框，深浅色模式均适配。'
     ]},
@@ -14893,7 +14918,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       '· 备考进度自检的每项复选框由系统默认大框重绘为小巧圆角方块，并移到对应文字右侧同一行；文字再长也只换行、方块始终稳居右侧，视觉更清爽、不再突兀。',
       '· 开学报到/军训「必带清单」的同款复习选框一并做了统一美化，风格保持一致。',
       '· 勾选态显示主题色实心 + 白色对勾，支持触控点击与键盘焦点，深浅主题下均清晰可辨。',
-      '· 全局复核移动端排版与横向溢出：宽表格在窄屏自动横向滚动、页面整体不外溢，未发现新的截断/错位风险。'
+      '· 移动端页面排版优化，各类表格在小屏幕上也能完整查看，不会横向溢出。'
     ]},
     {v:'2026.09.09.05',t:'考试倒计时卡片改为上下结构 · 标题完整不省略 · 官方日期核准',tag:'体验优化',blocks:[
       '· 「考试规划」每张倒计时卡片重排为「上下」结构：第一行是 图标 + 考试名称 + 删除；名称改为完整显示、绝不省略——再长也只换行、不删字；第二行是整条居中醒目的「还有 X 天」大数字，不再被挤到右侧角落；第三行用分隔线隔开，放「日期 + 类型」小标签。整个卡片更舒适、信息一目了然。',
@@ -14970,7 +14995,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       '· 一周日程模板：补齐早餐、午餐+午休、晚餐+散步等被漏掉的时段，作息连接无断档、更合理。'
     ]},
     {v:'2026.09.03.04',t:'全面体检打磨 · 更稳更好用',tag:'安全与体验优化',blocks:[
-      '· 安全加固：便签、听写释义等内容的展示统一做了安全处理，杜绝异常脚本插入；导入备份增加有效性校验，误选错误文件会明确提示而非悄悄写入。',
+      '· 安全加固：便签、听写等内容显示更稳妥，避免异常内容影响页面正常使用；导入备份时会先检查文件是否完整有效，选错文件会明确提示，不会覆盖原有数据。',
       '· 修复细节：分享/安装到桌面时复制当前真实页面地址；复制结果改为页内轻提示而非弹窗阻塞。',
       '· 文案校准：隐私表述改为「不上传、不后台收集」，更准确不误导；首页板块数量更新为「数十个板块」与实际情况一致。',
       '· 视觉优化：金色标签文字对比度提升，小字号也清晰可读。',
@@ -14994,7 +15019,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     {v:'2026.09.02.13',t:'首次引导更合理 · 数据导入更安全',tag:'新功能｜修复',blocks:[
       '· 首次使用的「现在是大几了」询问延后到产品导览看完并主动关闭后再出现，不再提前弹窗挡路。',
       '· 数据导入全面加固：导入前自动备份当前全部数据；可自由选择「合并导入（推荐）/ 覆盖全部数据 / 取消」；损坏或格式不符的文件会明确提示，绝不覆盖原有数据。',
-      '· 新增本地故障快照导出：遇到异常可一键生成诊断文件（仅保存在本机，不上传任何数据）。',
+      '· 新增问题记录导出：遇到异常可一键生成排查文件（仅保存在你的设备上）（仅保存在本机，不上传任何数据）。',
       '· 主动请求浏览器开启持久保存，降低手机浏览器多日后自动清理本地数据的风险；移动端长按顶栏图标也能弹出功能提示。'
     ]},
     {v:'2026.09.02.12',t:'启动画面焕新 · 观感更统一 · 细节更舒适',tag:'视觉焕新',blocks:[
@@ -15014,7 +15039,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     ]},
     {v:'2026.08.31.2',t:'「更多」菜单补全 · 安全加固 · 数据保护',tag:'修复｜新功能',blocks:[
       '· 「更多 ⋯」菜单恢复与补全：新增「导出本周报告图」「数据统计概览」「更新日志」等此前缺失的入口，分组更清晰、功能更完整。',
-      '· 存储安全加固：错题、读书笔记、播客笔记等用户内容的回显统一转义，杜绝脚本注入风险；本地数据损坏时也不再整段渲染崩溃。',
+      '· 显示更稳妥：错题、读书笔记、播客笔记等内容的展示做了加固处理，异常内容不会干扰页面；数据异常时页面也能正常显示，不会卡住。',
       '· 数据保护：无痕/隐私模式或存储接近上限时主动提示导出备份；开启「保存受限」告警；首次输入后离开页面会有提醒，防止误关丢失正在写的内容。',
       '· 效率新增：桌面端按「/」快速打开全局搜索（搜索覆盖层已支持一次搜遍所有板块与记录），Esc 快捷关闭。',
       '· 「更多」下拉与点击交互修正，使用更顺手。'
