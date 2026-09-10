@@ -14014,9 +14014,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
   radial-gradient(24px 18px at 76% 2px,rgba(158,132,84,.13) 49%,transparent 51%),
   radial-gradient(24px 18px at 86% 2px,rgba(168,132,72,.16) 49%,transparent 51%),
   radial-gradient(24px 18px at 96% 2px,rgba(158,132,84,.13) 49%,transparent 51%)}
-.pt-sash{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;margin:0 auto 20px;background:linear-gradient(120deg,#5B4532,#4A3A2C 60%,#5B4532);color:#F5F1E4;padding:6px 20px 7px 7px;border-radius:0 0 14px 14px;box-shadow:0 8px 20px rgba(40,48,42,.22);animation:panoUp .7s .02s both}
-.pt-sash::before{content:"";position:absolute;left:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top left,#5B4532 60%,transparent 60%);}
-.pt-sash::after{content:"";position:absolute;right:-9px;top:0;width:9px;height:9px;background:radial-gradient(circle at top right,#5B4532 60%,transparent 60%);}
+.pt-sash{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;margin:0 auto 20px;background:linear-gradient(120deg,#5B4532,#4A3A2C 60%,#5B4532);color:#F5F1E4;padding:6px 20px 7px 7px;border-radius:14px 14px 14px 14px;box-shadow:0 8px 20px rgba(40,48,42,.22);animation:panoUp .7s .02s both}
 .pt-seal{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#E0C188,#A9803F);color:#3A2C0F;font-weight:800;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.20)}
 .pt-name{font-weight:700;font-size:12.5px;letter-spacing:.3em;text-indent:.3em;color:#F5F1E4}
 .pt-name-premium{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px 16px;justify-content:center;align-items:center;margin:2px 0 20px;max-width:620px}
@@ -15787,13 +15785,9 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .pano{color:#4A3A2C}
 .pano-close{color:#4A3A2C;border-color:rgba(111,79,55,.18)}
 .pt-sash{background:linear-gradient(120deg,#6E4F37,#8A6A3A 60%,#6E4F37);color:#F6EFE1;box-shadow:0 8px 20px rgba(110,79,55,.24)}
-.pt-sash::before{background:radial-gradient(circle at top left,#6E4F37 60%,transparent 60%)}
-.pt-sash::after{background:radial-gradient(circle at top right,#6E4F37 60%,transparent 60%)}
 .pano-cta{color:#4A3A2C}
 .pano-h2 em,.pano-lead b{color:#8A6A3A}
 [data-theme="dark"] .pt-sash{background:linear-gradient(120deg,#3A2A1E,#5B4532 60%,#3A2A1E);color:#F0E7D8}
-[data-theme="dark"] .pt-sash::before{background:radial-gradient(circle at top left,#3A2A1E 60%,transparent 60%)}
-[data-theme="dark"] .pt-sash::after{background:radial-gradient(circle at top right,#3A2A1E 60%,transparent 60%)}
 /* 统一深色模式导览 CTA 主按钮为暖棕金（消除残留墨绿 #2a3b30 / #8A6D48） */
 [data-theme="dark"] .pano-cta .btn.btn-primary{background:linear-gradient(120deg,#5B4532,#6E4F37 60%,#5B4532)!important;border:1px solid #A0813F!important;box-shadow:0 16px 34px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08)!important}
 [data-theme="dark"] .pano-cta .btn.btn-primary:hover{background:linear-gradient(120deg,#6E4F37,#7A5838)!important;border-color:#C9A45E!important}
