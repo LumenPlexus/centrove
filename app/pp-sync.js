@@ -403,13 +403,14 @@
 
   /* ---------- 启动 ---------- */
   function boot() {
-    injectChip();
     setTimeout(function () { syncNow(false); }, S.autoDelay);
     schedule();
     on(function (ev) {
       if (_panel && (ev.type === 'synced' || ev.type === 'merged')) { paintStatus(); }
     });
   }
+  /* 暴露到全局，供顶栏「更多」菜单调用 */
+  global.openSyncPanel = openPanel;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })(window);

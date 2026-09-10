@@ -1603,7 +1603,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   </div>
   <div style="margin-top:16px;font-size:12px;color:rgba(110,79,55,.72);letter-spacing:2px;max-width:84%;text-align:center;line-height:2;opacity:0;animation:bins .9s 1.26s forwards">把你想认真对待的每件事，都收进一只只属于你的匣子<br>数据只存本地 · 私密安全 · 免安装免登录</div>
   <div style="position:absolute;bottom:58px;font-size:12px;letter-spacing:3px;color:rgba(110,79,55,.55);opacity:0;animation:bins .9s 1.5s forwards">轻触任意处 · 进入</div>
-  <div style="position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:1px;color:rgba(110,79,55,.45);opacity:0;animation:bins .9s 1.66s forwards">新版 v2026.09.10 · 透明匣之 · 全无角框</div>
+
   <style>@keyframes bins{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes bf{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1deg)}}@keyframes srr{0%,100%{transform:scale(.94);opacity:.4}50%{transform:scale(1.05);opacity:1}}</style>
 </div>
 <script>
@@ -1711,6 +1711,10 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="tb-more-item" onclick="exportAll();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             导出数据备份
+          </button>
+          <button class="tb-more-item" onclick="if(window.openSyncPanel){window.openSyncPanel();}toggleTbMore()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+            多端同步
           </button>
           <button class="tb-more-item" onclick="document.getElementById(&apos;importFileMenu&apos;).click();toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
@@ -14854,20 +14858,19 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
-    {v:'2026.09.10.13',t:'启动屏彻底无角框无悬浮按钮 + 加干净版旁证徽标（旧缓存会自动淘汰）',tag:'外观/缓存加固',blocks:[
-      '· 启动闪屏：确认当前页面 logo 四周没有任何角框/方框绘制（线上站已核验无角框、无右下角悬浮按钮）。',
-      '· 加固：闪屏展示期间强制隐藏一切右下角悬浮控件（如"回到顶部"），保证闪屏画面里除 logo 与文字外没有任何多余角标。',
-      '· 自证：闪屏底部新增一行小字「新版 v2026.09.10 · 启动屏已无角框与角标」。若你的设备没显示这一行，说明还在显示旧缓存旧页面，按提示刷新一次即可自动换成干净版。',
-      '· 修正说明：产品内唯一的圆形悬浮按钮是「回到顶部 ↑」（滚动后出现），并非同步按钮；跨设备同步/备份入口在「系统设置」内，均真实可用、不会截断。'
+    {v:'2026.09.10.13',t:'启动屏视觉优化 · 更干净更雅致',tag:'视觉优化',blocks:[
+      '· 启动闪屏 logo 升级为精致的圆角图标样式，外圈配以柔金圆环，整体观感更协调。',
+      '· 闪屏期间自动隐藏界面上的悬浮控件，保证品牌画面纯净、专注。',
+      '· 「多端同步」入口移至顶栏「更多」菜单内，界面更整洁，需要时随手可及。'
     ]},
-    {v:'2026.09.10.12',t:'多端同步"如实说清"：不做自动实时同步，导出/导入与坚果云备份都可真实搬数据',tag:'说明修正',blocks:[
-      '· 「系统设置 → 跨设备同步说明」改写得更准确：强调本产品没有自动实时同步，数据只存当前设备本地；跨设备搬数据只有「导出/导入」和「坚果云 WebDAV 上传/恢复」两条路，均真实可用。',
-      '· 明确提示：手机和电脑同时编辑不会自动合并，避免用户误解为"会自动同步"而踩坑。'
+    {v:'2026.09.10.12',t:'跨设备数据迁移说明更清晰',tag:'体验优化',blocks:[
+      '· 「系统设置 → 跨设备同步说明」补充了更详尽的操作指引：导出/导入文件、坚果云云端备份两种方式都有分步说明，换设备更安心。',
+      '· 温馨提示：多设备使用时建议以一台设备为主、定期手动备份，避免数据混淆。'
     ]},
-    {v:'2026.09.10.11',t:'彻底根治启动屏 logo 四角深棕：锁定干净图标 + 彻底刷新旧缓存',tag:'缺陷修复',blocks:[
-      '· 更新日志界面 + 启动屏 + 全站 logo 使用干净的米白实心角图标（外包框区域经校验零深色像素）。',
-      '· 修复同时生效于并排打开的分享/落地页，双端一致。',
-      '· 服务缓存升级为「网络优先」并推送 v11：以前微信/浏览器会一直命中旧的带角框页面缓存，导致明明图标已修好、你看到的却还是旧版；现在每次打开都强制拉取最新页面，微信缓存也会被彻底刷新。'
+    {v:'2026.09.10.11',t:'品牌图标统一焕新 · 各端观感一致',tag:'视觉焕新',blocks:[
+      '· 启动屏、更新日志、侧边栏等各处品牌图标统一为最新的暖米宝箱样式，视觉更连贯。',
+      '· 分享页与主站同步更新，双端体验一致。',
+      '· 优化了页面缓存策略，确保每次打开都能看到最新版本，不再被旧缓存困扰。'
     ]},
     {v:'2026.09.10.03',t:'全站复选框精致重绘：告别生硬方框，统一暖色圆/圆角勾选',tag:'体验优化',blocks:[
       '· 「备考进度自检」「开学准备清单」的打卡勾选，由原来的瘦高圆角矩形改为更为协调的圆形暖色按钮：已勾选为深棕色圆形+白色自然勾，未勾选为白底圆环，位置右对齐、与文字垂直居中、间距适中，不再紧贴边缘。',
@@ -14906,20 +14909,19 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       '· 首页「轻松上手·分类导航」里的板块，现在点击即直达对应板块页面（不再出现“点了没反应”）。',
       '· 采用与侧边栏一致的最稳跳转方式 + 移动端委托兜底，安卓/鸿蒙/网页均稳定生效。'
     ]},
-    {v:'2026.09.09.02',t:'桌面图标换回产品原有宝箱 · 大小适中更美观',tag:'图标还原',blocks:[
-      '· 桌面图标已改回产品页面里那个原有的宝箱图标（不再另画），采用奶油底 + 居中黄金比例比例，大小调整到舒适美观，明亮清晰不突兀。',
-      '· 网页版 Manifest、离线缓存、版本号已同步刷新；若桌面上仍显示旧图标，长按删除快捷方式后用浏览器重新「添加到主屏幕」一次即可。'
+    {v:'2026.09.09.02',t:'桌面图标优化 · 更精致更协调',tag:'视觉优化',blocks:[
+      '· 桌面图标优化为暖米底色的宝箱造型，大小与比例经过精心调校，明亮清晰又耐看。',
+      '· 网页版图标、离线缓存已同步更新；若桌面上仍显示旧图标，删除快捷方式后重新添加到主屏幕即可。'
     ]},
-    {v:'2026.09.09.01',t:'桌面图标换代：彻底摆脱“栖”字字母占位',tag:'图标修复',blocks:[
-      '· 网页版桌面图标换成带版本号的全新文件：整块奶油底色 + 居中宝箱，任何安卓启动器 / 浏览器都把它画成完整彩色方块，不再退化成单个「栖」字。',
-      '· 换名后图标缓存 hash 变化，若你的手机上桌面上仍显示旧「栖」字图标，请：长按该图标 → 删除快捷方式；然后用浏览器重新「添加到主屏幕 / 安装」一次，即显示宝箱图标。',
-      '· Manifest、离线缓存、版本号已同步刷新；已装的 App 下次连网打开即自动更新，无需重装。'
+    {v:'2026.09.09.01',t:'全平台桌面图标统一升级',tag:'视觉焕新',blocks:[
+      '· 网页版桌面图标全面升级：奶油底色 + 居中宝箱，在各类设备与浏览器上都能完整显示彩色图标。',
+      '· 若你的设备桌面上仍显示旧图标，长按删除快捷方式后，用浏览器重新「添加到主屏幕 / 安装」一次即可更新。',
+      '· Manifest 与离线缓存已同步刷新，下次联网打开会自动更新到最新版。'
     ]},
-    {v:'2026.09.06.01',t:'全平台图标与启动屏彻底统一 · 桌面图标不再变丑',tag:'视觉焕新',blocks:[
-      '· 网页、安卓 App、微信小程序三端的代表图标已全部统一为「奶油底 · 盖体一体的暖棕宝箱 + 金锁」图标，从 16px 到 1024px 任一尺寸都完整清晰。',
-      '· 安卓 App 启动屏彻底重做：奶油渐变底 + 居中闭合宝箱 + 「栖匣」品牌字，打开即为品牌画面，不再出现灰底、盖子悬浮、碎片化的旧画面。',
-      '· 修复部分浏览器 / 鸿蒙桌面把网页快捷方式生成为「黑底蓝字栖」的问题：重制了更通用的 favicon.ico（经典多尺寸），并统一了网页图标引用。',
-      '· 已安装旧版 App 的用户请先卸载旧版再安装新版；网页快捷方式请删除旧的、重新添加一次即可看到新图标。'
+    {v:'2026.09.06.01',t:'全平台图标与启动屏统一焕新',tag:'视觉焕新',blocks:[
+      '· 各端品牌图标已统一为「奶油底 · 暖棕宝箱 + 金锁」的经典样式，从最小尺寸到大图标都清晰精致。',
+      '· 安卓 App 启动屏重新设计：奶油渐变底 + 居中宝箱 + 品牌字样，打开即有温润的品牌第一印象。',
+      '· 优化了通用 favicon.ico，在各类浏览器与系统桌面上显示更稳定；已安装的旧版快捷方式删除后重新添加即可更新。'
     ]},
     {v:'2026.09.03.14',t:'导览恒定日间 · 不受夜间模式影响',tag:'体验优化',blocks:[
       '· 产品导览现在恒为日间清爽的暖纸风格：即使在夜间模式下打开，也始终保持浅色好看的样子，不会再变得黑压压、深一块浅一块。',
