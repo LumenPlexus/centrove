@@ -3,38 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>栖匣 Logo 图标</title>
+<title>栖匣 Logo</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%}
   body{
     background: radial-gradient(120% 95% at 50% 22%, #fffdf8 0%, #faf7f1 45%, #f2ead9 100%);
-    display:grid; place-items:center; padding:40px 24px;
+    display:grid; place-items:center; padding:36px 24px;
   }
-  /* 徽标容器：环与徽标完全同心 */
-  .stage{
-    position:relative; width:min(64vw, 300px); aspect-ratio:1/1;
-    display:grid; place-items:center;
+  img{
+    width:min(78vw, 360px); height:auto; display:block; object-fit:contain;
+    filter:drop-shadow(0 16px 30px rgba(93,64,55,.28));
   }
-  /* 紧贴徽标的单圈细金环（无双层圆、无大的空档） */
-  .ring{
-    position:absolute; inset:0; border-radius:50%;
-    border:1.5px solid rgba(201,184,150,.65);
-    box-shadow:0 0 16px rgba(197,168,110,.22); /* 仅柔和光晕，不构成另一圈 */
-    pointer-events:none;
-  }
-  /* 徽标主体，居中于环内 */
-  .emblem{
-    width:90%; height:90%;
-    filter:drop-shadow(0 12px 22px rgba(93,64,55,.28));
-  }
-  .emblem img{width:100%;height:100%;display:block;object-fit:contain}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="ring" aria-hidden="true"></div>
-    <div class="emblem"><img src="emblem.png" alt="栖匣 Logo"></div>
-  </div>
+  <!-- 最终logo：徽标+紧贴单圈金边，已烘焙为一张图，确保与参考一致 -->
+  <img src="logo-final.png" alt="栖匣 Logo">
 </body>
 </html>
