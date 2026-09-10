@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.10.v8';
+var VERSION = '2026.09.10.v9';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -19,15 +19,15 @@ var PRECACHE_URLS = [
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',
-  './favicon-chest20260907-16.png',
-  './favicon-chest20260907-32.png',
-  './favicon-chest20260907-96.png',
-  './favicon-chest20260907-192.png',
-  './favicon-chest20260907-180.png',
-  './pwa/icon-chest20260907-192.png',
-  './pwa/icon-chest20260907-512.png',
-  './pwa/logo-chest20260907.png',
-  './pwa/share-chest20260907.png'
+  './favicon-chest20260910-16.png',
+  './favicon-chest20260910-32.png',
+  './favicon-chest20260910-96.png',
+  './favicon-chest20260910-192.png',
+  './favicon-chest20260910-180.png',
+  './pwa/icon-chest20260910-192.png',
+  './pwa/icon-chest20260910-512.png',
+  './pwa/logo-chest20260910.png',
+  './pwa/share-chest20260910.png'
 ];
 
 self.addEventListener('install', function (e) {
@@ -69,6 +69,26 @@ function networkThenCache(request){
   }).catch(function () { return fromCache(request); });
 }
 
+// stale-while-revalidate：缓存优先秒开，后台网络刷新缓存，断网回退缓存。
+// 大幅改善首屏加载（不再每次白屏等整包下载），同时保证在线时内容持续更新。
+function staleWhileRevalidate(request, fallbackUrl) {
+  var cached = fromCache(request);
+  var network = fetch(request).then(function (resp) {
+    if (resp && (resp.ok || resp.type === 'opaque')) {
+      var cl = request.clone();
+      caches.open(RUN).then(function (cache) { cache.put(cl, resp).catch(function () {}); }).catch(function () {});
+    }
+    return resp;
+  });
+  return cached.then(function (m) {
+    if (m) return m;               // 命中缓存：秒开
+    return network;                // 无缓存：等网络 / 离线回退缓存
+  }).catch(function () {
+    if (fallbackUrl) return fromCache(fallbackUrl);
+    return network;
+  });
+}
+
 self.addEventListener('fetch', function (e) {
   var req = e.request;
   if (req.method !== 'GET') return;
@@ -86,31 +106,13 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // 1) 页面导航：网络优先，断网回退缓存（离线可打开）
+  // 1) 页面导航：缓存优先（预缓存已含 index/share），打开即显示；
+  //    后台网络拉最新版本替换缓存，断网回退缓存。
   if (req.mode === 'navigate') {
-    e.respondWith(
-      fetch(req).then(function (resp) {
-        if (resp && resp.ok) {
-          var c = req.clone();
-          caches.open(PRE).then(function (cache) { cache.put('./index.html', c).catch(function () {}); }).catch(function () {});
-          return resp;
-        }
-        return resp;
-      }).catch(function () { return fromCache('./index.html'); })
-    );
+    e.respondWith(staleWhileRevalidate(req, './index.html'));
     return;
   }
 
-  // 2) 静态资源：网络优先（在线永远拿最新，杜绝陈旧图标/资源被缓存优先策略锁死），
-  //    绕过浏览器 HTTP 缓存刷新后再存 SW 缓存；断网时回退缓存（保持离线可用）。
-  var freshReq = new Request(req.url, { method: 'GET', cache: 'reload' });
-  e.respondWith(
-    fetch(freshReq).then(function (resp) {
-      if (resp && (resp.ok || resp.type === 'opaque')) {
-        var cl = req.clone();
-        caches.open(RUN).then(function (cache) { cache.put(cl, resp).catch(function () {}); }).catch(function () {});
-      }
-      return resp;
-    }).catch(function () { return fromCache(req); })
-  );
+  // 2) 静态资源：缓存优先秒开，后台网络刷新；断网回退缓存。
+  e.respondWith(staleWhileRevalidate(req));
 });
