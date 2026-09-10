@@ -367,17 +367,6 @@
     paintStatus();
   }
 
-  function injectChip() {
-    if (document.getElementById('ppSyncChip')) return;
-    var b = document.createElement('button');
-    b.id = 'ppSyncChip';
-    b.title = '多端同步';
-    b.textContent = '⇄';
-    b.style.cssText = 'position:fixed;bottom:40px;right:16px;z-index:98;width:40px;height:40px;border-radius:50%;border:1px solid #d8c69f;background:#fffaf0;color:#6E4F37;font-size:18px;cursor:pointer;box-shadow:0 8px 24px rgba(74,59,46,.2);display:flex;align-items:center;justify-content:center';
-    b.onclick = openPanel;
-    document.body.appendChild(b);
-  }
-
   /* ---------- 自动同步 ---------- */
   function schedule() {
     clearTimeout(_timer);
@@ -413,14 +402,40 @@
   global.openSyncPanel = function() {
     try {
       if (!_panel) _panel = ensurePanel();
+      // 居中模态框样式
       _panel.style.display = 'block';
-      paintStatus();
-      // 面板居中显示，而不是贴在右下角
       _panel.style.top = '50%';
       _panel.style.left = '50%';
       _panel.style.bottom = 'auto';
       _panel.style.right = 'auto';
       _panel.style.transform = 'translate(-50%, -50%)';
+      _panel.style.zIndex = '9999';
+      _panel.style.width = '320px';
+      // 添加半透明遮罩
+      var mask = document.getElementById('ppSyncMask');
+      if (!mask) {
+        mask = document.createElement('div');
+        mask.id = 'ppSyncMask';
+        mask.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.35);z-index:9998;display:none';
+        mask.onclick = function() {
+          _panel.style.display = 'none';
+          mask.style.display = 'none';
+        };
+        document.body.appendChild(mask);
+      }
+      mask.style.display = 'block';
+      // 关闭按钮也要关闭遮罩
+      var closeBtn = document.getElementById('ppSyncClose');
+      if (closeBtn && !closeBtn._maskBound) {
+        closeBtn._maskBound = true;
+        var oldClick = closeBtn.onclick;
+        closeBtn.onclick = function() {
+          _panel.style.display = 'none';
+          mask.style.display = 'none';
+          if (oldClick) oldClick();
+        };
+      }
+      paintStatus();
     } catch(e) {
       alert('多端同步面板加载中，请稍候再试');
     }
