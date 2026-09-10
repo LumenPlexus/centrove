@@ -3,88 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>栖匣 历史版本预览中心</title>
+<title>栖匣 Logo 图标</title>
 <style>
-  :root{
-    --paper:#faf5ec; --card:#f4eee0;
-    --brown:#5d4037; --mid:#8d6e63; --mut:#a8967f; --faint:#c4b39b;
-    --gold:#b9955b; --gold-l:#d4b67c;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
   body{
-    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
-    background:var(--paper); color:var(--brown);
-    min-height:100vh; padding-top:env(safe-area-inset-top);
-    display:flex; flex-direction:column;
+    background:
+      radial-gradient(120% 95% at 50% 22%, #fffdf8 0%, #faf7f1 45%, #f2ead9 100%);
+    display:grid; place-items:center; padding:40px 24px;
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
   }
-  /* 顶部导航栏 */
-  header{
-    position:sticky; top:0; z-index:10; display:flex; align-items:center;
-    justify-content:space-between; padding:10px 14px;
-    background:linear-gradient(#fdf8f0,#faf5ec); 
+  .stage{
+    position:relative; width:min(70vw, 320px); aspect-ratio:1/1;
+    display:grid; place-items:center;
   }
-  .nav-title{
-    font-size:15px; letter-spacing:1px; color:var(--brown);
-    font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-weight:600;
+  /* 徽标周围的一圈极淡圆形光晕（参考图中最外层细节） */
+  .halo{
+    position:absolute; width:100%; height:100%; border-radius:50%;
+    border:1px solid rgba(197,168,110,.32);
+    box-shadow:0 0 0 14px rgba(197,168,110,.06), 0 0 0 30px rgba(197,168,110,.04);
+    pointer-events:none;
   }
-  .nav-btn{background:none;border:none;color:var(--brown);font-size:22px;line-height:1;padding:0 2px;cursor:pointer}
-  .nav-mid{display:flex;align-items:center;gap:4px}
-  .nav-mid::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--gold-l);flex:none}
-
-  main{flex:1;display:flex;flex-direction:column;align-items:center;padding:34px 26px 26px;text-align:center}
-
-  /* 徽标：原版圆角方形+金框+开盖木匣 */
-  .emblem{position:relative;width:142px;height:142px;flex:none}
-  .emblem img{width:100%;height:100%;display:block;object-fit:contain;
-    filter:drop-shadow(0 10px 18px rgba(93,64,55,.22));
-    animation:float 5s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-
-  h1{
-    margin-top:30px; font-size:34px; font-weight:700; color:var(--brown);
-    letter-spacing:.12em; font-family:"Songti SC","SimSun","STSong",serif;
+  /* 徽标主体：圆角方形+金边+浅色底+白色内衬+开盖木匣 */
+  .emblem{
+    width:84%; height:84%;
+    filter:drop-shadow(0 14px 26px rgba(93,64,55,.30));
   }
-  .slogan{ margin-top:10px; color:var(--gold); font-size:15px; letter-spacing:.16em }
-  .divider{ width:52px; height:2px; background:var(--gold-l); border-radius:2px; margin:20px auto; opacity:.9 }
-  .tagline{ color:var(--mid); font-size:16px; letter-spacing:.18em }
-
-  /* 三个递增的棕色成长柱状图标 */
-  .bars{margin-top:24px; display:flex; align-items:flex-end; gap:7px; color:var(--brown)}
-  .bars>div{width:10px;border-radius:2px;background:linear-gradient(#a4763f,#8a5f34)}
-  .bars .b1{height:14px}.bars .b2{height:22px}.bars .b3{height:32px}
-
-  .desc{margin-top:26px; color:var(--mid); font-size:14.5px; line-height:1.8; letter-spacing:.04em}
-
-  .points{margin-top:20px; display:flex; gap:0 8px; justify-content:center; flex-wrap:wrap; color:var(--mut); font-size:12.5px; letter-spacing:.03em}
-  .points span{padding:5px 11px;border:1px solid #e7dcc4;border-radius:999px;background:#fffdf8}
-
-  footer{margin-top:auto; padding:18px 0 30px; text-align:center; color:var(--faint); font-size:13px; letter-spacing:.15em}
+  .emblem img{width:100%;height:100%;display:block;object-fit:contain}
 </style>
 </head>
 <body>
-  <header>
-    <button class="nav-btn">‹</button>
-    <div class="nav-mid"><span class="nav-title">栖匣 历史版本预览中心</span></div>
-    <button class="nav-btn">⋯</button>
-  </header>
-
-  <main>
-    <div class="emblem"><img src="emblem.png" alt="栖匣"></div>
-
-    <h1>栖匣</h1>
-    <div class="slogan">一只匣 · 安放成长</div>
-    <div class="divider"></div>
-    <div class="tagline">收纳诸事，步履向前</div>
-
-    <div class="bars" aria-hidden="true"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
-
-    <p class="desc">把你想认真对待的每件事，<br>都收进一只只属于你的匣子。</p>
-
-    <div class="points">
-      <span>数据只存本地</span><span>私密安全</span><span>免安装免登录</span>
-    </div>
-  </main>
-
-  <footer>轻触任意处 · 进入</footer>
+  <div class="stage">
+    <div class="halo" aria-hidden="true"></div>
+    <div class="emblem"><img src="emblem.png" alt="栖匣 Logo"></div>
+  </div>
 </body>
 </html>
