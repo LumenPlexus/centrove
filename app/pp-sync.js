@@ -410,7 +410,21 @@
     });
   }
   /* 暴露到全局，供顶栏「更多」菜单调用 */
-  global.openSyncPanel = openPanel;
+  global.openSyncPanel = function() {
+    try {
+      if (!_panel) _panel = ensurePanel();
+      _panel.style.display = 'block';
+      paintStatus();
+      // 面板居中显示，而不是贴在右下角
+      _panel.style.top = '50%';
+      _panel.style.left = '50%';
+      _panel.style.bottom = 'auto';
+      _panel.style.right = 'auto';
+      _panel.style.transform = 'translate(-50%, -50%)';
+    } catch(e) {
+      alert('多端同步面板加载中，请稍候再试');
+    }
+  };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })(window);
