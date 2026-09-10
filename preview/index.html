@@ -3,78 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<link rel="icon" href="favicon-96.png">
-<title>栖匣 · Logo 展示效果</title>
+<title>栖匣 历史版本预览中心</title>
 <style>
   :root{
-    --paper:#f6f0e6; --ink:#5d4037; --sub:#8d6e63; --muted:#a8967f;
-    --gold:#c5a35c; --line:#eadfc6;
+    --paper:#faf5ec; --card:#f4eee0;
+    --brown:#5d4037; --mid:#8d6e63; --mut:#a8967f; --faint:#c4b39b;
+    --gold:#b9955b; --gold-l:#d4b67c;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%}
   body{
-    font-family:"Songti SC","Noto Serif CJK SC","STSong","SimSun",serif;
-    background:var(--paper);
-    background-image:radial-gradient(circle at 50% 0%, rgba(197,163,92,.07), transparent 60%);
-    min-height:100dvh; display:grid; place-items:center;
-    padding:40px 24px calc(40px + env(safe-area-inset-bottom));
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    background:var(--paper); color:var(--brown);
+    min-height:100vh; padding-top:env(safe-area-inset-top);
+    display:flex; flex-direction:column;
   }
-  .brand{
-    width:100%; max-width:400px; display:flex; flex-direction:column;
-    align-items:center; text-align:center; margin:auto;
+  /* 顶部导航栏 */
+  header{
+    position:sticky; top:0; z-index:10; display:flex; align-items:center;
+    justify-content:space-between; padding:10px 14px;
+    background:linear-gradient(#fdf8f0,#faf5ec); 
   }
-  /* 圆 logo 独立展示，无外层框 */
-  .logo{
-    width:168px; height:168px; flex:none; margin:0 auto;
-    filter:drop-shadow(0 14px 26px rgba(93,64,55,.20));
-    animation: float 5.5s ease-in-out infinite;
+  .nav-title{
+    font-size:15px; letter-spacing:1px; color:var(--brown);
+    font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-weight:600;
   }
-  .logo img{ width:100%; height:100%; display:block; object-fit:contain; }
-  @keyframes float{
-    0%,100%{ transform:translateY(0) }
-    50%{ transform:translateY(-8px) }
-  }
+  .nav-btn{background:none;border:none;color:var(--brown);font-size:22px;line-height:1;padding:0 2px;cursor:pointer}
+  .nav-mid{display:flex;align-items:center;gap:4px}
+  .nav-mid::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--gold-l);flex:none}
+
+  main{flex:1;display:flex;flex-direction:column;align-items:center;padding:34px 26px 26px;text-align:center}
+
+  /* 徽标：原版圆角方形+金框+开盖木匣 */
+  .emblem{position:relative;width:142px;height:142px;flex:none}
+  .emblem img{width:100%;height:100%;display:block;object-fit:contain;
+    filter:drop-shadow(0 10px 18px rgba(93,64,55,.22));
+    animation:float 5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
   h1{
-    margin:36px auto 0; font-size:46px; font-weight:700; color:var(--ink);
-    letter-spacing:16px; text-indent:16px; line-height:1.1;
-    text-shadow:0 1px 0 rgba(255,255,255,.55);
+    margin-top:30px; font-size:34px; font-weight:700; color:var(--brown);
+    letter-spacing:.12em; font-family:"Songti SC","SimSun","STSong",serif;
   }
-  .sub{
-    margin-top:16px; color:var(--sub); font-size:16px; letter-spacing:5px;
-  }
-  .rule{
-    width:56px; height:2px; border-radius:2px; background:var(--gold);
-    margin:28px auto; opacity:.85;
-  }
-  .slogan{
-    color:var(--ink); font-size:21px; letter-spacing:5px; text-indent:5px;
-  }
-  .desc{
-    margin-top:15px; color:var(--muted); font-size:15px; letter-spacing:1.5px;
-  }
-  .tag{
-    margin-top:48px; padding-top:24px; border-top:1px dashed var(--line);
-    display:flex; flex-wrap:wrap; gap:10px 18px; justify-content:center;
-    font-family:"PingFang SC","Microsoft YaHei",sans-serif;
-    font-size:12.5px; color:var(--sub); letter-spacing:.5px;
-  }
-  .tag span .ok{ color:#8aa36a; font-weight:700; margin-right:4px; }
+  .slogan{ margin-top:10px; color:var(--gold); font-size:15px; letter-spacing:.16em }
+  .divider{ width:52px; height:2px; background:var(--gold-l); border-radius:2px; margin:20px auto; opacity:.9 }
+  .tagline{ color:var(--mid); font-size:16px; letter-spacing:.18em }
+
+  /* 三个递增的棕色成长柱状图标 */
+  .bars{margin-top:24px; display:flex; align-items:flex-end; gap:7px; color:var(--brown)}
+  .bars>div{width:10px;border-radius:2px;background:linear-gradient(#a4763f,#8a5f34)}
+  .bars .b1{height:14px}.bars .b2{height:22px}.bars .b3{height:32px}
+
+  .desc{margin-top:26px; color:var(--mid); font-size:14.5px; line-height:1.8; letter-spacing:.04em}
+
+  .points{margin-top:20px; display:flex; gap:0 8px; justify-content:center; flex-wrap:wrap; color:var(--mut); font-size:12.5px; letter-spacing:.03em}
+  .points span{padding:5px 11px;border:1px solid #e7dcc4;border-radius:999px;background:#fffdf8}
+
+  footer{margin-top:auto; padding:18px 0 30px; text-align:center; color:var(--faint); font-size:13px; letter-spacing:.15em}
 </style>
 </head>
 <body>
-  <div class="brand">
-    <div class="logo"><img src="logo-chest.png" alt="栖匣 Logo"></div>
+  <header>
+    <button class="nav-btn">‹</button>
+    <div class="nav-mid"><span class="nav-title">栖匣 历史版本预览中心</span></div>
+    <button class="nav-btn">⋯</button>
+  </header>
+
+  <main>
+    <div class="emblem"><img src="emblem.png" alt="栖匣"></div>
+
     <h1>栖匣</h1>
-    <div class="sub">心有所栖 · 匣纳成长</div>
-    <div class="rule"></div>
-    <div class="slogan">收纳诸事，步履向前</div>
-    <div class="desc">一只匣 · 安放你认真对待的每件事</div>
-    <div class="tag">
-      <span><span class="ok">✔</span>深棕 3D 木匣 · 三面可见</span>
-      <span><span class="ok">✔</span>盒盖微启</span>
-      <span><span class="ok">✔</span>金色锁扣</span>
-      <span><span class="ok">✔</span>浅米色正圆底</span>
+    <div class="slogan">一只匣 · 安放成长</div>
+    <div class="divider"></div>
+    <div class="tagline">收纳诸事，步履向前</div>
+
+    <div class="bars" aria-hidden="true"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
+
+    <p class="desc">把你想认真对待的每件事，<br>都收进一只只属于你的匣子。</p>
+
+    <div class="points">
+      <span>数据只存本地</span><span>私密安全</span><span>免安装免登录</span>
     </div>
-  </div>
+  </main>
+
+  <footer>轻触任意处 · 进入</footer>
 </body>
 </html>
