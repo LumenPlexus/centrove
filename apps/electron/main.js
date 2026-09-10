@@ -31,7 +31,7 @@ function createWindow() {
     title: '栖匣 · 心有所栖 · 匣纳成长',
     backgroundColor: '#F6F1E6',
     autoHideMenuBar: true,
-    icon: path.join(__dirname, 'assets', 'icon-v3circle-512.png'),
+    icon: path.join(__dirname, 'assets', 'icon-coil-512.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,

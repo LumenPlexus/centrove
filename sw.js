@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.10.v8';
+var VERSION = '2026.09.10.v9';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -19,15 +19,15 @@ var PRECACHE_URLS = [
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',
-  './favicon-v3circle-16.png',
-  './favicon-v3circle-32.png',
-  './favicon-v3circle-96.png',
-  './favicon-v3circle-192.png',
-  './favicon-v3circle-180.png',
-  './pwa/icon-v3circle-192.png',
-  './pwa/icon-v3circle-512.png',
-  './pwa/logo-v3circle.png',
-  './pwa/logo-v3circle.png'
+  './favicon-coil-16.png',
+  './favicon-coil-32.png',
+  './favicon-coil-96.png',
+  './favicon-coil-192.png',
+  './favicon-coil-180.png',
+  './pwa/icon-coil-192.png',
+  './pwa/icon-coil-512.png',
+  './pwa/logo-coil.png',
+  './pwa/logo-coil.png'
 ];
 
 self.addEventListener('install', function (e) {
