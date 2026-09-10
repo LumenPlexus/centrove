@@ -8,33 +8,32 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%}
   body{
-    background:
-      radial-gradient(120% 95% at 50% 22%, #fffdf8 0%, #faf7f1 45%, #f2ead9 100%);
+    background: radial-gradient(120% 95% at 50% 22%, #fffdf8 0%, #faf7f1 45%, #f2ead9 100%);
     display:grid; place-items:center; padding:40px 24px;
-    font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
   }
+  /* 徽标容器：环与徽标完全同心 */
   .stage{
-    position:relative; width:min(70vw, 320px); aspect-ratio:1/1;
+    position:relative; width:min(64vw, 300px); aspect-ratio:1/1;
     display:grid; place-items:center;
   }
-  /* 徽标周围的一圈极淡圆形光晕（参考图中最外层细节） */
-  .halo{
-    position:absolute; width:100%; height:100%; border-radius:50%;
-    border:1px solid rgba(197,168,110,.32);
-    box-shadow:0 0 0 14px rgba(197,168,110,.06), 0 0 0 30px rgba(197,168,110,.04);
+  /* 紧贴徽标的单圈细金环（无双层圆、无大的空档） */
+  .ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:1.5px solid rgba(201,184,150,.65);
+    box-shadow:0 0 16px rgba(197,168,110,.22); /* 仅柔和光晕，不构成另一圈 */
     pointer-events:none;
   }
-  /* 徽标主体：圆角方形+金边+浅色底+白色内衬+开盖木匣 */
+  /* 徽标主体，居中于环内 */
   .emblem{
-    width:84%; height:84%;
-    filter:drop-shadow(0 14px 26px rgba(93,64,55,.30));
+    width:90%; height:90%;
+    filter:drop-shadow(0 12px 22px rgba(93,64,55,.28));
   }
   .emblem img{width:100%;height:100%;display:block;object-fit:contain}
 </style>
 </head>
 <body>
   <div class="stage">
-    <div class="halo" aria-hidden="true"></div>
+    <div class="ring" aria-hidden="true"></div>
     <div class="emblem"><img src="emblem.png" alt="栖匣 Logo"></div>
   </div>
 </body>
