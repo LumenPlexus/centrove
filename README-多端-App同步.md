@@ -16,17 +16,17 @@ centrove-deploy-package/
 
 ## 一、产品图标已统一
 
-你选定的产品图标（`pwa/logo-chest20260907.png`，赭金细圆框 + 白圆角方 + 棕色栖匣）现已用于**所有**品牌图标出现的位置：
+你选定的产品图标（`pwa/logo-v3circle.png`，赭金细圆框 + 白圆角方 + 棕色栖匣）现已用于**所有**品牌图标出现的位置：
 
 | 位置 | 图标 | 状态 |
 |---|---|---|
-| 启动屏（index + share） | logo-chest20260907.png，150px 容器 / 116px，无装饰环 | ✅ 已统一 |
-| 顶栏品牌 logo、侧栏 logo、欢迎卡片、PDF 导出品牌栏 | logo-chest20260907.png | ✅ 已统一 |
+| 启动屏（index + share） | logo-v3circle.png，150px 容器 / 116px，无装饰环 | ✅ 已统一 |
+| 顶栏品牌 logo、侧栏 logo、欢迎卡片、PDF 导出品牌栏 | logo-v3circle.png | ✅ 已统一 |
 | 加载失败兜底图 LOGO_DATA_URI（index + share） | 已刷新为选定图标 | ✅ 已统一 |
 | 64px 内联 favicon（index + share） | 已刷新为选定图标 | ✅ 已统一 |
-| favicon-chest20260907-*、favicon.ico | 与选定图标一致（感知距离 0.0） | ✅ 已统一 |
-| PWA 应用图标（manifest / icon-chest20260907-*） | 选定图标 | ✅ 已统一 |
-| 微信分享图 og:image / twitter:image | share-chest20260907.png | ✅ 已统一 |
+| favicon-v3circle-*、favicon.ico | 与选定图标一致（感知距离 0.0） | ✅ 已统一 |
+| PWA 应用图标（manifest / icon-v3circle-*） | 选定图标 | ✅ 已统一 |
+| 微信分享图 og:image / twitter:image | logo-v3circle.png | ✅ 已统一 |
 | 桌面 & 手机 App 应用图标 | 选定图标 | ✅ 已统一 |
 
 ## 二、部署网站（内容实时同步的前提）
