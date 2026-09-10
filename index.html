@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.11"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.10.12"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -6937,9 +6937,11 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card" style="margin-top:16px">
         <h3>跨设备同步说明</h3>
         <p style="font-size:13px;color:var(--text);line-height:1.9">
-          <strong>数据只存你手</strong>：本站是纯前端工具，<strong>不做云端备份、不收集、不上传你任何数据</strong>。你写下的任务、打卡、笔记，都只存在你自己设备的浏览器里。<br>
-          <strong>换设备 / 手机↔电脑搬运</strong>：用「导出备份 JSON」→ 新设备「导入恢复」这一条路径，把你的记录完整搬走，主动权完全在你手里，无需上传到任何地方。<br>
-          <strong>多设备同用一份正版页面</strong>：在你常用的手机、电脑浏览器里，各自打开当前的同一个正版页面即可使用；本站不要求你注册账号，也不替你存任何内容到云端。<br>
+          <strong>数据只存你手</strong>：本站是纯前端工具，<strong>默认不联网、不上传任何数据</strong>。你写下的任务、打卡、笔记，都只存在当前这台设备的浏览器里，换一个浏览器或设备，默认就是一份新开始的空数据。<br>
+          <strong>多端"到底怎么才能同步" · 如实说明</strong>：本产品<strong>没有自动实时同步</strong>，也无法让手机和电脑同时在两处自动合并记录。想在多端之间搬/用同一份数据，只有下面两条路（都真实可用）：<br>
+          &nbsp;&nbsp;· <strong>手动备份搬移</strong>：本页顶部「导出全部数据」（JSON）→ 到另一台设备打开同一页面 → 本页「导入恢复」。搬一次、上一次，离线可用、永不锁死。<br>
+          &nbsp;&nbsp;· <strong>坚果云云端备份</strong>：本页下方「☁️ 可选云端备份（WebDAV）」配置你的坚果云账号一次，即可「上传备份 / 从云端恢复」整份数据到任意设备；这不是自动同步，而是"点一下上传/点一下恢复"的云端备份。<br>
+          <strong>不要误解的地方</strong>：在手机和电脑同时编辑，两边不会自动合并——请以一边为准，改完导出/上传，再到另一边导入/恢复。<br>
           <strong>备份频率建议</strong>：每周日导出一次备份，重要数据双存（本机一份 + 网盘一份），万无一失。
         </p>
       </div>
@@ -14841,12 +14843,16 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.10.11';
+  var V='2026.09.10.12';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.10.12',t:'多端同步"如实说清"：不做自动实时同步，导出/导入与坚果云备份都可真实搬数据',tag:'说明修正',blocks:[
+      '· 「系统设置 → 跨设备同步说明」改写得更准确：强调本产品没有自动实时同步，数据只存当前设备本地；跨设备搬数据只有「导出/导入」和「坚果云 WebDAV 上传/恢复」两条路，均真实可用。',
+      '· 明确提示：手机和电脑同时编辑不会自动合并，避免用户误解为"会自动同步"而踩坑。'
+    ]},
     {v:'2026.09.10.11',t:'彻底根治启动屏 logo 四角深棕：锁定干净图标 + 彻底刷新旧缓存',tag:'缺陷修复',blocks:[
       '· 更新日志界面 + 启动屏 + 全站 logo 使用干净的米白实心角图标（外包框区域经校验零深色像素）。',
       '· 修复同时生效于并排打开的分享/落地页，双端一致。',
