@@ -409,14 +409,15 @@
       _panel.style.bottom = 'auto';
       _panel.style.right = 'auto';
       _panel.style.transform = 'translate(-50%, -50%)';
-      _panel.style.zIndex = '9999';
+      _panel.style.zIndex = '100002';
       _panel.style.width = '320px';
+      _panel.style.position = 'fixed';
       // 添加半透明遮罩
       var mask = document.getElementById('ppSyncMask');
       if (!mask) {
         mask = document.createElement('div');
         mask.id = 'ppSyncMask';
-        mask.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.35);z-index:9998;display:none';
+        mask.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.35);z-index:100001;display:none';
         mask.onclick = function() {
           _panel.style.display = 'none';
           mask.style.display = 'none';
@@ -424,6 +425,10 @@
         document.body.appendChild(mask);
       }
       mask.style.display = 'block';
+      // 确保面板在遮罩之上
+      if (_panel.parentNode) {
+        _panel.parentNode.appendChild(_panel);
+      }
       // 关闭按钮也要关闭遮罩
       var closeBtn = document.getElementById('ppSyncClose');
       if (closeBtn && !closeBtn._maskBound) {
@@ -436,9 +441,22 @@
         };
       }
       paintStatus();
+      // 自动聚焦到服务器地址输入框，提升体验
+      setTimeout(function() {
+        var input = document.getElementById('ppSyncServer');
+        if (input && !input.value) input.focus();
+      }, 100);
     } catch(e) {
       alert('多端同步面板加载中，请稍候再试');
     }
+  };
+  /* 关闭同步面板的统一方法 */
+  global.closeSyncPanel = function() {
+    try {
+      var mask = document.getElementById('ppSyncMask');
+      if (mask) mask.style.display = 'none';
+      if (_panel) _panel.style.display = 'none';
+    } catch(e) {}
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
