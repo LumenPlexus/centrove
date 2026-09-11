@@ -6,7 +6,7 @@
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.11.v20';
+var VERSION = '2026.09.11.v23';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -19,14 +19,9 @@ var PRECACHE_URLS = [
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',
-  './favicon-chest20260912-16.png',
-  './favicon-chest20260912-32.png',
-  './favicon-chest20260912-96.png',
-  './favicon-chest20260912-192.png',
-  './favicon-chest20260912-180.png',
-  './pwa/icon-chest20260912-192.png',
-  './pwa/icon-chest20260912-512.png',
   './pwa/logo-chest20260912.png',
+  './pwa/maskable-chest20260912-192.png',
+  './pwa/maskable-chest20260912-512.png',
   './pwa/share-chest20260912.png'
 ];
 
@@ -106,8 +101,8 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // 1) 页面导航：网络优先（在线每次拉最新 index/share，避免旧的脏缓存/旧资源被长期命中）；
-  //    断网/网络失败时回退到预缓存与运行时缓存，保证离线可用。
+  // 1) 页面导航：网络优先（保证每次打开都是最新版），
+  //    断网/网络超时时回退缓存，保证离线也能打开。
   if (req.mode === 'navigate') {
     e.respondWith(networkThenCache(req));
     return;
