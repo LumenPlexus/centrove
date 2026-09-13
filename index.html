@@ -1,45 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.13.27"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- 注意：GitHub Pages 发送 cache-control: max-age=600，meta 标签无法覆盖 HTTP 头。
-       真正的更新保障靠下面的版本检查 + SW 机制，而非 meta 标签。 -->
-  <!-- ✅ 版本检查脚本：页面加载第一优先执行，发现新版→清空所有缓存→注销SW→带时间戳刷新（绕过HTTP缓存） -->
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.13.28"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- ✅ 版本检查：sessionStorage 防止刷新循环，每session最多刷新一次 -->
   <script>
   (function(){
-    var PV='2026.09.13.27';
+    var PV='2026.09.13.28';
     window.__pageVersion=PV;
     window.__isReloading=false;
     try{
+      // 防循环：如果本 session 已经刷新过，不再刷新
+      if(sessionStorage.getItem('__ver_checked')==='1'){ return; }
       fetch('pwa/version.txt?t='+Date.now(),{cache:'no-store'})
         .then(function(r){return r.text();})
         .then(function(v){
           v=(v||'').trim();
           if(v && v!==PV && !window.__isReloading){
             window.__isReloading=true;
-            // 1. 清空所有 SW 缓存（caches API）
-            var clearCaches = (function(){
-              try{
-                if('caches' in window){
-                  return caches.keys().then(function(keys){
-                    return Promise.all(keys.map(function(k){return caches.delete(k);}));
-                  }).catch(function(){return;});
-                }
-              }catch(e){}
-              return Promise.resolve();
-            })();
-            // 2. 注销所有 Service Worker
-            var unregisterSW = clearCaches.then(function(){
-              if('serviceWorker' in navigator){
-                return navigator.serviceWorker.getRegistrations().then(function(regs){
-                  return Promise.all(regs.map(function(r){return r.unregister();}));
-                }).catch(function(){return;});
+            sessionStorage.setItem('__ver_checked','1');
+            // 清空所有 SW 缓存
+            try{
+              if('caches' in window){
+                caches.keys().then(function(keys){
+                  return Promise.all(keys.map(function(k){return caches.delete(k);}));
+                }).catch(function(){});
               }
-              return Promise.resolve();
-            });
-            // 3. 带时间戳刷新——全新URL绕过浏览器HTTP缓存和CDN缓存
-            unregisterSW.then(function(){
-              var sep = location.href.indexOf('?') !== -1 ? '&' : '?';
-              location.href = location.pathname + sep + 'fresh=' + Date.now();
-            });
+            }catch(e){}
+            // 注销所有 Service Worker
+            try{
+              if('serviceWorker' in navigator){
+                navigator.serviceWorker.getRegistrations().then(function(regs){
+                  return Promise.all(regs.map(function(r){return r.unregister();}));
+                }).catch(function(){});
+              }
+            }catch(e){}
+            // 带时间戳刷新——绕过所有缓存层
+            setTimeout(function(){
+              location.href = location.pathname + '?fresh=' + Date.now();
+            }, 200);
           }
         }).catch(function(){});
     }catch(e){}
@@ -146,31 +142,15 @@
             }).catch(function () {});
             // ✅ 监听 SW 控制权变化，自动刷新页面加载最新版
             navigator.serviceWorker.addEventListener('controllerchange', function () {
-              if (!window.__isReloading) {
+              if (!window.__isReloading && !sessionStorage.getItem('__ver_checked')) {
                 window.__isReloading = true;
-                var sep = location.href.indexOf('?') !== -1 ? '&' : '?';
-                location.href = location.pathname + sep + 'fresh=' + Date.now();
+                sessionStorage.setItem('__ver_checked','1');
+                location.href = location.pathname + '?fresh=' + Date.now();
               }
             });
           } catch (e) {}
         };
         _regSW();
-        // ✅ 页面加载后 3 秒再次检查远程版本（head 脚本的补充兜底）
-        setTimeout(function () {
-          try {
-            fetch('pwa/version.txt?t=' + Date.now(), { cache: 'no-cache' })
-              .then(function (r) { return r.text(); })
-              .then(function (v) {
-                v = v.trim();
-                if (v && v !== '2026.09.13.27' && !window.__isReloading) {
-                  window.__isReloading = true;
-                  var sep = location.href.indexOf('?') !== -1 ? '&' : '?';
-                  location.href = location.pathname + sep + 'fresh=' + Date.now();
-                }
-              })
-              .catch(function () {});
-          } catch (e) {}
-        }, 3000);
       }
     } catch (e) {}
   </script>
@@ -1770,7 +1750,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 </script>
 <div class="app">
 
-    <div class="topbar" hidden>
+    <div class="topbar">
     <button class="icon-btn mobile-toggle" onclick="toggleSidebar()" title="打开全部板块">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=" 2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
@@ -7900,7 +7880,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
 
   <!-- 底部TabBar（移动端·高频5板块） -->
-  <nav class="bottom-nav" id="bottomNav" hidden>
+  <nav class="bottom-nav" id="bottomNav">
     <div class="bottom-nav-item active" data-bv="home" onclick="switchView(&#39;home&#39;);setBottomActive(this)">
       <svg style="width:20px;height:20px;display:block;flex-shrink:0;min-width:20px;max-width:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
       <span>首页</span>
@@ -8567,7 +8547,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.13.27</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.13.28</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -15330,12 +15310,19 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.13.27';
+  var V='2026.09.13.28';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.13.28',t:'彻底修复刷新循环和底栏消失 · SW改为网络优先',tag:'核心修复',blocks:[
+      '· 【根因修复】发现旧版页面版本检查导致无限刷新循环：旧SW缓存旧HTML→版本检查发现不匹配→reload→SW又返回旧HTML→循环。已用 sessionStorage 限制每session最多刷新一次。',
+      '· 【SW策略重构】导航请求从 stale-while-revalidate 改为 network-first（2.5s超时回退缓存），确保在线时每次拿到最新HTML，离线时缓存兜底。',
+      '· 【底栏修复】移除 topbar 和 bottom-nav 的 hidden 属性，改用 CSS 类控制闪屏期间隐藏。即使JS出错，底栏也能正常显示。',
+      '· 【版本统一】3处版本号全部统一为 2026.09.13.28，消除版本冲突。',
+      '· 【controllerchange 保护】SW控制权切换的刷新也加 sessionStorage 保护，防止循环。'
+    ]},
     {v:'2026.09.13.27',t:'彻底根除缓存死锁 · 三重版本检查统一 · SW全量清缓存',tag:'核心修复',blocks:[
       '· 【根因修复】发现并修复 3 处版本号不一致（页面 26 vs 自检模块 24），导致版本检查逻辑互相冲突——这是「浏览器打开还是旧版」的根因。',
       '· 【缓存死锁修复】版本检查发现新版后，旧代码只用 location.reload() 刷新，但浏览器 HTTP 缓存（GitHub Pages max-age=600）仍返回旧 HTML，形成死循环。现已改为带时间戳 URL 刷新，强制绕过所有缓存层。',

@@ -1,20 +1,11 @@
-/* 栖匣 · Service Worker v34
-   彻底重构：解决"加载慢"和"看不到新版"两大问题。
-
-   核心策略：
-   - 导航：stale-while-revalidate（缓存秒开 + 后台更新）
-   - 所有 fetch 带 cache: 'no-cache'，绕过浏览器 HTTP 缓存和 CDN
-   - version.txt 永远走网络，绝不缓存
-
-   更新机制：
-   - SW 注册 updateViaCache: 'none'，每次导航检查新版 sw.js
-   - 页面端每次加载 reg.update() 强制检查
-   - 新 SW skipWaiting + clients.claim 立即接管
-   - 页面端监听 controllerchange 自动刷新
-   - activate 时清空 ALL 缓存（不限于特定前缀）
-
-   安全说明：本 SW 只缓存本站静态资源，绝不读写 localStorage。 */
-var VERSION = '2026.09.13.v34';
+/* 栖匣 · Service Worker v35
+   策略：导航请求 network-first（2.5s超时→缓存兜底）
+   - 在线时：优先网络，确保每次拿到最新HTML
+   - 离线时：超时后回退缓存
+   - 静态资源：stale-while-revalidate
+   - version.txt/sw.js：永远网络，绝不缓存
+   - activate：清空ALL旧缓存 */
+var VERSION = '2026.09.13.v35';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -52,7 +43,6 @@ self.addEventListener('install', function (e) {
   );
 });
 
-/* activate：清空 ALL 缓存，不限于特定前缀，彻底根除旧缓存残留 */
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
@@ -61,18 +51,21 @@ self.addEventListener('activate', function (e) {
   );
 });
 
-function fromCache(request){
+function fromCache(request) {
   return caches.match(request).then(function (m) { return m || null; });
 }
 
-/* 导航：stale-while-revalidate
-   - 有缓存 → 立即返回缓存（秒开），同时后台 fetch 更新缓存
-   - 无缓存 → 等 network（首次访问），成功后缓存
-   - 网络失败 → 返回缓存（离线可用） */
-function navSWR(request){
-  var cachedPromise = fromCache(request);
+/* 导航：network-first + 超时回退缓存
+   - 2.5s 内拿到网络响应 → 返回网络版（最新）+ 更新缓存
+   - 2.5s 超时 → 返回缓存（快速兜底）
+   - 网络失败 → 返回缓存（离线可用）
+   - 全失败 → 离线提示 */
+function navNetworkFirst(request) {
+  var timeoutPromise = new Promise(function (resolve) {
+    setTimeout(function () { resolve(null); }, 2500);
+  });
 
-  var networkUpdate = fetch(request, { cache: 'no-cache' }).then(function (resp) {
+  var networkPromise = fetch(request, { cache: 'no-cache' }).then(function (resp) {
     if (resp && resp.ok && (resp.type === 'basic' || resp.type === 'cors')) {
       var respClone = resp.clone();
       caches.open(RUN).then(function (cache) {
@@ -82,21 +75,20 @@ function navSWR(request){
     return resp;
   }).catch(function () { return null; });
 
-  return cachedPromise.then(function (cached) {
-    if (cached) {
-      return cached;
-    }
-    return networkUpdate.then(function (resp) {
-      if (resp) return resp;
+  return Promise.race([networkPromise, timeoutPromise]).then(function (result) {
+    if (result) return result;
+    // 超时或网络失败：回退缓存
+    return fromCache(request).then(function (cached) {
+      if (cached) return cached;
       return fromCache('./index.html').then(function (m) {
-        return m || new Response('离线模式，请检查网络', { status: 503 });
+        return m || new Response('离线模式，请检查网络', { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
       });
     });
   });
 }
 
 /* 静态资源：stale-while-revalidate */
-function assetSWR(request, fallbackUrl) {
+function assetSWR(request) {
   var cached = fromCache(request);
   var network = fetch(request, { cache: 'no-cache' }).then(function (resp) {
     if (resp && (resp.ok || resp.type === 'opaque')) {
@@ -106,13 +98,13 @@ function assetSWR(request, fallbackUrl) {
       }).catch(function () {});
     }
     return resp;
-  });
+  }).catch(function () { return null; });
   return cached.then(function (m) {
     if (m) return m;
-    return network;
-  }).catch(function () {
-    if (fallbackUrl) return fromCache(fallbackUrl).then(function(m){return m||network;});
-    return network;
+    return network.then(function (resp) {
+      if (resp) return resp;
+      return new Response('', { status: 504 });
+    });
   });
 }
 
@@ -122,16 +114,8 @@ self.addEventListener('fetch', function (e) {
   var url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
-  /* version.txt：永远走网络，绝不缓存，确保版本检查准确 */
-  if (url.pathname.indexOf('version.txt') !== -1) {
-    e.respondWith(fetch(req, { cache: 'no-cache' }).catch(function () {
-      return new Response('', { status: 503 });
-    }));
-    return;
-  }
-
-  /* sw.js 自身：永远走网络，确保浏览器拿到最新 SW */
-  if (url.pathname.endsWith('/sw.js')) {
+  /* version.txt & sw.js：永远网络，绝不缓存 */
+  if (url.pathname.indexOf('version.txt') !== -1 || url.pathname.endsWith('/sw.js')) {
     e.respondWith(fetch(req, { cache: 'no-cache' }).catch(function () {
       return new Response('', { status: 503 });
     }));
@@ -143,8 +127,9 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
+  /* 导航：network-first */
   if (req.mode === 'navigate') {
-    e.respondWith(navSWR(req));
+    e.respondWith(navNetworkFirst(req));
     return;
   }
 
