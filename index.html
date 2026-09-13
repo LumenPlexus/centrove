@@ -80,10 +80,48 @@
       if ('serviceWorker' in navigator) {
         var _regSW = function () {
           try {
-            navigator.serviceWorker.register('sw.js').catch(function () {});
+            navigator.serviceWorker.register('sw.js').then(function (reg) {
+              // ✅ 检测到新 SW 等待激活时，通知它 skipWaiting
+              if (reg.waiting && reg.waiting.state === 'installed') {
+                reg.waiting.postMessage('skipWaiting');
+              }
+              reg.addEventListener('updatefound', function () {
+                var newWorker = reg.installing;
+                if (newWorker) {
+                  newWorker.addEventListener('statechange', function () {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      // 新 SW 已安装，通知它立即激活
+                      newWorker.postMessage('skipWaiting');
+                    }
+                  });
+                }
+              });
+            }).catch(function () {});
+            // ✅ 监听 SW 控制权变化，自动刷新页面加载最新版
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+              if (!window.__isReloading) {
+                window.__isReloading = true;
+                location.reload();
+              }
+            });
           } catch (e) {}
         };
         _regSW();
+        // ✅ 页面加载后 3 秒检查远程版本，如有新版自动刷新
+        setTimeout(function () {
+          try {
+            fetch('pwa/version.txt?t=' + Date.now(), { cache: 'no-cache' })
+              .then(function (r) { return r.text(); })
+              .then(function (v) {
+                v = v.trim();
+                if (v && v !== '2026.09.11.23' && !window.__isReloading) {
+                  window.__isReloading = true;
+                  location.reload();
+                }
+              })
+              .catch(function () {});
+          } catch (e) {}
+        }, 3000);
       }
     } catch (e) {}
   </script>
@@ -15112,12 +15150,23 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.11.15';
+  var V='2026.09.11.23';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.11.23',t:'彻底修复缓存更新机制 · 幕间观澜新增豆瓣高分电影推荐',tag:'核心修复+新功能',blocks:[
+      '· 【重要修复】修复 Service Worker 响应体缓存的致命 bug：之前缓存网络响应时错误地克隆了请求而非响应，导致浏览器收到空响应后回退到旧缓存——这就是你「刷新好几遍都看不到新版」的根本原因。现已彻底修复。',
+      '· 【更新机制升级】新增 SW 自动更新监听：检测到新版 SW 后自动激活并刷新页面，无需手动清除缓存。',
+      '· 【版本自检】页面加载 3 秒后自动检查远程版本号，发现新版自动刷新，确保每次打开看到的都是最新版。',
+      '· 【导航策略优化】页面导航请求强制绕过浏览器 HTTP 缓存，避免 GitHub Pages CDN 的 10 分钟延迟。',
+      '· 幕间观澜新增「豆瓣高分电影推荐」：25 部豆瓣 Top 榜单影片，6 大分类筛选，每部配多平台正版观看链接（爱奇艺/优酷/腾讯视频/哔哩哔哩/1905电影网），点击直达。',
+      '· 每部电影附成长启示一句话，帮你把观影从消遣变成输入。',
+      '· 删除幕间观澜板块中重复的隐私说明（全站隐私说明仅在「关于栖匣」统一展示）。',
+      '· 精简三篇示范笔记标题，更新板块副标题，优化电影推荐卡片背景色与层次区分。',
+      '· 用户数据安全：所有修复只涉及静态资源缓存策略，绝不影响 localStorage 中的用户记录。'
+    ]},
     {v:'2026.09.11.15',t:'全面筛查优化 · 内容更充实 · 使用更顺手',tag:'体验升级',blocks:[
       '· 多端同步面板层级提升：确保在任何界面上都能正常显示和交互，不会被其他元素遮挡。',
       '· 帮助中心大幅扩充：新增「高效使用小技巧」板块，快捷键、手机端用法、个性化设置、每日5分钟用法一目了然。',

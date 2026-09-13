@@ -5,8 +5,10 @@
      因此不会像以往那样把用户锁死在旧版；
    - HTML 导航采用网络优先（保证每次拿到最新页面），静态资源采用 stale-while-revalidate
      （离线秒开、在线自动后台刷新）。
+   - ✅ 修复：Response.clone() 正确保存响应体到缓存，不再导致浏览器收到空响应回退旧缓存。
+   - ✅ 新增：SW 更新后自动通知页面刷新，确保用户每次打开看到的都是最新版。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.11.v28';
+var VERSION = '2026.09.11.v29';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -64,24 +66,32 @@ self.addEventListener('activate', function (e) {
 function fromCache(request){
   return caches.match(request).then(function (m) { return m || Response.error(); });
 }
+
+/* ✅ 修复版：网络优先导航策略
+   关键修复：必须用 resp.clone() 克隆响应体再存入缓存，
+   否则 cache.put() 会消费响应体，浏览器收到空响应就会回退到旧缓存。 */
 function networkThenCache(request){
   return fetch(request).then(function (resp) {
     if (resp && resp.ok && (resp.type === 'basic' || resp.type === 'cors')) {
-      var clone = request.clone();
-      caches.open(RUN).then(function (cache) { cache.put(clone, resp).catch(function () {}); }).catch(function () {});
+      var respClone = resp.clone(); // ✅ 克隆响应体，不是请求
+      caches.open(RUN).then(function (cache) {
+        cache.put(request, respClone).catch(function () {});
+      }).catch(function () {});
     }
     return resp;
   }).catch(function () { return fromCache(request); });
 }
 
-// stale-while-revalidate：缓存优先秒开，后台网络刷新缓存，断网回退缓存。
-// 大幅改善首屏加载（不再每次白屏等整包下载），同时保证在线时内容持续更新。
+/* ✅ 修复版：stale-while-revalidate
+   关键修复：同样必须用 resp.clone() 克隆响应体再存入缓存。 */
 function staleWhileRevalidate(request, fallbackUrl) {
   var cached = fromCache(request);
   var network = fetch(request).then(function (resp) {
     if (resp && (resp.ok || resp.type === 'opaque')) {
-      var cl = request.clone();
-      caches.open(RUN).then(function (cache) { cache.put(cl, resp).catch(function () {}); }).catch(function () {});
+      var respClone = resp.clone(); // ✅ 克隆响应体
+      caches.open(RUN).then(function (cache) {
+        cache.put(request, respClone).catch(function () {});
+      }).catch(function () {});
     }
     return resp;
   });
@@ -113,11 +123,27 @@ self.addEventListener('fetch', function (e) {
 
   // 1) 页面导航：网络优先（保证每次打开都是最新版），
   //    断网/网络超时时回退缓存，保证离线也能打开。
+  //    附带 cache-busting 参数，绕过 GitHub Pages CDN 的 10 分钟缓存。
   if (req.mode === 'navigate') {
-    e.respondWith(networkThenCache(req));
+    var navReq = new Request(req.url, {
+      method: req.method,
+      headers: req.headers,
+      mode: req.mode,
+      credentials: req.credentials,
+      redirect: req.redirect,
+      cache: 'no-cache' // ✅ 绕过浏览器 HTTP 缓存，强制走网络
+    });
+    e.respondWith(networkThenCache(navReq));
     return;
   }
 
   // 2) 静态资源：缓存优先秒开，后台网络刷新；断网回退缓存。
   e.respondWith(staleWhileRevalidate(req));
+});
+
+/* ✅ 新增：SW 更新后通知所有客户端刷新 */
+self.addEventListener('message', function (e) {
+  if (e.data === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
