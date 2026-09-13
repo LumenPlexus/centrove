@@ -114,7 +114,7 @@
               .then(function (r) { return r.text(); })
               .then(function (v) {
                 v = v.trim();
-                if (v && v !== '2026.09.11.23' && !window.__isReloading) {
+                if (v && v !== '2026.09.11.24' && !window.__isReloading) {
                   window.__isReloading = true;
                   location.reload();
                 }
@@ -7517,7 +7517,11 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p style="text-align:center;font-size:11px;color:var(--hint);margin-top:8px">每日轮换 · 出处 + 解读 + 生活应用</p>
       </div>
       <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#F5EDE0,#EDE0CC);border:1px solid #D4C4A8">
-        <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;vertical-align:-3px;margin-right:4px"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"></path></svg>豆瓣高分电影推荐 <span style="font-size:12px;color:var(--muted);font-weight:400">· 点击直接去正规平台观看</span></h3>
+        <h3 style="color:var(--primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('movieRecBody',this)">
+          <span style="display:flex;align-items:center;flex:1;min-width:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;vertical-align:-3px;margin-right:4px;flex-shrink:0"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"></path></svg><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">豆瓣高分电影推荐</span>&nbsp;<span style="font-size:12px;color:var(--muted);font-weight:400;flex-shrink:0">· 点击观看</span></span>
+          <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
+        </h3>
+        <div id="movieRecBody" class="collapse-body" style="display:none">
         <p style="font-size:12px;color:var(--hint);margin-bottom:12px">以下影片均来自豆瓣 Top 榜单，每部配有正规视频平台链接，点击即可前往观看。所有平台均为正版授权。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="movieTabs">
           <button class="btn btn-sm mtab-btn" data-cat="all" style="background:var(--primary);color:#fff;border-color:var(--primary)">全部</button>
@@ -7531,9 +7535,14 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div style="text-align:center;margin-top:14px;padding-top:10px;border-top:1px solid var(--border)">
           <p style="font-size:11px;color:var(--hint)">所有链接均指向爱奇艺、优酷、腾讯视频、哔哩哔哩、1905电影网等正版平台 · 部分影片可能需要平台会员</p>
         </div>
+        </div>
       </div>
       <div class="card" style="margin-bottom:16px">
-        <h3>示范笔记：《肖申克的救赎》——自由是挖出来的</h3>
+        <h3 style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('noteShawshank',this)">
+          <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">示范笔记：《肖申克的救赎》——自由是挖出来的</span>
+          <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
+        </h3>
+        <div id="noteShawshank" class="collapse-body" style="display:none">
         <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
           <h4 style="color:var(--primary);margin-bottom:8px">经典台词（含出处场景）</h4>
           <ul style="margin-bottom:10px">
@@ -7558,9 +7567,14 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <li>把一句话抄下来贴在书桌前："要么忙着活，要么忙着死"</li>
           </ul>
         </div>
+        </div>
       </div>
       <div class="card" style="margin-bottom:16px">
-        <h3>示范笔记：《垫底辣妹》——逆袭是拆解出来的</h3>
+        <h3 style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('noteSuzuka',this)">
+          <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">示范笔记：《垫底辣妹》——逆袭是拆解出来的</span>
+          <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
+        </h3>
+        <div id="noteSuzuka" class="collapse-body" style="display:none">
         <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
           <h4 style="color:var(--primary);margin-bottom:8px">经典台词（含出处场景）</h4>
           <ul style="margin-bottom:10px">
@@ -7584,9 +7598,14 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <li>找一个能给你正反馈的人，告诉他你的目标，让他帮忙盯进度</li>
           </ul>
         </div>
+        </div>
       </div>
       <div class="card" style="margin-bottom:16px">
-        <h3>示范笔记：《当幸福来敲门》——守住你的能力锤子</h3>
+        <h3 style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('noteHappyness',this)">
+          <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">示范笔记：《当幸福来敲门》——守住你的能力锤子</span>
+          <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
+        </h3>
+        <div id="noteHappyness" class="collapse-body" style="display:none">
         <div style="background:var(--bg);padding:14px;border-radius:8px;font-size:13px">
           <h4 style="color:var(--primary);margin-bottom:8px">经典台词（含出处场景）</h4>
           <ul style="margin-bottom:10px">
@@ -7609,6 +7628,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <li>写下你正在积累、且"环境带不走"的一门硬本事，本周为它投入3小时</li>
             <li>盘点一次"免费的成长资源"（图书馆/公开课/学校讲座），把最值得用的一条加进本周计划</li>
           </ul>
+        </div>
         </div>
       </div>
       <div class="card">
@@ -11027,8 +11047,26 @@ function init(){
   renderFinanceKnowledge();
   renderTpl();
   renderDailyQuoteCard();
-  /* 冷启动一律回到首页：闪屏结束后固定展示「今日概览」，不再恢复上次所在板块与滚动位置 */
-  
+  /* 冷启动 vs 返回恢复：
+     - sessionStorage 中有 qixia_session 标记 → 是返回恢复（如点外链返回），恢复之前的视图和滚动位置
+     - 无标记 → 冷启动（刚打开网站），固定回首页 */
+  var _isSessionRestore = false;
+  try{ _isSessionRestore = sessionStorage.getItem('qixia_session') === '1'; }catch(e){}
+  if(_isSessionRestore){
+    /* 返回恢复：恢复之前的视图和滚动位置 */
+    var _restoreView = localStorage.getItem('pp_last_view') || 'home';
+    var _restoreScroll = parseInt(localStorage.getItem('pp_last_scroll')||'0',10) || 0;
+    if(_restoreView && _restoreView !== 'home'){
+      setTimeout(function(){
+        if(typeof switchView==='function'){ switchView(_restoreView); }
+        setTimeout(function(){ window.scrollTo(0,_restoreScroll); }, 300);
+      }, 100);
+    } else {
+      setTimeout(function(){ window.scrollTo(0,_restoreScroll); }, 200);
+    }
+  }
+  /* 设置会话标记，后续返回时即可识别 */
+  try{ sessionStorage.setItem('qixia_session','1'); }catch(e){}
   /* 返回轻提示：每天一句不重复的暖心鼓励，等闪屏结束(约3.4s)后直接渲染一次、停留约4.2秒可看清，
      不再经 flash 双重渲染、也不被启动屏遮挡 */
   try{
@@ -12941,7 +12979,7 @@ function renderMovieRecs(){
       '<div style="padding:0 12px 10px;border-top:1px solid var(--border);padding-top:8px">'+
         '<span style="font-size:11px;color:var(--hint);margin-right:4px">去观看：</span>'+
         platBtns+
-        '<a href="https://movie.douban.com/subject?search_text='+encodeURIComponent(m.n)+'" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;margin:2px 4px 2px 0;background:var(--bg);color:var(--muted);border:1px solid var(--border)">豆瓣详情</a>'+
+        '<a href="https://search.douban.com/movie/subject_search?search_text='+encodeURIComponent(m.n)+'" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;margin:2px 4px 2px 0;background:var(--bg);color:var(--muted);border:1px solid var(--border)">豆瓣详情</a>'+
       '</div>'+
     '</div>';
   }).join('');
@@ -12955,10 +12993,91 @@ function switchMovieCat(cat){
   });
   renderMovieRecs();
 }
+
+/* ═══════════ 折叠/展开功能 ═══════════ */
+function toggleCollapse(bodyId, headerEl){
+  var body=document.getElementById(bodyId);
+  if(!body)return;
+  var arrow=headerEl.querySelector('.collapse-arrow');
+  if(body.style.display==='none'){
+    body.style.display='block';
+    if(arrow)arrow.style.transform='rotate(180deg)';
+    try{sessionStorage.setItem('collapse_'+bodyId,'1');}catch(e){}
+  }else{
+    body.style.display='none';
+    if(arrow)arrow.style.transform='rotate(0deg)';
+    try{sessionStorage.removeItem('collapse_'+bodyId);}catch(e){}
+  }
+}
+
+/* ═══════════ 滚动位置 & 视图状态恢复 ═══════════ */
+/* 用户点外链返回时，恢复到之前的视图和滚动位置 */
+var SCROLL_RESTORE_KEY='qixia_scroll_restore';
+var VIEW_RESTORE_KEY='qixia_view_restore';
+
+function saveScrollState(){
+  try{
+    var state={
+      view: window.currentView||'home',
+      scroll: window.pageYOffset||document.documentElement.scrollTop||0,
+      ts: Date.now()
+    };
+    sessionStorage.setItem(SCROLL_RESTORE_KEY, JSON.stringify(state));
+  }catch(e){}
+}
+
+function restoreScrollState(){
+  try{
+    var raw=sessionStorage.getItem(SCROLL_RESTORE_KEY);
+    if(!raw)return;
+    var state=JSON.parse(raw);
+    // 10分钟内的状态才恢复（避免恢复很久之前的状态）
+    if(Date.now()-state.ts > 600000){
+      sessionStorage.removeItem(SCROLL_RESTORE_KEY);
+      return;
+    }
+    // 恢复视图
+    if(state.view && state.view !== (window.currentView||'home')){
+      if(typeof switchView==='function'){
+        switchView(state.view);
+      }
+    }
+    // 恢复滚动位置（延迟等视图渲染完成）
+    setTimeout(function(){
+      window.scrollTo(0, state.scroll);
+      // 再恢复一次，防止某些异步渲染导致高度变化
+      setTimeout(function(){ window.scrollTo(0, state.scroll); }, 300);
+    }, 200);
+  }catch(e){}
+}
+
+/* 页面隐藏前（切后台/点外链）保存状态 */
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState==='hidden'){
+    saveScrollState();
+  }
+});
+window.addEventListener('pagehide', saveScrollState);
+window.addEventListener('beforeunload', saveScrollState);
+
+/* 恢复折叠状态 */
 document.addEventListener('DOMContentLoaded',function(){
+  // 恢复折叠状态
+  document.querySelectorAll('.collapse-body').forEach(function(body){
+    var id=body.id;
+    if(id && sessionStorage.getItem('collapse_'+id)==='1'){
+      body.style.display='block';
+      var arrow=body.parentElement.querySelector('.collapse-arrow');
+      if(arrow)arrow.style.transform='rotate(180deg)';
+    }
+  });
+
   var tabs=document.querySelectorAll('.mtab-btn');
   if(tabs.length){tabs.forEach(function(b){b.addEventListener('click',function(){switchMovieCat(b.dataset.cat);});});}
   renderMovieRecs();
+
+  // 恢复滚动位置和视图
+  restoreScrollState();
 });
 
 
@@ -15150,7 +15269,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.11.23';
+  var V='2026.09.11.24';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}

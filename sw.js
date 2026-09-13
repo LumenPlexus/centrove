@@ -8,7 +8,7 @@
    - ✅ 修复：Response.clone() 正确保存响应体到缓存，不再导致浏览器收到空响应回退旧缓存。
    - ✅ 新增：SW 更新后自动通知页面刷新，确保用户每次打开看到的都是最新版。
    安全说明：本 SW 只缓存本站静态资源，绝不读写、上传任何 localStorage 用户数据。 */
-var VERSION = '2026.09.11.v29';
+var VERSION = '2026.09.11.v30';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -40,7 +40,6 @@ var PRECACHE_URLS = [
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(PRE).then(function (cache) {
-      // 逐个添加，任一失败不阻断整体安装
       return Promise.all(PRECACHE_URLS.map(function (u) {
         return cache.add(u).catch(function () { return null; });
       }));
@@ -67,13 +66,10 @@ function fromCache(request){
   return caches.match(request).then(function (m) { return m || Response.error(); });
 }
 
-/* ✅ 修复版：网络优先导航策略
-   关键修复：必须用 resp.clone() 克隆响应体再存入缓存，
-   否则 cache.put() 会消费响应体，浏览器收到空响应就会回退到旧缓存。 */
 function networkThenCache(request){
   return fetch(request).then(function (resp) {
     if (resp && resp.ok && (resp.type === 'basic' || resp.type === 'cors')) {
-      var respClone = resp.clone(); // ✅ 克隆响应体，不是请求
+      var respClone = resp.clone();
       caches.open(RUN).then(function (cache) {
         cache.put(request, respClone).catch(function () {});
       }).catch(function () {});
@@ -82,13 +78,11 @@ function networkThenCache(request){
   }).catch(function () { return fromCache(request); });
 }
 
-/* ✅ 修复版：stale-while-revalidate
-   关键修复：同样必须用 resp.clone() 克隆响应体再存入缓存。 */
 function staleWhileRevalidate(request, fallbackUrl) {
   var cached = fromCache(request);
   var network = fetch(request).then(function (resp) {
     if (resp && (resp.ok || resp.type === 'opaque')) {
-      var respClone = resp.clone(); // ✅ 克隆响应体
+      var respClone = resp.clone();
       caches.open(RUN).then(function (cache) {
         cache.put(request, respClone).catch(function () {});
       }).catch(function () {});
@@ -96,8 +90,8 @@ function staleWhileRevalidate(request, fallbackUrl) {
     return resp;
   });
   return cached.then(function (m) {
-    if (m) return m;               // 命中缓存：秒开
-    return network;                // 无缓存：等网络 / 离线回退缓存
+    if (m) return m;
+    return network;
   }).catch(function () {
     if (fallbackUrl) return fromCache(fallbackUrl);
     return network;
@@ -108,10 +102,8 @@ self.addEventListener('fetch', function (e) {
   var req = e.request;
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
-  if (url.origin !== location.origin) return; // 只处理同源，外链不拦截
+  if (url.origin !== location.origin) return;
 
-  // 0) 带 Range 的请求（启动器的分段拉取）：原样转交网络，绝不重建丢头；
-  //    断网时回退完整缓存（离线场景由加载器自动降级为整段拉取）。
   if (req.headers.get('range')) {
     e.respondWith(
       fetch(req).catch(function () {
@@ -121,9 +113,6 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // 1) 页面导航：网络优先（保证每次打开都是最新版），
-  //    断网/网络超时时回退缓存，保证离线也能打开。
-  //    附带 cache-busting 参数，绕过 GitHub Pages CDN 的 10 分钟缓存。
   if (req.mode === 'navigate') {
     var navReq = new Request(req.url, {
       method: req.method,
@@ -131,17 +120,15 @@ self.addEventListener('fetch', function (e) {
       mode: req.mode,
       credentials: req.credentials,
       redirect: req.redirect,
-      cache: 'no-cache' // ✅ 绕过浏览器 HTTP 缓存，强制走网络
+      cache: 'no-cache'
     });
     e.respondWith(networkThenCache(navReq));
     return;
   }
 
-  // 2) 静态资源：缓存优先秒开，后台网络刷新；断网回退缓存。
   e.respondWith(staleWhileRevalidate(req));
 });
 
-/* ✅ 新增：SW 更新后通知所有客户端刷新 */
 self.addEventListener('message', function (e) {
   if (e.data === 'skipWaiting') {
     self.skipWaiting();
