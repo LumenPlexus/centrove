@@ -1,5 +1,34 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.11.18"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.13.26"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- ✅ HTTP 缓存控制：禁止浏览器缓存 HTML，解决电脑端看到旧版的问题 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ✅ 版本检查脚本：页面加载第一优先执行，发现新版先注销旧SW再刷新 -->
+  <script>
+  (function(){
+    var PV='2026.09.13.26';
+    try{
+      fetch('pwa/version.txt',{cache:'no-store'})
+        .then(function(r){return r.text();})
+        .then(function(v){
+          v=(v||'').trim();
+          if(v && v!==PV){
+            // 发现新版：先注销所有旧SW，再刷新拿新版
+            if('serviceWorker' in navigator){
+              navigator.serviceWorker.getRegistrations().then(function(regs){
+                return Promise.all(regs.map(function(r){return r.unregister();}));
+              }).then(function(){
+                location.reload();
+              });
+            } else {
+              location.reload();
+            }
+          }
+        }).catch(function(){});
+    }catch(e){}
+  })();
+  </script>
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
@@ -80,7 +109,9 @@
       if ('serviceWorker' in navigator) {
         var _regSW = function () {
           try {
-            navigator.serviceWorker.register('sw.js').then(function (reg) {
+            navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(function (reg) {
+              // ✅ 每次页面加载都强制检查 SW 更新，绝不依赖浏览器缓存
+              reg.update().catch(function(){});
               // ✅ 检测到新 SW 等待激活时，通知它 skipWaiting
               if (reg.waiting && reg.waiting.state === 'installed') {
                 reg.waiting.postMessage('skipWaiting');
@@ -114,7 +145,7 @@
               .then(function (r) { return r.text(); })
               .then(function (v) {
                 v = v.trim();
-                if (v && v !== '2026.09.11.24' && !window.__isReloading) {
+                if (v && v !== '2026.09.13.26' && !window.__isReloading) {
                   window.__isReloading = true;
                   location.reload();
                 }
