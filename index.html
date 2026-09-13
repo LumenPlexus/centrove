@@ -9,7 +9,7 @@
   (function(){
     var PV='2026.09.13.26';
     try{
-      fetch('pwa/version.txt',{cache:'no-store'})
+      fetch('pwa/version.txt?t='+Date.now(),{cache:'no-store'})
         .then(function(r){return r.text();})
         .then(function(v){
           v=(v||'').trim();

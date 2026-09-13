@@ -14,7 +14,7 @@
    - 页面端监听 controllerchange 自动刷新。
    
    安全说明：本 SW 只缓存本站静态资源，绝不读写 localStorage 用户数据。 */
-var VERSION = '2026.09.13.v32';
+var VERSION = '2026.09.13.v33';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -26,7 +26,6 @@ var PRECACHE_URLS = [
   './js/upgrade.js',
   './app/pp-sync.js',
   './pwa/manifest.json',
-  './pwa/version.txt',
   './pwa/logo-chest20260912.png',
   './pwa/icon-final-192.png',
   './pwa/icon-final-512.png',
@@ -130,6 +129,14 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin !== location.origin) return;
+
+  // version.txt：永远走网络，绝不缓存，确保版本检查准确
+  if (url.pathname.indexOf('version.txt') !== -1) {
+    e.respondWith(fetch(req, { cache: 'no-cache' }).catch(function () {
+      return new Response('', { status: 503 });
+    }));
+    return;
+  }
 
   // Range 请求：直接走网络
   if (req.headers.get('range')) {
