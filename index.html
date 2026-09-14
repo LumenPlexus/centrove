@@ -1,46 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.13.28"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- ✅ 版本检查：sessionStorage 防止刷新循环，每session最多刷新一次 -->
-  <script>
-  (function(){
-    var PV='2026.09.13.28';
-    window.__pageVersion=PV;
-    window.__isReloading=false;
-    try{
-      // 防循环：如果本 session 已经刷新过，不再刷新
-      if(sessionStorage.getItem('__ver_checked')==='1'){ return; }
-      fetch('pwa/version.txt?t='+Date.now(),{cache:'no-store'})
-        .then(function(r){return r.text();})
-        .then(function(v){
-          v=(v||'').trim();
-          if(v && v!==PV && !window.__isReloading){
-            window.__isReloading=true;
-            sessionStorage.setItem('__ver_checked','1');
-            // 清空所有 SW 缓存
-            try{
-              if('caches' in window){
-                caches.keys().then(function(keys){
-                  return Promise.all(keys.map(function(k){return caches.delete(k);}));
-                }).catch(function(){});
-              }
-            }catch(e){}
-            // 注销所有 Service Worker
-            try{
-              if('serviceWorker' in navigator){
-                navigator.serviceWorker.getRegistrations().then(function(regs){
-                  return Promise.all(regs.map(function(r){return r.unregister();}));
-                }).catch(function(){});
-              }
-            }catch(e){}
-            // 带时间戳刷新——绕过所有缓存层
-            setTimeout(function(){
-              location.href = location.pathname + '?fresh=' + Date.now();
-            }, 200);
-          }
-        }).catch(function(){});
-    }catch(e){}
-  })();
-  </script>
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.15.36"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
+  <script>window.__pageVersion='2026.09.15.36';</script>
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
@@ -114,17 +75,18 @@
         img.src='data:image/svg+xml;utf8,'+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='#FAF6EE'/><rect x='3' y='3' width='94' height='94' rx='20' fill='none' stroke='#D8B24E' stroke-width='3'/><rect x='11' y='11' width='78' height='78' rx='16' fill='none' stroke='#EFE3CB' stroke-width='1.5'/><rect x='26' y='36' width='48' height='32' rx='5' fill='#7A4A24'/><path d='M26 42 h48 l-6 -9 a9 9 0 0 0 -7 -4 h-22 a9 9 0 0 0 -7 4 z' fill='#5E3518'/><rect x='30' y='50' width='40' height='4' fill='#E5B84D'/><circle cx='50' cy='52' r='8' fill='#D8B24E'/><circle cx='50' cy='52' r='3.5' fill='#4A2C12'/></svg>");
       }
     }
-    /* Service Worker：提供「添加到主屏幕后的离线可用」。
-       采用版本号缓存名 + activate 时清除旧缓存 + HTML 网络优先，
-       既能离线打开，又能避免以往“锁死在旧版”的卡顿问题。 */
+    /* Service Worker：stale-while-revalidate 策略
+       - 有缓存秒开，后台静默更新，下次打开就是最新版
+       - 离线可用，用户数据(localStorage)持久保存
+       - updateViaCache:'none' 确保 SW 本身能更新 */
     try {
       if ('serviceWorker' in navigator) {
         var _regSW = function () {
           try {
             navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(function (reg) {
-              // ✅ 每次页面加载都强制检查 SW 更新，绝不依赖浏览器缓存
+              // 每次页面加载都检查 SW 更新
               reg.update().catch(function(){});
-              // ✅ 检测到新 SW 等待激活时，通知它 skipWaiting
+              // 新 SW 安装后立即激活（skipWaiting），不打断当前使用
               if (reg.waiting && reg.waiting.state === 'installed') {
                 reg.waiting.postMessage('skipWaiting');
               }
@@ -133,21 +95,14 @@
                 if (newWorker) {
                   newWorker.addEventListener('statechange', function () {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                      // 新 SW 已安装，通知它立即激活
                       newWorker.postMessage('skipWaiting');
                     }
                   });
                 }
               });
             }).catch(function () {});
-            // ✅ 监听 SW 控制权变化，自动刷新页面加载最新版
-            navigator.serviceWorker.addEventListener('controllerchange', function () {
-              if (!window.__isReloading && !sessionStorage.getItem('__ver_checked')) {
-                window.__isReloading = true;
-                sessionStorage.setItem('__ver_checked','1');
-                location.href = location.pathname + '?fresh=' + Date.now();
-              }
-            });
+            // SW 控制权切换：不主动刷新，下次打开自然是新版
+            // 避免刷新打断用户操作
           } catch (e) {}
         };
         _regSW();
@@ -8547,7 +8502,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.13.28</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.15.36</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -15310,12 +15265,22 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.13.28';
+  var V='2026.09.15.36';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.15.36',t:'APP上线 · SW秒开+自动更新 · 顶栏修复',tag:'新功能+核心修复',blocks:[
+      '· 【栖匣APP发布】正式Android APP上架准备完成，加载远程网站+Service Worker缓存，网站更新APP自动同步最新版。',
+      '· 【SW策略优化】改为stale-while-revalidate：有缓存秒开，后台静默更新，下次打开就是最新版。移除页面端强制刷新逻辑，避免打断用户操作。',
+      '· 【顶栏修复】APP沉浸式全屏导致网站topbar被状态栏遮挡的问题，改为正常状态栏+纸本色调，内容完整显示。',
+      '· 【启动页】新增APP启动页（Splash Screen），显示栖匣logo和产品名称，避免首次加载白屏。',
+      '· 【数据持久化】localStorage/WebStorage/Cookie三重持久化，用户记录永不丢失。',
+      '· 【离线兜底】无网络时自动回退到本地打包版本，确保随时可用。',
+      '· 【返回键优化】优先WebView后退，再按一次退出APP。',
+      '· 【版本精简】移除head中复杂的版本检查+刷新逻辑，完全交给Service Worker后台自动更新，更简洁更稳定。'
+    ]},
     {v:'2026.09.13.28',t:'彻底修复刷新循环和底栏消失 · SW改为网络优先',tag:'核心修复',blocks:[
       '· 【根因修复】发现旧版页面版本检查导致无限刷新循环：旧SW缓存旧HTML→版本检查发现不匹配→reload→SW又返回旧HTML→循环。已用 sessionStorage 限制每session最多刷新一次。',
       '· 【SW策略重构】导航请求从 stale-while-revalidate 改为 network-first（2.5s超时回退缓存），确保在线时每次拿到最新HTML，离线时缓存兜底。',
