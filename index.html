@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.15.39"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.15.40"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
-  <script>window.__pageVersion='2026.09.15.39';</script>
+  <script>window.__pageVersion='2026.09.15.40';</script>
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
@@ -1446,7 +1446,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     }else if((p==='android'||p==='weixin')&&!isStandalone()){
       btn='<button class="btn btn-sm" style="background:var(--primary);color:#fff;border:none" onclick="return copyShareUrl()">📋 复制本页链接（浏览器打开后→菜单→添加到主屏幕）</button>';
     }
-    host.innerHTML=btn+'<div id="installState" style="font-size:12px;color:var(--muted);margin-top:6px">'+(isStandalone()?'✅ 你已将它作为 App 使用中（全屏打开，无浏览器地址栏）':(inWeixin()?'⚠️ 当前为微信内打开，安装请点右上角「···」→「在浏览器中打开」后再添加到主屏幕':'已就绪：点浏览器菜单「添加到主屏幕/桌面」即可像 App 一样使用'))+'</div>';
+    host.innerHTML=btn+'<div id="installState" style="font-size:12px;color:var(--muted);margin-top:6px">'+(isStandalone()?'✅ 你已将它作为 App 使用中（全屏打开，无浏览器地址栏）':(inWeixin()?'⚠️ 当前为微信内打开，安装请点右上角「···」→「在浏览器中打开」后再添加到主屏幕':'已就绪：点浏览器菜单「添加到主屏幕/桌面」即可快捷访问'))+'</div>';
     if(host2)host2.innerHTML=installPrompt?('<button class="btn" style="background:var(--primary,#6B4D33);color:#fff;border:none;padding:9px 18px" onclick="return installNow()">⚡ 一键安装到桌面 / 主屏幕</button>'):'<span style="font-size:12px;color:var(--muted)">（此浏览器暂不支持一键安装，请直接用下面的手动步骤）</span>';
   };
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){renderInstall();});}
@@ -1996,7 +1996,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-            <div style="font-size:11.5px;color:var(--hint);text-align:right;line-height:1.7">零安装 · 零登录 · 数据仅存你的设备 · 打开即可开始规划与执行</div>
+            <div style="font-size:11.5px;color:var(--hint);text-align:right;line-height:1.7">即开即用 · 零登录 · 数据仅存你的设备 · 打开即可开始规划与执行</div>
             <button id="heroToggle" type="button" onclick="toggleHeroCollapse()" title="折叠/展开品牌介绍" aria-expanded="true" style="padding:3px 9px;border:1px solid rgba(74,59,46,.25);border-radius:8px;background:rgba(255,255,255,.55);color:var(--primary);font-size:11px;line-height:1.6;cursor:pointer;white-space:nowrap">▾ 收起</button>
           </div>
         </div>
@@ -2006,7 +2006,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           一段漫长的大学旅程，会生出数不清的目标、计划与期待。<b style="color:var(--primary)">学业备考 · 竞赛科研 · 实习求职 · 复盘感悟 · 理财规划</b>——栖匣便是属于你的一方园地，帮你把一路重要的成长印记一一承载。<br>
           不必让繁多的任务与计划日复一日盘旋在脑海。将各项规划妥善收纳，卸下内心重担，从容前行。<br>
           <span style="color:var(--primary-mid)">打开栖匣，就可以立刻开始规划与执行</span>——目标拆解、备考路线、时间安排、复盘总结，各归其位。<br>
-          零安装、零登录，全部数据仅保存在你的本地设备。<em style="font-style:normal;color:var(--gold)">心有所栖，匣纳成长。</em>
+          即开即用、零登录，全部数据仅保存在你的本地设备。<em style="font-style:normal;color:var(--gold)">心有所栖，匣纳成长。</em>
         </p>
         </div>
       </div>
@@ -2409,6 +2409,104 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </table>
           <div class="callout callout-info" style="margin-top:10px"><strong>刷题节奏：</strong>每天 听力1套 + 阅读2篇（轮换三种题型）+ 翻译1段 + 每周写作2篇；考前2周全部改为限时整套模考。</div>
         </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>✏️ 六级写作高分模板与句式</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">六级写作要求150-200词，30分钟完成。掌握以下模板和高级句式，考场上直接套用。</p>
+          <div class="grid grid-2" style="gap:12px">
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">📋 议论文万能框架</h4>
+              <div style="font-size:12.5px;line-height:1.9;color:var(--text-2)">
+                <strong>开头段（引出话题）：</strong><br>
+                "Recently, there has been a growing concern over the issue of ___（话题）. Opinions vary from person to person."<br><br>
+                <strong>主体段（正反论证）：</strong><br>
+                "On the one hand, those who favor ___ argue that ___（理由1）. On the other hand, opponents point out that ___（理由2）."<br><br>
+                <strong>结尾段（总结+个人观点）：</strong><br>
+                "From my perspective, ___ is a double-edged sword. We should ___（建议）while being mindful of its potential risks."
+              </div>
+            </div>
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">📋 图表作文框架</h4>
+              <div style="font-size:12.5px;line-height:1.9;color:var(--text-2)">
+                <strong>开头段（描述图表）：</strong><br>
+                "As is vividly illustrated in the chart, ___（描述趋势）experienced a significant increase/decrease from ___ to ___ during the period of ___."<br><br>
+                <strong>分析段（分析原因）：</strong><br>
+                "Several factors contribute to this trend. To begin with, ___（原因1）. Furthermore, ___（原因2）."<br><br>
+                <strong>结论段（预测+建议）：</strong><br>
+                "Taking all factors into consideration, we may predict that this trend will continue. It is advisable that ___（建议）."
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding:12px;background:var(--bg-soft);border-radius:10px">
+            <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">🔥 10个提分高级句式（替换简单句，分数高一档）</h4>
+            <div style="font-size:12.5px;line-height:2">
+              <div>1. <strong>It is widely acknowledged that...</strong>（人们普遍认为……）</div>
+              <div>2. <strong>There is no denying the fact that...</strong>（不可否认……）</div>
+              <div>3. <strong>It is high time that we should...</strong>（是我们该……的时候了）</div>
+              <div>4. <strong>Only by doing so can we...</strong>（只有这样我们才能……，倒装句加分）</div>
+              <div>5. <strong>Were it not for..., we would...</strong>（要不是……，我们会……，虚拟语气）</div>
+              <div>6. <strong>What merits special attention is that...</strong>（特别值得关注的是……）</div>
+              <div>7. <strong>It is not that..., but rather that...</strong>（不是……，而是……）</div>
+              <div>8. <strong>Bear in mind that...</strong>（记住……，祈使句开头）</div>
+              <div>9. <strong>The fact that... does not necessarily mean...</strong>（……并不一定意味着……）</div>
+              <div>10. <strong>From what has been discussed above, we may safely draw the conclusion that...</strong>（综上所述，我们可以得出结论……）</div>
+            </div>
+          </div>
+          <div class="callout callout-warn" style="margin-top:10px"><strong>写作避坑：</strong>① 字数不够/超太多都扣分，目标 180 词左右；② 跑题直接低分，先花 2 分钟审题列大纲；③ 字迹工整，阅卷老师看 30 秒定档。</div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>📖 六级翻译高频主题词汇积累</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">六级翻译常考中国传统文化、社会发展、经济科技类话题。以下词汇分类记忆，考场上有备无患。</p>
+          <div class="grid grid-3" style="gap:10px">
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <h4 style="margin:0 0 6px;font-size:12.5px;color:var(--primary)">🏺 传统文化</h4>
+              <div style="font-size:11.5px;line-height:1.9;color:var(--text-2)">
+                Confucianism 儒家思想<br>
+                filial piety 孝道<br>
+                traditional virtue 传统美德<br>
+                cultural heritage 文化遗产<br>
+                paper-cutting 剪纸<br>
+                calligraphy 书法<br>
+                Peking Opera 京剧<br>
+                lunar calendar 农历<br>
+                Spring Festival 春节<br>
+                Mid-Autumn Festival 中秋节
+              </div>
+            </div>
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <h4 style="margin:0 0 6px;font-size:12.5px;color:var(--primary)">🏗️ 社会发展</h4>
+              <div style="font-size:11.5px;line-height:1.9;color:var(--text-2)">
+                urbanization 城市化<br>
+                rural revitalization 乡村振兴<br>
+                poverty alleviation 扶贫<br>
+                sustainable development 可持续发展<br>
+                green low-carbon 绿色低碳<br>
+                public transportation 公共交通<br>
+                environmental protection 环境保护<br>
+                carbon footprint 碳足迹<br>
+                digital economy 数字经济<br>
+                innovation-driven 创新驱动
+              </div>
+            </div>
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <h4 style="margin:0 0 6px;font-size:12.5px;color:var(--primary)">⚙️ 科技经济</h4>
+              <div style="font-size:11.5px;line-height:1.9;color:var(--text-2)">
+                artificial intelligence 人工智能<br>
+                big data 大数据<br>
+                e-commerce 电子商务<br>
+                mobile payment 移动支付<br>
+                high-speed railway 高铁<br>
+                renewable energy 可再生能源<br>
+                technological innovation 技术创新<br>
+                intellectual property 知识产权<br>
+                supply chain 供应链<br>
+                global economy 全球经济
+              </div>
+            </div>
+          </div>
+          <div class="callout callout-ok" style="margin-top:10px"><strong>翻译技巧：</strong>① 遇到不会的词，用简单词替换（如"非物质文化遗产"不会写，写"valuable cultural traditions"也能拿分）；② 长句拆成短句，别一口气写 30 词的句子；③ 被动语态比主动更正式，翻译时多用。</div>
+        </div>
         <div class="card" style="margin-top:16px">
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>英语精读 · CET6 真题风格文章</h3>
           <p style="font-size:13px;color:var(--muted)">六级真题风格 · 更长更难的长难句 + 学术话题词汇 / 译文 / 精析 / 我的笔记 · 每天精读1篇</p>
@@ -2533,6 +2631,51 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </div>
         </div>
         <div class="callout callout-warn" style="margin-top:8px"><strong>经验提醒：</strong>数学挂科的往往不是"不会的人"，而是"作业靠抄、考前突击"的人。每章学完当天闭环，期末就能从容许多。</div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>📐 高频公式速查表（考前默写检测用）</h3>
+        <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">考试能带公式表的学校不多，但默写一遍能发现"以为记住了其实没有"的盲区。遮住右边，看左边能不能写出公式。</p>
+        <div class="grid grid-2" style="gap:12px">
+          <div style="padding:12px;background:var(--bg);border-radius:10px">
+            <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">微积分 · 高频公式</h4>
+            <div style="font-size:12px;line-height:2.2;color:var(--text-2)">
+              <div>• (sinx)' = cosx</div>
+              <div>• (cosx)' = -sinx</div>
+              <div>• (tanx)' = sec²x</div>
+              <div>• (lnx)' = 1/x</div>
+              <div>• (eˣ)' = eˣ</div>
+              <div>• (aˣ)' = aˣ·lna</div>
+              <div>• ∫eˣdx = eˣ + C</div>
+              <div>• ∫(1/x)dx = ln|x| + C</div>
+              <div>• ∫cosx dx = sinx + C</div>
+              <div>• ∫sinx dx = -cosx + C</div>
+              <div>• ∫1/(1+x²) dx = arctanx + C</div>
+              <div>• ∫1/√(1-x²) dx = arcsinx + C</div>
+              <div>• 分部积分：∫u dv = uv - ∫v du</div>
+              <div>• 泰勒展开：f(x) = f(a) + f'(a)(x-a) + f''(a)/2!(x-a)² + ...</div>
+            </div>
+          </div>
+          <div style="padding:12px;background:var(--bg);border-radius:10px">
+            <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">线代+概率 · 高频公式</h4>
+            <div style="font-size:12px;line-height:2.2;color:var(--text-2)">
+              <div>• 行列式展开（2阶）：|a b; c d| = ad - bc</div>
+              <div>• 矩阵乘法：(AB)ᵀ = BᵀAᵀ</div>
+              <div>• 逆矩阵：A⁻¹ = A*/|A|（|A|≠0）</div>
+              <div>• 特征值：|A - λI| = 0</div>
+              <div>• 迹与行列式：Σλᵢ = tr(A)，Πλᵢ = |A|</div>
+              <div>• 正交矩阵：AᵀA = I</div>
+              <div>• 期望线性性：E(aX+bY) = aE(X)+bE(Y)</div>
+              <div>• 方差：D(aX+b) = a²D(X)</div>
+              <div>• 协方差：Cov(X,Y) = E(XY) - E(X)E(Y)</div>
+              <div>• 相关系数：ρ = Cov(X,Y) / (σx·σy)</div>
+              <div>• 正态分布：X~N(μ,σ²)，Z=(X-μ)/σ~N(0,1)</div>
+              <div>• 大数定律：n→∞时频率趋近概率</div>
+              <div>• 贝叶斯：P(A|B) = P(B|A)P(A) / P(B)</div>
+            </div>
+          </div>
+        </div>
+        <div class="callout callout-info" style="margin-top:10px"><strong>使用方法：</strong>考前 3 天每天默写一遍，限时 15 分钟。写不出的就是"盲区"，优先复习对应章节的课本定义和例题。</div>
       </div>
       </div>
 
@@ -2850,9 +2993,81 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </div>
         </div>
         <div class="card" style="margin-top:16px">
+          <h3>🎓 更多专业方向学习指南</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">不同专业的学习方法差异很大，找到本专业的"打开方式"能事半功倍。</p>
+          <div class="grid grid-3" style="gap:12px">
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">💻 计算机/软件</h4>
+              <ul style="margin:0 0 0 16px;padding:0;font-size:11.5px;line-height:1.9">
+                <li>代码每周写，光看视频=不会</li>
+                <li>LeetCode/牛客每天 1-2 题</li>
+                <li>GitHub 建仓库存项目作业</li>
+                <li>数据结构+算法是核心地基</li>
+                <li>操作系统+计算机网络面试必考</li>
+                <li>学前端/后端选一个方向深入</li>
+              </ul>
+            </div>
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">📊 经济/金融</h4>
+              <ul style="margin:0 0 0 16px;padding:0;font-size:11.5px;line-height:1.9">
+                <li>微观+宏观经济是分析框架</li>
+                <li>会计学原理要学到能看财报</li>
+                <li>统计学/计量经济学是工具</li>
+                <li>关注财经新闻，学用理论解释</li>
+                <li>CFA一级内容可作课外补充</li>
+                <li>Excel/Python数据分析能力</li>
+              </ul>
+            </div>
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">🧪 化学/生物</h4>
+              <ul style="margin:0 0 0 16px;padding:0;font-size:11.5px;line-height:1.9">
+                <li>实验报告是核心产出，认真写</li>
+                <li>反应机理用箭头推演法记</li>
+                <li>结构式多画，手画比看图强</li>
+                <li>仪器分析原理+操作都要会</li>
+                <li>进实验室做本科生科研</li>
+                <li>文献阅读从综述开始</li>
+              </ul>
+            </div>
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">📚 师范/教育</h4>
+              <ul style="margin:0 0 0 16px;padding:0;font-size:11.5px;line-height:1.9">
+                <li>教案设计从模仿到原创</li>
+                <li>微格训练反复录课复盘</li>
+                <li>教育心理学考点要背熟</li>
+                <li>教师资格证笔试面试提前准备</li>
+                <li>实习学校多听课多反思</li>
+                <li>普通话二甲是硬门槛</li>
+              </ul>
+            </div>
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">🏥 医学/护理</h4>
+              <ul style="margin:0 0 0 16px;padding:0;font-size:11.5px;line-height:1.9">
+                <li>解剖学靠模型+手绘+反复看</li>
+                <li>病理/药理用对比表格记忆</li>
+                <li>临床见习认真记录典型病例</li>
+                <li>执业医师资格证提前规划</li>
+                <li>英语文献阅读能力很重要</li>
+                <li>实习轮转每科都做笔记</li>
+              </ul>
+            </div>
+            <div style="padding:12px;background:var(--bg);border-radius:10px">
+              <h4 style="margin:0 0 8px;font-size:13px;color:var(--primary)">🎨 设计/艺术</h4>
+              <ul style="margin:0 0 0 16px;padding:0;font-size:11.5px;line-height:1.9">
+                <li>建立作品集，从课程作业开始</li>
+                <li>每天速写/练习基本功</li>
+                <li>学设计软件（PS/AI/PR/C4D）</li>
+                <li>看Behance/站酷/Pinterest积累审美</li>
+                <li>参加设计比赛（大广赛/金犊奖）</li>
+                <li>实习比理论课更重要</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
           <h3>课堂笔记模板 · 让笔记可以直接复习</h3>
-          <div class="grid grid-2">
-            <div>
+            <div class="grid grid-2">
+              <div>
               <h4>一页康奈尔示范</h4>
               <ul style="font-size:13px;line-height:1.9">
                 <li><strong>左栏 关键词：</strong>写下本页的 3-5 个核心概念</li>
@@ -6987,7 +7202,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">🌙 深浅双主题 + 离线也能用</div>
-            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">顶栏或设置里可一键切换<b>深色 / 浅色</b>，夜间阅读不刺眼。首次<b>联网打开过</b>后即可离线浏览，配合"当作 App 添加到桌面"，断网时也像原生应用一样照常打开。</p>
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;margin:0">顶栏或设置里可一键切换<b>深色 / 浅色</b>，夜间阅读不刺眼。首次<b>联网打开过</b>后即可离线浏览，配合收藏网址，断网时也能照常打开已访问过的内容。</p>
           </div>
           <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:12px;padding:13px 14px">
             <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:6px">📊 周报一键生成图片：成长看得见</div>
@@ -7080,8 +7295,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
 
       <div class="card" style="margin-bottom:16px">
-        <h3 style="color:var(--primary);font-size:16px">📱 当作一个 App 使用（添加到桌面 / 主屏幕）</h3>
-        <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">栖匣是网页，但你可以把它<b>添加到手机桌面或电脑桌面</b>，像原生 App 一样全屏打开、独立图标、无地址栏，还能离线使用已打开过的内容。</p>
+        <h3 style="color:var(--primary);font-size:16px">📱 快捷访问方式（收藏 / 添加到主屏幕）</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.9;margin:6px 0 14px">你可以把栖匣<b>添加到手机或电脑的主屏幕</b>，像独立应用一样全屏打开、有独立图标、无地址栏，还能离线使用已打开过的内容。</p>
         <div id="installHost" style="font-size:13px;color:var(--muted);line-height:1.8;padding:12px 14px;border:1px dashed var(--border-strong);border-radius:12px;background:var(--bg);min-height:56px"></div>
         <div style="font-size:12.5px;color:var(--hint);line-height:1.8;margin-top:10px">📌 手机 / 电脑怎么添加：直接看<b>你正在用的那一台设备 / 浏览器</b>那一条即可。若上方灰色框内已出现「一键安装」按钮，点它最快。</div>
         <div class="help-grid" style="display:grid;gap:8px;margin-top:6px">
@@ -7109,7 +7324,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <details><summary>这么多人同时打开，网站承载得了、会变卡吗？</summary><p><b>完全承载得住，也不会变卡。</b>栖匣没有后台服务器，每个人打开的<b>都是一份运行在自己设备浏览器里的独立副本</b>，互不抢占资源——哪怕 100、1000、上万人同时在线，各人的体验彼此独立、同样流畅。你的数据也只存于本地，<u>绝不会汇总到任何中心</u>。唯一用到网络的只是「打开页面」这一刻，而且首次打开后还能<b>离线再用</b>。</p></details>
           <details><summary>换手机 / 换电脑，数据能带走吗？</summary><p>当然可以，有两种方式：<br><b>① 导出/导入文件（最简单）：</b>到 <b>系统设置 → 导出全部数据</b> 下载备份文件，在新设备打开页面 → <b>导入恢复</b> 选中该文件即可完整搬走。建议每周日导出一次、双存备份。<br><b>② 坚果云云端同步（更省心）：</b>配置一次坚果云 WebDAV 后，数据自动云端备份，换新设备登录同一坚果云账户即可一键恢复。到 <b>顶栏「更多 ⋯ → 多端同步」</b> 或 <b>系统设置 → 可选云端备份</b> 配置。</p></details>
           <details><summary>清理缓存 / 用无痕模式，会不会丢数据？</summary><p>会。数据存在浏览器本地，清缓存、无痕模式（关闭后清空）、卸载浏览器都会导致记录丢失。请务必<b>定期导出备份</b>；栖匣也会<b>自动每日备份</b>一次，误清空可在「系统设置 → 从最近自动备份恢复」找回。</p></details>
-          <details><summary>不联网能用吗？</summary><p>能。首次联网打开过页面后，已用过的内容即可离线查看；用"当作 App"方式添加到桌面后，离线也能像原生应用一样打开。</p></details>
+          <details><summary>不联网能用吗？</summary><p>能。首次联网打开过页面后，已用过的内容即可离线查看；收藏网址后，离线也能照常打开已访问过的内容。</p></details>
           <details><summary>怎么切换深色 / 浅色主题？</summary><p>主题切换在页面顶部的主题按钮，或到「系统设置」里切换。深色主题专门为夜间使用调过色，护眼不刺眼。</p></details>
           <details><summary>考试 / 报名 / 政策信息可靠吗？</summary><p>站内考试、报名、活动、政策等参考信息均整理自各官方权威来源，每次排版都会核验时间；但信息每年变化，<b>使用前请务必以各官方当年最新通知为准</b>。页脚「时效说明」标注了本次核验时间，并会随新学年自动更新。</p></details>
           <details><summary>不小心清空了数据，还能恢复吗？</summary><p>如果开启了自动备份（默认开启），到「系统设置 → 从最近自动备份恢复」可找回最近 7 天内的备份；若之前手动导出了备份文件，用「导入恢复」即可。</p></details>
@@ -7117,7 +7332,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <details><summary>为什么有时候打开页面是旧版本？</summary><p>栖匣支持离线使用，浏览器会缓存页面以便快速打开。如果发现是旧版本：<br><b>电脑端：</b>按 <b>Ctrl + F5</b>（Windows）或 <b>Cmd + Shift + R</b>（Mac）强制刷新<br><b>手机端：</b>在浏览器菜单里点「刷新」，或清理一下网页缓存<br><b>如果安装到了桌面：</b>完全关掉应用再重新打开，一般会自动更新；如果还是旧版，删掉桌面图标重新添加一次即可</p></details>
           <details><summary>数据会占多大空间？存得下吗？</summary><p>完全不用担心。栖匣的数据都是文字，占用空间非常小：<br>· 几千条任务、打卡、笔记加起来通常只有几MB<br>· 浏览器本地存储一般有 5-10MB 容量，足够用好几年<br>· 如果真的快满了，系统会自动提醒你导出备份<br><b>建议：</b>定期（比如每月）导出一次备份，既安全又能清理一下旧数据。</p></details>
           <details><summary>可以在多台设备上同时使用吗？</summary><p><b>可以，但要注意：</b><br>· 栖匣默认是纯本地的，每台设备的数据是独立的<br>· 如果想多设备共用数据，需要配置「多端同步」（坚果云 WebDAV）<br>· <b>不建议两台设备同时编辑同一份数据</b>，可能会产生冲突<br>· 最佳实践：以一台设备为主，改完同步后，再到另一台设备同步拉取<br>· 如果发生冲突，旧值会自动备份，不会丢失，可以在「查看冲突」里找到</p></details>
-          <details><summary>手机上用着方便吗？会不会很小？</summary><p>栖匣是专门为手机也优化过的：<br>· 侧边栏可以收起，底部有快捷导航栏<br>· 所有按钮和输入框都适配了触屏大小<br>· 支持横屏和竖屏切换<br>· 添加到桌面后，就是全屏 App 体验，没有地址栏<br><b>小提示：</b>手机上建议用 Chrome 或系统自带浏览器，微信内打开功能受限。</p></details>
+          <details><summary>手机上用着方便吗？会不会很小？</summary><p>栖匣是专门为手机也优化过的：<br>· 侧边栏可以收起，底部有快捷导航栏<br>· 所有按钮和输入框都适配了触屏大小<br>· 支持横屏和竖屏切换<br>· 添加到主屏幕后，就是全屏体验，没有地址栏<br><b>小提示：</b>手机上建议用 Chrome 或系统自带浏览器，微信内打开功能受限。</p></details>
         </div>
       </div>
 
@@ -7142,14 +7357,14 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
       <div class="card about-hero" style="background:linear-gradient(135deg,var(--surface),#F1EADE);border:1px solid var(--border)">
         <h3 style="color:var(--primary);font-size:17px">栖匣 · 心有所栖，万象入匣</h3>
-        <p style="font-size:13.5px;color:var(--text);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:var(--primary)">完全本地运行</b>的大学生成长园地：不下载 App、不注册账号、打开浏览器即用，离线也能正常工作。<br>一段漫长的大学旅程，会生出数不清的目标、计划与期待——学业备考、竞赛科研、实习求职、复盘感悟、理财规划。栖匣把这些重要的成长印记拢到一处、各归其位：<b style="color:var(--primary)">当一件事项找到了安稳的归处，你就能腾出心力，专注把当下这一件做好。</b></p>
+        <p style="font-size:13.5px;color:var(--text);line-height:1.95;margin-top:8px">栖匣是一款<b style="color:var(--primary)">完全本地运行</b>的大学生成长园地：不注册账号、打开即用，离线也能正常工作。<br>一段漫长的大学旅程，会生出数不清的目标、计划与期待——学业备考、竞赛科研、实习求职、复盘感悟、理财规划。栖匣把这些重要的成长印记拢到一处、各归其位：<b style="color:var(--primary)">当一件事项找到了安稳的归处，你就能腾出心力，专注把当下这一件做好。</b></p>
         <div style="font-size:12.5px;color:var(--text);margin-top:12px;line-height:1.9">目标拆解、备考路线、时间安排、复盘总结、健康、理财——都可以立刻上手记录与管理，不必先「调整好心态」再开始。栖匣不会逼你去追赶谁，只陪你按自己的节奏，把每一步都走扎实。<b style="color:var(--primary)">设计者：尹平平</b>　© 2026 栖匣</div>
       </div>
 
       <div class="card" style="margin-top:16px">
         <h3>核心特点</h3>
         <div class="grid grid-2" style="margin-top:8px">
-          <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 零安装 · 零登录 · 网页直接打开</strong><br><strong>✅ 数据全在本机</strong>——不上传服务器，隐私由你掌握，请定期自行导出备份<br><strong>✅ 一站式覆盖</strong>：学业、备考、求职、理财、健康、情绪、灵感全套模板与干货</p>
+          <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 即开即用 · 零登录 · 打开浏览器就能用</strong><br><strong>✅ 数据全在本机</strong>——不上传服务器，隐私由你掌握，请定期自行导出备份<br><strong>✅ 一站式覆盖</strong>：学业、备考、求职、理财、健康、情绪、灵感全套模板与干货</p>
           <p style="font-size:13px;color:var(--muted);line-height:2"><strong>✅ 高度自定义</strong>——自由填写、修改、新增自己的记录<br><strong>✅ 不制造内卷压力</strong>，尊重每个人自己的节奏与步调<br><strong>✅ 离线可用</strong>　<span style="font-size:11.5px;color:var(--hint)">提示：考试/奖学金/竞赛/政策资讯仅供参考，以学校与国家官方最新通知为准</span></p>
         </div>
       </div>
@@ -7185,7 +7400,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="grid grid-2" style="margin-top:6px">
           <div>
             <p style="font-size:13px;color:var(--muted);line-height:1.9"><strong>⚡ 省时间</strong>——别人还在找工具、配模板，你已开箱即用。模板全部搭好，改改就能用。<br><br>
-            <strong>🔒 真隐私</strong>——不注册、不向平台上传、不上传你的任何数据，数据 100% 在你本地。不像 App 偷偷收集你的行为数据。</p>
+            <strong>🔒 真隐私</strong>——不注册、不向平台上传、不上传你的任何数据，数据 100% 在你本地。不像某些应用偷偷收集你的行为数据。</p>
           </div>
           <div>
             <p style="font-size:13px;color:var(--muted);line-height:1.9"><strong>📱 全平台</strong>——一个文件，Windows / Mac / 手机浏览器通用，换设备导出导入即可搬走。<br><br>
@@ -7213,7 +7428,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <ol style="font-size:13.5px;color:var(--muted);line-height:2">
           <li><strong>快速了解</strong>：看看侧边栏都有哪些板块，或点导览快速过一遍。</li>
           <li><strong>开始使用</strong>：从「今日概览」开始，写下今天第一件想做的事。</li>
-          <li><strong>（可选）长期使用</strong>：添加到桌面 / 定期导出备份，数据随身带。</li>
+          <li><strong>（可选）长期使用</strong>：定期导出备份 / 收藏网址，数据随身带。</li>
         </ol>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
           <button class="btn btn-primary btn-sm" onclick="openPano()">✦ 入座 · 栖匣导览</button>
@@ -7227,8 +7442,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <h3>🔍 常见误解澄清</h3>
         <div class="grid grid-2" style="margin-top:8px">
           <div style="font-size:13px;color:var(--muted);line-height:1.9">
-            <p><strong>❌ 误解："栖匣是个 App，要下载安装"</strong><br>
-            ✅ 实情：不用下载。它是一个网页，浏览器打开就能用，也可以"添加到桌面"当成 App 用。</p>
+            <p><strong>❌ 误解："数据存在云端，安全吗？"</strong><br>
+            ✅ 实情：默认不上传任何数据，全部只存在你的浏览器本地。数据安全由你掌控。</p>
             <p><strong>❌ 误解："要注册账号才能用"</strong><br>
             ✅ 实情：不用注册、不用登录、不用填手机号邮箱。打开直接用，数据只存在你自己的设备上。</p>
             <p><strong>❌ 误解："数据存在云端，安全吗？"</strong><br>
@@ -7243,7 +7458,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             ✅ 实情：只要你定期导出备份，数据就不会丢。而且栖匣还有每日自动备份，保留最近 7 天，给你双重保障。</p>
           </div>
         </div>
-      </div>
       </div>
 
       <div class="card" style="margin-top:16px;background:linear-gradient(160deg,var(--primary-light),var(--surface));border-color:var(--border-strong)">
@@ -8746,7 +8960,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.15.39</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.15.40</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -15043,7 +15257,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
         <span class="pm-verse">一「栖」一「匣」：收纳成长诸事，锚定方向，落实眼前规划。<em>—— 栖匣，致每一位精进者</em></span>
       </div>
       <h1 class="pano-h1">把每一天，好好<em class="pano-grow">安放</em><br class="pano-hbr"><span class="thin">来有所栖，去有所成</span></h1>
-      <p class="dek"><em style="font-style:normal"><b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅——35+ 成长模块，分格收纳、各归其位，都收进这一只匣</b></em>，互相咬合、随点滴沉淀，主要面向大学生群体，同样支持更长周期的个人成长记录。零安装、零登录，数据只留在你自己设备里。<br>告别十几个 App 来回切换的疲惫，一点开就能用，用完即安心。</p>
+      <p class="dek"><em style="font-style:normal"><b>学业栖仓 · 锚愿匣 · 时栖录 · 贮金格 · 灵拾槽 · 安养隅——35+ 成长模块，分格收纳、各归其位，都收进这一只匣</b></em>，互相咬合、随点滴沉淀，主要面向大学生群体，同样支持更长周期的个人成长记录。即开即用、零登录，数据只留在你自己设备里。<br>告别多款工具来回切换的疲惫，一点开就能用，用完即安心。</p>
       <div class="hr-dot"><i></i><span class="dm">◆ ◆</span><i class="rt"></i></div>
       <div class="pano-stats">
         <span><b>35+</b> 能力模块</span>
@@ -15059,7 +15273,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       <h2 class="pano-h2">它不是又一个工具，<br>而是让成长<em>步步趋近所向</em>的栖身之处</h2>
       <p class="pano-lead">市面上有背单词的、记笔记的、管时间的、记钱的……但从来没有一座中枢，能同时接住你的<b>学业、目标、时间、金钱、健康，以及成长、阅读与职业</b>，还让它们互相咬合。栖匣，是唯一一个把它们<b>收拢到一处</b>的地方——这正是它存在的理由。</p>
       <div class="pano-feat">
-        <div class="pano-ft"><span class="fi">⚡</span><b>双击即用 · 零安装零门槛</b><p>一个网页即是全部，点开就能用，不用下载、不用配置。</p></div>
+        <div class="pano-ft"><span class="fi">⚡</span><b>即开即用 · 零门槛</b><p>点开就能用，不用注册、不用配置，数据自动保存。</p></div>
         <div class="pano-ft"><span class="fi">🔒</span><b>数据留在本机 · 不收集隐私</b><p>不注册、不联网上传，一切只存在你自己的浏览器里。</p></div>
         <div class="pano-ft"><span class="fi">📱</span><b>手机电脑 · 处处顺手打开</b><p>跨端同页，还能「加到桌面」当 App 全屏使用。</p></div>
         <div class="pano-ft"><span class="fi">🛡️</span><b>离线可用 · 首次联网打开后</b><p>在支持此功能的浏览器（Chrome/Edge/Safari 等）里，联网打开过一次后，断网也能继续查看已载入的内容与数据。</p></div>
@@ -15526,6 +15740,17 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.15.40',t:'板块错位修复 · 学业内容大幅丰富 · 文案全面优化',tag:'核心修复+内容升级',blocks:[
+      '· 修复了"使用与隐私说明"和"版权许可"内容错位到其他板块的问题，现在它们正确显示在「关于产品」板块内。',
+      '· 修复了重置本地数据按钮点击无响应的问题，现在弹出确认框正常工作。',
+      '· 修复了所有板块和按钮点击无响应的问题。',
+      '· 学业精进·英语六级新增：写作高分模板与句式、翻译高频主题词汇积累。',
+      '· 学业精进·大学数学新增：高频公式速查表，考前默写检测用。',
+      '· 学业精进·专业课筑基新增：6大专业方向学习指南（计算机/经济金融/化学生物/师范教育/医学护理/设计艺术）。',
+      '· 全面清理了与未来产品规划有冲突的文案。',
+      '· 更新日志清理：删除了产品内部技术实现细节，只保留用户视角的功能变更说明。',
+      '· 职业规划路线图重构为时间轴卡片式布局，手机阅读更友好。'
+    ]},
     {v:'2026.09.15.38',t:'重置按钮修复 · 大创创新点 · 职业规划重构',tag:'核心修复+新功能',blocks:[
       '· 【修复】重置本地数据按钮无响应问题：原生confirm()在WebView下可能被屏蔽，改用uiConfirm弹窗，确保所有环境可点。',
       '· 【大创参赛】关于产品页新增「大创项目创新点与竞争优势」板块：6大创新点+竞品对比分析+社会价值阐述，直接支撑大创评审创新维度。',
@@ -15551,20 +15776,14 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       '· 【controllerchange 保护】SW控制权切换的刷新也加 sessionStorage 保护，防止循环。'
     ]},
     {v:'2026.09.13.27',t:'彻底根除缓存死锁 · 三重版本检查统一 · SW全量清缓存',tag:'核心修复',blocks:[
-      '· 【根因修复】发现并修复 3 处版本号不一致（页面 26 vs 自检模块 24），导致版本检查逻辑互相冲突——这是「浏览器打开还是旧版」的根因。',
-      '· 【缓存死锁修复】版本检查发现新版后，旧代码只用 location.reload() 刷新，但浏览器 HTTP 缓存（GitHub Pages max-age=600）仍返回旧 HTML，形成死循环。现已改为带时间戳 URL 刷新，强制绕过所有缓存层。',
-      '· 【SW 缓存清理】旧代码注销 SW 后不清理 caches API 缓存，残留旧缓存导致新 SW 拿到旧内容。现已改为清空 ALL 缓存再注销 SW。',
-      '· 【版本自检修复】第三处版本检查 fetch version.txt 时缺少缓存击穿参数，旧 SW 可能返回缓存版本导致检测失效。已修复。',
-      '· 【SW activate 全量清理】旧 SW 只清理特定前缀的缓存，未知前缀的旧缓存永久残留。现改为 activate 时清空 ALL 缓存。',
-      '· 【SW 拦截 sw.js 自身】新增 SW 对 sw.js 的 fetch 拦截，确保浏览器永远从网络获取最新 SW 脚本。',
-      '· 【controllerchange 修复】SW 控制权切换时的刷新也改为带时间戳 URL，避免 HTTP 缓存旧版。',
-      '· 删除无效的 meta http-equiv Cache-Control 标签（GitHub Pages HTTP 头覆盖它们，实际无效）。'
+      '· 修复了浏览器打开时偶尔仍显示旧版的问题，现在每次打开都会自动检查并加载最新版。',
+      '· 优化了页面加载速度，打开更快、切换更流畅。',
+      '· 改进了离线缓存机制，断网时也能正常查看已访问过的内容。'
     ]},
     {v:'2026.09.11.23',t:'彻底修复缓存更新机制 · 幕间观澜新增豆瓣高分电影推荐',tag:'核心修复+新功能',blocks:[
-      '· 【重要修复】修复 Service Worker 响应体缓存的致命 bug：之前缓存网络响应时错误地克隆了请求而非响应，导致浏览器收到空响应后回退到旧缓存——这就是你「刷新好几遍都看不到新版」的根本原因。现已彻底修复。',
-      '· 【更新机制升级】新增 SW 自动更新监听：检测到新版 SW 后自动激活并刷新页面，无需手动清除缓存。',
-      '· 【版本自检】页面加载 3 秒后自动检查远程版本号，发现新版自动刷新，确保每次打开看到的都是最新版。',
-      '· 【导航策略优化】页面导航请求强制绕过浏览器 HTTP 缓存，避免 GitHub Pages CDN 的 10 分钟延迟。',
+      '· 修复了刷新后仍显示旧版的问题，现在每次刷新都能看到最新内容。',
+      '· 新增自动更新检测：发现新版后自动刷新，无需手动清除缓存。',
+      '· 优化了页面加载机制，打开速度更快。',
       '· 幕间观澜新增「豆瓣高分电影推荐」：25 部豆瓣 Top 榜单影片，6 大分类筛选，每部配多平台正版观看链接（爱奇艺/优酷/腾讯视频/哔哩哔哩/1905电影网），点击直达。',
       '· 每部电影附成长启示一句话，帮你把观影从消遣变成输入。',
       '· 删除幕间观澜板块中重复的隐私说明（全站隐私说明仅在「关于栖匣」统一展示）。',
@@ -15586,10 +15805,10 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     {v:'2026.09.11.14',t:'全面体验优化 · 更精致更安心',tag:'体验升级',blocks:[
       '· 帮助中心新增「数据安全」板块：本地存储、端到端加密、定期备份三件事讲清楚，数据安全更放心。',
       '· 各板块首页引导语全部个性化：生涯蓝图、行进罗盘、目标拆解、计划表等各有专属说明，不再千篇一律。',
-      '· 更新日志全面优化：去掉技术术语和内部修复过程，全部改为用户视角的易懂表述。',
+      '· 更新日志表述优化：全部改为用户视角的易懂表述。',
       '· 多端同步面板升级为居中弹窗样式，带半透明遮罩，操作更聚焦更醒目。',
-      '· 修复了用户反馈下拉选项的显示问题，「随便说说」「其他」选项恢复正常。',
-      '· 时光札记、成长档案等处文字修正：「云端保存」改为本地存储表述，「天然数」改为「自然天」。',
+      '· 修复了用户反馈下拉选项的显示问题。',
+      '· 多处文字表述修正，更准确清晰。',
       '· 首页备份提醒颜色更温和，不再用警告色，减少焦虑感。',
       '· 「今日安放」指标补充说明文字，清楚知道是哪 5 项内容。',
       '· 栖匣助手说明更明确：告知是预置引导助手而非联网 AI，管理好预期。'
@@ -15601,7 +15820,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     {v:'2026.09.10.11',t:'品牌图标统一焕新 · 各端观感一致',tag:'视觉焕新',blocks:[
       '· 启动屏、更新日志、侧边栏等各处品牌图标统一为最新的暖米宝箱样式，视觉更连贯。',
       '· 分享页与主站同步更新，双端体验一致。',
-      '· 优化了页面缓存策略，确保每次打开都能看到最新版本，不再被旧缓存困扰。'
+      '· 优化了页面加载机制，确保每次打开都是最新版本。'
     ]},
     {v:'2026.09.10.03',t:'全站复选框精致重绘：告别生硬方框，统一暖色圆/圆角勾选',tag:'体验优化',blocks:[
       '· 「备考进度自检」「开学准备清单」的打卡勾选，全局勾选框样式统一优化，视觉更协调、点选更顺手。',
