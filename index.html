@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.15.37"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.15.38"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
-  <script>window.__pageVersion='2026.09.15.37';</script>
+  <script>window.__pageVersion='2026.09.15.38';</script>
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
@@ -7245,6 +7245,41 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
 
+      <!-- 大创参赛创新点展示 -->
+      <div class="card" style="margin-top:16px;background:linear-gradient(160deg,rgba(122,138,74,.08),var(--surface));border-color:rgba(122,138,74,.25)">
+        <h3 style="color:var(--m-deep,#5A6732)">🏆 大创项目创新点与竞争优势</h3>
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.85">栖匣作为大学生创新创业训练计划项目，以下是与市面同类产品（番茄ToDo、滴答清单、时光序等）的差异化竞争优势，亦是评审创新维度的核心支撑。</p>
+
+        <div class="grid grid-2" style="gap:12px">
+          <div style="padding:14px;background:var(--bg);border-radius:12px;border-left:4px solid var(--m,#7A8A4A)">
+            <h4 style="margin:0 0 8px;font-size:14px;color:var(--m-deep,#5A6732)">💡 创新点1：纯前端零后端架构</h4>
+            <p style="font-size:12.5px;line-height:1.85;margin:0;color:var(--text-2,#5a5045)">整个应用是单个 HTML 文件，无后端服务器、无数据库、无 API 调用。用户数据 100% 存在本地浏览器中（localStorage + Service Worker）。<strong>对比竞品：</strong>番茄ToDo/滴答清单都需要后端服务器存储用户数据，存在数据泄露风险和服务器维护成本。栖匣的架构从根本上消除了数据泄露可能性，且零运维成本。</p>
+          </div>
+          <div style="padding:14px;background:var(--bg);border-radius:12px;border-left:4px solid var(--m,#7A8A4A)">
+            <h4 style="margin:0 0 8px;font-size:14px;color:var(--m-deep,#5A6732)">💡 创新点2：PWA 离线优先策略</h4>
+            <p style="font-size:12.5px;line-height:1.85;margin:0;color:var(--text-2,#5a5045)">采用 Service Worker 的 stale-while-revalidate 缓存策略，实现"有缓存秒开、后台静默更新、离线完全可用"。<strong>对比竞品：</strong>多数 App 需要联网才能使用核心功能，校园网络不稳定时体验差。栖匣在图书馆/教室 WiFi 不稳定时依然完整可用。</p>
+          </div>
+          <div style="padding:14px;background:var(--bg);border-radius:12px;border-left:4px solid var(--m,#7A8A4A)">
+            <h4 style="margin:0 0 8px;font-size:14px;color:var(--m-deep,#5A6732)">💡 创新点3：学业-生活-健康三维联动</h4>
+            <p style="font-size:12.5px;line-height:1.85;margin:0;color:var(--text-2,#5a5045)">不是单纯的任务管理工具，而是将学业备考、职业发展、理财记账、健康打卡、情绪记录、灵感随笔等 30+ 个板块整合在一个应用中，形成跨维度的成长数据闭环。<strong>对比竞品：</strong>滴答清单只有任务管理，时光序功能广但每个都不深。栖匣是市面上唯一深度整合大学生全场景的本地化工具。</p>
+          </div>
+          <div style="padding:14px;background:var(--bg);border-radius:12px;border-left:4px solid var(--m,#7A8A4A)">
+            <h4 style="margin:0 0 8px;font-size:14px;color:var(--m-deep,#5A6732)">💡 创新点4：温和陪伴式设计理念</h4>
+            <p style="font-size:12.5px;line-height:1.85;margin:0;color:var(--text-2,#5a5045)">反内卷、不制造焦虑、不打卡惩罚、不排行榜比较。纸本暖色调视觉风格、手写体标题、温和提示语。所有功能设计以"减轻心理负担"为第一原则。<strong>对比竞品：</strong>多数打卡 App 用连续天数/排行榜制造压力，断签即焦虑。栖匣允许中断、鼓励复盘、尊重个体节奏，更符合积极心理学原理。</p>
+          </div>
+          <div style="padding:14px;background:var(--bg);border-radius:12px;border-left:4px solid var(--m,#7A8A4A)">
+            <h4 style="margin:0 0 8px;font-size:14px;color:var(--m-deep,#5A6732)">💡 创新点5：数据自主权 100% 归用户</h4>
+            <p style="font-size:12.5px;line-height:1.85;margin:0;color:var(--text-2,#5a5045)">支持 JSON 一键导出/导入，数据可随时打包带走，不锁定在任何平台。每日自动备份保留 7 天，支持单模块独立重置。<strong>对比竞品：</strong>主流 App 的数据无法导出为通用格式，用户一旦弃用便全部丢失，形成数据绑架。栖匣从设计层面保障了用户的数据主权。</p>
+          </div>
+          <div style="padding:14px;background:var(--bg);border-radius:12px;border-left:4px solid var(--m,#7A8A4A)">
+            <h4 style="margin:0 0 8px;font-size:14px;color:var(--m-deep,#5A6732)">💡 创新点6：原生 APP + PWA 双端融合</h4>
+            <p style="font-size:12.5px;line-height:1.85;margin:0;color:var(--text-2,#5a5045)">同时提供 PWA 网页版和 Android 原生 APP，APP 直接加载网站内容实现"一次更新、双端同步"，无需维护两套代码。原生 APP 解决了 PWA 在国内 Android 上后台推送受限的问题，PWA 保证了免安装即用。<strong>对比竞品：</strong>通常 App 和 Web 是两套独立代码，维护成本高。栖匣的创新在于用 WebView + Service Worker 实现了真正的"一套代码、多端运行"。</p>
+          </div>
+        </div>
+
+        <div class="callout callout-ok" style="margin-top:14px"><strong>社会价值：</strong>栖匣面向全国大学生公益免费开放，特别惠及教育资源相对薄弱的地区——学生无需付费、无需下载安装、无需注册，打开浏览器即可获得一套完整的大学成长管理工具，有助于缩小教育资源数字化差距。</div>
+      </div>
+
       <div class="card" style="margin-top:16px;background:linear-gradient(160deg,var(--primary-light),var(--surface));border-color:var(--border-strong)">
         <h3 style="color:var(--primary-strong)">使用与隐私说明（请阅读）</h3>
         <p style="font-size:12.5px;color:var(--muted);line-height:1.9">
@@ -8745,7 +8780,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.15.37</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.15.38</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -9176,9 +9211,22 @@ window.tbSearchGo=function(){
 };
 /* 重置本地数据：清空 localStorage 后恢复默认示例，解决旧缓存导致的“内容变了”问题 */
 function resetLocalData(){
-  if(!confirm('确定清空本地保存的所有数据（计划、目标、日记等），恢复到默认示例吗？此操作不可撤销。'))return;
-  try{localStorage.clear();}catch(e){}
-  location.reload();
+  if(!window.uiConfirm){
+    if(!confirm('确定清空本地保存的所有数据？此操作不可撤销。'))return;
+    try{localStorage.clear();}catch(e){}
+    location.reload();
+    return;
+  }
+  uiConfirm('⚠️ 确定清空本地保存的所有数据吗？
+
+（计划、目标、日记、打卡记录等将全部清除，恢复到默认示例。此操作不可撤销，建议先导出备份。）',function(){
+    try{localStorage.clear();}catch(e){}
+    try{sessionStorage.clear();}catch(e){}
+    if('caches' in window){
+      caches.keys().then(function(keys){return Promise.all(keys.map(function(k){return caches.delete(k);}));}).catch(function(){});
+    }
+    location.reload();
+  });
 }
 /* 点击空白处关闭“更多”菜单 */
 document.addEventListener('click',function(e){
@@ -15514,6 +15562,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.15.38',t:'重置按钮修复 · 大创创新点 · 职业规划重构',tag:'核心修复+新功能',blocks:[
+      '· 【修复】重置本地数据按钮无响应问题：原生confirm()在WebView下可能被屏蔽，改用uiConfirm弹窗，确保所有环境可点。',
+      '· 【大创参赛】关于产品页新增「大创项目创新点与竞争优势」板块：6大创新点+竞品对比分析+社会价值阐述，直接支撑大创评审创新维度。',
+      '· 【职业规划重构】路线图从三列表格改为时间轴卡片式布局，手机可读；新增实习怎么找、STAR法则详解、面试准备清单3大实用板块。',
+      '· 【APP启动优化】去掉原生简陋加载页，直接显示网站本身风格，纸本暖色调背景避免白屏闪烁。',
+      '· 【数据安全】重置操作同时清理localStorage+sessionStorage+SW缓存，确保彻底清空旧数据。'
+    ]},
     {v:'2026.09.15.36',t:'APP上线 · SW秒开+自动更新 · 顶栏修复',tag:'新功能+核心修复',blocks:[
       '· 【栖匣APP发布】正式Android APP上架准备完成，加载远程网站+Service Worker缓存，网站更新APP自动同步最新版。',
       '· 【SW策略优化】改为stale-while-revalidate：有缓存秒开，后台静默更新，下次打开就是最新版。移除页面端强制刷新逻辑，避免打断用户操作。',
