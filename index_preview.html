@@ -8488,100 +8488,158 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
       <div class="tab-pane" id="t-fakao">
         <div class="callout callout-warn">
-          <strong>提示：</strong>法考（国家统一法律职业资格考试）分为客观题和主观题两个阶段，通常9月客观题、10月主观题。法考含金量高、备考周期长，建议大一下或大二开始规划。
+          <strong>解决的真实麻烦：</strong>法考18个科目、备考周期大半年，不知道从哪开始、怎么安排、用什么资料。这里帮你理清框架、排好计划、少走弯路。
         </div>
+
+        <!-- 顶部状态卡片 -->
         <div class="grid grid-3" style="margin-bottom:16px">
           <div class="metric"><div class="label">距客观题</div><div class="value" id="fakaoDays">--</div><div class="sub">天</div></div>
           <div class="metric"><div class="label">备考阶段</div><div class="value" id="fakaoPhase">规划中</div><div class="sub">精讲/真题/冲刺</div></div>
-          <div class="metric"><div class="label">已学科目</div><div class="value"><span contenteditable="true" data-key="fakao-subjects" style="background:var(--bg);padding:2px 8px;border-radius:4px;cursor:text">0</span>/18</div><div class="sub">客观题8科+主观题</div></div>
+          <div class="metric"><div class="label">已学科目</div><div class="value"><span contenteditable="true" data-key="fakao-subjects" style="background:var(--bg);padding:2px 8px;border-radius:4px;cursor:text">0</span>/8</div><div class="sub">客观题8大科</div></div>
         </div>
 
+        <!-- 法考科目全景 -->
         <div class="card">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>法考科目全景 · 18科全览</h3>
-          <div class="grid grid-2">
-            <div>
-              <h4 style="color:var(--primary)">客观题 · 8大法学科</h4>
-              <table style="width:100%;font-size:13px;border-collapse:collapse">
-                <tbody>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">民法</td><td style="padding:6px 8px;border:1px solid var(--border)">刑法</td></tr>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">行政法与行政诉讼法</td><td style="padding:6px 8px;border:1px solid var(--border)">民事诉讼法</td></tr>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">刑事诉讼法</td><td style="padding:6px 8px;border:1px solid var(--border)">商法</td></tr>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">经济法</td><td style="padding:6px 8px;border:1px solid var(--border)">国际法（国际公法/私法/经济法）</td></tr>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">理论法（法理/宪法/法制史/法律职业）</td><td style="padding:6px 8px;border:1px solid var(--border)">环境资源法+劳动社保法</td></tr>
-                </tbody>
-              </table>
-              <p style="font-size:12px;color:var(--hint);margin-top:8px">客观题共两卷：卷一（公法）+ 卷二（私法），每卷100题，各150分，总分180分合格。</p>
-            </div>
-            <div>
-              <h4 style="color:var(--primary)">主观题 · 综合考察</h4>
-              <table style="width:100%;font-size:13px;border-collapse:collapse">
-                <tbody>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">法治思想论述题</td><td style="padding:6px 8px;border:1px solid var(--border)">刑法案例分析</td></tr>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">刑诉法案例分析</td><td style="padding:6px 8px;border:1px solid var(--border)">民法+民诉+商法综合</td></tr>
-                  <tr><td style="padding:6px 8px;border:1px solid var(--border)">行政法/商法（选做）</td><td style="padding:6px 8px;border:1px solid var(--border)">--</td></tr>
-                </tbody>
-              </table>
-              <p style="font-size:12px;color:var(--hint);margin-top:8px">主观题共1卷，约6道大题，总分180分，108分合格。考试时间4小时，需机考打字。</p>
-            </div>
+          <h3>📋 法考科目全景 · 8大科权重与难度</h3>
+          <p style="font-size:13px;line-height:1.8">法考客观题两张卷，每卷100道题（单选50+多选35+不定项15），各150分，总分180分过线。先搞清楚每科占多少分、难不难，再决定投入多少时间。</p>
+          <table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:10px">
+            <thead>
+              <tr style="background:var(--primary-light)">
+                <th style="padding:8px;border:1px solid var(--border)">科目</th>
+                <th style="padding:8px;border:1px solid var(--border)">分值占比</th>
+                <th style="padding:8px;border:1px solid var(--border)">难度</th>
+                <th style="padding:8px;border:1px solid var(--border)">特点</th>
+                <th style="padding:8px;border:1px solid var(--border)">备考策略</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>民法</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约45分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-coral">★★★★★</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">内容最多、最灵活</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">理解为主，早开始</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>刑法</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约40分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-coral">★★★★★</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">理论深、观点多</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">跟一个老师到底</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>民诉</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约30分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-yellow">★★★☆☆</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">程序法、记忆多</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">记流程图，多对比</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>刑诉</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约30分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-coral">★★★★☆</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">细节多、容易混</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">表格对比记忆</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>行政法</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约25分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-yellow">★★★☆☆</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">抽象、离生活远</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">抓主体→行为→救济</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>商经知</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约50分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-yellow">★★★☆☆</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">分值高、但碎</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">商法重点学，知产捡分</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>理论法</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约50分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-green">★★☆☆☆</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">背了就得分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">后期集中背诵，性价比最高</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><strong>三国法</strong></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">约20分</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)"><span class="tag tag-yellow">★★★☆☆</span></td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">分值少、入门难</td>
+                <td style="padding:6px 8px;border:1px solid var(--border)">时间紧可以战略性放弃</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout-info" style="margin-top:10px;font-size:12px">
+            <strong>💡 备考顺序建议：</strong>民法 → 刑法 → 民诉 → 刑诉 → 行政法 → 商经知 → 理论法 → 三国法。先实体后程序，先难后易，理解型科目早开始，记忆型科目放后期。
           </div>
         </div>
 
+        <!-- 三轮复习时间轴 -->
         <div class="card" style="margin-top:16px">
-          <h3>🗓 法考备考时间轴 · 三轮复习法</h3>
+          <h3>🗓 三轮复习法 · 法考备考时间轴</h3>
           <div style="position:relative;padding-left:24px;border-left:2px solid var(--primary-light)">
             <div style="position:relative;margin-bottom:20px">
               <div style="position:absolute;left:-31px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--primary)"></div>
-              <h4 style="margin:0 0 6px 0">第一轮：精讲精学（3-5月）</h4>
-              <p style="font-size:13px;line-height:1.8;margin:0">系统学习全部科目，跟着网课+教材打基础。民法刑法各花2周，其余科目各1周。重在理解，不急于背诵。每学完一科做对应真题的章节练习。</p>
-              <div class="callout callout-info" style="margin-top:6px;font-size:12px"><strong>重点：</strong>民法、刑法是基础中的基础，理解透彻了后面会轻松很多。</div>
+              <h4 style="margin:0 0 6px 0">第一轮：精讲精学（3-5月，约3个月）</h4>
+              <p style="font-size:13px;line-height:1.8;margin:0">跟着网课+教材系统学习全部科目。民法刑法各花2-3周，诉讼法各1.5周，其余科目各1周。重在理解，不急于背诵。每学完一科做对应真题的章节练习。</p>
+              <div class="callout callout-info" style="margin-top:6px;font-size:12px"><strong>重点：</strong>民法、刑法是基础，理解透彻了后面会轻松很多。不要赶进度，听懂比听完重要。</div>
             </div>
             <div style="position:relative;margin-bottom:20px">
               <div style="position:absolute;left:-31px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--primary)"></div>
-              <h4 style="margin:0 0 6px 0">第二轮：真题+背诵（6-8月）</h4>
+              <h4 style="margin:0 0 6px 0">第二轮：真题+背诵（6-8月，约3个月）</h4>
               <p style="font-size:13px;line-height:1.8;margin:0">刷近10年真题，至少刷2遍。第一遍按科目刷，第二遍按年份刷。开始背诵理论法、诉讼法、商经知等记忆型科目。用错题本标记薄弱点。</p>
-              <div class="callout callout-info" style="margin-top:6px;font-size:12px"><strong>重点：</strong>真题是最好的复习资料，反复做、弄懂每一个选项。</div>
+              <div class="callout callout-info" style="margin-top:6px;font-size:12px"><strong>重点：</strong>真题是最好的复习资料，重者恒重，反复做、弄懂每一个选项。</div>
             </div>
             <div style="position:relative">
               <div style="position:absolute;left:-31px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--primary)"></div>
-              <h4 style="margin:0 0 6px 0">第三轮：冲刺+模考（8月底-9月）</h4>
+              <h4 style="margin:0 0 6px 0">第三轮：冲刺+模考（8月底-9月，约1个月）</h4>
               <p style="font-size:13px;line-height:1.8;margin:0">全真模拟考试，适应机考节奏。重点背诵高频考点和新增考点。回顾错题本，查漏补缺。考前一周调整作息，保持状态。</p>
-              <div class="callout callout-warn" style="margin-top:6px;font-size:12px"><strong>提醒：</strong>客观题考完到主观题考试只有约1个月，客观题考完立即转入主观题备考，不要等成绩。</div>
+              <div class="callout callout-warn" style="margin-top:6px;font-size:12px"><strong>提醒：</strong>客观题考完到主观题考试只有约1个月，考完客观题立即转入主观题备考，不要等成绩。</div>
             </div>
           </div>
         </div>
 
+        <!-- 备考资源与避坑 -->
         <div class="grid grid-2" style="margin-top:16px">
           <div class="card">
-            <h3>📚 备考资源推荐</h3>
+            <h3>📚 备考资源怎么选</h3>
             <ul style="font-size:13px;line-height:2">
-              <li><strong>教材：</strong>各机构精讲卷（柏杜/众合/瑞达等，选适合自己的老师）</li>
-              <li><strong>真题：</strong>历年真题汇编（按科目+按年份两套）</li>
-              <li><strong>背诵版：</strong>考前必背/冲刺背诵笔记（8月后出）</li>
-              <li><strong>法条：</strong>觉晓/竹马法条系统（主观题查法条用）</li>
-              <li><strong>模考：</strong>觉晓法考APP（全真机考模拟）</li>
+              <li><strong>教材：</strong>选一套机构的精讲卷即可（众合/柏杜/瑞达都行）</li>
+              <li><strong>真题：</strong>必备！近10年真题，按科目+按年份各一套</li>
+              <li><strong>背诵版：</strong>8月后出，考前冲刺用</li>
+              <li><strong>APP：</strong>觉晓/竹马（刷题+模考+法条）</li>
+              <li><strong>老师选择：</strong>每个科目跟1个老师，别贪多</li>
             </ul>
+            <div class="callout callout-warn" style="margin-top:8px;font-size:12px">
+              <strong>避坑：</strong>不要同时跟多个老师，风格不一样会混乱。选一个能听进去的就好，适合自己的才是最好的。
+            </div>
           </div>
           <div class="card">
-            <h3>⚠️ 法考避坑指南</h3>
+            <h3>⚠️ 法考常见误区</h3>
             <ul style="font-size:13px;line-height:2">
-              <li>❌ 不要贪多老师，每个科目跟1个老师就够了</li>
-              <li>❌ 不要只听课不做题，听懂≠会做</li>
-              <li>❌ 不要死磕偏题怪题，重者恒重</li>
-              <li>❌ 不要忽视理论法（性价比极高，背了就得分）</li>
+              <li>❌ 只听课不做题 — 听懂≠会做，一定要刷题</li>
+              <li>❌ 死磕偏题怪题 — 重者恒重，把分拿到就过</li>
+              <li>❌ 忽视理论法 — 性价比最高，背了就得分</li>
+              <li>❌ 每个科目平均用力 — 民法刑法民诉刑诉是大头</li>
               <li>✅ 真题至少刷2遍以上</li>
               <li>✅ 提前适应机考打字速度</li>
+              <li>✅ 错题本比做新题更重要</li>
             </ul>
           </div>
         </div>
 
+        <!-- 打卡清单 -->
         <div class="card" style="margin-top:16px">
-          <h3>📋 法考备考打卡清单</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;font-size:13px">
+          <h3>✅ 法考备考进度打卡</h3>
+          <p style="font-size:13px">标记你已经完成的阶段，实时追踪备考进度：</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;font-size:13px;margin-top:10px">
             <label class="check-item"><input type="checkbox" class="fakao-check"> 民法精讲完成</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 刑法精讲完成</label>
-            <label class="check-item"><input type="checkbox" class="fakao-check"> 行政法精讲完成</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 民诉法精讲完成</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 刑诉法精讲完成</label>
+            <label class="check-item"><input type="checkbox" class="fakao-check"> 行政法精讲完成</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 商经知精讲完成</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 理论法精讲完成</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 三国法精讲完成</label>
@@ -8589,155 +8647,607 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <label class="check-item"><input type="checkbox" class="fakao-check"> 真题二刷（按年份）</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 背诵版过1轮</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 全真模考3次以上</label>
-            <label class="check-item"><input type="checkbox" class="fakao-check"> 主观题案例练习</label>
-            <label class="check-item"><input type="checkbox" class="fakao-check"> 法条定位训练</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 错题本回顾完毕</label>
             <label class="check-item"><input type="checkbox" class="fakao-check"> 考前聚焦听完</label>
+            <label class="check-item"><input type="checkbox" class="fakao-check"> 主观题案例练习</label>
+            <label class="check-item"><input type="checkbox" class="fakao-check"> 法条定位训练</label>
           </div>
           <div style="margin-top:12px;font-size:13px;color:var(--hint)">已完成：<span id="fakaoCheckCount">0</span> / 16 项</div>
+        </div>
+
+        <div class="callout callout-info" style="margin-top:16px;font-size:12px">
+          <strong>💡 给法学专业同学的建议：</strong>法考是法律人的必经之路，建议大二下或大三开始准备。在校期间时间相对充裕，比工作后备考轻松很多。先过客观题，第二年再过主观题也完全可以。
         </div>
       </div>
 
       <div class="tab-pane" id="t-aitools">
         <div class="callout callout-info">
-          <strong>AI 学习工具箱：</strong>善用 AI 工具可以让学习效率翻倍。这里整理了各类 AI 学习工具和使用方法，帮你把 AI 变成你的专属学习伙伴。
+          <strong>这个板块帮你解决什么问题？</strong>你手机里有豆包、有 ChatGPT，但不知道怎么用在学习上——不知道问什么、怎么问才能得到有用的答案。这里给你<strong>现成的方法和话术</strong>，照着做就能让 AI 帮你干活：练口语、整理资料、分析错题、蒸馏课本……每一个都有<strong>具体操作步骤 + 可直接复制的 Prompt 模板</strong>。
         </div>
 
-        <div class="grid grid-3" style="margin-bottom:16px">
-          <div class="card">
-            <div style="font-size:32px;margin-bottom:8px">🗣</div>
-            <h3>AI 口语听力训练</h3>
-            <p style="font-size:13px;line-height:1.8">用 AI 对话工具练习英语口语和听力，随时练、免费练、不尴尬。</p>
-            <ul style="font-size:12px;line-height:2">
-              <li>• 豆包APP：英语对话模式，练口语</li>
-              <li>• 每日英语听力 + AI跟读</li>
-              <li>• ChatGPT：角色扮演对话</li>
-              <li>• 讯飞听见：听力精听+翻译</li>
-            </ul>
+        <!-- 入口卡片：4个核心功能 -->
+        <div class="grid grid-4" style="margin-bottom:16px">
+          <div class="card" style="text-align:center;cursor:pointer" onclick="document.getElementById(&quot;ai-distill-section&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
+            <div style="font-size:36px;margin-bottom:8px">📚</div>
+            <h4 style="margin:0 0 4px 0">AI 知识蒸馏</h4>
+            <p style="font-size:12px;color:var(--hint);margin:0">厚书/长文/网站<br>→ 结构化笔记</p>
           </div>
-          <div class="card">
-            <div style="font-size:32px;margin-bottom:8px">📚</div>
-            <h3>AI 知识整理助手</h3>
-            <p style="font-size:13px;line-height:1.8">用 AI 快速整理学习资料，把厚书变薄、把杂乱变有序。</p>
-            <ul style="font-size:12px;line-height:2">
-              <li>• 课堂录音转文字+总结</li>
-              <li>• 长文档摘要提炼</li>
-              <li>• 知识点思维导图生成</li>
-              <li>• 错题自动归类分析</li>
-            </ul>
+          <div class="card" style="text-align:center;cursor:pointer" onclick="document.getElementById(&quot;ai-speaking-section&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
+            <div style="font-size:36px;margin-bottom:8px">🗣</div>
+            <h4 style="margin:0 0 4px 0">AI 口语陪练</h4>
+            <p style="font-size:12px;color:var(--hint);margin:0">豆包/ChatGPT<br>免费练口语听力</p>
           </div>
-          <div class="card">
-            <div style="font-size:32px;margin-bottom:8px">🧠</div>
-            <h3>AI 知识蒸馏工具</h3>
-            <p style="font-size:13px;line-height:1.8">把整本书、整个网站、整套课程蒸馏成结构化知识库，高效吸收。</p>
-            <ul style="font-size:12px;line-height:2">
-              <li>• 网页内容蒸馏→知识库</li>
-              <li>• PDF书籍提取核心框架</li>
-              <li>• 课程视频→文字笔记</li>
-              <li>• 多资料交叉对比整理</li>
-            </ul>
+          <div class="card" style="text-align:center;cursor:pointer" onclick="document.getElementById(&quot;ai-study-section&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
+            <div style="font-size:36px;margin-bottom:8px">🧠</div>
+            <h4 style="margin:0 0 4px 0">AI 学习助手</h4>
+            <p style="font-size:12px;color:var(--hint);margin:0">错题讲解/知识点梳理<br>/备考规划</p>
+          </div>
+          <div class="card" style="text-align:center;cursor:pointer" onclick="document.getElementById(&quot;ai-prompt-section&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
+            <div style="font-size:36px;margin-bottom:8px">📋</div>
+            <h4 style="margin:0 0 4px 0">Prompt 模板库</h4>
+            <p style="font-size:12px;color:var(--hint);margin:0">12个现成模板<br>复制粘贴就能用</p>
           </div>
         </div>
 
-        <div class="card">
-          <h3>🎯 AI 口语练习 · 7天进阶计划</h3>
+        <!-- ============ AI 知识蒸馏 ============ -->
+        <div class="card" id="ai-distill-section">
+          <h3>📚 AI 知识蒸馏 · 把厚书变薄、把杂乱变有序</h3>
+          <div class="callout callout-warn" style="margin-bottom:14px">
+            <strong>解决的真实麻烦：</strong>一学期下来课本堆成山、网课几十节、笔记东一张西一张，期末复习不知道从哪下手。用 AI 把这些资料"蒸馏"成一份结构化的知识体系，复习效率翻倍。
+          </div>
+
+          <h4 style="color:var(--primary)">蒸馏 5 步法 · 通用流程（任何资料都能用）</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">1</div>
+              <div>
+                <strong>收集素材</strong>
+                <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">把要蒸馏的内容准备好：PDF 课本、网页链接、课堂录音转文字、手写笔记拍照等。文本类效果最好。</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">2</div>
+              <div>
+                <strong>设定目标</strong>
+                <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">想清楚你要什么：是要"框架梳理"还是"考点提炼"？是要"速记笔记"还是"对比分析"？目标越具体，蒸馏效果越好。</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">3</div>
+              <div>
+                <strong>投喂 + 指令</strong>
+                <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">把资料喂给 AI（粘贴文本 / 上传文件 / 给链接），加上明确的指令。用下面的现成 Prompt 模板，不用自己想。</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">4</div>
+              <div>
+                <strong>追问细化</strong>
+                <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">第一轮输出只是初稿。针对你觉得不清楚、不够细的部分继续追问，让 AI 展开、举例、对比。好东西是"聊"出来的，不是一次问出来的。</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">5</div>
+              <div>
+                <strong>整理存档</strong>
+                <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">把蒸馏结果复制到笔记里，加上自己的理解和补充。AI 是初稿，你才是最终编辑。</p>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary)">4 种最实用的蒸馏场景 · 附现成 Prompt</h4>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
+              <h4 style="margin:0 0 6px 0">📖 课本章节蒸馏</h4>
+              <p style="font-size:12px;line-height:1.7;margin:0 0 8px 0"><strong>痛点：</strong>一章几十页，看完抓不住重点。</p>
+              <div style="background:var(--card);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请阅读下面这章内容，帮我蒸馏出：
+1. 本章核心观点（3句话）
+2. 重要概念清单 + 定义
+3. 逻辑框架（用箭头表示关系）
+4. 典型考点/应用场景
+5. 容易混淆的点 + 区分方法
+
+内容如下：
+[粘贴课本章节文本]</div>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
+              <h4 style="margin:0 0 6px 0">🌐 网站/公众号蒸馏</h4>
+              <p style="font-size:12px;line-height:1.7;margin:0 0 8px 0"><strong>痛点：</strong>保研机构/考试官网信息分散，翻来翻去找不到重点。</p>
+              <div style="background:var(--card);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请帮我整理这个网站/文章的内容，形成一份结构化知识库：
+1. 有哪些栏目/板块，分别讲什么
+2. 核心信息点汇总（分类整理）
+3. 时间节点/重要日期列表
+4. 价格/费用信息（如果有）
+5. 有哪些说法前后不一致或需要核实
+6. 我下一步应该做什么
+
+内容/链接：
+[粘贴内容或给链接]</div>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
+              <h4 style="margin:0 0 6px 0">🎬 网课/讲座蒸馏</h4>
+              <p style="font-size:12px;line-height:1.7;margin:0 0 8px 0"><strong>痛点：</strong>两小时的课，回头复习不知道重点在哪。</p>
+              <div style="background:var(--card);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请把这段课程文字稿整理成学习笔记：
+1. 课程主题和核心论点
+2. 知识点框架（分点列出）
+3. 老师强调的重点（标记★重点）
+4. 举例/案例（帮助理解）
+5. 课后思考题/作业要求
+6. 我没听懂的地方 + 建议补充内容
+
+文字稿如下：
+[粘贴转写文本]</div>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
+              <h4 style="margin:0 0 6px 0">📊 多资料对比蒸馏</h4>
+              <p style="font-size:12px;line-height:1.7;margin:0 0 8px 0"><strong>痛点：</strong>几本参考书说法不一样，不知道信谁。</p>
+              <div style="background:var(--card);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请对比以下几份资料，帮我做交叉分析：
+1. 几份资料的共同点（一致认可的内容）
+2. 几份资料的不同点（观点差异在哪里）
+3. 哪份资料更权威/更详细，为什么
+4. 互补内容汇总（A有B没有+B有A没有）
+5. 我应该按什么顺序学习这些资料
+6. 最终的知识体系整合版
+
+资料A：[粘贴A]
+资料B：[粘贴B]</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warn" style="margin-top:12px;font-size:12px">
+            <strong>⚠️ 蒸馏不是照搬：</strong>AI 蒸馏出来的东西需要你自己过一遍、核实、加理解。特别是法律法规、考试政策、数据类信息，务必以官方来源为准。AI 帮你省时间，但不能替你负责。
+          </div>
+        </div>
+
+        <!-- ============ AI 口语陪练 ============ -->
+        <div class="card" style="margin-top:16px" id="ai-speaking-section">
+          <h3>🗣 AI 口语陪练 · 没人说也能自己练</h3>
+          <div class="callout callout-warn" style="margin-bottom:14px">
+            <strong>解决的真实麻烦：</strong>想练口语但没人对话、怕说错被笑话、报外教课又贵。用豆包或 ChatGPT 就能免费练——随时练、想练多久练多久、说错了也不尴尬。
+          </div>
+
+          <h4 style="color:var(--primary)">用豆包练口语 · 3 步上手</h4>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;text-align:center;background:var(--paper-bg)">
+              <div style="font-size:24px;margin-bottom:6px">1️⃣</div>
+              <strong style="font-size:13px">打开豆包 APP</strong>
+              <p style="font-size:12px;color:var(--hint);margin:4px 0 0 0">切换到语音模式或直接打字</p>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;text-align:center;background:var(--paper-bg)">
+              <div style="font-size:24px;margin-bottom:6px">2️⃣</div>
+              <strong style="font-size:13px">发送场景指令</strong>
+              <p style="font-size:12px;color:var(--hint);margin:4px 0 0 0">复制下面的 Prompt 发给它</p>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;text-align:center;background:var(--paper-bg)">
+              <div style="font-size:24px;margin-bottom:6px">3️⃣</div>
+              <strong style="font-size:13px">开始对话练习</strong>
+              <p style="font-size:12px;color:var(--hint);margin:4px 0 0 0">用语音或打字回应，说错了会帮你纠正</p>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary)">6 个实用口语练习场景 · 复制即用</h4>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="font-size:13px">场景一：日常闲聊（入门级）</strong>
+                <span class="tag tag-teal" style="font-size:11px">适合四级口语</span>
+              </div>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">Let's practice English conversation.
+You act as my English-speaking friend.
+We chat about daily topics.
+Please:
+1. Keep your sentences simple (CET-4 level)
+2. If I make a grammar mistake, correct me gently
+3. Ask me questions to keep the conversation going
+4. Each time, suggest 1-2 better ways to say what I said
+
+Let's start with the topic: [填话题，如 my college life]</div>
+            </div>
+
+            <div style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="font-size:13px">场景二：观点辩论（进阶级）</strong>
+                <span class="tag tag-blue" style="font-size:11px">适合六级口语</span>
+              </div>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">Let's have a debate.
+Topic: [填话题，如 online learning vs classroom]
+You take the [opposite/pro] side.
+Rules:
+1. We present arguments one by one
+2. After I speak, point out language mistakes
+3. Also comment on the logic of my argument
+4. At the end, score me out of 10:
+   - Fluency / Grammar / Vocabulary / Logic
+
+Let's start. You go first.</div>
+            </div>
+
+            <div style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="font-size:13px">场景三：模拟面试</strong>
+                <span class="tag tag-coral" style="font-size:11px">保研/求职面试</span>
+              </div>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">You are an interviewer for [保研/目标公司].
+I am a candidate.
+Conduct a mock interview in English.
+Process:
+1. Start with self-introduction
+2. Ask 5-6 questions one by one
+3. After each answer, give feedback on:
+   - Language quality
+   - Content quality (is my answer good?)
+4. At the end, give overall feedback
+
+Let's begin. First: please introduce yourself.</div>
+            </div>
+
+            <div style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="font-size:13px">场景四：跟读纠音</strong>
+                <span class="tag tag-green" style="font-size:11px">发音矫正</span>
+              </div>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">I want to practice pronunciation.
+Give me 5 sentences today (CET-4 level).
+For each sentence:
+1. Show the sentence
+2. Show IPA of difficult words
+3. Point out common mistakes Chinese students make
+4. Tell me which words to stress
+
+After I read each, you give feedback.
+
+Let's start with the first sentence.</div>
+            </div>
+
+            <div style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="font-size:13px">场景五：作文→口语转换</strong>
+                <span class="tag tag-gray" style="font-size:11px">写作转口语</span>
+              </div>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">I wrote this essay.
+Turn it into natural spoken English.
+- Make it more conversational, less formal
+- Replace written words with spoken equivalents
+- Add natural filler phrases
+- Show the difference side by side
+- Then help me practice saying it
+
+My writing:
+[粘贴作文段落]</div>
+            </div>
+
+            <div style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="font-size:13px">场景六：听力精听辅助</strong>
+                <span class="tag tag-purple" style="font-size:11px">听力提升</span>
+              </div>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">I'm practicing listening comprehension.
+Here is the transcript of what I listened to:
+[粘贴听力原文]
+
+Please help me:
+1. Mark the key information points
+2. Explain any difficult words or phrases
+3. Point out connected speech / reduced forms
+4. Summarize the main idea in 1 sentence
+5. Give me 3 comprehension questions to test
+6. Read it back to me (type it out so I can
+   practice shadowing with the text)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info" style="margin-top:12px;font-size:12px">
+            <strong>💡 练口语的正确姿势：</strong>每天 15-20 分钟就够了，贵在坚持。说错了不要停，继续说——流利度比完美更重要。每周录一次自己的对话，对比听进步。
+          </div>
+        </div>
+
+        <!-- ============ AI 学习助手 ============ -->
+        <div class="card" style="margin-top:16px" id="ai-study-section">
+          <h3>🧠 AI 学习助手 · 学习遇到困难时的工具</h3>
+          <div class="callout callout-warn" style="margin-bottom:14px">
+            <strong>解决的真实麻烦：</strong>上课没听懂、做题不会做、知识点太乱……这些时候如果有个老师随时在就好了。AI 就是那个随时能问的"助教"——但你得会问。
+          </div>
+
           <div class="grid grid-2">
             <div>
-              <h4>Day 1-3：基础对话</h4>
-              <ul style="font-size:13px;line-height:2">
-                <li>用 AI 做自我介绍练习</li>
-                <li>日常话题对话（天气、食物、兴趣）</li>
-                <li>让 AI 纠正你的语法和用词</li>
-                <li>每天 15 分钟，开口说就行</li>
-              </ul>
-              <div class="callout callout-info" style="font-size:12px"><strong>Prompt：</strong>"Let's have a casual conversation about [topic]. Please correct my grammar and suggest more natural expressions."</div>
+              <h4 style="color:var(--primary)">📝 错题分析</h4>
+              <p style="font-size:13px;line-height:1.8"><strong>痛点：</strong>做错了题，看答案也没完全懂，下次还是错。</p>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">这道题我做错了：
+
+题目：[粘贴题目]
+我的答案：[你的答案]
+正确答案：[正确答案]
+
+请告诉我：
+1. 我为什么错了？哪个知识点没掌握？
+2. 正确的解题思路是什么？（一步步讲）
+3. 这道题考的是什么考点？
+4. 这类题的解题套路是什么？
+5. 再出 2 道类似的题让我练习</div>
             </div>
             <div>
-              <h4>Day 4-7：主题深化</h4>
-              <ul style="font-size:13px;line-height:2">
-                <li>四六级口语考试话题练习</li>
-                <li>观点表达+辩论练习</li>
-                <li>角色扮演（面试/演讲/讨论）</li>
-                <li>录音回听，对比 AI 标准发音</li>
-              </ul>
-              <div class="callout callout-info" style="font-size:12px"><strong>技巧：</strong>让 AI 用不同难度的英语和你对话，从简单到进阶逐步提升。</div>
+              <h4 style="color:var(--primary)">📖 知识点讲解</h4>
+              <p style="font-size:13px;line-height:1.8"><strong>痛点：</strong>课本上讲得太抽象，看不懂。</p>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请用费曼技巧给我讲明白 [知识点]：
+1. 先用最简单的话解释（给小学生讲）
+2. 再用专业术语解释（正式定义）
+3. 举 2-3 个生活中的例子
+4. 这个知识点和 [相关知识点] 有什么关系
+5. 出 3 道题考我，看看我懂了没
+
+我目前的基础是：[大一/零基础]</div>
+            </div>
+          </div>
+
+          <div class="grid grid-2" style="margin-top:12px">
+            <div>
+              <h4 style="color:var(--primary)">📅 备考规划</h4>
+              <p style="font-size:13px;line-height:1.8"><strong>痛点：</strong>不知道怎么安排复习计划。</p>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">我要备考 [四级/法考/考研]，
+考试时间是 [日期]，
+目前基础：[描述基础]，
+每天能学 [X] 小时。
+
+请制定备考计划：
+1. 分几个阶段？每阶段多久、目标？
+2. 每个阶段具体学什么？
+3. 每天的时间怎么分配（各科比例）
+4. 每周/每月怎么复盘调整？
+5. 常见的坑和避坑建议</div>
+            </div>
+            <div>
+              <h4 style="color:var(--primary)">✍️ 作文批改</h4>
+              <p style="font-size:13px;line-height:1.8"><strong>痛点：</strong>写了作文没人改。</p>
+              <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请帮我批改这篇英语作文：
+题目：[作文题目]
+
+我的作文：
+[粘贴你的作文]
+
+请从以下方面批改：
+1. 语法错误（指出并改正）
+2. 用词问题（更地道的表达）
+3. 句式建议（更高级的句式）
+4. 结构和逻辑（论点是否清晰）
+5. 打分（按四级标准）
+6. 改写后的提升版作文</div>
             </div>
           </div>
         </div>
 
-        <div class="card" style="margin-top:16px">
-          <h3>📖 AI 知识蒸馏 · 学习资料高效整理法</h3>
-          <p style="font-size:13px;line-height:1.8">面对厚厚的教材、长长的课程、杂乱的笔记，用 AI 帮你提炼核心：</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:12px">
-            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
-              <h4 style="margin:0 0 6px 0">📄 长文档摘要</h4>
-              <p style="font-size:12px;line-height:1.7;margin:0">把几十页的论文/报告/教材章节丢给 AI，让它提炼出：核心观点+关键论据+重要结论+不理解的问题。</p>
-            </div>
-            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
-              <h4 style="margin:0 0 6px 0">🌐 网站内容蒸馏</h4>
-              <p style="font-size:12px;line-height:1.7;margin:0">把一个网站（如保研机构、考试官网）的全部内容交给 AI 整理成结构化知识库：栏目分类+核心信息+价格对比+注意事项。</p>
-            </div>
-            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
-              <h4 style="margin:0 0 6px 0">🎬 课程视频笔记</h4>
-              <p style="font-size:12px;line-height:1.7;margin:0">网课视频先用语音转文字，再让 AI 整理成结构化笔记：知识点框架+重点标注+课后习题思路。</p>
-            </div>
-            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
-              <h4 style="margin:0 0 6px 0">📚 错题分析</h4>
-              <p style="font-size:12px;line-height:1.7;margin:0">把错题拍照或输入 AI，让它：1. 讲解正确思路 2. 分析你错在哪 3. 推荐同类练习题 4. 总结这类题的解题模板。</p>
-            </div>
-            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
-              <h4 style="margin:0 0 6px 0">🗂 多资料对比</h4>
-              <p style="font-size:12px;line-height:1.7;margin:0">把几本参考书、几份资料同时给 AI，让它做交叉对比：观点异同+互补内容+冲突点+推荐学习顺序。</p>
-            </div>
-            <div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--paper-bg)">
-              <h4 style="margin:0 0 6px 0">🧩 知识体系构建</h4>
-              <p style="font-size:12px;line-height:1.7;margin:0">学完一个科目后，让 AI 帮你生成知识体系图：核心概念→分支领域→重要理论→典型应用→前沿进展。</p>
+        <!-- ============ Prompt 模板库 ============ -->
+        <div class="card" style="margin-top:16px" id="ai-prompt-section">
+          <h3>📋 Prompt 模板库 · 12个现成模板复制即用</h3>
+          <p style="font-size:13px;line-height:1.8">不会问 AI？直接复制下面的模板，把方括号里的内容换成你自己的就行。</p>
+
+          <div style="margin-bottom:10px">
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span class="tag tag-teal" style="cursor:pointer" onclick="filterPrompts(&quot;all&quot;)">全部</span>
+              <span class="tag" style="cursor:pointer" onclick="filterPrompts(&quot;study&quot;)">学习类</span>
+              <span class="tag" style="cursor:pointer" onclick="filterPrompts(&quot;english&quot;)">英语类</span>
+              <span class="tag" style="cursor:pointer" onclick="filterPrompts(&quot;career&quot;)">升学/求职</span>
+              <span class="tag" style="cursor:pointer" onclick="filterPrompts(&quot;life&quot;)">生活类</span>
             </div>
           </div>
-          <div class="callout callout-warn" style="margin-top:12px;font-size:12px">
-            <strong>注意：</strong>AI 生成的内容需要自己核实，特别是法律法规、考试政策、数据类信息，务必以官方来源为准。AI 是助手不是权威。
+
+          <div id="promptList" style="display:flex;flex-direction:column;gap:8px">
+            <div class="prompt-item" data-cat="study">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">📖 课本章节速读笔记</strong>
+                <span class="tag tag-teal" style="font-size:11px">学习类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我把这章内容整理成复习笔记：
+1. 核心观点（3句话）
+2. 重要概念+定义
+3. 知识框架图（文字箭头）
+4. 典型考点
+5. 易混点区分
+
+内容：[粘贴]</div>
+            </div>
+
+            <div class="prompt-item" data-cat="study">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">❓ 错题深度分析</strong>
+                <span class="tag tag-teal" style="font-size:11px">学习类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">这道题我做错了：
+题目：[粘贴]
+我的答案：[]
+正确答案：[]
+
+请分析：
+1. 我错在哪？什么知识点没掌握？
+2. 正确解题思路（一步步）
+3. 这类题的解题套路
+4. 出2道类似题练手</div>
+            </div>
+
+            <div class="prompt-item" data-cat="english">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">🗣 日常口语陪练</strong>
+                <span class="tag tag-blue" style="font-size:11px">英语类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">Let's practice English conversation.
+You are my friend. Topic: [话题]
+Keep sentences simple (CET-4 level).
+Correct my grammar mistakes gently.
+Ask questions to keep it going.
+Suggest better expressions each time.</div>
+            </div>
+
+            <div class="prompt-item" data-cat="english">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">✍️ 作文批改+提升</strong>
+                <span class="tag tag-blue" style="font-size:11px">英语类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">批改这篇作文：
+题目：[]
+作文：[粘贴]
+
+请批改：
+1. 语法错误+改正
+2. 可替换的地道表达
+3. 高级句式建议
+4. 结构逻辑评价
+5. 打分（四级标准）
+6. 改写提升版</div>
+            </div>
+
+            <div class="prompt-item" data-cat="english">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">📝 翻译练习+讲解</strong>
+                <span class="tag tag-blue" style="font-size:11px">英语类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">请帮我做翻译练习：
+原文：[中文段落]
+我的翻译：[你的翻译]
+
+请：
+1. 给出参考译文
+2. 指出我翻译中的错误
+3. 我用得好的地方
+4. 关键短语和句型讲解
+5. 这类话题的高频词汇</div>
+            </div>
+
+            <div class="prompt-item" data-cat="career">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">💼 英文自我介绍</strong>
+                <span class="tag tag-coral" style="font-size:11px">升学/求职</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我写一份英文自我介绍，用于 [保研面试/求职]：
+我的信息：
+- 学校/专业：[]
+- 年级：[]
+- 主要经历：[]
+- 核心优势：[]
+- 目标：[]
+
+要求：
+- 2分钟左右（250-300词）
+- 自然不生硬
+- 突出亮点，逻辑清晰
+- 适合口语表达</div>
+            </div>
+
+            <div class="prompt-item" data-cat="career">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">📄 简历润色</strong>
+                <span class="tag tag-coral" style="font-size:11px">升学/求职</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我润色这份简历，目标是 [保研夏令营/实习]：
+我的简历：
+[粘贴简历内容]
+
+请：
+1. 整体评价：哪些好、哪些要改
+2. 经历描述改写：更专业，量化成果
+3. 排版建议：怎么组织更清晰
+4. 有没有遗漏的重要信息
+5. 针对性建议</div>
+            </div>
+
+            <div class="prompt-item" data-cat="career">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">🎯 保研定位分析</strong>
+                <span class="tag tag-coral" style="font-size:11px">升学/求职</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我是 [学校] [专业] 本科生，想保研。
+我的情况：
+- 绩点排名：[]
+- 英语：[]
+- 竞赛/科研：[]
+- 感兴趣的方向：[]
+
+请帮我分析：
+1. 我的定位：冲什么学校？稳妥的有哪些？保底？
+2. 推荐的具体院校和专业方向
+3. 我现在的短板是什么？怎么补？
+4. 夏令营/预推免的策略建议
+5. 时间线规划</div>
+            </div>
+
+            <div class="prompt-item" data-cat="study">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">📅 备考计划制定</strong>
+                <span class="tag tag-teal" style="font-size:11px">学习类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我要备考 [考试]，时间还有 [X] 天，
+目前基础：[]，每天能学 [X] 小时。
+
+请制定备考计划：
+1. 分几个阶段？每阶段目标？
+2. 每阶段具体学习内容
+3. 每日时间分配（各科比例）
+4. 每周/每月复盘方法
+5. 避坑建议</div>
+            </div>
+
+            <div class="prompt-item" data-cat="life">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">💬 高情商回复生成</strong>
+                <span class="tag tag-gray" style="font-size:11px">生活类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我想一个回复：
+场景：[描述场景]
+对方说的话：[]
+我的想法/感受：[]
+我想达到的效果：[如"委婉拒绝但不伤人"]
+
+请给我 3 个不同风格的回复：
+1. 委婉礼貌型
+2. 直接真诚型
+3. 轻松幽默型
+并分析每个选项的适用场景和效果。</div>
+            </div>
+
+            <div class="prompt-item" data-cat="life">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">💰 月度预算规划</strong>
+                <span class="tag tag-gray" style="font-size:11px">生活类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我是大学生，每月生活费 [X] 元。
+固定支出：
+- 吃饭：约[]元
+- 交通：约[]元
+- 通讯：约[]元
+- 其他：[]
+
+我想：[存多少钱/买什么]
+
+请帮我规划：
+1. 合理的预算分配（各项比例）
+2. 哪些地方可以省钱（具体建议）
+3. 怎么存钱最有效
+4. 大学生容易踩的消费坑</div>
+            </div>
+
+            <div class="prompt-item" data-cat="study">
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <strong style="font-size:13px">🧩 知识体系构建</strong>
+                <span class="tag tag-teal" style="font-size:11px">学习类</span>
+              </div>
+              <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我正在学 [学科/课程]，
+已经学了：[列已学章节]
+
+请帮我构建知识体系：
+1. 这门课的核心框架是什么
+2. 每个分支下的重要概念和理论
+3. 各分支之间有什么联系
+4. 典型的应用场景
+5. 前沿进展/热点方向
+6. 我接下来应该按什么顺序学</div>
+            </div>
           </div>
         </div>
 
-        <div class="card" style="margin-top:16px">
-          <h3>💡 AI 学习最佳实践 · 5条黄金法则</h3>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700">1</div>
-              <div>
-                <h4 style="margin:0 0 4px 0">先思考，再问 AI</h4>
-                <p style="font-size:13px;line-height:1.7;margin:0">遇到问题先自己想5分钟，实在不会再问 AI。直接要答案学不到东西，AI 是帮你理解，不是替你思考。</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700">2</div>
-              <div>
-                <h4 style="margin:0 0 4px 0">越具体，回答越好</h4>
-                <p style="font-size:13px;line-height:1.7;margin:0">不要问"怎么学英语"，要问"我四级目标550分，现在词汇量约3500，听力较弱，每天有1.5小时，怎么规划3个月"。越具体，AI 给的方案越有用。</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700">3</div>
-              <div>
-                <h4 style="margin:0 0 4px 0">多轮对话，逐步深入</h4>
-                <p style="font-size:13px;line-height:1.7;margin:0">好答案不是一次问出来的。先问框架，再针对每个部分追问，最后让 AI 给你出测试题检验理解。</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700">4</div>
-              <div>
-                <h4 style="margin:0 0 4px 0">让 AI 当老师，不当答案</h4>
-                <p style="font-size:13px;line-height:1.7;margin:0">试试这些 prompt："用费曼技巧给我讲明白 XX""出 5 道题考我对 XX 的理解""我哪里理解错了？帮我纠正"。</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700">5</div>
-              <div>
-                <h4 style="margin:0 0 4px 0">交叉验证，不盲信</h4>
-                <p style="font-size:13px;line-height:1.7;margin:0">AI 会出错（幻觉）。重要信息一定要查官方来源确认。可以让 AI 给出信息来源，或者用多个 AI 交叉验证。</p>
-              </div>
-            </div>
-          </div>
+        <!-- 底部提醒 -->
+        <div class="callout callout-info" style="margin-top:16px">
+          <strong>📌 使用提醒：</strong>
+          <br>1. AI 是工具不是权威，重要信息（考试政策、法律条文、数据等）务必查官方来源核实
+          <br>2. 好答案是聊出来的，不要只问一次，多轮追问才能得到有用的东西
+          <br>3. AI 帮你省时间，但学习和思考还是要靠自己——不要让 AI 替你做作业
         </div>
       </div>
 
