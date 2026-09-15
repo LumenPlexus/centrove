@@ -514,6 +514,17 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .tab-pane.active{display:block}
 
 .callout{padding:12px 14px;border-radius:var(--radius-sm);font-size:13px;margin:10px 0}
+.toc-float{position:fixed;right:16px;top:80px;width:160px;max-height:calc(100vh - 120px);overflow-y:auto;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);z-index:500;font-size:12px;display:none}
+.toc-float.show{display:block}
+.toc-float .toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.toc-float a{display:block;padding:5px 8px;color:var(--muted);text-decoration:none;border-radius:6px;margin-bottom:2px;line-height:1.4;transition:all .15s}
+.toc-float a:hover{background:var(--primary-light);color:var(--primary)}
+.toc-float a.active{background:var(--primary-light);color:var(--primary);font-weight:600}
+@media(max-width:900px){.toc-float{display:none!important}}
+.toc-toggle{position:fixed;right:16px;top:60px;width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:501;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none}
+.toc-toggle.show{display:flex}
+@media(max-width:900px){.toc-toggle{display:none!important}}
+.anchor-link{color:inherit;text-decoration:none;scroll-margin-top:70px}
 .callout-info{background:var(--primary-light);color:var(--primary);border-left:3px solid var(--primary-mid)}
 .callout-warn{background:var(--coral-light);color:var(--coral);border-left:3px solid var(--coral)}
 .callout-ok{background:var(--teal-light);color:var(--teal);border-left:3px solid var(--teal-mid)}
@@ -2357,7 +2368,124 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
 
-      <div class="tab-pane" id="t-cet6">
+      
+        <div class="card" style="margin-top:16px">
+          <h3>📖 四级阅读三大题型技巧 · 直接套用</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">阅读占35%，是提分最快的板块。每种题型有固定套路。</p>
+          
+          <h4 style="color:var(--primary)">一、仔细阅读（20%·最重要）</h4>
+          <div class="callout callout-info" style="margin-bottom:10px">
+            <b>答题步骤：</b>① 先读题干（不读选项）→ ② 划关键词 → ③ 回原文定位 → ④ 对比选项找同义替换
+          </div>
+          <table>
+            <tr><th style="width:70px">题型</th><th>识别标志</th><th>解题方法</th></tr>
+            <tr><td><b>细节题</b></td><td>what/why/how/because + 具体信息</td><td>定位到句找同义替换，<b>原词重现往往是坑</b></td></tr>
+            <tr><td><b>主旨题</b></td><td>main idea / best title</td><td>首段+末段+各段首句，找重复出现的核心词</td></tr>
+            <tr><td><b>态度题</b></td><td>attitude / tone</td><td>找形容词、副词、转折词；positive/negative/objective常考</td></tr>
+            <tr><td><b>推理题</b></td><td>infer / imply / suggest</td><td>别瞎推，<b>答案是原文的改写</b>，只是换了说法</td></tr>
+            <tr><td><b>词义题</b></td><td>word/phrase means</td><td>看上下文解释、举例、对比，代入验证</td></tr>
+          </table>
+          
+          <h4 style="color:var(--primary);margin-top:14px">二、长篇匹配（10%·最易得分）</h4>
+          <ul>
+            <li><b>先题后文：</b>先看10个题干，每道划2-3个关键词（专有名词/数字/大写）</li>
+            <li><b>带着关键词扫：</b>不用读懂，找哪段出现了同样的关键词</li>
+            <li><b>同义替换才是答案：</b>题干和原文通常不是一模一样，是近义表达</li>
+            <li><b>先易后难：</b>有人名地名数字的先做，剩下的再慢慢找</li>
+            <li><b>限时15分钟：</b>做不出来就蒙，别恋战</li>
+          </ul>
+          
+          <h4 style="color:var(--primary);margin-top:14px">三、选词填空（5%·性价比最低）</h4>
+          <ul>
+            <li><b>最后做：</b>分少题难，时间不够直接蒙</li>
+            <li><b>先标词性：</b>15个选项按 n./v./adj./adv. 分四类</li>
+            <li><b>判断空格词性：</b>看空格前后的词判断要填什么</li>
+            <li><b>缩小范围再选：</b>从对应词性的3-5个词里挑</li>
+          </ul>
+          <div class="callout callout-warn" style="margin-top:10px">
+            <b>答题顺序建议：</b>仔细阅读（最值钱）→ 长篇匹配（易得分）→ 选词填空（放最后）
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>✏️ 四级写作万能句+高分模板</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">四级写作120-180词，30分钟。背会这些万能句直接套。</p>
+          
+          <h4 style="color:var(--primary)">开头段万能句（3选1）</h4>
+          <ol>
+            <li><b>现象引入：</b>Nowadays, the phenomenon of ______ has aroused wide concern among the public.</li>
+            <li><b>观点引入：</b>When it comes to ______, people's opinions vary from person to person.</li>
+            <li><b>问题引入：</b>In recent years, ______ has become a common problem in our daily life.</li>
+          </ol>
+          
+          <h4 style="color:var(--primary)">中间论证万能句</h4>
+          <ul>
+            <li><b>第一个理由：</b>First and foremost, ______. The primary reason is that ______.</li>
+            <li><b>第二个理由：</b>Furthermore, ______. It is widely acknowledged that ______.</li>
+            <li><b>举例：</b>A good case in point is that ______.</li>
+            <li><b>数据：</b>According to a recent survey, about ______% of people ______.</li>
+            <li><b>对比：</b>On the contrary, those who ______ argue that ______.</li>
+          </ul>
+          
+          <h4 style="color:var(--primary)">结尾段万能句（3选1）</h4>
+          <ol>
+            <li><b>总结观点：</b>From what has been discussed above, we can safely draw the conclusion that ______.</li>
+            <li><b>提出建议：</b>It is high time that immediate measures should be taken to ______.</li>
+            <li><b>展望未来：</b>Only in this way can we ______ and build a better future.</li>
+          </ol>
+          
+          <h4 style="color:var(--primary)">10个提分高级替换词</h4>
+          <table>
+            <tr><th>别写这个</th><th>换成这个</th></tr>
+            <tr><td>very important</td><td><b>vital / crucial / of great importance</b></td></tr>
+            <tr><td>many people</td><td><b>the majority of people / individuals</b></td></tr>
+            <tr><td>think</td><td><b>argue / maintain / hold the view that</b></td></tr>
+            <tr><td>good</td><td><b>beneficial / positive / favorable</b></td></tr>
+            <tr><td>bad</td><td><b>negative / adverse / harmful</b></td></tr>
+            <tr><td>big</td><td><b>enormous / significant / considerable</b></td></tr>
+            <tr><td>more and more</td><td><b>an increasing number of / increasingly</b></td></tr>
+            <tr><td>because</td><td><b>due to / owing to / on account of</b></td></tr>
+            <tr><td>help</td><td><b>contribute to / facilitate</b></td></tr>
+            <tr><td>finally</td><td><b>consequently / therefore / as a result</b></td></tr>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>🇨🇳 四级翻译高频词汇 · 直接背</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">常考中国传统文化、社会发展类话题。</p>
+          
+          <h4 style="color:var(--primary)">中国传统文化（最常考）</h4>
+          <table>
+            <tr><th>中文</th><th>英文</th><th>中文</th><th>英文</th></tr>
+            <tr><td>春节</td><td>the Spring Festival</td><td>中秋节</td><td>the Mid-Autumn Festival</td></tr>
+            <tr><td>端午节</td><td>the Dragon Boat Festival</td><td>清明节</td><td>the Qingming Festival</td></tr>
+            <tr><td>元宵节</td><td>the Lantern Festival</td><td>重阳节</td><td>the Double Ninth Festival</td></tr>
+            <tr><td>儒家思想</td><td>Confucianism</td><td>道家</td><td>Taoism</td></tr>
+            <tr><td>孔子</td><td>Confucius</td><td>孟子</td><td>Mencius</td></tr>
+            <tr><td>四大发明</td><td>the Four Great Inventions</td><td>造纸术</td><td>papermaking</td></tr>
+            <tr><td>印刷术</td><td>printing</td><td>指南针</td><td>the compass</td></tr>
+            <tr><td>火药</td><td>gunpowder</td><td>丝绸之路</td><td>the Silk Road</td></tr>
+            <tr><td>长城</td><td>the Great Wall</td><td>故宫</td><td>the Forbidden City</td></tr>
+            <tr><td>书法</td><td>calligraphy</td><td>京剧</td><td>Peking Opera</td></tr>
+            <tr><td>太极拳</td><td>Tai Chi</td><td>饺子</td><td>Jiaozi / dumplings</td></tr>
+            <tr><td>粽子</td><td>Zongzi</td><td>月饼</td><td>mooncake</td></tr>
+          </table>
+          
+          <h4 style="color:var(--primary);margin-top:12px">社会发展类</h4>
+          <table>
+            <tr><th>中文</th><th>英文</th><th>中文</th><th>英文</th></tr>
+            <tr><td>改革开放</td><td>reform and opening-up</td><td>经济增长</td><td>economic growth</td></tr>
+            <tr><td>城市化</td><td>urbanization</td><td>脱贫</td><td>poverty alleviation</td></tr>
+            <tr><td>小康社会</td><td>a well-off society</td><td>可持续发展</td><td>sustainable development</td></tr>
+            <tr><td>科技创新</td><td>technological innovation</td><td>人工智能</td><td>artificial intelligence</td></tr>
+            <tr><td>共享经济</td><td>sharing economy</td><td>移动支付</td><td>mobile payment</td></tr>
+            <tr><td>高铁</td><td>high-speed railway</td><td>基础设施</td><td>infrastructure</td></tr>
+          </table>
+          <div class="callout callout-info" style="margin-top:10px">
+            <b>翻译小技巧：</b>① 不会的词换个说法（用简单词解释）；② 长句拆短句；③ 一般现在时为主；④ 专有名词确保准确。
+          </div>
+        </div>
+<div class="tab-pane" id="t-cet6">
         <div class="callout callout-info">
           <strong>六级定位：</strong>过四级即可报六级，建议大一/大二趁热打铁考掉。六级550+是保研/求职强加分项，越早过越主动。
         </div>
@@ -2890,7 +3018,117 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <tr><td style="padding:8px;border:1px solid var(--border)"><b>政治</b>（性价比最高）</td><td style="padding:8px;border:1px solid var(--border)">暂不投入或只看马原</td><td style="padding:8px;border:1px solid var(--border)">跟一轮强化课+选择题刷题</td><td style="padding:8px;border:1px solid var(--border)">冲刺押题+时政+主观题背诵</td></tr>
             </tbody>
           </table>
-          <div class="callout callout-warn" style="margin-top:8px"><strong>应急：</strong>二战/在职或基础薄弱，可"政治保中上、英语保过线、数学拉差距、专业课定胜负"——把有限时间花在刀口上。</div>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>应急：</strong>二战/在职或基础薄弱，可"政治保中上、英语保过线、数学拉差距、专业课定胜负"——把有限时间花在刀口上。
+        <div class="card" style="margin-top:16px">
+          <h3>📐 高数常考题型解题套路</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">高数上最容易挂，掌握这些固定题型，期末不慌。</p>
+          
+          <h4 style="color:var(--primary)">一、求极限（必考）</h4>
+          <table>
+            <tr><th style="width:120px">题型</th><th>方法</th><th>适用条件</th></tr>
+            <tr><td><b>0/0型</b></td><td>洛必达法则 / 等价无穷小替换</td><td>分子分母都→0</td></tr>
+            <tr><td><b>∞/∞型</b></td><td>洛必达法则 / 除以最高次幂</td><td>分子分母都→∞</td></tr>
+            <tr><td><b>∞-∞型</b></td><td>通分 / 有理化</td><td>两个无穷大相减</td></tr>
+            <tr><td><b>0·∞型</b></td><td>变形为0/0或∞/∞</td><td>一个→0一个→∞相乘</td></tr>
+            <tr><td><b>1^∞型</b></td><td>取e为底 / 重要极限公式</td><td>底数→1，指数→∞</td></tr>
+            <tr><td><b>0^0 / ∞^0型</b></td><td>取e为底，转化为0·∞型</td><td>两边取对数</td></tr>
+          </table>
+          <div class="callout callout-info" style="margin-top:8px">
+            <b>等价无穷小（x→0时）：</b>sinx~x · tanx~x · arcsinx~x · arctanx~x · ln(1+x)~x · e^x-1~x · 1-cosx~x²/2 · (1+x)^a-1~ax
+          </div>
+          
+          <h4 style="color:var(--primary);margin-top:14px">二、求导（必背公式+法则）</h4>
+          <ul>
+            <li><b>基本公式：</b>(x^n)'=nx^(n-1) · (e^x)'=e^x · (lnx)'=1/x · (sinx)'=cosx · (cosx)'=-sinx</li>
+            <li><b>四则运算法则：</b>(uv)'=u'v+uv' · (u/v)'=(u'v-uv')/v²</li>
+            <li><b>复合函数链式法则：</b>外层导数 × 内层导数，从外到内一层层求</li>
+            <li><b>隐函数求导：</b>两边同时对x求导，y是x的函数要用链式法则</li>
+            <li><b>参数方程求导：</b>dy/dx = (dy/dt)/(dx/dt)</li>
+          </ul>
+          
+          <h4 style="color:var(--primary);margin-top:14px">三、积分（期末大头）</h4>
+          <table>
+            <tr><th style="width:120px">方法</th><th>适用情况</th><th>怎么做</th></tr>
+            <tr><td><b>直接积分</b></td><td>基本公式能直接套</td><td>公式表背熟直接写</td></tr>
+            <tr><td><b>第一类换元</b></td><td>被积函数有复合结构</td><td>凑微分，把dx变成d(u(x))</td></tr>
+            <tr><td><b>第二类换元</b></td><td>有根号</td><td>三角代换 / 根式代换</td></tr>
+            <tr><td><b>分部积分</b></td><td>两种不同类型函数相乘</td><td>∫udv = uv - ∫vdu，选u的顺序：反→对→幂→指→三</td></tr>
+            <tr><td><b>有理函数积分</b></td><td>多项式分式</td><td>因式分解 → 部分分式分解</td></tr>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>📊 线代概率核心考点速记</h3>
+          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">线性代数+概率论，公式多但题型固定。</p>
+          
+          <h4 style="color:var(--primary)">线性代数 · 5大核心考点</h4>
+          <ol>
+            <li><b>行列式计算：</b>定义法 / 按行(列)展开 / 化为三角形 / 特征值之积</li>
+            <li><b>矩阵运算：</b>乘法不满足交换律！AB≠BA；逆矩阵公式：A^(-1)=A*/|A|</li>
+            <li><b>线性方程组：</b>
+              <ul>
+                <li>齐次 Ax=0：有非零解 ⇨ r(A)&lt;n</li>
+                <li>非齐次 Ax=b：有解 ⇨ r(A)=r(A|b)</li>
+                <li>解的结构：特解 + 齐次通解（基础解系线性组合）</li>
+              </ul>
+            </li>
+            <li><b>特征值与特征向量：</b>
+              <ul>
+                <li>求法：|λE-A|=0 求特征值，代入(λE-A)x=0求特征向量</li>
+                <li>性质：迹=特征值之和；行列式=特征值之积</li>
+              </ul>
+            </li>
+            <li><b>二次型：</b>化标准形（正交变换法 / 配方法）；正定判定</li>
+          </ol>
+          
+          <h4 style="color:var(--primary);margin-top:14px">概率论 · 5大核心考点</h4>
+          <ol>
+            <li><b>事件与概率：</b>古典概型 / 条件概率 / 全概率公式 / 贝叶斯公式</li>
+            <li><b>一维随机变量：</b>
+              <ul>
+                <li>离散型：分布律、期望、方差</li>
+                <li>连续型：概率密度f(x)、分布函数F(x)=∫f(t)dt</li>
+              </ul>
+            </li>
+            <li><b>常见分布：</b>
+              <ul>
+                <li>二项分布 B(n,p)：E=np, D=np(1-p)</li>
+                <li>正态分布 N(μ,σ²)：标准正态Z=(X-μ)/σ</li>
+                <li>均匀分布、指数分布、泊松分布</li>
+              </ul>
+            </li>
+            <li><b>数字特征：</b>期望E(X)、方差D(X)=E(X²)-[E(X)]²、协方差、相关系数</li>
+            <li><b>大数定律与中心极限定理：</b>大量独立同分布变量之和近似正态分布</li>
+          </ol>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>💡 数学期末冲刺复习法</h3>
+          <div class="grid grid-2">
+            <div>
+              <h4>两周冲刺计划</h4>
+              <ol>
+                <li><b>第1-3天：</b>看目录+笔记，建立知识框架，知道每章讲什么</li>
+                <li><b>第4-7天：</b>刷课后题，每题都搞懂，错题标记</li>
+                <li><b>第8-10天：</b>刷往年真题（至少3套），限时做</li>
+                <li><b>第11-12天：</b>错题二刷，总结易错点</li>
+                <li><b>第13-14天：</b>公式大全过一遍+错题三刷+模考</li>
+              </ol>
+            </div>
+            <div>
+              <h4>避坑提醒</h4>
+              <ul>
+                <li><b>别只看不动笔：</b>数学必须亲手算，看懂了≠会做</li>
+                <li><b>别死磕难题：</b>期末考70%是基础题，先保基础分</li>
+                <li><b>别忽视例题：</b>老师出卷常参考课本例题改</li>
+                <li><b>错题本必须有：</b>同一道题错第二次就很危险了</li>
+                <li><b>计算题别跳步：</b>一步错步步错，写清楚过程</li>
+                <li><b>历年真题必刷：</b>题型重复率很高</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+</div>
         </div>
 
         <!-- 新增：调剂指南 -->
@@ -4252,56 +4490,15 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p>学习 · 科研 · 效率 · 设计 · 文档 · 升学，60+ 精选资源一触即达</p>
       </div>
 
-      <!-- 快速导航：6大分类 -->
-      <div class="card" style="margin-bottom:16px">
-        <h3>快速导航 · 6 大类</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:10px">
-          <div style="padding:14px;text-align:center;background:var(--paper-bg);border-radius:10px;cursor:pointer;transition:all .2s;border:1px solid var(--border)" onclick="document.getElementById(&quot;reslib-study&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
-            <div style="font-size:28px;margin-bottom:4px">📚</div>
-            <div style="font-size:13px;font-weight:600">学习平台</div>
-            <div style="font-size:11px;color:var(--hint);margin-top:2px">10个 · 上课刷题</div>
-          </div>
-          <div style="padding:14px;text-align:center;background:var(--paper-bg);border-radius:10px;cursor:pointer;transition:all .2s;border:1px solid var(--border)" onclick="document.getElementById(&quot;reslib-research&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
-            <div style="font-size:28px;margin-bottom:4px">🔬</div>
-            <div style="font-size:13px;font-weight:600">科研工具</div>
-            <div style="font-size:11px;color:var(--hint);margin-top:2px">10个 · 写论文做数据</div>
-          </div>
-          <div style="padding:14px;text-align:center;background:var(--paper-bg);border-radius:10px;cursor:pointer;transition:all .2s;border:1px solid var(--border)" onclick="document.getElementById(&quot;reslib-efficiency&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
-            <div style="font-size:28px;margin-bottom:4px">⚡</div>
-            <div style="font-size:13px;font-weight:600">效率工具</div>
-            <div style="font-size:11px;color:var(--hint);margin-top:2px">10个 · 笔记导图</div>
-          </div>
-          <div style="padding:14px;text-align:center;background:var(--paper-bg);border-radius:10px;cursor:pointer;transition:all .2s;border:1px solid var(--border)" onclick="document.getElementById(&quot;reslib-design&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
-            <div style="font-size:28px;margin-bottom:4px">🎨</div>
-            <div style="font-size:13px;font-weight:600">设计素材</div>
-            <div style="font-size:11px;color:var(--hint);margin-top:2px">10个 · 图片PPT</div>
-          </div>
-          <div style="padding:14px;text-align:center;background:var(--paper-bg);border-radius:10px;cursor:pointer;transition:all .2s;border:1px solid var(--border)" onclick="document.getElementById(&quot;reslib-docs&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
-            <div style="font-size:28px;margin-bottom:4px">📄</div>
-            <div style="font-size:13px;font-weight:600">文档工具</div>
-            <div style="font-size:11px;color:var(--hint);margin-top:2px">10个 · PDF格式转换</div>
-          </div>
-          <div style="padding:14px;text-align:center;background:var(--paper-bg);border-radius:10px;cursor:pointer;transition:all .2s;border:1px solid var(--border)" onclick="document.getElementById(&quot;reslib-edu&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">
-            <div style="font-size:28px;margin-bottom:4px">🎯</div>
-            <div style="font-size:13px;font-weight:600">升学资源</div>
-            <div style="font-size:11px;color:var(--hint);margin-top:2px">10个 · 官方入口</div>
-          </div>
-        </div>
-      </div>
-      <h3 style="margin:20px 0 10px">60+ 精选资源 · 点击直达</h3>
-      <div class="callout callout-info" style="margin-bottom:14px">
-        <strong>这是什么：</strong>精选大学生真正用得上的网站、工具、平台，分好类、写清楚能干什么、怎么用，点一下就直达。省得你自己瞎找、收藏了再也不看。
-      </div>
-
       <!-- 分类标签 -->
       <div style="margin-bottom:14px">
         <div style="display:flex;gap:6px;flex-wrap:wrap" id="reslibCatTabs">
-          <span class="tag tag-teal" style="cursor:pointer" onclick="switchResCat(&quot;res-study&quot;)">📚 学习平台</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResCat(&quot;res-research&quot;)">🔬 科研工具</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResCat(&quot;res-efficiency&quot;)">⚡ 效率工具</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResCat(&quot;res-design&quot;)">🎨 设计素材</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResCat(&quot;res-docs&quot;)">📄 文档工具</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResCat(&quot;res-edu&quot;)">🎯 升学资源</span>
+          <span class="tag tag-teal" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-study&quot;)">📚 学习平台</span>
+          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-research&quot;)">🔬 科研工具</span>
+          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-efficiency&quot;)">⚡ 效率工具</span>
+          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-design&quot;)">🎨 设计素材</span>
+          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-docs&quot;)">📄 文档工具</span>
+          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-edu&quot;)">🎯 升学资源</span>
         </div>
       </div>
 
@@ -14939,6 +15136,54 @@ function gpaRowGp(inp){
 function gpaDelRow(btn){var tr=btn.closest('tr');if(tr)tr.parentNode.removeChild(tr);gpaCalc();}
 function gpaClear(){var tbody=document.getElementById('gpaRows');if(tbody)tbody.innerHTML='';var r=document.getElementById('gpaResult');if(r)r.innerHTML='';}
 /* ── 回到顶部按钮 ── */
+/* ── 页面悬浮目录（长页面自动出现） ── */
+function initToc(){
+  try{
+    var view=document.querySelector('.view.active');if(!view)return;
+    var headings=view.querySelectorAll('h2, h3');
+    if(headings.length<4)return; // 少于4个标题不显示目录
+    // 移除旧的
+    var old=document.getElementById('floatToc');if(old)old.remove();
+    var oldBtn=document.getElementById('tocToggle');if(oldBtn)oldBtn.remove();
+    // 生成目录
+    var toc=document.createElement('div');
+    toc.id='floatToc';toc.className='toc-float show';
+    var html='<div class="toc-title">📑 本页目录</div>';
+    for(var i=0;i<headings.length;i++){
+      var h=headings[i];
+      var id='toc-'+i;
+      h.id=id;
+      var txt=h.textContent.trim().substring(0,20);
+      var lv=h.tagName==='H2'?0:1;
+      html+='<a href="#'+id+'" style="padding-left:'+(8+lv*12)+'px" onclick="event.preventDefault();document.getElementById(\''+id+'\').scrollIntoView({behavior:\'smooth\'})">'+txt+'</a>';
+    }
+    toc.innerHTML=html;
+    document.body.appendChild(toc);
+    // 滚动高亮
+    window.addEventListener('scroll',function(){
+      var t=document.getElementById('floatToc');if(!t)return;
+      var links=t.querySelectorAll('a');
+      var current='';
+      for(var j=0;j<headings.length;j++){
+        var rect=headings[j].getBoundingClientRect();
+        if(rect.top<=100){current='toc-'+j;}
+      }
+      links.forEach(function(a){a.classList.remove('active');var h=a.getAttribute('href');if(h==='#'+current)a.classList.add('active');});
+    });
+  }catch(e){}
+}
+/* 在切换视图时重新生成目录 */
+var _origSwitchView=switchView;
+switchView=function(v){
+  _origSwitchView(v);
+  setTimeout(function(){
+    try{
+      var t=document.getElementById('floatToc');if(t)t.remove();
+      initToc();
+    }catch(e){}
+  },100);
+};
+
 function initBackToTop(){
   try{
     var btn=document.createElement('div');
