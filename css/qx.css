@@ -1563,3 +1563,27 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 @media(max-width:520px){.mp-head{padding:18px 16px 6px}.mp-sub{padding:4px 16px 8px}.mp-body{padding:4px 16px 8px}.mp-foot{padding:12px 16px}.mp-grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}}
 /* ═══ 侧边栏联动常用偏好：藏起未选模块及其空分组标题 ═══ */
 .nav-item.nav-hidden,.nav-section.nav-hidden{display:none!important}
+
+/* ═══ AI 卡片「点开即聊」操作行 ═══ */
+.ai-go-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.ai-go-row .btn{padding:7px 13px;font-size:12.5px;border-radius:8px;cursor:pointer;font-weight:600;transition:all .15s;border:1px solid transparent}
+.ai-go-row .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-mid));color:#FFF7E2;box-shadow:0 2px 6px rgba(74,58,40,.18)}
+.ai-go-row .btn-primary:hover{filter:brightness(1.08)}
+.ai-go-row .btn:not(.btn-primary){background:var(--bg);border-color:var(--border-strong);color:var(--text)}
+.ai-go-row .btn:not(.btn-primary):hover{border-color:var(--primary-mid);color:var(--primary)}
+[data-theme="dark"] .ai-go-row .btn-primary{color:#FFF7E2!important}
+[data-theme="dark"] .ai-go-row .btn:not(.btn-primary){background:#26211A!important;border-color:#3C3427!important;color:#D8CBB2!important}
+
+/* ═══ 长内容自动折叠（展开全部/收起）═══ */
+.card,.callout{position:relative}
+.has-fold{padding-bottom:46px}
+.has-fold:not(.is-open){max-height:212px;overflow:hidden}
+.has-fold:not(.is-open)::after{content:"";position:absolute;left:0;right:0;bottom:46px;height:44px;background:linear-gradient(180deg,transparent,var(--bg));pointer-events:none}
+.fold-bar{position:absolute;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;justify-content:center;gap:5px;border:0;background:linear-gradient(180deg,transparent,rgba(74,58,40,.03));color:var(--primary-mid);font-size:12.5px;font-weight:700;cursor:pointer;border-top:1px dashed var(--border);z-index:3;transition:color .15s}
+.fold-bar:hover{color:var(--primary)}
+.fold-bar .fold-ic{transition:transform .2s}
+.has-fold.is-open .fold-bar .fold-ic{transform:rotate(180deg)}
+
+/* ═══ 提示条右上角 ✕ 可自行关闭 ═══ */
+.dismiss-x{position:absolute;top:9px;right:9px;width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--hint);font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;opacity:.8;transition:all .15s;padding:0}
+.dismiss-x:hover{opacity:1;color:#fff;background:var(--coral);border-color:var(--coral)}

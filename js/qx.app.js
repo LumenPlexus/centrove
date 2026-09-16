@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.16.45';
+window.__pageVersion='2026.09.17.2';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -349,18 +349,20 @@ window.__pageVersion='2026.09.16.45';
   function show(){
     /* 关闭浏览器原生滚动恢复：板块位置由本产品记忆机制接管。 */
     try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } }catch(_er){}
-    /* 兜底清除顶栏/底栏的所有隐藏态，杜绝任何 WebView/缓存异常下顶栏底栏不出现、点击无反应 */
-    try{ document.documentElement.classList.remove('state-splash');
-         document.documentElement.classList.remove('state-pano'); }catch(_er){}
-    /* 彻底移除阻塞式品牌闪屏：直接恢复正常界面。
-       避免「打开卡顿 / logo 不显 / 顶栏底栏闪进闪屏」等体验问题。
-       新用户通过 afterSplash 进入产品导览；老用户直达首页或恢复上次位置。 */
-    try{
-      var e=bs();
-      if(e){ e.style.display='none'; e.setAttribute('data-gone','1'); }
-    }catch(_er){}
-    chrome(false);     /* 确保顶栏与底栏立即可见、可交互 */
-    afterSplash();
+    /* 品牌闪屏：每次打开都优雅亮相约 1.8 秒（轻触可跳过）。
+       闪屏期间用 state-splash + hidden 属性强隐顶栏/底栏/悬浮按钮，杜绝「顶栏底栏闪进闪屏」；
+       结束后按首访与否决定弹产品导览或直接进产品。 */
+    var e=bs();
+    if(!e){ chrome(false); afterSplash(); return; }
+    document.documentElement.classList.add('state-splash');
+    chrome(true);
+    e.style.display='flex';e.style.opacity='1';
+    e.setAttribute('data-gone','');
+    e.onclick=function(){dismiss(e);};
+    /* 默认 1.8 秒；支持 ?splash=毫秒 调试用（如 ?splash=8000 便于观察） */
+    var _dur=1800;
+    try{ var _m=location.search.match(/[?&]splash=(\d+)/); if(_m&&_m[1]){_dur=Math.min(30000,parseInt(_m[1],10)||1800);} }catch(_e){}
+    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },_dur);
   }
   show();
 })();
@@ -6782,14 +6784,20 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.16.45';
+  var V='2026.09.17.2';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   var CHANGES=[
+    {v:'2026.09.17.2',t:'闪屏更优雅 · 页面可折叠 · AI 一键开聊升级',tag:'体验升级',blocks:[
+      '· 品牌闪屏回归：每次打开优雅亮相约 1.8 秒（轻触可跳过），顶栏与底栏不再闪现，第一眼更干净。',
+      '· 长内容自动折叠：较长的攻略与说明会自动收起，点「展开全部」即可查看，页面更清爽，选择会被记住。',
+      '· 提示可自行关闭：不想要的小提示与说明，点右上角 ✕ 即可删除，不再打扰。',
+      '· AI 一键开聊升级：每张 AI 卡片都配好了「对话剧本」（开场+追问），点一下复制整套、直达聊天页，粘贴即聊，不会聊着聊着就断了。'
+     ]},
     {v:'2026.09.15.40',t:'板块错位修复 · 学业内容大幅丰富',tag:'核心修复+内容升级',blocks:[
-      '· 修复了部分板块内容显示位置错误的问题。',
+       '· 修复了部分板块内容显示位置错误的问题。',
       '· 修复了重置本地数据按钮点击无响应的问题。',
       '· 修复了部分板块和按钮点击无响应的问题。',
       '· 学业精进·英语六级新增：写作高分模板与句式、翻译高频主题词汇积累。',
@@ -9046,3 +9054,118 @@ function maybeOpenPrefPick(){
     }
   }catch(e){}
 });
+;
+/* ═══ 页面自治：长内容自动折叠 + 提示条可自行关闭 + AI「点开即聊」═══
+   折叠/关闭状态记在 localStorage，用户自控页面长短，互不干扰。 */
+(function(){
+  var FOLD_KEY='qx_fold_v2', HIDE_KEY='qx_hide_v2';
+  function g(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return{}}}
+  function s(k,o){try{localStorage.setItem(k,JSON.stringify(o))}catch(e){}}
+  function hsh(t){var h=0;t=String(t||'').replace(/\s+/g,'');for(var i=0;i<t.length;i++){h=(h*31+t.charCodeAt(i))>>>0}return 'x'+h.toString(36)}
+  function keyOf(el){
+    var h=el.querySelector('h1,h2,h3,h4');
+    return hsh((el.tagName||'')+':'+((h&&h.innerText)||el.innerText).slice(0,26));
+  }
+  /* ── 1) 长内容折叠：超过阈值的卡片/提示条自动收起，点「展开全部」再看 ── */
+  function fold(){
+    var mp=g(FOLD_KEY);
+    var list=document.querySelectorAll('.view .card, .view .callout');
+    for(var i=0;i<list.length;i++){
+      var el=list[i];
+      if(el.closest('[data-nofold]')||el.getAttribute('data-nofold')==='' )continue;
+      if(el.querySelector('.ai-grid'))continue;                 /* 直达宫格不折 */
+      if(el.querySelector('.res-list')||el.querySelectorAll('.res-link').length>=3)continue; /* 资源列表不折 */
+      if(el.querySelector('input,textarea,select,button.calc'))continue;                     /* 工具卡不折 */
+      var txt=(el.innerText||'').replace(/\s+/g,'');
+      var liN=el.querySelectorAll('li').length;
+      var trN=el.querySelectorAll('tr').length;
+      if(txt.length<440)continue;                               /* 短内容不折 */
+      var k=keyOf(el);
+      el.setAttribute('data-foldkey',k);
+      el.classList.add('has-fold');
+      var bar=el.querySelector('.fold-bar');
+      if(!bar){
+        bar=document.createElement('button');
+        bar.type='button';
+        bar.className='fold-bar';
+        bar.setAttribute('aria-label','展开/收起');
+        bar.innerHTML='<span class="fold-txt">展开全部</span><span class="fold-ic">▾</span>';
+        bar.addEventListener('click',function(){
+          var open=el.classList.toggle('is-open');
+          var mm=g(FOLD_KEY);mm[k]=open;s(FOLD_KEY,mm);
+          bar.querySelector('.fold-txt').textContent=open?'收起':'展开全部';
+        });
+        el.appendChild(bar);
+      }
+      if(mp[k]===true){el.classList.add('is-open');bar.querySelector('.fold-txt').textContent='收起';}
+    }
+  }
+  /* ── 2) 提示条可关闭：每个 callout 右上角出现 ✕，点一下从此不再打扰 ── */
+  function dismiss(){
+    var mp=g(HIDE_KEY);
+    var list=document.querySelectorAll('.view .callout, [data-removable]');
+    for(var i=0;i<list.length;i++){
+      var el=list[i];
+      if(el.getAttribute('data-nodismiss')==='')continue;
+      var k=keyOf(el)+'h';
+      el.setAttribute('data-hidekey',k);
+      if(mp[k]){el.style.display='none';continue;}
+      if(el.querySelector('.dismiss-x'))continue;
+      var x=document.createElement('button');
+      x.type='button';x.className='dismiss-x';x.setAttribute('aria-label','关闭此提示');
+      x.innerHTML='✕';
+      x.addEventListener('click',function(){
+        var mm=g(HIDE_KEY);mm[k]=true;s(HIDE_KEY,mm);
+        el.style.display='none';
+      });
+      el.appendChild(x);
+    }
+  }
+  /* ── 3) AI「点开即聊」：复制提示词 + 打开对应 AI 聊天页 ── */
+  function toast(msg){
+    var t=document.createElement('div');
+    t.style.cssText='position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:2147483000;background:rgba(46,42,36,.94);color:#FFF7E2;font-size:13px;line-height:1.65;padding:10px 16px;border-radius:11px;box-shadow:0 8px 26px rgba(0,0,0,.28);max-width:82%;text-align:center;pointer-events:none;transition:opacity .25s;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif';
+    t.textContent=msg;
+    document.body.appendChild(t);
+    setTimeout(function(){t.style.opacity='0';setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},260);},2600);
+  }
+  function doCopy(txt){
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).catch(function(){});return;}
+    }catch(e){}
+    try{
+      var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    }catch(e2){}
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target&&ev.target.closest?ev.target.closest('[data-ai]'):null;
+    if(!b||!b.getAttribute('data-ai'))return;
+    var name=b.getAttribute('data-ai');
+    var pr=b.getAttribute('data-prompt')||'';
+    var isScript=pr.indexOf('【')>=0&&pr.indexOf('追问')>=0;  /* 多轮对话剧本 */
+    if(pr){doCopy(pr);}
+    if(b.getAttribute('data-copyonly')){
+      toast(isScript?('「'+name+'」对话剧本已复制（开场+追问）· 粘贴即可开聊'):('「'+name+'」提示词已复制'+(pr?' · 直接粘贴即可对话':'')));
+      return;
+    }
+    var url=b.getAttribute('data-url')||'';
+    if(url){
+      setTimeout(function(){try{window.open(url,'_blank','noopener');}catch(e){try{location.href=url;}catch(e2){}}},280);
+      toast(isScript?('已复制「'+name+'」对话剧本（开场+追问）· '+name+' 已打开，粘贴即聊，按剧本追问到底'):(pr?('已复制「'+name+'」开聊提示词 · '+name+' 已打开，粘贴即聊'):(name+' 已打开')));
+    }else{
+      toast(isScript?('「'+name+'」对话剧本已复制 · 直接粘贴即可开聊'):(pr?('「'+name+'」提示词已复制 · 直接粘贴即可对话'):(name+' 已就绪')));
+    }
+  });
+  function run(){try{fold();dismiss();}catch(e){}}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}else{run();}
+  /* 切换板块后重跑：保持新激活板块内也已折叠/可关闭 */
+  var _orig=window.switchView;
+  if(typeof _orig==='function'){
+    window.switchView=function(v){
+      var r=_orig.apply(this,arguments);
+      setTimeout(run,60);
+      return r;
+    };
+  }
+})();
