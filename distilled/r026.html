@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>大学如何选好一门好课：选课避坑指南 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href=&quot;index.html&quot;" title="返回蒸馏库">←</div>
+  <div class="title">大学选课避坑指南</div>
+</div>
+<div class="container">
+
+<h1>🎯 大学如何选好一门好课：选课避坑指南</h1>
+<div class="meta-row">
+  <span>经验蒸馏 · 老生选课经验汇总</span>
+  <span class="score">⭐ 8.4</span>
+  <span>入门难度</span>
+  <span>选课前1周</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">选课</span>
+  <span class="tag tag-coral">学分</span>
+  <span class="tag tag-blue">绩点</span>
+  <span class="tag tag-teal">大学生活</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>选课不是"抢到就行"，而是三个维度的权衡——给分、口碑、任务量。一门"好课"应该是"给分友好 + 口碑可信 + 任务量可承受"的平衡。选课前花一周做调研，用科学的筛选框架和保绩点策略，能帮你避开"水课沉默成本"和"绩点杀手"两大坑。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、为什么选课选不好会"血亏"一整学期</a>
+  <a href="#s2">二、三维度筛选框架：给分/口碑/任务量</a>
+  <a href="#s3">三、怎么读懂一门课的考核方式</a>
+  <a href="#s4">四、信息从哪里来：选课情报网</a>
+  <a href="#s5">五、保绩点策略：给分友好型选法</a>
+  <a href="#s6">六、常见"坑课"类型与识别信号</a>
+  <a href="#s7">七、必修课与选修课的差异化策略</a>
+  <a href="#s8">八、时间冲突与学分负担的配置技巧</a>
+  <a href="#s9">九、选课前一周 Checklist</a>
+  <a href="#s10">十、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、为什么选课选不好会"血亏"一整学期</h2>
+<p>每个学期都有学生栽在选课上：抢到了一门热门"水课"，结果是全英文三百人线下、每周写论文、期末闭卷；或是一时冲动选了三门硬核，期末全堆一起，直接崩溃。选课选错的成本是隐性的，但影响是实打实的：</p>
+<ul>
+  <li><strong>绩点：</strong>一门"绩点低"的课，一个学期辛苦白费，GPA 拉低后很难追回。</li>
+  <li><strong>时间：</strong>任务量超过承受的课，挤占你全部精力，影响其他课程。</li>
+  <li><strong>心态：</strong>"被坑"的无力感会消磨学习热情。</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>一句话总结：</strong>选课的前一周精力，胜过学期中途想退课/焦虑补救的一百倍。功夫在选课前，不在选课后。
+</div>
+
+<h2 id="s2">二、三维度筛选框架：给分/口碑/任务量</h2>
+<p>选一门课，永远从三个维度打分衡量，缺一不可：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>维度</th><th>问什么</th><th>信号</th></tr>
+  <tr><td>给分（可量）</td><td>老师平均分多少？给不给 A/A+？挂科率如何？</td><td>历届分数段统计、同学反馈</td></tr>
+  <tr><td>口碑（质）</td><td>老师讲课如何？是认真教学还是放水？</td><td>学长学姐评价、课程评价平台</td></tr>
+  <tr><td>任务量（代价）</td><td>每周要花几小时？期末怎么考？平时作业重不重？</td><td>考核方式、课堂要求</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>别只看"给分"：</strong>一门"给分高但全是论文"的课，可能挤占你三门硬核课的复习时间，综合算下来并不划算。三维度要<strong>结合你的学期目标</strong>一起看：这学期想冲绩点？想保底？想学真本事？目标不同，权重不同。
+</div>
+
+<h2 id="s3">三、怎么读懂一门课的考核方式</h2>
+<p>考核方式是决定"这门课坑不坑"的硬指标。选课前一定看清：</p>
+<ul>
+  <li><strong>平时分与期末分比例：</strong>有的平时占 60%、期末 40%，适合平时认真就稳的学生；有的期末 70%，靠突击。选适合自己复习习惯的。</li>
+  <li><strong>作业形式：</strong>是随堂 quiz、论文、presentation 还是闭卷。论文/展示类课任务散、周期长。</li>
+  <li><strong>出席要求：</strong>点名/打卡严格的课，别指望逃课。</li>
+  <li><strong>是否有硬性门槛：</strong>先修课、英语授课、小组项目占比等。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>方法：</strong>把每门候选课列一行表格，填上"考核构成、作业形式、出席、预计周耗时间"，横向对比后再取舍。直观、不易漏项。
+</div>
+
+<h2 id="s4">四、信息从哪里来：选课情报网</h2>
+<p>靠谱的信息是选课的"情报优势"。多渠道交叉验证再下决定。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>渠道</th><th>能问到的</th><th>注意点</th></tr>
+  <tr><td>上一届学长学姐</td><td>这个老师给分、点名、作业多不多</td><td>一问具体、二匿名打听，最准</td></tr>
+  <tr><td>课程评价平台</td><td>历史评分、用户评语</td><td>往届数据，注意时效</td></tr>
+  <tr><td>教务处/选课系统说明</td><td>考核方式、先修要求、开课信息</td><td>最权威但信息有限</td></tr>
+  <tr><td>同班群/选课经验帖</td><td>"水课避雷""优质课安利"清单</td><td>可作方向，需交叉验证</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>信息真伪提醒：</strong>学长学姐的评价带有个人色彩和使用年份差异。同一门课不同学期老师可能换、考核可能变。核心是一致性——多个人都说"容易"你才当真，单一来源仅供参考。
+</div>
+
+<h2 id="s5">五、保绩点策略：给分友好型选法</h2>
+<p>如果你这学期的首要目标是"保绩点"（比如要申请、要出国），就用下面这套给分友好的选法：</p>
+<ol>
+  <li><strong>优先"给分量化高"的课：</strong>收集历届分数段，找平均分高、挂科率低的。</li>
+  <li><strong>避开"绩点杀手"：</strong>传闻"压分""难逃""挂科常态"的课，离远点。</li>
+  <li><strong>配比"稳+冲"：</strong>本学期 1-2 门硬核（为你目标专业/方向必需）+ 其余配给分友好的公选课，保证整体 GPA 不拖后腿。</li>
+  <li><strong>关注"学分值"：</strong>同样的努力，高学分课对 GPA 影响更大，值得投入。</li>
+</ol>
+
+<div class="callout callout-info">
+  <strong>技巧：</strong>把"必修课"和"选修课"分开，必修动不了，选修是调节 GPA 的杠杆。选修多用给分友好课，把精力留给必修硬核。
+</div>
+
+<h2 id="s6">六、常见"坑课"类型与识别信号</h2>
+<p>很多坑课有共同特征，识别信号能帮你提前避雷：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>坑课类型</th><th>识别信号</th><th>风险</th></tr>
+  <tr><td>"绩点杀手"</td><td>挂科率高、压分传闻多、期末闭卷超难</td><td>拉低 GPA、占用时间</td></tr>
+  <tr><td>"看似水实则坑"</td><td>名字好抢，但全英文+每周论文+小组大项目</td><td>任务量远超预期</td></tr>
+  <tr><td>"选课人数爆满但老师放水"</td><td>人满为患、作业等于无、只发个论文过</td><td>学不到东西、进度空心</td></tr>
+  <tr><td>"考核不透明"</td><td>期末占比神秘、给分无规律、不公布标准</td><td>结果不可控</td></tr>
+  <tr><td>"与生活冲突"</td><td>早八满课、跨校区、与打工人作息冲突</td><td>出席成本高</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>最大的坑：</strong>人云亦云去抢"网红水课"，结果它根本不水。任何课，先看考核方式、再看给分历史，别被"抢课热度"裹挟。
+</div>
+
+<h2 id="s7">七、必修课与选修课的差异化策略</h2>
+<p>必修与选修的目标不同，选法也不同。</p>
+<ul>
+  <li><strong>必修课：</strong>躲不掉，只能"选老师、排时间"。同一门必修可能有多个老师开课，选人气高、讲得好、给分合理的那个；时间尽量"留缝"给复习。</li>
+  <li><strong>选修课：</strong>是你自主权的全部体现。作为保绩点工具（选给分友好）或拓展方向（选感兴趣干货）二选一规划，不要无脑堆干货硬课。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>搭配口诀：</strong>"必修选老师，选修挑性价比。"必修求稳不因老师冰山翻车；选修要么拿分、要么学本事，别两头落空。
+</div>
+
+<h2 id="s8">八、时间冲突与学分负担的配置技巧</h2>
+<p>时间表是选课的"隐性约束"。会排时间的人，能把硬课错开、留出缓冲。</p>
+<ul>
+  <li><strong>避免"同一周全硬课"：</strong>把硬核课分散在周内，别把两门大作业型课排同一天。</li>
+  <li><strong>给期末留缓冲：</strong>大多数人期末都挤，选课时就把"期末集中deadline"的课错开。</li>
+  <li><strong>控制总学分：</strong>不要因为"能抢到"就堆到学分上限。宁可少修、精修。</li>
+  <li><strong>别排满早八：</strong>除非你真能早睡早起，否则早八连排一周会严重损耗状态。</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>评估负担的技巧：</strong>粗略折算——每门课按"学分 × 每周课内外小时"估算总负担（例如 3 学分课若需每周 6 小时课内外，那 5 门就是 30 小时）。与你的其他安排（实习、学生工作、社团）加总，别超负荷。
+</div>
+
+<h2 id="s9">九、选课前一周 Checklist</h2>
+<p>把下面这份清单在选课前一周逐项勾掉，选课当天就能又快又稳地出手。</p>
+<ol>
+  <li><strong>列清单：</strong>把必修+想选的选修全部列入候选表。</li>
+  <li><strong>做调研：</strong>每个候选课，去问学长学姐 + 查评价平台 + 看考核方式。</li>
+  <li><strong>填三维度表：</strong>给分/口碑/任务量打成横表，横向比较。</li>
+  <li><strong>排时间冲突：</strong>用选课系统或表格核对，硬课错开、留缓冲。</li>
+  <li><strong>算学分总量：</strong>确认总学分在合理范围内，不超标。</li>
+  <li><strong>准备好了"备选名单"：</strong>热门课可能抢不到，提前想好第二、第三选择。</li>
+  <li><strong>设好提醒：</strong>记下选课开放时间，提前登录排队系统。</li>
+</ol>
+
+<div class="callout callout-ok">
+  <strong>最后一次冷静：</strong>选课那一刻，回到你的学期目标——是冲绩点？是学本事？还是保底舒适？哪个课最贴合目标就选它。被"抢课热"带着走，基本都会后悔。
+</div>
+
+<h2 id="s10">十、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>三维度框架：</strong>给分(可量)+ 口碑(质)+ 任务量(代价)三者结合</li>
+    <li><strong>读懂考核：</strong>平时/期末比、作业形式、出席要求、门槛</li>
+    <li><strong>情报网：</strong>学长学姐+评价平台+教务处+经验帖，交叉验证</li>
+    <li><strong>保绩点策略：</strong>避"绩点杀手"，稳+冲配比，高学分课多投入</li>
+    <li><strong>识别坑课：</strong>"看似水实则坑""绩点杀手""考核不透明"要警惕</li>
+    <li><strong>必修选老师、选修挑性价比</strong>，是差异化核心</li>
+    <li><strong>时间配置：</strong>硬课错开、期末留缓冲、控总学分、别排满早八</li>
+    <li><strong>选前一周边看 target 填表边排时间</strong>，备好备选课名单</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r004.html">
+      <div class="ri-ico">📚</div>
+      <div class="ri-title">期末两周冲刺复习法</div>
+      <div class="ri-desc">选完课后的期末冲刺框架</div>
+    </a>
+    <a class="related-item" href="r005.html">
+      <div class="ri-ico">📝</div>
+      <div class="ri-title">康奈尔笔记法</div>
+      <div class="ri-desc">把好课真正的知识记住</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：经验蒸馏 · 老生选课经验汇总 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

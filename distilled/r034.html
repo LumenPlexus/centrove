@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>国企/银行/事业单位求职全攻略 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">国企/银行/事业单位求职全攻略</div>
+</div>
+<div class="container">
+
+<h1>🏛️ 国企/银行/事业单位求职全攻略</h1>
+<div class="meta-row">
+  <span>体制内求职经验 + 招聘流程解读蒸馏</span>
+  <span class="score">⭐ 8.6</span>
+  <span>进阶难度</span>
+  <span>提前1年准备</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">国企</span>
+  <span class="tag tag-coral">银行</span>
+  <span class="tag tag-blue">事业单位</span>
+  <span class="tag tag-teal">求职</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>进国企/银行/事业单位，最怕"临时抱佛脚"——它们的招聘节奏和私企完全不同（有提前批、统考、笔试面试、政审体检等多道程序），节奏固定、信息分散。本文给你一份完整的攻略：搞清招聘节奏 → 分类准备网申/笔试/面试 → 用好信息渠道 → 避开会踩的坑，让你用一年时间稳稳推进，不走冤枉路。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、先弄清三类单位的区别和节奏</a>
+  <a href="#s2">二、完整时间线：从大三下到大四</a>
+  <a href="#s3">三、网申怎么填：简历被刷的常见原因</a>
+  <a href="#s4">四、笔试考什么：行测/公基/专业题</a>
+  <a href="#s5">五、面试怎么过：结构化与无领导</a>
+  <a href="#s6">六、政审体检与签约避坑</a>
+  <a href="#s7">七、信息渠道：别错过任何一场</a>
+  <a href="#s8">八、常见问题与避坑</a>
+  <a href="#s9">九、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、先弄清三类单位的区别和节奏</h2>
+<p>国企、银行、事业单位虽然常被归为"体制内"，但招聘逻辑差异不小。先分清，别用一个套路套所有。</p>
+<div class="table-wrap"><table>
+  <tr><th>类别</th><th>招聘主体</th><th>笔试特点</th><th>时间节奏</th></tr>
+  <tr><td>国企</td><td>各央企/地方国企（能源/通信/建筑/交通等）</td><td>多为行测+专业/性格测试，部分无笔试</td><td>秋招为主（10-12月），有提前批</td></tr>
+  <tr><td>银行</td><td>国有大行/股份制/城商行</td><td>行测+综合+英语，题量大、时间紧</td><td>秋招（9-11月）、春招（3-4月）</td></tr>
+  <tr><td>事业单位</td><td>政府部门下属事业单位/学校医院等</td><td>多为当地统考（公基+职测/专业课）</td><td>集中统考，时间看省/市安排</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>先定方向：</strong>三者不冲突，但精力有限。建议"主打一个 + 兼顾其他"，比如主打考银行（流程最规范、机会最多），同时关注国央企的管培岗。先把要去的"方向"定下来，再针对性准备，比广撒网高效。
+</div>
+
+<h2 id="s2">二、完整时间线：从大三下到大四</h2>
+<div class="table-wrap"><table>
+  <tr><th>时间</th><th>该做什么</th></tr>
+  <tr><td>大三下（3-6月）</td><td>定方向、查目标单位往年招聘公告、补证书/成绩、练笔试基础</td></tr>
+  <tr><td>暑期（7-8月）</td><td>暑期实习/提前批网申、系统准备行测、打磨简历</td></tr>
+  <tr><td>大四上 9-10月</td><td>秋招高峰：投递网申、参加提前批、笔试</td></tr>
+  <tr><td>大四上 11-12月</td><td>一轮笔试面试、部分单位出 offer、准备春招备选</td></tr>
+  <tr><td>寒假（1-2月）</td><td>复盘、补笔试短板、准备春招/事业单位统考</td></tr>
+  <tr><td>大四下 3-4月</td><td>银行春招、事业单位统考、补录</td></tr>
+  <tr><td>大四下 5-6月</td><td>政审体检、签约、档案迁移</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>别只盯一场：</strong>春招会明显少于秋招，很多单位秋招就基本招满。所以一定要抓住大四上的秋招窗口，宁可投得稍宽，也别错过黄金期。每年"该投国企考试结果错过秋招"的教训太多了。
+</div>
+
+<h2 id="s3">三、网申怎么填：简历被刷的常见原因</h2>
+<p>网申是第一道门槛，且很多是系统自动初筛（关键词匹配），填错细节直接出局。</p>
+<h3>3.1 系统初筛看重什么</h3>
+<ul>
+  <li><strong>硬性条件匹配：</strong>学历、专业、英语等级、政治面貌（很多国企/事业单位看重党员）、证书。</li>
+  <li><strong>成绩：</strong>部分单位卡学习成绩、有无挂科。</li>
+  <li><strong>关键词：</strong>岗位要求里出现的能力，你简历里最好有对应表述。</li>
+</ul>
+<h3>3.2 简历避坑</h3>
+<div class="table-wrap"><table>
+  <tr><th>坑</th><th>正确做法</th></tr>
+  <tr><td>只写"当过部长"没写成果</td><td>写成"组织活动X场，参与Y人，达成Z"</td></tr>
+  <tr><td>空泛形容词堆砌</td><td>用具体事例和数据体现能力</td></tr>
+  <tr><td>不针对岗位</td><td>针对目标方向调整经历顺序和措辞</td></tr>
+  <tr><td>填错/漏填关键字段</td><td>逐项核对，别让系统自动淘汰</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>加分项：</strong>和学生工作、党员身份、考证、担任班干部/社团负责人、参与志愿活动等，都是国企/事业单位亮眼的加分点。如果你经历少，可参考「学生干部/社团经验如何写进简历」把它写成价值。
+</div>
+
+<h2 id="s4">四、笔试考什么：行测/公基/专业题</h2>
+<p>不同单位科目不同，但"行测"和"公基"是主流，可以提前系统练。</p>
+<div class="table-wrap"><table>
+  <tr><th>科目</th><th>内容</th><th>备考建议</th></tr>
+  <tr><td>行测（通用能力）</td><td>言语、数量、判断推理、资料分析、常识</td><td>分模块学方法＋刷题，练速度</td></tr>
+  <tr><td>公基（公共基础）</td><td>政治、法律、经济、时政、科技人文</td><td>系统记忆＋刷真题，时政要近期更新</td></tr>
+  <tr><td>英语（银行常见）</td><td>阅读理解、语法、词汇</td><td>保持语感，练历年真题</td></tr>
+  <tr><td>专业/综合</td><td>岗位相关专业知识，或综合能力测试</td><td>针对目标岗位复习专业课</td></tr>
+  <tr><td>性格测试（不计分）</td><td>考察性格匹配度</td><td>真实作答，前后一致</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>节奏提示：</strong>笔试多数题量大、时间紧，考的是"取舍和速度"。平时按模块计时刷题，练出"不会的果断跳过、先做有把握的"应对策略，很重要。
+</div>
+
+<h2 id="s5">五、面试怎么过：结构化与无领导</h2>
+<p>国企/银行/事业单位面试以"结构化面试"和"无领导小组讨论"为主，也常见"半结构化"。无论哪种，核心是"稳重、逻辑清晰、表达流畅、态度积极"。</p>
+<h3>5.1 结构化/半结构化</h3>
+<ul>
+  <li><strong>高质量自我介绍：</strong>简洁、突出匹配岗位的经历和能力。（可准备 1 分钟版和 3 分钟版）</li>
+  <li><strong>常见追问：</strong>"为什么选我们单位？""你的优缺点？""遇到冲突怎么处理？"准备好答案，结合真实经历。</li>
+  <li><strong>仪表仪态：</strong>正装、坐姿端正、眼神交流、声音清晰。</li>
+</ul>
+<h3>5.2 无领导小组讨论</h3>
+<div class="table-wrap"><table>
+  <tr><th>角色</th><th>适合谁</th><th>要点</th></tr>
+  <tr><td>破冰者</td><td>反应快、爱表达</td><td>开场定框架，但别抢话</td></tr>
+  <tr><td>计时者</td><td>有条理、稳</td><td>管理时间，推动讨论节奏</td></tr>
+  <tr><td>总结者</td><td>逻辑强、能归纳</td><td>帮小组梳理结论、达成共识</td></tr>
+  <tr><td>执行者</td><td>务实</td><td>补充细节、专注把讨论落地</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>无领导注意：</strong>考察的是"协作"而非"争抢"。全程独霸话、打断别人、只表达不倾听，都可能被判低分。做"推动群体达成结论"的人，往往最稳。
+</div>
+
+<h2 id="s6">六、政审体检与签约避坑</h2>
+<p>通过面试后还有政审、体检，最后才是签约。这几步也有坑要留意。</p>
+<ul>
+  <li><strong>政审：</strong>如实填写经历与家庭成员信息，前后一致，别隐瞒。</li>
+  <li><strong>体检：</strong>很多单位对视力/血压/心电图等有要求，长期熬夜的提前调理一下。</li>
+  <li><strong>三方/合同：</strong>签约前看清楚岗位、地点、薪酬结构、试用期、违约金条款，有疑问当场问清。</li>
+  <li><strong>避免承诺不履行：</strong>同时拿到多份 offer 时，毁约要看违约金是否可接受，别稀里糊涂签约又毁约。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>签约前风险提示：</strong>记住"合同里写的才算数"，口头承诺要落实到书面。涉及工资、奖金、编制/合同制性质、试用期等内容，务必逐条看明白再签。
+</div>
+
+<h2 id="s7">七、信息渠道：别错过任何一场</h2>
+<div class="table-wrap"><table>
+  <tr><th>渠道</th><th>用途</th></tr>
+  <tr><td>单位官网/官方公众号</td><td>最权威，提前收藏目标单位</td></tr>
+  <tr><td>学校就业信息网/就业中心</td><td>本校对口单位、招聘会、专场</td></tr>
+  <tr><td>各省公务员/事业单位招聘官网</td><td>事业单位统考公告最全来源</td></tr>
+  <tr><td>主流校招平台/人才网</td><td>集中投递、关注截止时间</td></tr>
+  <tr><td>学长学姐/求职社群</td><td>内部信息、笔面试经验、内推</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>建表管理：</strong>建立一张"目标单位+投递截止+流程节点"的表格，每周更新，别因为错过截止时间把好机会放走。忙乱中漏投，是最可惜的淘汰方式。
+</div>
+
+<h2 id="s8">八、常见问题与避坑</h2>
+<div class="table-wrap"><table>
+  <tr><th>常见问题</th><th>后果</th><th>避坑方法</th></tr>
+  <tr><td>只等春招/不抓秋招</td><td>选择骤减</td><td>大四上全力抓住秋招</td></tr>
+  <tr><td>简历千篇一形</td><td>初筛被刷</td><td>针对目标方向调整经历和表述</td></tr>
+  <tr><td>笔试不刷题</td><td>题量大时间紧来不及做</td><td>分模块计时训练、练取舍</td></tr>
+  <tr><td>面试无准备</td><td>临场卡壳</td><td>准备自我介绍和常见问答并演练</td></tr>
+  <tr><td>不看合同就签约</td><td>陷入被动</td><td>逐条看清条款再签</td></tr>
+</table></div>
+
+<h2 id="s9">九、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>先定方向：</strong>主打一个类型，兼顾其他，别广撒网。</li>
+    <li><strong>抓秋招窗口：</strong>大四上10-12月是黄金期，别只等春招。</li>
+    <li><strong>网申重硬件：</strong>学历/专业/证书/成绩/党员，初筛大多是机器看关键词。</li>
+    <li><strong>笔试题量大多：</strong>分模块刷行测公基，练速度和取舍。</li>
+    <li><strong>面试要演练：</strong>结构化准备自我介绍和常规问答，无领导做"促共识"的人。</li>
+    <li><strong>政审体检别侥幸：</strong>如实填报、提前调理身体。</li>
+    <li><strong>签约看合同：</strong>岗位、薪资、试用期、违约金逐条看清。</li>
+    <li><strong>信息建表管理：</strong>每周更新投递进度，别漏掉截止时间。</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r017.html">
+      <div class="ri-ico">💼</div>
+      <div class="ri-title">第一份实习怎么找</div>
+      <div class="ri-desc">零经验也能拿到面试</div>
+    </a>
+    <a class="related-item" href="r020.html">
+      <div class="ri-ico">🧭</div>
+      <div class="ri-title">职业规划从0到1</div>
+      <div class="ri-desc">不知道适合做什么怎么办</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：体制内求职经验 + 招聘流程解读综合整理 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

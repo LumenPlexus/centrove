@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>用Notion搭建课程笔记系统 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">用Notion搭建课程笔记系统</div>
+</div>
+<div class="container">
+
+<h1>🗂️ 用Notion搭建课程笔记系统：一学期不再手忙脚乱</h1>
+<div class="meta-row">
+  <span>经验蒸馏 · 学生笔记方法论</span>
+  <span class="score">⭐ 8.9</span>
+  <span>入门难度</span>
+  <span>2小时搭建</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">Notion</span>
+  <span class="tag tag-coral">笔记</span>
+  <span class="tag tag-blue">课程管理</span>
+  <span class="tag tag-teal">效率</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>不要再用一个个孤立的Word文档或截图混乱地堆笔记。用Notion建立一个以「课程数据库」为核心的笔记系统：每门课一个专页、每次课一条记录，配合视图快速切换"本周要学什么""这门课考什么"，最后再单独建一个考点错题库。一次搭建，整学期有条不紊。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、为什么课堂笔记总是乱？先看清问题根源</a>
+  <a href="#s2">二、系统总览：从"数据库"到"页面"的骨架结构</a>
+  <a href="#s3">三、课程数据库字段怎么设计</a>
+  <a href="#s4">四、每科子页面怎么组织</a>
+  <a href="#s5">五、视图切换：按本周 / 按科目 / 按日期</a>
+  <a href="#s6">六、考点错题库的搭建与用法</a>
+  <a href="#s7">七、2小时上手：分步操作清单</a>
+  <a href="#s8">八、维护习惯与常见坑</a>
+  <a href="#s9">九、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、为什么课堂笔记总是乱？先看清问题根源</h2>
+<p>几乎每个同学都有过这样的经历：期末复习时翻遍手机相册、云盘、聊天记录、Word文档、纸质本子，才勉强拼出这门课的笔记碎片。问题根源往往在于——<strong>你在用"收藏逻辑"而不是"组织逻辑"管理笔记</strong>。</p>
+<p>几个典型症状，对号入座：</p>
+<div class="table-wrap"><table>
+  <tr><th>症状</th><th>根源</th><th>后果</th></tr>
+  <tr><td>笔记散落在十几个App里</td><td>没有统一的归集点</td><td>找笔记比做笔记还费时间</td></tr>
+  <tr><td>按"文件名"记忆，一删文件夹全没了</td><td>没有结构化层级</td><td>期末复习无从下手</td></tr>
+  <tr><td>每节课单独记，看不到课程全貌</td><td>缺乏"课程"这个聚合单位</td><td>知识点碎片化、前后脱节</td></tr>
+  <tr><td>错题、考点到处乱抄</td><td>没有专门的错题库</td><td>复习时重复犯错</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>核心思路：</strong>用"数据库 + 页面"两件套。数据库负责管理元信息（课程、日期、章节、状态），页面负责承载笔记正文。两者通过属性关联，你只需要在课堂上录入一次，期末用视图和筛选一键调出。
+</div>
+
+<h2 id="s2">二、系统总览：从"数据库"到"页面"的骨架结构</h2>
+<p>这套系统的骨架分两层：<strong>顶层是"课程数据库"，中层是"每科的子页面"，底层是"考点错题库"</strong>。整体结构如下：</p>
+<ul>
+  <li><strong>层级一 · 课程数据库：</strong>一个 Table 或 Board，记录你的所有课程行，每行对应一门课。</li>
+  <li><strong>层级二 · 每科子页面：</strong>在每门课的页面里，再内嵌一个「节课」数据库（按周/章节排布），点进去写每节课的笔记。</li>
+  <li><strong>层级三 · 考点错题库：</strong>顶层的第二个数据库，收录不确定的知识点、反复错的题、老师强调的考点。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>提前避坑：</strong>不要第一周就把系统搭得花里胡哨，嵌套七八层数据库。记住"能用一个数据库解决就不拆开"。字段够用即可，重点是<strong>让录入足够快</strong>——课堂上一分钟能记完一条，你才愿意坚持用。
+</div>
+
+<p>这套骨架对应的Notion页面树大致长这样：</p>
+<div class="table-wrap"><table>
+  <tr><th>页面</th><th>类型</th><th>作用</th></tr>
+  <tr><td>📚 我的课程（主库）</td><td>Database-Table/Board</td><td>所有课程的入口，选课、学分、教师、状态</td></tr>
+  <tr><td>├ 数据结构</td><td>子页面+节课数据库</td><td>某门课的专题页，内含每周笔记</td></tr>
+  <tr><td>├ 高数¥... 等各科</td><td>子页面</td><td>每门课一个专题页</td></tr>
+  <tr><td>🎯 考点错题库</td><td>Database-Table</td><td>错题+考点集中库，可多库联动</td></tr>
+</table></div>
+
+<h2 id="s3">三、课程数据库字段怎么设计</h2>
+<p>字段设计是这套系统好用的关键。字段太少，后面筛不动；字段太多，录入变慢。推荐这套"够用"的字段组合：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>属性名</th><th>类型</th><th>作用</th><th>示例</th></tr>
+  <tr><td>课程名</td><td>Title</td><td>主字段，就是课程本身</td><td>数据结构</td></tr>
+  <tr><td>科目</td><td>Select</td><td>分组/配色的依据</td><td>专业课</td></tr>
+  <tr><td>教师</td><td>Text</td><td>方便联系老师、区分同位课</td><td>王老师</td></tr>
+  <tr><td>上课时间</td><td>Select/Multi-select</td><td>课程表排布</td><td>周一第3、4节</td></tr>
+  <tr><td>学分</td><td>Number</td><td>期末按学分分配复习权重</td><td>3</td></tr>
+  <tr><td>状态</td><td>Select</td><td>进度看板用</td><td>进行中/已结课</td></tr>
+  <tr><td>考试时间</td><td>Date</td><td>倒排复习计划</td><td>2026-01-15</td></tr>
+  <tr><td>成绩</td><td>Select/Number</td><td>期末登记，复盘用</td><td>85</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>小技巧：</strong>字段里的 Select 选项值要保持<strong>完全统一</strong>（比如科目一定是"专业课"三个字，而不是"专业""专业课"混用）。Notion 的 Select 是精确匹配的，选项不统一会导致下游筛选和看板失灵。
+</div>
+
+<p>如果你喜欢卡片视图，可以把数据库切换成 Board（看板），让"状态"字段做纵轴，一眼看到结课/进行中/待选。这块在后面第五部分展开。</p>
+
+<h2 id="s4">四、每科子页面怎么组织</h2>
+<p>课程数据库的每一行展开，就是一个子页面（专题页）。在这个页面里，再内嵌一个「节课数据库」，用<strong>周次/章节</strong>作为排序维度。</p>
+<p>每科子页面建议的长相：</p>
+<ul>
+  <li><strong>顶部一行基本信息：</strong>课程名、代码、教师、教材（可做成 Page 或简单文字）。</li>
+  <li><strong>一个「节课数据库」：</strong>字段包括 周次(Number)、日期(Date)、章节标题(Title)、状态(Select: 未学/已学/待复习)、课堂要点(Rich Text)。</li>
+  <li><strong>可选的参考资料区：</strong>教材 PDF、课件链接、老师给的资料，直接拖进内嵌文件或链接。</li>
+</ul>
+
+<h3>4.1 节课数据库的字段建议</h3>
+<div class="table-wrap"><table>
+  <tr><th>字段</th><th>类型</th><th>说明</th></tr>
+  <tr><td>节标题</td><td>Title</td><td>如"第3章 线性表"</td></tr>
+  <tr><td>周次</td><td>Number</td><td>方便按周排序筛选</td></tr>
+  <tr><td>日期</td><td>Date</td><td>这节课的日期</td></tr>
+  <tr><td>状态</td><td>Select</td><td>未学/已学/待复习</td></tr>
+  <tr><td>课堂要点</td><td>Rich Text</td><td>速记3-5条核心点</td></tr>
+  <tr><td>主页正文</td><td>—（页面内容）</td><td>在每节页面里写详细笔记</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>推荐内容策略：</strong>课堂上只记<strong>框架和关键词</strong>（标题、公式、老师强调的坑），课后当天花10分钟补成完整笔记（用自己的话 + 示例 + 配错点）。课堂时->课后补，效率远高于课上狂抄整句。
+</div>
+
+<h2 id="s5">五、视图切换：按本周 / 按科目 / 按日期</h2>
+<p>这是这套系统"魔法"最集中的地方。同一个数据库，配几个不同视图，就能满足不同场景：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>视图名称</th><th>视图类型</th><th>筛选/排序</th><th>适用场景</th></tr>
+  <tr><td>本周要学</td><td>Calendar or Table</td><td>日期∈本周，按日期升序</td><td>周一起床看这周要上什么</td></tr>
+  <tr><td>按科目</td><td>Board/Group by 科目</td><td>按科目分组</td><td>一门课单独备复习</td></tr>
+  <tr><td>按日期</td><td>Calendar</td><td>按日期排布</td><td>看某天/某周的时间线</td></tr>
+  <tr><td>待复习</td><td>Table</td><td>状态=待复习</td><td>期末抓"欠账"的课</td></tr>
+</table></div>
+
+<h3>5.1 视图建立步骤（在节课数据库上做）</h3>
+<ol>
+  <li>点击数据库右上角 <strong>+</strong> 新建视图，命名"本周要学"。</li>
+  <li>视图 View type 选 <strong>Calendar</strong>，Calendar 字段选"日期"。</li>
+  <li>点击 <strong>Filter</strong>，条件设为"日期 is on or after this week" 且 "日期 is before next week"（或直接用状态≠已学）。</li>
+  <li>再建"按科目"视图：View type 选 <strong>Table</strong>，点击 <strong>Group by</strong>，选择"科目"字段，即可按科目折叠展开。</li>
+  <li>"按日期"视图直接选 Calendar，不设筛选，展示全部日期。</li>
+</ol>
+
+<div class="callout callout-info">
+  <strong>使用节奏建议：</strong>每周日晚花10分钟，把下周的课程节点提前建立好（章节目录先建，内容等课上补）。这样"本周要学"视图点到即用，不用临时找入口。
+</div>
+
+<h2 id="s6">六、考点错题库的搭建与用法</h2>
+<p>错题库与课程库分离，独立成库，但通过"课程"属性与主库联动。这样做的好处是：<strong>错题是按学科归类的，但又能整体浏览。</strong></p>
+
+<h3>6.1 错题库字段设计</h3>
+<div class="table-wrap"><table>
+  <tr><th>字段</th><th>类型</th><th>说明</th></tr>
+  <tr><td>题目/考点</td><td>Title</td><td>一句话记住这道题或这个考点</td></tr>
+  <tr><td>所属课程</td><td>Relation→课程库</td><td>关联到主库某门课</td></tr>
+  <tr><td>错因</td><td>Select</td><td>概念不清/计算错/记混/粗心</td></tr>
+  <tr><td>掌握状态</td><td>Select</td><td>未掌握/复习中/已掌握</td></tr>
+  <tr><td>记录时间</td><td>Date</td><td>方便按时间回看</td></tr>
+  <tr><td>解答</td><td>Rich Text</td><td>你自己的解法，别抄标准答案</td></tr>
+</table></div>
+
+<h3>6.2 使用方法</h3>
+<ol>
+  <li>做错题或发现不记得的考点时，打开错题库新建一条，2分钟内记完（题干+错因+解答）。</li>
+  <li>每周日把"复习中"的筛出来重做一遍，不会的改回"未掌握"。</li>
+  <li>期中/期末前，按"掌握状态+所属课程"筛选出所有薄弱点，集中突破。</li>
+</ol>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>错题库的价值在于"常回看"而不是"记录"。如果建了库从不回看，那它跟废弃的文档没有区别。建议固定每周日晚30分钟为"错题库回看时间"。
+</div>
+
+<h2 id="s7">七、2小时上手：分步操作清单</h2>
+<p>下面把搭建拆成可执行步骤，总耗时约2小时。建议一次搭完主骨架，细节慢慢补。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>时间</th><th>操作</th><th>说明</th></tr>
+  <tr><td>0-20分钟</td><td>建"我的课程"数据库</td><td>新建页面→选 Database-Table，建好表后依次添加字段（科目/教师/学分/状态/考试时间）</td></tr>
+  <tr><td>20-40分钟</td><td>录入本学期所有课程行</td><td>把课表上的每门课都建一行，填好属性</td></tr>
+  <tr><td>40-70分钟</td><td>为主要课程建子页面+节课数据库</td><td>展开每门课，内嵌一个节课数据库，配好"周次/日期/章节/状态"字段</td></tr>
+  <tr><td>70-90分钟</td><td>建"考点错题库"</td><td>独立数据库，配好字段并关联主库</td></tr>
+  <tr><td>90-110分钟</td><td>配置视图</td><td>在节课数据库上建"本周/按科目/按日期"三个视图</td></tr>
+  <tr><td>110-120分钟</td><td>测试+微调</td><td>输入1-2条示例数据，跑一遍筛选，确认视图、配色符合预期</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>关键动作：</strong>第20分钟就把"录入课程"这件事做完，而不是纠结配色和模板。系统的价值在于<strong>用起来之后的积累</strong>，不是刚建好的样子。
+</div>
+
+<h2 id="s8">八、维护习惯与常见坑</h2>
+<h3>8.1 三条维护习惯</h3>
+<ul>
+  <li><strong>课后10分钟补全：</strong>上完课当天，把课上速记补成完整笔记。拖延超过48小时，基本不会再补。</li>
+  <li><strong>每周日"系统日"：</strong>花20分钟清空本周待办、回看错题库、把下周节点提前建好。</li>
+  <li><strong>有变动就同步：</strong>调课、加课、老师换资料，第一时间在状态/字段里改，别靠记忆。</li>
+</ul>
+
+<h3>8.2 常见坑</h3>
+<div class="table-wrap"><table>
+  <tr><th>坑</th><th>现象</th><th>解法</th></tr>
+  <tr><td>选项不统一</td><td>筛选/看板分组串了</td><td>Select选项字准写一致</td></tr>
+  <tr><td>嵌套过深</td><td>点5层才看到笔记</td><td>保持"数据库→子页面"两层为主</td></tr>
+  <tr><td>只建库不维护</td><td>系统变僵尸</td><td>固定每周系统日+课后补全</td></tr>
+  <tr><td>课上全文抄录</td><td>笔记一堆却没重点</td><td>只记框架关键词，课后补</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>提醒：</strong>Notion本身不免费离线（需联网使用，移动端可缓存），重要笔记建议定期用"导出"功能备份成Markdown/PDF，防止账号或网络异常时资料丢失。
+</div>
+
+<h2 id="s9">九、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>用数据库+页面：</strong>课程数据库管元信息，子页面管笔记正文，考点错题库集中管错题和考点。</li>
+    <li><strong>字段够用即可：</strong>课程库重点字段=科目/教师/学分/状态/考试时间；别为美观忽略实用性。</li>
+    <li><strong>每科一个专题页：</strong>内含"节课数据库"，按周次/日期/章节排布，课上记框架、课后补细节。</li>
+    <li><strong>视图切换提效：</strong>同一库配"本周要学/按科目/按日期/待复习"四个视图，管住一学期。</li>
+    <li><strong>错题库要常回看：</strong>按错因+掌握状态管理，每周日回看，期末按薄弱点集中突破。</li>
+    <li><strong>2小时可搭完：</strong>先搭骨架再补细节，第20分钟就要开始录入真实课程。</li>
+    <li><strong>维护靠习惯：</strong>课后10分钟补全 + 每周日20分钟系统日，持续才有效。</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r011.html">
+      <div class="ri-ico">🗂️</div>
+      <div class="ri-title">把待办拖进日历：时间管理的下一步</div>
+      <div class="ri-desc">课堂任务与复习安排落地</div>
+    </a>
+    <a class="related-item" href="r005.html">
+      <div class="ri-ico">🧠</div>
+      <div class="ri-title">主动回忆：为什么背了就忘</div>
+      <div class="ri-desc">让笔记转化为长期记忆</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：经验蒸馏 · 学生笔记方法论综合整理 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

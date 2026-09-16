@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>考研数学全年复习时间线：从现在到冲刺 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href=&quot;index.html&quot;" title="返回蒸馏库">←</div>
+  <div class="title">考研数学全年复习时间线</div>
+</div>
+<div class="container">
+
+<h1>🗓️ 考研数学全年复习时间线：从现在到冲刺</h1>
+<div class="meta-row">
+  <span>经验蒸馏 · 全年分阶段规划模板</span>
+  <span class="score">⭐ 9.0</span>
+  <span>进阶难度</span>
+  <span>全年</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">考研</span>
+  <span class="tag tag-coral">数学</span>
+  <span class="tag tag-blue">复习规划</span>
+  <span class="tag tag-teal">备考</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>考研数学（数一/数二/数三）是"内容多、战线长"的科目，决定成败的不是你刷了多少题，而是时间线是否踩稳。标准四阶段——基础→强化→真题→冲刺，每一阶段有不可替代的目标和配套书目。跟着节奏走，把每个阶段做扎实，上岸概率直线上升。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、全年时间线总览：四大阶段</a>
+  <a href="#s2">二、第一阶段：基础阶段（约3-4个月）</a>
+  <a href="#s3">三、第二阶段：强化阶段（约2-3个月）</a>
+  <a href="#s4">四、第三阶段：真题阶段（约1.5-2个月）</a>
+  <a href="#s5">五、第四阶段：冲刺模考阶段（考前1个月）</a>
+  <a href="#s6">六、各阶段书目与资料推荐</a>
+  <a href="#s7">七、每日时间分配示例</a>
+  <a href="#s8">八、数一/数二/数三差异与取舍</a>
+  <a href="#s9">九、五大常见误区</a>
+  <a href="#s10">十、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、全年时间线总览：四大阶段</h2>
+<p>考研数学一般从"前一年12月～当年1月"启动，到"当年12月"考试，整整一年。下面以标准全年复习为例给出四阶段结构，起点不同的同学按比例压缩。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>阶段</th><th>时间窗</th><th>时长</th><th>核心目标</th></tr>
+  <tr><td>基础</td><td>12月-3月</td><td>约3-4个月</td><td>系统过概念、公式、基础题</td></tr>
+  <tr><td>强化</td><td>4月-6月</td><td>约2-3个月</td><td>模块化拔高、刷中等偏难题</td></tr>
+  <tr><td>真题</td><td>7月-9月</td><td>约1.5-2个月</td><td>真题整套限时+逐题复盘</td></tr>
+  <tr><td>冲刺</td><td>10月-12月</td><td>约2个月</td><td>模考、查漏、回归错题与公式</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>灵活调整：</strong>如果是从暑假才开始，就把基础阶段压缩到 1 个月"速通"，强化 1.5 个月，其余按比例收紧。但哪怕时间再紧，<strong>真题阶段绝不可跳过</strong>——真题是最贴近实战的材料。
+</div>
+
+<h2 id="s2">二、第一阶段：基础阶段（约3-4个月）</h2>
+<p>基础阶段的任务是"打地基"：把高等数学、线性代数、概率论的概念、公式、性质过一遍，建立完整知识框架。这一阶段不需要刷难题，重点是"看懂、记住、会套公式"。</p>
+
+<h3>2.1 本阶段目标</h3>
+<ul>
+  <li>把三科教材重点章节系统读一遍，理解每个定理的适用条件。</li>
+  <li>整理一本"公式手册"：极限、导数、积分、级数、矩阵、概率分布的公式集中一处。</li>
+  <li>做基础题：每章配套的基础练习（如教材课后题基础部分或基础讲义例题）。</li>
+</ul>
+
+<h3>2.2 常见问题</h3>
+<ul>
+  <li><strong>看书慢拖节奏：</strong>千万不要花几个月死磕教材证明，抓重点、能会做题就行。</li>
+  <li><strong>基础没打好就赶进度：</strong>强化期会"听天书"，基础阶段务必每天保持手感。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>最该避的坑：</strong>基础阶段追求"把书从头到尾逐字看完"，结果三个月才看半本高数。正确做法是：以真题/考纲为准，优先把"必考模块"（极限、积分、微分方程、矩阵、概率分布）学透，冷门章节大致了解即可。
+</div>
+
+<h2 id="s3">三、第二阶段：强化阶段（约2-3个月）</h2>
+<p>强化阶段是拉开差距的关键：把"会做基础题"升级成"会解综合题"。核心是模块化刷题 + 题型归纳。</p>
+
+<h3>3.1 本阶段目标</h3>
+<ul>
+  <li>按模块刷强化题（如高数几大块、线代几大块、概率几大块）。</li>
+  <li>归纳"题型-方法"：看到某个特征就知道该用什么方法。</li>
+  <li>开始积累错题本，标注错误原因和正确思路。</li>
+</ul>
+
+<h3>3.2 每日建议</h3>
+<ul>
+  <li>上午 2-3 小时：集中学一个模块 + 对应强化题。</li>
+  <li>晚上 1 小时：复盘当天错题、重做一遍。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>提分关键：</strong>强化阶段"宁可慢一点，也要弄懂"。一道综合题做不出来没关系，对照解析看思路，然后<span>合上讲义</span>重写一遍。真正掌握的标准是"第二遍不看答案能做出来"。
+</div>
+
+<h2 id="s4">四、第三阶段：真题阶段（约1.5-2个月）</h2>
+<p>真题阶段核心就一个字：<strong>做</strong>。但要"成套限时 + 逐题复盘"，不是零散刷。</p>
+
+<h3>4.1 怎么用真题</h3>
+<ol>
+  <li>近 15-20 年的真题按年份整套做，<strong>严格限时 3 小时</strong>（模拟考场）。</li>
+  <li>做完立刻对答案，先算分，再标记错题。</li>
+  <li>把错误按"计算错误/概念不清/题型生疏"分类，针对性补救。</li>
+  <li>做完 8-10 套后，开始二刷"高频错题的同类题"。</li>
+</ol>
+
+<div class="callout callout-warn">
+  <strong>重要提醒：</strong>真题别做一次就扔。第一遍练"会不会做"，第二遍练"在限定时间内做对"，第三遍练"几乎不回看就能秒做"。老题吃透远比刷新题有价值。
+</div>
+
+<h2 id="s5">五、第四阶段：冲刺模考阶段（考前1个月）</h2>
+<p>冲刺阶段不再学新东西，重点是<strong>查漏补缺 + 模拟实战 + 回归基础</strong>。</p>
+<ul>
+  <li><strong>模考：</strong>每周 2-3 次整套限时模考（可用往年真题第二遍或权威模拟卷），保持考试手感。</li>
+  <li><strong>查漏：</strong>把错题本和公式手册过一遍，专项补短板。</li>
+  <li><strong>回归基础：</strong>考前最后两周把公式册、核心结论再过一遍，确保"会的一定不错"。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>冲刺心态：</strong>考前一个月如果你还在纠结"是不是漏了哪个冷门考点"，请放下。冲刺的价值在于把你已经会的稳定拿到手，而不是临考前临时突击新知识。
+</div>
+
+<h2 id="s6">六、各阶段书目与资料推荐</h2>
+<p>下面给出的是主流的"复习纲领"式参考（不同年份书名可能微调，选一套主推即可，不必贪多）。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>阶段</th><th>常见资料类型</th><th>说明</th></tr>
+  <tr><td>基础</td><td>教材（高数/线代/概率）或基础讲义</td><td>配合基础课视频，先懂概念</td></tr>
+  <tr><td>强化</td><td>强化讲义 + 强化题库</td><td>模块刷题、题型归纳</td></tr>
+  <tr><td>真题</td><td>历年真题汇编（近15-20年）</td><td>成套限时+逐题复盘</td></tr>
+  <tr><td>冲刺</td><td>模拟卷 + 核心结论手册</td><td>模考与回归公式</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>资料取舍原则：</strong>一门科目跟定 1-2 套主资料即可，切忌"见什么买什么"。资料太多只会让你陷入"刷不完"的焦虑，反而不利于节奏稳定。
+</div>
+
+<h2 id="s7">七、每日时间分配示例</h2>
+<p>锻炼"上午数学、下午专业课/英语、晚上政治/复盘"是比较常见的约 8-10 小时学习日的安排。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>时段</th><th>内容</th><th>时长</th></tr>
+  <tr><td>上午 8:30-11:30</td><td>数学（新模块学习或整套/半套计时）</td><td>3小时</td></tr>
+  <tr><td>下午 14:00-17:00</td><td>专业课或英语</td><td>3小时</td></tr>
+  <tr><td>晚上 19:00-21:00</td><td>数学复盘 + 错题整理 + 公式背诵</td><td>2小时</td></tr>
+  <tr><td>睡前 30分钟</td><td>政治或默写公式手册</td><td>0.5小时</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>时间红线：</strong>数学通常建议每天至少 4-5 小时。前紧后松的误区——前期花大量时间想"把逻辑想透"，后期才练速度，结果考试手忙脚乱。最佳状态是后期每天都有"限时"训练来固化熟练度。
+</div>
+
+<h2 id="s8">八、数一/数二/数三差异与取舍</h2>
+<p>不同卷种内容范围不同，复习时对标自己考的类型，别把时间浪费在不考的内容上。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>卷种</th><th>高数</th><th>线代</th><th>概率</th><th>特点</th></tr>
+  <tr><td>数一</td><td>范围最全（含级数、三重积分、曲面积分）</td><td>重点</td><td>要求高</td><td>内容最多，应用面广</td></tr>
+  <tr><td>数二</td><td>不考概率，高数计算量大</td><td>重点</td><td>不考概率</td><td>高数占比高，公式要熟</td></tr>
+  <tr><td>数三</td><td>范围适中，级数、经济应用常考</td><td>重点</td><td>重点</td><td>偏向应用，概率统计分量重</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>对标建议：</strong>确认自己考数几之后，第一时间去对比考纲，划掉你不考的内容（比如数二不考概率）。这样能省出大量时间，把力气花在真正计入分数的章节上。
+</div>
+
+<h2 id="s9">九、五大常见误区</h2>
+<h3>误区一：贪多嚼不烂，资料买一堆</h3>
+<p>跟定 1-2 套主资料和一位主讲师即可。资料是手段，不是目标。内容重复地刷题不如把一套真的弄懂。</p>
+
+<h3>误区二：只刷题不总结</h3>
+<p>海量刷题但不归纳题型、不搞错题本，等于"用功但效果差"。错题本和"题型-方法对照表"是强化期最重要的产出。</p>
+
+<h3>误区三：前期堆时间，后期没手感</h3>
+<p>基础期投入过多精力研究高深技巧，冲刺期反而没时间练整套速度。合理做法是基础期抓扎实、冲刺期固定限时练。</p>
+
+<h3>误区四：真题只用来看流程不看时间</h3>
+<p>平时以"看思路"为主，从不整套计时，考场上会严重超时。真题阶段必须模拟考场，掐表 3 小时。</p>
+
+<h3>误区五：考前临时突击冷门</h3>
+<p>考前一个月还在为"会不会考冷门考点"焦虑、疯狂补新内容，反而打乱稳定节奏。冲刺唯一任务是"把会的稳定拿分"。</p>
+
+<div class="callout callout-warn">
+  <strong>最需记住的底线：</strong>数学考研不是比谁学得多，而是比谁"会的不丢分"。稳定输出 = 知识+熟练度+心态。三者在全年时间线里都要给足空间。
+</div>
+
+<h2 id="s10">十、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>四阶段时间线：</strong>基础(12-3月)→强化(4-6月)→真题(7-9月)→冲刺(10-12月)</li>
+    <li><strong>基础段：</strong>概念公式建框架，公式手册+基础题</li>
+    <li><strong>强化段：</strong>模块刷题+题型归纳+错题本</li>
+    <li><strong>真题段：</strong>成套限时3小时，逐题复盘、分类补救</li>
+    <li><strong>冲刺段：</strong>模考+查漏+回归公式手册</li>
+    <li><strong>每日4-5小时数学</strong>，前紧后松不可取</li>
+    <li><strong>对标卷种：</strong>数一/数二/数三，划掉不考内容省时间</li>
+    <li><strong>五大误区：</strong>贪多、只刷不总结、堆时间、真题不计时、考前突击冷门</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r023.html">
+      <div class="ri-ico">⚙️</div>
+      <div class="ri-title">线性代数期末保过</div>
+      <div class="ri-desc">线代具体题型套路</div>
+    </a>
+    <a class="related-item" href="r006.html">
+      <div class="ri-ico">📐</div>
+      <div class="ri-title">高数期末不挂科：3天核心考点</div>
+      <div class="ri-desc">高数核心考点评析</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：经验蒸馏 · 全年分阶段规划模板 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

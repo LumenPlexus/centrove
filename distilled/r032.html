@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>竞赛备赛指南 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">竞赛备赛指南</div>
+</div>
+<div class="container">
+
+<h1>🏆 竞赛备赛指南：大创/数学建模/机器人大赛怎么准备</h1>
+<div class="meta-row">
+  <span>经验蒸馏 · 科创竞赛实战经验</span>
+  <span class="score">⭐ 8.9</span>
+  <span>进阶难度</span>
+  <span>1-3个完整赛道</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">竞赛</span>
+  <span class="tag tag-coral">大创</span>
+  <span class="tag tag-blue">数学建模</span>
+  <span class="tag tag-teal">科创</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>竞赛获奖不是靠最后突击，而是靠三点：选对赛道、组好队伍、提前准备。三类代表赛（大创/国赛数学建模/数学建模机器人智能类）各有不同的备赛路径，但共同点是：看获奖作品找规律 + 制定12周时间线 + 按角色分工 + 反复打磨答辩材料。把备赛当成一个小项目去管理，而不是临时抱佛脚。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、竞赛前先想清楚：你适合哪类？</a>
+  <a href="#s2">二、大创怎么准备：从选题到结题</a>
+  <a href="#s3">三、数学建模怎么准备：国赛/美赛的套路</a>
+  <a href="#s4">四、机器人大赛怎么准备：硬件软件两手抓</a>
+  <a href="#s5">五、组队策略：搭对"互补"的队伍</a>
+  <a href="#s6">六、12周备赛时间线</a>
+  <a href="#s7">七、研究获奖作品：看什么、怎么学</a>
+  <a href="#s8">八、答辩与材料打磨</a>
+  <a href="#s9">九、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、竞赛前先想清楚：你适合哪类？</h2>
+<p>竞赛种类繁多，不同赛道考察的能力、投入时间、获奖难度差别很大。先看主流几类再选择：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>赛道</th><th>考察重点</th><th>典型赛</th><th>周期</th><th>适合人群</th></tr>
+  <tr><td>创新创业类</td><td>想法+商业逻辑+执行力</td><td>大创/互联网+</td><td>数月-1年</td><td>关注市场、产品、团队</td></tr>
+  <tr><td>数学建模类</td><td>建模+编程+写作</td><td>国赛数学建模/美赛</td><td>3天现场+周期备赛</td><td>理工科、喜欢解决问题</td></tr>
+  <tr><td>智能/机器人/硬件类</td><td>软硬件+调试+团队协作</td><td>机器人大赛/电子设计</td><td>1-数月</td><td>动手能力强、会写代码</td></tr>
+<tr><td>学术论文类</td><td>文献+实验+写作</td><td>专业学科竞赛</td><td>数月</td><td>有科研基础、导师指导</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>选赛建议：</strong>第一优先选"和你兴趣+专业技能匹配"的赛道；第二看"导师资源/往年本校获奖"哪个多；第三考虑时间投入。别为"好得奖"硬选一个没有热情、也不擅长的赛，备赛过程会很难熬。
+</div>
+
+<h2 id="s2">二、大创怎么准备：从选题到结题</h2>
+<p>大学生创新创业训练计划（大创）更强调为主线、创新点和可执行性，周期通常是申报立项→中期检查→结题验收。</p>
+
+<h3>2.1 选题四原则</h3>
+<ol>
+  <li><strong>真需求：</strong>问题是真实存在的，不是拍脑袋。</li>
+  <li><strong>有创新点：</strong>和已有方案相比的增量是什么（方法/技术/应用场景）。</li>
+  <li><strong>团队能做：</strong>结合成员现有能力，别选超出半年无法落地的。</li>
+  <li><strong>可量化验收：</strong>设一两个可检查的量化指标（原型/论文/专利）。</li>
+</ol>
+
+<h3>2.2 申报书怎么写（关键）</h3>
+<ul>
+  <li><strong>问题背景：</strong>1段讲清楚痛点，突出"为什么值得做"。</li>
+  <li><strong>创新点：</strong>单独列2-3条，讲清"和现有方案不同在哪"。</li>
+  <li><strong>技术路线：</strong>分阶段的方法步骤，评委要看可行性。</li>
+  <li><strong>预期成果：</strong>写"可交付物"，如原型+论文+软著+专利。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>重点：</strong>评委没耐心读长废话。申报书要"段落短、有冒号标题、创新点清晰"。宁可精炼，不可注水。一份逻辑清楚、可行性强的申报书，比花哨的排版有用得多。
+</div>
+
+<h2 id="s3">三、数学建模怎么准备：国赛/美赛的套路</h2>
+<p>数学建模是"3天内对给定问题建模、求解、成文"，考察三样：建模思维、编程求解、论文写作。备赛核心是训练"标准化流程"。</p>
+
+<h3>3.1 比赛流程与角色</h3>
+<div class="table-wrap"><table>
+  <tr><th>角色</th><th>主要工作</th><th>建议技能</th></tr>
+  <tr><td>建模手</td><td>分析问题、建立数学模型、定假设</td><td>运筹/统计/数学基础</td></tr>
+  <tr><td>编程手</td><td>用MATLAB/Python实现模型求解、出图</td><td>Python/MATLAB、数据分析、画图</td></tr>
+  <tr><td>写手</td><td>把建模和求解写成完整论文</td><td>逻辑清楚、英文写作（美赛）</td></tr>
+</table></div>
+
+<h3>3.2 备赛要点</h3>
+<ul>
+  <li><strong>熟悉常见模型库：</strong>回归、优化、时间序列、图论、机器学习等，做到"看到题能想到用哪类"。</li>
+  <li><strong>练经典题型：</strong>近3-5年国赛真题的常见类型反复练，形成套路。</li>
+  <li><strong>模板化论文：</strong>预先搭好摘要、问题分析、模型假设、求解、检验、改进的框架。</li>
+  <li><strong>限时模拟：</strong>赛前至少完整模拟一次3天流程，练时间分配。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>抓分关键：</strong>摘要（Abstract）是评审第一眼看的，占很大权重。一定在最后精雕摘要：问题简述+模型+方法+关键结果+结论。很多队模型不错，却因摘要写得弱而丢分。
+</div>
+
+<h2 id="s4">四、机器人大赛怎么准备：硬件软件两手抓</h2>
+<p>机器人类（如全国大学生机器人大赛RoboMaster/ROBOCON等，或电子设计大赛）比的是机械结构、电路硬件、控制算法与团队协作，调试往往占最大工作量。</p>
+
+<h3>4.1 备赛两块核心</h3>
+<ul>
+  <li><strong>硬件分：</strong>结构设计、驱动、传感器选型，提前做BOM和采购，别等到赛前才发现缺件。</li>
+  <li><strong>软件分：</strong>控制算法（PID/路径规划/视觉识别），尽早搭开发板+仿真环境，能离线调试的优先。</li>
+</ul>
+
+<h3>4.2 实战建议</h3>
+<div class="table-wrap"><table>
+  <tr><th>阶段</th><th>重点</th><th>产出</th></tr>
+  <tr><td>第1-4周</td><td>定机械方案、电路、算法分工</td><td>设计文档+物料清单</td></tr>
+  <tr><td>第5-8周</td><td>搭建原型、联调子模块</td><td>可跑的最小demo</td></tr>
+  <tr><td>第9-12周</td><td>整机联调、故障排查、赛程演练</td><td>稳定运行的完整系统</td></tr>
+  <tr><td>赛前1周</td><td>降低故障率、备份软硬件、走位预演</td><td>可复现的稳定版本</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>提醒：</strong>机器人/硬件类比赛"稳定 > 花哨"。一台跑得稳但功能普通的机器人，往往比功能华丽却频频宕机的更容易赢。把"可靠性"和"可复现"放在首位。
+</div>
+
+<h2 id="s5">五、组队策略：搭对"互补"的队伍</h2>
+<p>队伍决定上限。理想的队伍是"能力互补 + 性格互补 + 目标一致"。</p>
+
+<h3>5.1 寻找互补角色</h3>
+<ul>
+  <li><strong>技术核心：</strong>能把最难的技术问题扛下来。</li>
+  <li><strong>文档/答辩担当：</strong>写材料、做PPT、应对评委提问。</li>
+  <li><strong>统筹协调者：</strong>定计划、催进度、管好时间和资源。</li>
+  <li><strong>可大带小：</strong>老队员带新队员，传承经验。</li>
+</ul>
+
+<h3>5.2 组队注意事项</h3>
+<div class="table-wrap"><table>
+  <tr><th>注意点</th><th>为什么重要</th></tr>
+  <tr><td>别只找熟人而不看能力</td><td>友情会让不合理分工被掩盖</td></tr>
+  <tr><td>提前谈好投入时间</td><td>避免"我忙没空"的断档</td></tr>
+  <tr><td>明确一个负责人</td><td>避免多头指挥、互相推诿</td></tr>
+  <tr><td>定期对进度</td><td>确保方向没跑偏</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>小经验：</strong>一起至少完整走一遍小Demo或练习赛再正式开赛。这一步能暴露出协作节奏、分工是否合理，比开赛才发现问题强。
+</div>
+
+<h2 id="s6">六、12周备赛时间线</h2>
+<p>把备赛当成项目管理，设定里程碑。下面是一份通用的12周时间线（可适配三类竞赛）：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>周</th><th>阶段</th><th>关键任务</th><th>里程碑产出</th></tr>
+  <tr><td>第1-2周</td><td>立项</td><td>定赛道、定题/选题、组队、分工</td><td>选题+团队分工表</td></tr>
+  <tr><td>第3-4周</td><td>调研</td><td>看获奖作品、文献/范例，定方案</td><td>方案文档</td></tr>
+  <tr><td>第5-7周</td><td>开发</td><td>核心技术攻坚、demo实现</td><td>可用最小原型</td></tr>
+  <tr><td>第8-9周</td><td>联调</td><td>整机/整篇联调、补短板</td><td>稳定版本</td></tr>
+  <tr><td>第10-11周</td><td>打磨</td><td>材料/论文/PPT撰写、答辩预演</td><td>成稿+答辩版</td></tr>
+  <tr><td>第12周</td><td>冲刺</td><td>限时演练、降低风险、备份</td><td>可上场的最终版本</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>节奏提醒：</strong>前期调研和方案占足时间（别急着动手写代码/做样品），中期开发留缓冲，末尾留出充足的"磨材料"时间。很多队伍输在"东西做出来了但答辩和材料一塌糊涂"。
+</div>
+
+<h2 id="s7">七、研究获奖作品：看什么、怎么学</h2>
+<p>获奖作品是最好的学习样本。研究它不能只看"哇好厉害"，要有方法地拆：</p>
+
+<h3>7.1 看什么</h3>
+<ul>
+  <li><strong>选题角度：</strong>它选了什么问题？为什么评委觉得有创新？</li>
+  <li><strong>方案结构：</strong>怎么搭框架？技术路线怎么串起来？</li>
+  <li><strong>亮点拆解：</strong>哪些地方是"加分项"（数据图表、实验对比、量化的效果）？</li>
+  <li><strong>材料表达：</strong>申报书/论文/PPT是怎么组织语言、排版、做图的？</li>
+</ul>
+
+<h3>7.2 怎么学</h3>
+<div class="table-wrap"><table>
+  <tr><th>学习动作</th><th>产出</th></tr>
+  <tr><td>找5-10个同赛道获奖作品通读</td><td>总结出他们的共同模式</td></tr>
+  <tr><td>逐个拆"创新点怎么讲"</td><td>提炼你自己的创新点表述</td></tr>
+  <tr><td>模仿其材料结构写初稿</td><td>你自己的申报书/PPT骨架</td></tr>
+  <tr><td>对比定位差距</td><td>明确你团队还缺哪块</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>注意边界：</strong>参考获奖作品是为了学思路，不是照搬文案或数据。创意、数据、图表必须是你自己的。抄袭会带来规则处罚，也违背竞赛本意。
+</div>
+
+<h2 id="s8">八、答辩与材料打磨</h2>
+<h3>8.1 答辩要点</h3>
+<ul>
+  <li><strong>讲清"一句话主线"：</strong>30秒内让评委get到你做的是什么。</li>
+  <li><strong>多准备"挑战问题"：</strong>反复问自己"为什么要这么选""如果……怎么办"，提前演练。</li>
+  <li><strong>控制节奏：</strong>答辩提前演练多次，卡好时间，不超时。</li>
+  <li><strong>准备备用方案：</strong>现场演示可能翻车，准备PPT截图/视频备份。</li>
+</ul>
+
+<h3>8.2 材料打磨清单</h3>
+<div class="table-wrap"><table>
+  <tr><th>材料</th><th>打磨点</th></tr>
+  <tr><td>申报书/计划书</td><td>逻辑清晰、创新点突出、可行性可量化</td></tr>
+  <tr><td>论文/报告</td><td>结构完整、图表规范、结论明确</td></tr>
+  <tr><td>PPT</td><td>页面少而精、字体统一、重点突出</td></tr>
+  <tr><td>演示视频/原型</td><td>稳定可运行、有真实数据佐证</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>关键：</strong>让"没参与过团队"的人看不超5分钟材料的材料，说能否讲清楚你的项目。如果对方听得懂、能复述你的亮点，说明材料过关。多找人试讲、多迭代。
+</div>
+
+<h2 id="s9">九、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>选对赛道：</strong>兴趣+技能+时间匹配，别只冲着"好得奖"。</li>
+    <li><strong>大创看"创新点+可行性"：</strong>申报书精炼、创新点清晰、成果可量化。</li>
+    <li><strong>数学建模抓"套路"：</strong>建模/编程/写作三人分工，练真题、精雕摘要。</li>
+    <li><strong>双人赛稳定优先：</strong>硬件先方案，软件先仿真，整机联调留时间。</li>
+    <li><strong>组队要互补：</strong>技术+文档+统筹分工，提前谈好投入。</li>
+    <li><strong>12周项目管理：</strong>立项→调研→开发→联调→打磨→冲刺，控制节奏。</li>
+    <li><strong>研究获奖作品：</strong>拆选题/方案/亮点/表达，学思路不照搬。</li>
+    <li><strong>材料与答辩：</strong>主线清晰、备好挑战题、多演练、留备份。</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r015.html">
+      <div class="ri-ico">🗓️</div>
+      <div class="ri-title">把待办拖进日历：时间管理的下一步</div>
+      <div class="ri-desc">管理好备赛日程与分工</div>
+    </a>
+    <a class="related-item" href="r029.html">
+      <div class="ri-ico">🔗</div>
+      <div class="ri-title">Obsidian双链笔记</div>
+      <div class="ri-desc">搭建备赛知识库与方案笔记</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：经验蒸馏 · 科创竞赛实战经验综合整理 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>Obsidian双链笔记 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">Obsidian双链笔记</div>
+</div>
+<div class="container">
+
+<h1>🔗 Obsidian双链笔记：让知识自动连接起来</h1>
+<div class="meta-row">
+  <span>经验蒸馏 · 知识管理进阶</span>
+  <span class="score">⭐ 9.1</span>
+  <span>进阶难度</span>
+  <span>3小时上手</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">Obsidian</span>
+  <span class="tag tag-coral">双链</span>
+  <span class="tag tag-blue">知识管理</span>
+  <span class="tag tag-teal">笔记</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>普通笔记是线性堆叠，Obsidian 用双链把零散的知识节点连成网络。核心组合拳是：双链建立连接 + MOC（内容地图）当导航 + 关系图谱看全貌 + Dataview 做自动化汇总，配合"本地存储 + 坚果云/git"实现全端同步。记的不是笔记，而是一张可以生长的知识网。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、双链到底是什么？为什么它能"自动连接"</a>
+  <a href="#s2">二、双链的核心用法（含语法速记）</a>
+  <a href="#s3">三、MOC 内容地图：当你的知识导航</a>
+  <a href="#s4">四、插件：关系图谱与 Dataview</a>
+  <a href="#s5">五、本地存储 + 多端同步方案</a>
+  <a href="#s6">六、搭建你的第一张知识网络（3小时）</a>
+  <a href="#s7">七、常见陷阱与维护习惯</a>
+  <a href="#s8">八、进阶技巧与模板</a>
+  <a href="#s9">九、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、双链到底是什么？为什么它能"自动连接"</h2>
+<p>做笔记时你常常"开新页面"，却很难和旧的笔记产生关系。Obsidian 的双链，就是让你<strong>在笔记之间建立双向链接</strong>：A笔记里写了 [[B笔记]]，那么你在 B 笔记里也能看到"从哪里被链接进来"。链接不是单向的，因此叫"双链"。</p>
+
+<div class="callout callout-info">
+  <strong>理解比喻：</strong>文件夹笔记像"抽屉"，每个抽屉互不相通；双链笔记像"地铁网"，每个站点之间都有换乘通道。知识多起来后，网络结构比树状文件夹更能承载"一个概念关联多个主题"的真实学习场景。
+</div>
+
+<p>为什么这点重要？因为<strong>学习本来就是关联的</strong>：学操作系统会用到数据结构、概率论会用到矩阵。双链让这种跨学科连接自然生长，而不是被你脑中的记忆锁死在一个文件夹里。</p>
+
+<h2 id="s2">二、双链的核心用法（含语法速记）</h2>
+<h3>2.1 两种基本双链</h3>
+<div class="table-wrap"><table>
+  <tr><th>语法</th><th>说明</th><th>示例</th></tr>
+  <tr><td>[[笔记名]]</td><td>链接到某篇笔记</td><td>[[算法复杂度]]</td></tr>
+  <tr><td>[[笔记名|别名]]</td><td>链接但显示别名</td><td>[[Big-O|大O]]</td></tr>
+  <tr><td>[[笔记名#标题]]</td><td>链接到笔记内某个小标题</td><td>[[数据结构#列表]]</td></tr>
+  <tr><td>[[笔记名#标题|别名]]</td><td>组合</td><td>[[算法#排序|排序]]</td></tr>
+</table></div>
+
+<h3>2.2 反链面板（Backlinks）</h3>
+<p>在笔记里链接 [[XX]] 后，打开右侧"反链"，Obsidian 会自动列出所有引用过 [[XX]] 的笔记。这就是"自动连接"的体现——你甚至不需要手动去 XX 那篇里补链接，反向会自己聚合进来。</p>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>双链不是在笔记里塞满链接就完了。高质量双链是"在有意义的语境里链接"——比如"这个定理的证明用到了[[线性代数]]里的特征值"。无脑堆一堆链接，图谱会变乱、可读性也差。
+</div>
+
+<h2 id="s3">三、MOC 内容地图：当你的知识导航</h2>
+<p>双链多了，容易迷路。MOC（Map of Content，内容地图）就是解决"从哪开始、要看到哪一坨"的问题——它是你某门课/某个主题的"目录导航页"。</p>
+
+<h3>3.1 MOC 长什么样</h3>
+<p>一个MOC页面里，用双链把该主题下的所有相关笔记列出来，并可以写上一两句说明。例如"数据结构MOC"：</p>
+<ul>
+  <li>线性结构：[[顺序表]]、[[链表]]、[[栈]]、[[队列]]</li>
+  <li>树与图：[[二叉树]]、[[遍历算法]]、[[图]]</li>
+  <li>查找排序：[[二分查找]]、[[快速排序]]、[[堆排序]]</li>
+</ul>
+
+<h3>3.2 MOC 的使用节奏</h3>
+<ul>
+  <li>学习新主题时，先建一个MOC作为"收纳槽"。</li>
+  <li>每写一篇新笔记，顺手把它挂进对应的MOC。</li>
+  <li>MOC里只放"链接 + 一句概括"，不放正文，避免变成超级长的笔记。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>推荐层级：</strong>一门课用一个MOC，下面再按章节分子MOC或直接用双链。Obsidian 顶部可以有 1-3 个顶层MOC做入口，比如"总索引"链接到"数据结构MOC""概率论MOC"等。
+</div>
+
+<h2 id="s4">四、插件：关系图谱与 Dataview</h2>
+<p>Obsidian 的强大一半来自插件生态。这里重点讲两个高频必备：</p>
+
+<h3>4.1 关系图谱（Graph View）</h3>
+<ul>
+  <li>社区插件或自带 Graph View，把笔记渲染成节点-边网络。</li>
+  <li>每个节点是一篇笔记，连线是双链关系。</li>
+  <li><strong>用法：</strong>快速发现某个主题的聚类、找出"孤立笔记"（没跟任何东西连，说明它没融入体系）。</li>
+  <li><strong>提醒：</strong>图谱是"自查工具"不是"效果图"，别为好看而乱连。</li>
+</ul>
+
+<h3>4.2 Dataview（查询引擎）</h3>
+<p>Dataview 用类SQL语法，在笔记里写代码块自动列出符合条件的笔记。适合做自动索引、待办、统计。</p>
+<div class="callout callout-info">
+  <strong>Dataview 示例：</strong>
+  <br>在"待复习"里列出所有 tagged in-progress 的笔记：
+  <br>```dataview
+  <br>LIST FROM #复习 AND #未掌握
+  <br>WHERE status = "进行中"
+  <br>```
+  <br>这样你不需要手动维护索引，改笔记属性，列表自动更新。
+</div>
+
+<h3>4.3 其他推荐插件</h3>
+<div class="table-wrap"><table>
+  <tr><th>插件</th><th>作用</th></tr>
+  <tr><td>Templater</td><td>自定义笔记模板，一键新建</td></tr>
+  <tr><td>Calendar</td><td>在日历视图里写日记/记录</td></tr>
+  <tr><td>Excalidraw</td><td>内置画板，边画边链</td></tr>
+  <tr><td>Mindmap/Enhancing</td><td>思维导图类展示</td></tr>
+</table></div>
+
+<h2 id="s5">五、本地存储 + 多端同步方案</h2>
+<p>Obsidian 默认把笔记存成本地 Markdown 文件（纯文本，.md）。数据完全在你手里，但也就意味着"同步要靠自己"。</p>
+
+<h3>5.1 推荐的同步方案</h3>
+<div class="table-wrap"><table>
+  <tr><th>方案</th><th>原理</th><th>适合</th><th>注意</th></tr>
+  <tr><td>坚果云同步文件夹</td><td>把Obsidian库文件夹放坚果云同步目录</td><td>个人、跨三端</td><td>避免多设备同时编辑同一文件冲突</td></tr>
+  <tr><td>git + 远程仓库</td><td>笔记作为源码管理</td><td>习惯版本控制的用户</td><td>需处理.gitignore与私密性</td></tr>
+  <tr><td>官方 Sync 服务（付费）</td><td>官方端到端加密同步</td><td>想省事、预算充足</td><td>付费订阅</td></tr>
+  <tr><td>WPS/Hevo网盘链接</td><td>把库链接到网盘</td><td>备用</td><td>同步实时性一般</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>重点提醒：</strong>Obsidian 对"同一时间同一文件被多台设备同时改"处理有限，可能产生冲突副本。建议养成"一台设备为主要写入口、其他设备以读取为主"的习惯，并定期提交/备份。
+</div>
+
+<h3>5.2 目录建议</h3>
+<ul>
+  <li><strong>一个"库"放一个专业领域</strong>，别把所有东西塞进一个巨型库。</li>
+  <li>根目录放"总索引"和几个顶层MOC。</li>
+  <li>相关资源附件（图片、PDF）可放 Obsidian 附件目录或同步盘（见 r028）。</li>
+</ul>
+
+<h2 id="s6">六、搭建你的第一张知识网络（3小时）</h2>
+<p>3小时就能搭起能用的体系。步骤如下：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>时间</th><th>操作</th><th>说明</th></tr>
+  <tr><td>0-40分钟</td><td>安装Obsidian并建立库</td><td>下载安装，新建一个库（本地文件夹），了解基本界面</td></tr>
+  <tr><td>40-70分钟</td><td>建顶层索引与2-3个MOC</td><td>建"总索引"，再为一个已学主题建一个MOC</td></tr>
+  <tr><td>70-110分钟</td><td>迁移/新建5-10篇正文笔记加双链</td><td>把现有资料转成.m笔记，互相加双链</td></tr>
+  <tr><td>110-140分钟</td><td>配关键插件</td><td>装 Graph View、Dataview、Templater，配好基础模板</td></tr>
+  <tr><td>140-170分钟</td><td>配置同步方案</td><td>把库放进坚果云同步文件夹（或配git），测试三端</td></tr>
+  <tr><td>170-180分钟</td><td>跑一遍图谱+自测</td><td>打开关系图谱看结构，修正孤立笔记</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>关键动作：</strong>第70分钟就要开始"真的写笔记"，而不是纠结插件和主题。Obsidian 价值来自持续积累，前3小时重点是跑通"能写、能链、能查、能同步"的闭环。
+</div>
+
+<h2 id="s7">七、常见陷阱与维护习惯</h2>
+<h3>7.1 三个常见陷阱</h3>
+<ul>
+  <li><strong>过度设计：</strong>一上来装海量插件、配复杂模板，结果没时间真正记内容。</li>
+  <li><strong>堆链接不堆理解：</strong>每篇都塞一堆链接，图谱乱，笔记却没自己的思考。</li>
+  <li><strong>不同步：</strong>只在一台设备用，另一台是完全旧版本，体验割裂。</li>
+</ul>
+
+<h3>7.2 维护习惯</h3>
+<ul>
+  <li><strong>即时挂链接：</strong>写完笔记立刻挂进对应MOC、补上重要的双链。</li>
+  <li><strong>定期清理孤立节点：</strong>每周看一次图谱，把孤立笔记融入体系或删掉。</li>
+  <li><strong>模板化录入：</strong>用Templater让每篇笔记结构一致、属性统一（便于Dataview统计）。</li>
+  <li><strong>定期备份：</strong>整个库文件夹定期压缩备份/推送远程。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>心态提醒：</strong>双链的本质是"边读边连"。如果你只是把笔记从旧工具复制粘贴进来而不加双链，那它和普通笔记没区别。真正让知识"自动连接"的动力，来自你主动建立的那些链接。
+</div>
+
+<h2 id="s8">八、进阶技巧与模板</h2>
+<h3>8.1 进阶技巧</h3>
+<ul>
+  <li><strong>用属性统一管理：</strong>在每篇笔记的 frontmatter 里写字段（如 status、tags、course），Dataview 就能做自动汇总。</li>
+  <li><strong>笔记标题用"概念"而非"日期"：</strong>双链的价值在于"概念可复用"，同样一句话尽量不要写两份。</li>
+  <li><strong>结合周计划：</strong>把Obsidian既当知识库又当日记/周计划（用 Calendar），听课、复习、想法一网打尽。</li>
+</ul>
+
+<h3>8.2 一份可复用的笔记模板（供Templater）</h3>
+<pre style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;overflow-x:auto;font-size:12.5px;line-height:1.6">
+---
+tags: [course]
+status: in-progress
+course: "数据结构"
+---
+# {{title}}
+## 一句话总结
+## 关键概念
+[[概念A]]、[[概念B]]
+## 例子
+## 易错点
+## 相关笔记
+[[父MOC]]
+</pre>
+
+<div class="callout callout-info">
+  <strong>要点：</strong>模板里预留了"双链占位 + 属性 + 易错点"，既保证结构一致，也让 Dataview 能按课程/状态筛选。
+</div>
+
+<h2 id="s9">九、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>双链是双向连接：</strong>[[笔记]] 语法 + 反链面板，让知识从树状变成网络。</li>
+    <li><strong>MOC当导航：</strong>每个主题建一个内容地图，集中挂链接，防迷路。</li>
+    <li><strong>插件提效：</strong>Graph View自查结构、Dataview自动汇总、Templater统一录入。</li>
+    <li><strong>本地存储+自同步：</strong>笔记是.md文件在本地，用坚果云/git/官方Sync同步。</li>
+    <li><strong>从"能写能链能查能同步"开始：</strong>3小时搭出闭环，先写起来再优化。</li>
+    <li><strong>避免陷阱：</strong>不过度设计、不堆链接不堆理解、不同步会割裂。</li>
+    <li><strong>真正价值在链接：</strong>主动建立有意义的双链，知识才会自动生长。</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r027.html">
+      <div class="ri-ico">🗂️</div>
+      <div class="ri-title">用Notion搭建课程笔记系统</div>
+      <div class="ri-desc">结构化笔记 vs Obsidian双链</div>
+    </a>
+    <a class="related-item" href="r011.html">
+      <div class="ri-ico">🗓️</div>
+      <div class="ri-title">把待办拖进日历：时间管理的下一步</div>
+      <div class="ri-desc">安排阅读与复习节奏</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：经验蒸馏 · 知识管理进阶方法论 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

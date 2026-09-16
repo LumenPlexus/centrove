@@ -130,7 +130,7 @@ function renderCards(){
   grid.innerHTML = filtered.map(r => {
     const catIcons = {study:'📚', research:'🔬', tools:'⚡', career:'💼'};
     const tagsHtml = r.tags.slice(0,3).map((t,i) => '<span class="tag '+getTagClass(i)+'">'+t+'</span>').join('');
-    return '<a class="card" href="'+r.id+'.html">'+
+    return '<a class="card" href="'+r.id+'.html" onclick="beforeEnterDetail()">'+
       '<div class="card-head">'+
         '<div class="card-icon">'+(catIcons[r.category] || '📄')+'</div>'+
         '<div style="flex:1;min-width:0"><div class="card-title">'+r.title+'</div></div>'+
@@ -172,11 +172,52 @@ window.addEventListener('scroll', function(){
   if(window.scrollY > 300){b.classList.add('show');}else{b.classList.remove('show');}
 });
 
+/* 记录「来源页」：从首页/外部进入后，返回键能回到进入前的位置 */
+try{ sessionStorage.setItem('distilled_from','1'); }catch(e){}
+
+/* 返回蒸馏库页时，若从详情页 back 回来，恢复之前的分类、搜索和滚动位置 */
+var DL_KEY='distilled_state_v1';
+function saveDLState(){
+  try{
+    sessionStorage.setItem(DL_KEY, JSON.stringify({
+      cat: currentCat, kw: searchKw, scroll: window.scrollY||document.documentElement.scrollTop||0
+    }));
+  }catch(e){}
+}
+function restoreDLState(){
+  try{
+    var s = JSON.parse(sessionStorage.getItem(DL_KEY)||'null');
+    if(s){
+      if(s.cat && document.querySelector('.tab[data-cat="'+s.cat+'"]')){
+        currentCat = s.cat;
+        document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active', t.dataset.cat===s.cat);});
+      }
+      if(s.kw){ searchKw = s.kw; var inp=document.getElementById('searchInput'); if(inp) inp.value = s.kw; }
+      return s.scroll || 0;
+    }
+  }catch(e){}
+  return 0;
+}
+function applyDLScroll(scrollTop){
+  if(scrollTop && scrollTop>0){
+    setTimeout(function(){window.scrollTo(0,scrollTop);}, 60);
+    setTimeout(function(){window.scrollTo(0,scrollTop);}, 350);
+  }
+}
+window.addEventListener('scroll', function(){ saveDLState(); });
+
+/* 记录离开蒸馏库时的状态（点击卡片进详情前），供返回时恢复 */
+function beforeEnterDetail(){
+  saveDLState();
+}
+
 fetch('index.json')
   .then(function(res){return res.json()})
   .then(function(data){
     allResources = data.resources;
+    var savedScroll = restoreDLState();
     renderCards();
+    applyDLScroll(savedScroll);
   })
   .catch(function(err){
     document.getElementById('cardGrid').innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--coral)">加载失败，请刷新重试</p>';

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>线性代数期末保过：核心题型与解题套路 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href=&quot;index.html&quot;" title="返回蒸馏库">←</div>
+  <div class="title">线性代数期末保过</div>
+</div>
+<div class="container">
+
+<h1>⚙️ 线性代数期末保过：核心题型与解题套路</h1>
+<div class="meta-row">
+  <span>经验蒸馏 · 期末高频考点套路拆解</span>
+  <span class="score">⭐ 8.8</span>
+  <span>入门难度</span>
+  <span>3天</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">线性代数</span>
+  <span class="tag tag-coral">期末</span>
+  <span class="tag tag-blue">数学</span>
+  <span class="tag tag-teal">矩阵</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>线代期末其实"套路化"极强——行列式怎么化简、矩阵怎么求逆、方程组怎么讨论、特征值怎么求、二次型怎么化标准形，都有固定动作。把五大板块的"题型-套路-易错点"过一遍，考前3天拿到及格分乃至高分完全可行。关键不是刷海量题，而是把每个题型的"通法"焊进脑子里。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、线代期末全景图：五大板块+分值分布</a>
+  <a href="#s2">二、行列式：化简通法与三大类型</a>
+  <a href="#s3">三、矩阵：运算、逆矩阵与秩</a>
+  <a href="#s4">四、线性方程组：解的判定与通解套路</a>
+  <a href="#s5">五、特征值与特征向量</a>
+  <a href="#s6">六、二次型与标准形</a>
+  <a href="#s7">七、向量的线性相关性与极大无关组</a>
+  <a href="#s8">八、3天冲刺安排表</a>
+  <a href="#s9">九、高频易错点清单</a>
+  <a href="#s10">十、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、线代期末全景图：五大板块+分值分布</h2>
+<p>先把线代的"地图"画清楚，你就知道该往哪使劲。绝大多数学校线代期末由"选择/填空 + 计算大题 + 证明题"组成，核心知识块如下：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>知识板块</th><th>典型大题</th><th>难度</th><th>通常分值占比</th></tr>
+  <tr><td>行列式</td><td>n阶行列式计算、含参数行列式</td><td>★★☆</td><td>15%左右</td></tr>
+  <tr><td>矩阵</td><td>矩阵运算、求逆、求秩</td><td>★★</td><td>20%左右</td></tr>
+  <tr><td>线性方程组</td><td>解的判定、求基础解系与通解</td><td>★★★</td><td>20%左右</td></tr>
+  <tr><td>向量与相关性</td><td>判断相关、求极大无关组</td><td>★★★</td><td>15%左右</td></tr>
+  <tr><td>特征值与二次型</td><td>求特征值、对角化、化标准形</td><td>★★★</td><td>25%左右</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>保过策略：</strong>做题顺序很有讲究。先拿下"行列式、矩阵求逆、方程组通解"这种"算得出就得分"的题保住基本盘，再攻特征值和二次型这种"思路清晰就满分"的题。千万别在超难证明题上死磕。
+</div>
+
+<h2 id="s2">二、行列式：化简通法与三大类型</h2>
+<p>行列式是线代的"运算基本功"，几乎所有板块都要用到。核心思想只有一个：<strong>用初等变换把它化成上三角（或对角线）行列式，再相乘。</strong></p>
+
+<h3>2.1 最通用做法：化为上三角</h3>
+<ol>
+  <li>把第一行第一列位置通过行/列变换做成 1（或较简单元素）。</li>
+  <li>用这个 1 消掉其下方所有元素（第 j 行 -= 第1行×倍数），让第一列除首位外全为 0。</li>
+  <li>依次往下递归，得到上三角，主对角元相乘即可。</li>
+</ol>
+<div class="callout callout-warn">
+  <strong>易错点：</strong>交换两行（列）行列式变号！某一行（列）乘 k，行列式也要乘 k。很多人做着做着符号丢了、倍数丢了，白算。
+</div>
+
+<h3>2.2 三大高频类型与套路</h3>
+<div class="table-wrap"><table>
+  <tr><th>类型</th><th>特征</th><th>套路</th></tr>
+  <tr><td>主对角类型</td><td>主对角线有元素、其余零</td><td>直接=主对角元之积</td></tr>
+  <tr><td>上/下三角、副对角类型</td><td>一侧全为0</td><td>对三角直接乘；副对角带 (-1)^(n(n-1)/2)</td></tr>
+  <tr><td>"各行之和相等"型</td><td>每行元素加起来相同（如全 1 列以其为基准）</td><td>先把各列加到第一列提取公因式，再化简</td></tr>
+</table></div>
+
+<h3>2.3 含参数行列式（判断可逆 / 求参数）</h3>
+<p>含参数行列式通常是让你"求 a 取何值时行列式为零 / 矩阵可逆"。做法：先把行列式化到最简，得到一个关于 a 的多项式，令其为 0 解出 a。<strong>牢记：矩阵可逆 ⟺ 行列式≠0。</strong></p>
+
+<div class="callout callout-ok">
+  <strong>技巧：</strong>含参数的题，尽量用性质把参数"独立"出来（比如某行可提出含 a 的公因子），这样多项式结构一目了然，解方程更快更准。
+</div>
+
+<h2 id="s3">三、矩阵：运算、逆矩阵与秩</h2>
+<p>矩阵板块大题基本围绕"乘法正确性 + 求逆 + 求秩"展开，属于"算对就给分"的友好题型。</p>
+
+<h3>3.1 矩阵求逆的"配方"法</h3>
+<p>对一个 n 阶方阵 A 求逆，最通用的流程：把 [A | I] 拼成增广矩阵，用行初等变换把左边化成单位阵，右边就是 A⁻¹。</p>
+<ol>
+  <li>写成增广矩阵 [A | I]。</li>
+  <li>只允许<strong>行</strong>初等变换。</li>
+  <li>把左边化为单位阵，右边自动变成 A⁻¹。</li>
+</ol>
+
+<h3>3.2 求秩的套路</h3>
+<p>秩 = 最简阶梯形中非零行的行数。步骤：用行初等变换把矩阵化成阶梯形，数一数非零行即可。记住几个等价结论：</p>
+<ul>
+  <li>r(A) ≤ min(行数, 列数)</li>
+  <li>可逆方阵的秩 = n（满秩）</li>
+  <li>r(AB) ≤ min(r(A), r(B))</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>高频陷阱：</strong>求秩用的变换只能是"行变换"（或者只能列变换），不能混用。题目如果给了含参数矩阵，化阶梯形时参数会让"某行是否为零"难以判断，务必分类讨论。
+</div>
+
+<h2 id="s4">四、线性方程组：解的判定与通解套路</h2>
+<p>方程组是最容易失分也最容易得分的板块——因为它"有清晰流程"，但流程每一步都要严谨。分齐次（AX=0）和非齐次（AX=B）两类。</p>
+
+<h3>4.1 解的判定（一定要背熟）</h3>
+<div class="table-wrap"><table>
+  <tr><th>情形</th><th>条件（A是m×n，n为未知数个数）</th><th>结论</th></tr>
+  <tr><td>齐次 AX=0</td><td>r(A) &lt; n</td><td>有无穷多解（有非零解）</td></tr>
+  <tr><td>齐次 AX=0</td><td>r(A) = n</td><td>只有零解</td></tr>
+  <tr><td>非齐次 AX=B</td><td>r(A) = r([A|B]) = n</td><td>有唯一解</td></tr>
+  <tr><td>非齐次 AX=B</td><td>r(A) = r([A|B]) &lt; n</td><td>有无穷多解</td></tr>
+  <tr><td>非齐次 AX=B</td><td>r(A) &lt; r([A|B])</td><td>无解</td></tr>
+</table></div>
+
+<h3>4.2 求通解的标准动作</h3>
+<ol>
+  <li>增广矩阵 [A|B]（齐次就是 A），行初等变换化到最简行阶梯形。</li>
+  <li>数秩 r，确定自由未知量个数 = n - r。</li>
+  <li>把自由未知量分别取 1（其余取 0），代回求出基础解系。</li>
+  <li>通解 = 基础解系的线性组合（齐次），或特解+基础解系组合（非齐次）。</li>
+</ol>
+
+<div class="callout callout-ok">
+  <strong>非齐次通解公式（必记）：</strong>AX=B 的通解 = AX=B 的一个特解 + AX=0 的基础解系的任意线性组合。很多同学只求特解忘了配齐次基础解系，导致通解不完整丢分。
+</div>
+
+<h2 id="s5">五、特征值与特征向量</h2>
+<p>特征值板块是"考前最容易拿分、套路最固定"的板块之一。三步走：特征多项式 → 求特征值 → 求特征向量。</p>
+
+<h3>5.1 标准三步</h3>
+<ol>
+  <li><strong>写特征多项式：</strong>|λI - A| = 0。</li>
+  <li><strong>解出特征值：</strong>一般为 λ₁, λ₂, λ₃。</li>
+  <li><strong>对每个 λᵢ：</strong>解齐次方程组 (λᵢI - A)X = 0，得到的基础解系就是该特征值下的线性无关特征向量。</li>
+</ol>
+
+<h3>5.2 常用结论（背下来省时间）</h3>
+<ul>
+  <li>特征值之和 = 矩阵主对角线元素之和（迹）。</li>
+  <li>特征值之积 = 行列式的值。由此：λ=0 是特征值 ⟺ 行列式=0 ⟺ 矩阵不可逆。</li>
+  <li>A 可逆时，A⁻¹ 特征值 = 1/λ。</li>
+  <li>Aᵏ 的特征值 = λᵏ。</li>
+</ul>
+
+<h3>5.3 对角化判断</h3>
+<p>A 能对角化 ⟺ A 有 n 个线性无关的特征向量。常见的三角/特殊矩阵（对称阵、二重特征值）要多加注意。两个特征向量属不同特征值必线性无关。</p>
+
+<div class="callout callout-warn">
+  <strong>最容易的失分点：</strong>把特征多项式写成 |A - λI| 却当成 |λI - A| 用，会差一个 (-1)ⁿ，导致特征多项式整体变号、解出的 λ 全部错误。务必要保持一致，且最后代回检查。
+</div>
+
+<h2 id="s6">六、二次型与标准形</h2>
+<p>二次型大题通常给你一个二次表达式，要你化标准形（配方法）或用正交变换化标准形。这部分"步骤固定、结果可验证"，是压轴里最好拿分的。</p>
+
+<h3>6.1 配方法（快，但要求对称阵）</h3>
+<ol>
+  <li>把二次型写成矩阵形式 f = XᵀAX（A 对称阵）。</li>
+  <li>用逐个变量的"完全平方"配方法逐步消去交叉项。</li>
+  <li>令新变量为线性组合，得到标准形 diag(系数)。</li>
+</ol>
+
+<h3>6.2 正交变换法</h3>
+<ol>
+  <li>写出对称阵 A。</li>
+  <li>求 A 的特征值和单位特征向量。</li>
+  <li>把单位特征向量并成正交矩阵 Q，则 QᵀAQ = diag(特征值)。</li>
+</ol>
+<div class="callout callout-ok">
+  <strong>正定判定：</strong>对称阵正定 ⟺ 各阶顺序主子式全大于 0 ⟺ 特征值全大于 0。考到"求参数使二次型正定"就是综合利用这几条。
+</div>
+
+<h2 id="s7">七、向量的线性相关性与极大无关组</h2>
+<p>判断一组向量线性相关/无关，最实用的办法就是"拼成矩阵看秩"。秩相关题往往和方程组、秩结合出综合大题。</p>
+<ul>
+  <li>向量组线性相关 ⟺ 以它们为列构成的矩阵秩 &lt; 向量个数。</li>
+  <li>无关 ⟺ 秩 = 向量个数。</li>
+  <li><strong>极大无关组：</strong>化为阶梯形，主元所在列对应的原向量就是一组极大无关组。</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>技巧：</strong>找极大无关组时用行变换化成阶梯形后，"主元位置"就是选中的列号。这题白送分，但千万别算错阶梯形。
+</div>
+
+<h2 id="s8">八、3天冲刺安排表</h2>
+<p>下面是一套"极限 3 天保过"计划，适合只剩三天就要考的同学。每天分上午/下午/晚上三段。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>天</th><th>上午</th><th>下午</th><th>晚上</th></tr>
+  <tr><td>第1天</td><td>行列式化简+三大类型各练2题</td><td>矩阵求逆+求秩各4题</td><td>做1套往年题的选填+行列式矩阵大题</td></tr>
+  <tr><td>第2天</td><td>线性方程组判定+通解6题</td><td>特征值特征向量+对角化6题</td><td>二次型化标准形4题</td></tr>
+  <tr><td>第3天</td><td>向量相关性+极大无关组4题</td><td>整套限时模考1张卷</td><td>错题复盘+背结论表（特征值结论等）</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>时间紧的关键取舍：</strong>如果你复习时间非常有限，优先级是：行列式→矩阵求逆→方程组通解→特征值，这四块占了近70%的分数且套路固定。二次型和大证明题量力而行。
+</div>
+
+<h2 id="s9">九、高频易错点清单</h2>
+<div class="table-wrap"><table>
+  <tr><th>易错点</th><th>错误表现</th><th>正确动作</th></tr>
+  <tr><td>行列式变号</td><td>交换行不漏负号</td><td>交换一次记得加负号</td></tr>
+  <tr><td>逆矩阵变换</td><td>混用行列变换求逆</td><td>求逆只能用行变换</td></tr>
+  <tr><td>特征多项式符号</td><td>λI-A 写成 A-λI 自乱</td><td>固定一种，最后代回验证</td></tr>
+  <tr><td>通解不完整</td><td>非齐次只写特解</td><td>特解+齐次基础解系配全</td></tr>
+  <tr><td>秩判断分类</td><td>含参数不分类讨论</td><td>参数让零值模糊时逐段讨论</td></tr>
+  <tr><td>对角化前提</td><td>直接说可以对角化</td><td>先验证有n个线性无关特征向量</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>保底策略：</strong>考前之夜，把上面最核心的"通法口诀"再过一遍：上三角化行列式、[A|I] 求逆、数阶梯形求秩、特解+基础解系配通解、特征多项式三步走、配方法化标准形。看到题先别慌，按套路走。
+</div>
+
+<h2 id="s10">十、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>线代五大板块：</strong>行列式、矩阵、方程组、向量相关性、特征值与二次型</li>
+    <li><strong>行列式通法：</strong>初等变换化上三角再相乘，注意变号和倍乘</li>
+    <li><strong>求逆套路：</strong>[A|I] 只用行变换，左化单位阵右即逆</li>
+    <li><strong>秩：</strong>化阶梯形数非零行，可逆⟺满秩</li>
+    <li><strong>方程组判定：</strong>r(A)与r([A|B])比较决定解的情况</li>
+    <li><strong>通解公式：</strong>非齐次通解=特解+齐次基础解系组合</li>
+    <li><strong>特征值结论：</strong>和=迹、积=行列式、不可逆⟺λ=0</li>
+    <li><strong>3天冲刺：</strong>优先行列式/求逆/通解/特征值，二次型量力而行</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r006.html">
+      <div class="ri-ico">📐</div>
+      <div class="ri-title">高数期末不挂科：3天过完核心考点</div>
+      <div class="ri-desc">同类期末冲刺方法论</div>
+    </a>
+    <a class="related-item" href="r004.html">
+      <div class="ri-ico">📚</div>
+      <div class="ri-title">期末两周冲刺复习法</div>
+      <div class="ri-desc">搭骨架→填肉→刷题的复习框架</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：经验蒸馏 · 期末高频考点套路拆解 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

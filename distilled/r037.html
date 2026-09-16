@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>言到offer：自我介绍与求职心态建设 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.length>1?history.back():location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">自我介绍与求职心态建设</div>
+</div>
+<div class="container">
+
+<h1>💬 言到offer：自我介绍与求职心态建设</h1>
+<div class="meta-row">
+  <span>求职辅导 + 应届生心理调节经验蒸馏</span>
+  <span class="score">⭐ 8.4</span>
+  <span>入门难度</span>
+  <span>随时可用</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">求职</span>
+  <span class="tag tag-coral">心态</span>
+  <span class="tag tag-blue">自我介绍</span>
+  <span class="tag tag-teal">面试</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>求职到后期，拼的往往不是能力而是心态。被拒、没有回音、身边的同学都拿到 offer 了而自己还没有——这些几乎每个人都会经历，别让它击垮你。本文教你两件事：一是把"自我介绍"打磨到既能打动 HR 又缓解紧张，二是用"成长型心态"度过求职季，把负面情绪转化成每天的行动。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、自我介绍：你的"开场也决定了印象"</a>
+  <a href="#s2">二、1分钟版 vs 3分钟版的写法</a>
+  <a href="#s3">三、真实案例：一套可套用的自我介绍骨架</a>
+  <a href="#s4">四、求职心态：被拒绝不等于你不行</a>
+  <a href="#s5">五、把焦虑变成行动的方法</a>
+  <a href="#s6">六、求职季的自我关怀</a>
+  <a href="#s7">七、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、自我介绍：你的"开场也决定了印象"</h2>
+<p>自我介绍是面试的第一个问题，也是你唯一可以"完全掌控"的环节，意义在于：建立好第一印象、引导 HR 后续问到你擅长的地方。它不追求"面面俱到"，而追求"清晰、有料、让人记住你"。</p>
+<div class="table-wrap"><table>
+  <tr><th>要点</th><th>怎么做</th></tr>
+  <tr><td>结构清晰</td><td>我是谁 → 我做过什么 → 我适合这个岗位</td></tr>
+  <tr><td>有重点</td><td>挑 1-2 个最亮点的经历展开，别罗列全部</td></tr>
+  <tr><td>贴合岗位</td><td>突出和你投的岗位相关的经历与能力</td></tr>
+  <tr><td>真诚自然</td><td>别背得僵硬，用"说"的感觉而不是"背稿"</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>准备洞察：</strong>把自我介绍当成"包装好的引线"。你说到某段经历时，HR大概率会顺着追问，所以"你主动展示的，一定要是你最想被问到的"。
+</div>
+
+<h2 id="s2">二、1分钟版 vs 3分钟版的写法</h2>
+<h3>2.1 1分钟版（用于快速轮面试/群面自我开场）</h3>
+<ol>
+  <li>一句话：我是XX学校XX专业的应届生，求职方向是XX岗位。</li>
+  <li>一句亮点：围绕岗位，讲一个最相关的经历或能力。</li>
+  <li>一句期待：为什么想来这里、愿意吃苦、学习。</li>
+</ol>
+<h3>2.2 3分钟版（用于结构化/单面）</h3>
+<ol>
+  <li>基本情况：学校专业 + 求职方向（半分钟）。</li>
+  <li>经历亮点：挑 2 段最有说服力的经历，各用一段"动词+量化+成果"讲清（1.5 分钟）。</li>
+  <li>能力总结：这些经历锻炼出与你岗位匹配的能力（半分钟）。</li>
+  <li>求职动机 + 收尾：为什么选这家/这个岗位 + 简短结尾（半分钟）。</li>
+</ol>
+
+<div class="callout callout-warn">
+  <strong>控时提醒：</strong>无论哪个版本，务必掐表演练。超时会被打断、显得没准备；太短又展示不够。写好后对着手机录一遍，自己听，改到自然流畅为止。
+</div>
+
+<h2 id="s3">三、真实案例：一套可套用的自我介绍骨架</h2>
+<div class="callout callout-ok">
+  <strong>模板示意（替换成你自己的内容）：</strong><br><br>
+  面试官你好，我是【学校】【专业】即将毕业的【姓名】。今天应聘【岗位】方向。<br><br>
+  在校期间，我【亮点经历1，动词+量化+成果，如：统筹组织X场活动、覆盖X人次】；另外我还【亮点经历2】。这些经历让我具备了【岗位相关的2-3个能力】。<br><br>
+  贵公司的【某一点】非常吸引我，我也愿意在【某个方向】持续学习和投入。谢谢。
+</div>
+<div class="callout callout-info">
+  <strong>练习建议：</strong>把你的真实内容填进去，反复讲、录音、听、改。直到你可以"不用想就能自然说出来"。练到烂熟，能不紧张地对着镜子/朋友开口，就是成功的准备。
+</div>
+
+<h2 id="s4">四、求职心态：被拒绝不等于你不行</h2>
+<p>求职季最大的敌人不是能力，而是心理内耗。先认清楚几个事实：</p>
+<ul>
+  <li><strong>被拒是常态：</strong>95% 的求职者都会被多次拒绝，这不是你一个人的失败。</li>
+  <li><strong>匹配 > 优劣：</strong>被拒大多因为"岗位与你不匹配"，不是"你很差"。这家不适合，下家可能正适合。</li>
+  <li><strong>没有回音 ≠ 石沉大海：</strong>很多好 offer 来自持续投递，不是一次就中。不要把一次结果当对你的终审。</li>
+  <li><strong>过程决定结果：</strong>坚持每天投递、复盘、提升，过程中机会自然涌现。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>警惕比较：</strong>同学先拿到 offer 会带来巨大焦虑。请记住：每个人的节奏不同、赛道不同。关注"我明天比今天强了多少"，而不是"我比别人慢多少"。"我还没拿到 offer"和"我每天都在变强"是完全不同的心态。
+</div>
+
+<h2 id="s5">五、把焦虑变成行动的方法</h2>
+<div class="table-wrap"><table>
+  <tr><th>焦虑来源</th><th>转化为行动</th></tr>
+  <tr><td>"我可能拿不到"</td><td>每天固定投递 X 个岗位，用行动对冲焦虑</td></tr>
+  <tr><td>"我简历不行"</td><td>每周改一版简历，向朋友/HR 求反馈</td></tr>
+  <tr><td>"我面试总发挥不好"</td><td>前几次当成练习，复盘每场面表现</td></tr>
+  <tr><td>"身边人都在前进"</td><td>专注自己的投递数与技能提升</td></tr>
+  <tr><td>"看不到希望"</td><td>拆分目标：本月先拿到 2-3 个面试机会</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>金句：</strong>把"我还没成功"换成"我正在变强"。求职是一场需要"厚积薄发"的赛跑，坚持行动本身就是最大的竞争力。面试是练习，不是审判——每一次都是经验的积累。
+</div>
+
+<h2 id="s6">六、求职季的自我关怀</h2>
+<p>求职季心理压力大，身体和心理都要照顾好，才能撑起长线作战。</p>
+<ul>
+  <li><strong>作息规律：</strong>别因焦虑熬夜，状态比多投几个更重要。</li>
+  <li><strong>保持社交：</strong>和家人朋友聊聊，别把情绪憋在心里。</li>
+  <li><strong>适度运动：</strong>散步、跑步，释放压力、改善心情。</li>
+  <li><strong>给自己喘息：</strong>允许自己偶尔停下来，休息不是倒退。</li>
+  <li><strong>有风险预案：</strong>把"求职不成怎么办"也规划进去，降低未知的恐惧。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>提醒：</strong>如果焦虑、低落情绪持续很久、明显影响生活，请务必向学校的心理中心、老师或正规渠道求助。求助是智慧的体现，不是软弱。
+</div>
+
+<h2 id="s7">七、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>自我介绍三式结构：</strong>我是谁 → 做过什么（动词+量化）→ 适合这个岗位。</li>
+    <li><strong>备好两个版本：</strong>1分钟版（简洁）和3分钟版（有亮点+能力+动机），都掐表演练。</li>
+    <li><strong>录音反复练：</strong>讲到自然流畅，消除紧张。</li>
+    <li><strong>被拒是常态：</strong>匹配 > 优劣，别用一次结果定义自己。</li>
+    <li><strong>别比快慢：</strong>关注自己变强，而非比别人慢。</li>
+    <li><strong>焦虑转为行动：</strong>每天投递 + 复盘 + 提升，行动是焦虑的解药。</li>
+    <li><strong>自我关怀：</strong>作息、运动、社交、必要的求助，撑起长线作战。</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r018.html">
+      <div class="ri-ico">🗣️</div>
+      <div class="ri-title">面试自我介绍怎么说</div>
+      <div class="ri-desc">1分钟版和3分钟版都给你</div>
+    </a>
+    <a class="related-item" href="r017.html">
+      <div class="ri-ico">💼</div>
+      <div class="ri-title">第一份实习怎么找</div>
+      <div class="ri-desc">零经验也能拿到面试</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：求职辅导 + 应届生心理调节经验综合整理 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>
