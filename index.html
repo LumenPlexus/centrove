@@ -968,6 +968,9 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offse
 [data-theme="dark"] #freeBanner{background:linear-gradient(90deg,#2B2419,#33291F)!important;border-color:var(--border)!important;color:#E2D8C4!important}
 [data-theme="dark"] #freeBanner strong{color:#fff!important}
 [data-theme="dark"] #mobileSidebarHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
+/* 夜间：目录按钮说明气泡，与顶部侧边栏提示保持一致的暗色处理 */
+[data-theme="dark"] #tocBtnHint{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important;box-shadow:0 4px 14px rgba(0,0,0,.3)!important}
+[data-theme="dark"] #tocBtnHint span[style*="color:#5A4B38"]{color:var(--text)!important}
 /* 夜间：产品导览对比板块（CSS 类背景不受内联兜底覆盖）统一转暗，消除亮块 */
 [data-theme="dark"] .pano-cp.no{background:#26201A!important;border-color:#3A3026!important;box-shadow:none!important}
 [data-theme="dark"] .pano-cp.no h4{color:#9CC0BA!important}
@@ -4418,6 +4421,16 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p>学习 · 科研 · 效率 · 设计 · 文档 · 升学 · 公众号，100+ 精选资源一触即达</p>
       </div>
 
+      <!-- 资源蒸馏库：作为资源宝库的精品入口，放在分类之上，任何分类下都常驻可见 -->
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 15px;border-radius:13px;background:linear-gradient(135deg,#EFE6D2,#E9DFC8);border:1px solid var(--primary-mid);margin-bottom:8px">
+        <div style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--card,#FFFDF8);border:1px solid var(--border);font-size:20px;flex-shrink:0">📖</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;color:var(--primary);font-size:13.5px">资源蒸馏库</div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.5">不是一堆链接，是蒸馏好的精华。学习方法、科研技巧、求职攻略，点开就能学。</div>
+        </div>
+        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;display:inline-block;padding:8px 15px;background:var(--primary);color:#fff;border-radius:9px;font-size:12.5px;font-weight:600;text-decoration:none;box-shadow:0 2px 8px rgba(74,58,40,.18)">进入蒸馏库 →</a>
+      </div>
+
       <!-- 分类标签 -->
       <div style="margin-bottom:14px">
         <div style="display:flex;gap:6px;flex-wrap:wrap" id="reslibCatTabs">
@@ -4436,17 +4449,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="card">
           <h3>📚 学习平台库 · 免费上课、刷题、学技能</h3>
           <div class="grid grid-2" style="margin-top:10px">
-          <div style="padding:14px;background:linear-gradient(135deg,#F5EFE0,#EDE4CF);border-radius:10px;margin-bottom:12px;border:1px solid var(--primary-mid)">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-              <span style="font-size:20px">📖</span>
-              <div>
-                <div style="font-weight:700;color:var(--primary);font-size:14px">资源蒸馏库</div>
-                <div style="font-size:11px;color:var(--primary-dark);opacity:.8">Agent精选 · 结构化知识</div>
-              </div>
-            </div>
-            <p style="font-size:12px;color:var(--text);margin:0 0 10px 0;line-height:1.6">不是一堆链接，是蒸馏好的精华。学习方法、科研技巧、求职攻略，点开就能学。</p>
-            <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:6px 14px;background:var(--primary);color:#fff;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
-          </div>
             <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🎓</div>
               <div class="info"><div class="name">中国大学MOOC</div><div class="desc">名校公开课免费学，爱课程网出品</div></div><div class="arrow">↗</div>
@@ -4494,14 +4496,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <a class="res-link" href="https://study.163.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📚</div>
               <div class="info"><div class="name">网易云课堂</div><div class="desc">网易出品，职业/兴趣课程丰富</div></div><div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://ke.qq.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🐧</div>
-              <div class="info"><div class="name">腾讯课堂</div><div class="desc">腾讯出品，直播课/考证培训</div></div><div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://www.cnmooc.org/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🎓</div>
-              <div class="info"><div class="name">好大学在线</div><div class="desc">上海交通大学主办，高校学分课</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.chinesemooc.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📖</div>
@@ -4628,10 +4622,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <a class="res-link" href="https://www.tomatolist.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🍅</div>
               <div class="info"><div class="name">番茄ToDo</div><div class="desc">番茄钟+待办，学习打卡</div></div><div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://www.jianlimuban.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">📄</div>
-              <div class="info"><div class="name">极简简历</div><div class="desc">在线简历制作，模板简洁</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://trello.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📋</div>
@@ -4779,10 +4769,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <div class="ico">🔤</div>
               <div class="info"><div class="name">必应翻译</div><div class="desc">微软翻译，准确度高</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.diandidaoyan.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">📝</div>
-              <div class="info"><div class="name">地道言</div><div class="desc">英语写作润色，语法纠错</div></div><div class="arrow">↗</div>
-            </a>
             <a class="res-link" href="https://cli.im/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📱</div>
               <div class="info"><div class="name">草料二维码</div><div class="desc">二维码生成/解码，免费</div></div><div class="arrow">↗</div>
@@ -4799,17 +4785,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <div class="ico">🎨</div>
               <div class="info"><div class="name">嗨格式PDF</div><div class="desc">PDF转换/编辑/OCR，功能全</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.docsmall.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">📦</div>
-              <div class="info"><div class="name">Docsmall</div><div class="desc">图片压缩/PDF处理/在线工具</div></div><div class="arrow">↗</div>
-            </a>
             <a class="res-link" href="https://www.uzer.me/" target="_blank" rel="noopener noreferrer">
               <div class="ico">💻</div>
               <div class="info"><div class="name">UZER.ME 在线编辑器</div><div class="desc">云端运行PS/AI/Office等软件</div></div><div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://www.ithoughts.cn/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🧠</div>
-              <div class="info"><div class="name">iThoughts 思维导图</div><div class="desc">苹果生态好用的思维导图</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://mubu.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📋</div>
@@ -5449,6 +5427,13 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <h3>🏃 运动可视化 · 30天热力图</h3>
         <p style="font-size:12px;color:var(--hint);margin-bottom:10px">每完成1次运动点亮一格，颜色越深代表强度越高。连续打卡越多，方块越亮。</p>
         <div id="sportHeatmap" style="display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px;margin-bottom:14px;min-width:0;overflow:hidden"><div title="2026-07-24" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">24</div><div title="2026-07-25" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">25</div><div title="2026-07-26" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">26</div><div title="2026-07-27" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">27</div><div title="2026-07-28" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">28</div><div title="2026-07-29" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">29</div><div title="2026-07-30" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">30</div><div title="2026-07-31" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">31</div><div title="2026-08-01" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">1</div><div title="2026-08-02" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">2</div><div title="2026-08-03" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">3</div><div title="2026-08-04" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">4</div><div title="2026-08-05" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">5</div><div title="2026-08-06" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">6</div><div title="2026-08-07" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">7</div><div title="2026-08-08" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">8</div><div title="2026-08-09" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">9</div><div title="2026-08-10" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">10</div><div title="2026-08-11" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">11</div><div title="2026-08-12" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">12</div><div title="2026-08-13" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">13</div><div title="2026-08-14" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">14</div><div title="2026-08-15" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">15</div><div title="2026-08-16" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">16</div><div title="2026-08-17" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">17</div><div title="2026-08-18" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">18</div><div title="2026-08-19" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">19</div><div title="2026-08-20" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">20</div><div title="2026-08-21" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:400;border:1px solid var(--border)">21</div><div title="2026-08-22" style="aspect-ratio:1;border-radius:4px;background:#EFE8D8;display:flex;align-items:center;justify-content:center;color:var(--hint);font-size:9px;font-weight:700;border:2px solid var(--primary)">22</div></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:10px">
+          <span>强度</span>
+          <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:3px;background:#EFE8D8;border:1px solid var(--border)"></span>未打卡</span>
+          <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:3px;background:#E6CDA4"></span>轻</span>
+          <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:3px;background:#B98A4C"></span>中</span>
+          <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:3px;background:#5D4033"></span>大</span>
+        </div>
         <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--hint);align-items:center">
           <span>本月已完成 <strong id="sportMonthCount" style="color:var(--teal);font-size:14px">0</strong> 次</span>
           <span>连续 <strong id="sportStreak" style="color:var(--coral);font-size:14px">0</strong> 天</span>
@@ -7063,7 +7048,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <tr><td>大一/大二</td><td>普通话二甲</td><td><span class="tag tag-gray">基础</span></td><td>学校语委办·每月可考</td><td><a href="https://www.cltt.org/" target="_blank" rel="noopener noreferrer">cltt.org ↗</a></td></tr>
             <tr><td><strong>大二上 9月</strong></td><td>英语六级(若大一未过)</td><td><span class="tag tag-blue">强烈推荐</span></td><td>3月/9月报名</td><td><a href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">同上 ↗</a></td></tr>
             <tr><td>大二全年</td><td>教师资格证(高中政治)</td><td><span class="tag tag-teal">备选·保底</span></td><td>笔试3月/10月·面试1月/5月</td><td><a href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">ntce.neea.edu.cn ↗</a></td></tr>
-            <tr><td>大二全年</td><td>初级会计职称</td><td><span class="tag tag-gray">备选</span></td><td>5月考试·11月报名</td><td><a href="https://kzp.mof.gov.cn/" target="_blank" rel="noopener noreferrer">kzp.mof.gov.cn ↗</a></td></tr>
+            <tr><td>大二全年</td><td>初级会计职称</td><td><span class="tag tag-gray">备选</span></td><td>5月考试·11月报名</td><td><a href="https://ausm.mof.gov.cn/" target="_blank" rel="noopener noreferrer">ausm.mof.gov.cn ↗</a></td></tr>
             <tr><td><strong>大三全年</strong></td><td>专业资格证</td><td><span class="tag tag-coral">专业核心</span></td><td>6月客观题报名·9月客观题·10月主观题</td><td><a href="https://www.moj.gov.cn/" target="_blank" rel="noopener noreferrer">司法部 moj.gov.cn ↗</a></td></tr>
             <tr><td>大三下</td><td>考研(若不保研)</td><td><span class="tag tag-coral">升学必考</span></td><td>10月报名·12月考试</td><td><a href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer">yz.chsi.com.cn ↗</a></td></tr>
             <tr><td>大四上 9月</td><td>国考(公务员)</td><td><span class="tag tag-blue">就业方向</span></td><td>10月报名·11月笔试</td><td><a href="https://www.scs.gov.cn/" target="_blank" rel="noopener noreferrer">scs.gov.cn ↗</a></td></tr>
@@ -8675,9 +8660,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path></svg></div>
             <div class="info"><div class="name">人文 · 思想</div><div class="desc">TED 经典演讲：全球顶尖大脑的 18 分钟，最划算的认知输入</div></div><div class="arrow">↗</div>
           </a>
-          <a class="res-link" href="https://www.namoc.org/" target="_blank" rel="noopener noreferrer">
+          <a class="res-link" href="https://www.chnmuseum.cn/" target="_blank" rel="noopener noreferrer">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"></path><path d="M5 21l14-18"></path><path d="M19 21L5 3"></path></svg></div>
-            <div class="info"><div class="name">艺术 · 审美</div><div class="desc">中国美术馆线上展厅：不花钱逛名作，审美的眼光是靠看的</div></div><div class="arrow">↗</div>
+            <div class="info"><div class="name">艺术 · 审美</div><div class="desc">中国国家博物馆线上展：不花钱逛国宝名作，审美的眼光是靠看的</div></div><div class="arrow">↗</div>
           </a>
         </div>
       </div>
@@ -9155,8 +9140,8 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <a class="res-link" href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
           <div class="ico">📖</div><div class="info"><div class="name">教师资格证</div><div class="desc">ntce.neea.edu.cn</div></div><div class="arrow">↗</div>
         </a>
-        <a class="res-link" href="https://kzp.mof.gov.cn/" target="_blank" rel="noopener noreferrer">
-          <div class="ico">💼</div><div class="info"><div class="name">会计资格考试（初级·中级·高级）</div><div class="desc">kzp.mof.gov.cn 财政部会计评价网</div></div><div class="arrow">↗</div>
+        <a class="res-link" href="https://ausm.mof.gov.cn/" target="_blank" rel="noopener noreferrer">
+          <div class="ico">💼</div><div class="info"><div class="name">会计资格考试（初级·中级·高级）</div><div class="desc">全国会计人员统一服务管理平台（财政部）</div></div><div class="arrow">↗</div>
         </a>
         <a class="res-link" href="https://www.scs.gov.cn/" target="_blank" rel="noopener noreferrer">
           <div class="ico">🏛</div><div class="info"><div class="name">公务员考试（国考）</div><div class="desc">scs.gov.cn 国家公务员局</div></div><div class="arrow">↗</div>
@@ -10073,11 +10058,15 @@ function switchView(name){
   var ni=document.querySelector('.nav-item[data-view="'+name+'"]');if(ni)ni.classList.add('active');
   var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('show');
   var ov=document.getElementById('sidebarOverlay');if(ov)ov.classList.remove('show');
+  /* 记录离开当前板块时停留的位置，供切回来时恢复到原处 */
+  try{viewMemSave();}catch(e){}
   if(name==='journal')loadJournal();
   window.scrollTo(0,0);
   applyStoredTab(name);
   /* 重建当前板块的悬浮目录 */
   try{if(window.buildToc)buildToc(name);}catch(e){}
+  /* 本次进入的板块若 5 分钟内有停留记忆，滚动恢复到原位置；没有则停留在顶部 */
+  try{viewMemRestore(name);}catch(e){}
   /* Hash 锚点路由回写：切换板块时同步 URL hash，复制的链接可直接定位本板块，
      浏览器后退/前进也会在板块间正常跳转（hashchange 由 routeHash 统一接管）。 */
   try{
@@ -10778,8 +10767,8 @@ function renderWorkoutButtons(){
     var opts=workoutOptions();
     box.innerHTML=opts.map(function(o){
       var isDiet=o.id==='diet';
-      /* 兼容旧数据：运动类只要「exercise」聚合键为真即视为已打卡 */
-      var on=isDiet?!!tc['diet']:(!!tc[o.id]||!!tc['exercise']);
+      /* 每个运动各自独立勾选，互不影响：只根据该运动自己的记录判断是否已打卡 */
+      var on=isDiet?!!tc['diet']:!!tc[o.id];
       var bg=isDiet?(on?'rgba(139,105,20,.16)':'var(--bg)'):(on?'rgba(122,115,99,.12)':'var(--bg)');
       var bd=isDiet?(on?'var(--primary-mid)':'var(--border)'):(on?'var(--teal)':'var(--border)');
       var col=isDiet?((on?'var(--primary)':'var(--text)')):(on?'var(--text)':'var(--text)');
@@ -12317,17 +12306,18 @@ function init(){
   var _isSessionRestore = false;
   try{ _isSessionRestore = sessionStorage.getItem('qixia_session') === '1'; }catch(e){}
   if(_isSessionRestore){
-    /* 返回恢复：恢复之前的视图和滚动位置 */
+    /* 返回恢复：视图/滚动位置统一交由下方「滚动位置 & 视图状态恢复」一套机制负责，
+       这里只把旧的 localStorage 位置写入当前视图记忆，避免两套定时器各自 scrollTo 打架导致"突然跳到顶部"。 */
     var _restoreView = localStorage.getItem('pp_last_view') || 'home';
     var _restoreScroll = parseInt(localStorage.getItem('pp_last_scroll')||'0',10) || 0;
-    if(_restoreView && _restoreView !== 'home'){
-      setTimeout(function(){
-        if(typeof switchView==='function'){ switchView(_restoreView); }
-        setTimeout(function(){ window.scrollTo(0,_restoreScroll); }, 300);
-      }, 100);
-    } else {
-      setTimeout(function(){ window.scrollTo(0,_restoreScroll); }, 200);
-    }
+    try{
+      if(_restoreView){
+        var _m={};try{_m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){_m={};}
+        if(!_m[_restoreView]||!_m[_restoreView].scroll){ _m[_restoreView]={scroll:_restoreScroll,ts:Date.now()}; }
+        sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(_m));
+      }
+    }catch(e){}
+    /* 视图切换交给 restoreScrollState 统一处理，这里不再直接 switchView / scrollTo */
   }
   /* 设置会话标记，后续返回时即可识别 */
   try{ sessionStorage.setItem('qixia_session','1'); }catch(e){}
@@ -14107,9 +14097,10 @@ function renderSportHeatmap(){
     var txtColor='var(--hint)';
     var txt='--';
     if(d.log){
-      if(d.log.intensity==='heavy'){bg='var(--heat-heavy,#6E4F37)';txt='大';txtColor='var(--heat-text,#fff)';}
-      else if(d.log.intensity==='medium'){bg='var(--heat-medium,#6E4F37)';txt='中';txtColor='var(--heat-text,#fff)';}
-      else{bg='var(--heat-light,#DCC9A8)';txt='轻';txtColor='var(--heat-text,#fff)';}
+      /* 轻→中→大 三档用同一色相、由浅到深的阶梯，一眼可分清强度 */
+      if(d.log.intensity==='heavy'){bg='var(--heat-heavy,#5D4033)';txt='大';txtColor='var(--heat-text,#fff)';}
+      else if(d.log.intensity==='medium'){bg='var(--heat-medium,#B98A4C)';txt='中';txtColor='var(--heat-text,#fff)';}
+      else{bg='var(--heat-light,#E6CDA4)';txt='轻';txtColor='var(--heat-text,#fff)';}
     }
     return '<div title="'+d.key+'" style="aspect-ratio:1;border-radius:4px;background:'+bg+';display:flex;align-items:center;justify-content:center;color:'+txtColor+';font-size:9px;font-weight:'+(d.isToday?'700':'400')+';border:'+(d.isToday?'2px solid var(--primary)':'1px solid var(--border)')+'">'+(d.log?txt:d.day)+'</div>';
   }).join('');
@@ -14278,11 +14269,43 @@ function toggleCollapse(bodyId, headerEl){
 /* 用户点外链返回时，恢复到之前的视图和滚动位置 */
 var SCROLL_RESTORE_KEY='qixia_scroll_restore';
 var VIEW_RESTORE_KEY='qixia_view_restore';
+var VIEW_MEM_KEY='qixia_scrollmem_v1';
+
+/* 记录某个板块的停留滚动位置（写入当前 `_curView`），供切回时恢复 */
+function viewMemSave(){
+  try{
+    var v=_curView||'home';
+    var m={};try{m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){m={};}
+    var pos=window.pageYOffset||document.documentElement.scrollTop||0;
+    m[v]={scroll:pos,ts:Date.now()};
+    sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(m));
+  }catch(e){}
+}
+/* 若目标板块 5 分钟内有停留记忆，则在延迟后把滚动恢复到那个位置 */
+function viewMemRestore(v){
+  try{
+    var m={};try{m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){m={};}
+    var s=m[v];
+    if(!s)return;
+    if(Date.now()-s.ts>300000){delete m[v];sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(m));return;}
+    var target=s.scroll||0;
+    setTimeout(function(){try{window.scrollTo(0,target);}catch(e){}},60);
+    setTimeout(function(){try{window.scrollTo(0,target);}catch(e){}},340);
+  }catch(e){}
+}
+/* 滚动时轻量保存当前位置，返回/切回板块时能落到原按钮附近 */
+var _vmemT=null;
+function viewMemScroll(){
+  try{
+    if(_vmemT)clearTimeout(_vmemT);
+    _vmemT=setTimeout(viewMemSave,180);
+  }catch(e){}
+}
 
 function saveScrollState(){
   try{
     var state={
-      view: window.currentView||'home',
+      view: _curView||'home',
       scroll: window.pageYOffset||document.documentElement.scrollTop||0,
       ts: Date.now()
     };
@@ -14300,18 +14323,23 @@ function restoreScrollState(){
       sessionStorage.removeItem(SCROLL_RESTORE_KEY);
       return;
     }
-    // 恢复视图
-    if(state.view && state.view !== (window.currentView||'home')){
+    // 把离开时的滚动位置先写进该板块的记忆，统一交给 switchView→viewMemRestore 恢复，
+    // 避免多个定时器各自 scrollTo 相互打架导致"突然跳到顶部"
+    if(state.view){
+      try{
+        var m={};try{m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){m={};}
+        m[state.view]={scroll:state.scroll||0, ts:Date.now()};
+        sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(m));
+      }catch(e){}
+    }
+    // 恢复视图（viewMemRestore 会自动把滚动恢复到上面的位置）
+    if(state.view && state.view !== (_curView||'home')){
       if(typeof switchView==='function'){
         switchView(state.view);
       }
+    }else{
+      viewMemRestore(_curView||'home');
     }
-    // 恢复滚动位置（延迟等视图渲染完成）
-    setTimeout(function(){
-      window.scrollTo(0, state.scroll);
-      // 再恢复一次，防止某些异步渲染导致高度变化
-      setTimeout(function(){ window.scrollTo(0, state.scroll); }, 300);
-    }, 200);
   }catch(e){}
 }
 
@@ -14323,6 +14351,9 @@ document.addEventListener('visibilitychange', function(){
 });
 window.addEventListener('pagehide', saveScrollState);
 window.addEventListener('beforeunload', saveScrollState);
+
+/* 滚动时轻量记录当前板块停留位置（供返回/切回时落到原处） */
+document.addEventListener('scroll', viewMemScroll, {passive:true});
 
 /* 恢复折叠状态 */
 document.addEventListener('DOMContentLoaded',function(){
@@ -14833,6 +14864,14 @@ function initToc(){
     tocBtn.onclick=toggleTocDrawer;
     document.body.appendChild(tocBtn);
 
+    /* 目录按钮说明气泡：跟随按钮显示，仅首次出现、可手动关闭（仿照顶部侧边栏提示样式） */
+    var tocHint=document.createElement('div');
+    tocHint.id='tocBtnHint';
+    tocHint.innerHTML='<span style="flex-shrink:0">📋</span><span style="flex:1;min-width:0"><strong>提示：</strong>点击此按钮打开当前页面目录，快速跳到任意栏目</span><span style="flex-shrink:0;margin-left:auto;font-size:15px;color:#5A4B38;padding:0 4px;border-radius:4px;cursor:pointer;line-height:1" title="不再显示" onclick="event.stopPropagation();this.parentElement.style.display=\'none\';try{sessionStorage.setItem(\'pp_toc_btn_hint_closed\',\'1\');}catch(e){}">✕</span>';
+    tocHint.style.cssText='display:none;position:fixed;left:18px;bottom:152px;z-index:901;max-width:min(240px,calc(100vw - 36px));padding:7px 12px;border-radius:10px;background:#F1EADE;border:1px solid #D8CBB2;box-shadow:0 4px 14px rgba(74,58,40,.16);font-size:12.5px;color:#5A4B38;line-height:1.5;align-items:flex-start;gap:6px';
+    tocHint.style.cursor='default';
+    document.body.appendChild(tocHint);
+
     /* 移动端抽屉遮罩 */
     var tocOverlay=document.createElement('div');
     tocOverlay.className='toc-drawer-overlay';
@@ -14951,6 +14990,11 @@ function showToc(){
     var b=document.getElementById('tocBtn');
     if(f)f.classList.add('show');
     if(b)b.classList.add('show');
+    /* 目录按钮说明气泡：仅在移动端按钮显示时出现，用户关闭过或点过目录后不再打扰 */
+    var hint=document.getElementById('tocBtnHint');
+    if(hint&&window.innerWidth<=768&&!sessionStorage.getItem('pp_toc_btn_hint_closed')&&!sessionStorage.getItem('pp_toc_opened')){
+      hint.style.display='flex';
+    }
   }catch(e){}
 }
 
@@ -14960,6 +15004,7 @@ function hideToc(){
     var b=document.getElementById('tocBtn');
     if(f)f.classList.remove('show');
     if(b)b.classList.remove('show');
+    var hint=document.getElementById('tocBtnHint');if(hint)hint.style.display='none';
     closeTocDrawer();
   }catch(e){}
 }
@@ -14970,7 +15015,12 @@ function toggleTocDrawer(){
     var o=document.getElementById('tocDrawerOverlay');
     if(!d||!o)return;
     if(d.classList.contains('show')){closeTocDrawer();}
-    else{d.classList.add('show');o.classList.add('show');document.body.style.overflow='hidden';}
+    else{
+      d.classList.add('show');o.classList.add('show');document.body.style.overflow='hidden';
+      /* 用户已实际打开目录：隐藏说明气泡，后续不再出现 */
+      try{sessionStorage.setItem('pp_toc_opened','1');}catch(e){}
+      var hint=document.getElementById('tocBtnHint');if(hint)hint.style.display='none';
+    }
   }catch(e){}
 }
 
