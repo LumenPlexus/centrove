@@ -1446,6 +1446,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .ref-head,[data-theme="dark"] .qx-coll-h{background:#211C16;color:#B8A68C}
 </style>
   <link rel="stylesheet" href="css/upgrade.css" media="all">
+  <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
+       切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
+  <style>html{scroll-behavior:auto!important}</style>
 </head>
 <body>
 <script>
@@ -10063,10 +10066,19 @@ function uiAlert(msg){
 }
 
 var _curView='home';
+/* 瞬间回到顶部：临时覆盖页面级 smooth 滚动，保证切换板块时"直接到底"，不出现滑动动画 */
+function _scrollViewTop(){
+  var de=document.documentElement;
+  var prev='';try{prev=de.style.scrollBehavior;}catch(e){}
+  try{de.style.scrollBehavior='auto';}catch(e){}
+  try{window.scrollTo(0,0);}catch(e){}
+  try{window.scrollTo(0,0);}catch(e){}
+  try{de.style.scrollBehavior=prev;}catch(e){}
+}
 function switchView(name){
   if(name===_curView){
     /* 重复点击当前所在板块：仅回到顶部，不触发切换 */
-    try{window.scrollTo(0,0);}catch(e){}
+    _scrollViewTop();
     return;
   }
   /* 切换板块：一律回到该板块顶部，不记忆上一板块/本板块的滚动位置，避免"滑来滑去" */
@@ -10079,15 +10091,18 @@ function switchView(name){
   var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('show');
   var ov=document.getElementById('sidebarOverlay');if(ov)ov.classList.remove('show');
   if(name==='journal')loadJournal();
-  window.scrollTo(0,0);
+  _scrollViewTop();
   applyStoredTab(name);
   /* 重建当前板块的悬浮目录 */
   try{if(window.buildToc)buildToc(name);}catch(e){}
-  /* Hash 锚点路由回写：切换板块时同步 URL hash，复制的链接可直接定位本板块，
-     浏览器后退/前进也会在板块间正常跳转（hashchange 由 routeHash 统一接管）。 */
+  /* Hash 路由回写：用 pushState 同步 URL（不触发锚点平滑滚动、也不触发 hashchange 二次切换），
+     浏览器后退/前进仍由 routeHash 在 popstate/hashchange 时接管。 */
   try{
     var want='#view-'+name;
-    if(location.hash!==want){location.hash=want;}
+    if(location.hash!==want){
+      if(history&&history.pushState){ history.pushState(null,'',want); }
+      else{ location.hash=want; }
+    }
   }catch(e){}
 }
 /* ─── Hash 路由统一接管：浏览器后退/前进、或直接打开带 #view-… 的链接时能正确切换板块 ─── */
