@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>四级听力技巧大全 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.1);font-size:16px}
+.back-top.show{opacity:.7}
+.back-top:hover{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.scene-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0}
+.scene-card h4{color:var(--teal);font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.scene-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border);font-size:14px}
+.scene-row:last-child{border-bottom:none}
+.scene-cn{color:var(--text);font-weight:500;flex-shrink:0;margin-right:10px}
+.scene-en{color:var(--primary);font-style:italic;text-align:right}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:10px 0;position:relative}
+.step-num{position:absolute;top:10px;right:14px;font-size:24px;font-weight:800;color:var(--primary-light);line-height:1}
+.step-card h4{color:var(--primary);font-size:15px;margin-bottom:6px;padding-right:30px}
+.step-card p{font-size:14px;margin-bottom:6px;color:var(--muted)}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:8px 0}
+.faq-q{font-weight:600;color:var(--primary);margin-bottom:6px;font-size:14px}
+.faq-a{font-size:14px;color:var(--text);line-height:1.7}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.trap-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0}
+.trap-card h4{color:var(--coral);font-size:14px;margin-bottom:6px}
+.trap-card .trap-desc{font-size:14px;margin-bottom:8px}
+.trap-card .trap-example{font-size:13px;color:var(--muted);background:var(--bg);padding:8px 10px;border-radius:6px;font-style:italic}
+.week-plan{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:8px 0}
+.week-plan h4{color:var(--teal);font-size:14px;margin-bottom:6px}
+.week-plan ul{margin:6px 0 4px 20px;font-size:14px}
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+@media(max-width:600px){.method-grid{grid-template-columns:repeat(2,1fr)}}
+.method-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center}
+.method-item .mi-ico{font-size:24px;margin-bottom:4px}
+.method-item .mi-title{font-size:12px;font-weight:600;color:var(--primary)}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">四级听力技巧大全</div>
+</div>
+<div class="container">
+
+<h1>🎧 四级听力技巧大全</h1>
+<p class="subtitle">听力占35%，是四级考试的重头戏。掌握方法+科学训练，听力也能拿高分。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、四级听力考试结构</a>
+  <a href="#s2">二、听力提分四步法</a>
+  <a href="#s3">三、预读选项技巧</a>
+  <a href="#s4">四、8大听力场景关键词</a>
+  <a href="#s5">五、常见陷阱大揭秘</a>
+  <a href="#s6">六、精听训练法（5步精听法）</a>
+  <a href="#s7">七、泛听素材推荐</a>
+  <a href="#s8">八、考前一个月听力冲刺计划</a>
+  <a href="#s9">九、听力常见问题解答</a>
+</div>
+
+<h2 id="s1">一、四级听力考试结构</h2>
+<p>大学英语四级听力理解部分共25题，考试时间25分钟，分值占比35%。了解考试结构是备考的第一步，做到心中有数才能有的放矢。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>题型</th><th>篇数</th><th>题数</th><th>分值/题</th><th>总分值</th><th>建议用时</th></tr>
+  <tr>
+    <td><b>短篇新闻</b><br><span class="tag tag-coral">News Report</span></td>
+    <td>3篇</td>
+    <td>7题</td>
+    <td>7.1分</td>
+    <td>49.7分</td>
+    <td>约6分钟</td>
+  </tr>
+  <tr>
+    <td><b>长对话</b><br><span class="tag tag-blue">Long Conversation</span></td>
+    <td>2篇</td>
+    <td>8题</td>
+    <td>7.1分</td>
+    <td>56.8分</td>
+    <td>约7分钟</td>
+  </tr>
+  <tr>
+    <td><b>听力篇章</b><br><span class="tag tag-teal">Passage</span></td>
+    <td>3篇</td>
+    <td>10题</td>
+    <td>14.2分</td>
+    <td>142分</td>
+    <td>约12分钟</td>
+  </tr>
+  <tr style="background:var(--primary-light)">
+    <td><b>合计</b></td>
+    <td>8篇</td>
+    <td><b>25题</b></td>
+    <td>—</td>
+    <td><b>248.5分</b></td>
+    <td><b>25分钟</b></td>
+  </tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>题型难度排序：</strong>短篇新闻（易）→ 长对话（中）→ 听力篇章（难）。<br>
+  分值权重：听力篇章每题14.2分，是其他题型的两倍，一定要重点把握！
+</div>
+
+<h3>1.1 各题型特点</h3>
+<p><b>短篇新闻（News Report）</b>：每篇约150-200词，话题涵盖社会、科技、环境、灾难等新闻事件。开头第一句（导语）往往是主旨题答案。</p>
+<p><b>长对话（Long Conversation）</b>：每篇约200-300词，通常是两人之间的对话，场景包括校园、工作、日常生活等。问答处常出考点。</p>
+<p><b>听力篇章（Passage）</b>：每篇约250-350词，为单人独白，题材包括故事、说明文、议论文等。信息量大，逻辑关系复杂，需要较强的整体理解能力。</p>
+
+<h2 id="s2">二、听力提分四步法</h2>
+<p>很多同学做听力题时手忙脚乱，要么来不及看选项，要么听的时候抓不住重点。下面这套"四步法"经过无数考生验证，能有效提高听力正确率。</p>
+
+<div class="method-grid">
+  <div class="method-item">
+    <div class="mi-ico">👀</div>
+    <div class="mi-title">预读选项</div>
+  </div>
+  <div class="method-item">
+    <div class="mi-ico">🎯</div>
+    <div class="mi-title">抓关键词</div>
+  </div>
+  <div class="method-item">
+    <div class="mi-ico">✍️</div>
+    <div class="mi-title">边听边记</div>
+  </div>
+  <div class="method-item">
+    <div class="mi-ico">✅</div>
+    <div class="mi-title">核对答案</div>
+  </div>
+</div>
+
+<h3>第一步：预读选项</h3>
+<p>利用录音播放Direction的时间和题目之间的间隔，快速浏览选项，标记关键词，预测话题和问题类型。预读做得好，听力就成功了一半。</p>
+
+<h3>第二步：抓关键词</h3>
+<p>听的时候不要试图听懂每一个词，而是要抓住关键词——人名、地名、时间、数字、转折词、因果词等。这些地方往往就是答案所在。</p>
+
+<h3>第三步：边听边记</h3>
+<p>用自己能看懂的符号和缩写快速记录关键信息，尤其是数字、时间、地点、人物关系等。笔记不求工整，自己能看懂就行。</p>
+
+<h3>第四步：核对答案</h3>
+<p>听完后立即根据笔记和记忆选择答案，不要在一道题上纠结太久。如果没听清，果断蒙一个，然后把注意力转移到下一题。</p>
+
+<div class="callout callout-warn">
+  <strong>重要提醒：</strong>听力考试是"过时不候"的，千万不要因为上一道题没听清而影响下一道题。每道题间隔只有15秒，要学会快速切换。
+</div>
+
+<h2 id="s3">三、预读选项技巧</h2>
+<p>预读选项是听力提分最关键的技巧。很多同学不重视预读，或者不知道怎么预读，导致听的时候非常被动。掌握下面的预读技巧，让你的听力事半功倍。</p>
+
+<h3>3.1 什么时候读？</h3>
+<div class="table-wrap"><table>
+  <tr><th>时间窗口</th><th>可利用时长</th><th>预读内容</th></tr>
+  <tr>
+    <td><b>Section A 方向说明</b></td>
+    <td>约40秒</td>
+    <td>预读前2-3道题的选项</td>
+  </tr>
+  <tr>
+    <td><b>每题间隔</b></td>
+    <td>约15秒</td>
+    <td>预读下一题选项</td>
+  </tr>
+  <tr>
+    <td><b>每篇结束后</b></td>
+    <td>约20-30秒</td>
+    <td>预读下一篇所有题目</td>
+  </tr>
+  <tr>
+    <td><b>Section 切换时</b></td>
+    <td>约30秒</td>
+    <td>预读下一部分前几道题</td>
+  </tr>
+</table></div>
+
+<h3>3.2 读什么？</h3>
+<p>预读不是逐词逐句地读，而是要快速抓取关键信息。重点关注以下几类内容：</p>
+<ul>
+  <li><b>名词/动词短语</b>：预测对话主题和场景</li>
+  <li><b>数字/时间/地点</b>：标记出来，听的时候重点关注</li>
+  <li><b>选项差异</b>：四个选项的不同之处就是听音重点</li>
+  <li><b>人物关系</b>：通过选项中的称谓、身份词预测对话双方关系</li>
+  <li><b>问题类型</b>：选项都是地点→问where；都是数字→问how many/much</li>
+</ul>
+
+<h3>3.3 怎么标记？</h3>
+<p>用自己熟悉的符号在选项旁边做标记，帮助快速定位信息。以下是一些常用的标记方法：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>标记符号</th><th>含义</th><th>使用场景</th></tr>
+  <tr><td><b>○</b></td><td>圈出关键词</td><td>名词、动词、形容词</td></tr>
+  <tr><td><b>△</b></td><td>标记数字</td><td>时间、价格、数量</td></tr>
+  <tr><td><b>?</b></td><td>表示疑问/不确定</td><td>没看懂或容易混淆的选项</td></tr>
+  <tr><td><b>↑↓</b></td><td>上升/下降</td><td>数字变化趋势题</td></tr>
+  <tr><td><b>√</b></td><td>听到一致</td><td>听到原文提到的内容</td></tr>
+  <tr><td><b>×</b></td><td>排除</td><td>确定错误的选项</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>预读小窍门：</strong>如果时间紧张，优先看短选项和差异明显的选项。长选项可以只看第一个词和最后一个词，快速把握选项大意。
+</div>
+
+<h2 id="s4">四、8大听力场景关键词</h2>
+<p>四级听力的对话和短文往往围绕特定场景展开。熟悉常见场景的高频词汇，能帮助你快速判断场景、预测内容，大大提高答题正确率。</p>
+
+<h3>4.1 校园场景</h3>
+<div class="scene-card">
+  <h4>🎓 校园场景 Campus</h4>
+  <div class="scene-row"><span class="scene-cn">选课/退课</span><span class="scene-en">register for / drop a course</span></div>
+  <div class="scene-row"><span class="scene-cn">学分</span><span class="scene-en">credit / credit hour</span></div>
+  <div class="scene-row"><span class="scene-cn">学期</span><span class="scene-en">semester / term</span></div>
+  <div class="scene-row"><span class="scene-cn">论文/报告</span><span class="scene-en">paper / essay / report / thesis</span></div>
+  <div class="scene-row"><span class="scene-cn">截止日期</span><span class="scene-en">deadline / due date</span></div>
+  <div class="scene-row"><span class="scene-cn">延期</span><span class="scene-en">extension / postpone</span></div>
+  <div class="scene-row"><span class="scene-cn">考试/测验</span><span class="scene-en">exam / test / quiz / midterm / final</span></div>
+  <div class="scene-row"><span class="scene-cn">教授/讲师</span><span class="scene-en">professor / lecturer / instructor</span></div>
+  <div class="scene-row"><span class="scene-cn">奖学金</span><span class="scene-en">scholarship / fellowship</span></div>
+  <div class="scene-row"><span class="scene-cn">宿舍</span><span class="scene-en">dormitory / dorm / dorm room</span></div>
+</div>
+
+<h3>4.2 图书馆场景</h3>
+<div class="scene-card">
+  <h4>📚 图书馆场景 Library</h4>
+  <div class="scene-row"><span class="scene-cn">借书/还书</span><span class="scene-en">borrow / return / check out / check in</span></div>
+  <div class="scene-row"><span class="scene-cn">续借</span><span class="scene-en">renew</span></div>
+  <div class="scene-row"><span class="scene-cn">逾期</span><span class="scene-en">overdue</span></div>
+  <div class="scene-row"><span class="scene-cn">罚款</span><span class="scene-en">fine</span></div>
+  <div class="scene-row"><span class="scene-cn">图书卡</span><span class="scene-en">library card / borrower's card</span></div>
+  <div class="scene-row"><span class="scene-cn">目录</span><span class="scene-en">catalog / catalogue</span></div>
+  <div class="scene-row"><span class="scene-cn">参考书/期刊</span><span class="scene-en">reference book / journal / periodical</span></div>
+  <div class="scene-row"><span class="scene-cn">阅览室</span><span class="scene-en">reading room</span></div>
+  <div class="scene-row"><span class="scene-cn">书库</span><span class="scene-en">stack</span></div>
+</div>
+
+<h3>4.3 餐厅场景</h3>
+<div class="scene-card">
+  <h4>🍽️ 餐厅场景 Restaurant</h4>
+  <div class="scene-row"><span class="scene-cn">预订座位</span><span class="scene-en">reserve a table / make a reservation</span></div>
+  <div class="scene-row"><span class="scene-cn">菜单</span><span class="scene-en">menu</span></div>
+  <div class="scene-row"><span class="scene-cn">点菜</span><span class="scene-en">order / take one's order</span></div>
+  <div class="scene-row"><span class="scene-cn">推荐菜</span><span class="scene-en">specialty / recommendation</span></div>
+  <div class="scene-row"><span class="scene-cn">结账</span><span class="scene-en">pay the bill / check please</span></div>
+  <div class="scene-row"><span class="scene-cn">小费</span><span class="scene-en">tip</span></div>
+  <div class="scene-row"><span class="scene-cn">服务员</span><span class="scene-en">waiter / waitress / server</span></div>
+  <div class="scene-row"><span class="scene-cn">外卖</span><span class="scene-en">take away / take out / to go</span></div>
+  <div class="scene-row"><span class="scene-cn">难吃/美味</span><span class="scene-en">tastes bad / delicious / tasty</span></div>
+</div>
+
+<h3>4.4 医院场景</h3>
+<div class="scene-card">
+  <h4>🏥 医院场景 Hospital</h4>
+  <div class="scene-row"><span class="scene-cn">挂号/预约</span><span class="scene-en">make an appointment / register</span></div>
+  <div class="scene-row"><span class="scene-cn">症状</span><span class="scene-en">symptom</span></div>
+  <div class="scene-row"><span class="scene-cn">发烧/头痛/感冒</span><span class="scene-en">fever / headache / cold / flu</span></div>
+  <div class="scene-row"><span class="scene-cn">胃痛/喉咙痛</span><span class="scene-en">stomachache / sore throat</span></div>
+  <div class="scene-row"><span class="scene-cn">医生/护士</span><span class="scene-en">doctor / physician / nurse</span></div>
+  <div class="scene-row"><span class="scene-cn">诊断/处方</span><span class="scene-en">diagnosis / prescription</span></div>
+  <div class="scene-row"><span class="scene-cn">药片/胶囊</span><span class="scene-en">pill / tablet / capsule</span></div>
+  <div class="scene-row"><span class="scene-cn">体检</span><span class="scene-en">physical examination / check-up</span></div>
+  <div class="scene-row"><span class="scene-cn">病房/急诊</span><span class="scene-en">ward / emergency room</span></div>
+</div>
+
+<h3>4.5 机场场景</h3>
+<div class="scene-card">
+  <h4>✈️ 机场场景 Airport</h4>
+  <div class="scene-row"><span class="scene-cn">航班</span><span class="scene-en">flight</span></div>
+  <div class="scene-row"><span class="scene-cn">登机牌</span><span class="scene-en">boarding pass</span></div>
+  <div class="scene-row"><span class="scene-cn">值机/办理登机</span><span class="scene-en">check in</span></div>
+  <div class="scene-row"><span class="scene-cn">起飞/降落</span><span class="scene-en">take off / land</span></div>
+  <div class="scene-row"><span class="scene-cn">延误/取消</span><span class="scene-en">delay / cancel / cancellation</span></div>
+  <div class="scene-row"><span class="scene-cn">行李</span><span class="scene-en">luggage / baggage / suitcase</span></div>
+  <div class="scene-row"><span class="scene-cn">安检</span><span class="scene-en">security check</span></div>
+  <div class="scene-row"><span class="scene-cn">航站楼/登机口</span><span class="scene-en">terminal / gate</span></div>
+  <div class="scene-row"><span class="scene-cn">空姐/空少</span><span class="scene-en">flight attendant / stewardess / steward</span></div>
+</div>
+
+<h3>4.6 职场场景</h3>
+<div class="scene-card">
+  <h4>💼 职场场景 Work / Office</h4>
+  <div class="scene-row"><span class="scene-cn">面试</span><span class="scene-en">job interview</span></div>
+  <div class="scene-row"><span class="scene-cn">简历</span><span class="scene-en">resume / CV (curriculum vitae)</span></div>
+  <div class="scene-row"><span class="scene-cn">职位/岗位</span><span class="scene-en">position / post / vacancy</span></div>
+  <div class="scene-row"><span class="scene-cn">升职/加薪</span><span class="scene-en">promotion / raise / salary increase</span></div>
+  <div class="scene-row"><span class="scene-cn">辞职/解雇</span><span class="scene-en">resign / quit / fire / dismiss</span></div>
+  <div class="scene-row"><span class="scene-cn">加班</span><span class="scene-en">work overtime / overtime work</span></div>
+  <div class="scene-row"><span class="scene-cn">同事/上司</span><span class="scene-en">colleague / coworker / boss / supervisor</span></div>
+  <div class="scene-row"><span class="scene-cn">会议</span><span class="scene-en">meeting / conference</span></div>
+  <div class="scene-row"><span class="scene-cn">截止期限</span><span class="scene-en">deadline</span></div>
+</div>
+
+<h3>4.7 租房场景</h3>
+<div class="scene-card">
+  <h4>🏠 租房场景 Renting</h4>
+  <div class="scene-row"><span class="scene-cn">公寓/套房</span><span class="scene-en">apartment / flat / suite</span></div>
+  <div class="scene-row"><span class="scene-cn">房东/房客</span><span class="scene-en">landlord / landlady / tenant</span></div>
+  <div class="scene-row"><span class="scene-cn">租金</span><span class="scene-en">rent / rental</span></div>
+  <div class="scene-row"><span class="scene-cn">押金</span><span class="scene-en">deposit</span></div>
+  <div class="scene-row"><span class="scene-cn">租约</span><span class="scene-en">lease / rental agreement</span></div>
+  <div class="scene-row"><span class="scene-cn">家具/电器</span><span class="scene-en">furniture / appliance</span></div>
+  <div class="scene-row"><span class="scene-cn">水电费</span><span class="scene-en">utility bills / electricity / water</span></div>
+  <div class="scene-row"><span class="scene-cn">卧室/浴室/厨房</span><span class="scene-en">bedroom / bathroom / kitchen</span></div>
+  <div class="scene-row"><span class="scene-cn">安静/吵闹</span><span class="scene-en">quiet / noisy</span></div>
+</div>
+
+<h3>4.8 打电话场景</h3>
+<div class="scene-card">
+  <h4>📞 打电话场景 Phone Call</h4>
+  <div class="scene-row"><span class="scene-cn">接电话</span><span class="scene-en">answer the phone / pick up</span></div>
+  <div class="scene-row"><span class="scene-cn">挂断</span><span class="scene-en">hang up</span></div>
+  <div class="scene-row"><span class="scene-cn">占线</span><span class="scene-en">the line is busy / engaged</span></div>
+  <div class="scene-row"><span class="scene-cn">留言</span><span class="scene-en">leave a message / take a message</span></div>
+  <div class="scene-row"><span class="scene-cn">回电话</span><span class="scene-en">call back / return one's call</span></div>
+  <div class="scene-row"><span class="scene-cn">打错电话</span><span class="scene-en">wrong number</span></div>
+  <div class="scene-row"><span class="scene-cn">接线员</span><span class="scene-en">operator</span></div>
+  <div class="scene-row"><span class="scene-cn">信号不好</span><span class="scene-en">bad connection / poor signal</span></div>
+  <div class="scene-row"><span class="scene-cn">您是哪位？</span><span class="scene-en">Who's calling? / Who's speaking?</span></div>
+</div>
+
+<h2 id="s5">五、常见陷阱大揭秘</h2>
+<p>四级听力命题人最喜欢设置各种陷阱，让你以为听懂了，其实选的是错误答案。了解这些常见陷阱，能帮你避开很多坑。</p>
+
+<h3>5.1 转折词陷阱</h3>
+<div class="trap-card">
+  <h4>⚠️ 陷阱一：but / however 后面才是答案</h4>
+  <p class="trap-desc">听力中经常先说一个看似正确的信息，然后用 but、however、actually、in fact 等转折词否定前面的内容，引出真正的答案。很多同学只听到了前面的内容就匆忙选答案，正好掉进坑里。</p>
+  <div class="trap-example">
+    <strong>示例：</strong><br>
+    M: Did you go to the concert last night?<br>
+    W: I planned to, <b>but</b> I had to finish my paper instead.<br>
+    Q: What did the woman do last night?<br>
+    陷阱选项：Go to the concert ｜ 正确答案：Finish her paper
+  </div>
+</div>
+
+<h3>5.2 时间数字陷阱</h3>
+<div class="trap-card">
+  <h4>⚠️ 陷阱二：听到的数字不一定是答案</h4>
+  <p class="trap-desc">数字题是听力中的常见题型，但命题人特别喜欢在数字上做文章。你听到的第一个数字往往是干扰项，正确答案可能是经过计算、修改后的数字，或者是另一个提到的数字。常见的有"加减运算""改期改价""多个数字混淆"等。</p>
+  <div class="trap-example">
+    <strong>示例：</strong><br>
+    W: The shirt is $30, but today it's on sale for 20% off.<br>
+    M: Great, I'll take two.<br>
+    Q: How much does the man pay?<br>
+    陷阱选项：$30 / $24 ｜ 正确答案：$48（$24 × 2）
+  </div>
+</div>
+
+<h3>5.3 同义替换陷阱</h3>
+<div class="trap-card">
+  <h4>⚠️ 陷阱三：答案是原文的改写</h4>
+  <p class="trap-desc">很多同学以为"听到什么选什么"，但四级听力越来越喜欢用同义替换来设题。正确选项往往不是原文的原词原句，而是用同义词、近义词或不同的句式改写后的表达。而那些和原文几乎一模一样的选项，反而可能是陷阱。</p>
+  <div class="trap-example">
+    <strong>示例：</strong><br>
+    原文：The restaurant is <b>packed</b> every weekend.<br>
+    选项 A: The restaurant is crowded on weekends. ✓（同义替换）<br>
+    选项 B: The restaurant serves packed food. ✗（偷换概念）
+  </div>
+</div>
+
+<h3>5.4 首尾句陷阱</h3>
+<div class="trap-card">
+  <h4>⚠️ 陷阱四：开头结尾常出考点</h4>
+  <p class="trap-desc">听力篇章（Passage）的开头和结尾是出题的重灾区。开头第一句话往往点明主旨，结尾句常出推理题或态度题。很多同学刚进入状态还没反应过来，第一道题已经过了；或者听到后面松懈了，最后一道题又错过了。</p>
+  <div class="trap-example">
+    <strong>应对策略：</strong><br>
+    ① 录音一开始就高度集中，第一句绝不放过<br>
+    ② 听到信号词（in conclusion / in short / to sum up）时立刻警觉<br>
+    ③ 边听边注意文章结构，预测结尾会说什么
+  </div>
+</div>
+
+<div class="callout callout-warn">
+  <strong>避坑总结：</strong>听到 but 要警觉，听到数字要记录，听到原词要谨慎，开头结尾要专注。养成"听一半、猜一半"的习惯，主动预测答案，而不是被动等待答案。
+</div>
+
+<h2 id="s6">六、精听训练法（5步精听法）</h2>
+<p>精听是提高听力水平最有效的方法，没有之一。但很多同学的精听方法不对，效率很低。下面这套"5步精听法"是经过无数高分考生验证的科学训练方法。</p>
+
+<div class="step-card">
+  <span class="step-num">01</span>
+  <h4>全文听 — 把握大意</h4>
+  <p>第一遍不看文本，完整地听一遍，了解文章的大致内容和主题。听完后用一句话概括文章大意。如果第一遍完全听不懂也没关系，继续下一步。</p>
+</div>
+
+<div class="step-card">
+  <span class="step-num">02</span>
+  <h4>逐句听 — 听写句子</h4>
+  <p>逐句播放，每播放一句就暂停，把听到的内容写下来。没听清的地方反复听，最多听5遍。实在听不出来就做个标记，继续下一句。这一步是精听的核心，不要怕慢。</p>
+</div>
+
+<div class="step-card">
+  <span class="step-num">03</span>
+  <h4>跟读 — 模仿语音语调</h4>
+  <p>看着文本，跟着录音一起读。注意模仿录音的发音、连读、弱读、语调、重音。读的时候录音和自己的声音同时出现，跟读速度要跟上录音的节奏。每段至少跟读3遍。</p>
+</div>
+
+<div class="step-card">
+  <span class="step-num">04</span>
+  <h4>对照 — 找出差距</h4>
+  <p>把自己听写的内容和原文对照，标记出听错的地方。分析为什么听错：是单词不认识？是连读没听出来？还是发音和自己想的不一样？把这些问题记录下来。</p>
+</div>
+
+<div class="step-card">
+  <span class="step-num">05</span>
+  <h4>复述 — 检验理解</h4>
+  <p>不看文本，听完一段话后用自己的话复述内容。可以先用中文复述，再尝试用英文复述。复述能检验你是否真正理解了内容，而不仅仅是听懂了单词。</p>
+</div>
+
+<div class="callout callout-info">
+  <strong>精听训练建议：</strong><br>
+  • 每天精听1-2篇，每篇300词左右<br>
+  • 刚开始可以用慢速材料，逐渐过渡到正常语速<br>
+  • 精听材料不要太难，生词率控制在5%以内<br>
+  • 坚持一个月，听力水平会有明显提升
+</div>
+
+<h2 id="s7">七、泛听素材推荐</h2>
+<p>泛听和精听相辅相成。精听练精度，泛听练广度。泛听的目的是培养语感、熟悉语速语调、扩大听力词汇量。以下是适合四级水平的泛听素材：</p>
+
+<div class="table-wrap"><table>
+  <tr><th>素材名称</th><th>难度</th><th>特点</th><th>推荐指数</th></tr>
+  <tr>
+    <td><b>BBC 6 Minute English</b></td>
+    <td>★★★☆☆</td>
+    <td>每集6分钟，话题丰富，语速适中，有文本和词汇解释，非常适合四级水平</td>
+    <td>⭐⭐⭐⭐⭐</td>
+  </tr>
+  <tr>
+    <td><b>VOA慢速英语</b></td>
+    <td>★★☆☆☆</td>
+    <td>语速慢，发音清晰，适合听力基础薄弱的同学入门</td>
+    <td>⭐⭐⭐⭐</td>
+  </tr>
+  <tr>
+    <td><b>新概念英语2/3册</b></td>
+    <td>★★★☆☆</td>
+    <td>经典教材，故事性强，语言地道，第二册适合四级入门，第三册适合提高</td>
+    <td>⭐⭐⭐⭐</td>
+  </tr>
+  <tr>
+    <td><b>每日英语听力APP</b></td>
+    <td>★★★☆☆</td>
+    <td>素材丰富，分级明确，有逐句精听功能，使用方便</td>
+    <td>⭐⭐⭐⭐⭐</td>
+  </tr>
+  <tr>
+    <td><b> TED-Ed</b></td>
+    <td>★★★★☆</td>
+    <td>短小精悍的科普动画，趣味性强，词汇量稍大，适合提高</td>
+    <td>⭐⭐⭐⭐</td>
+  </tr>
+  <tr>
+    <td><b>四级真题听力</b></td>
+    <td>★★★☆☆</td>
+    <td>最接近考试难度，反复听真题能熟悉出题思路和语音语调</td>
+    <td>⭐⭐⭐⭐⭐</td>
+  </tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>泛听小贴士：</strong><br>
+  • 泛听不用每个词都听懂，听懂大意即可<br>
+  • 可以利用碎片时间：通勤、吃饭、洗漱时都可以听<br>
+  • 选择自己感兴趣的话题，更容易坚持<br>
+  • 精听和泛听的比例建议为 1:2，即1小时精听搭配2小时泛听
+</div>
+
+<h2 id="s8">八、考前一个月听力冲刺计划</h2>
+<p>距离考试还有一个月，如何高效冲刺？下面这份计划按周安排，循序渐进，帮你在一个月内听力提升一个档次。</p>
+
+<div class="week-plan">
+  <h4>📅 第1周：基础夯实周</h4>
+  <ul>
+    <li><b>目标：</b>熟悉考试题型，掌握基本技巧，找出薄弱环节</li>
+    <li><b>每天任务：</b></li>
+    <li>① 精听1篇（约30分钟），用5步精听法</li>
+    <li>② 泛听30分钟（BBC 6 Minute English / VOA慢速）</li>
+    <li>③ 做1套真题听力（限时完成）</li>
+    <li>④ 整理错题，分析错误原因</li>
+    <li><b>重点：</b>预读选项技巧、场景词汇积累</li>
+  </ul>
+</div>
+
+<div class="week-plan">
+  <h4>📅 第2周：专项突破周</h4>
+  <ul>
+    <li><b>目标：</b>针对薄弱题型进行专项训练，逐一突破</li>
+    <li><b>每天任务：</b></li>
+    <li>① 精听2篇（重点听错题多的题型）</li>
+    <li>② 专项训练：每天攻克一个题型（新闻/对话/篇章）</li>
+    <li>③ 背诵8大场景词汇，每天一个场景</li>
+    <li>④ 总结常见陷阱和应对方法</li>
+    <li><b>重点：</b>听力篇章（分值最高，需要重点突破）</li>
+  </ul>
+</div>
+
+<div class="week-plan">
+  <h4>📅 第3周：真题强化周</h4>
+  <ul>
+    <li><b>目标：</b>大量刷真题，提高正确率和答题速度</li>
+    <li><b>每天任务：</b></li>
+    <li>① 做2套真题听力（严格限时）</li>
+    <li>② 精听错题对应的原文段落</li>
+    <li>③ 复习前两周积累的词汇和错题</li>
+    <li>④ 跟读真题听力材料，模仿语音语调</li>
+    <li><b>重点：</b>提高正确率，控制在错题5题以内</li>
+  </ul>
+</div>
+
+<div class="week-plan">
+  <h4>📅 第4周：冲刺调整周</h4>
+  <ul>
+    <li><b>目标：</b>保持手感，调整状态，查漏补缺</li>
+    <li><b>每天任务：</b></li>
+    <li>① 每天做1套真题听力（保持手感）</li>
+    <li>② 复习所有错题和词汇笔记</li>
+    <li>③ 每天泛听30分钟（保持语感）</li>
+    <li>④ 调整作息，保证考试时间段精力充沛</li>
+    <li><b>重点：</b>调整心态，自信应考，不要做新题难题</li>
+  </ul>
+</div>
+
+<div class="callout callout-info">
+  <strong>冲刺计划注意事项：</strong><br>
+  • 每天听力训练总时长控制在1.5-2小时，不要过度疲劳<br>
+  • 每周末做一次全真模考，检验本周学习效果<br>
+  • 错题本是最好的复习资料，一定要反复看<br>
+  • 计划可以根据自己的实际情况灵活调整
+</div>
+
+<h2 id="s9">九、听力常见问题解答</h2>
+<p>很多同学在听力备考过程中会遇到各种各样的困惑。下面是大家最常问的几个问题，看看有没有你正在面临的。</p>
+
+<div class="faq-item">
+  <div class="faq-q">❓ 听不懂怎么办？完全跟不上在说什么</div>
+  <div class="faq-a">
+    听不懂的原因通常有三个：词汇量不够、语音不熟悉、语速跟不上。<br>
+    <strong>解决方法：</strong><br>
+    ① 先从慢速材料（VOA慢速）开始，逐渐过渡到正常语速<br>
+    ② 用精听逐句听写，找出是哪个词没听出来，是不认识还是发音问题<br>
+    ③ 积累听力高频词汇，特别是那些"看着认识、听着不认识"的词<br>
+    ④ 跟读模仿，熟悉英语的连读、弱读、失爆等语音现象<br>
+    ⑤ 坚持每天听，听力是靠耳朵练出来的，不是靠眼睛看出来的
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">❓ 跟不上怎么办？听到后面忘了前面</div>
+  <div class="faq-a">
+    跟不上主要是因为反应速度慢和短期记忆力不足。<br>
+    <strong>解决方法：</strong><br>
+    ① 学会"抓大放小"，不要试图听懂每一个词，抓住关键词和大意即可<br>
+    ② 练习边听边记笔记，用符号和缩写记录关键信息<br>
+    ③ 提高预读速度，提前知道要听什么，听的时候就有重点<br>
+    ④ 做"影子跟读法"（shadowing）：比录音晚1-2秒跟读，锻炼注意力和反应速度<br>
+    ⑤ 听力也是体力活，保持精力集中，平时可以通过冥想等方式锻炼专注力
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">❓ 单词都认识，但连起来就听不懂是怎么回事？</div>
+  <div class="faq-a">
+    这是非常典型的"看得懂但听不懂"问题，根本原因是<strong>语音不熟悉</strong>。英语中有很多语音现象，你认识单词的拼写，但不认识它在语流中的发音。<br>
+    <strong>主要原因：</strong><br>
+    ① <b>连读</b>：如 not at all 听起来像一个词<br>
+    ② <b>弱读</b>：介词、冠词等虚词在句中常弱读，发音很轻<br>
+    ③ <b>失爆</b>：两个爆破音相遇，第一个只做口型不发音<br>
+    ④ <b>语调</b>：升降调会改变词的重音和节奏<br>
+    <strong>解决方法：</strong>大量跟读模仿，把"视觉词汇"变成"听觉词汇"。每学一个新词，不仅要记住拼写和意思，更要记住它的发音。
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">❓ 听力需要背单词吗？背什么单词？</div>
+  <div class="faq-a">
+    需要，但和阅读词汇的背法不同。听力词汇要求"听到就能反应过来"，所以一定要<strong>听音记词</strong>。<br>
+    <strong>建议：</strong><br>
+    ① 用带音频的单词APP背单词，边听边记<br>
+    ② 优先背四级高频词汇，特别是听力中反复出现的词<br>
+    ③ 积累8大场景词汇（本文第四节已列出）<br>
+    ④ 把精听中遇到的生词整理到听力词汇本中，反复听
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">❓ 考试时太紧张怎么办？一紧张就什么都听不进去</div>
+  <div class="faq-a">
+    紧张是正常的，适度的紧张还能提高注意力。但过度紧张会影响发挥。<br>
+    <strong>缓解方法：</strong><br>
+    ① 考前深呼吸，吸气4秒，屏息4秒，呼气6秒，重复几次<br>
+    ② 提前熟悉考场流程，减少未知带来的焦虑<br>
+    ③ 平时模考就严格按照考试时间来，适应考试节奏<br>
+    ④ 给自己积极的心理暗示："我已经准备好了，正常发挥就行"<br>
+    ⑤ 如果某一道题没听清，果断放弃，不要让一道题影响整场考试
+  </div>
+</div>
+
+<div class="callout callout-ok">
+  <strong>最后想说：</strong>听力的提高没有捷径，但有方法。只要坚持每天练习，用对方法，一个月内听力提高50-100分是完全可能的。相信自己，你一定可以的！
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="cet4_reading.html">
+      <div class="ri-ico">📖</div>
+      <div class="ri-title">四级阅读技巧</div>
+      <div class="ri-desc">五大题型+答题方法</div>
+    </a>
+    <a class="related-item" href="cet4_writing.html">
+      <div class="ri-ico">✏️</div>
+      <div class="ri-title">四级写作万能句</div>
+      <div class="ri-desc">模板+高级替换词</div>
+    </a>
+    <a class="related-item" href="cet4_translation.html">
+      <div class="ri-ico">🇨🇳</div>
+      <div class="ri-title">四级翻译高频词汇</div>
+      <div class="ri-desc">传统文化+社会发展</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>
