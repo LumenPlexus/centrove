@@ -14990,9 +14990,9 @@ function showToc(){
     var b=document.getElementById('tocBtn');
     if(f)f.classList.add('show');
     if(b)b.classList.add('show');
-    /* 目录按钮说明气泡：仅在移动端按钮显示时出现，用户关闭过或点过目录后不再打扰 */
+    /* 目录按钮说明气泡：仅在按钮真正可见时出现（闪屏/导览期间按钮被隐藏，气泡绝不提前弹出） */
     var hint=document.getElementById('tocBtnHint');
-    if(hint&&window.innerWidth<=768&&!sessionStorage.getItem('pp_toc_btn_hint_closed')&&!sessionStorage.getItem('pp_toc_opened')){
+    if(hint&&!document.documentElement.classList.contains('state-splash')&&!document.documentElement.classList.contains('state-pano')&&window.innerWidth<=768&&!sessionStorage.getItem('pp_toc_btn_hint_closed')&&!sessionStorage.getItem('pp_toc_opened')){
       hint.style.display='flex';
     }
   }catch(e){}

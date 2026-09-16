@@ -1129,18 +1129,12 @@
     } catch (e) {}
   }
 
-  /* Safari/隐私模式韧性：主动请求浏览器持久化授权，降低本地存储被自动清理的风险 */
+  /* Safari/隐私模式韧性：主动请求浏览器持久化授权，降低本地存储被自动清理的风险（静默请求，不再弹突兀的提示条） */
   function qxRequestPersist() {
     try {
       if (navigator.storage && typeof navigator.storage.persist === 'function') {
         navigator.storage.persist().then(function (granted) {
-          if (!granted) {
-            try {
-              setTimeout(function () {
-                toast('建议允许「本站持久保存数据」，否则浏览器可能在多日后自动清理本地记录。可在「更多 → 导出数据备份」随时留存', 'warn');
-              }, 2800);
-            } catch (e) {}
-          }
+          /* 静默处理：不授权也不打扰用户；引导交给「数据安全」设置页说明 */
         }).catch(function () {});
       }
       if (navigator.storage && typeof navigator.storage.persisted === 'function') {
