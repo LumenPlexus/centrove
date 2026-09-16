@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.15.41"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.16.42"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
-  <script>window.__pageVersion='2026.09.15.41';</script>
+  <script>window.__pageVersion='2026.09.16.42';</script>
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
@@ -2084,12 +2084,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         </div>
       </div>
 
-      <!-- 💡 常驻备份提醒（首页显眼位置，永久展示） -->
-      <div id="qixiaBackupTip" style="margin:0 0 16px;padding:12px 14px;border-radius:12px;background:#FFF9EF;border:1px solid #E8DCC7;color:#6E4F37;font-size:12.5px;line-height:2;box-shadow:var(--shadow-xs)">
-        <b>⚠️ 数据安全提醒：</b>你的所有记录只保存在<b>当前浏览器本地</b>，清缓存、换设备、无痕模式、iOS 长时间未打开都可能导致数据丢失。<b>公共电脑请勿留存隐私内容</b>。<br>
-        <b>✅ 建议：</b>每周日导出一次备份（顶栏「更多 ⋯ → 导出数据备份」），文件同时存云盘 + 电脑，双保险更安心。
-      </div>
-
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>今日概览</h1>
         <p>安顿好当下，今天就从容迈出最关键的一小步。</p>
@@ -2101,7 +2095,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <span style="font-size:11.5px;color:var(--hint)">循领域而入 · 逐层抵达你的细分规划</span>
         </div>
         <div id="focusBody">
-          <div style="margin-top:12px;padding:11px 14px;border-radius:10px;background:rgba(111,84,64,.08);border:1px dashed rgba(111,84,64,.28);color:#6E665C;font-size:13px;line-height:1.9"><b style="color:var(--primary)">不必事事求全</b>　挑一个当下最想打理的大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——安放好当下，立刻行动。</div>
+          <div data-qxd="focusTip" style="position:relative;margin-top:12px;padding:11px 14px;padding-right:26px;border-radius:10px;background:rgba(111,84,64,.08);border:1px dashed rgba(111,84,64,.28);color:#6E665C;font-size:13px;line-height:1.9"><b style="color:var(--primary)">不必事事求全</b>　挑一个当下最想打理的大板块展开，<b style="color:var(--primary)">只做今天能落地的一小步</b>——安放好当下，立刻行动。<span onclick="qxdismiss('focusTip')" title="不再显示这条提示" style="position:absolute;top:8px;right:8px;cursor:pointer;opacity:.5;font-size:13px;line-height:1">✕</span></div>
           <div id="focusStart" style="margin-top:12px"></div>
         </div>
       </div>
@@ -2116,15 +2110,19 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="btn btn-primary btn-sm" style="font-size:14px;padding:10px 18px" onclick="saveTodayGoal()">定下今天的目标</button>
         </div>
         <div id="todayGoalShow" style="margin-top:10px;font-size:14px;color:#5C4A3A;display:none"></div>
-        <div style="margin-top:10px;font-size:12px;color:#7A6E5C;line-height:1.7">💡 小提醒：目标别写太多，<b style="color:var(--primary)">只安放一件最要紧的</b>便好。完成了，今天就算安放妥当。<br>📌 <b>为什么只设一件？</b>目标太多反而容易焦虑、一件都做不完。把最重要的那一件做好，今天就不算白过——这比列 10 件事却只完成 2 件，心态上好太多了。</div>
+        <div data-qxd="goalAsk" style="position:relative;margin-top:10px;font-size:12px;color:#7A6E5C;line-height:1.7;padding-right:18px">💡 小提醒：目标别写太多，<b style="color:var(--primary)">只安放一件最要紧的</b>便好。完成了，今天就算安放妥当。<br>📌 <b>为什么只设一件？</b>目标太多反而容易焦虑、一件都做不完。把最重要的那一件做好，今天就不算白过——这比列 10 件事却只完成 2 件，心态上好太多了。<span onclick="qxdismiss('goalAsk')" title="不再显示这条说明" style="position:absolute;top:-2px;right:0;cursor:pointer;opacity:.5;font-size:13px;line-height:1">✕</span></div>
       </div>
       <!-- 删除六个功能直达卡：与底栏/侧边栏重复，全部并入导航，避免冗余 -->
 
-      <div class="grid grid-4" style="margin-bottom:16px">
-        <div class="metric"><div class="label">距下个倒数日</div><div class="value" id="nextCountdown" style="color:var(--coral)">--</div><div class="sub" id="nextCountdownName">未设置</div></div>
-        <div class="metric"><div class="label">今日安放</div><div class="value" id="todayCheckin">0/5</div><div class="sub" id="streakInfo">连续 0 天 · 打卡+待办+番茄+札记+里程碑</div></div>
-        <div class="metric"><div class="label">本周小结</div><div class="value" id="weekCheckinCount">0/35</div><div class="sub">7天便签</div></div>
-        <div class="metric"><div class="label">今日任务</div><div class="value" id="todayTaskCount">0</div><div class="sub">件待办</div></div>
+      <div class="card" style="margin-bottom:14px;padding:10px 14px;background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <div style="font-size:12px;font-weight:600;color:var(--primary)">📊 今日进度</div>
+          <div style="display:flex;gap:16px;font-size:12.5px;color:var(--text);flex-wrap:wrap">
+            <span>今日安放 <b id="todayCheckin" style="color:var(--primary)">0/5</b></span>
+            <span id="streakInfo" style="color:var(--hint)">连续 0 天</span>
+            <span>待办 <b id="todayTaskCount" style="color:var(--coral)">0</b> 件</span>
+          </div>
+        </div>
       </div>
 
       <!-- 今日心语 · 每日一句（金句＋鼓励合成一卡，可换新、不重复、按日期自动轮换） -->
@@ -2135,8 +2133,8 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         </div>
         <div id="dailyMind" style="font-size:16.5px;color:var(--text);line-height:1.95;margin-top:12px;font-weight:600">“把今天走稳，把长线走远；安放当下，即刻启程”</div>
         <div id="dailyGreeting" style="font-size:13px;color:var(--muted);margin-top:8px"></div>
-        <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:11.5px;color:var(--hint);line-height:1.7">
-          💡 <b>小用法：</b>早上打开看一眼，当作今天的小锚点；状态不好时多翻几句，总有一句能戳中你。
+        <div data-qxd="mindUse" style="position:relative;margin-top:10px;padding-top:10px;padding-right:18px;border-top:1px dashed var(--border);font-size:11.5px;color:var(--hint);line-height:1.7">
+          💡 <b>小用法：</b>早上打开看一眼，当作今天的小锚点；状态不好时多翻几句，总有一句能戳中你。<span onclick="qxdismiss('mindUse')" title="不再显示这条说明" style="position:absolute;top:12px;right:0;cursor:pointer;opacity:.5;font-size:13px;line-height:1">✕</span>
         </div>
       </div>
 
@@ -2147,7 +2145,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 6.5C10 4.5 6.5 5 5 5.5v13c1.5-.5 5-1 7 1 2-2 5.5-1.5 7-1v-13c-1.5-.5-5-1-7 1z"></path><path d="M12 6.5v13"></path></svg>今日知识 <span style="font-weight:400;font-size:12px;color:var(--hint)">每天四条 · 不重复 · 换一批</span></h3>
           <button class="mind-refresh" onclick="refreshHomeDaily();spinInspire()" title="四条一起换一批新的"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;vertical-align:-2px;margin-right:3px"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>换一批</button>
         </div>
-        <p style="font-size:12px;color:var(--hint);margin:6px 0 0;line-height:1.7">🌱 每天花 2 分钟读一小段，健康、认知、社会、财商各一条——碎片化输入，攒着攒着就有了。</p>
+        <div data-qxd="knowTip" style="position:relative;margin:6px 0 0;padding-right:14px"><p style="font-size:12px;color:var(--hint);margin:0;line-height:1.7">🌱 每天花 2 分钟读一小段，健康、认知、社会、财商各一条——碎片化输入，攒着攒着就有了。</p><span onclick="qxdismiss('knowTip')" title="不再显示这条说明" style="position:absolute;top:0;right:0;cursor:pointer;opacity:.5;font-size:12px;line-height:1">✕</span></div>
       </div>
       <div class="card knowledge-card" style="margin-bottom:14px">
         <div class="knowledge-tabs">
@@ -2190,24 +2188,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           <button class="btn btn-sm" onclick="examPreset()" title="一键预填『期末冲刺』，改好日期再点添加">🧭 期末冲刺</button>
         </div>
         <div class="callout callout-info" style="margin-top:10px;font-size:12px"><strong>提示：</strong>双击事件名可改名，点击日期可改日期。所有数据自动保存到本地，换设备需手动迁移。</div>
-      </div>
-
-      <!-- 开学准备进度（面向准大一新生 · 可勾选清单 + 自动进度条；入学后自动归档收起） -->
-      <div class="card" id="prepareCard" style="margin-top:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#CFC9B8">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>开学准备进度 <span style="font-weight:400;font-size:12px;color:var(--hint)">准大一新生 · 勾选已完成项</span></h3>
-          <button class="btn btn-sm" style="color:var(--coral);border:1px solid var(--coral);background:transparent" onclick="archivePrepare(true)">✅ 我已入学 · 收起清单</button>
-        </div>
-        <p style="font-size:12px;color:var(--muted);margin:10px 0;line-height:1.7">离大学报到还有一段时间，把证件、物资、到校安排逐项勾掉，进度条涨起来，开学不慌。这些一次性内容在你入学后将<b style="color:var(--coral)">自动归档收起</b>，不占用首页空间。</p>
-        <div id="prepareList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px"></div>
-        <div style="margin-top:12px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-            <span style="font-size:12px;color:var(--muted)">完成进度</span>
-            <span style="font-size:13px;font-weight:700;color:var(--primary)" id="preparePercent">0%</span>
-          </div>
-          <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div class="bar" id="prepareBar" style="height:100%;width:0%;background:linear-gradient(90deg,#B38546,#96692F);border-radius:4px;transition:width .3s"></div></div>
-        </div>
-        <div style="margin-top:10px;font-size:11px;color:var(--hint)">进度自动保存到本地；点击任意条目即可切换「已完成 / 待办」。需要再次查看时，可在「系统设置」里重新开启。</div>
       </div>
 
       <div class="grid grid-2">
@@ -5847,7 +5827,27 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 <div class="section-intro">课程、社团、校园手续、生活琐事，都收在这里，不用再来回找。个别政策类资讯仅供参考，请以学校与国家官方最新通知为准。</div><div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活</h1>
         <p>入学准备 · 课程表 · 社团选择 · 室友公约 · 节假日规划 · 实习日历 · 自动保存</p>
-      </div><div class="card" style="margin-bottom:16px">
+      </div>
+
+      <!-- 开学准备进度（面向准大一新生 · 可勾选清单 + 自动进度条；入学后自动归档收起） -->
+      <div class="card" id="prepareCard" style="margin-bottom:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#CFC9B8">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <h3 style="color:var(--primary);margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>开学准备进度 <span style="font-weight:400;font-size:12px;color:var(--hint)">准大一新生 · 勾选已完成项</span></h3>
+          <button class="btn btn-sm" style="color:var(--coral);border:1px solid var(--coral);background:transparent" onclick="archivePrepare(true)">✅ 我已入学 · 收起清单</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:10px 0;line-height:1.7">离大学报到还有一段时间，把证件、物资、到校安排逐项勾掉，进度条涨起来，开学不慌。这些一次性内容在你入学后将<b style="color:var(--coral)">自动归档收起</b>，开学后自动归入这里。</p>
+        <div id="prepareList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px"></div>
+        <div style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+            <span style="font-size:12px;color:var(--muted)">完成进度</span>
+            <span style="font-size:13px;font-weight:700;color:var(--primary)" id="preparePercent">0%</span>
+          </div>
+          <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div class="bar" id="prepareBar" style="height:100%;width:0%;background:linear-gradient(90deg,#B38546,#96692F);border-radius:4px;transition:width .3s"></div></div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--hint)">进度自动保存到本地；点击任意条目即可切换「已完成 / 待办」。需要再次查看时，可在「系统设置」里重新开启。</div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
         <h3>我的大学课程表 · 本周</h3>
         <p style="font-size:12px;color:var(--hint);margin-bottom:10px">双击任意格子直接填课程名+教室+老师，自动保存，不用点保存按钮。</p>
         <div style="overflow-x:auto">
@@ -9759,7 +9759,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
   <section class="view" id="view-changelog">
 <div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
     <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.15.41</span></h1>
+      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.16.42</span></h1>
       <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
     </div>
 
@@ -14321,7 +14321,25 @@ document.addEventListener('DOMContentLoaded',function(){
   var tabs=document.querySelectorAll('.mtab-btn');
   if(tabs.length){tabs.forEach(function(b){b.addEventListener('click',function(){switchMovieCat(b.dataset.cat);});});}
   renderMovieRecs();
+
+  // 首页等低价值/提醒信息：用户可自行点 ✕ 关闭，关闭后本机一直记住不再显示
+  try{
+    document.querySelectorAll('[data-qxd]').forEach(function(w){
+      var k=w.getAttribute('data-qxd')||'';
+      if(k && localStorage.getItem('qx_dim_'+k)==='1'){w.style.display='none';}
+    });
+  }catch(e){}
 });
+/* 用户点 ✕ 关闭某条提醒/提示信息（显示位置由 [data-qxd] 包裹决定，值为对方Key） */
+function qxdismiss(key,btn){
+  try{
+    var w=null;
+    if(btn&&btn.closest){w=btn.closest('[data-qxd]');}
+    if(!w&&key){w=document.querySelector('[data-qxd="'+key+'"]');}
+    if(w)w.style.display='none';
+    try{localStorage.setItem('qx_dim_'+key,'1');}catch(e){}
+  }catch(e){}
+}
 
 
 /* ═══════════ 节日 · 生日 · 人生刻度 ═══════════ */

@@ -1,4 +1,4 @@
-/* 栖匣 · Service Worker v36
+/* 栖匣 · Service Worker v37
    策略：stale-while-revalidate（秒开 + 后台自动更新）
    
    适用场景：
@@ -12,7 +12,7 @@
    - version.txt / sw.js：永远网络，绝不缓存
    - activate：清空ALL旧缓存
    - skipWaiting + clients.claim：新SW立即接管 */
-var VERSION = '2026.09.15.v36';
+var VERSION = '2026.09.16.v37';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
