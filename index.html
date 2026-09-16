@@ -1731,13 +1731,24 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       }catch(err){}
     }else{
       /* 闪屏结束后定位到当前界面：
-         若地址栏带合法板块 hash（例如从外部链接返回、浏览器后退/前进、或点了带 #view 的链接），
-         则回到对应板块而非首页；若为彻底冷启动（地址无 hash 或为 #view-home），仍展示首页。 */
+         - 地址栏带合法板块 hash（外链返回/浏览器后退/带 #view 的链接）→ 优先回该板块顶部
+         - 否则，若有「返回恢复」记录（点外链/切走后回来）→ 回到离开时所在的板块与其滚动位置
+         - 无 hash 也无记录（冷启动）→ 固定首页顶部 */
       try{
         var _hh=''+(location.hash||'');
         _hh=_hh.replace(/^#view-/,'');
         var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
-        if(typeof switchView==='function'){ switchView(_hasHash?_hh:'home'); }
+        var _rS=null;
+        try{ var _rRaw=sessionStorage.getItem(SCROLL_RESTORE_KEY); if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
+        var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
+        var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
+        var _keepScroll=_recent&&_rS&&!_hasHash&&_rS.view===_view&&(_rS.scroll>0);
+        if(typeof switchView==='function'){ switchView(_view); } /* 切换板块本身即回顶部 */
+        if(_keepScroll){
+          var _target=(_rS.scroll||0);
+          setTimeout(function(){try{window.scrollTo(0,_target);}catch(e){}},80);
+          setTimeout(function(){try{window.scrollTo(0,_target);}catch(e){}},380);
+        }
       }catch(e){ try{if(typeof switchView==='function')switchView('home');}catch(e2){} }
     }
   }
@@ -10058,11 +10069,9 @@ function switchView(name){
     try{window.scrollTo(0,0);}catch(e){}
     return;
   }
-  /* 记录离开的旧板块当前停留位置。必须在 _curView 切换前保存，
-     否则旧板块的滚动位置会被误记到新板块头上，导致"点其他板块都在最下方"。 */
-  try{viewMemSave();}catch(e){}
+  /* 切换板块：一律回到该板块顶部，不记忆上一板块/本板块的滚动位置，避免"滑来滑去" */
   _curView=name;
-  try{localStorage.setItem('pp_last_view',name);localStorage.setItem('pp_last_scroll',window.scrollY);}catch(e){}
+  try{localStorage.setItem('pp_last_view',name);}catch(e){}
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active')});
   var vv=document.getElementById('view-'+name);if(vv)vv.classList.add('active');
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active')});
@@ -10074,8 +10083,6 @@ function switchView(name){
   applyStoredTab(name);
   /* 重建当前板块的悬浮目录 */
   try{if(window.buildToc)buildToc(name);}catch(e){}
-  /* 本次进入的板块若 5 分钟内有停留记忆，滚动恢复到原位置；没有则停留在顶部 */
-  try{viewMemRestore(name);}catch(e){}
   /* Hash 锚点路由回写：切换板块时同步 URL hash，复制的链接可直接定位本板块，
      浏览器后退/前进也会在板块间正常跳转（hashchange 由 routeHash 统一接管）。 */
   try{
@@ -12309,25 +12316,8 @@ function init(){
   renderFinanceKnowledge();
   renderTpl();
   renderDailyQuoteCard();
-  /* 冷启动 vs 返回恢复：
-     - sessionStorage 中有 qixia_session 标记 → 是返回恢复（如点外链返回），恢复之前的视图和滚动位置
-     - 无标记 → 冷启动（刚打开网站），固定回首页 */
-  var _isSessionRestore = false;
-  try{ _isSessionRestore = sessionStorage.getItem('qixia_session') === '1'; }catch(e){}
-  if(_isSessionRestore){
-    /* 返回恢复：视图/滚动位置统一交由下方「滚动位置 & 视图状态恢复」一套机制负责，
-       这里只把旧的 localStorage 位置写入当前视图记忆，避免两套定时器各自 scrollTo 打架导致"突然跳到顶部"。 */
-    var _restoreView = localStorage.getItem('pp_last_view') || 'home';
-    var _restoreScroll = parseInt(localStorage.getItem('pp_last_scroll')||'0',10) || 0;
-    try{
-      if(_restoreView){
-        var _m={};try{_m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){_m={};}
-        if(!_m[_restoreView]||!_m[_restoreView].scroll){ _m[_restoreView]={scroll:_restoreScroll,ts:Date.now()}; }
-        sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(_m));
-      }
-    }catch(e){}
-    /* 视图切换交给 restoreScrollState 统一处理，这里不再直接 switchView / scrollTo */
-  }
+  /* 板块切换一律回顶部；返回恢复(点外链/切走后回来)的视图与滚动位置统一由
+     闪屏结束后的 afterSplash → SCROLL_RESTORE 机制处理，这里不写任何滚动记忆。 */
   /* 设置会话标记，后续返回时即可识别 */
   try{ sessionStorage.setItem('qixia_session','1'); }catch(e){}
   /* 返回轻提示：每天一句不重复的暖心鼓励，等闪屏结束(约3.4s)后直接渲染一次、停留约4.2秒可看清，
@@ -14275,41 +14265,11 @@ function toggleCollapse(bodyId, headerEl){
 }
 
 /* ═══════════ 滚动位置 & 视图状态恢复 ═══════════ */
-/* 用户点外链返回时，恢复到之前的视图和滚动位置 */
+/* 板块切换一律回各自顶部（已在 switchView 处理）；这里只负责「点外链/切走后返回本页」时的位置保留：
+   - 页面隐藏前记录当前板块与滚动位置
+   - 返回时（闪屏结束 afterSplash）恢复回那个板块与其滚动位置
+   - 冷启动（无记录）则固定在首页顶部 */
 var SCROLL_RESTORE_KEY='qixia_scroll_restore';
-var VIEW_RESTORE_KEY='qixia_view_restore';
-var VIEW_MEM_KEY='qixia_scrollmem_v1';
-
-/* 记录某个板块的停留滚动位置（写入当前 `_curView`），供切回时恢复 */
-function viewMemSave(){
-  try{
-    var v=_curView||'home';
-    var m={};try{m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){m={};}
-    var pos=window.pageYOffset||document.documentElement.scrollTop||0;
-    m[v]={scroll:pos,ts:Date.now()};
-    sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(m));
-  }catch(e){}
-}
-/* 若目标板块 5 分钟内有停留记忆，则在延迟后把滚动恢复到那个位置 */
-function viewMemRestore(v){
-  try{
-    var m={};try{m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){m={};}
-    var s=m[v];
-    if(!s)return;
-    if(Date.now()-s.ts>300000){delete m[v];sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(m));return;}
-    var target=s.scroll||0;
-    setTimeout(function(){try{window.scrollTo(0,target);}catch(e){}},60);
-    setTimeout(function(){try{window.scrollTo(0,target);}catch(e){}},340);
-  }catch(e){}
-}
-/* 滚动时轻量保存当前位置，返回/切回板块时能落到原按钮附近 */
-var _vmemT=null;
-function viewMemScroll(){
-  try{
-    if(_vmemT)clearTimeout(_vmemT);
-    _vmemT=setTimeout(viewMemSave,180);
-  }catch(e){}
-}
 
 function saveScrollState(){
   try{
@@ -14322,37 +14282,7 @@ function saveScrollState(){
   }catch(e){}
 }
 
-function restoreScrollState(){
-  try{
-    var raw=sessionStorage.getItem(SCROLL_RESTORE_KEY);
-    if(!raw)return;
-    var state=JSON.parse(raw);
-    // 10分钟内的状态才恢复（避免恢复很久之前的状态）
-    if(Date.now()-state.ts > 600000){
-      sessionStorage.removeItem(SCROLL_RESTORE_KEY);
-      return;
-    }
-    // 把离开时的滚动位置先写进该板块的记忆，统一交给 switchView→viewMemRestore 恢复，
-    // 避免多个定时器各自 scrollTo 相互打架导致"突然跳到顶部"
-    if(state.view){
-      try{
-        var m={};try{m=JSON.parse(sessionStorage.getItem(VIEW_MEM_KEY)||'{}');}catch(e){m={};}
-        m[state.view]={scroll:state.scroll||0, ts:Date.now()};
-        sessionStorage.setItem(VIEW_MEM_KEY,JSON.stringify(m));
-      }catch(e){}
-    }
-    // 恢复视图（viewMemRestore 会自动把滚动恢复到上面的位置）
-    if(state.view && state.view !== (_curView||'home')){
-      if(typeof switchView==='function'){
-        switchView(state.view);
-      }
-    }else{
-      viewMemRestore(_curView||'home');
-    }
-  }catch(e){}
-}
-
-/* 页面隐藏前（切后台/点外链）保存状态 */
+/* 页面隐藏前（切后台/点外链）保存当前位置，供返回时保留 */
 document.addEventListener('visibilitychange', function(){
   if(document.visibilityState==='hidden'){
     saveScrollState();
@@ -14360,9 +14290,6 @@ document.addEventListener('visibilitychange', function(){
 });
 window.addEventListener('pagehide', saveScrollState);
 window.addEventListener('beforeunload', saveScrollState);
-
-/* 滚动时轻量记录当前板块停留位置（供返回/切回时落到原处） */
-document.addEventListener('scroll', viewMemScroll, {passive:true});
 
 /* 恢复折叠状态 */
 document.addEventListener('DOMContentLoaded',function(){
@@ -14379,9 +14306,6 @@ document.addEventListener('DOMContentLoaded',function(){
   var tabs=document.querySelectorAll('.mtab-btn');
   if(tabs.length){tabs.forEach(function(b){b.addEventListener('click',function(){switchMovieCat(b.dataset.cat);});});}
   renderMovieRecs();
-
-  // 恢复滚动位置和视图
-  restoreScrollState();
 });
 
 
