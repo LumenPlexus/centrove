@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.16.42"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.16.43"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
-  <script>window.__pageVersion='2026.09.16.42';</script>
+  <script>window.__pageVersion='2026.09.16.43';</script>
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
@@ -1766,9 +1766,10 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     e.setAttribute('data-gone','');
     /* 轻触任意处跳过闪屏（不影响后续导览/直接进入逻辑） */
     e.onclick=function(){dismiss(e);};
-    /* 闪屏时长 1.8 秒（内容快速呈现，轻触可跳过）；
-       结束时按首访与否决定弹导览或直接进产品 */
-    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },1800);
+    /* 闪屏时长：首访 1.7 秒（衔接产品导览），老用户仅为品牌亮个相，0.8 秒即进入，
+       显著降低每次打开等待感；轻触任意处也可随时跳过 */
+    var hold=firstVisit()?1700:800;
+    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },hold);
   }
   show();
 })();
@@ -15473,25 +15474,7 @@ init = function(){
 
 init();
 
-/* ── 微信首次进入的一次性安抚提示（过了"将要访问"拦截页后马上显示一次） ── */
-(function(){
-  try{
-    if(!/MicroMessenger/i.test(navigator.userAgent||''))return;
-    var k='pp_wx_tip';
-    var shown=localStorage.getItem(k);
-    if(shown)return;
-    try{ localStorage.setItem(k,'1'); }catch(e){}
-    setTimeout(function(){
-      try{
-        var tip=document.getElementById('flashSplash')||document.getElementById('brandSplash');
-        if(tip){ tip.style.display='flex'; }
-        if(window.flash){
-          window.flash('👋 欢迎进入栖匣！刚才那条「非官方网页」提示是微信的安全机制，第一次点「继续访问」即可，以后一般不再弹出。');
-        }
-      }catch(e){}
-    },600);
-  }catch(e){}
-})();
+/* 已按要求彻底移除：不再弹出「欢迎进入栖匣 / 非官方网页…」一次性安抚提示，避免多余打扰 */
 </script>
 
 
@@ -16746,7 +16729,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.15.37';
+  var V='2026.09.16.43';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}

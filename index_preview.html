@@ -15473,15 +15473,6 @@ init();
     var shown=localStorage.getItem(k);
     if(shown)return;
     try{ localStorage.setItem(k,'1'); }catch(e){}
-    setTimeout(function(){
-      try{
-        var tip=document.getElementById('flashSplash')||document.getElementById('brandSplash');
-        if(tip){ tip.style.display='flex'; }
-        if(window.flash){
-          window.flash('👋 欢迎进入栖匣！刚才那条「非官方网页」提示是微信的安全机制，第一次点「继续访问」即可，以后一般不再弹出。');
-        }
-      }catch(e){}
-    },600);
   }catch(e){}
 })();
 </script>
