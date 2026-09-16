@@ -64,6 +64,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .related-item .ri-ico{font-size:20px;margin-bottom:4px}
 .related-item .ri-title{font-size:13px;font-weight:600}
 .related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -111,7 +123,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </div>
 
 <h3>五大题型及解法</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th style="width:80px">题型</th><th>识别标志</th><th>解题方法</th><th>常见陷阱</th></tr>
   <tr>
     <td><b>细节题</b></td>
@@ -143,7 +155,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>看上下文的解释、举例、对比关系。代入四个选项，哪个最通顺就是答案。</td>
     <td>① 熟词僻义（考的是你不知道的意思）<br>② 望文生义（按字面意思选）</td>
   </tr>
-</table>
+</table></div>
 
 <h3>常见正确选项特征</h3>
 <ul>
@@ -217,7 +229,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ol>
 
 <h3>词性判断速查表</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>空格位置</th><th>填什么词性</th><th>例子</th></tr>
   <tr><td>a/an/the ____ + 名词</td><td>形容词</td><td>a ____ book</td></tr>
   <tr><td>冠词/形容词/物主代词 + ____</td><td>名词</td><td>my ____ / the ____ of</td></tr>
@@ -226,7 +238,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>介词（in/on/at/of...） + ____</td><td>名词/动名词</td><td>in ____ / of ____</td></tr>
   <tr><td>to + ____（不定式）</td><td>动词原形</td><td>want to ____</td></tr>
   <tr><td>be + ____（被动/进行）</td><td>动词过去分词/现在分词</td><td>was ____ / is ____</td></tr>
-</table>
+</table></div>
 
 <h3>蒙题技巧（实在不会的时候）</h3>
 <ul>
@@ -239,12 +251,12 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s4">四、答题时间分配与顺序</h2>
 <p>阅读部分总共40分钟，合理分配时间很重要。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>建议时间</th><th>分值</th><th>性价比</th></tr>
   <tr><td>仔细阅读（2篇）</td><td>20分钟（每篇10分钟）</td><td>20%（142分）</td><td>⭐⭐⭐⭐⭐ 最高</td></tr>
   <tr><td>长篇匹配</td><td>15分钟</td><td>10%（71分）</td><td>⭐⭐⭐⭐ 较高</td></tr>
   <tr><td>选词填空</td><td>5-7分钟</td><td>5%（35.5分）</td><td>⭐⭐ 最低</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>强烈建议的答题顺序：</strong>仔细阅读（最值钱，时间充裕时做）→ 长篇匹配（易得分，稳拿）→ 选词填空（放最后，没时间就蒙）
@@ -262,7 +274,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h2 id="s6">六、常见错误原因分析</h2>
-<table>
+<div class="table-wrap"><table>
   <tr><th>错误类型</th><th>原因</th><th>解决方法</th></tr>
   <tr><td>单词不认识</td><td>词汇量不够</td><td>每天背单词，积累高频词</td></tr>
   <tr><td>句子读不懂</td><td>长难句不会分析</td><td>学习语法，练习长难句拆解</td></tr>
@@ -270,7 +282,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>二选一总选错</td><td>对干扰项不敏感</td><td>总结错题，分析每个错误选项错在哪</td></tr>
   <tr><td>做不完</td><td>速度太慢</td><td>限时训练，先易后难，学会放弃</td></tr>
   <tr><td>想太多</td><td>过度推断</td><td>记住：答案一定在原文里，别自己加戏</td></tr>
-</table>
+</table></div>
 
 <h2 id="s7">七、真题刷题方法论</h2>
 

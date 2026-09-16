@@ -66,6 +66,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .phase-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:10px 0}
 .phase-card .phase-title{font-weight:700;color:var(--teal);font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .phase-card .phase-time{font-size:12px;color:var(--muted);font-weight:400}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -93,7 +105,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s1">一、考研常识</h2>
 
 <h3>1.1 学硕vs专硕</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>维度</th><th>学术型硕士（学硕）</th><th>专业型硕士（专硕）</th></tr>
   <tr><td>培养目标</td><td>培养学术研究人才</td><td>培养应用型专业人才</td></tr>
   <tr><td>学制</td><td>一般3年</td><td>一般2-3年</td></tr>
@@ -101,10 +113,10 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>读博</td><td>可直博/硕博连读</td><td>一般需考博（部分可申博）</td></tr>
   <tr><td>考试难度</td><td>通常更难（考数学一/英语一）</td><td>通常稍易（考数学二/英语二）</td></tr>
   <tr><td>招生人数</td><td>相对较少</td><td>逐年扩招，名额更多</td></tr>
-</table>
+</table></div>
 
 <h3>1.2 全日制vs非全日制</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>维度</th><th>全日制</th><th>非全日制</th></tr>
   <tr><td>学习方式</td><td>脱产在校学习</td><td>非脱产，边工作边读</td></tr>
   <tr><td>学费</td><td>较低，有奖学金</td><td>较高，一般无奖学金</td></tr>
@@ -112,7 +124,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>毕业证</td><td>全日制硕士</td><td>非全日制硕士（标注学习方式）</td></tr>
   <tr><td>认可度</td><td>社会认可度高</td><td>认可度在提升，但仍有差距</td></tr>
   <tr><td>适合人群</td><td>应届本科生</td><td>在职人员提升学历</td></tr>
-</table>
+</table></div>
 
 <h3>1.3 一区vs二区</h3>
 <p>教育部根据各地经济、教育发展水平，将31个省市自治区分为两类，分别为一区和二区。二区的分数线通常比一区低10分左右。</p>
@@ -129,13 +141,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </div>
 
 <h3>1.4 考研科目与分值</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>科目</th><th>分值</th><th>考试时间</th></tr>
   <tr><td>政治</td><td>100分</td><td>第一天上午 8:30-11:30</td></tr>
   <tr><td>英语（一/二）</td><td>100分</td><td>第一天下午 14:00-17:00</td></tr>
   <tr><td>数学（一/二/三）或专业基础课</td><td>150分</td><td>第二天上午 8:30-11:30</td></tr>
   <tr><td>专业课</td><td>150分</td><td>第二天下午 14:00-17:00</td></tr>
-</table>
+</table></div>
 <p>总分：500分（管理类联考等特殊专业总分300分）</p>
 
 <h2 id="s2">二、择校择专业方法论</h2>
@@ -149,7 +161,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>2.2 择校看什么指标</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>指标</th><th>说明</th><th>权重</th></tr>
   <tr>
     <td><b>报录比</b></td>
@@ -186,7 +198,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>一线城市资源多但竞争大，需结合就业规划</td>
     <td>⭐⭐⭐</td>
   </tr>
-</table>
+</table></div>
 
 <h3>2.3 信息来源</h3>
 <ul>
@@ -270,22 +282,22 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s4">四、政治复习攻略</h2>
 
 <h3>4.1 时间安排</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>阶段</th><th>时间</th><th>任务</th></tr>
   <tr><td>基础阶段</td><td>8-9月</td><td>看强化班视频，过知识点，做1000题</td></tr>
   <tr><td>提升阶段</td><td>10-11月</td><td>二刷1000题，刷选择题，掌握重点</td></tr>
   <tr><td>冲刺阶段</td><td>12月</td><td>做模拟卷，背分析题（肖四为主）</td></tr>
-</table>
+</table></div>
 
 <h3>4.2 推荐用书</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>类型</th><th>推荐</th><th>说明</th></tr>
   <tr><td>知识点精讲</td><td>肖秀荣《精讲精练》/ 徐涛《核心考案》</td><td>二选一即可，肖的更全，徐的更易懂</td></tr>
   <tr><td>习题集</td><td>肖秀荣《1000题》</td><td>必买，至少刷2遍</td></tr>
   <tr><td>真题</td><td>肖秀荣《讲真题》</td><td>选择题可以做，大题不用做</td></tr>
   <tr><td>冲刺卷</td><td>肖八、肖四</td><td>必买必做，肖四大题必背</td></tr>
   <tr><td>辅助卷</td><td>腿姐4套卷、徐涛6套卷</td><td>学有余力可以做，重点做选择题</td></tr>
-</table>
+</table></div>
 
 <h3>4.3 选择题怎么练</h3>
 <ul>
@@ -347,17 +359,17 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>5.5 其他题型</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>分值</th><th>难度</th><th>复习建议</th></tr>
   <tr><td>翻译</td><td>10分（英一）/15分（英二）</td><td>较难</td><td>做真题翻译，掌握翻译技巧</td></tr>
   <tr><td>新题型</td><td>10分</td><td>中等</td><td>掌握方法，多练真题，容易提分</td></tr>
   <tr><td>完型填空</td><td>10分</td><td>难+性价比低</td><td>不建议花太多时间，最后做</td></tr>
-</table>
+</table></div>
 
 <h2 id="s6">六、数学复习攻略</h2>
 
 <h3>6.1 老师选择</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>老师</th><th>特点</th><th>适合人群</th></tr>
   <tr>
     <td><b>张宇</b></td>
@@ -384,16 +396,16 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>押题准，模拟卷质量高</td>
     <td>冲刺阶段必做李林6+4</td>
   </tr>
-</table>
+</table></div>
 
 <h3>6.2 辅导书推荐</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>阶段</th><th>推荐书目</th></tr>
   <tr><td>基础阶段</td><td>教材（同济高数/线代、浙大概率论）+ 汤家凤1800题/张宇30讲</td></tr>
   <tr><td>强化阶段</td><td>张宇36讲/李永乐复习全书 + 660题/880题/1000题</td></tr>
   <tr><td>真题阶段</td><td>李永乐历年真题全精解析/张宇真题大全解</td></tr>
   <tr><td>冲刺阶段</td><td>李林6套卷+4套卷、合工大超越/共创、张宇8+4</td></tr>
-</table>
+</table></div>
 
 <h3>6.3 复习阶段</h3>
 <ol>
@@ -456,7 +468,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s8">八、复试与调剂</h2>
 
 <h3>8.1 复试考什么</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>内容</th><th>说明</th><th>权重</th></tr>
   <tr>
     <td><b>专业课笔试</b></td>
@@ -473,7 +485,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>口语、听力、翻译等</td>
     <td>10%-20%</td>
   </tr>
-</table>
+</table></div>
 
 <h3>8.2 复试准备要点</h3>
 <ul>

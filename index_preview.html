@@ -498,7 +498,7 @@ body.sidebar-open{overflow:hidden}
 .toc-float::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:2px}
 
 /* 移动端目录按钮 */
-.toc-btn{display:none;position:fixed;right:16px;bottom:130px;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;align-items:center;justify-content:center;font-size:16px;cursor:pointer;z-index:900;box-shadow:0 2px 12px rgba(0,0,0,.2);opacity:.85;transition:all .3s;user-select:none;-webkit-user-select:none}
+.toc-btn{display:none;position:fixed;left:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);align-items:center;justify-content:center;font-size:14px;cursor:pointer;z-index:800;box-shadow:0 2px 10px rgba(92,64,48,.15);opacity:.9;transition:all .3s;user-select:none;-webkit-user-select:none}
 .toc-btn.show{display:flex}
 .toc-btn:hover{opacity:1;transform:scale(1.05)}
 .toc-btn:active{transform:scale(.95)}
@@ -4412,7 +4412,18 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="card">
           <h3>📚 学习平台库 · 免费上课、刷题、学技能</h3>
           <div class="grid grid-2" style="margin-top:10px">
-            <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
+            <a 
+          <div style="padding:14px;background:linear-gradient(135deg,#F5EFE0,#EDE4CF);border-radius:10px;margin-bottom:12px;border:1px solid var(--primary-mid)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <span style="font-size:20px">📖</span>
+              <div>
+                <div style="font-weight:700;color:var(--primary);font-size:14px">资源蒸馏库</div>
+                <div style="font-size:11px;color:var(--primary-dark);opacity:.8">Agent精选 · 结构化知识</div>
+              </div>
+            </div>
+            <p style="font-size:12px;color:var(--text);margin:0 0 10px 0;line-height:1.6">不是一堆链接，是蒸馏好的精华。学习方法、科研技巧、求职攻略，点开就能学。</p>
+            <a href="distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:6px 14px;background:var(--primary);color:#fff;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
+          </div>class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🎓</div>
               <div class="info"><div class="name">中国大学MOOC</div><div class="desc">名校公开课免费学，爱课程网出品</div></div><div class="arrow">↗</div>
             </a>
@@ -13598,7 +13609,40 @@ function renderCet6Reading(){
       '<span style="font-size:13px;color:var(--hint)">第 '+(idx+1)+' 篇 / 共 '+CET6_READINGS.length+' 篇 · 六级真题风格 · 点"换一篇"切换</span>'+
       '<button class="btn btn-sm btn-primary" onclick="nextCet6Reading()">换一篇</button>'+
     '</div>'+
-    '<div class="card" style="margin-bottom:16px">'+
+    '
+      <!-- 资源蒸馏库入口 -->
+      <div class="card" style="margin-bottom:16px">
+        <h3>📚 资源蒸馏库 · Agent精选知识库</h3>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">从海量学习资源中蒸馏出精华：学习方法、科研技巧、求职攻略、效率工具，结构化整理，点开就能用。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
+          <a href="distilled/index.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;grid-column:span 1">
+            <div style="padding:12px;background:linear-gradient(135deg,#F5EFE0,#EDE4CF);border-radius:10px;border:1px solid var(--primary-mid);cursor:pointer;transition:all .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="font-size:22px;margin-bottom:6px">📖</div>
+              <div style="font-size:13px;font-weight:700;color:var(--primary)">进入蒸馏库</div>
+              <div style="font-size:11px;color:var(--primary-dark);margin-top:3px;opacity:.8">20篇精选 · 4大分类</div>
+            </div>
+          </a>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;grid-column:span 2">
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <div style="font-size:12px;font-weight:600;color:var(--text)">📚 学业学习</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">四级阅读·记忆法·期末冲刺</div>
+            </div>
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <div style="font-size:12px;font-weight:600;color:var(--text)">🔬 科研学术</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">文献阅读·Zotero·综述写作</div>
+            </div>
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <div style="font-size:12px;font-weight:600;color:var(--text)">⚡ 效率工具</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">番茄工作法·GTD·Notion</div>
+            </div>
+            <div style="padding:10px;background:var(--bg);border-radius:8px">
+              <div style="font-size:12px;font-weight:600;color:var(--text)">💼 职业发展</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">简历写法·面试·职业规划</div>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="card" style="margin-bottom:16px">'+
       '<h3>'+r.title+'</h3>'+
       '<h4>原文</h4><p style="line-height:2.0;color:var(--text);font-size:16px">'+r.en+'</p>'+
       '<h4>重点词汇</h4><div style="margin-bottom:6px">'+nv+'</div>'+
@@ -14787,7 +14831,7 @@ function initToc(){
     var tocBtn=document.createElement('div');
     tocBtn.className='toc-btn';
     tocBtn.id='tocBtn';
-    tocBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>';
+    tocBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="4" y1="6" x2="7" y2="6"></line><line x1="10" y1="6" x2="20" y2="6"></line><line x1="7" y1="12" x2="10" y2="12"></line><line x1="13" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="7" y2="18"></line><line x1="10" y1="18" x2="20" y2="18"></line></svg>';
     tocBtn.title='目录';
     tocBtn.onclick=toggleTocDrawer;
     document.body.appendChild(tocBtn);
@@ -17067,12 +17111,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   }
   function checkVersion(){
     try{
-      fetch(VFILE+'?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();})
-        .then(function(t){
-          var live=(t||'').trim().replace(/^v/i,'');
-          if(!live||live===V)return;
-          if(live>V){window.__pendingUpdate=live;__tryShowUpdate();}
-        }).catch(function(){});
+      var v=localStorage.getItem('qx_version');
+      if(!v||v!==V){localStorage.setItem('qx_version',V);}
     }catch(e){}
   }
   function showUpdateToast(live){

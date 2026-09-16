@@ -63,6 +63,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .related-item .ri-ico{font-size:20px;margin-bottom:4px}
 .related-item .ri-title{font-size:13px;font-weight:600}
 .related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -94,7 +106,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>国考 vs 省考</h3>
 <p>公务员考试主要分为国家公务员考试（国考）和各省公务员考试（省考），两者都是成为公务员的主要途径。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>对比维度</th><th>国考</th><th>省考</th></tr>
   <tr><td>组织单位</td><td>国家公务员局</td><td>各省省委组织部</td></tr>
   <tr><td>招录单位</td><td>中央机关及直属机构（如国税、海关、铁路公安等）</td><td>省、市、县、乡四级机关</td></tr>
@@ -103,10 +115,10 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>考试难度</td><td>难度较大，竞争激烈</td><td>难度相对较低（各省差异大）</td></tr>
   <tr><td>薪资待遇</td><td>中央部委和经济发达地区待遇好，中西部相对一般</td><td>经济发达省份待遇好，差异较大</td></tr>
   <tr><td>发展前景</td><td>平台高，晋升空间相对大</td><td>基层岗位多，晋升相对慢</td></tr>
-</table>
+</table></div>
 
 <h3>报考条件</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>条件类型</th><th>具体要求</th></tr>
   <tr><td><b>国籍要求</b></td><td>具有中华人民共和国国籍</td></tr>
   <tr><td><b>年龄要求</b></td><td>一般18周岁以上、35周岁以下，应届硕士研究生和博士研究生（非在职）可放宽到40周岁以下</td></tr>
@@ -114,10 +126,10 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td><b>专业要求</b></td><td>大部分岗位有专业限制，少数"三不限"岗位无专业限制</td></tr>
   <tr><td><b>政治面貌</b></td><td>部分岗位要求中共党员或共青团员</td></tr>
   <tr><td><b>工作经历</b></td><td>部分岗位要求2年及以上基层工作经历</td></tr>
-</table>
+</table></div>
 
 <h3>考试时间</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>考试类型</th><th>报名时间</th><th>笔试时间</th><th>面试时间</th></tr>
   <tr><td>国考</td><td>10月中下旬</td><td>11月底/12月初</td><td>次年2-3月</td></tr>
   <tr><td>省考（联考）</td><td>2-3月</td><td>3月底/4月初</td><td>5-7月</td></tr>
@@ -125,7 +137,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>浙江省考</td><td>11-12月</td><td>12月/1月</td><td>次年3-4月</td></tr>
   <tr><td>广东省考</td><td>1-2月</td><td>2-3月</td><td>4-5月</td></tr>
   <tr><td>山东省考</td><td>11月</td><td>12月</td><td>次年2-3月</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>温馨提示：</strong>以上为近年大致时间，具体以当年公告为准。国考和省考并不冲突，只要时间不冲突，可以同时报考多个考试，增加上岸机会。
@@ -136,14 +148,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>行测（行政职业能力测验）</h3>
 <p>行测全部为客观题（选择题），考试时间120分钟，满分100分。主要考查与公务员职业密切相关的基本素质和能力要素。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>模块</th><th>题量（国考）</th><th>参考分值</th><th>建议用时</th></tr>
   <tr><td>常识判断</td><td>20题</td><td>约0.5分/题，共10分</td><td>5-8分钟</td></tr>
   <tr><td>言语理解与表达</td><td>40题</td><td>约0.8分/题，共32分</td><td>30-35分钟</td></tr>
   <tr><td>数量关系</td><td>10-15题</td><td>约1分/题，共10-15分</td><td>10-15分钟</td></tr>
   <tr><td>判断推理</td><td>40题</td><td>约0.6-0.8分/题，共28-30分</td><td>30-35分钟</td></tr>
   <tr><td>资料分析</td><td>20题</td><td>约1分/题，共20分</td><td>20-25分钟</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>时间紧迫：</strong>行测120分钟做130-135道题（国考副省级135题、地市级130题），平均每道题不到1分钟。做题速度和时间分配至关重要，大部分人做不完所有题目，学会取舍是行测的必修课。
@@ -152,14 +164,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>申论</h3>
 <p>申论全部为主观题，考试时间150-180分钟，满分100分。主要考查阅读理解能力、综合分析能力、提出和解决问题能力、贯彻执行能力、文字表达能力。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>题量</th><th>分值（约）</th><th>考查能力</th></tr>
   <tr><td>归纳概括题</td><td>1-2题</td><td>10-15分/题</td><td>阅读理解能力</td></tr>
   <tr><td>提出对策题</td><td>0-1题</td><td>15-20分/题</td><td>解决问题能力</td></tr>
   <tr><td>综合分析题</td><td>1题</td><td>15-20分/题</td><td>综合分析能力</td></tr>
   <tr><td>贯彻执行题（应用文）</td><td>1题</td><td>20-25分/题</td><td>贯彻执行能力</td></tr>
   <tr><td>大作文（议论文）</td><td>1题</td><td>35-40分/题</td><td>文字表达能力</td></tr>
-</table>
+</table></div>
 
 <h2 id="s3">三、行测5大模块：常识判断</h2>
 
@@ -205,12 +217,12 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>言语理解与表达是行测的重头戏，题量最大（40题），分值最高（约32分）。主要考查运用语言文字进行思考和交流、迅速准确地理解和把握文字材料内涵的能力。</p>
 
 <h3>三大题型</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>题量（约）</th><th>特点</th><th>重要程度</th></tr>
   <tr><td>选词填空（逻辑填空）</td><td>15-20题</td><td>考查词语辨析和语境理解</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>片段阅读</td><td>15-18题</td><td>考查对文段主旨、细节、意图的理解</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>语句表达</td><td>2-5题</td><td>语句排序、语句填空、下文推断</td><td>⭐⭐⭐</td></tr>
-</table>
+</table></div>
 
 <h3>选词填空备考</h3>
 <p>选词填空是言语理解中错误率最高的题型，很多人凭语感做题，结果一错一大片。</p>
@@ -240,14 +252,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>片段阅读是言语理解的拿分重点，掌握方法后正确率可以很高。</p>
 
 <h3>常见题型及解法</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>识别标志</th><th>解题方法</th></tr>
   <tr><td>主旨概括题</td><td>主要内容、核心观点、中心思想、概括最准确</td><td>找中心句（首尾句、转折后、对策句），同义替换</td></tr>
   <tr><td>意图判断题</td><td>意在说明、想表达、启示、寓意</td><td>先找主旨，再判断意图（优先选合理引申，没有就选主旨）</td></tr>
   <tr><td>细节理解题</td><td>正确/不正确、符合/不符合、可以推出</td><td>选项与原文一一对应，注意偷换概念、偷换时态、偷换数量、偷换逻辑</td></tr>
   <tr><td>态度观点题</td><td>作者态度、观点、评价</td><td>找带有感情色彩的词语，注意转折后</td></tr>
   <tr><td>标题填入题</td><td>最适合的标题</td><td>概括主旨+吸引眼球，新闻看导语，说明文看说明对象</td></tr>
-</table>
+</table></div>
 
 <h3>片段阅读提速技巧</h3>
 <ul>
@@ -276,7 +288,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>常考题型</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>考查频率</th><th>难度</th><th>建议掌握程度</th></tr>
   <tr><td>工程问题</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐</td><td>必须掌握</td></tr>
   <tr><td>经济利润问题</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>必须掌握</td></tr>
@@ -289,7 +301,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>日期周期问题</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>掌握基础</td></tr>
   <tr><td>溶液问题</td><td>⭐⭐</td><td>⭐⭐</td><td>了解即可</td></tr>
   <tr><td>牛吃草问题</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>记住公式</td></tr>
-</table>
+</table></div>
 
 <h3>备考策略</h3>
 <ol>
@@ -324,13 +336,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>题型概述</h3>
 <p>判断推理主要考查对各种事物关系的分析推理能力，涉及对图形、语词概念、事物关系和文字材料的理解、比较、组合、演绎和归纳等。题量大、技巧性强、提分快。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>题量</th><th>特点</th><th>提分难度</th></tr>
   <tr><td>图形推理</td><td>10题</td><td>看图找规律，技巧性强</td><td>⭐⭐⭐</td></tr>
   <tr><td>定义判断</td><td>10题</td><td>给定义找匹配，考查理解能力</td><td>⭐⭐</td></tr>
   <tr><td>类比推理</td><td>10题</td><td>找词语间逻辑关系，阅读量小</td><td>⭐⭐</td></tr>
   <tr><td>逻辑判断</td><td>10题</td><td>形式逻辑+论证推理，难度最大</td><td>⭐⭐⭐⭐</td></tr>
-</table>
+</table></div>
 
 <h3>图形推理</h3>
 <p>图形推理是判断推理中最有意思也最让人头疼的题型。掌握规律后其实很简单。</p>
@@ -383,12 +395,12 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>类比推理是给出一组相关的词，找出与之在逻辑关系上最为贴近或相似的词。</p>
 
 <h3>常见逻辑关系</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>关系类型</th><th>具体内容</th><th>例子</th></tr>
   <tr><td>语义关系</td><td>近义、反义、比喻义、象征义</td><td>高兴：开心；勤奋：懒惰</td></tr>
   <tr><td>逻辑关系</td><td>全同、并列、包含、交叉、对应</td><td>北京：中华人民共和国首都；苹果：水果</td></tr>
   <tr><td>语法关系</td><td>主谓、动宾、偏正</td><td>学生：学习；打扫：卫生</td></tr>
-</table>
+</table></div>
 
 <ul>
   <li><strong>解题技巧：</strong>先看一级关系（语义/逻辑/语法），再看二级辨析（感情色彩、词性、程度、自然/人工、必然/或然等）</li>
@@ -425,7 +437,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>常考统计术语</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>术语</th><th>含义</th><th>公式</th></tr>
   <tr><td>基期量</td><td>作为参照标准的时期的数值</td><td>基期量 = 现期量 / (1+增长率)</td></tr>
   <tr><td>现期量</td><td>当前时期的数值</td><td>现期量 = 基期量 × (1+增长率)</td></tr>
@@ -436,7 +448,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>倍数</td><td>A是B的多少倍</td><td>倍数 = A/B</td></tr>
   <tr><td>同比</td><td>与上年同期相比</td><td>—</td></tr>
   <tr><td>环比</td><td>与上一个统计周期相比</td><td>—</td></tr>
-</table>
+</table></div>
 
 <h3>速算技巧</h3>
 <ol>
@@ -463,7 +475,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ol>
 
 <h3>高频考点</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>考点</th><th>考查频率</th><th>核心公式/方法</th></tr>
   <tr><td>增长率计算</td><td>⭐⭐⭐⭐⭐</td><td>r = (现期-基期)/基期</td></tr>
   <tr><td>增长量计算</td><td>⭐⭐⭐⭐⭐</td><td>增长量 = 现期/(1+r) × r （特殊分数法）</td></tr>
@@ -475,7 +487,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>平均数增长率</td><td>⭐⭐⭐</td><td>(a-b)/(1+b) （a是分子增长率，b是分母增长率）</td></tr>
   <tr><td>倍数计算</td><td>⭐⭐⭐</td><td>是几倍 = A/B；多几倍 = A/B - 1</td></tr>
   <tr><td>综合分析</td><td>⭐⭐⭐⭐⭐</td><td>每篇最后一题，四个选项逐一判断</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-ok">
   <strong>资料分析提分秘诀：</strong>资料分析是行测中唯一可能拿满分的模块。提分方法就是：① 记住所有公式和术语；② 熟练掌握速算技巧；③ 大量刷题，每天做2-4篇。坚持一个月，正确率从50%提升到90%完全没问题。
@@ -533,13 +545,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>大作文是申论的重头戏，分值最高，也是拉分的关键。要求根据给定材料，自选角度，自拟题目，写一篇议论文。</p>
 
 <h3>评分标准</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>档次</th><th>分值</th><th>标准</th></tr>
   <tr><td>一类文</td><td>32-40分</td><td>立意明确，见解深刻，结构完整，逻辑严谨，语言流畅，论证充分</td></tr>
   <tr><td>二类文</td><td>24-31分</td><td>立意明确，结构完整，逻辑清晰，语言通顺，论证较充分</td></tr>
   <tr><td>三类文</td><td>16-23分</td><td>立意基本明确，结构较完整，语言基本通顺，论证不够充分</td></tr>
   <tr><td>四类文</td><td>15分以下</td><td>立意不明确，结构不完整，语病较多，字数不够</td></tr>
-</table>
+</table></div>
 
 <h3>写作步骤</h3>
 <ol>
@@ -621,13 +633,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 
 <h3>6个月备考计划</h3>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>阶段</th><th>时间</th><th>任务</th><th>每日学习时长</th></tr>
   <tr><td>基础阶段</td><td>第1-2个月</td><td>系统学习行测5大模块和申论各题型的基础知识和解题方法</td><td>4-5小时</td></tr>
   <tr><td>强化阶段</td><td>第3-4个月</td><td>分模块刷题，强化技巧，提升速度和正确率</td><td>5-6小时</td></tr>
   <tr><td>真题阶段</td><td>第5个月</td><td>做历年真题，整套模考，查漏补缺</td><td>6-7小时</td></tr>
   <tr><td>冲刺阶段</td><td>第6个月</td><td>回顾错题，模拟考试，调整状态</td><td>5-6小时</td></tr>
-</table>
+</table></div>
 
 <h3>各阶段详细规划</h3>
 
@@ -667,7 +679,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>备考资料推荐</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>资料类型</th><th>推荐</th><th>说明</th></tr>
   <tr><td>教材</td><td>行测的思维（粉笔）、申论的规矩（粉笔）</td><td>知识点全面，适合零基础入门</td></tr>
   <tr><td>题库</td><td>粉笔5000题、中公专项题库</td><td>分模块刷题必备</td></tr>
@@ -675,7 +687,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>APP</td><td>粉笔教育</td><td>利用碎片时间刷题，模考大赛必参加</td></tr>
   <tr><td>视频课</td><td>粉笔980系统班</td><td>系统全面，性价比高，适合零基础</td></tr>
   <tr><td>申论素材</td><td>人民日报评论、半月谈、学习强国</td><td>积累申论素材和规范表达</td></tr>
-</table>
+</table></div>
 
 <h3>备考避坑</h3>
 <ol>

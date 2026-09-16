@@ -63,6 +63,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .related-item .ri-ico{font-size:20px;margin-bottom:4px}
 .related-item .ri-title{font-size:13px;font-weight:600}
 .related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -96,14 +108,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>法考分为客观题考试和主观题考试两部分，必须先通过客观题才能参加主观题。客观题成绩两年内有效，即第一年过了客观题但主观题没过，第二年可以直接参加主观题考试。</p>
 
 <h3>报名条件</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>条件类型</th><th>具体要求</th></tr>
   <tr><td><b>学历要求</b></td><td>全日制普通高等学校法学类本科学历并获得学士及以上学位；或全日制普通高等学校非法学类本科及以上学历，并获得法律硕士、法学硕士及以上学位；或全日制普通高等学校非法学类本科及以上学历并获得相应学位且从事法律工作满三年</td></tr>
   <tr><td><b>专业要求</b></td><td>2018年4月28日前已入学或已取得相应学历的人员，仍可按"老人老办法"报考（非法学专业也可考）</td></tr>
   <tr><td><b>国籍要求</b></td><td>具有中华人民共和国国籍</td></tr>
   <tr><td><b>品行要求</b></td><td>拥护中华人民共和国宪法，享有选举权和被选举权，具有良好的政治、业务素质和道德品行</td></tr>
   <tr><td><b>年龄限制</b></td><td>无年龄上限</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>"新人新办法，老人老办法"：</strong>2018年4月28日《国家统一法律职业资格考试实施办法》实施前已入学或已取得相应学历的高等学校法学类专业本科及以上学历毕业生，或者高等学校非法学类专业本科及以上学历毕业生并具有法律专业知识的，仍然可以报名参加法考。
@@ -124,14 +136,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>客观题考试</h3>
 <p>客观题考试共两卷，分为试卷一和试卷二，每卷100道题，满分各150分，总分300分。全国合格分数线一般为180分。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>试卷</th><th>科目</th><th>分值占比</th><th>题型</th></tr>
   <tr><td><b>试卷一</b></td><td>习近平法治思想、法理学、宪法、中国法律史、国际法、司法制度和法律职业道德、刑法、刑事诉讼法、行政法与行政诉讼法</td><td>150分</td><td>单选50题×1分 + 多选/不定项50题×2分</td></tr>
   <tr><td><b>试卷二</b></td><td>民法、知识产权法、商法、经济法、环境资源法、劳动与社会保障法、国际私法、国际经济法、民事诉讼法（含仲裁制度）</td><td>150分</td><td>单选50题×1分 + 多选/不定项50题×2分</td></tr>
-</table>
+</table></div>
 
 <h3>8大科目分值分布</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>科目</th><th>客观题分值（约）</th><th>主观题分值（约）</th><th>重要程度</th></tr>
   <tr><td>民法</td><td>约45-50分</td><td>约35-40分</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>刑法</td><td>约35-40分</td><td>约30-35分</td><td>⭐⭐⭐⭐⭐</td></tr>
@@ -141,19 +153,19 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>商经知（商法+经济法+知产）</td><td>约50-55分</td><td>约20-25分</td><td>⭐⭐⭐⭐</td></tr>
   <tr><td>理论法（法理+宪法+法治思想等）</td><td>约40-45分</td><td>约30-35分（论述题）</td><td>⭐⭐⭐⭐</td></tr>
   <tr><td>三国法（国际公法+国际私法+国际经济法）</td><td>约15-20分</td><td>不考</td><td>⭐⭐⭐</td></tr>
-</table>
+</table></div>
 
 <h3>主观题考试</h3>
 <p>主观题考试为一卷，包括案例分析题、法律文书题、论述题等题型，满分180分。全国合格分数线一般为108分。考试时长为4小时。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>题量</th><th>分值</th><th>说明</th></tr>
   <tr><td>论述题</td><td>1题</td><td>约35分</td><td>习近平法治思想相关，必做</td></tr>
   <tr><td>刑法案例分析</td><td>1题</td><td>约30分</td><td>必做</td></tr>
   <tr><td>刑诉法案例分析</td><td>1题</td><td>约25分</td><td>必做</td></tr>
   <tr><td>民商诉综合案例</td><td>1题</td><td>约50分</td><td>必做，民法+商法+民诉综合</td></tr>
   <tr><td>选做题（行政/商法二选一）</td><td>1题</td><td>约28分</td><td>选做一道，行政法或商法</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>注意：</strong>主观题考试提供法律法规汇编电子版（即电子法条），可以在考试系统中检索查阅。所以主观题不要求死记硬背法条，但要熟悉法条位置和关键词检索方法。
@@ -161,7 +173,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 
 <h2 id="s3">三、报名与考试时间</h2>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>时间节点</th><th>大致时间</th><th>事项</th></tr>
   <tr><td>客观题报名</td><td>6月中上旬</td><td>网上报名、上传照片、缴费</td></tr>
   <tr><td>客观题打印准考证</td><td>9月初</td><td>登录司法部官网打印</td></tr>
@@ -172,7 +184,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>主观题考试</td><td>10月下旬</td><td>全国统一时间考试</td></tr>
   <tr><td>主观题成绩公布</td><td>11月底</td><td>查询成绩及合格分数线</td></tr>
   <tr><td>申请授予法律职业资格</td><td>12月</td><td>网上申请+现场提交材料</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>重要提示：</strong>以上为大致时间，具体以司法部当年公告为准。客观题考试通常分为两个批次，考生随机分配到其中一批次，每批次考一天（上午卷一、下午卷二）。
@@ -190,7 +202,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <li><strong>配套练习：</strong>每学完一章做一章的真题，检验学习效果</li>
 </ul>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>科目</th><th>建议学习时长</th><th>学习要点</th></tr>
   <tr><td>民法</td><td>18-20天</td><td>物权、合同、侵权是重点，体系性强</td></tr>
   <tr><td>刑法</td><td>15-18天</td><td>犯罪论、刑罚论、重点罪名，注重理解</td></tr>
@@ -200,7 +212,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>商经知</td><td>12-15天</td><td>公司法是核心，经济法散而多</td></tr>
   <tr><td>理论法</td><td>10-12天</td><td>法理学重理解，宪法重记忆</td></tr>
   <tr><td>三国法</td><td>6-8天</td><td>分值少但好拿分，不要放弃</td></tr>
-</table>
+</table></div>
 
 <h3>第二轮：真题背诵阶段（6月-8月，约3个月）</h3>
 <p><strong>目标：</strong>大量刷真题，强化高频考点，开始背诵重点内容，提高做题速度和准确率。</p>
@@ -276,7 +288,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 
 <h2 id="s6">六、名师推荐</h2>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>科目</th><th>推荐老师</th><th>特点</th><th>适合人群</th></tr>
   <tr><td rowspan="3"><b>民法</b></td><td>孟献贵</td><td>体系清晰，讲解细致，适合零基础</td><td>零基础/基础薄弱</td></tr>
   <tr><td>钟秀勇</td><td>讲解深入，案例丰富，学术功底深厚</td><td>有一定基础/追求高分</td></tr>
@@ -302,7 +314,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td rowspan="3"><b>三国法</b></td><td>杨帆（女）</td><td>三国法女王，必选，考点精准</td><td>所有考生</td></tr>
   <tr><td>陆寰</td><td>讲解细致，适合零基础</td><td>零基础考生</td></tr>
   <tr><td>王斌</td><td>重点突出，冲刺好用</td><td>冲刺阶段考生</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>选老师建议：</strong>每个科目选1-2位老师跟到底即可，不要频繁换老师。先试听几节课，选自己听得进去、风格喜欢的老师。名师各有特色，适合自己的才是最好的。
@@ -311,21 +323,21 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s7">七、备考资料推荐</h2>
 
 <h3>教材类</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>资料名称</th><th>用途</th><th>适用阶段</th></tr>
   <tr><td>精讲教材（各机构）</td><td>系统学习理论知识</td><td>精讲阶段</td></tr>
   <tr><td>背诵版/精粹教材</td><td>浓缩考点，背诵记忆</td><td>冲刺阶段</td></tr>
   <tr><td>法律法规汇编</td><td>查阅法条，理解立法原意</td><td>全程（主观题必备）</td></tr>
   <tr><td>案例分析指导用书</td><td>主观题案例训练</td><td>主观题备考</td></tr>
-</table>
+</table></div>
 
 <h3>真题类</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>资料名称</th><th>用途</th><th>说明</th></tr>
   <tr><td>分科真题</td><td>学完一章节就做对应真题</td><td>第一轮复习配套使用</td></tr>
   <tr><td>历年真题卷</td><td>整套模拟考试</td><td>第二轮及冲刺阶段使用</td></tr>
   <tr><td>真题解析</td><td>详细解析每道真题的考点</td><td>错题分析必备</td></tr>
-</table>
+</table></div>
 
 <h3>APP/工具类</h3>
 <ul>
@@ -356,13 +368,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ol>
 
 <h3>时间分配</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>题量</th><th>建议时间</th><th>单题时间</th></tr>
   <tr><td>单选题</td><td>50题</td><td>约60分钟</td><td>约1分钟/题</td></tr>
   <tr><td>多选题</td><td>35-40题</td><td>约70分钟</td><td>约1.5-2分钟/题</td></tr>
   <tr><td>不定项选择题</td><td>10-15题</td><td>约40分钟</td><td>约2-3分钟/题</td></tr>
   <tr><td>涂卡+检查</td><td>—</td><td>约10分钟</td><td>—</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>重要提醒：</strong>客观题考试时间非常紧张，平均每道题不到2分钟。平时一定要限时训练，提高做题速度。遇到不会的题先跳过，不要死磕，把会做的题都做完再说。
@@ -380,14 +392,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s9">九、主观题备考技巧</h2>
 
 <h3>主观题与客观题的区别</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>维度</th><th>客观题</th><th>主观题</th></tr>
   <tr><td>考察方式</td><td>选择判断，识别正确答案</td><td>书写表达，论证法律观点</td></tr>
   <tr><td>能力要求</td><td>理解+记忆+判断</td><td>理解+记忆+分析+表达</td></tr>
   <tr><td>答题方式</td><td>涂答题卡</td><td>键盘打字（机考）</td></tr>
   <tr><td>法条检索</td><td>不提供</td><td>提供电子法条</td></tr>
   <tr><td>时间压力</td><td>较紧张</td><td>非常紧张（4小时）</td></tr>
-</table>
+</table></div>
 
 <h3>论述题备考</h3>
 <p>论述题主要考习近平法治思想，是主观题的第一题，也是最容易准备的一道题。</p>
@@ -421,7 +433,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>时间分配建议</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题目</th><th>建议用时</th><th>说明</th></tr>
   <tr><td>论述题</td><td>30-40分钟</td><td>快速完成，不要恋战</td></tr>
   <tr><td>刑法案例</td><td>50-60分钟</td><td>分析定罪量刑，注意罪名之间的区别</td></tr>
@@ -429,7 +441,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>民商诉综合</td><td>70-80分钟</td><td>分值最高，给足时间</td></tr>
   <tr><td>选做题</td><td>40-50分钟</td><td>选自己擅长的科目</td></tr>
   <tr><td>机动检查</td><td>10-20分钟</td><td>查漏补缺</td></tr>
-</table>
+</table></div>
 
 <h2 id="s10">十、备考避坑10条</h2>
 

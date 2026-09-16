@@ -74,6 +74,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .practice-box .a{color:var(--teal);margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);display:none}
 .practice-box .a.show{display:block}
 .practice-box .toggle{color:var(--primary-mid);font-size:13px;cursor:pointer;text-decoration:underline}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -300,7 +312,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 
 <h2 id="s4">四、5大常见错误</h2>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th style="width:25%">错误类型</th><th>示例</th><th>正确翻译</th></tr>
   <tr>
     <td><b>逐字翻译</b></td>
@@ -327,7 +339,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>"好好学习"译成 good good study</td>
     <td>study hard / work hard at one's studies</td>
   </tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>避坑提醒：</strong>四级翻译扣分最多的不是"翻得不高级"，而是"翻错了"。语法错误、时态错误、拼写错误这些低级错误一定要避免。拿不准的句型就用你最有把握的简单句，意思表达清楚就好。

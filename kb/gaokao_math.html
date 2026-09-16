@@ -70,6 +70,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .example-box .ex-sol{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-strong)}
 .theorem-box{background:var(--primary-light);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px}
 .theorem-box .th-title{color:var(--primary);font-weight:700;margin-bottom:6px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -99,7 +111,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>设数集 D ⊂ R，则称映射 f: D → R 为定义在 D 上的函数，记为 y = f(x)，x ∈ D。其中 x 称为自变量，y 称为因变量，D 称为定义域。</p>
 
 <h4>函数的四大性质</h4>
-<table>
+<div class="table-wrap"><table>
   <tr><th style="width:80px">性质</th><th>定义</th><th>几何意义</th></tr>
   <tr>
     <td><b>有界性</b></td>
@@ -121,7 +133,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>存在 T > 0，对任意 x ∈ D，有 f(x+T) = f(x)</td>
     <td>图像每隔T重复出现</td>
   </tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>常见函数类型：</strong>幂函数、指数函数、对数函数、三角函数、反三角函数（以上五类称为基本初等函数）、初等函数（由基本初等函数经过有限次四则运算和复合运算构成）。
@@ -145,7 +157,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>1.3 函数的极限</h3>
 
 <h4>函数极限的类型</h4>
-<table>
+<div class="table-wrap"><table>
   <tr><th>极限类型</th><th>定义（ε-δ / ε-X 语言）</th></tr>
   <tr>
     <td>lim f(x) = A (x → x₀)</td>
@@ -163,7 +175,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>右极限 lim f(x) = A (x → x₀⁺)</td>
     <td>x → x₀ 且 x > x₀ 时的极限</td>
   </tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>重要结论：</strong>lim f(x) = A (x → x₀) 存在的充要条件是左右极限都存在且相等，即 f(x₀⁻) = f(x₀⁺) = A。分段函数在分段点的极限一定要用左右极限来判断！
@@ -212,14 +224,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 
 <h4>无穷小的比较</h4>
 <p>设 α 和 β 都是在同一极限过程中的无穷小，且 α ≠ 0：</p>
-<table>
+<div class="table-wrap"><table>
   <tr><th>极限结果</th><th>结论</th><th>记号</th></tr>
   <tr><td>lim (β/α) = 0</td><td>β 是比 α 高阶的无穷小</td><td>β = o(α)</td></tr>
   <tr><td>lim (β/α) = ∞</td><td>β 是比 α 低阶的无穷小</td><td>—</td></tr>
   <tr><td>lim (β/α) = c ≠ 0</td><td>β 与 α 是同阶无穷小</td><td>—</td></tr>
   <tr><td>lim (β/α) = 1</td><td>β 与 α 是等价无穷小</td><td>β ~ α</td></tr>
   <tr><td>lim (β/αᵏ) = c ≠ 0</td><td>β 是 α 的 k 阶无穷小</td><td>—</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-ok">
   <strong>常用等价无穷小（x → 0 时）：</strong><br>
@@ -241,7 +253,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </div>
 
 <h4>间断点的分类</h4>
-<table>
+<div class="table-wrap"><table>
   <tr><th>类型</th><th>定义</th><th>例子</th></tr>
   <tr>
     <td><b>第一类间断点</b></td>
@@ -253,7 +265,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>左右极限至少有一个不存在</td>
     <td>无穷间断点（极限为无穷大）<br>振荡间断点（极限振荡不存在）</td>
   </tr>
-</table>
+</table></div>
 
 <h4>闭区间上连续函数的性质</h4>
 <ul>
@@ -502,7 +514,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p><strong>拐点：</strong>连续曲线 y = f(x) 上凹弧与凸弧的分界点称为拐点。拐点处 f''(x) = 0 或 f''(x) 不存在，且两侧 f''(x) 变号。</p>
 
 <h3>3.8 渐近线</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>类型</th><th>求法</th><th>例子</th></tr>
   <tr>
     <td><b>水平渐近线</b></td>
@@ -519,7 +531,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>若 lim f(x)/x = a, lim [f(x)-ax] = b (x → ∞)，则 y = ax+b 是斜渐近线</td>
     <td>y = x + 1/x 有斜渐近线 y = x</td>
   </tr>
-</table>
+</table></div>
 
 <h2 id="s4">四、不定积分</h2>
 

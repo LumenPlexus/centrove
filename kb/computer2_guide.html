@@ -63,6 +63,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .related-item .ri-ico{font-size:20px;margin-bottom:4px}
 .related-item .ri-title{font-size:13px;font-weight:600}
 .related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -113,19 +125,19 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>证书用途</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>用途</th><th>说明</th></tr>
   <tr><td>学业方面</td><td>部分学校可抵计算机公共课学分、毕业要求、保研加分</td></tr>
   <tr><td>就业方面</td><td>简历加分、部分岗位硬性要求、体现办公软件能力</td></tr>
   <tr><td>职业发展</td><td>考公/考编/评职称的加分项或必备条件</td></tr>
   <tr><td>实用技能</td><td>Word/Excel/PPT 是职场必备技能，学好终身受益</td></tr>
-</table>
+</table></div>
 
 <h2 id="s2">二、科目选择与难度对比</h2>
 
 <p>计算机二级有多个科目可选，不同科目考查内容和难度不同，考生可以根据自己的需求和基础选择。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>科目名称</th><th>全称</th><th>难度</th><th>通过率</th><th>适合人群</th></tr>
   <tr><td><b>MS Office 高级应用与设计</b></td><td>Microsoft Office 高级应用与设计</td><td>⭐⭐⭐⭐</td><td>约22%</td><td>大多数专业学生，职场必备技能</td></tr>
   <tr><td><b>WPS Office 高级应用与设计</b></td><td>WPS Office 高级应用与设计</td><td>⭐⭐⭐</td><td>约30%</td><td>想简单点通过、常用WPS的考生</td></tr>
@@ -135,7 +147,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>Access</td><td>Access 数据库程序设计</td><td>⭐⭐⭐⭐</td><td>约25%</td><td>想学习数据库的考生</td></tr>
   <tr><td>MySQL</td><td>MySQL 数据库程序设计</td><td>⭐⭐⭐⭐</td><td>约22%</td><td>想学习数据库的考生</td></tr>
   <tr><td>Web</td><td>Web 程序设计</td><td>⭐⭐⭐⭐</td><td>约20%</td><td>想做前端开发的考生</td></tr>
-</table>
+</table></div>
 
 <h3>各科目详细分析</h3>
 
@@ -179,13 +191,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ul>
 
 <h3>题型与分值（以MS Office为例）</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>题型</th><th>题量</th><th>分值</th><th>说明</th></tr>
   <tr><td>选择题</td><td>20题</td><td>20分</td><td>公共基础知识10题 + 计算机基础10题</td></tr>
   <tr><td>Word 操作题</td><td>1题</td><td>30分</td><td>约8-12个小问题</td></tr>
   <tr><td>Excel 操作题</td><td>1题</td><td>30分</td><td>约8-12个小问题，函数是重点和难点</td></tr>
   <tr><td>PPT 操作题</td><td>1题</td><td>20分</td><td>约8-10个小问题，最简单</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>重要提醒：</strong>操作题是得分大头（80分），得操作题者得天下。选择题分值低（20分），但也不能完全放弃，因为有"选择题必须达到一定分数才能及格"的说法（虽然官方没明说，但实际考试中确实有操作题高分但选择题太低没过的情况）。建议选择题至少拿10分以上。
@@ -196,13 +208,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>考试安排</h3>
 <p>全国计算机等级考试每年举办多次，一般在3月、5月、9月、12月。其中3月和9月开考全部级别和科目，5月和12月只开考一级和二级（部分省份）。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>考次</th><th>报名时间</th><th>考试时间</th><th>成绩查询</th></tr>
   <tr><td>3月考试</td><td>上一年12月底-当年1月初</td><td>3月最后一个周末</td><td>5月中旬</td></tr>
   <tr><td>5月考试</td><td>3月中下旬</td><td>5月下旬</td><td>7月中旬</td></tr>
   <tr><td>9月考试</td><td>6月底-7月初</td><td>9月最后一个周末</td><td>11月中旬</td></tr>
   <tr><td>12月考试</td><td>10月底-11月初</td><td>12月初</td><td>次年2月中旬</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>报名入口：</strong>登录"中国教育考试网"（www.neea.edu.cn）→ 计算机等级考试 → 在线报名。注意：各省报名时间略有不同，以当地考试院公告为准。
@@ -219,7 +231,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>Word操作题占30分，是操作题的第一大题。考查的知识点多而杂，但难度不算大，认真准备基本都能拿到大部分分数。</p>
 
 <h3>高频考点</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>考点分类</th><th>具体考点</th><th>考查频率</th></tr>
   <tr><td rowspan="4"><b>文档基本操作</b></td><td>页面设置（纸张大小、页边距、装订线）</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>样式设置与修改</td><td>⭐⭐⭐⭐⭐</td></tr>
@@ -246,7 +258,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td rowspan="3"><b>邮件合并</b></td><td>主文档和数据源</td><td>⭐⭐⭐⭐</td></tr>
   <tr><td>插入合并域</td><td>⭐⭐⭐⭐</td></tr>
   <tr><td>规则（如果...那么...否则）</td><td>⭐⭐⭐</td></tr>
-</table>
+</table></div>
 
 <h3>Word 备考重点</h3>
 <ol>
@@ -286,7 +298,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>Excel操作题占30分，是操作题中难度最大、最拉分的部分。函数是很多考生的噩梦，但也是有规律可循的。</p>
 
 <h3>高频考点</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>考点分类</th><th>具体考点</th><th>考查频率</th></tr>
   <tr><td rowspan="3"><b>基本操作</b></td><td>单元格格式设置（数字格式、对齐、边框、填充）</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>行高列宽、行列增删</td><td>⭐⭐⭐⭐</td></tr>
@@ -306,7 +318,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td rowspan="3"><b>图表</b></td><td>创建图表（柱形图、折线图、饼图等）</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>图表格式设置</td><td>⭐⭐⭐⭐</td></tr>
   <tr><td>组合图表、双轴图表</td><td>⭐⭐⭐</td></tr>
-</table>
+</table></div>
 
 <h3>必考函数详解</h3>
 
@@ -368,7 +380,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>PPT操作题占20分，是三大操作题中最简单、最容易拿满分的。目标是争取拿满分。</p>
 
 <h3>高频考点</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>考点分类</th><th>具体考点</th><th>考查频率</th></tr>
   <tr><td rowspan="3"><b>基本操作</b></td><td>新建幻灯片、幻灯片版式</td><td>⭐⭐⭐⭐⭐</td></tr>
   <tr><td>幻灯片移动、复制、删除</td><td>⭐⭐⭐⭐</td></tr>
@@ -394,7 +406,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td rowspan="3"><b>幻灯片放映</b></td><td>设置幻灯片放映方式</td><td>⭐⭐⭐</td></tr>
   <tr><td>自定义幻灯片放映</td><td>⭐⭐⭐</td></tr>
   <tr><td>排练计时</td><td>⭐⭐⭐</td></tr>
-</table>
+</table></div>
 
 <h3>PPT 备考重点</h3>
 <ol>
@@ -431,13 +443,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>公共基础知识</h3>
 <p>公共基础知识是所有二级科目都要考的内容，包括数据结构与算法、程序设计基础、软件工程基础、数据库设计基础四大部分。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>模块</th><th>题量（约）</th><th>难度</th><th>重点内容</th></tr>
   <tr><td>数据结构与算法</td><td>3-4题</td><td>⭐⭐⭐⭐</td><td>算法复杂度、线性表、栈和队列、树与二叉树、查找与排序</td></tr>
   <tr><td>程序设计基础</td><td>2-3题</td><td>⭐⭐⭐</td><td>程序设计方法与风格、结构化程序设计、面向对象程序设计</td></tr>
   <tr><td>软件工程基础</td><td>2-3题</td><td>⭐⭐⭐⭐</td><td>软件工程基本概念、需求分析、软件设计、软件测试、程序调试</td></tr>
   <tr><td>数据库设计基础</td><td>2-3题</td><td>⭐⭐⭐⭐</td><td>数据库基本概念、数据模型、关系代数、数据库设计</td></tr>
-</table>
+</table></div>
 
 <h3>数据结构与算法重点</h3>
 <ul>
@@ -509,13 +521,13 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s9">九、备考方法与时间规划</h2>
 
 <h3>备考时间规划</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>备考时长</th><th>每日学习时间</th><th>适合人群</th><th>通过率</th></tr>
   <tr><td>2个月</td><td>1-2小时</td><td>有一定Office基础</td><td>较高</td></tr>
   <tr><td>1个月</td><td>2-3小时</td><td>Office基础较好</td><td>中等</td></tr>
   <tr><td>2周</td><td>4-5小时</td><td>基础好、学习能力强</td><td>有风险</td></tr>
   <tr><td>1周</td><td>6-8小时</td><td>学霸/临时抱佛脚</td><td>看运气</td></tr>
-</table>
+</table></div>
 
 <h3>详细备考计划（以2个月为例）</h3>
 
@@ -621,14 +633,14 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 </ol>
 
 <h3>常见问题处理</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>问题</th><th>处理方法</th></tr>
   <tr><td>电脑死机/黑屏</td><td>立即举手示意监考老师，不要自己乱动</td></tr>
   <tr><td>软件打不开</td><td>从考生文件夹里打开文件，不要直接从软件里打开</td></tr>
   <tr><td>找不到文件</td><td>看清楚题目说的文件名和保存位置，一般在考生文件夹下</td></tr>
   <tr><td>功能找不到</td><td>用搜索框搜索功能名称，或在选项卡中仔细找</td></tr>
   <tr><td>时间不够</td><td>先做会的、分值高的，难题直接放弃</td></tr>
-</table>
+</table></div>
 
 <h3>备考避坑</h3>
 <ol>

@@ -69,6 +69,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .sentence-item:last-child{border-bottom:none}
 .sentence-en{color:var(--primary);font-weight:500;margin-bottom:2px}
 .sentence-cn{color:var(--muted);font-size:13px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -284,7 +296,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s4">四、15个高级词汇替换表</h2>
 <p>想拿高分，就要用更高级的词汇替换掉那些人人都用的"大路货"。下面这15组替换词是阅卷老师最爱看的。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th style="width:30%">普通词</th><th style="width:35%">高级替换</th><th>适用场景</th></tr>
   <tr><td>important</td><td>vital / crucial / essential / significant</td><td>表示"重要的"</td></tr>
   <tr><td>very</td><td>extremely / remarkably / tremendously</td><td>表示"非常"</td></tr>
@@ -301,7 +313,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>help</td><td>contribute to / facilitate / assist in</td><td>表示"帮助/促进"</td></tr>
   <tr><td>more and more</td><td>an increasing number of / a growing number of</td><td>表示"越来越多的"</td></tr>
   <tr><td>in my opinion</td><td>from my perspective / as far as I am concerned</td><td>表示"在我看来"</td></tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>注意：</strong>高级替换词要适度使用，不要为了炫技而堆砌。一篇文章里用5-8个高级词就够了，关键是要用对、用得自然。用错了反而扣分。
@@ -407,17 +419,17 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s7">七、字数控制与时间分配</h2>
 
 <h3>7.1 时间分配（30分钟）</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>步骤</th><th>时间</th><th>做什么</th></tr>
   <tr><td>审题</td><td>3-5分钟</td><td>读题、确定体裁、列大纲、想论点</td></tr>
   <tr><td>写开头段</td><td>3-4分钟</td><td>三句话：引入+争议+观点</td></tr>
   <tr><td>写中间段</td><td>12-15分钟</td><td>2-3个论点，每个论点配论据</td></tr>
   <tr><td>写结尾段</td><td>2-3分钟</td><td>总结+建议/展望</td></tr>
   <tr><td>检查修改</td><td>3-5分钟</td><td>查拼写、语法、时态、单复数</td></tr>
-</table>
+</table></div>
 
 <h3>7.2 字数分配（建议150-180词）</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>段落</th><th>字数</th><th>句子数</th></tr>
   <tr><td>开头段</td><td>30-40词</td><td>2-3句</td></tr>
   <tr><td>中间段1</td><td>40-50词</td><td>3-4句</td></tr>
@@ -425,7 +437,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>结尾段</td><td>25-35词</td><td>2句</td></tr>
   <tr><td><b>合计</b></td><td><b>140-180词</b></td><td><b>10-13句</b></td>
 </tr>
-</table>
+</table></div>
 
 <div class="callout callout-info">
   <strong>提分小技巧：</strong>考前背3-5个万能句型和5组高级替换词，考试时灵活套用。字迹工整很重要——同样的内容，工整的字迹可能比潦草的多拿3-5分。平时练习一定要限时写，培养时间感。

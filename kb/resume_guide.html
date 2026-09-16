@@ -68,6 +68,18 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 .bad-example{background:var(--coral-light);border-radius:8px;padding:10px;margin:8px 0;font-size:14px}
 .good-example{background:var(--teal-light);border-radius:8px;padding:10px;margin:8px 0;font-size:14px}
 .example-label{font-weight:700;font-size:12px;margin-bottom:4px}
+
+/* 表格响应式 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
 </style>
 </head>
 <body>
@@ -135,7 +147,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 
 <h3>2.1 个人信息</h3>
 <p>放在最顶部，简洁明了。</p>
-<table>
+<div class="table-wrap"><table>
   <tr><th>必备</th><th>可选</th><th>不要写</th></tr>
   <tr>
     <td>姓名</td>
@@ -157,7 +169,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>到岗时间</td>
     <td>政治面貌（除非国企/考公）</td>
   </tr>
-</table>
+</table></div>
 
 <div class="callout callout-warn">
   <strong>注意：</strong>邮箱不要用什么 love123@qq.com 这种昵称邮箱，用名字拼音或学号邮箱更专业。照片一定要用正式的证件照，不要用生活照、自拍照。
@@ -218,7 +230,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h3>3.1 什么是STAR法则</h3>
 <p>STAR法则是描述经历的黄金结构，让你的经历既有故事性又有说服力。</p>
 
-<table>
+<div class="table-wrap"><table>
   <tr><th>字母</th><th>含义</th><th>说明</th></tr>
   <tr>
     <td><b>S</b> - Situation</td>
@@ -240,7 +252,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>结果</td>
     <td>最后取得了什么成果？（一定要量化！）</td>
   </tr>
-</table>
+</table></div>
 
 <h3>3.2 正反例对比</h3>
 
@@ -281,7 +293,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <p>"用数据说话"是简历的第一法则。同样的经历，量化和不量化，效果天差地别。</p>
 
 <h3>4.1 哪些可以量化</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>维度</th><th>示例</th></tr>
   <tr><td>规模</td><td>覆盖用户10万+ / 管理10人团队 / 预算50万</td></tr>
   <tr><td>效率</td><td>将效率提升30% / 节省时间50% / 减少成本20%</td></tr>
@@ -289,7 +301,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
   <tr><td>数量</td><td>撰写文章50篇 / 完成项目8个 / 处理订单1000+</td></tr>
   <tr><td>排名</td><td>专业排名3/120 / 比赛获一等奖 / 销量全国TOP10</td></tr>
   <tr><td>时间</td><td>提前3天完成 / 连续3个月达标 / 实习6个月</td></tr>
-</table>
+</table></div>
 
 <h3>4.2 量化表达公式</h3>
 <div class="formula-box" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0;font-size:14px">
@@ -375,7 +387,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
 <h2 id="s7">七、简历投递渠道与注意事项</h2>
 
 <h3>7.1 主要投递渠道</h3>
-<table>
+<div class="table-wrap"><table>
   <tr><th>渠道</th><th>特点</th><th>适合人群</th></tr>
   <tr>
     <td><b>校园招聘</b></td>
@@ -402,7 +414,7 @@ th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
     <td>外企和大厂比较多，适合中高端岗位</td>
     <td>有经验的求职者</td>
   </tr>
-</table>
+</table></div>
 
 <h3>7.2 投递注意事项</h3>
 <ul>
