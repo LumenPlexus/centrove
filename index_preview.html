@@ -498,9 +498,9 @@ body.sidebar-open{overflow:hidden}
 .toc-float::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:2px}
 
 /* 移动端目录按钮 */
-.toc-btn{display:none;position:fixed;left:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);align-items:center;justify-content:center;font-size:14px;cursor:pointer;z-index:800;box-shadow:0 2px 10px rgba(92,64,48,.15);opacity:.9;transition:all .3s;user-select:none;-webkit-user-select:none}
-.toc-btn.show{display:flex}
-.toc-btn:hover{opacity:1;transform:scale(1.05)}
+.toc-btn{display:none;position:fixed;left:18px;bottom:96px;width:40px;height:40px;border-radius:50%;background:var(--card,#FFFDF8);color:var(--primary,#6B5747);border:1px solid var(--border);align-items:center;justify-content:center;font-size:17px;cursor:pointer;z-index:900;box-shadow:var(--shadow,0 6px 18px rgba(74,58,40,.12));opacity:0;pointer-events:none;transition:opacity .25s;user-select:none;-webkit-user-select:none}
+.toc-btn.show{opacity:1;pointer-events:auto;display:flex}
+.toc-btn:hover{background:var(--primary-light,#F0E8DA);transform:scale(1.05)}
 .toc-btn:active{transform:scale(.95)}
 
 /* 移动端目录抽屉 */
@@ -1224,8 +1224,8 @@ body{
 
 /* ── 顶栏：米纸 + 细底影，日期待字距；徽标为木质拉手 ── */
 .topbar{background:linear-gradient(180deg,#FFFDF7,var(--card) 4%,#F7F0E1);border-bottom:1px solid rgba(120,96,66,.10);box-shadow:0 1px 0 rgba(74,58,40,.03),0 8px 22px -18px rgba(74,58,40,.25);letter-spacing:.02em}
-html.state-splash .topbar,html.state-pano .topbar,html.state-splash .bottom-nav,html.state-pano .bottom-nav,html.state-splash #qxTop,html.state-pano #qxTop{display:none!important;background:none;box-shadow:none;border-bottom-color:transparent}
-html.state-splash #qxTop,html.state-pano #qxTop{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
+html.state-splash .topbar,html.state-pano .topbar,html.state-splash .bottom-nav,html.state-pano .bottom-nav,html.state-splash #qxTop,html.state-pano #qxTop,html.state-splash .toc-btn,html.state-pano .toc-btn,html.state-splash .toc-drawer,html.state-pano .toc-drawer,html.state-splash .toc-drawer-overlay,html.state-pano .toc-drawer-overlay,html.state-splash .toc-float,html.state-pano .toc-float{display:none!important;background:none;box-shadow:none;border-bottom-color:transparent}
+html.state-splash #qxTop,html.state-pano #qxTop,html.state-splash .toc-btn,html.state-pano .toc-btn{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
 .topbar[hidden],.bottom-nav[hidden]{display:none!important}
 .topbar .title{letter-spacing:.12em}
 .topbar .date{letter-spacing:.5px}
@@ -2339,28 +2339,49 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
         </div>
 
                 <div class="card" style="margin-top:16px">
-          <h3>📚 知识库 · 四级备考干货</h3>
-          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">整理好的系统知识，点开就能学，不用到处找</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">
+          <h3>📚 知识库 · 四级备考干货（全题型覆盖）</h3>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">四级4大题型逐一击破：听力35%+阅读35%+写作15%+翻译15%。点开就能学，不用到处找</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px">
+            <a href="kb/cet4_listening.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🎧</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">听力全攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">4大题型+预读选项法+连读弱读规律+真题精听步骤</div>
+              </div>
+            </a>
             <a href="kb/cet4_reading.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
               <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
                 <div style="font-size:20px;margin-bottom:4px">📖</div>
                 <div style="font-size:13px;font-weight:600;color:var(--text)">阅读技巧大全</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:2px">5大题型+答题顺序+刷题法</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">选词填空+长篇匹配+仔细阅读，3类题型拆解+答题顺序+刷题法</div>
               </div>
             </a>
             <a href="kb/cet4_writing.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
               <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
                 <div style="font-size:20px;margin-bottom:4px">✏️</div>
                 <div style="font-size:13px;font-weight:600;color:var(--text)">写作万能模板</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:2px">万能句+5类模板+范文</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">议论文/图表/书信3类模板+万能句型40句+高分范文10篇+扣分避坑</div>
               </div>
             </a>
             <a href="kb/cet4_translation.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
               <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
                 <div style="font-size:20px;margin-bottom:4px">🇨🇳</div>
                 <div style="font-size:13px;font-weight:600;color:var(--text)">翻译高频词汇</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:2px">传统文化25组+翻译技巧</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">传统文化25组+社会发展15组+翻译技巧8步法+历年真题句型</div>
+              </div>
+            </a>
+            <a href="kb/cet4_vocab.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📝</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">核心词汇表</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">四级高频4500词分级表+熟词生义+词根词缀速记法</div>
+              </div>
+            </a>
+            <a href="kb/cet4_mockplan.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📅</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">备考计划表</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">8周冲刺计划+每日时间分配+模考节奏+得分预测</div>
               </div>
             </a>
           </div>
@@ -2650,6 +2671,11 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </ul>
           </div>
         </div>
+        <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 高数知识点大全</h3>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">函数极限/导数微分/中值定理/不定积分/定积分，5大模块全覆盖</p>
+          <a href="kb/gaokao_math.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><button class="btn btn-sm btn-primary">查看完整高数知识点 →</button></a>
+        </div>
       <div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg>权威学习资源入口</h3>
           <div class="grid grid-3">
@@ -2761,11 +2787,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <strong>提示：</strong>各校保研率、考证/考研通过率差异大，请查本校官网或问学长学姐获取真实数据。
         </div>
         <div class="grid grid-3">
-                  <div class="card" style="margin-top:16px">
-          <h3>📚 知识库 · 高数知识点大全</h3>
-          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">函数极限/导数微分/中值定理/不定积分/定积分，5大模块全覆盖</p>
-          <a href="kb/gaokao_math.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><button class="btn btn-sm btn-primary">查看完整高数知识点 →</button></a>
-        </div>
 <div class="card">
             <h3>保研路径</h3>
             <ul>
@@ -3791,7 +3812,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <div><h4>实习 &amp; 校招 App</h4><ul style="font-size:12.5px;line-height:1.85"><li>牛客（笔试/面经/实习）</li><li>Boss直聘、智联、前程无忧(51job)、应届生求职网</li><li>企业官网/官方招聘公众号</li></ul></div>
           <div><h4>人脉 &amp; 内推</h4><ul style="font-size:12.5px;line-height:1.85"><li>学长学姐、导师、院系就业老师</li><li>实习转正、校友内推</li><li>领英(LinkedIn)、脉脉、职场社群</li></ul></div>
         </div>
-        <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。
+        <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。</div>
         <div class="card" style="margin-top:16px">
           <h3>📚 知识库 · 求职与考证</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px">
@@ -3824,7 +3845,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               </div>
             </a>
           </div>
-        </div></div>
+        </div>
       </div>
     </section>
 
@@ -4412,7 +4433,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="card">
           <h3>📚 学习平台库 · 免费上课、刷题、学技能</h3>
           <div class="grid grid-2" style="margin-top:10px">
-            <a 
           <div style="padding:14px;background:linear-gradient(135deg,#F5EFE0,#EDE4CF);border-radius:10px;margin-bottom:12px;border:1px solid var(--primary-mid)">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
               <span style="font-size:20px">📖</span>
@@ -4422,8 +4442,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               </div>
             </div>
             <p style="font-size:12px;color:var(--text);margin:0 0 10px 0;line-height:1.6">不是一堆链接，是蒸馏好的精华。学习方法、科研技巧、求职攻略，点开就能学。</p>
-            <a href="distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:6px 14px;background:var(--primary);color:#fff;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
-          </div>class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
+            <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:6px 14px;background:var(--primary);color:#fff;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
+          </div>
+            <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🎓</div>
               <div class="info"><div class="name">中国大学MOOC</div><div class="desc">名校公开课免费学，爱课程网出品</div></div><div class="arrow">↗</div>
             </a>
@@ -6444,6 +6465,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="callout callout-ok" style="margin-top:16px">
         <strong>AI 使用准则（建议设为手机壁纸）：</strong><br>
         ① AI 是外脑不是替脑，答案必须过自己脑子；② 关键事实二次溯源；③ 敏感信息脱敏；④ 先想再做，收藏≠完成；⑤ 每周清理：只留真正在用的 2–3 个。
+      </div>
+
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,var(--primary-light),var(--card));border-color:var(--primary-mid)">
+        <h3>📦 知识蒸馏库</h3>
+        <p style="font-size:13px;color:var(--muted);margin:6px 0 12px">把散落各处的学习方法、科研技巧、求职攻略蒸馏成结构化知识卡片，一页一篇、点开即学。</p>
+        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:8px 18px;background:var(--primary);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
       </div>
 
     </section>
@@ -17321,7 +17348,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 *::-webkit-scrollbar-thumb{background:var(--border-strong,#C9C1B0);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
 *::-webkit-scrollbar-thumb:hover{background:var(--primary-mid,#8A745C);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
 @media(max-width:640px){.qx-crumb{margin-right:6px}.qx-fav-btn{padding:2px 8px}}
-@media print{#qxTop,.qx-foldbtn,.qx-fav-btn,.qx-crumb .seg,#sidebarOverlay{display:none!important}}
+@media print{#qxTop,.toc-btn,.toc-drawer,.toc-drawer-overlay,.qx-foldbtn,.qx-fav-btn,.qx-crumb .seg,#sidebarOverlay{display:none!important}}
 </style>
 <script>
 /* ═══════ 栖匣 · 体验增强模块（独立、非侵入、不影响既有板块内容） ═══════ */
@@ -19164,7 +19191,7 @@ function maybeOpenPrefPick(){
 })();
 </script>
 <script>document.addEventListener("DOMContentLoaded",function(){
-  try{initBackToTop();}catch(e){}
+  /* initBackToTop 已移除：使用原有 #qxTop 白色圆形回到顶部按钮 */
   try{
     initToc();
     /* 为当前激活的板块生成目录 */

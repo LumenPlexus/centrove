@@ -405,6 +405,8 @@ body.sidebar-open{overflow:hidden}
 @media(min-width:1240px){
   .view{max-width:1220px}
   .main{padding:26px 20px 64px}
+  /* 桌面端宽屏显示右侧悬浮目录 */
+  .toc-float.show{display:block}
 }
 @media(min-width:992px){
   .view .metric{padding:16px}
@@ -470,6 +472,10 @@ body.sidebar-open{overflow:hidden}
 .tag-coral{background:var(--coral-light);color:var(--coral)}
 .tag-gold{background:#FBF1D8;color:#8C6128}
 .tag-gray{background:#F1EFE8;color:var(--muted)}
+.tag-blank{background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer}
+.tag-blank:hover{border-color:var(--primary-mid);color:var(--primary)}
+.reslib-cat-pane{display:none}
+.reslib-cat-pane.active{display:block}
 
 .res-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;transition:all .15s;text-decoration:none;color:var(--text)}
 .res-link:hover{border-color:var(--primary-mid);background:var(--primary-light);text-decoration:none}
@@ -479,6 +485,37 @@ body.sidebar-open{overflow:hidden}
 .res-link .info .name{font-size:13px;font-weight:500;color:var(--text)}
 .res-link .info .desc{font-size:11px;color:var(--muted)}
 .res-link .arrow{color:var(--hint)}
+
+/* ── 悬浮目录 TOC ── */
+.toc-float{position:fixed;right:20px;top:50%;transform:translateY(-50%);width:180px;max-height:70vh;overflow-y:auto;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-md,0 4px 20px rgba(0,0,0,.08));z-index:80;display:none;scrollbar-width:thin}
+.toc-float.show{display:block}
+.toc-float .toc-title{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.toc-float .toc-item{display:block;padding:6px 8px;font-size:12px;color:var(--muted);text-decoration:none;border-radius:6px;transition:all .15s;cursor:pointer;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toc-float .toc-item:hover{background:var(--primary-light);color:var(--primary)}
+.toc-float .toc-item.active{color:var(--primary);background:var(--primary-light);font-weight:500}
+.toc-float .toc-item.h3{padding-left:20px;font-size:11px}
+.toc-float::-webkit-scrollbar{width:4px}
+.toc-float::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:2px}
+
+/* 移动端目录按钮 */
+.toc-btn{display:none;position:fixed;left:18px;bottom:96px;width:40px;height:40px;border-radius:50%;background:var(--card,#FFFDF8);color:var(--primary,#6B5747);border:1px solid var(--border);align-items:center;justify-content:center;font-size:17px;cursor:pointer;z-index:900;box-shadow:var(--shadow,0 6px 18px rgba(74,58,40,.12));opacity:0;pointer-events:none;transition:opacity .25s;user-select:none;-webkit-user-select:none}
+.toc-btn.show{opacity:1;pointer-events:auto;display:flex}
+.toc-btn:hover{background:var(--primary-light,#F0E8DA);transform:scale(1.05)}
+.toc-btn:active{transform:scale(.95)}
+
+/* 移动端目录抽屉 */
+.toc-drawer{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:16px 16px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,.15);z-index:950;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);max-height:70vh;overflow-y:auto;display:none}
+.toc-drawer.show{transform:translateY(0)}
+.toc-drawer .toc-drawer-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card);z-index:1;border-radius:16px 16px 0 0}
+.toc-drawer .toc-drawer-head .title{font-size:15px;font-weight:600;color:var(--text)}
+.toc-drawer .toc-drawer-head .close{font-size:22px;color:var(--muted);cursor:pointer;padding:4px 10px;line-height:1}
+.toc-drawer .toc-drawer-list{padding:8px 12px 28px}
+.toc-drawer .toc-item{display:block;padding:12px 14px;font-size:14px;color:var(--text);text-decoration:none;border-radius:10px;cursor:pointer;margin-bottom:2px}
+.toc-drawer .toc-item:active{background:var(--primary-light)}
+.toc-drawer .toc-item.h3{padding-left:32px;font-size:13px;color:var(--muted)}
+
+.toc-drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:940;opacity:0;pointer-events:none;transition:opacity .3s;display:none}
+.toc-drawer-overlay.show{opacity:1;pointer-events:auto}
 
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);word-break:break-word;overflow-wrap:break-word}
@@ -595,6 +632,11 @@ html.state-splash .topbar,html.state-pano .topbar{opacity:0;pointer-events:none;
   .icon-btn svg{width:16px;height:16px}
   .page-head h1 svg{width:18px;height:18px}
   #view-goals .card p,#view-goals .card li,#view-party .card p,#view-party .card li,#view-finance .card p,#view-finance .card li,#view-save .card p,#view-save .card li,#view-shop .card p,#view-shop .card li,#view-life .card p,#view-life .card li,#view-ai .card p,#view-ai .card li,#view-college .card p,#view-college .card li,#view-settings .card p,#view-settings .card li{font-size:14.5px}
+  /* 移动端：显示目录按钮和抽屉，隐藏桌面端目录 */
+  .toc-btn.show{display:flex}
+  .toc-drawer{display:block}
+  .toc-drawer-overlay{display:block}
+  .toc-float{display:none!important}
 }
 @media(max-width:480px){
   .app{padding-top:50px}
@@ -874,6 +916,14 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offse
 [data-theme="dark"] .tag{border-color:#594C38!important;background:#352E23!important;color:#C9B38A!important;}
 [data-theme="dark"] .res-link{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important;}
 [data-theme="dark"] .res-link:hover{background:var(--primary-light)!important;border-color:var(--primary-mid)!important;}
+[data-theme="dark"] .toc-float{background:var(--card)!important;border-color:var(--border)!important;}
+[data-theme="dark"] .toc-float .toc-item{color:var(--muted)!important;}
+[data-theme="dark"] .toc-float .toc-item:hover,[data-theme="dark"] .toc-float .toc-item.active{background:var(--primary-light)!important;color:var(--primary)!important;}
+[data-theme="dark"] .toc-drawer{background:var(--card)!important;}
+[data-theme="dark"] .toc-drawer .toc-drawer-head{background:var(--card)!important;border-color:var(--border)!important;}
+[data-theme="dark"] .toc-drawer .toc-item{color:var(--text)!important;}
+[data-theme="dark"] .toc-drawer .toc-item.h3{color:var(--muted)!important;}
+[data-theme="dark"] .toc-drawer .toc-item:active{background:var(--primary-light)!important;}
 [data-theme="dark"] th{background:linear-gradient(180deg,#3D2E1F,#33291F)!important;}
 [data-theme="dark"] tr:nth-child(even) td{background:#202720!important;}
 [data-theme="dark"] td{color:#C2C8BC!important;}
@@ -1174,8 +1224,8 @@ body{
 
 /* ── 顶栏：米纸 + 细底影，日期待字距；徽标为木质拉手 ── */
 .topbar{background:linear-gradient(180deg,#FFFDF7,var(--card) 4%,#F7F0E1);border-bottom:1px solid rgba(120,96,66,.10);box-shadow:0 1px 0 rgba(74,58,40,.03),0 8px 22px -18px rgba(74,58,40,.25);letter-spacing:.02em}
-html.state-splash .topbar,html.state-pano .topbar,html.state-splash .bottom-nav,html.state-pano .bottom-nav,html.state-splash #qxTop,html.state-pano #qxTop{display:none!important;background:none;box-shadow:none;border-bottom-color:transparent}
-html.state-splash #qxTop,html.state-pano #qxTop{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
+html.state-splash .topbar,html.state-pano .topbar,html.state-splash .bottom-nav,html.state-pano .bottom-nav,html.state-splash #qxTop,html.state-pano #qxTop,html.state-splash .toc-btn,html.state-pano .toc-btn,html.state-splash .toc-drawer,html.state-pano .toc-drawer,html.state-splash .toc-drawer-overlay,html.state-pano .toc-drawer-overlay,html.state-splash .toc-float,html.state-pano .toc-float{display:none!important;background:none;box-shadow:none;border-bottom-color:transparent}
+html.state-splash #qxTop,html.state-pano #qxTop,html.state-splash .toc-btn,html.state-pano .toc-btn{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
 .topbar[hidden],.bottom-nav[hidden]{display:none!important}
 .topbar .title{letter-spacing:.12em}
 .topbar .date{letter-spacing:.5px}
@@ -2288,7 +2338,55 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           </div>
         </div>
 
-        <div class="card">
+                <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 四级备考干货（全题型覆盖）</h3>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">四级4大题型逐一击破：听力35%+阅读35%+写作15%+翻译15%。点开就能学，不用到处找</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px">
+            <a href="kb/cet4_listening.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🎧</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">听力全攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">4大题型+预读选项法+连读弱读规律+真题精听步骤</div>
+              </div>
+            </a>
+            <a href="kb/cet4_reading.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📖</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">阅读技巧大全</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">选词填空+长篇匹配+仔细阅读，3类题型拆解+答题顺序+刷题法</div>
+              </div>
+            </a>
+            <a href="kb/cet4_writing.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">✏️</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">写作万能模板</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">议论文/图表/书信3类模板+万能句型40句+高分范文10篇+扣分避坑</div>
+              </div>
+            </a>
+            <a href="kb/cet4_translation.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🇨🇳</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">翻译高频词汇</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">传统文化25组+社会发展15组+翻译技巧8步法+历年真题句型</div>
+              </div>
+            </a>
+            <a href="kb/cet4_vocab.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📝</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">核心词汇表</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">四级高频4500词分级表+熟词生义+词根词缀速记法</div>
+              </div>
+            </a>
+            <a href="kb/cet4_mockplan.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📅</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">备考计划表</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">8周冲刺计划+每日时间分配+模考节奏+得分预测</div>
+              </div>
+            </a>
+          </div>
+        </div>
+<div class="card">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M9 4v16M4 9h5"></path></svg>每日25词 · 艾宾浩斯</h3>
             <p>按遗忘曲线复习：1天·2天·4天·7天·15天。今日新词+复习词：</p>
             <div id="wordList"><div style="padding:16px;background:var(--bg);border-radius:8px;text-align:center"><p style="color:var(--hint);font-size:15px;margin-bottom:8px">今日还没添加单词 · 点击"载入今日25词"自动推荐四级高频词</p><p style="font-size:13px;color:var(--hint)">词库共100+词，每日按日期循环推荐25词，含熟词生义+巧记+真题例句+有道标准发音</p></div></div>
@@ -2573,6 +2671,11 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </ul>
           </div>
         </div>
+        <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 高数知识点大全</h3>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">函数极限/导数微分/中值定理/不定积分/定积分，5大模块全覆盖</p>
+          <a href="kb/gaokao_math.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><button class="btn btn-sm btn-primary">查看完整高数知识点 →</button></a>
+        </div>
       <div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path></svg>权威学习资源入口</h3>
           <div class="grid grid-3">
@@ -2684,7 +2787,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <strong>提示：</strong>各校保研率、考证/考研通过率差异大，请查本校官网或问学长学姐获取真实数据。
         </div>
         <div class="grid grid-3">
-          <div class="card">
+<div class="card">
             <h3>保研路径</h3>
             <ul>
               <li><strong>大一：</strong>绩点为王，专业前10%是底线</li>
@@ -2764,7 +2867,40 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </div>
           </div>
         </div>
-      <div class="card" style="margin-top:16px">
+              <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 升学与考证</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px">
+            <a href="kb/baoyan_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🎓</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">保研全攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">四年时间线+文书+面试20问</div>
+              </div>
+            </a>
+            <a href="kb/kaoyan_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📖</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">考研备考指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">择校+规划+政英数专攻略</div>
+              </div>
+            </a>
+            <a href="kb/fakao_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">⚖️</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">法考备考全攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">8大科目+三轮规划+名师推荐</div>
+              </div>
+            </a>
+            <a href="kb/gongkao_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🏛️</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">公务员考试指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">行测5模块+申论+选岗技巧</div>
+              </div>
+            </a>
+          </div>
+        </div>
+<div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13"></path><path d="M3 6h.01M3 12h.01M3 18h.01"></path></svg>保研 vs 考研 · 双线作战决策表</h3>
         <div class="grid grid-2">
           <div>
@@ -3677,6 +3813,39 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <div><h4>人脉 &amp; 内推</h4><ul style="font-size:12.5px;line-height:1.85"><li>学长学姐、导师、院系就业老师</li><li>实习转正、校友内推</li><li>领英(LinkedIn)、脉脉、职场社群</li></ul></div>
         </div>
         <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。</div>
+        <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 求职与考证</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px">
+            <a href="kb/resume_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📋</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">简历写法完全指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">STAR法则+避坑20条+范文</div>
+              </div>
+            </a>
+            <a href="kb/interview_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🎯</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">面试通关指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">20问+群面技巧+谈薪方法</div>
+              </div>
+            </a>
+            <a href="kb/jiaoshi_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">👩‍🏫</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">教师资格证攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">笔试3科+面试全流程+认定</div>
+              </div>
+            </a>
+            <a href="kb/computer2_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">💻</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">计算机二级攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">Office三软件考点+备考计划</div>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -4238,6 +4407,625 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
     </section>
+    <!-- 资源宝库 -->
+    <section class="view" id="view-reslib">
+<div class="section-intro">精选大学生真正用得上的网站、工具、平台，分好类、点一下就直达。省得你自己瞎找、收藏了再也不看。</div>
+      <div class="page-head">
+        <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>资源宝库</h1>
+        <p>学习 · 科研 · 效率 · 设计 · 文档 · 升学 · 公众号，100+ 精选资源一触即达</p>
+      </div>
+
+      <!-- 分类标签 -->
+      <div style="margin-bottom:14px">
+        <div style="display:flex;gap:6px;flex-wrap:wrap" id="reslibCatTabs">
+          <span class="tag tag-teal" style="cursor:pointer" onclick="switchResLibCat('reslib-study',event)">📚 学习平台</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-research',event)">🔬 科研工具</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-efficiency',event)">⚡ 效率工具</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-design',event)">🎨 设计素材</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-docs',event)">📄 文档工具</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-edu',event)">🎯 升学资源</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-gzh',event)">🌟 公众号推荐</span>
+        </div>
+      </div>
+
+      <!-- 学习平台库 -->
+      <div class="reslib-cat-pane active" id="reslib-study">
+        <div class="card">
+          <h3>📚 学习平台库 · 免费上课、刷题、学技能</h3>
+          <div class="grid grid-2" style="margin-top:10px">
+          <div style="padding:14px;background:linear-gradient(135deg,#F5EFE0,#EDE4CF);border-radius:10px;margin-bottom:12px;border:1px solid var(--primary-mid)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <span style="font-size:20px">📖</span>
+              <div>
+                <div style="font-weight:700;color:var(--primary);font-size:14px">资源蒸馏库</div>
+                <div style="font-size:11px;color:var(--primary-dark);opacity:.8">Agent精选 · 结构化知识</div>
+              </div>
+            </div>
+            <p style="font-size:12px;color:var(--text);margin:0 0 10px 0;line-height:1.6">不是一堆链接，是蒸馏好的精华。学习方法、科研技巧、求职攻略，点开就能学。</p>
+            <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:6px 14px;background:var(--primary);color:#fff;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
+          </div>
+            <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎓</div>
+              <div class="info"><div class="name">中国大学MOOC</div><div class="desc">名校公开课免费学，爱课程网出品</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.xuetangx.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🏛️</div>
+              <div class="info"><div class="name">学堂在线</div><div class="desc">清华大学发起，国内外名校课程</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🌍</div>
+              <div class="info"><div class="name">Coursera</div><div class="desc">全球顶尖大学课程，可拿证书</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=大学课程" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📺</div>
+              <div class="info"><div class="name">B站学习区</div><div class="desc">啥课都有，免费且质量高</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://leetcode.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">💻</div>
+              <div class="info"><div class="name">LeetCode 力扣</div><div class="desc">编程刷题必备，面试题库</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.nowcoder.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐮</div>
+              <div class="info"><div class="name">牛客网</div><div class="desc">校招/实习/编程题面经全覆盖</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.runoob.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">菜鸟教程</div><div class="desc">编程入门速查，全语言教程</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🧮</div>
+              <div class="info"><div class="name">可汗学院</div><div class="desc">数学/经济等科目，免费通俗</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://dict.youdao.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">有道词典</div><div class="desc">查词/翻译/单词本，学习必备</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.kekenet.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎧</div>
+              <div class="info"><div class="name">可可英语</div><div class="desc">四六级/考研英语听力真题在线练</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.imooc.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐱</div>
+              <div class="info"><div class="name">慕课网</div><div class="desc">IT技能在线学习，实战课程多</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://study.163.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">网易云课堂</div><div class="desc">网易出品，职业/兴趣课程丰富</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://ke.qq.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐧</div>
+              <div class="info"><div class="name">腾讯课堂</div><div class="desc">腾讯出品，直播课/考证培训</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.cnmooc.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎓</div>
+              <div class="info"><div class="name">好大学在线</div><div class="desc">上海交通大学主办，高校学分课</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.chinesemooc.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">华文慕课</div><div class="desc">北大领衔，中文精品课程平台</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.icourses.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🏫</div>
+              <div class="info"><div class="name">爱课程</div><div class="desc">教育部精品课，中国大学MOOC同系</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 科研工具库 -->
+      <div class="reslib-cat-pane" id="reslib-research">
+        <div class="card">
+          <h3>🔬 科研工具库 · 写论文做数据</h3>
+          <div class="grid grid-2" style="margin-top:10px">
+            <a class="res-link" href="https://www.zotero.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">Zotero</div><div class="desc">免费开源文献管理，一键插入引用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔍</div>
+              <div class="info"><div class="name">Google Scholar</div><div class="desc">外文文献搜索首选，可导出引用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📄</div>
+              <div class="info"><div class="name">中国知网 CNKI</div><div class="desc">中文文献数据库，国内最全</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📊</div>
+              <div class="info"><div class="name">万方数据</div><div class="desc">学位论文/期刊/会议，知网补充</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.geogebra.org/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📐</div>
+              <div class="info"><div class="name">GeoGebra</div><div class="desc">数学绘图，函数几何动态演示</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://mathpix.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📷</div>
+              <div class="info"><div class="name">Mathpix</div><div class="desc">截图识别公式，直接转LaTeX</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.latexstudio.net/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✍️</div>
+              <div class="info"><div class="name">LaTeX工作室</div><div class="desc">中文LaTeX教程+模板下载</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">☁️</div>
+              <div class="info"><div class="name">Overleaf</div><div class="desc">在线LaTeX编辑器，协作方便</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://spssau.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📈</div>
+              <div class="info"><div class="name">SPSSAU</div><div class="desc">在线数据分析，不用装SPSS</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.sci-hub.ru/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔓</div>
+              <div class="info"><div class="name">Sci-Hub</div><div class="desc">免费下载外文论文（注意版权）</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://endnote.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📑</div>
+              <div class="info"><div class="name">EndNote</div><div class="desc">专业文献管理软件，高校常用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.inoteexpress.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">NoteExpress</div><div class="desc">国产文献管理，支持中文期刊</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.mendeley.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐸</div>
+              <div class="info"><div class="name">Mendeley</div><div class="desc">免费文献管理+PDF标注+协作</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.originlab.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📊</div>
+              <div class="info"><div class="name">Origin</div><div class="desc">专业科学绘图与数据分析软件</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.graphpad.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📈</div>
+              <div class="info"><div class="name">GraphPad Prism</div><div class="desc">生物医学统计绘图，生医必备</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://matlab.mathworks.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔢</div>
+              <div class="info"><div class="name">MATLAB 在线版</div><div class="desc">网页版MATLAB，不用安装直接用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://x.cnki.net/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔍</div>
+              <div class="info"><div class="name">知网研学</div><div class="desc">知网文献阅读+笔记+思维导图</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 效率工具库 -->
+      <div class="reslib-cat-pane" id="reslib-efficiency">
+        <div class="card">
+          <h3>⚡ 效率工具库 · 笔记导图云存储</h3>
+          <div class="grid grid-2" style="margin-top:10px">
+            <a class="res-link" href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">Notion</div><div class="desc">全能笔记+知识库，高度可定制</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">💎</div>
+              <div class="info"><div class="name">Obsidian</div><div class="desc">本地Markdown笔记，双向链接</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.yuque.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐦</div>
+              <div class="info"><div class="name">语雀</div><div class="desc">阿里出品，知识协作平台</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.xmind.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🧠</div>
+              <div class="info"><div class="name">XMind</div><div class="desc">思维导图老牌工具，简单好用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.processon.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📊</div>
+              <div class="info"><div class="name">ProcessOn</div><div class="desc">在线流程图/思维导图，免安装</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.jianguoyun.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">☁️</div>
+              <div class="info"><div class="name">坚果云</div><div class="desc">国内稳定网盘，文件同步备份</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.forestapp.cc/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🌲</div>
+              <div class="info"><div class="name">Forest 专注森林</div><div class="desc">种树戒手机，专注计时器</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.tomatolist.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🍅</div>
+              <div class="info"><div class="name">番茄ToDo</div><div class="desc">番茄钟+待办，学习打卡</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.jianlimuban.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📄</div>
+              <div class="info"><div class="name">极简简历</div><div class="desc">在线简历制作，模板简洁</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://trello.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📋</div>
+              <div class="info"><div class="name">Trello</div><div class="desc">看板式任务管理，小组协作</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.dida365.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✅</div>
+              <div class="info"><div class="name">滴答清单</div><div class="desc">待办事项+番茄钟+日历提醒</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.feishu.cn/docs" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📄</div>
+              <div class="info"><div class="name">飞书文档</div><div class="desc">在线协作文档，多人实时编辑</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://docs.qq.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">腾讯文档</div><div class="desc">腾讯在线文档，微信直接打开</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://shimo.im/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✏️</div>
+              <div class="info"><div class="name">石墨文档</div><div class="desc">简洁在线协作文档/表格</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://note.youdao.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">☁️</div>
+              <div class="info"><div class="name">有道云笔记</div><div class="desc">多端同步笔记，支持Markdown</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.yinxiang.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐘</div>
+              <div class="info"><div class="name">印象笔记</div><div class="desc">老牌笔记软件，剪藏功能强</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 设计素材库 -->
+      <div class="reslib-cat-pane" id="reslib-design">
+        <div class="card">
+          <h3>🎨 设计素材库 · 图片图标PPT</h3>
+          <div class="grid grid-2" style="margin-top:10px">
+            <a class="res-link" href="https://www.canva.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎨</div>
+              <div class="info"><div class="name">Canva 可画</div><div class="desc">在线设计，海报/PPT/简历模板</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🖌️</div>
+              <div class="info"><div class="name">Figma</div><div class="desc">UI设计神器，在线协作</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📷</div>
+              <div class="info"><div class="name">Unsplash</div><div class="desc">高清免费图片，商用免授权</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.pexels.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🖼️</div>
+              <div class="info"><div class="name">Pexels</div><div class="desc">免费图片视频，质量高</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎭</div>
+              <div class="info"><div class="name">Pixabay</div><div class="desc">插画/矢量图/视频，全部免费</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎯</div>
+              <div class="info"><div class="name">阿里图标库</div><div class="desc">海量矢量图标，免费商用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.iconfinder.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔍</div>
+              <div class="info"><div class="name">Iconfinder</div><div class="desc">英文图标搜索引擎，种类多</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.tukuppt.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📊</div>
+              <div class="info"><div class="name">PPT模板网</div><div class="desc">海量PPT模板，免费下载</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.ypppt.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📁</div>
+              <div class="info"><div class="name">优品PPT</div><div class="desc">精品PPT模板，完全免费</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.fonts.net.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔤</div>
+              <div class="info"><div class="name">字体天下</div><div class="desc">中文字体下载，分类齐全</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.58pic.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🖼️</div>
+              <div class="info"><div class="name">千图网</div><div class="desc">海量设计素材/模板/元素</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://ibaotu.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📦</div>
+              <div class="info"><div class="name">包图网</div><div class="desc">设计素材+视频+音效一站式</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.51yuansu.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎨</div>
+              <div class="info"><div class="name">觅元素</div><div class="desc">免抠PNG元素，设计免扣图</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.588ku.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">千库网</div><div class="desc">PNG免抠/背景/图标素材库</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎯</div>
+              <div class="info"><div class="name">Flaticon</div><div class="desc">海量免费矢量图标，PNG/SVG</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.freepik.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎭</div>
+              <div class="info"><div class="name">Freepik</div><div class="desc">矢量图/PSD/图标，免费商用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.vecteezy.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✒️</div>
+              <div class="info"><div class="name">Vecteezy</div><div class="desc">矢量素材/剪贴画，免费下载</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 文档工具库 -->
+      <div class="reslib-cat-pane" id="reslib-docs">
+        <div class="card">
+          <h3>📄 文档工具库 · PDF格式转换</h3>
+          <div class="grid grid-2" style="margin-top:10px">
+            <a class="res-link" href="https://smallpdf.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📑</div>
+              <div class="info"><div class="name">SmallPDF</div><div class="desc">PDF转换/压缩/合并，好用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">❤️</div>
+              <div class="info"><div class="name">iLovePDF</div><div class="desc">PDF工具全家桶，免费够用</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://convertio.co/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔄</div>
+              <div class="info"><div class="name">Convertio</div><div class="desc">万能格式转换，支持300+格式</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://tinypng.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🗜️</div>
+              <div class="info"><div class="name">TinyPNG</div><div class="desc">图片压缩，体积小画质不变</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.onlineocr.net/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔍</div>
+              <div class="info"><div class="name">Online OCR</div><div class="desc">图片转文字，免费在线识别</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.remove.bg/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✂️</div>
+              <div class="info"><div class="name">Remove.bg</div><div class="desc">一键抠图，AI自动去背景</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://fanyi.baidu.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🌐</div>
+              <div class="info"><div class="name">百度翻译</div><div class="desc">文档翻译/网页翻译，方便</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://cn.bing.com/translator" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔤</div>
+              <div class="info"><div class="name">必应翻译</div><div class="desc">微软翻译，准确度高</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.diandidaoyan.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">地道言</div><div class="desc">英语写作润色，语法纠错</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://cli.im/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📱</div>
+              <div class="info"><div class="name">草料二维码</div><div class="desc">二维码生成/解码，免费</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.xjpdf.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">⚡</div>
+              <div class="info"><div class="name">迅捷PDF转换器</div><div class="desc">PDF转换/编辑/压缩，国产工具</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.pdfmao.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🐱</div>
+              <div class="info"><div class="name">PDF猫</div><div class="desc">免费PDF在线转换/合并/分割</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.haigeshi.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎨</div>
+              <div class="info"><div class="name">嗨格式PDF</div><div class="desc">PDF转换/编辑/OCR，功能全</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.docsmall.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📦</div>
+              <div class="info"><div class="name">Docsmall</div><div class="desc">图片压缩/PDF处理/在线工具</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.uzer.me/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">💻</div>
+              <div class="info"><div class="name">UZER.ME 在线编辑器</div><div class="desc">云端运行PS/AI/Office等软件</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.ithoughts.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🧠</div>
+              <div class="info"><div class="name">iThoughts 思维导图</div><div class="desc">苹果生态好用的思维导图</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://mubu.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📋</div>
+              <div class="info"><div class="name">幕布</div><div class="desc">大纲笔记一键生成思维导图</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 升学资源库 -->
+      <div class="reslib-cat-pane" id="reslib-edu">
+        <div class="card">
+          <h3>🎯 升学资源库 · 官方入口直达</h3>
+          <div class="grid grid-2" style="margin-top:10px">
+            <a class="res-link" href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">研招网</div><div class="desc">考研报名/查分/调剂唯一官网</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.cdgdc.edu.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎓</div>
+              <div class="info"><div class="name">学位中心</div><div class="desc">学科评估结果查询</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.chsi.com.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📋</div>
+              <div class="info"><div class="name">学信网</div><div class="desc">学籍/学历/征兵，官方查询</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">四六级报名官网</div><div class="desc">CET报名/查分唯一入口</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">💻</div>
+              <div class="info"><div class="name">计算机等级考试</div><div class="desc">NCRE报名/查分官方站</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">👩‍🏫</div>
+              <div class="info"><div class="name">中小学教资考试</div><div class="desc">教师资格证报名官网</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.moj.gov.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">⚖️</div>
+              <div class="info"><div class="name">司法部法考中心</div><div class="desc">法律职业资格考试官网</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://ielts.neea.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🇬🇧</div>
+              <div class="info"><div class="name">雅思考试官网</div><div class="desc">IELTS报名/查分</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://toefl.neea.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🇺🇸</div>
+              <div class="info"><div class="name">托福考试官网</div><div class="desc">TOEFL报名/查分</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.csc.edu.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🌏</div>
+              <div class="info"><div class="name">国家留学网</div><div class="desc">公派留学申报官方平台</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.kaoyan.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">考研帮</div><div class="desc">考研资讯/真题/论坛，考研人必备</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.eol.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎓</div>
+              <div class="info"><div class="name">中国教育在线</div><div class="desc">权威教育资讯/高考/考研</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.shanghairanking.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🏆</div>
+              <div class="info"><div class="name">软科排名</div><div class="desc">中国大学排名/学科排名权威</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.qschina.cn/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🌍</div>
+              <div class="info"><div class="name">QS世界大学排名</div><div class="desc">全球四大排名之一，留学选校</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.usnews.com/education" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🇺🇸</div>
+              <div class="info"><div class="name">USNews排名</div><div class="desc">美国大学/全球大学排名</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.gongkaoleida.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📡</div>
+              <div class="info"><div class="name">公考雷达</div><div class="desc">公务员考试职位匹配/公告</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.fenbi.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✏️</div>
+              <div class="info"><div class="name">粉笔网</div><div class="desc">公考/事业单位/教师招聘网课</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.huatu.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">华图教育</div><div class="desc">公务员/事业单位考试培训</div></div><div class="arrow">↗</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 公众号推荐 -->
+      <div class="reslib-cat-pane" id="reslib-gzh">
+        <div class="card">
+          <h3>🌟 公众号推荐 · 大学生实用号精选</h3>
+          <p style="font-size:12.5px;color:var(--muted);margin:8px 0 14px">打开微信 → 发现 → 搜一搜 → 输入公众号名称即可关注</p>
+
+          <h4 style="color:var(--primary);margin:14px 0 8px;font-size:14px">📚 学习成长类</h4>
+          <div class="grid grid-2" style="margin-top:6px">
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">人民日报</div><div class="desc">权威时政热点，作文素材宝库</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「人民日报」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🎯</div>
+              <div class="info"><div class="name">半佛仙人</div><div class="desc">商业/社会观察，风趣又有深度</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「半佛仙人」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">刘媛媛写作</div><div class="desc">写作/表达/自我提升干货</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「刘媛媛写作」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🧠</div>
+              <div class="info"><div class="name">WPS办公技巧</div><div class="desc">Word/Excel/PPT实用技巧</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「WPS办公技巧」</div></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary);margin:18px 0 8px;font-size:14px">💼 求职实习类</h4>
+          <div class="grid grid-2" style="margin-top:6px">
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📋</div>
+              <div class="info"><div class="name">应届生求职网</div><div class="desc">校招/实习/宣讲会信息汇总</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「应届生求职网」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🚀</div>
+              <div class="info"><div class="name">实习僧</div><div class="desc">大学生实习岗位精准推送</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「实习僧」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">💼</div>
+              <div class="info"><div class="name">职业规划师Vin</div><div class="desc">职业规划/行业分析/求职建议</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「职业规划师Vin」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🎯</div>
+              <div class="info"><div class="name">互联派</div><div class="desc">互联网求职/大厂面经/内推</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「互联派」</div></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary);margin:18px 0 8px;font-size:14px">🎓 考研升学类</h4>
+          <div class="grid grid-2" style="margin-top:6px">
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">考研军火库</div><div class="desc">考研干货/政治英语数学技巧</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「考研军火库」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🔬</div>
+              <div class="info"><div class="name">何凯文考研英语</div><div class="desc">考研英语每日一句/长难句</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「何凯文考研英语」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📐</div>
+              <div class="info"><div class="name">张宇考研数学</div><div class="desc">考研数学名师，题型方法总结</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「张宇考研数学」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🎯</div>
+              <div class="info"><div class="name">考研政治徐涛</div><div class="desc">考研政治徐涛老师官方号</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「考研政治徐涛」</div></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary);margin:18px 0 8px;font-size:14px">⚖️ 法律公考类</h4>
+          <div class="grid grid-2" style="margin-top:6px">
+            <div class="res-link" style="cursor:default">
+              <div class="ico">⚖️</div>
+              <div class="info"><div class="name">中国普法</div><div class="desc">司法部官方，法律知识科普</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「中国普法」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">法考情报局</div><div class="desc">法考资讯/备考攻略/资料</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「法考情报局」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🏛️</div>
+              <div class="info"><div class="name">人民日报评论</div><div class="desc">申论/面试素材积累必备</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「人民日报评论」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📝</div>
+              <div class="info"><div class="name">半月谈</div><div class="desc">公考申论/时政热点深度解读</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「半月谈」</div></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary);margin:18px 0 8px;font-size:14px">💰 财经商业类</h4>
+          <div class="grid grid-2" style="margin-top:6px">
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📈</div>
+              <div class="info"><div class="name">吴晓波频道</div><div class="desc">财经/商业/个人成长洞察</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「吴晓波频道」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">💡</div>
+              <div class="info"><div class="name">36氪</div><div class="desc">科技创投/创业/新商业趋势</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「36氪」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🏦</div>
+              <div class="info"><div class="name">中国基金报</div><div class="desc">基金/理财/市场资讯权威</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「中国基金报」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📊</div>
+              <div class="info"><div class="name">第一财经</div><div class="desc">商业财经新闻深度报道</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「第一财经」</div></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--primary);margin:18px 0 8px;font-size:14px">🔬 科技前沿类</h4>
+          <div class="grid grid-2" style="margin-top:6px">
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🤖</div>
+              <div class="info"><div class="name">机器之心</div><div class="desc">AI/人工智能前沿技术资讯</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「机器之心」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">💻</div>
+              <div class="info"><div class="name">InfoQ</div><div class="desc">程序员技术深度/架构/前端</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「InfoQ」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">🔬</div>
+              <div class="info"><div class="name">量子位</div><div class="desc">AI/科技/前沿学术动态</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「量子位」</div></div>
+            </div>
+            <div class="res-link" style="cursor:default">
+              <div class="ico">📱</div>
+              <div class="info"><div class="name">差评</div><div class="desc">科技数码评测，有趣有料</div><div class="desc" style="color:var(--primary-mid)">💡 微信搜一搜「差评」</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <!-- 理财管理 -->
     <section class="view" id="view-finance">
@@ -5677,6 +6465,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="callout callout-ok" style="margin-top:16px">
         <strong>AI 使用准则（建议设为手机壁纸）：</strong><br>
         ① AI 是外脑不是替脑，答案必须过自己脑子；② 关键事实二次溯源；③ 敏感信息脱敏；④ 先想再做，收藏≠完成；⑤ 每周清理：只留真正在用的 2–3 个。
+      </div>
+
+      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,var(--primary-light),var(--card));border-color:var(--primary-mid)">
+        <h3>📦 知识蒸馏库</h3>
+        <p style="font-size:13px;color:var(--muted);margin:6px 0 12px">把散落各处的学习方法、科研技巧、求职攻略蒸馏成结构化知识卡片，一页一篇、点开即学。</p>
+        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:8px 18px;background:var(--primary);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
       </div>
 
     </section>
@@ -9279,6 +10073,8 @@ function switchView(name){
   if(name==='journal')loadJournal();
   window.scrollTo(0,0);
   applyStoredTab(name);
+  /* 重建当前板块的悬浮目录 */
+  try{if(window.buildToc)buildToc(name);}catch(e){}
   /* Hash 锚点路由回写：切换板块时同步 URL hash，复制的链接可直接定位本板块，
      浏览器后退/前进也会在板块间正常跳转（hashchange 由 routeHash 统一接管）。 */
   try{
@@ -11252,7 +12048,7 @@ var NAV_ALL=[{
 },{
   g:'贮金格 · 理财与副业',items:[['finance','💰','理财管理'],['save','🪙','省钱技巧'],['earn','💸','搞钱副业'],['shop','🛒','购物指南'],['perk','🛡','助学帮扶']]
 },{
-  g:'慧诀匣 · 工具与查询',items:[['tools','🛠','高效方法'],['ai','🤖','智造工坊']]
+  g:'慧诀匣 · 工具与查询',items:[['tools','🛠','高效方法'],['ai','🤖','智造工坊'],['reslib','📦','资源宝库']]
 },{
   g:'设置 · 栖匣系统',items:[['agent','🤖','栖匣 助手'],['settings','⚙️','系统设置'],['changelog','📜','更新日志'],['about','ℹ️','关于产品'],['help','❓','帮助中心']]
 }];
@@ -13977,6 +14773,214 @@ function gpaRowGp(inp){
 }
 function gpaDelRow(btn){var tr=btn.closest('tr');if(tr)tr.parentNode.removeChild(tr);gpaCalc();}
 function gpaClear(){var tbody=document.getElementById('gpaRows');if(tbody)tbody.innerHTML='';var r=document.getElementById('gpaResult');if(r)r.innerHTML='';}
+function switchResLibCat(catId,evt){
+  try{
+    var e=evt||window.event;
+    var panes=document.querySelectorAll('.reslib-cat-pane');
+    panes.forEach(function(p){p.classList.remove('active')});
+    var target=document.getElementById(catId);if(target)target.classList.add('active');
+    var tabs=document.querySelectorAll('#reslibCatTabs .tag');
+    tabs.forEach(function(t){
+      t.classList.remove('tag-teal');
+      t.classList.add('tag-blank');
+    });
+    if(e&&e.target){e.target.classList.remove('tag-blank');e.target.classList.add('tag-teal');}
+    /* 切换分类后重建目录（资源宝库） */
+    try{if(window.buildToc)buildToc('reslib');}catch(e2){}
+  }catch(err){console.log(err);}
+}
+function initBackToTop(){
+  try{
+    var btn=document.createElement('div');
+    btn.id='backToTop';
+    btn.innerHTML='\u2191';
+    btn.style.cssText='position:fixed;right:20px;bottom:80px;width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;opacity:0;transition:all .3s;z-index:900;box-shadow:0 2px 12px rgba(0,0,0,.15)';
+    btn.title='回到顶部';
+    btn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+    document.body.appendChild(btn);
+    window.addEventListener('scroll',function(){
+      var b=document.getElementById('backToTop');
+      if(!b)return;
+      if(window.scrollY>300){b.style.opacity='1';b.style.transform='scale(1)';}
+      else{b.style.opacity='0';b.style.transform='scale(.8)';}
+    });
+  }catch(e){}
+}
+
+/* ── 悬浮目录 TOC ── */
+var _tocInited=false;
+var _tocHeadings=[];
+
+function initToc(){
+  if(_tocInited)return;
+  try{
+    /* 桌面端悬浮目录 */
+    var tocFloat=document.createElement('div');
+    tocFloat.className='toc-float';
+    tocFloat.id='tocFloat';
+    tocFloat.innerHTML='<div class="toc-title">📋 目录</div><div class="toc-list" id="tocFloatList"></div>';
+    document.body.appendChild(tocFloat);
+
+    /* 移动端目录按钮 */
+    var tocBtn=document.createElement('div');
+    tocBtn.className='toc-btn';
+    tocBtn.id='tocBtn';
+    tocBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="4" y1="6" x2="7" y2="6"></line><line x1="10" y1="6" x2="20" y2="6"></line><line x1="7" y1="12" x2="10" y2="12"></line><line x1="13" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="7" y2="18"></line><line x1="10" y1="18" x2="20" y2="18"></line></svg>';
+    tocBtn.title='目录';
+    tocBtn.onclick=toggleTocDrawer;
+    document.body.appendChild(tocBtn);
+
+    /* 移动端抽屉遮罩 */
+    var tocOverlay=document.createElement('div');
+    tocOverlay.className='toc-drawer-overlay';
+    tocOverlay.id='tocDrawerOverlay';
+    tocOverlay.onclick=closeTocDrawer;
+    document.body.appendChild(tocOverlay);
+
+    /* 移动端抽屉 */
+    var tocDrawer=document.createElement('div');
+    tocDrawer.className='toc-drawer';
+    tocDrawer.id='tocDrawer';
+    tocDrawer.innerHTML='<div class="toc-drawer-head"><span class="title">📋 页面目录</span><span class="close" onclick="closeTocDrawer()">&times;</span></div><div class="toc-drawer-list" id="tocDrawerList"></div>';
+    document.body.appendChild(tocDrawer);
+
+    /* 滚动监听：高亮当前章节 */
+    window.addEventListener('scroll',function(){
+      try{updateTocHighlight();}catch(e){}
+    },{passive:true});
+
+    _tocInited=true;
+  }catch(e){console.log('initToc error:',e);}
+}
+
+function buildToc(viewName){
+  if(!_tocInited)initToc();
+  try{
+    var viewEl=document.getElementById('view-'+viewName);
+    if(!viewEl){hideToc();return;}
+
+    /* 收集当前 view 中的 h2/h3 */
+    var headings=viewEl.querySelectorAll('h2,h3');
+    var items=[];
+    var idx=0;
+    headings.forEach(function(h){
+      /* 跳过 page-head 里的 h1/h2，只取内容区标题 */
+      if(h.closest('.page-head'))return;
+      var text=h.textContent.trim();
+      if(!text)return;
+      /* 给标题加 id */
+      var id=h.id;
+      if(!id){id='toc-'+viewName+'-'+(++idx);h.id=id;}
+      items.push({id:id,text:text,level:h.tagName.toLowerCase()});
+    });
+
+    _tocHeadings=items;
+
+    /* 少于4个标题时不显示目录 */
+    if(items.length<4){hideToc();return;}
+
+    /* 生成桌面端目录 HTML */
+    var floatList=document.getElementById('tocFloatList');
+    if(floatList){
+      floatList.innerHTML=items.map(function(it){
+        return '<div class="toc-item '+(it.level==='h3'?'h3':'')+'" data-id="'+it.id+'" onclick="scrollToHeading(\''+it.id+'\')">'+it.text+'</div>';
+      }).join('');
+    }
+
+    /* 生成移动端抽屉 HTML */
+    var drawerList=document.getElementById('tocDrawerList');
+    if(drawerList){
+      drawerList.innerHTML=items.map(function(it){
+        return '<div class="toc-item '+(it.level==='h3'?'h3':'')+'" data-id="'+it.id+'" onclick="scrollToHeading(\''+it.id+'\');closeTocDrawer();">'+it.text+'</div>';
+      }).join('');
+    }
+
+    showToc();
+    updateTocHighlight();
+  }catch(e){console.log('buildToc error:',e);}
+}
+
+function scrollToHeading(id){
+  try{
+    var el=document.getElementById(id);
+    if(el){
+      var top=el.getBoundingClientRect().top+window.scrollY-70;
+      window.scrollTo({top:top,behavior:'smooth'});
+    }
+  }catch(e){}
+}
+
+function updateTocHighlight(){
+  try{
+    if(_tocHeadings.length<4)return;
+    var scrollPos=window.scrollY+100;
+    var currentId='';
+    for(var i=0;i<_tocHeadings.length;i++){
+      var el=document.getElementById(_tocHeadings[i].id);
+      if(el&&el.offsetTop<=scrollPos){
+        currentId=_tocHeadings[i].id;
+      }
+    }
+    if(!currentId&&_tocHeadings.length>0)currentId=_tocHeadings[0].id;
+
+    /* 更新桌面端高亮 */
+    var floatItems=document.querySelectorAll('#tocFloatList .toc-item');
+    floatItems.forEach(function(item){
+      item.classList.toggle('active',item.getAttribute('data-id')===currentId);
+    });
+
+    /* 桌面端：自动滚动使当前项可见 */
+    var tocFloat=document.getElementById('tocFloat');
+    var activeItem=tocFloat?tocFloat.querySelector('.toc-item.active'):null;
+    if(tocFloat&&activeItem){
+      var floatRect=tocFloat.getBoundingClientRect();
+      var itemRect=activeItem.getBoundingClientRect();
+      if(itemRect.top<floatRect.top+40||itemRect.bottom>floatRect.bottom-20){
+        activeItem.scrollIntoView({block:'nearest'});
+      }
+    }
+  }catch(e){}
+}
+
+function showToc(){
+  try{
+    var f=document.getElementById('tocFloat');
+    var b=document.getElementById('tocBtn');
+    if(f)f.classList.add('show');
+    if(b)b.classList.add('show');
+  }catch(e){}
+}
+
+function hideToc(){
+  try{
+    var f=document.getElementById('tocFloat');
+    var b=document.getElementById('tocBtn');
+    if(f)f.classList.remove('show');
+    if(b)b.classList.remove('show');
+    closeTocDrawer();
+  }catch(e){}
+}
+
+function toggleTocDrawer(){
+  try{
+    var d=document.getElementById('tocDrawer');
+    var o=document.getElementById('tocDrawerOverlay');
+    if(!d||!o)return;
+    if(d.classList.contains('show')){closeTocDrawer();}
+    else{d.classList.add('show');o.classList.add('show');document.body.style.overflow='hidden';}
+  }catch(e){}
+}
+
+function closeTocDrawer(){
+  try{
+    var d=document.getElementById('tocDrawer');
+    var o=document.getElementById('tocDrawerOverlay');
+    if(d)d.classList.remove('show');
+    if(o)o.classList.remove('show');
+    document.body.style.overflow='';
+  }catch(e){}
+}
+
 function gpaCalc(){
   var box=document.getElementById('gpaResult');if(!box)return;
   var names=document.querySelectorAll('#gpaRows .gpa-name');
@@ -16101,12 +17105,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   }
   function checkVersion(){
     try{
-      fetch(VFILE+'?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();})
-        .then(function(t){
-          var live=(t||'').trim().replace(/^v/i,'');
-          if(!live||live===V)return;
-          if(live>V){window.__pendingUpdate=live;__tryShowUpdate();}
-        }).catch(function(){});
+      var v=localStorage.getItem('qx_version');
+      if(!v||v!==V){localStorage.setItem('qx_version',V);}
     }catch(e){}
   }
   function showUpdateToast(live){
@@ -16348,7 +17348,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 *::-webkit-scrollbar-thumb{background:var(--border-strong,#C9C1B0);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
 *::-webkit-scrollbar-thumb:hover{background:var(--primary-mid,#8A745C);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
 @media(max-width:640px){.qx-crumb{margin-right:6px}.qx-fav-btn{padding:2px 8px}}
-@media print{#qxTop,.qx-foldbtn,.qx-fav-btn,.qx-crumb .seg,#sidebarOverlay{display:none!important}}
+@media print{#qxTop,.toc-btn,.toc-drawer,.toc-drawer-overlay,.qx-foldbtn,.qx-fav-btn,.qx-crumb .seg,#sidebarOverlay{display:none!important}}
 </style>
 <script>
 /* ═══════ 栖匣 · 体验增强模块（独立、非侵入、不影响既有板块内容） ═══════ */
@@ -18190,5 +19190,17 @@ function maybeOpenPrefPick(){
   window.addEventListener('pageshow',fillYear);
 })();
 </script>
+<script>document.addEventListener("DOMContentLoaded",function(){
+  /* initBackToTop 已移除：使用原有 #qxTop 白色圆形回到顶部按钮 */
+  try{
+    initToc();
+    /* 为当前激活的板块生成目录 */
+    var cur=document.querySelector('.view.active');
+    if(cur){
+      var vname=cur.id.replace(/^view-/,'');
+      buildToc(vname);
+    }
+  }catch(e){}
+});</script>
 <script src="app/pp-sync.js?v=23" defer></script>
 </body></html>

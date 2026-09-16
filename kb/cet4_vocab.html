@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>四级核心词汇表 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:90px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--primary);border:1.5px solid var(--primary-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.word-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:8px 0}
+.word-en{font-weight:700;color:var(--primary);font-size:15px}
+.word-ipa{color:var(--teal);font-size:13px;margin-left:8px;font-weight:400}
+.word-cn{color:var(--muted);font-size:14px;margin-top:2px}
+.word-memo{color:var(--text);font-size:13px;background:var(--bg);padding:6px 10px;border-radius:6px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">四级核心词汇表</div>
+</div>
+<div class="container">
+
+<h1>📝 四级核心词汇表</h1>
+<p class="subtitle">词汇是四级的地基。掌握高频分级词表 + 熟词生义 + 词根词缀速记法，让背单词事半功倍。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、四级词汇全貌与背词策略</a>
+  <a href="#s2">二、按词频分级的核心词表</a>
+  <a href="#s3">三、高频动词 50 个</a>
+  <a href="#s4">四、高频名词 60 个</a>
+  <a href="#s5">五、高频形容词/副词 50 个</a>
+  <a href="#s6">六、熟词生义（最容易踩坑）</a>
+  <a href="#s7">七、词根词缀速记法</a>
+  <a href="#s8">八、艾宾浩斯记忆曲线用法</a>
+</div>
+
+<h2 id="s1">一、四级词汇全貌与背词策略</h2>
+<p>四级考纲词汇约4500词，其中核心高频词约2500词。认识这些词，阅读才读得懂，翻译写得出，听力才听得清。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>词汇层级</th><th>数量</th><th>要求</th><th>优先级</th></tr>
+  <tr><td>基础高中词汇</td><td>约2000</td><td>熟练拼写+多种词义</td><td>基础，已会</td></tr>
+  <tr><td>四级核心高频词</td><td>约1500</td><td>四会：会读、会拼、会义、会用</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>四级扩展词</td><td>约1000</td><td>看到认识即可（阅读词汇）</td><td>⭐⭐⭐</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>背词策略：</strong>先背核心高频1500词（决定能否过线），再背扩展1000词（决定高分）。高频词要"四会"，扩展词只要"混个脸熟"即可。
+</div>
+
+<h3>每日背词建议</h3>
+<ul>
+  <li><strong>每天 25-40 个新词</strong>，配合复习旧词，坚持 60 天可完成核心词表</li>
+  <li><strong>早背晚复：</strong>早上背新词，晚上复习早上背的</li>
+  <li><strong>放到语境中记：</strong>配合例句记忆，比死记硬背高效 3 倍以上</li>
+  <li><strong>听音记词：</strong>用带发音的APP背，听完再拼写，听力词汇同时练</li>
+</ul>
+
+<h2 id="s2">二、按词频分级的核心词表</h2>
+<p>以下按词频从高到低整理，前两级（★）是必须烂熟于心的核心词。</p>
+
+<div class="table-wrap"><table>
+  <tr><th style="width:70px">级别</th><th>特点</th><th>数量</th><th>示例词</th></tr>
+  <tr><td><span class="tag tag-coral">⭐⭐⭐</span></td><td>出现频率最高，几乎每年必考</td><td>约600</td><td>society, benefit, environment, technology, influence, opportunity...</td></tr>
+  <tr><td><span class="tag tag-blue">⭐⭐</span></td><td>高频，阅读听力核心</td><td>约900</td><td>significant, consume, research, approach, measure, efficient...</td></tr>
+  <tr><td><span class="tag tag-teal">⭐</span></td><td>中频，写作翻译易用</td><td>约1000</td><td>subsidy, emphasize, academic, candidate, sustainable, recession...</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>背词方法：</strong>建议按词频表的顺序背（数字越小越前面），而不是从前到后翻单词书。高频词先拿下，性价比最高。
+</div>
+
+<h2 id="s3">三、高频动词 50 个</h2>
+<p>动词是句子的骨架。这些四级最高频动词，每个都要求"会拼+会义+能造句"。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>动词</th><th>音标</th><th>核心义</th><th>常考搭配</th></tr>
+  <tr><td>benefit</td><td>/ˈbenɪfɪt/</td><td>使受益；受益</td><td>benefit from（从...中受益）</td></tr>
+  <tr><td>influence</td><td>/ˈɪnfluəns/</td><td>影响</td><td>influence v./n. = affect</td></tr>
+  <tr><td>require</td><td>/rɪˈkwaɪə(r)/</td><td>需要；要求</td><td>require sb to do / be required</td></tr>
+  <tr><td>achieve</td><td>/əˈtʃiːv/</td><td>实现；获得</td><td>achieve success/goal</td></tr>
+  <tr><td>provide</td><td>/prəˈvaɪd/</td><td>提供</td><td>provide sb with sth / provide sth for sb</td></tr>
+  <tr><td>involve</td><td>/ɪnˈvɒlv/</td><td>包含；涉及</td><td>be involved in（参与）</td></tr>
+  <tr><td>reduce</td><td>/rɪˈdjuːs/</td><td>减少</td><td>reduce costs/pollution</td></tr>
+  <tr><td>improve</td><td>/ɪmˈpruːv/</td><td>改善；提高</td><td>improve efficiency/quality</td></tr>
+  <tr><td>develop</td><td>/dɪˈveləp/</td><td>发展；开发</td><td>develop into / developing countries</td></tr>
+  <tr><td>encourage</td><td>/ɪnˈkʌrɪdʒ/</td><td>鼓励</td><td>encourage sb to do</td></tr>
+  <tr><td>maintain</td><td>/meɪnˈteɪn/</td><td>维持；坚持</td><td>maintain balance/relations</td></tr>
+  <tr><td>measure</td><td>/ˈmeʒə(r)/</td><td>测量；衡量</td><td>take measures to do（采取措施）</td></tr>
+  <tr><td>approach</td><td>/əˈprəʊtʃ/</td><td>接近；方法</td><td>an approach to（...的方法）</td></tr>
+  <tr><td>recognize</td><td>/ˈrekəɡnaɪz/</td><td>认出；承认</td><td>be recognized as</td></tr>
+  <tr><td>emphasize</td><td>/ˈemfəsaɪz/</td><td>强调</td><td>emphasize the importance of</td></tr>
+  <tr><td>replace</td><td>/rɪˈpleɪs/</td><td>取代</td><td>replace A with B</td></tr>
+  <tr><td>expand</td><td>/ɪkˈspænd/</td><td>扩大</td><td>expand trade/market</td></tr>
+  <tr><td>afford</td><td>/əˈfɔːd/</td><td>负担得起</td><td>afford to do / can't afford</td></tr>
+  <tr><td>prevent</td><td>/prɪˈvent/</td><td>阻止</td><td>prevent sb from doing</td></tr>
+  <tr><td>compete</td><td>/kəmˈpiːt/</td><td>竞争</td><td>compete with/for</td></tr>
+  <tr><td>survive</td><td>/səˈvaɪv/</td><td>幸存；挺过</td><td>survive the crisis</td></tr>
+  <tr><td>consume</td><td>/kənˈsjuːm/</td><td>消耗；消费</td><td>consume energy/resources</td></tr>
+  <tr><td>distinguish</td><td>/dɪˈstɪŋɡwɪʃ/</td><td>区分</td><td>distinguish A from B</td></tr>
+  <tr><td>assume</td><td>/əˈsjuːm/</td><td>假设；认为</td><td>assume + that从句</td></tr>
+  <tr><td>declare</td><td>/dɪˈkleə(r)/</td><td>宣布；申报</td><td>declare independence</td></tr>
+  <tr><td>estimate</td><td>/ˈestɪmeɪt/</td><td>估计</td><td>it is estimated that...</td></tr>
+  <tr><td>invest</td><td>/ɪnˈvest/</td><td>投资</td><td>invest in（投资于）</td></tr>
+  <tr><td>observe</td><td>/əbˈzɜːv/</td><td>观察；遵守</td><td>observe the rules</td></tr>
+  <tr><td>participate</td><td>/pɑːˈtɪsɪpeɪt/</td><td>参加</td><td>participate in = take part in</td></tr>
+  <tr><td>perform</td><td>/pəˈfɔːm/</td><td>表演；执行</td><td>perform a task</td></tr>
+  <tr><td>persuade</td><td>/pəˈsweɪd/</td><td>说服</td><td>persuade sb to do</td></tr>
+  <tr><td>promote</td><td>/prəˈməʊt/</td><td>促进；晋升</td><td>promote growth/health</td></tr>
+  <tr><td>protest</td><td>/ˈprəʊtest/</td><td>抗议</td><td>protest against</td></tr>
+  <tr><td>recover</td><td>/rɪˈkʌvə(r)/</td><td>恢复</td><td>recover from illness</td></tr>
+  <tr><td>reflect</td><td>/rɪˈflekt/</td><td>反映；反思</td><td>reflect on（反思）</td></tr>
+  <tr><td>reject</td><td>/rɪˈdʒekt/</td><td>拒绝；排斥</td><td>= refuse, turn down</td></tr>
+  <tr><td>release</td><td>/rɪˈliːs/</td><td>释放；发行</td><td>release tension/album</td></tr>
+  <tr><td>remain</td><td>/rɪˈmeɪn/</td><td>保持；剩余</td><td>remain calm</td></tr>
+  <tr><td>reserve</td><td>/rɪˈzɜːv/</td><td>预订；保留</td><td>reserve a table/seat</td></tr>
+  <tr><td>resist</td><td>/rɪˈzɪst/</td><td>抵抗</td><td>resist temptation</td></tr>
+  <tr><td>resolve</td><td>/rɪˈzɒlv/</td><td>解决；下决心</td><td>resolve the problem</td></tr>
+  <tr><td>respond</td><td>/rɪˈspɒnd/</td><td>回应</td><td>respond to = react to</td></tr>
+  <tr><td>restrict</td><td>/rɪˈstrɪkt/</td><td>限制</td><td>be restricted to</td></tr>
+  <tr><td>reveal</td><td>/rɪˈviːl/</td><td>揭示；暴露</td><td>reveal the truth</td></tr>
+  <tr><td>select</td><td>/sɪˈlekt/</td><td>挑选</td><td>select from / choose</td></tr>
+  <tr><td>shift</td><td>/ʃɪft/</td><td>转变</td><td>shift focus/attention</td></tr>
+  <tr><td>strengthen</td><td>/ˈstreŋθn/</td><td>增强</td><td>strengthen cooperation</td></tr>
+  <tr><td>transform</td><td>/trænsˈfɔːm/</td><td>改变；转化</td><td>transform into</td></tr>
+  <tr><td>tend</td><td>/tend/</td><td>倾向于</td><td>tend to do</td></tr>
+  <tr><td>urge</td><td>/ɜːdʒ/</td><td>敦促</td><td>urge sb to do</td></tr>
+</table></div>
+
+<h2 id="s4">四、高频名词 60 个</h2>
+<p>名词是阅读和写作的主干。这些高频名词要求至少"看到认识、能拼写常用词"。</p>
+
+<div class="grid-2">
+  <div>
+    <h3>社会 &amp; 环境类</h3>
+    <ul>
+      <li>society 社会</li>
+      <li>environment 环境</li>
+      <li>pollution 污染</li>
+      <li>population 人口</li>
+      <li>development 发展</li>
+      <li>technology 技术</li>
+      <li>education 教育</li>
+      <li>economy 经济</li>
+      <li>resource 资源</li>
+      <li>atmosphere 大气；氛围</li>
+      <li>community 社区</li>
+      <li>standard 标准</li>
+    </ul>
+  </div>
+  <div>
+    <h3>学习 &amp; 工作类</h3>
+    <ul>
+      <li>knowledge 知识</li>
+      <li>experience 经验</li>
+      <li>ability 能力</li>
+      <li>opportunity 机会</li>
+      <li>challenge 挑战</li>
+      <li>research 研究</li>
+      <li>profession 职业</li>
+      <li>training 培训</li>
+      <li>achievement 成就</li>
+      <li>responsibility 责任</li>
+      <li>pressure 压力</li>
+      <li>goal 目标</li>
+    </ul>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div>
+    <h3>健康 &amp; 生活类</h3>
+    <ul>
+      <li>health 健康</li>
+      <li>diet 饮食</li>
+      <li>exercise 锻炼</li>
+      <li>habit 习惯</li>
+      <li>nutrition 营养</li>
+      <li>disease 疾病</li>
+      <li>treatment 治疗</li>
+      <li>balance 平衡</li>
+      <li>energy 能量</li>
+      <li>relationship 关系</li>
+      <li>stress 压力</li>
+      <li>quality 质量；特质</li>
+    </ul>
+  </div>
+  <div>
+    <h3>科技 &amp; 商业类</h3>
+    <ul>
+      <li>innovation 创新</li>
+      <li>data 数据</li>
+      <li>network 网络</li>
+      <li>business 商业</li>
+      <li>customer 顾客</li>
+      <li>market 市场</li>
+      <li>profit 利润</li>
+      <li>product 产品</li>
+      <li>strategy 策略</li>
+      <li>investment 投资</li>
+      <li>industry 行业</li>
+      <li>competition 竞争</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>名词常考"同根词辨析"，如 economy(economy经济) / economic(经济的) / economical(节约的)。做题时看清词性。
+</div>
+
+<h2 id="s5">五、高频形容词/副词 50 个</h2>
+<p>形容词副词是让表达更准确的关键，也是阅读态度题的重点考察对象。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>形容词</th><th>含义</th><th>注意</th></tr>
+  <tr><td>significant</td><td>重要的；显著的</td><td>= important; a significant change</td></tr>
+  <tr><td>efficient</td><td>高效的</td><td>efficient ≠ effective(有效果的)</td></tr>
+  <tr><td>effective</td><td>有效的</td><td>take effective measures</td></tr>
+  <tr><td>available</td><td>可获得的</td><td>be available to</td></tr>
+  <tr><td>sustainable</td><td>可持续的</td><td>sustainable development</td></tr>
+  <tr><td>enormous</td><td>巨大的</td><td>= huge, massive</td></tr>
+  <tr><td>essential</td><td>必不可少的</td><td>be essential to/for</td></tr>
+  <tr><td>various</td><td>各种各样的</td><td>various kinds of</td></tr>
+  <tr><td>additional</td><td>额外的</td><td>= extra</td></tr>
+  <tr><td>individual</td><td>个人的</td><td>individual rights</td></tr>
+  <tr><td>positive</td><td>积极的</td><td>positive attitude</td></tr>
+  <tr><td>negative</td><td>消极的</td><td>negative effect</td></tr>
+  <tr><td>potential</td><td>潜在的</td><td>potential risk</td></tr>
+  <tr><td>severe</td><td>严重的</td><td>severe weather</td></tr>
+  <tr><td>flexible</td><td>灵活的</td><td>flexible time</td></tr>
+  <tr><td>reliable</td><td>可靠的</td><td>= dependable</td></tr>
+  <tr><td>frequent</td><td>频繁的</td><td>frequent visits</td></tr>
+  <tr><td>convenient</td><td>方便的</td><td>it is convenient to do</td></tr>
+  <tr><td>appropriate</td><td>适当的</td><td>= suitable</td></tr>
+  <tr><td>independent</td><td>独立的</td><td>be independent of</td></tr>
+  <tr><td>sufficient</td><td>足够的</td><td>= enough</td></tr>
+  <tr><td>crucial</td><td>关键的</td><td>= critical, vital</td></tr>
+  <tr><td>remarkable</td><td>显著的</td><td>remarkable progress</td></tr>
+  <tr><td>complex</td><td>复杂的</td><td>= complicated</td></tr>
+  <tr><td>temporary</td><td>暂时的</td><td>≠ permanent</td></tr>
+  <tr><td>permanent</td><td>永久的</td><td>permanent job</td></tr>
+  <tr><td>ambitious</td><td>有抱负的</td><td>an ambitious plan</td></tr>
+  <tr><td>diverse</td><td>多样的</td><td>diverse cultures</td></tr>
+  <tr><td>concerned</td><td>担心的；相关的</td><td>be concerned about</td></tr>
+  <tr><td>addicted</td><td>上瘾的</td><td>be addicted to</td></tr>
+  <tr><td>aware</td><td>意识到的</td><td>be aware of</td></tr>
+  <tr><td>capable</td><td>有能力的</td><td>be capable of</td></tr>
+  <tr><td>hesitant</td><td>犹豫的</td><td>be hesitant to do</td></tr>
+  <tr><td>ignorant</td><td>无知的</td><td>be ignorant of</td></tr>
+  <tr><td>reluctant</td><td>不情愿的</td><td>be reluctant to do</td></tr>
+  <tr><td>vulnerable</td><td>易受伤害的</td><td>be vulnerable to</td></tr>
+</table></div>
+
+<p style="margin-top:12px"><strong>高频副词：</strong>likely(可能) / obviously(明显地) / frequently(频繁地) / gradually(逐渐地) / particularly(尤其) / eventually(最终) / extremely(极其) / approximately(大约) / therefore(因此) / otherwise(否则) / meanwhile(同时) / nevertheless(然而)</p>
+
+<h2 id="s6">六、熟词生义（最容易踩坑）</h2>
+<p>四级最喜欢考"你认识的单词，但不认识的那个意思"。下面这些词特别容易出错，务必背下它们的"生义"。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>单词</th><th>你认识的意思</th><th>四级常考的生义</th></tr>
+  <tr><td>address</td><td>地址</td><td>v. 解决（address the problem 解决问题）；演讲</td></tr>
+  <tr><td>balance</td><td>平衡</td><td>n. 余额（check your balance 查看余额）</td></tr>
+  <tr><td>capital</td><td>首都；资本</td><td>adj. 大写的；极严重的（capital crime）</td></tr>
+  <tr><td>chair</td><td>椅子</td><td>v. 主持（chair a meeting 主持／n. 主席）</td></tr>
+  <tr><td>charge</td><td>收费</td><td>n./v. 充电；负责；指控（in charge of 负责）</td></tr>
+  <tr><td>company</td><td>公司</td><td>n. 陪伴（keep me company 陪陪我）</td></tr>
+  <tr><td>course</td><td>课程</td><td>n. 方针；过程（of course 当然；in the course of）</td></tr>
+  <tr><td>cover</td><td>覆盖</td><td>v. 报道；支付（cover the cost）；涉及</td></tr>
+  <tr><td>develop</td><td>发展</td><td>v. 冲洗胶卷；调入（develop a film）</td></tr>
+  <tr><td>even</td><td>甚至</td><td>adj. 均匀的；平的（even surface 平面）</td></tr>
+  <tr><td>fine</td><td>好的</td><td>v./n. 罚款（pay a fine）</td></tr>
+  <tr><td>free</td><td>自由的</td><td>v. 释放（free the prisoners）；adj. 免费的</td></tr>
+  <tr><td>ground</td><td>地面</td><td>n. 理由；根据（grounds for）</td></tr>
+  <tr><td>hand</td><td>手</td><td>v. 递交（hand in 上交；lend a hand 帮忙）</td></tr>
+  <tr><td>head</td><td>头</td><td>v. 朝...前进（head for 前往）；负责人</td></tr>
+  <tr><td>interest</td><td>兴趣</td><td>n. 利息；利益（in the interests of）</td></tr>
+  <tr><td>issue</td><td>问题</td><td>v. 发行；发布（issue a warning）；一期</td></tr>
+  <tr><td>match</td><td>比赛</td><td>v. 匹配（match with）；火柴</td></tr>
+  <tr><td>mean</td><td>意思是</td><td>adj. 吝啬的；刻薄的（a mean person）</td></tr>
+  <tr><td>minute</td><td>分钟</td><td>adj. 微小的（minute particles 微小颗粒）</td></tr>
+  <tr><td>object</td><td>物体</td><td>v. 反对（object to 反对）</td></tr>
+  <tr><td>observe</td><td>观察</td><td>v. 遵守（observe the law）；庆祝（observe a holiday）</td></tr>
+  <tr><td>plant</td><td>植物</td><td>n./v. 工厂（a power plant 电厂）；种植；安插</td></tr>
+  <tr><td>present</td><td>礼物</td><td>adj. 出席的；现在的；v. 呈现；提交（present a report）</td></tr>
+  <tr><td>reason</td><td>原因</td><td>v. 推理（reason with 劝说）</td></tr>
+  <tr><td>rest</td><td>休息</td><td>n. 剩余部分（the rest of）</td></tr>
+  <tr><td>run</td><td>跑</td><td>v. 经营（run a business）；流动</td></tr>
+  <tr><td>second</td><td>第二</td><td>v. 附议；支持（second the motion）</td></tr>
+  <tr><td>spring</td><td>春天</td><td>n. 弹簧；泉水；v. 弹跳（spring up 涌现）</td></tr>
+  <tr><td>travel</td><td>旅行</td><td>v. 传播；（光/声音）行进（travel at the speed of light）</td></tr>
+  <tr><td>wonder</td><td>想知道</td><td>n. 奇迹（no wonder 难怪）</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>熟词生义是四级阅读丢分的重灾区。</strong>做题时如果发现"套不进已知意思"，立刻思考它是不是在考生义。多背真题中的熟词生义，是提分最快的方式之一。
+</div>
+
+<h2 id="s7">七、词根词缀速记法</h2>
+<p>掌握词根词缀，一个词根辐射一串词，背词效率翻倍。以下是四级最高频的词根词缀。</p>
+
+<h3>7.1 高频前缀</h3>
+<div class="table-wrap"><table>
+  <tr><th>前缀</th><th>含义</th><th>例词</th></tr>
+  <tr><td>re-</td><td>再，回</td><td>review(复习), rebuild(重建), return(返回)</td></tr>
+  <tr><td>un-</td><td>不，未</td><td>unable(不能的), unhealthy(不健康的), uncertain(不确定的)</td></tr>
+  <tr><td>in-/im-/il-/ir-</td><td>不，无</td><td>inactive(不活跃), impossible(不可能), illegal(非法), irregular(不规则)</td></tr>
+  <tr><td>pre-</td><td>预先</td><td>preview(预览), prepare(准备), predict(预测)</td></tr>
+  <tr><td>inter-</td><td>在...之间</td><td>international(国际的), internet(互联网), interact(互动)</td></tr>
+  <tr><td>anti-</td><td>反对，抗</td><td>anti-pollution(防污染), antibody(抗体)</td></tr>
+  <tr><td>over-</td><td>过度</td><td>overload(超载), overwork(过度劳累), overloaded(超负荷)</td></tr>
+  <tr><td>under-</td><td>不足，下</td><td>underestimate(低估), underdeveloped(欠发达)</td></tr>
+  <tr><td>sub-</td><td>在...之下</td><td>subway(地铁), submarine(潜艇), subtitle(副标题)</td></tr>
+  <tr><td>mis-</td><td>错误</td><td>mistake(错误), misunderstand(误解), misleading(误导)</td></tr>
+  <tr><td>co-</td><td>共同</td><td>cooperate(合作), coworker(同事), coordinate(协调)</td></tr>
+  <tr><td>multi-</td><td>多种</td><td>multimedia(多媒体), multicultural(多元文化)</td></tr>
+</table></div>
+
+<h3>7.2 高频词根</h3>
+<div class="table-wrap"><table>
+  <tr><th>词根</th><th>含义</th><th>例词</th></tr>
+  <tr><td>port</td><td>运送</td><td>transport(运输), import(进口), export(出口), support(支持)</td></tr>
+  <tr><td>form</td><td>形状，形成</td><td>inform(通知), reform(改革), perform(表演), uniform(制服)</td></tr>
+  <tr><td>dict</td><td>说话</td><td>dictate(口述), predict(预言), contradict(反驳), dictionary(词典)</td></tr>
+  <tr><td>spect</td><td>看</td><td>inspect(检查), respect(尊重), expect(期望), prospect(前景)</td></tr>
+  <tr><td>vert/vers</td><td>转</td><td>convert(转变), reverse(颠倒), version(版本), universe(宇宙)</td></tr>
+  <tr><td>pos</td><td>放置</td><td>expose(暴露), propose(提议), oppose(反对), position(位置)</td></tr>
+  <tr><td>vis/vid</td><td>看</td><td>visible(可见的), vision(视力), revise(修订), evident(明显的)</td></tr>
+  <tr><td>duct</td><td>引导</td><td>educate(教育), produce(生产), introduce(介绍), conduct(引导)</td></tr>
+  <tr><td>script/scrib</td><td>写</td><td>describe(描述), subscribe(订阅), script(剧本), manuscript(手稿)</td></tr>
+  <tr><td>gen</td><td>产生，基因</td><td>generate(产生), generation(一代), genetic(基因的), gene(基因)</td></tr>
+</table></div>
+
+<h3>7.3 高频后缀（判断词性利器）</h3>
+<div class="table-wrap"><table>
+  <tr><th>后缀</th><th>词性</th><th>含义</th><th>例词</th></tr>
+  <tr><td>-tion / -ment / -ness / -ity / -er/-or</td><td>名词</td><td>表行为、状态、人</td><td>education, development, happiness, ability, teacher</td></tr>
+  <tr><td>-ful / -ous / -able / -ive / -al / -ic</td><td>形容词</td><td>表"有...性质的"</td><td>useful, dangerous, comfortable, active, natural, economic</td></tr>
+  <tr><td>-ly</td><td>副词</td><td>表程度方式</td><td>quickly, carefully, finally</td></tr>
+  <tr><td>-ize / -ify / -en</td><td>动词</td><td>使...化</td><td>modernize, simplify, strengthen</td></tr>
+  <tr><td>-ful/-less</td><td>形容词</td><td>有/没有</td><td>hopeful(有希望的), hopeless(无望的)</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>记词提示：</strong>遇到生词先拆词根词缀猜大意，再回语境验证。每天花10分钟用词根法串记，一周可多记100+词。
+</div>
+
+<h2 id="s8">八、艾宾浩斯记忆曲线用法</h2>
+<p>人的记忆在学后1小时会遗忘约56%，1天后遗忘约66%。科学的复习间隔能有效对抗遗忘。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>复习点</th><th>时间</th><th>复习内容</th></tr>
+  <tr><td>第1次</td><td>学后30分钟</td><td>快速扫一遍刚学的词</td></tr>
+  <tr><td>第2次</td><td>学后当天晚上</td><td>遮挡释义，回忆默写</td></tr>
+  <tr><td>第3次</td><td>第2天</td><td>过一遍，标记仍记不住的</td></tr>
+  <tr><td>第4次</td><td>第4~7天</td><td>重点复习标记词</td></tr>
+  <tr><td>第5次</td><td>第15天</td><td>全部再过一遍</td></tr>
+</table></div>
+
+<h3>艾宾浩斯记忆表用法</h3>
+<ol>
+  <li><strong>准备本子/表格：</strong>列7列，表头为「日期 / Day1 / Day2 / Day4 / Day7 / Day15 / Day30」</li>
+  <li><strong>背新词：</strong>每天在Day1列写下当天背的第几单元</li>
+  <li><strong>定时复习：</strong>到第2天、第4天等时间点，回到对应单元复习</li>
+  <li><strong>标记难点：</strong>复习时把记不住的在词旁画△，下次重点看</li>
+</ol>
+
+<div class="callout callout-info">
+  <strong>落地工具推荐：</strong>使用带"记忆曲线"功能的APP（如墨墨背单词、不背单词、扇贝单词），它们自动安排复习，比自己记表格省心。App背词+这里的分级词表配合使用，效果最佳。
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="cet4_reading.html">
+      <div class="ri-ico">📖</div>
+      <div class="ri-title">四级阅读技巧</div>
+      <div class="ri-desc">五大题型+答题方法</div>
+    </a>
+    <a class="related-item" href="cet4_listening.html">
+      <div class="ri-ico">🎧</div>
+      <div class="ri-title">四级听力技巧</div>
+      <div class="ri-desc">四步法+场景词汇</div>
+    </a>
+    <a class="related-item" href="cet4_writing.html">
+      <div class="ri-ico">✏️</div>
+      <div class="ri-title">四级写作万能句</div>
+      <div class="ri-desc">模板+高级替换词</div>
+    </a>
+    <a class="related-item" href="cet4_mockplan.html">
+      <div class="ri-ico">📅</div>
+      <div class="ri-title">四级备考计划</div>
+      <div class="ri-desc">8周冲刺+时间分配</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>
