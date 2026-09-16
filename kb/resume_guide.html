@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>简历写法完全指南 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.star-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:10px 0}
+.star-box .star-title{font-weight:700;color:var(--teal);margin-bottom:8px;font-size:14px}
+.bad-example{background:var(--coral-light);border-radius:8px;padding:10px;margin:8px 0;font-size:14px}
+.good-example{background:var(--teal-light);border-radius:8px;padding:10px;margin:8px 0;font-size:14px}
+.example-label{font-weight:700;font-size:12px;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">简历写法完全指南</div>
+</div>
+<div class="container">
+
+<h1>📄 简历写法完全指南</h1>
+<p class="subtitle">一份好简历，是拿到面试的第一步。从零开始，教你写出HR一眼相中。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、简历的作用与HR筛选逻辑</a>
+  <a href="#s2">二、简历结构与各部分写法</a>
+  <a href="#s3">三、STAR法则详解</a>
+  <a href="#s4">四、量化表达技巧</a>
+  <a href="#s5">五、不同专业简历侧重点</a>
+  <a href="#s6">六、简历避坑20条</a>
+  <a href="#s7">七、简历投递渠道与注意事项</a>
+  <a href="#s8">八、求职信怎么写</a>
+</div>
+
+<h2 id="s1">一、简历的作用与HR筛选逻辑</h2>
+
+<h3>1.1 简历的作用</h3>
+<p>简历不是你的人生自传，而是一份"营销材料"——你要通过这份材料，说服HR给你一个面试机会。</p>
+<ul>
+  <li><strong>敲门砖：</strong>简历是你和公司的第一次接触，决定了你能不能拿到面试</li>
+  <li><strong>自我介绍：</strong>让HR在最短时间内了解你的背景和能力</li>
+  <li><strong>面试提纲：</strong>面试时，面试官是拿着你的简历提问的，简历内容决定了面试的走向</li>
+</ul>
+
+<h3>1.2 6秒定律</h3>
+<div class="callout callout-warn">
+  <strong>什么是6秒定律？</strong><br>
+  据研究，HR平均只花6秒钟扫一份简历，就决定要不要继续看下去。如果6秒内没有看到感兴趣的内容，这份简历就直接被pass了。
+</div>
+
+<p>这意味着什么？意味着你的简历必须：</p>
+<ol>
+  <li><strong>重点突出：</strong>最重要的信息要放在最显眼的位置（上半部分）</li>
+  <li><strong>简洁明了：</strong>废话少说，每一句话都要有价值</li>
+  <li><strong>排版清晰：</strong>结构清楚，让HR一眼就能找到他想看的</li>
+  <li><strong>匹配岗位：</strong>HR找的是"适合这个岗位的人"，不是"最优秀的人"</li>
+</ol>
+
+<h3>1.3 HR在简历里找什么</h3>
+<ul>
+  <li><strong>你是谁：</strong>基本信息、教育背景</li>
+  <li><strong>你做过什么：</strong>实习经历、项目经历、校园经历</li>
+  <li><strong>你能做什么：</strong>技能、证书、成就</li>
+  <li><strong>你和岗位匹配吗：</strong>相关经验、核心能力、岗位要求</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>核心原则：岗位匹配</strong><br>
+  简历不是写你有多牛，而是写你有多适合这个岗位。每投一个岗位，都要针对性地修改简历，突出和岗位相关的经历和技能。海投同一份简历，效果会差很多。
+</div>
+
+<h2 id="s2">二、简历结构与各部分写法</h2>
+
+<p>一份标准的简历包含以下模块，按重要性排序：</p>
+
+<h3>2.1 个人信息</h3>
+<p>放在最顶部，简洁明了。</p>
+<table>
+  <tr><th>必备</th><th>可选</th><th>不要写</th></tr>
+  <tr>
+    <td>姓名</td>
+    <td>照片（证件照，不要自拍）</td>
+    <td>身份证号</td>
+  </tr>
+  <tr>
+    <td>手机号</td>
+    <td>求职意向/目标岗位</td>
+    <td>家庭住址</td>
+  </tr>
+  <tr>
+    <td>邮箱（专业一点）</td>
+    <td>个人作品集/博客/GitHub链接</td>
+    <td>身高体重（除非岗位要求）</td>
+  </tr>
+  <tr>
+    <td>所在城市</td>
+    <td>到岗时间</td>
+    <td>政治面貌（除非国企/考公）</td>
+  </tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>邮箱不要用什么 love123@qq.com 这种昵称邮箱，用名字拼音或学号邮箱更专业。照片一定要用正式的证件照，不要用生活照、自拍照。
+</div>
+
+<h3>2.2 教育背景</h3>
+<p>应届生的教育背景很重要，放在个人信息后面。</p>
+<ul>
+  <li><strong>格式：</strong>学校名称 + 专业 + 学历 + 就读时间</li>
+  <li><strong>绩点：</strong>高就写（3.5/4.0以上或专业前20%），不高就不写</li>
+  <li><strong>核心课程：</strong>写和岗位相关的3-5门课，不要列一堆不相关的</li>
+  <li><strong>获奖：</strong>奖学金、竞赛奖项可以在这里简要提及（也可以单独列获奖经历模块）</li>
+</ul>
+
+<h3>2.3 实习经历（最重要！）</h3>
+<p>这是简历的核心，也是HR最关注的部分。有相关实习经历，你的简历就成功了一半。</p>
+
+<div class="star-box">
+  <div class="star-title">实习经历写法公式</div>
+  <p><strong>公司名称 + 职位 + 时间</strong>（标题行）</p>
+  <p><strong>工作描述：</strong>用3-5个bullet point描述你做了什么、怎么做的、取得了什么成果</p>
+  <p style="margin-top:10px"><strong>要点：</strong></p>
+  <ul>
+    <li>每一条都用动词开头（负责、参与、主导、策划、优化、分析...）</li>
+    <li>用数据量化成果（提升了XX%、完成了XX个、覆盖了XX人）</li>
+    <li>突出和岗位相关的经历，无关的一笔带过或不写</li>
+    <li>按时间倒序排列（最近的放最前面）</li>
+  </ul>
+</div>
+
+<h3>2.4 项目经历</h3>
+<p>如果实习经历少，可以用项目经历来补。课程项目、竞赛项目、个人项目都可以写。</p>
+<ul>
+  <li><strong>项目名称 + 角色 + 时间</strong></li>
+  <li><strong>项目简介：</strong>一句话说清楚项目是做什么的</li>
+  <li><strong>你的职责：</strong>你在项目中负责什么，做了什么</li>
+  <li><strong>项目成果：</strong>项目取得了什么成果，你贡献了什么</li>
+</ul>
+
+<h3>2.5 技能证书</h3>
+<ul>
+  <li><strong>语言技能：</strong>英语四六级、雅思托福、小语种等（注明分数或水平）</li>
+  <li><strong>计算机技能：</strong>Office、编程、设计软件等（注明熟练程度）</li>
+  <li><strong>专业证书：</strong>CPA、法考、教师资格证等</li>
+  <li><strong>其他技能：</strong>驾照、摄影、剪辑等，有亮点的可以写</li>
+</ul>
+
+<h3>2.6 校园经历</h3>
+<p>学生会、社团、班干部、志愿服务等。如果实习和项目经历已经很丰富了，这部分可以简化。</p>
+<ul>
+  <li>只写有亮点的，不要罗列一堆水经历</li>
+  <li>突出你的能力：组织能力、沟通能力、领导力等</li>
+  <li>同样要用STAR法则和量化表达</li>
+</ul>
+
+<h2 id="s3">三、STAR法则详解</h2>
+
+<h3>3.1 什么是STAR法则</h3>
+<p>STAR法则是描述经历的黄金结构，让你的经历既有故事性又有说服力。</p>
+
+<table>
+  <tr><th>字母</th><th>含义</th><th>说明</th></tr>
+  <tr>
+    <td><b>S</b> - Situation</td>
+    <td>情境</td>
+    <td>这件事是在什么背景下发生的？</td>
+  </tr>
+  <tr>
+    <td><b>T</b> - Task</td>
+    <td>任务</td>
+    <td>你的任务/目标是什么？</td>
+  </tr>
+  <tr>
+    <td><b>A</b> - Action</td>
+    <td>行动</td>
+    <td>你具体做了什么？怎么做的？</td>
+  </tr>
+  <tr>
+    <td><b>R</b> - Result</td>
+    <td>结果</td>
+    <td>最后取得了什么成果？（一定要量化！）</td>
+  </tr>
+</table>
+
+<h3>3.2 正反例对比</h3>
+
+<div class="bad-example">
+  <div class="example-label" style="color:var(--coral)">❌ 反面例子（太笼统，没有细节）</div>
+  <p>负责公众号运营，写了很多文章，粉丝增长很快。</p>
+</div>
+
+<div class="good-example">
+  <div class="example-label" style="color:var(--teal)">✅ 正面例子（STAR结构+量化）</div>
+  <p>【S/T】负责部门官方微信公众号的内容运营，目标是提升粉丝量和文章阅读量。<br>
+  【A】独立策划选题，撰写原创推文，优化排版和标题，每周更新3篇。<br>
+  【R】3个月内粉丝从2000增长到5000（+150%），单篇最高阅读量达8000+，平均打开率从3%提升到8%。</p>
+</div>
+
+<div class="bad-example">
+  <div class="example-label" style="color:var(--coral)">❌ 反面例子（只有职责，没有成果）</div>
+  <p>参与了XX营销活动的策划和执行。</p>
+</div>
+
+<div class="good-example">
+  <div class="example-label" style="color:var(--teal)">✅ 正面例子（突出行动和成果）</div>
+  <p>【S/T】作为核心成员参与公司618营销活动策划，负责社交媒体推广部分。<br>
+  【A】独立撰写5篇推广文案，设计互动活动方案，协调3个KOL合作。<br>
+  【R】活动期间相关话题曝光量超500万，带来新用户2000+，转化率达15%，超额完成目标。</p>
+</div>
+
+<div class="callout callout-ok">
+  <strong>STAR法则使用要点：</strong><br>
+  ① S和T要简洁，重点在A和R<br>
+  ② Action部分是核心，要具体说明"你"做了什么，而不是"我们"做了什么<br>
+  ③ Result部分一定要量化，用数字说话<br>
+  ④ 简历里不用每次都完整写S/T/A/R，可以灵活组合，但结构要清晰
+</div>
+
+<h2 id="s4">四、量化表达技巧</h2>
+
+<p>"用数据说话"是简历的第一法则。同样的经历，量化和不量化，效果天差地别。</p>
+
+<h3>4.1 哪些可以量化</h3>
+<table>
+  <tr><th>维度</th><th>示例</th></tr>
+  <tr><td>规模</td><td>覆盖用户10万+ / 管理10人团队 / 预算50万</td></tr>
+  <tr><td>效率</td><td>将效率提升30% / 节省时间50% / 减少成本20%</td></tr>
+  <tr><td>增长</td><td>粉丝增长150% / 销售额增长80% / 用户增长2倍</td></tr>
+  <tr><td>数量</td><td>撰写文章50篇 / 完成项目8个 / 处理订单1000+</td></tr>
+  <tr><td>排名</td><td>专业排名3/120 / 比赛获一等奖 / 销量全国TOP10</td></tr>
+  <tr><td>时间</td><td>提前3天完成 / 连续3个月达标 / 实习6个月</td></tr>
+</table>
+
+<h3>4.2 量化表达公式</h3>
+<div class="formula-box" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0;font-size:14px">
+  <strong>公式1：</strong>动词 + 工作内容 + 方法 + 结果<br>
+  例：通过优化关键词策略（方法），将搜索排名从第5页提升到第1页（结果）<br><br>
+  <strong>公式2：</strong>在X时间内，做了X事，取得了X成果<br>
+  例：3个月内（时间），独立运营公众号（事），粉丝从2000增长到5000（成果）<br><br>
+  <strong>公式3：</strong>带领X人团队，完成X项目，达成X目标<br>
+  例：带领5人小组（团队），完成校园推广项目（项目），获客3000+（目标）
+</div>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>量化要基于事实，可以适当包装但不能造假。面试时HR会深挖细节，如果是编的很容易露馅。实在没有精确数字，可以用估算的，但要合理。
+</div>
+
+<h2 id="s5">五、不同专业简历侧重点</h2>
+
+<h3>5.1 技术岗（开发/算法/测试等）</h3>
+<ul>
+  <li><strong>核心：</strong>技术能力 + 项目经验</li>
+  <li><strong>重点写：</strong>技术栈、项目经历（用了什么技术、解决了什么问题、性能提升多少）、GitHub链接、技术博客</li>
+  <li><strong>技能栏：</strong>详细列出掌握的编程语言、框架、工具，注明熟练程度</li>
+  <li><strong>建议：</strong>准备一个个人作品集，展示你做过的项目</li>
+</ul>
+
+<h3>5.2 产品岗</h3>
+<ul>
+  <li><strong>核心：</strong>产品思维 + 项目经历 + 数据分析能力</li>
+  <li><strong>重点写：</strong>产品相关实习/项目（需求分析、产品设计、数据分析、项目推进）</li>
+  <li><strong>加分项：</strong>自己做的产品分析报告、竞品分析、原型设计</li>
+  <li><strong>技能：</strong>Axure、Figma、SQL、数据分析工具</li>
+</ul>
+
+<h3>5.3 运营岗</h3>
+<ul>
+  <li><strong>核心：</strong>运营经验 + 数据成果</li>
+  <li><strong>重点写：</strong>用户运营/内容运营/活动运营经历，一定要用数据说话（增长了多少、转化率多少、ROI多少）</li>
+  <li><strong>加分项：</strong>自己的公众号/小红书/B站账号、运营案例</li>
+  <li><strong>技能：</strong>文案能力、数据分析、社群运营、活动策划</li>
+</ul>
+
+<h3>5.4 市场岗</h3>
+<ul>
+  <li><strong>核心：</strong>营销经验 + 创意能力 + 数据意识</li>
+  <li><strong>重点写：</strong>市场推广、品牌活动、媒介投放、内容营销等经历</li>
+  <li><strong>加分项：</strong>成功的营销案例、创意作品、文案作品集</li>
+  <li><strong>技能：</strong>营销策划、文案撰写、数据分析、PPT制作</li>
+</ul>
+
+<h3>5.5 行政/人力岗</h3>
+<ul>
+  <li><strong>核心：</strong>细致认真 + 沟通协调 + 办公技能</li>
+  <li><strong>重点写：</strong>行政/人力相关实习、学生工作（组织活动、管理团队、服务同学）</li>
+  <li><strong>加分项：</strong>大型活动组织经验、流程优化案例</li>
+  <li><strong>技能：</strong>Office三件套（尤其Excel和PPT）、沟通能力、组织协调能力</li>
+</ul>
+
+<h2 id="s6">六、简历避坑20条</h2>
+
+<ol>
+  <li><strong>简历超过1页：</strong>应届生1页足够，除非你有10年以上工作经验</li>
+  <li><strong>排版花里胡哨：</strong>用彩色模板、奇怪字体，反而喧宾夺主。简洁专业最重要</li>
+  <li><strong>照片不专业：</strong>放自拍、生活照、过度P图的照片，很减分</li>
+  <li><strong>写"个人评价"：</strong>"性格开朗、学习能力强"这种空话，HR根本不信</li>
+  <li><strong>全是职责描述：</strong>只写"负责XX工作"，没有做了什么和取得什么成果</li>
+  <li><strong>没有量化：</strong>通篇都是"参与了XX""负责了XX"，一个数字都没有</li>
+  <li><strong>经历和岗位不相关：</strong>投运营岗却写了一堆家教经历，HR不关心</li>
+  <li><strong>时间顺序混乱：</strong>一定要按倒序排列，最近的经历放最前面</li>
+  <li><strong>有错别字：</strong>一个错别字就可能让你被pass，写完一定要检查</li>
+  <li><strong>格式不统一：</strong>字体大小不一、对齐混乱、标点不统一，显得不专业</li>
+  <li><strong>用生僻字体：</strong>你的电脑有，HR电脑可能没有，打开就乱了</li>
+  <li><strong>文件命名不规范：</strong>"简历.pdf"不行，要写"姓名-应聘岗位-简历"</li>
+  <li><strong>发Word格式：</strong>不同版本Word打开格式会乱，一定要发PDF</li>
+  <li><strong>虚假信息：</strong>可以包装但不能造假，背调会查，面试也会露馅</li>
+  <li><strong>套话空话：</strong>"具有较强的沟通能力和团队协作精神"，谁都会写</li>
+  <li><strong>兴趣爱好写太多：</strong>"喜欢看书、听音乐、旅游"，和岗位无关的别写</li>
+  <li><strong>中英文混杂：</strong>除非是外企或必要的专业术语，不然别乱夹英文</li>
+  <li><strong>海投同一份简历：</strong>不同岗位的要求不同，简历也要有针对性地改</li>
+  <li><strong>不看JD就投：</strong>连岗位要求都不看，简历怎么可能匹配</li>
+  <li><strong>不检查就发：</strong>有错别字、格式错乱、甚至投错公司名字，低级错误致命</li>
+</ol>
+
+<h2 id="s7">七、简历投递渠道与注意事项</h2>
+
+<h3>7.1 主要投递渠道</h3>
+<table>
+  <tr><th>渠道</th><th>特点</th><th>适合人群</th></tr>
+  <tr>
+    <td><b>校园招聘</b></td>
+    <td>最靠谱，企业直接到学校招人，应届生身份有优势</td>
+    <td>应届生</td>
+  </tr>
+  <tr>
+    <td><b>企业官网</b></td>
+    <td>最直接，大公司都有自己的招聘官网，信息最准</td>
+    <td>所有求职者</td>
+  </tr>
+  <tr>
+    <td><b>招聘APP</b></td>
+    <td>BOSS直聘、前程无忧、智联招聘、猎聘等，选择多</td>
+    <td>社招+校招</td>
+  </tr>
+  <tr>
+    <td><b>内推</b></td>
+    <td>成功率最高，可以直接到HR或部门手里</td>
+    <td>有资源的同学</td>
+  </tr>
+  <tr>
+    <td><b> LinkedIn</b></td>
+    <td>外企和大厂比较多，适合中高端岗位</td>
+    <td>有经验的求职者</td>
+  </tr>
+</table>
+
+<h3>7.2 投递注意事项</h3>
+<ul>
+  <li><strong>邮件标题要规范：</strong>姓名 - 应聘岗位 - 学校 - 可到岗时间</li>
+  <li><strong>附件命名要规范：</strong>姓名-应聘岗位-简历.pdf</li>
+  <li><strong>正文不要空：</strong>简单写几句自我介绍和求职意向，不要只发附件</li>
+  <li><strong>选对时间：</strong>工作日上午9-10点或下午2-3点发邮件，被看到的概率更高</li>
+  <li><strong>不要重复投递：</strong>同一家公司同一个岗位不要投好几次</li>
+  <li><strong>做好记录：</strong>用表格记录投了哪些公司、什么时候投的、进展如何</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>内推是最好的渠道：</strong><br>
+  找学长学姐、亲戚朋友、LinkedIn上的人帮你内推，成功率比海投高得多。不要不好意思开口，大部分人都愿意帮忙的。内推不仅简历更容易被看到，有些公司还会给内推人奖金，双赢。
+</div>
+
+<h2 id="s8">八、求职信怎么写</h2>
+
+<h3>8.1 求职信的作用</h3>
+<p>求职信（Cover Letter）是附在简历前面的一封信，用来说明你为什么申请这个岗位、为什么你是合适的人选。不是所有公司都要求，但写得好的求职信能大大加分。</p>
+
+<h3>8.2 求职信的结构</h3>
+<ol>
+  <li><strong>称呼：</strong>尊敬的HR/招聘负责人，如果知道名字就直接写名字</li>
+  <li><strong>开头段：</strong>你是谁，从哪里看到的招聘信息，申请什么岗位（1-2句）</li>
+  <li><strong>中间段1：</strong>为什么你适合这个岗位——结合你的经历和能力，对应岗位要求（2-3句）</li>
+  <li><strong>中间段2：</strong>为什么选择这家公司——表达对公司的了解和向往（1-2句）</li>
+  <li><strong>结尾段：</strong>感谢阅读，表达面试期望，留下联系方式（1-2句）</li>
+  <li><strong>落款：</strong>此致 敬礼 / 顺颂商祺 + 姓名 + 日期</li>
+</ol>
+
+<h3>8.3 求职信写作要点</h3>
+<ul>
+  <li><strong>控制篇幅：</strong>300-500字，不要太长，HR不会仔细看</li>
+  <li><strong>针对性强：</strong>每封求职信都要针对具体公司和岗位，不能通用</li>
+  <li><strong>不要重复简历：</strong>求职信是补充，不是简历的复制粘贴</li>
+  <li><strong>展示热情：</strong>让HR感受到你对这个岗位和公司的热情</li>
+  <li><strong>突出匹配度：</strong>重点讲你和岗位要求的匹配点</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>求职信模板（精简版）：</strong><br><br>
+  尊敬的XX公司HR：<br><br>
+  您好！我是XX大学XX专业的应届毕业生XXX，从XX渠道了解到贵公司正在招聘XX岗位，特此投递简历。<br><br>
+  在校期间，我曾在XX公司实习，负责XX工作，取得了XX成果（1-2个核心亮点，和岗位要求对应）。我具备XX、XX等能力，相信能够胜任该岗位的工作。<br><br>
+  我一直关注XX公司的发展，非常认同贵公司的XX理念/产品，希望能有机会加入。<br><br>
+  随信附上我的简历，期待能有机会与您进一步交流。感谢您的时间！<br><br>
+  此致<br>
+  敬礼<br><br>
+  XXX<br>
+  XXXX年XX月XX日
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="interview_guide.html">
+      <div class="ri-ico">💼</div>
+      <div class="ri-title">面试通关指南</div>
+      <div class="ri-desc">自我介绍+高频问题</div>
+    </a>
+    <a class="related-item" href="baoyan_guide.html">
+      <div class="ri-ico">📜</div>
+      <div class="ri-title">保研全攻略</div>
+      <div class="ri-desc">条件+时间线+面试</div>
+    </a>
+    <a class="related-item" href="kaoyan_guide.html">
+      <div class="ri-ico">🎓</div>
+      <div class="ri-title">考研备考全指南</div>
+      <div class="ri-desc">择校+复习规划</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

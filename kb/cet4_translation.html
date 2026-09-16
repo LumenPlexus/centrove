@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>四级翻译高频词汇与技巧 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.vocab-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0}
+.vocab-card h4{color:var(--teal);font-size:14px;margin-bottom:8px}
+.vocab-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border);font-size:14px}
+.vocab-row:last-child{border-bottom:none}
+.vocab-cn{color:var(--text);font-weight:500}
+.vocab-en{color:var(--primary);font-style:italic}
+.practice-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:12px 0}
+.practice-box .q{font-weight:600;color:var(--primary);margin-bottom:8px}
+.practice-box .a{color:var(--teal);margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);display:none}
+.practice-box .a.show{display:block}
+.practice-box .toggle{color:var(--primary-mid);font-size:13px;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">四级翻译高频词汇与技巧</div>
+</div>
+<div class="container">
+
+<h1>🇨🇳 四级翻译高频词汇与技巧</h1>
+<p class="subtitle">翻译占15%，话题集中在中国传统文化和社会发展。背熟高频词，翻译不再难。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、中国传统文化词汇</a>
+  <a href="#s2">二、社会发展词汇</a>
+  <a href="#s3">三、翻译技巧8条</a>
+  <a href="#s4">四、5大常见错误</a>
+  <a href="#s5">五、真题例句翻译练习</a>
+</div>
+
+<h2 id="s1">一、中国传统文化词汇</h2>
+<p>四级翻译的话题有80%集中在中国传统文化相关内容上。这些词汇必须背熟，考试时才能准确快速地翻译出来。</p>
+
+<h3>1.1 传统节日</h3>
+<div class="vocab-card">
+  <h4>🏮 节日类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">春节</span><span class="vocab-en">the Spring Festival / Chinese New Year</span></div>
+  <div class="vocab-row"><span class="vocab-cn">元宵节</span><span class="vocab-en">the Lantern Festival</span></div>
+  <div class="vocab-row"><span class="vocab-cn">清明节</span><span class="vocab-en">the Qingming Festival / Tomb-Sweeping Day</span></div>
+  <div class="vocab-row"><span class="vocab-cn">端午节</span><span class="vocab-en">the Dragon Boat Festival</span></div>
+  <div class="vocab-row"><span class="vocab-cn">七夕节</span><span class="vocab-en">the Qixi Festival / Chinese Valentine's Day</span></div>
+  <div class="vocab-row"><span class="vocab-cn">中秋节</span><span class="vocab-en">the Mid-Autumn Festival</span></div>
+  <div class="vocab-row"><span class="vocab-cn">重阳节</span><span class="vocab-en">the Double Ninth Festival</span></div>
+  <div class="vocab-row"><span class="vocab-cn">除夕</span><span class="vocab-en">New Year's Eve</span></div>
+  <div class="vocab-row"><span class="vocab-cn">农历</span><span class="vocab-en">lunar calendar</span></div>
+  <div class="vocab-row"><span class="vocab-cn">阳历</span><span class="vocab-en">solar calendar</span></div>
+</div>
+
+<h3>1.2 传统习俗与美食</h3>
+<div class="vocab-card">
+  <h4>🥟 习俗与美食类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">饺子</span><span class="vocab-en">dumplings / jiaozi</span></div>
+  <div class="vocab-row"><span class="vocab-cn">粽子</span><span class="vocab-en">zongzi / rice dumplings</span></div>
+  <div class="vocab-row"><span class="vocab-cn">月饼</span><span class="vocab-en">moon cake</span></div>
+  <div class="vocab-row"><span class="vocab-cn">汤圆</span><span class="vocab-en">tangyuan / sweet dumplings</span></div>
+  <div class="vocab-row"><span class="vocab-cn">茶</span><span class="vocab-en">tea</span></div>
+  <div class="vocab-row"><span class="vocab-cn">茶文化</span><span class="vocab-en">tea culture</span></div>
+  <div class="vocab-row"><span class="vocab-cn">春联</span><span class="vocab-en">Spring Festival couplets</span></div>
+  <div class="vocab-row"><span class="vocab-cn">灯笼</span><span class="vocab-en">lantern</span></div>
+  <div class="vocab-row"><span class="vocab-cn">烟花</span><span class="vocab-en">fireworks</span></div>
+  <div class="vocab-row"><span class="vocab-cn">鞭炮</span><span class="vocab-en">firecrackers</span></div>
+  <div class="vocab-row"><span class="vocab-cn">舞龙舞狮</span><span class="vocab-en">dragon and lion dance</span></div>
+  <div class="vocab-row"><span class="vocab-cn">剪纸</span><span class="vocab-en">paper-cutting</span></div>
+</div>
+
+<h3>1.3 哲学思想与历史人物</h3>
+<div class="vocab-card">
+  <h4>📚 思想文化类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">儒家思想</span><span class="vocab-en">Confucianism</span></div>
+  <div class="vocab-row"><span class="vocab-cn">道家思想</span><span class="vocab-en">Taoism / Daoism</span></div>
+  <div class="vocab-row"><span class="vocab-cn">孔子</span><span class="vocab-en">Confucius</span></div>
+  <div class="vocab-row"><span class="vocab-cn">孟子</span><span class="vocab-en">Mencius</span></div>
+  <div class="vocab-row"><span class="vocab-cn">老子</span><span class="vocab-en">Lao Tzu / Laozi</span></div>
+  <div class="vocab-row"><span class="vocab-cn">庄子</span><span class="vocab-en">Zhuangzi / Chuang Tzu</span></div>
+  <div class="vocab-row"><span class="vocab-cn">《论语》</span><span class="vocab-en">The Analects of Confucius</span></div>
+  <div class="vocab-row"><span class="vocab-cn">《道德经》</span><span class="vocab-en">Tao Te Ching / Daodejing</span></div>
+  <div class="vocab-row"><span class="vocab-cn">仁</span><span class="vocab-en">benevolence / humaneness</span></div>
+  <div class="vocab-row"><span class="vocab-cn">义</span><span class="vocab-en">righteousness</span></div>
+  <div class="vocab-row"><span class="vocab-cn">礼</span><span class="vocab-en">ritual / propriety</span></div>
+  <div class="vocab-row"><span class="vocab-cn">和谐</span><span class="vocab-en">harmony</span></div>
+</div>
+
+<h3>1.4 四大发明与历史遗迹</h3>
+<div class="vocab-card">
+  <h4>🏛️ 历史科技类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">四大发明</span><span class="vocab-en">the Four Great Inventions</span></div>
+  <div class="vocab-row"><span class="vocab-cn">造纸术</span><span class="vocab-en">papermaking</span></div>
+  <div class="vocab-row"><span class="vocab-cn">印刷术</span><span class="vocab-en">printing / movable-type printing</span></div>
+  <div class="vocab-row"><span class="vocab-cn">指南针</span><span class="vocab-en">compass</span></div>
+  <div class="vocab-row"><span class="vocab-cn">火药</span><span class="vocab-en">gunpowder</span></div>
+  <div class="vocab-row"><span class="vocab-cn">丝绸之路</span><span class="vocab-en">the Silk Road</span></div>
+  <div class="vocab-row"><span class="vocab-cn">长城</span><span class="vocab-en">the Great Wall</span></div>
+  <div class="vocab-row"><span class="vocab-cn">故宫</span><span class="vocab-en">the Forbidden City / the Palace Museum</span></div>
+  <div class="vocab-row"><span class="vocab-cn">兵马俑</span><span class="vocab-en">the Terracotta Warriors</span></div>
+  <div class="vocab-row"><span class="vocab-cn">大运河</span><span class="vocab-en">the Grand Canal</span></div>
+  <div class="vocab-row"><span class="vocab-cn">敦煌莫高窟</span><span class="vocab-en">Mogao Grottoes in Dunhuang</span></div>
+  <div class="vocab-row"><span class="vocab-cn">颐和园</span><span class="vocab-en">the Summer Palace</span></div>
+</div>
+
+<h3>1.5 传统艺术</h3>
+<div class="vocab-card">
+  <h4>🎨 艺术类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">书法</span><span class="vocab-en">calligraphy</span></div>
+  <div class="vocab-row"><span class="vocab-cn">京剧</span><span class="vocab-en">Peking Opera / Beijing Opera</span></div>
+  <div class="vocab-row"><span class="vocab-cn">太极拳</span><span class="vocab-en">Tai Chi / Taijiquan</span></div>
+  <div class="vocab-row"><span class="vocab-cn">功夫/武术</span><span class="vocab-en">Kung Fu / martial arts / Wushu</span></div>
+  <div class="vocab-row"><span class="vocab-cn">中国画</span><span class="vocab-en">Chinese painting / traditional Chinese painting</span></div>
+  <div class="vocab-row"><span class="vocab-cn">瓷器</span><span class="vocab-en">porcelain / china</span></div>
+  <div class="vocab-row"><span class="vocab-cn">丝绸</span><span class="vocab-en">silk</span></div>
+  <div class="vocab-row"><span class="vocab-cn">刺绣</span><span class="vocab-en">embroidery</span></div>
+  <div class="vocab-row"><span class="vocab-cn">茶道</span><span class="vocab-en">tea ceremony</span></div>
+  <div class="vocab-row"><span class="vocab-cn">古筝</span><span class="vocab-en">guzheng / Chinese zither</span></div>
+  <div class="vocab-row"><span class="vocab-cn">皮影戏</span><span class="vocab-en">shadow puppetry</span></div>
+  <div class="vocab-row"><span class="vocab-cn">中医</span><span class="vocab-en">traditional Chinese medicine (TCM)</span></div>
+</div>
+
+<h2 id="s2">二、社会发展词汇</h2>
+<p>除了传统文化，社会发展类话题也是四级翻译的常考内容，尤其是近十年的中国发展成就。</p>
+
+<h3>2.1 经济与发展</h3>
+<div class="vocab-card">
+  <h4>💰 经济类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">改革开放</span><span class="vocab-en">reform and opening-up</span></div>
+  <div class="vocab-row"><span class="vocab-cn">经济增长</span><span class="vocab-en">economic growth</span></div>
+  <div class="vocab-row"><span class="vocab-cn">经济发展</span><span class="vocab-en">economic development</span></div>
+  <div class="vocab-row"><span class="vocab-cn">GDP / 国内生产总值</span><span class="vocab-en">Gross Domestic Product (GDP)</span></div>
+  <div class="vocab-row"><span class="vocab-cn">城市化</span><span class="vocab-en">urbanization</span></div>
+  <div class="vocab-row"><span class="vocab-cn">工业化</span><span class="vocab-en">industrialization</span></div>
+  <div class="vocab-row"><span class="vocab-cn">脱贫</span><span class="vocab-en">poverty alleviation / poverty reduction</span></div>
+  <div class="vocab-row"><span class="vocab-cn">小康社会</span><span class="vocab-en">a moderately prosperous society</span></div>
+  <div class="vocab-row"><span class="vocab-cn">可持续发展</span><span class="vocab-en">sustainable development</span></div>
+  <div class="vocab-row"><span class="vocab-cn">基础设施</span><span class="vocab-en">infrastructure</span></div>
+  <div class="vocab-row"><span class="vocab-cn">市场经济</span><span class="vocab-en">market economy</span></div>
+  <div class="vocab-row"><span class="vocab-cn">产业升级</span><span class="vocab-en">industrial upgrading</span></div>
+</div>
+
+<h3>2.2 科技创新</h3>
+<div class="vocab-card">
+  <h4>🔬 科技类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">科技创新</span><span class="vocab-en">scientific and technological innovation</span></div>
+  <div class="vocab-row"><span class="vocab-cn">人工智能</span><span class="vocab-en">artificial intelligence (AI)</span></div>
+  <div class="vocab-row"><span class="vocab-cn">大数据</span><span class="vocab-en">big data</span></div>
+  <div class="vocab-row"><span class="vocab-cn">云计算</span><span class="vocab-en">cloud computing</span></div>
+  <div class="vocab-row"><span class="vocab-cn">5G技术</span><span class="vocab-en">5G technology</span></div>
+  <div class="vocab-row"><span class="vocab-cn">共享经济</span><span class="vocab-en">sharing economy</span></div>
+  <div class="vocab-row"><span class="vocab-cn">移动支付</span><span class="vocab-en">mobile payment</span></div>
+  <div class="vocab-row"><span class="vocab-cn">高铁</span><span class="vocab-en">high-speed rail / bullet train</span></div>
+  <div class="vocab-row"><span class="vocab-cn">电子商务</span><span class="vocab-en">e-commerce</span></div>
+  <div class="vocab-row"><span class="vocab-cn">互联网+</span><span class="vocab-en">Internet Plus</span></div>
+  <div class="vocab-row"><span class="vocab-cn">新能源</span><span class="vocab-en">new energy</span></div>
+  <div class="vocab-row"><span class="vocab-cn">数字经济</span><span class="vocab-en">digital economy</span></div>
+</div>
+
+<h3>2.3 教育与社会</h3>
+<div class="vocab-card">
+  <h4>🎓 教育民生类词汇</h4>
+  <div class="vocab-row"><span class="vocab-cn">教育公平</span><span class="vocab-en">educational equity / equality in education</span></div>
+  <div class="vocab-row"><span class="vocab-cn">素质教育</span><span class="vocab-en">quality-oriented education</span></div>
+  <div class="vocab-row"><span class="vocab-cn">义务教育</span><span class="vocab-en">compulsory education</span></div>
+  <div class="vocab-row"><span class="vocab-cn">高等教育</span><span class="vocab-en">higher education</span></div>
+  <div class="vocab-row"><span class="vocab-cn">社会保障</span><span class="vocab-en">social security</span></div>
+  <div class="vocab-row"><span class="vocab-cn">医疗保险</span><span class="vocab-en">medical insurance</span></div>
+  <div class="vocab-row"><span class="vocab-cn">养老保险</span><span class="vocab-en">pension insurance / endowment insurance</span></div>
+  <div class="vocab-row"><span class="vocab-cn">人口老龄化</span><span class="vocab-en">aging population / population aging</span></div>
+  <div class="vocab-row"><span class="vocab-cn">乡村振兴</span><span class="vocab-en">rural revitalization</span></div>
+  <div class="vocab-row"><span class="vocab-cn">环境保护</span><span class="vocab-en">environmental protection</span></div>
+  <div class="vocab-row"><span class="vocab-cn">碳达峰/碳中和</span><span class="vocab-en">carbon peak / carbon neutrality</span></div>
+  <div class="vocab-row"><span class="vocab-cn">生态文明</span><span class="vocab-en">ecological civilization</span></div>
+</div>
+
+<h2 id="s3">三、翻译技巧8条</h2>
+
+<h3>技巧1：通读全句再动笔</h3>
+<p>不要看到中文就逐字翻译，先通读整个句子，理解整体意思，判断句子的主干（主谓宾）和修饰成分，再开始翻译。</p>
+
+<h3>技巧2：确定主谓，搭建骨架</h3>
+<p>中文是意合语言，句子结构松散；英文是形合语言，主谓结构必须明确。翻译时先找主语和谓语动词，把句子骨架搭起来，再添加修饰成分。</p>
+
+<div class="callout callout-info">
+  <strong>示例：</strong>"中国的茶文化有着悠久的历史。"<br>
+  先确定主语：the tea culture of China / Chinese tea culture<br>
+  谓语：has<br>
+  宾语：a long history<br>
+  组合：Chinese tea culture has a long history.
+</div>
+
+<h3>技巧3：灵活调整语序</h3>
+<p>中文和英文的语序往往不同，不要逐字直译。要根据英文的表达习惯调整语序，让译文自然流畅。</p>
+<ul>
+  <li>中文习惯把时间、地点放在句首，英文常放在句尾</li>
+  <li>中文习惯先说原因后说结果，英文可以灵活调整</li>
+  <li>中文的定语常放在名词前，英文的短语/从句定语常放在名词后</li>
+</ul>
+
+<h3>技巧4：选择恰当的动词</h3>
+<p>动词是句子的灵魂。选择准确的动词比堆砌形容词重要得多。同一个中文动词在不同语境下要用不同的英文动词。</p>
+
+<h3>技巧5：处理无主语句</h3>
+<p>中文经常有无主语句，翻译时要补充主语或用被动语态、there be句型等。</p>
+<ul>
+  <li>补充主语："应该保护环境" → We should protect the environment.</li>
+  <li>被动语态："已经建成了许多高铁" → Many high-speed railways have been built.</li>
+  <li>There be句型："有很多人喜欢喝茶" → There are many people who like drinking tea.</li>
+</ul>
+
+<h3>技巧6：长短句结合</h3>
+<p>不要把所有信息都塞进一个长句里，也不要全是短句。要学会拆分和组合，让句子有节奏感。</p>
+<ul>
+  <li>中文逗号多，英文要分成不同句子或用从句连接</li>
+  <li>可以用分词、不定式、介词短语来简化句子</li>
+  <li>适当使用定语从句、状语从句让句子更紧凑</li>
+</ul>
+
+<h3>技巧7：准确使用时态</h3>
+<p>中文通过副词和上下文表达时间，英文靠动词的时态变化。翻译时要根据时间状语和语境选择正确的时态。</p>
+<ul>
+  <li>描述客观事实、普遍真理 → 一般现在时</li>
+  <li>描述过去的事情 → 一般过去时</li>
+  <li>已经完成的动作对现在的影响 → 现在完成时</li>
+  <li>正在进行的动作 → 现在进行时</li>
+</ul>
+
+<h3>技巧8：文化负载词的处理</h3>
+<p>遇到中国特有的文化词汇，优先用约定俗成的译法。没有标准译法的，可以先音译再加解释。</p>
+
+<div class="callout callout-ok">
+  <strong>常用策略：</strong><br>
+  ① 有标准译法的直接用：儒家思想 → Confucianism<br>
+  ② 拼音+解释：饺子 → jiaozi, a kind of traditional Chinese food<br>
+  ③ 意译：粽子 → rice dumplings wrapped in bamboo leaves<br>
+  ④ 直译+补充说明：清明节 → the Qingming Festival, a traditional Chinese festival for honoring ancestors
+</div>
+
+<h2 id="s4">四、5大常见错误</h2>
+
+<table>
+  <tr><th style="width:25%">错误类型</th><th>示例</th><th>正确翻译</th></tr>
+  <tr>
+    <td><b>逐字翻译</b></td>
+    <td>"人山人海"译成 person mountain person sea</td>
+    <td>a sea of people / a huge crowd</td>
+  </tr>
+  <tr>
+    <td><b>语法错误</b></td>
+    <td>"他很喜欢喝茶"译成 He very like drink tea</td>
+    <td>He likes drinking tea very much.</td>
+  </tr>
+  <tr>
+    <td><b>时态错误</b></td>
+    <td>"去年建了一座桥"译成 A bridge is built last year</td>
+    <td>A bridge was built last year.</td>
+  </tr>
+  <tr>
+    <td><b>主谓不一致</b></td>
+    <td>"这个问题很重要"译成 This problem are very important</td>
+    <td>This problem is very important.</td>
+  </tr>
+  <tr>
+    <td><b>中式英语</b></td>
+    <td>"好好学习"译成 good good study</td>
+    <td>study hard / work hard at one's studies</td>
+  </tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>避坑提醒：</strong>四级翻译扣分最多的不是"翻得不高级"，而是"翻错了"。语法错误、时态错误、拼写错误这些低级错误一定要避免。拿不准的句型就用你最有把握的简单句，意思表达清楚就好。
+</div>
+
+<h2 id="s5">五、真题例句翻译练习</h2>
+<p>下面是5道典型的四级翻译真题句子，先自己试着翻译，再看参考答案。</p>
+
+<div class="practice-box">
+  <div class="q">【练习1】春节是中国最重要的传统节日，人们通常会和家人团聚，吃年夜饭，放鞭炮。</div>
+  <span class="toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'收起答案':'查看答案'">查看答案</span>
+  <div class="a">
+    <strong>参考译文：</strong>The Spring Festival is the most important traditional festival in China. People usually get together with their families, have the New Year's Eve dinner and set off firecrackers.<br><br>
+    <strong>解析：</strong>① "团聚"译为 get together / reunite 都可以；② "年夜饭"是 the New Year's Eve dinner / family reunion dinner；③ "放鞭炮"是 set off firecrackers，注意动词搭配。
+  </div>
+</div>
+
+<div class="practice-box">
+  <div class="q">【练习2】随着经济的快速发展，中国人民的生活水平有了显著提高。</div>
+  <span class="toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'收起答案':'查看答案'">查看答案</span>
+  <div class="a">
+    <strong>参考译文：</strong>With the rapid development of the economy, the living standards of the Chinese people have improved significantly / remarkably.<br><br>
+    <strong>解析：</strong>① "随着...的发展"是 with the development of...，高频句型；② "生活水平"是 living standards；③ "显著提高"用 improve significantly 或 be greatly improved。
+  </div>
+</div>
+
+<div class="practice-box">
+  <div class="q">【练习3】孔子是中国古代伟大的思想家和教育家，儒家学派的创始人。</div>
+  <span class="toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'收起答案':'查看答案'">查看答案</span>
+  <div class="a">
+    <strong>参考译文：</strong>Confucius was a great thinker and educator in ancient China, and the founder of Confucianism.<br><br>
+    <strong>解析：</strong>① "思想家"thinker，"教育家"educator，"创始人"founder；② "儒家学派"Confucianism，专有名词要大写；③ 两个并列身份可以用 and 连接，也可以用同位语结构。
+  </div>
+</div>
+
+<div class="practice-box">
+  <div class="q">【练习4】越来越多的年轻人喜欢通过手机支付来购物，因为它既方便又快捷。</div>
+  <span class="toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'收起答案':'查看答案'">查看答案</span>
+  <div class="a">
+    <strong>参考译文：</strong>More and more young people like to shop via mobile payment because it is convenient and fast / quick.<br><br>
+    <strong>解析：</strong>① "越来越多的"more and more / an increasing number of；② "通过手机支付"via mobile payment / by mobile payment；③ "既...又..."可以用 both...and... 或简单的 and 连接。
+  </div>
+</div>
+
+<div class="practice-box">
+  <div class="q">【练习5】长城是世界上最伟大的建筑奇迹之一，每年吸引着数百万游客前来参观。</div>
+  <span class="toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'收起答案':'查看答案'">查看答案</span>
+  <div class="a">
+    <strong>参考译文：</strong>The Great Wall is one of the greatest architectural wonders in the world, attracting millions of tourists every year.<br><br>
+    <strong>解析：</strong>① "最...之一"是 one of + 形容词最高级 + 名词复数；② "建筑奇迹"architectural wonders；③ 后半句用现在分词 attracting 作伴随状语，句子更紧凑。
+  </div>
+</div>
+
+<div class="callout callout-info">
+  <strong>翻译提分建议：</strong>翻译的提高需要长期积累。建议每天翻译1-2个句子，对照参考译文分析差距。重点积累中国传统文化和社会发展相关的词汇和表达。考前把近10年的翻译真题做一遍，效果非常显著。
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="cet4_reading.html">
+      <div class="ri-ico">📖</div>
+      <div class="ri-title">四级阅读技巧</div>
+      <div class="ri-desc">五大题型+答题方法</div>
+    </a>
+    <a class="related-item" href="cet4_writing.html">
+      <div class="ri-ico">✏️</div>
+      <div class="ri-title">四级写作万能句</div>
+      <div class="ri-desc">模板+高级替换词</div>
+    </a>
+    <a class="related-item" href="cet4_listening.html">
+      <div class="ri-ico">🎧</div>
+      <div class="ri-title">四级听力技巧</div>
+      <div class="ri-desc">四步法+常见陷阱</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

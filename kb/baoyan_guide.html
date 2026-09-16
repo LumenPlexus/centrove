@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>保研全攻略 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.timeline{position:relative;padding-left:24px;margin:12px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--border-strong)}
+.timeline-item{position:relative;margin-bottom:16px}
+.timeline-item::before{content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--primary);border:2px solid var(--bg)}
+.timeline-item .ti-time{font-weight:700;color:var(--primary);font-size:14px;margin-bottom:4px}
+.timeline-item .ti-content{font-size:14px;color:var(--text)}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">保研全攻略</div>
+</div>
+<div class="container">
+
+<h1>📜 保研全攻略</h1>
+<p class="subtitle">从大一到大四，从绩点到面试，一篇讲透保研那些事。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、保研是什么：推免制度简介</a>
+  <a href="#s2">二、保研条件与各项权重</a>
+  <a href="#s3">三、大学四年时间线</a>
+  <a href="#s4">四、夏令营vs预推免vs九推</a>
+  <a href="#s5">五、文书材料清单与写法</a>
+  <a href="#s6">六、面试准备</a>
+  <a href="#s7">七、择校策略</a>
+  <a href="#s8">八、信息渠道</a>
+  <a href="#s9">九、保研失败的后路</a>
+</div>
+
+<h2 id="s1">一、保研是什么：推免制度简介</h2>
+
+<h3>1.1 什么是推免</h3>
+<p>推免，全称"推荐优秀应届本科毕业生免试攻读硕士学位研究生"，是指不用参加全国硕士研究生统一招生考试（考研），直接通过学校推荐进入研究生阶段学习的一种方式。</p>
+
+<h3>1.2 推免的基本流程</h3>
+<ol>
+  <li><strong>获得本校推免资格：</strong>各高校根据成绩和综合素质排名，按教育部下达的名额确定推免生名单</li>
+  <li><strong>申请目标院校：</strong>通过夏令营、预推免、九推等方式申请意向学校和专业</li>
+  <li><strong>参加考核：</strong>通过笔试、面试等形式参加目标院校的选拔</li>
+  <li><strong>获得拟录取：</strong>通过考核后获得目标院校的拟录取offer</li>
+  <li><strong>系统确认：</strong>在教育部"全国推荐优秀应届本科毕业生免试攻读研究生信息公开暨管理服务系统"（简称"推免服务系统"）完成填报和确认</li>
+</ol>
+
+<h3>1.3 推免的类型</h3>
+<table>
+  <tr><th style="width:100px">类型</th><th>说明</th></tr>
+  <tr><td><b>学硕推免</b></td><td>推荐免试攻读学术型硕士，侧重学术研究，可直博</td></tr>
+  <tr><td><b>专硕推免</b></td><td>推荐免试攻读专业型硕士，侧重实践应用</td></tr>
+  <tr><td><b>直博</b></td><td>本科毕业后直接攻读博士学位，一般5年，竞争更激烈但补贴更高</td></tr>
+  <tr><td><b>硕博连读</b></td><td>先读硕士，通过考核后转博士，一般5-6年</td></tr>
+</table>
+
+<div class="callout callout-info">
+  <strong>推免名额比例：</strong>不同学校推免比例差异很大。985高校一般在20%-30%左右，顶尖高校甚至更高；211高校一般在10%-15%左右；双非院校一般在2%-5%左右。具体名额由教育部每年下达。
+</div>
+
+<h2 id="s2">二、保研条件与各项权重</h2>
+
+<h3>2.1 保研的基本条件</h3>
+<ul>
+  <li>纳入国家普通本科招生计划录取的应届毕业生（不含专升本、第二学士学位、独立学院学生）</li>
+  <li>具有高尚的爱国主义情操和集体主义精神，社会主义信念坚定，社会责任感强，遵纪守法，积极向上，身心健康</li>
+  <li>勤奋学习，刻苦钻研，成绩优秀</li>
+  <li>学术研究兴趣浓厚，有较强的创新意识、创新能力和专业能力倾向</li>
+  <li>诚实守信，学风端正，无任何考试作弊和剽窃他人学术成果记录</li>
+  <li>品行表现优良，无任何违法违纪受处分记录</li>
+</ul>
+
+<h3>2.2 各项指标的权重</h3>
+<p>不同学校、不同学院的保研评分标准不同，但大致可以参考以下权重：</p>
+
+<table>
+  <tr><th>指标</th><th>权重范围</th><th>说明</th></tr>
+  <tr>
+    <td><b>绩点/学习成绩</b></td>
+    <td>70%-90%</td>
+    <td>最核心的指标，通常按前三年或前五学期的加权平均成绩排名</td>
+  </tr>
+  <tr>
+    <td><b>科研经历</b></td>
+    <td>5%-15%</td>
+    <td>论文发表、大创项目、科研竞赛、实验室经历等</td>
+  </tr>
+  <tr>
+    <td><b>学科竞赛</b></td>
+    <td>3%-10%</td>
+    <td>国家级/省级竞赛获奖，如数学建模、挑战杯、互联网+等</td>
+  </tr>
+  <tr>
+    <td><b>英语水平</b></td>
+    <td>2%-5%</td>
+    <td>四六级成绩、雅思托福等，部分学校要求六级必须过</td>
+  </tr>
+  <tr>
+    <td><b>学生工作/社会实践</b></td>
+    <td>1%-5%</td>
+    <td>学生会、班干部、志愿服务、社会实践等</td>
+  </tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>重要提醒：</strong>绩点是硬通货，永远是第一位的。科研、竞赛、学生工作都是"锦上添花"，不能"雪中送炭"。成绩排名不够，其他再强也没用。先把绩点搞上去，再考虑其他加分项。
+</div>
+
+<h2 id="s3">三、大学四年时间线</h2>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="ti-time">大一上学期 · 适应与探索</div>
+    <div class="ti-content">
+      <ul>
+        <li>尽快适应大学学习节奏，打好基础课基础</li>
+        <li>了解本专业的培养方案和保研政策</li>
+        <li>加入1-2个感兴趣的社团或学生组织</li>
+        <li>开始背英语单词，为四六级做准备</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大一下学期 · 确立目标</div>
+    <div class="ti-content">
+      <ul>
+        <li>保持高GPA，争取进入专业前10%-20%</li>
+        <li>通过英语四级，最好550+</li>
+        <li>开始了解本专业的科研方向，找机会进实验室</li>
+        <li>参加一些校级竞赛，积累比赛经验</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大二上学期 · 夯实基础</div>
+    <div class="ti-content">
+      <ul>
+        <li>专业课难度加大，重点保证核心课成绩</li>
+        <li>通过英语六级，争取500+</li>
+        <li>确定1-2个竞赛方向，组队准备（数学建模、挑战杯等）</li>
+        <li>联系导师，进入实验室做助研</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大二下学期 · 积累科研</div>
+    <div class="ti-content">
+      <ul>
+        <li>申请大创项目（国家级/省级/校级）</li>
+        <li>参加学科竞赛，争取拿省级以上奖项</li>
+        <li>在实验室做具体项目，争取有产出</li>
+        <li>如果六级成绩不理想，继续刷分</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大三上学期 · 关键冲刺</div>
+    <div class="ti-content">
+      <ul>
+        <li>这学期成绩非常重要，是保研排名的核心依据</li>
+        <li>参加含金量高的竞赛（数学建模国赛、挑战杯等）</li>
+        <li>科研争取有论文发表或专利申请</li>
+        <li>开始了解目标院校和导师</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大三下学期 · 准备材料</div>
+    <div class="ti-content">
+      <ul>
+        <li>准备夏令营申请材料：简历、个人陈述、推荐信等</li>
+        <li>3-5月：各高校陆续发布夏令营通知，开始投递</li>
+        <li>6月：夏令营入营通知陆续发布</li>
+        <li>复习专业课，准备夏令营笔试面试</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大三暑假 · 夏令营季</div>
+    <div class="ti-content">
+      <ul>
+        <li>7-8月：参加各大高校的夏令营</li>
+        <li>争取拿到优秀营员offer</li>
+        <li>如果夏令营结果不理想，继续准备预推免</li>
+      </ul>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="ti-time">大四上学期 · 最终冲刺</div>
+    <div class="ti-content">
+      <ul>
+        <li>9月初：本校推免资格确定</li>
+        <li>9月中：预推免高峰期，继续参加面试</li>
+        <li>9月28日左右：推免系统开放，填报志愿</li>
+        <li>10月：九推捡漏，确认最终录取</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2 id="s4">四、夏令营vs预推免vs九推</h2>
+
+<table>
+  <tr><th>项目</th><th>时间</th><th>特点</th><th>通过率</th></tr>
+  <tr>
+    <td><b>夏令营</b></td>
+    <td>7-8月</td>
+    <td>时间长（3-7天），形式多样（讲座、参观、笔试、面试），体验感强，给优秀营员名额多</td>
+    <td>相对较高<br>（约30%-50%）</td>
+  </tr>
+  <tr>
+    <td><b>预推免</b></td>
+    <td>9月中上旬</td>
+    <td>时间短（1-2天），直接考核（笔试+面试），节奏快，竞争激烈</td>
+    <td>中等<br>（约20%-30%）</td>
+  </tr>
+  <tr>
+    <td><b>九推</b></td>
+    <td>9月28日后</td>
+    <td>推免系统开放后，捡漏剩余名额，不确定性大，时间紧迫</td>
+    <td>不确定<br>（看运气+实力）</td>
+  </tr>
+</table>
+
+<div class="callout callout-ok">
+  <strong>策略建议：</strong><br>
+  ① 夏令营是主战场，尽量多投、多参加，拿到offer就稳了<br>
+  ② 预推免是第二战场，夏令营没拿到满意offer的要抓住机会<br>
+  ③ 九推是最后防线，不到最后不要放弃，但不要把希望全押在九推上<br>
+  ④ 越早拿到offer越安心，争取在夏令营阶段就搞定
+</div>
+
+<h2 id="s5">五、文书材料清单与写法</h2>
+
+<h3>5.1 材料清单</h3>
+<table>
+  <tr><th>材料</th><th>重要性</th><th>说明</th></tr>
+  <tr><td>个人简历（CV）</td><td>⭐⭐⭐⭐⭐</td><td>1页A4，最核心的材料</td></tr>
+  <tr><td>个人陈述（PS）</td><td>⭐⭐⭐⭐⭐</td><td>1000-1500字，讲好你的故事</td></tr>
+  <tr><td>成绩单</td><td>⭐⭐⭐⭐⭐</td><td>盖教务处公章的官方成绩单</td></tr>
+  <tr><td>排名证明</td><td>⭐⭐⭐⭐⭐</td><td>专业排名/总人数，盖学院公章</td></tr>
+  <tr><td>英语水平证明</td><td>⭐⭐⭐⭐</td><td>四六级、雅思、托福成绩单复印件</td></tr>
+  <tr><td>获奖证书</td><td>⭐⭐⭐⭐</td><td>按重要性排序，扫描成PDF</td></tr>
+  <tr><td>科研成果证明</td><td>⭐⭐⭐⭐</td><td>论文、专利、大创立项证明等</td></tr>
+  <tr><td>推荐信</td><td>⭐⭐⭐</td><td>一般需要2封副教授以上推荐</td></tr>
+  <tr><td>学生证/身份证</td><td>⭐⭐⭐</td><td>复印件，证明身份</td></tr>
+</table>
+
+<h3>5.2 个人简历怎么写</h3>
+<p>简历是给老师的第一印象，一定要简洁、专业、有亮点。</p>
+<ul>
+  <li><strong>基本信息：</strong>姓名、学校、专业、联系方式、照片（证件照）</li>
+  <li><strong>教育背景：</strong>学校、专业、绩点、排名、核心课程</li>
+  <li><strong>科研经历：</strong>项目名称、你的角色、做了什么、取得了什么成果</li>
+  <li><strong>竞赛获奖：</strong>按级别排序（国家级 > 省级 > 校级），注明获奖比例</li>
+  <li><strong>技能证书：</strong>英语、计算机、专业软件等</li>
+  <li><strong>学生工作/社会实践：</strong>简写，不要占太多篇幅</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>简历写作原则：</strong><br>
+  ① 一页纸原则：内容再多也要浓缩到1页A4<br>
+  ② 量化原则：用数据说话，比如"排名3/120"比"成绩优异"有说服力<br>
+  ③ STAR法则：描述经历用Situation-Task-Action-Result结构<br>
+  ④ 真实性原则：绝对不能造假，可以包装但不能编造
+</div>
+
+<h3>5.3 个人陈述怎么写</h3>
+<p>个人陈述是唯一能让老师全面了解你的机会，要写出"为什么你适合这个专业"。</p>
+
+<h4>个人陈述结构</h4>
+<ol>
+  <li><strong>开头：</strong>自我介绍 + 为什么选择这个专业/方向（100-200字）</li>
+  <li><strong>学习情况：</strong>成绩排名、核心课程、知识储备（200-300字）</li>
+  <li><strong>科研经历：</strong>2-3段科研经历，详细描述你的贡献和收获（400-600字）</li>
+  <li><strong>竞赛与获奖：</strong>突出含金量高的奖项，说明你的能力（200字）</li>
+  <li><strong>为什么选该校：</strong>对目标院校/导师的了解和向往（100-200字）</li>
+  <li><strong>未来规划：</strong>研究生阶段的学习计划和职业目标（100字）</li>
+</ol>
+
+<div class="callout callout-warn">
+  <strong>个人陈述避坑：</strong><br>
+  ① 不要写成简历的文字版，要有故事、有逻辑、有感情<br>
+  ② 不要空话套话，要有具体事例支撑<br>
+  ③ 不要千篇一律，申请不同学校要针对性修改（尤其是"为什么选我们"部分）<br>
+  ④ 不要抄袭，老师看的材料多了，一眼就能看出来
+</div>
+
+<h3>5.4 推荐信怎么弄</h3>
+<ul>
+  <li>一般需要2封，最好是副教授及以上职称的老师</li>
+  <li>优先找熟悉你的老师：专业课老师、科研导师、班主任等</li>
+  <li>提前1-2周联系老师，不要临时抱佛脚</li>
+  <li>可以自己先写好初稿让老师修改，减轻老师负担</li>
+  <li>推荐信内容要具体，有细节，不要全是套话</li>
+</ul>
+
+<h2 id="s6">六、面试准备</h2>
+
+<h3>6.1 面试的基本形式</h3>
+<table>
+  <tr><th>形式</th><th>内容</th><th>准备要点</th></tr>
+  <tr>
+    <td><b>专业面试</b></td>
+    <td>考察专业知识、科研经历、学术思维</td>
+    <td>复习核心专业课、熟悉自己的科研项目</td>
+  </tr>
+  <tr>
+    <td><b>英语面试</b></td>
+    <td>自我介绍、日常对话、专业英语、文献翻译</td>
+    <td>准备英文自我介绍、积累专业词汇</td>
+  </tr>
+  <tr>
+    <td><b>综合面试</b></td>
+    <td>个人经历、职业规划、综合素质</td>
+    <td>梳理自己的经历，准备行为面试题</td>
+  </tr>
+</table>
+
+<h3>6.2 中文高频问题</h3>
+<div class="grid-2">
+  <div>
+    <p><strong>自我介绍类：</strong></p>
+    <ul>
+      <li>请做一个3分钟的自我介绍</li>
+      <li>介绍一下你的优缺点</li>
+      <li>你最大的特点是什么</li>
+    </ul>
+    <p><strong>科研经历类：</strong></p>
+    <ul>
+      <li>介绍一下你做过的科研项目</li>
+      <li>你在项目中负责什么</li>
+      <li>你遇到的最大困难是什么，怎么解决的</li>
+      <li>你的创新点在哪里</li>
+    </ul>
+  </div>
+  <div>
+    <p><strong>专业知识类：</strong></p>
+    <ul>
+      <li>你最喜欢哪门课，为什么</li>
+      <li>解释一下XX概念/原理</li>
+      <li>你对本专业哪个方向感兴趣</li>
+    </ul>
+    <p><strong>动机规划类：</strong></p>
+    <ul>
+      <li>为什么选择我们学校/学院</li>
+      <li>你为什么想读研究生</li>
+      <li>你未来的研究方向是什么</li>
+      <li>如果没选上你怎么办</li>
+    </ul>
+  </div>
+</div>
+
+<h3>6.3 英文高频问题</h3>
+<ul>
+  <li>Please introduce yourself briefly.</li>
+  <li>Why do you choose our university / this major?</li>
+  <li>What are your strengths and weaknesses?</li>
+  <li>Introduce your hometown / family / university.</li>
+  <li>What's your plan for graduate study?</li>
+  <li>Introduce a research project you participated in.</li>
+  <li>What's your favorite course and why?</li>
+  <li>What do you usually do in your spare time?</li>
+  <li>Why do you want to pursue a master's degree?</li>
+  <li>Do you have any questions for us?</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>面试答题思路：</strong><br>
+  ① 自我介绍：基本信息+学习+科研+特点，控制在3分钟内<br>
+  ② 行为类问题：用STAR法则组织答案，要有具体事例<br>
+  ③ 专业知识问题：先给结论，再展开解释，不会就诚实说不会，不要瞎编<br>
+  ④ 反问环节：可以问培养方案、研究方向、毕业要求等，不要问百度就能查到的问题
+</div>
+
+<h2 id="s7">七、择校策略</h2>
+
+<h3>7.1 评估自己的实力</h3>
+<p>择校前先客观评估自己的实力定位：</p>
+<ul>
+  <li><strong>看排名：</strong>专业排名多少？排名百分比是多少？</li>
+  <li><strong>看学校层次：</strong>本科是985/211/双非？（推免很看出身）</li>
+  <li><strong>看科研：</strong>有没有论文/专利/大创项目？</li>
+  <li><strong>看竞赛：</strong>有没有国家级/省级奖项？</li>
+  <li><strong>看英语：</strong>四六级分数？有没有雅思托福？</li>
+</ul>
+
+<h3>7.2 冲/稳/保策略</h3>
+<table>
+  <tr><th>层次</th><th>定位</th><th>数量</th><th>说明</th></tr>
+  <tr>
+    <td><b>冲刺</b></td>
+    <td>比本科学校高1-2个档次</td>
+    <td>3-5所</td>
+    <td>有难度但不是完全没可能，万一老师看上你了呢</td>
+  </tr>
+  <tr>
+    <td><b>稳妥</b></td>
+    <td>与本科学校同档次或略高</td>
+    <td>5-8所</td>
+    <td>正常发挥大概率能上，这是主战场</td>
+  </tr>
+  <tr>
+    <td><b>保底</b></td>
+    <td>比本科学校略低或本校</td>
+    <td>2-3所</td>
+    <td>确保有学上，不要好高骛远</td>
+  </tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>择校避坑：</strong><br>
+  ① 不要只看学校排名，要看专业排名和导师实力<br>
+  ② 不要扎堆北上广深，其他地区也有很多好学校<br>
+  ③ 不要只投顶尖院校，要拉开梯度<br>
+  ④ 本校一定要申，本校是最稳的保底
+</div>
+
+<h2 id="s8">八、信息渠道</h2>
+
+<h3>8.1 官方渠道</h3>
+<ul>
+  <li><strong>目标院校研究生院官网：</strong>最权威的信息来源，夏令营通知、招生简章都在这里发</li>
+  <li><strong>目标学院官网：</strong>更具体的专业信息、导师介绍、夏令营安排</li>
+  <li><strong>教育部推免服务系统：</strong>最终录取的官方系统（9月底开放）</li>
+</ul>
+
+<h3>8.2 民间渠道</h3>
+<ul>
+  <li><strong>保研论坛（baoyanwang.com）：</strong>最大的保研社区，经验帖、往年数据、内推信息</li>
+  <li><strong>微信公众号：</strong>保研人、保研论坛、后保研HBY、保研岛等，会汇总夏令营信息</li>
+  <li><strong>知乎/小红书：</strong>搜"XX大学保研"，能找到很多学长学姐的经验帖</li>
+  <li><strong>QQ群/微信群：</strong>各学校的保研交流群，信息更新快但要注意甄别</li>
+  <li><strong>学长学姐：</strong>最直接的信息来源，能拿到一手资料和内推机会</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>找夏令营信息的方法：</strong><br>
+  ① 收藏目标院校学院官网，定期查看<br>
+  ② 关注几个保研公众号，每天刷一下推送<br>
+  ③ 加入保研信息群，群友会分享最新通知<br>
+  ④ 3月份开始，每周整理一次最新的夏令营信息表<br>
+  ⑤ 用Excel做一个投递进度表，跟踪每所学校的状态
+</div>
+
+<h2 id="s9">九、保研失败的后路</h2>
+<p>保研是一场没有硝烟的战争，不是每个人都能成功。即使失败了，天也不会塌下来，还有很多路可以走。</p>
+
+<h3>9.1 考研</h3>
+<p>这是大多数保研失利同学的选择。</p>
+<ul>
+  <li><strong>优势：</strong>有保研准备的基础，专业课和英语底子不错</li>
+  <li><strong>时间：</strong>9月底才开始准备考研时间很紧，但不是不可能</li>
+  <li><strong>建议：</strong>保研过程中可以顺带复习考研内容，做两手准备</li>
+</ul>
+
+<h3>9.2 就业</h3>
+<ul>
+  <li><strong>优势：</strong>能保研的同学综合素质一般不错，找工作有竞争力</li>
+  <li><strong>时间：</strong>秋招9-11月是黄金期，刚好和保研失败衔接</li>
+  <li><strong>建议：</strong>提前准备简历，参加一些宣讲会，留好后路</li>
+</ul>
+
+<h3>9.3 出国/出境深造</h3>
+<ul>
+  <li><strong>适合：</strong>家庭条件允许、英语不错的同学</li>
+  <li><strong>方向：</strong>香港、新加坡、英国、澳洲、美国等</li>
+  <li><strong>时间：</strong>大部分地区秋季入学申请是9月-次年2月，来得及</li>
+  <li><strong>建议：</strong>提前考出雅思/托福，准备好申请材料</li>
+</ul>
+
+<h3>9.4 其他选择</h3>
+<ul>
+  <li><strong>考公/考选调生：</strong>适合想进体制内的同学</li>
+  <li><strong>gap一年：</strong>休息调整，再做打算</li>
+  <li><strong>创业：</strong>适合有想法、有项目的同学</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>心态建设：</strong>保研只是人生众多选择中的一个，不是唯一的路。即使失败了，也不代表你不够优秀。很多保研成功的人后来发展也未必就比考研或工作的人好。人生是一场马拉松，不是百米冲刺。保持好心态，条条大路通罗马。
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="kaoyan_guide.html">
+      <div class="ri-ico">🎓</div>
+      <div class="ri-title">考研备考全指南</div>
+      <div class="ri-desc">择校+复习规划</div>
+    </a>
+    <a class="related-item" href="resume_guide.html">
+      <div class="ri-ico">📄</div>
+      <div class="ri-title">简历写法指南</div>
+      <div class="ri-desc">STAR法则+避坑</div>
+    </a>
+    <a class="related-item" href="interview_guide.html">
+      <div class="ri-ico">💼</div>
+      <div class="ri-title">面试通关指南</div>
+      <div class="ri-desc">自我介绍+高频问题</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

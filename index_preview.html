@@ -474,8 +474,6 @@ body.sidebar-open{overflow:hidden}
 .tag-blank:hover{border-color:var(--primary-mid);color:var(--primary)}
 .reslib-cat-pane{display:none}
 .reslib-cat-pane.active{display:block}
-#backToTop{position:fixed;right:20px;bottom:80px;width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;opacity:0;transition:all .3s;z-index:900;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-#backToTop:hover{transform:scale(1.1)!important;box-shadow:0 4px 16px rgba(0,0,0,.2)!important}
 
 .res-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;transition:all .15s;text-decoration:none;color:var(--text)}
 .res-link:hover{border-color:var(--primary-mid);background:var(--primary-light);text-decoration:none}
@@ -514,17 +512,6 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .tab-pane.active{display:block}
 
 .callout{padding:12px 14px;border-radius:var(--radius-sm);font-size:13px;margin:10px 0}
-.toc-float{position:fixed;right:16px;top:80px;width:160px;max-height:calc(100vh - 120px);overflow-y:auto;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);z-index:500;font-size:12px;display:none}
-.toc-float.show{display:block}
-.toc-float .toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.toc-float a{display:block;padding:5px 8px;color:var(--muted);text-decoration:none;border-radius:6px;margin-bottom:2px;line-height:1.4;transition:all .15s}
-.toc-float a:hover{background:var(--primary-light);color:var(--primary)}
-.toc-float a.active{background:var(--primary-light);color:var(--primary);font-weight:600}
-@media(max-width:900px){.toc-float{display:none!important}}
-.toc-toggle{position:fixed;right:16px;top:60px;width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:501;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none}
-.toc-toggle.show{display:flex}
-@media(max-width:900px){.toc-toggle{display:none!important}}
-.anchor-link{color:inherit;text-decoration:none;scroll-margin-top:70px}
 .callout-info{background:var(--primary-light);color:var(--primary);border-left:3px solid var(--primary-mid)}
 .callout-warn{background:var(--coral-light);color:var(--coral);border-left:3px solid var(--coral)}
 .callout-ok{background:var(--teal-light);color:var(--teal);border-left:3px solid var(--teal-mid)}
@@ -2305,7 +2292,34 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
           </div>
         </div>
 
-        <div class="card">
+                <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 四级备考干货</h3>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">整理好的系统知识，点开就能学，不用到处找</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">
+            <a href="kb/cet4_reading.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📖</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">阅读技巧大全</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">5大题型+答题顺序+刷题法</div>
+              </div>
+            </a>
+            <a href="kb/cet4_writing.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">✏️</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">写作万能模板</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">万能句+5类模板+范文</div>
+              </div>
+            </a>
+            <a href="kb/cet4_translation.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🇨🇳</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">翻译高频词汇</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">传统文化25组+翻译技巧</div>
+              </div>
+            </a>
+          </div>
+        </div>
+<div class="card">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M9 4v16M4 9h5"></path></svg>每日25词 · 艾宾浩斯</h3>
             <p>按遗忘曲线复习：1天·2天·4天·7天·15天。今日新词+复习词：</p>
             <div id="wordList"><div style="padding:16px;background:var(--bg);border-radius:8px;text-align:center"><p style="color:var(--hint);font-size:15px;margin-bottom:8px">今日还没添加单词 · 点击"载入今日25词"自动推荐四级高频词</p><p style="font-size:13px;color:var(--hint)">词库共100+词，每日按日期循环推荐25词，含熟词生义+巧记+真题例句+有道标准发音</p></div></div>
@@ -2368,124 +2382,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
 
-      
-        <div class="card" style="margin-top:16px">
-          <h3>📖 四级阅读三大题型技巧 · 直接套用</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">阅读占35%，是提分最快的板块。每种题型有固定套路。</p>
-          
-          <h4 style="color:var(--primary)">一、仔细阅读（20%·最重要）</h4>
-          <div class="callout callout-info" style="margin-bottom:10px">
-            <b>答题步骤：</b>① 先读题干（不读选项）→ ② 划关键词 → ③ 回原文定位 → ④ 对比选项找同义替换
-          </div>
-          <table>
-            <tr><th style="width:70px">题型</th><th>识别标志</th><th>解题方法</th></tr>
-            <tr><td><b>细节题</b></td><td>what/why/how/because + 具体信息</td><td>定位到句找同义替换，<b>原词重现往往是坑</b></td></tr>
-            <tr><td><b>主旨题</b></td><td>main idea / best title</td><td>首段+末段+各段首句，找重复出现的核心词</td></tr>
-            <tr><td><b>态度题</b></td><td>attitude / tone</td><td>找形容词、副词、转折词；positive/negative/objective常考</td></tr>
-            <tr><td><b>推理题</b></td><td>infer / imply / suggest</td><td>别瞎推，<b>答案是原文的改写</b>，只是换了说法</td></tr>
-            <tr><td><b>词义题</b></td><td>word/phrase means</td><td>看上下文解释、举例、对比，代入验证</td></tr>
-          </table>
-          
-          <h4 style="color:var(--primary);margin-top:14px">二、长篇匹配（10%·最易得分）</h4>
-          <ul>
-            <li><b>先题后文：</b>先看10个题干，每道划2-3个关键词（专有名词/数字/大写）</li>
-            <li><b>带着关键词扫：</b>不用读懂，找哪段出现了同样的关键词</li>
-            <li><b>同义替换才是答案：</b>题干和原文通常不是一模一样，是近义表达</li>
-            <li><b>先易后难：</b>有人名地名数字的先做，剩下的再慢慢找</li>
-            <li><b>限时15分钟：</b>做不出来就蒙，别恋战</li>
-          </ul>
-          
-          <h4 style="color:var(--primary);margin-top:14px">三、选词填空（5%·性价比最低）</h4>
-          <ul>
-            <li><b>最后做：</b>分少题难，时间不够直接蒙</li>
-            <li><b>先标词性：</b>15个选项按 n./v./adj./adv. 分四类</li>
-            <li><b>判断空格词性：</b>看空格前后的词判断要填什么</li>
-            <li><b>缩小范围再选：</b>从对应词性的3-5个词里挑</li>
-          </ul>
-          <div class="callout callout-warn" style="margin-top:10px">
-            <b>答题顺序建议：</b>仔细阅读（最值钱）→ 长篇匹配（易得分）→ 选词填空（放最后）
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>✏️ 四级写作万能句+高分模板</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">四级写作120-180词，30分钟。背会这些万能句直接套。</p>
-          
-          <h4 style="color:var(--primary)">开头段万能句（3选1）</h4>
-          <ol>
-            <li><b>现象引入：</b>Nowadays, the phenomenon of ______ has aroused wide concern among the public.</li>
-            <li><b>观点引入：</b>When it comes to ______, people's opinions vary from person to person.</li>
-            <li><b>问题引入：</b>In recent years, ______ has become a common problem in our daily life.</li>
-          </ol>
-          
-          <h4 style="color:var(--primary)">中间论证万能句</h4>
-          <ul>
-            <li><b>第一个理由：</b>First and foremost, ______. The primary reason is that ______.</li>
-            <li><b>第二个理由：</b>Furthermore, ______. It is widely acknowledged that ______.</li>
-            <li><b>举例：</b>A good case in point is that ______.</li>
-            <li><b>数据：</b>According to a recent survey, about ______% of people ______.</li>
-            <li><b>对比：</b>On the contrary, those who ______ argue that ______.</li>
-          </ul>
-          
-          <h4 style="color:var(--primary)">结尾段万能句（3选1）</h4>
-          <ol>
-            <li><b>总结观点：</b>From what has been discussed above, we can safely draw the conclusion that ______.</li>
-            <li><b>提出建议：</b>It is high time that immediate measures should be taken to ______.</li>
-            <li><b>展望未来：</b>Only in this way can we ______ and build a better future.</li>
-          </ol>
-          
-          <h4 style="color:var(--primary)">10个提分高级替换词</h4>
-          <table>
-            <tr><th>别写这个</th><th>换成这个</th></tr>
-            <tr><td>very important</td><td><b>vital / crucial / of great importance</b></td></tr>
-            <tr><td>many people</td><td><b>the majority of people / individuals</b></td></tr>
-            <tr><td>think</td><td><b>argue / maintain / hold the view that</b></td></tr>
-            <tr><td>good</td><td><b>beneficial / positive / favorable</b></td></tr>
-            <tr><td>bad</td><td><b>negative / adverse / harmful</b></td></tr>
-            <tr><td>big</td><td><b>enormous / significant / considerable</b></td></tr>
-            <tr><td>more and more</td><td><b>an increasing number of / increasingly</b></td></tr>
-            <tr><td>because</td><td><b>due to / owing to / on account of</b></td></tr>
-            <tr><td>help</td><td><b>contribute to / facilitate</b></td></tr>
-            <tr><td>finally</td><td><b>consequently / therefore / as a result</b></td></tr>
-          </table>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>🇨🇳 四级翻译高频词汇 · 直接背</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">常考中国传统文化、社会发展类话题。</p>
-          
-          <h4 style="color:var(--primary)">中国传统文化（最常考）</h4>
-          <table>
-            <tr><th>中文</th><th>英文</th><th>中文</th><th>英文</th></tr>
-            <tr><td>春节</td><td>the Spring Festival</td><td>中秋节</td><td>the Mid-Autumn Festival</td></tr>
-            <tr><td>端午节</td><td>the Dragon Boat Festival</td><td>清明节</td><td>the Qingming Festival</td></tr>
-            <tr><td>元宵节</td><td>the Lantern Festival</td><td>重阳节</td><td>the Double Ninth Festival</td></tr>
-            <tr><td>儒家思想</td><td>Confucianism</td><td>道家</td><td>Taoism</td></tr>
-            <tr><td>孔子</td><td>Confucius</td><td>孟子</td><td>Mencius</td></tr>
-            <tr><td>四大发明</td><td>the Four Great Inventions</td><td>造纸术</td><td>papermaking</td></tr>
-            <tr><td>印刷术</td><td>printing</td><td>指南针</td><td>the compass</td></tr>
-            <tr><td>火药</td><td>gunpowder</td><td>丝绸之路</td><td>the Silk Road</td></tr>
-            <tr><td>长城</td><td>the Great Wall</td><td>故宫</td><td>the Forbidden City</td></tr>
-            <tr><td>书法</td><td>calligraphy</td><td>京剧</td><td>Peking Opera</td></tr>
-            <tr><td>太极拳</td><td>Tai Chi</td><td>饺子</td><td>Jiaozi / dumplings</td></tr>
-            <tr><td>粽子</td><td>Zongzi</td><td>月饼</td><td>mooncake</td></tr>
-          </table>
-          
-          <h4 style="color:var(--primary);margin-top:12px">社会发展类</h4>
-          <table>
-            <tr><th>中文</th><th>英文</th><th>中文</th><th>英文</th></tr>
-            <tr><td>改革开放</td><td>reform and opening-up</td><td>经济增长</td><td>economic growth</td></tr>
-            <tr><td>城市化</td><td>urbanization</td><td>脱贫</td><td>poverty alleviation</td></tr>
-            <tr><td>小康社会</td><td>a well-off society</td><td>可持续发展</td><td>sustainable development</td></tr>
-            <tr><td>科技创新</td><td>technological innovation</td><td>人工智能</td><td>artificial intelligence</td></tr>
-            <tr><td>共享经济</td><td>sharing economy</td><td>移动支付</td><td>mobile payment</td></tr>
-            <tr><td>高铁</td><td>high-speed railway</td><td>基础设施</td><td>infrastructure</td></tr>
-          </table>
-          <div class="callout callout-info" style="margin-top:10px">
-            <b>翻译小技巧：</b>① 不会的词换个说法（用简单词解释）；② 长句拆短句；③ 一般现在时为主；④ 专有名词确保准确。
-          </div>
-        </div>
-<div class="tab-pane" id="t-cet6">
+      <div class="tab-pane" id="t-cet6">
         <div class="callout callout-info">
           <strong>六级定位：</strong>过四级即可报六级，建议大一/大二趁热打铁考掉。六级550+是保研/求职强加分项，越早过越主动。
         </div>
@@ -2818,7 +2715,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <strong>提示：</strong>各校保研率、考证/考研通过率差异大，请查本校官网或问学长学姐获取真实数据。
         </div>
         <div class="grid grid-3">
-          <div class="card">
+                  <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 高数知识点大全</h3>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">函数极限/导数微分/中值定理/不定积分/定积分，5大模块全覆盖</p>
+          <a href="kb/gaokao_math.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><button class="btn btn-sm btn-primary">查看完整高数知识点 →</button></a>
+        </div>
+<div class="card">
             <h3>保研路径</h3>
             <ul>
               <li><strong>大一：</strong>绩点为王，专业前10%是底线</li>
@@ -2898,7 +2800,26 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             </div>
           </div>
         </div>
-      <div class="card" style="margin-top:16px">
+              <div class="card" style="margin-top:16px">
+          <h3>📚 知识库 · 升学备考</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px">
+            <a href="kb/baoyan_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🎓</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">保研全攻略</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">四年时间线+文书+面试20问</div>
+              </div>
+            </a>
+            <a href="kb/kaoyan_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📖</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">考研备考指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">择校+规划+政英数专攻略</div>
+              </div>
+            </a>
+          </div>
+        </div>
+<div class="card" style="margin-top:16px">
         <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13"></path><path d="M3 6h.01M3 12h.01M3 18h.01"></path></svg>保研 vs 考研 · 双线作战决策表</h3>
         <div class="grid grid-2">
           <div>
@@ -3018,117 +2939,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <tr><td style="padding:8px;border:1px solid var(--border)"><b>政治</b>（性价比最高）</td><td style="padding:8px;border:1px solid var(--border)">暂不投入或只看马原</td><td style="padding:8px;border:1px solid var(--border)">跟一轮强化课+选择题刷题</td><td style="padding:8px;border:1px solid var(--border)">冲刺押题+时政+主观题背诵</td></tr>
             </tbody>
           </table>
-          <div class="callout callout-warn" style="margin-top:8px"><strong>应急：</strong>二战/在职或基础薄弱，可"政治保中上、英语保过线、数学拉差距、专业课定胜负"——把有限时间花在刀口上。
-        <div class="card" style="margin-top:16px">
-          <h3>📐 高数常考题型解题套路</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">高数上最容易挂，掌握这些固定题型，期末不慌。</p>
-          
-          <h4 style="color:var(--primary)">一、求极限（必考）</h4>
-          <table>
-            <tr><th style="width:120px">题型</th><th>方法</th><th>适用条件</th></tr>
-            <tr><td><b>0/0型</b></td><td>洛必达法则 / 等价无穷小替换</td><td>分子分母都→0</td></tr>
-            <tr><td><b>∞/∞型</b></td><td>洛必达法则 / 除以最高次幂</td><td>分子分母都→∞</td></tr>
-            <tr><td><b>∞-∞型</b></td><td>通分 / 有理化</td><td>两个无穷大相减</td></tr>
-            <tr><td><b>0·∞型</b></td><td>变形为0/0或∞/∞</td><td>一个→0一个→∞相乘</td></tr>
-            <tr><td><b>1^∞型</b></td><td>取e为底 / 重要极限公式</td><td>底数→1，指数→∞</td></tr>
-            <tr><td><b>0^0 / ∞^0型</b></td><td>取e为底，转化为0·∞型</td><td>两边取对数</td></tr>
-          </table>
-          <div class="callout callout-info" style="margin-top:8px">
-            <b>等价无穷小（x→0时）：</b>sinx~x · tanx~x · arcsinx~x · arctanx~x · ln(1+x)~x · e^x-1~x · 1-cosx~x²/2 · (1+x)^a-1~ax
-          </div>
-          
-          <h4 style="color:var(--primary);margin-top:14px">二、求导（必背公式+法则）</h4>
-          <ul>
-            <li><b>基本公式：</b>(x^n)'=nx^(n-1) · (e^x)'=e^x · (lnx)'=1/x · (sinx)'=cosx · (cosx)'=-sinx</li>
-            <li><b>四则运算法则：</b>(uv)'=u'v+uv' · (u/v)'=(u'v-uv')/v²</li>
-            <li><b>复合函数链式法则：</b>外层导数 × 内层导数，从外到内一层层求</li>
-            <li><b>隐函数求导：</b>两边同时对x求导，y是x的函数要用链式法则</li>
-            <li><b>参数方程求导：</b>dy/dx = (dy/dt)/(dx/dt)</li>
-          </ul>
-          
-          <h4 style="color:var(--primary);margin-top:14px">三、积分（期末大头）</h4>
-          <table>
-            <tr><th style="width:120px">方法</th><th>适用情况</th><th>怎么做</th></tr>
-            <tr><td><b>直接积分</b></td><td>基本公式能直接套</td><td>公式表背熟直接写</td></tr>
-            <tr><td><b>第一类换元</b></td><td>被积函数有复合结构</td><td>凑微分，把dx变成d(u(x))</td></tr>
-            <tr><td><b>第二类换元</b></td><td>有根号</td><td>三角代换 / 根式代换</td></tr>
-            <tr><td><b>分部积分</b></td><td>两种不同类型函数相乘</td><td>∫udv = uv - ∫vdu，选u的顺序：反→对→幂→指→三</td></tr>
-            <tr><td><b>有理函数积分</b></td><td>多项式分式</td><td>因式分解 → 部分分式分解</td></tr>
-          </table>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>📊 线代概率核心考点速记</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">线性代数+概率论，公式多但题型固定。</p>
-          
-          <h4 style="color:var(--primary)">线性代数 · 5大核心考点</h4>
-          <ol>
-            <li><b>行列式计算：</b>定义法 / 按行(列)展开 / 化为三角形 / 特征值之积</li>
-            <li><b>矩阵运算：</b>乘法不满足交换律！AB≠BA；逆矩阵公式：A^(-1)=A*/|A|</li>
-            <li><b>线性方程组：</b>
-              <ul>
-                <li>齐次 Ax=0：有非零解 ⇨ r(A)&lt;n</li>
-                <li>非齐次 Ax=b：有解 ⇨ r(A)=r(A|b)</li>
-                <li>解的结构：特解 + 齐次通解（基础解系线性组合）</li>
-              </ul>
-            </li>
-            <li><b>特征值与特征向量：</b>
-              <ul>
-                <li>求法：|λE-A|=0 求特征值，代入(λE-A)x=0求特征向量</li>
-                <li>性质：迹=特征值之和；行列式=特征值之积</li>
-              </ul>
-            </li>
-            <li><b>二次型：</b>化标准形（正交变换法 / 配方法）；正定判定</li>
-          </ol>
-          
-          <h4 style="color:var(--primary);margin-top:14px">概率论 · 5大核心考点</h4>
-          <ol>
-            <li><b>事件与概率：</b>古典概型 / 条件概率 / 全概率公式 / 贝叶斯公式</li>
-            <li><b>一维随机变量：</b>
-              <ul>
-                <li>离散型：分布律、期望、方差</li>
-                <li>连续型：概率密度f(x)、分布函数F(x)=∫f(t)dt</li>
-              </ul>
-            </li>
-            <li><b>常见分布：</b>
-              <ul>
-                <li>二项分布 B(n,p)：E=np, D=np(1-p)</li>
-                <li>正态分布 N(μ,σ²)：标准正态Z=(X-μ)/σ</li>
-                <li>均匀分布、指数分布、泊松分布</li>
-              </ul>
-            </li>
-            <li><b>数字特征：</b>期望E(X)、方差D(X)=E(X²)-[E(X)]²、协方差、相关系数</li>
-            <li><b>大数定律与中心极限定理：</b>大量独立同分布变量之和近似正态分布</li>
-          </ol>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>💡 数学期末冲刺复习法</h3>
-          <div class="grid grid-2">
-            <div>
-              <h4>两周冲刺计划</h4>
-              <ol>
-                <li><b>第1-3天：</b>看目录+笔记，建立知识框架，知道每章讲什么</li>
-                <li><b>第4-7天：</b>刷课后题，每题都搞懂，错题标记</li>
-                <li><b>第8-10天：</b>刷往年真题（至少3套），限时做</li>
-                <li><b>第11-12天：</b>错题二刷，总结易错点</li>
-                <li><b>第13-14天：</b>公式大全过一遍+错题三刷+模考</li>
-              </ol>
-            </div>
-            <div>
-              <h4>避坑提醒</h4>
-              <ul>
-                <li><b>别只看不动笔：</b>数学必须亲手算，看懂了≠会做</li>
-                <li><b>别死磕难题：</b>期末考70%是基础题，先保基础分</li>
-                <li><b>别忽视例题：</b>老师出卷常参考课本例题改</li>
-                <li><b>错题本必须有：</b>同一道题错第二次就很危险了</li>
-                <li><b>计算题别跳步：</b>一步错步步错，写清楚过程</li>
-                <li><b>历年真题必刷：</b>题型重复率很高</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-</div>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>应急：</strong>二战/在职或基础薄弱，可"政治保中上、英语保过线、数学拉差距、专业课定胜负"——把有限时间花在刀口上。</div>
         </div>
 
         <!-- 新增：调剂指南 -->
@@ -3157,120 +2968,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <div class="callout callout-warn" style="margin-top:8px"><strong>警惕：</strong>调剂只认"研招网正式系统"和个人账户操作。凡是要"付费内推/保录取/先交押金"的一律是骗局。</div>
         </div>
       </div>
-      
-        <div class="card" style="margin-top:16px">
-          <h3>🎓 保研全流程时间线 · 别错过关键节点</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">保研不是大三才准备的，是三年的持久战。每个时间点该做什么，一目了然。</p>
-          <table>
-            <tr><th style="width:100px">时间</th><th>关键事项</th><th>注意点</th></tr>
-            <tr><td><b>大一全年</b></td><td>打基础：刷高GPA、过四级、入社团/实验室</td><td>大一绩点最容易拉高，也最容易掉——别松懈</td></tr>
-            <tr><td><b>大二上</b></td><td>过六级、确定专业方向、找导师进课题组</td><td>六级550+是硬加分项；越早进实验室越好</td></tr>
-            <tr><td><b>大二下</b></td><td>参加学科竞赛、开始攒科研经历</td><td>数学建模/挑战杯/大英赛，选1-2个深耕</td></tr>
-            <tr><td><b>大三上</b></td><td>刷高GPA冲刺、考雅思/托福（可选）、发论文</td><td>这学期成绩在保研排名里权重最高</td></tr>
-            <tr><td><b>大三寒假</b></td><td>准备夏令营材料：简历/个人陈述/推荐信</td><td>文书要打磨多版，别等3月临时抱佛脚</td></tr>
-            <tr><td><b>大三下·3-5月</b></td><td>夏令营海投：Top校先投，保底校跟上</td><td>海投策略：冲3+稳5+保3，别只盯着梦校</td></tr>
-            <tr><td><b>大三下·6-7月</b></td><td>夏令营参营：笔试/面试/机试</td><td>提前准备专业课+英语口语+项目介绍</td></tr>
-            <tr><td><b>大四上·9月</b></td><td>预推免+九推正式填报系统</td><td>没拿到满意offer的，预推免是最后机会</td></tr>
-            <tr><td><b>大四上·9.28</b></td><td>推免系统开放，确认录取</td><td>系统操作：填志愿→接受复试→待录取确认</td></tr>
-          </table>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>📝 保研文书材料清单 · 一次备齐</h3>
-          <div class="grid grid-2">
-            <div>
-              <h4>必备材料（缺一不可）</h4>
-              <ul>
-                <li><b>成绩单：</b>前五学期/前六学期，盖教务处章</li>
-                <li><b>排名证明：</b>专业排名/总人数，盖学院章</li>
-                <li><b>四六级成绩单：</b>原件扫描件，越高越好</li>
-                <li><b>个人简历：</b>1页A4，简洁有力，突出亮点</li>
-                <li><b>个人陈述：</b>1000/1500/2000字三个版本</li>
-                <li><b>推荐信：</b>2封，副教授以上职称</li>
-                <li><b>获奖证书：</b>按含金量排序，扫描汇总成PDF</li>
-                <li><b>科研/实习证明：</b>论文录用通知、项目证明等</li>
-              </ul>
-            </div>
-            <div>
-              <h4>个人陈述怎么写</h4>
-              <ol>
-                <li><b>开头（1段）：</b>我是谁+为什么对这个方向感兴趣（用故事引入，别空喊口号）</li>
-                <li><b>学术背景（2-3段）：</b>相关课程成绩+科研项目+技能掌握（用数据说话，如"参与XX项目，负责XX模块，产出XX"）</li>
-                <li><b>为什么选贵校（1段）：</b>具体说贵系哪个方向/哪位老师吸引你，体现你做过功课</li>
-                <li><b>未来规划（1段）：</b>研究生阶段的学习计划+职业目标（别太虚，要具体）</li>
-                <li><b>结尾（1段）：</b>表达渴望+感谢，简洁有力</li>
-              </ol>
-              <div class="callout callout-warn" style="margin-top:8px">
-                <b>避坑：</b>别写"我从小就对XX感兴趣"这种空话；别堆奖项流水账；别抄模板痕迹太重。
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>🎤 保研面试高频问题 · 提前准备</h3>
-          <div class="grid grid-2">
-            <div>
-              <h4>中文面试高频</h4>
-              <ol>
-                <li>请做一个3分钟的自我介绍</li>
-                <li>你为什么选择我们学校/这个专业？</li>
-                <li>你最自豪的一段科研/项目经历是什么？</li>
-                <li>你的优缺点是什么？</li>
-                <li>你未来的研究方向/职业规划是什么？</li>
-                <li>你还报了哪些学校？如果都录取了怎么选？</li>
-                <li>你读过我们专业的哪些论文/著作？</li>
-                <li>如果没被录取，你有什么打算？</li>
-              </ol>
-            </div>
-            <div>
-              <h4>英文面试高频</h4>
-              <ol>
-                <li>Introduce yourself in English.</li>
-                <li>Why do you choose our university / this major?</li>
-                <li>What's your greatest strength / weakness?</li>
-                <li>Tell me about your research experience.</li>
-                <li>What's your plan for graduate study?</li>
-                <li>Who is your favorite professor / scholar? Why?</li>
-                <li>What's the most challenging thing you've ever done?</li>
-              </ol>
-              <div class="callout callout-info" style="margin-top:8px">
-                <b>面试技巧：</b>① 提前写好逐字稿，背熟但别像背书；② 用STAR法则讲经历（Situation→Task→Action→Result）；③ 不会的问题别说瞎话，老实说"这个我目前了解不深，但我的理解是…，之后会深入学习"。
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>📚 考研备考全规划 · 从0到上岸</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">考研是信息战+持久战。方向选对了，努力才有意义。</p>
-          
-          <h4 style="color:var(--primary)">一、选学校选专业（大三寒假前搞定）</h4>
-          <ul>
-            <li><b>怎么选学校：</b>看学科评估（A+/A/A-）、报录比、复试线、是否歧视本科出身</li>
-            <li><b>信息来源：</b>目标校研究生院官网、考研帮、知乎经验帖、直系学长学姐</li>
-            <li><b>择校策略：</b>冲1所+稳1所+保1所，9月正式报名前根据复习情况调整</li>
-            <li><b>避坑：</b>别盲目冲Top校，也别为了求稳选太差的——跳一跳够得着的最合适</li>
-          </ul>
-          
-          <h4 style="color:var(--primary);margin-top:12px">二、全年时间线</h4>
-          <table>
-            <tr><th style="width:100px">阶段</th><th>时间</th><th>核心任务</th></tr>
-            <tr><td><b>基础期</b></td><td>3-6月</td><td>英语单词+长难句；数学课本+基础课；专业课过一遍教材</td></tr>
-            <tr><td><b>强化期</b></td><td>7-8月</td><td>数学强化班+刷题；英语真题一刷；专业课深入；政治开始</td></tr>
-            <tr><td><b>提升期</b></td><td>9-10月</td><td>数学真题+二刷；英语真题二刷+作文；政治选择题；专业课背诵</td></tr>
-            <tr><td><b>冲刺期</b></td><td>11-12月</td><td>模考+查漏补缺；政治大题背诵；作文模板定型；专业课模考</td></tr>
-          </table>
-          
-          <h4 style="color:var(--primary);margin-top:12px">三、各科复习要点</h4>
-          <ul>
-            <li><b>政治：</b>9月开始不晚。肖秀荣1000题+肖四肖八是标配。大题最后一个月背，别太早。</li>
-            <li><b>英语：</b>单词全程不中断。真题是王道，做3遍不为过。作文模板11月定型。</li>
-            <li><b>数学：</b>最拉分的科目。基础→强化→真题→模考，每个阶段扎扎实实。错题本必须有。</li>
-            <li><b>专业课：</b>信息差最大。找直系学长学姐要资料+真题，指定教材反复看。</li>
-          </ul>
-        </div>
-<div class="tab-pane" id="t-major">
+      <div class="tab-pane" id="t-major">
         <div class="callout callout-info">
           <strong>核心心法：</strong>把"听懂"变成"能讲"，把"笔记"变成"体系"，把"作业"变成"作品"。下面这套方法适用于所有专业的专业课（替换专业名词即可）。
         </div>
@@ -4033,85 +3731,26 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <div><h4>实习 &amp; 校招 App</h4><ul style="font-size:12.5px;line-height:1.85"><li>牛客（笔试/面经/实习）</li><li>Boss直聘、智联、前程无忧(51job)、应届生求职网</li><li>企业官网/官方招聘公众号</li></ul></div>
           <div><h4>人脉 &amp; 内推</h4><ul style="font-size:12.5px;line-height:1.85"><li>学长学姐、导师、院系就业老师</li><li>实习转正、校友内推</li><li>领英(LinkedIn)、脉脉、职场社群</li></ul></div>
         </div>
-        <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。</div>
+        <div class="callout callout-info" style="margin-top:10px"><strong>安全的通用规则：</strong>凡是要你先付钱（培训费/押金/开卡）才能入职的，基本可直接避开；正式招聘不会索要银行卡密码或验证码。
         <div class="card" style="margin-top:16px">
-          <h3>📋 简历写法 · 一页定胜负</h3>
-          <p style="font-size:12.5px;color:var(--hint);margin-bottom:12px">HR看一份简历平均6秒。你只有6秒抓住TA的眼球。</p>
-          <div class="grid grid-2">
-            <div>
-              <h4>简历该放什么（按重要性排序）</h4>
-              <ol>
-                <li><b>个人信息：</b>姓名+电话+邮箱+照片（正装/职业照）</li>
-                <li><b>教育背景：</b>学校+专业+时间+GPA（>3.5才写）+相关课程3-5门</li>
-                <li><b>实习经历：</b>最重要！公司+职位+时间+做了什么+成果（数据）</li>
-                <li><b>项目经历：</b>课程项目/竞赛项目，STAR法则描述</li>
-                <li><b>技能证书：</b>语言+计算机+职业资格+软件技能</li>
-                <li><b>校园经历：</b>有亮点才写，别水</li>
-              </ol>
-            </div>
-            <div>
-              <h4>STAR法则写经历</h4>
-              <ul>
-                <li><b>S：</b>背景——当时是什么情况</li>
-                <li><b>T：</b>任务——你负责什么</li>
-                <li><b>A：</b>行动——你具体做了什么</li>
-                <li><b>R：</b>结果——取得了什么成果，<b>用数据</b></li>
-              </ul>
-              <div class="callout callout-warn" style="margin-top:8px">
-                <b>对比：</b><br>
-                ❌ "参与了XX项目的运营"<br>
-                ✅ "负责XX公众号内容运营，3个月发20篇原创，粉丝从500涨到3000，阅读量提升150%"
+          <h3>📚 知识库 · 求职必备</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px">
+            <a href="kb/resume_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">📋</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">简历写法完全指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">STAR法则+避坑20条+范文</div>
               </div>
-            </div>
+            </a>
+            <a href="kb/interview_guide.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">
+              <div style="padding:12px;background:var(--bg);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--primary-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:20px;margin-bottom:4px">🎯</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">面试通关指南</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">20问+群面技巧+谈薪方法</div>
+              </div>
+            </a>
           </div>
-          <h4 style="color:var(--primary);margin-top:14px">简历避坑10条</h4>
-          <table>
-            <tr><th>❌ 别这么写</th><th>✅ 改成这样</th></tr>
-            <tr><td>精通Excel/PS</td><td>熟练使用Excel数据透视表/VLOOKUP函数</td></tr>
-            <tr><td>性格开朗、认真负责</td><td>（用经历证明，别自夸）</td></tr>
-            <tr><td>个人评价一大段</td><td>不写个人评价，用经历说话</td></tr>
-            <tr><td>排版花哨五颜六色</td><td>简洁黑白，重点突出</td></tr>
-            <tr><td>一份简历投所有岗位</td><td>每个岗位针对性修改</td></tr>
-            <tr><td>写"熟练使用Office"</td><td>写具体技能：数据透视表/PPT/邮件</td></tr>
-            <tr><td>实习经历只写职责</td><td>写你做了什么+取得什么成果</td></tr>
-            <tr><td>一页写不下就两页</td><td>应届生一页足够，精简再精简</td></tr>
-            <tr><td>有错别字、格式不齐</td><td>反复检查，让同学帮忙看</td></tr>
-            <tr><td>文件名"简历1.docx"</td><td>"姓名-学校-岗位-电话.pdf"</td></tr>
-          </table>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>🎯 面试通关指南</h3>
-          <div class="grid grid-2">
-            <div>
-              <h4>面试前准备</h4>
-              <ul>
-                <li><b>研究公司：</b>官网+新闻+产品+竞品</li>
-                <li><b>研究岗位：</b>JD逐条分析，准备匹配经历</li>
-                <li><b>自我介绍：</b>1分钟+3分钟版，背熟但别像背书</li>
-                <li><b>行为面试：</b>准备5-8个STAR故事</li>
-                <li><b>反问环节：</b>准备2-3个有质量的问题</li>
-                <li><b>着装仪表：</b>干净整洁，比日常正式半档</li>
-              </ul>
-            </div>
-            <div>
-              <h4>面试高频8问</h4>
-              <ol>
-                <li>请做一个自我介绍</li>
-                <li>你为什么想来我们公司/这个岗位？</li>
-                <li>你最大的优点/缺点是什么？</li>
-                <li>说一段你最有成就感的经历</li>
-                <li>说一次你遇到的最大困难</li>
-                <li>你觉得自己适合这个岗位吗？</li>
-                <li>你的职业规划是什么？</li>
-                <li>你还有什么问题想问我的？</li>
-              </ol>
-            </div>
-          </div>
-          <div class="callout callout-info" style="margin-top:10px">
-            <b>反问环节问什么：</b>① "这个岗位最核心的KPI是什么？" ② "团队目前最大的挑战是什么？" ③ "您觉得做好这个岗位最需要什么能力？" —— 别问工资假期，这些offer里有。
-          </div>
-        </div>
+        </div></div>
       </div>
     </section>
 
@@ -4673,7 +4312,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
     </section>
-    <!-- 百宝库 -->
+    <!-- 资源宝库 -->
     <section class="view" id="view-reslib">
 <div class="section-intro">精选大学生真正用得上的网站、工具、平台，分好类、点一下就直达。省得你自己瞎找、收藏了再也不看。</div>
       <div class="page-head">
@@ -4684,12 +4323,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <!-- 分类标签 -->
       <div style="margin-bottom:14px">
         <div style="display:flex;gap:6px;flex-wrap:wrap" id="reslibCatTabs">
-          <span class="tag tag-teal" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-study&quot;,event)">📚 学习平台</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-research&quot;,event)">🔬 科研工具</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-efficiency&quot;,event)">⚡ 效率工具</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-design&quot;,event)">🎨 设计素材</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-docs&quot;,event)">📄 文档工具</span>
-          <span class="tag" style="cursor:pointer" onclick="switchResLibCat(&quot;reslib-edu&quot;,event)">🎯 升学资源</span>
+          <span class="tag tag-teal" style="cursor:pointer" onclick="switchResLibCat('reslib-study',event)">📚 学习平台</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-research',event)">🔬 科研工具</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-efficiency',event)">⚡ 效率工具</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-design',event)">🎨 设计素材</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-docs',event)">📄 文档工具</span>
+          <span class="tag tag-blank" style="cursor:pointer" onclick="switchResLibCat('reslib-edu',event)">🎯 升学资源</span>
         </div>
       </div>
 
@@ -4700,83 +4339,43 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <div class="grid grid-2" style="margin-top:10px">
             <a class="res-link" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🎓</div>
-              <div class="info">
-                <div class="name">中国大学MOOC</div>
-                <div class="desc">爱课程 · 北大清华等名校免费公开课，考研/期末复习神器</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">中国大学MOOC</div><div class="desc">名校公开课免费学，爱课程网出品</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.xuetangx.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🏫</div>
-              <div class="info">
-                <div class="name">学堂在线</div>
-                <div class="desc">清华发起的MOOC平台，理工科课程强，有清华专业课</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🏛️</div>
+              <div class="info"><div class="name">学堂在线</div><div class="desc">清华大学发起，国内外名校课程</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🌍</div>
-              <div class="info">
-                <div class="name">Coursera</div>
-                <div class="desc">全球名校课程（斯坦福/耶鲁等），有英文字幕，练英语+学知识</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Coursera</div><div class="desc">全球顶尖大学课程，可拿证书</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://search.bilibili.com/all?keyword=大学课程" target="_blank" rel="noopener noreferrer">
               <div class="ico">📺</div>
-              <div class="info">
-                <div class="name">B站 · 学习区</div>
-                <div class="desc">你懂的——高数/线代/考研/考证，啥课都有，免费且讲得好</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">B站学习区</div><div class="desc">啥课都有，免费且质量高</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://leetcode.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">💻</div>
-              <div class="info">
-                <div class="name">LeetCode 力扣</div>
-                <div class="desc">编程刷题必备，面试算法题题库，想进大厂从这里开始</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">LeetCode 力扣</div><div class="desc">编程刷题必备，面试题库</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.nowcoder.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🐂</div>
-              <div class="info">
-                <div class="name">牛客网</div>
-                <div class="desc">互联网求职笔试面试题库，还有内推信息和面经</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🐮</div>
+              <div class="info"><div class="name">牛客网</div><div class="desc">校招/实习/编程题面经全覆盖</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.runoob.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">📘</div>
-              <div class="info">
-                <div class="name">菜鸟教程</div>
-                <div class="desc">编程入门速查手册，HTML/CSS/JS/Python/Java全都有</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">📖</div>
+              <div class="info"><div class="name">菜鸟教程</div><div class="desc">编程入门速查，全语言教程</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🧒</div>
-              <div class="info">
-                <div class="name">可汗学院</div>
-                <div class="desc">数学/物理/经济等基础学科免费视频，英文原声磨耳朵</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🧮</div>
+              <div class="info"><div class="name">可汗学院</div><div class="desc">数学/经济等科目，免费通俗</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://dict.youdao.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📖</div>
-              <div class="info">
-                <div class="name">有道词典</div>
-                <div class="desc">网页版查词+例句+发音，写论文读文献随时查</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">有道词典</div><div class="desc">查词/翻译/单词本，学习必备</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.kekenet.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🎧</div>
-              <div class="info">
-                <div class="name">可可英语</div>
-                <div class="desc">四六级/考研英语听力真题在线练，分套分类，免费</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">可可英语</div><div class="desc">四六级/考研英语听力真题在线练</div></div><div class="arrow">↗</div>
             </a>
           </div>
         </div>
@@ -4785,87 +4384,47 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <!-- 科研工具库 -->
       <div class="reslib-cat-pane" id="reslib-research">
         <div class="card">
-          <h3>🔬 科研工具库 · 写论文、做实验、搞数据</h3>
+          <h3>🔬 科研工具库 · 写论文做数据</h3>
           <div class="grid grid-2" style="margin-top:10px">
             <a class="res-link" href="https://www.zotero.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📚</div>
-              <div class="info">
-                <div class="name">Zotero</div>
-                <div class="desc">免费开源文献管理神器，一键抓取+自动生成参考文献格式</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Zotero</div><div class="desc">免费开源文献管理，一键插入引用</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🔍</div>
-              <div class="info">
-                <div class="name">Google Scholar</div>
-                <div class="desc">谷歌学术，外文文献搜索首选，可直接引用导出</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Google Scholar</div><div class="desc">外文文献搜索首选，可导出引用</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📄</div>
-              <div class="info">
-                <div class="name">中国知网 CNKI</div>
-                <div class="desc">中文学术文献数据库，学校一般有买，用校园网或VPN访问</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">中国知网 CNKI</div><div class="desc">中文文献数据库，国内最全</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📊</div>
-              <div class="info">
-                <div class="name">万方数据</div>
-                <div class="desc">另一个中文学术数据库，学位论文全，知网没有的可以来这找</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">万方数据</div><div class="desc">学位论文/期刊/会议，知网补充</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.geogebra.org/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📐</div>
-              <div class="info">
-                <div class="name">GeoGebra</div>
-                <div class="desc">免费数学画图工具，几何/代数/统计都能画，写论文插图好用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">GeoGebra</div><div class="desc">数学绘图，函数几何动态演示</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.mathpix.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">∫</div>
-              <div class="info">
-                <div class="name">Mathpix</div>
-                <div class="desc">截图识别数学公式，直接转LaTeX/Word，写公式省半小时</div>
-              </div>
-              <div class="arrow">↗</div>
+            <a class="res-link" href="https://mathpix.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📷</div>
+              <div class="info"><div class="name">Mathpix</div><div class="desc">截图识别公式，直接转LaTeX</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.latexstudio.net/" target="_blank" rel="noopener noreferrer">
               <div class="ico">✍️</div>
-              <div class="info">
-                <div class="name">LaTeX 工作室</div>
-                <div class="desc">LaTeX中文教程+模板，毕业论文/期刊投稿排版用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">LaTeX工作室</div><div class="desc">中文LaTeX教程+模板下载</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">☁️</div>
-              <div class="info">
-                <div class="name">Overleaf</div>
-                <div class="desc">在线LaTeX编辑器，不用装环境，模板多，还能协作</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Overleaf</div><div class="desc">在线LaTeX编辑器，协作方便</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://sci-hub.se/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🔓</div>
-              <div class="info">
-                <div class="name">Sci-Hub</div>
-                <div class="desc">免费下载付费SCI论文（注意版权，学校有数据库的优先用学校的）</div>
-              </div>
-              <div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://www.spssau.com/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://spssau.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📈</div>
-              <div class="info">
-                <div class="name">SPSSAU</div>
-                <div class="desc">在线版SPSS，拖拽点选做统计分析，不用学软件操作</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">SPSSAU</div><div class="desc">在线数据分析，不用装SPSS</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.sci-hub.ru/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔓</div>
+              <div class="info"><div class="name">Sci-Hub</div><div class="desc">免费下载外文论文（注意版权）</div></div><div class="arrow">↗</div>
             </a>
           </div>
         </div>
@@ -4874,87 +4433,47 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <!-- 效率工具库 -->
       <div class="reslib-cat-pane" id="reslib-efficiency">
         <div class="card">
-          <h3>⚡ 效率工具库 · 笔记、导图、时间管理</h3>
+          <h3>⚡ 效率工具库 · 笔记导图云存储</h3>
           <div class="grid grid-2" style="margin-top:10px">
             <a class="res-link" href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📝</div>
-              <div class="info">
-                <div class="name">Notion</div>
-                <div class="desc">全能笔记+知识库，自由排版，做学习/生活/项目管理都行</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Notion</div><div class="desc">全能笔记+知识库，高度可定制</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">
               <div class="ico">💎</div>
-              <div class="info">
-                <div class="name">Obsidian</div>
-                <div class="desc">本地Markdown笔记，双链知识网络，数据完全在自己手里</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Obsidian</div><div class="desc">本地Markdown笔记，双向链接</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.yuque.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🐦</div>
-              <div class="info">
-                <div class="name">语雀</div>
-                <div class="desc">阿里出品的中文知识库，模板多，做笔记/文档/团队协作</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">语雀</div><div class="desc">阿里出品，知识协作平台</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://xmind.works/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://www.xmind.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🧠</div>
-              <div class="info">
-                <div class="name">XMind</div>
-                <div class="desc">思维导图工具，整理知识点、做论文框架、头脑风暴必备</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">XMind</div><div class="desc">思维导图老牌工具，简单好用</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.processon.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📊</div>
-              <div class="info">
-                <div class="name">ProcessOn</div>
-                <div class="desc">在线思维导图+流程图，免费版够用，不用装软件</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">ProcessOn</div><div class="desc">在线流程图/思维导图，免安装</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.jianguoyun.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">☁️</div>
-              <div class="info">
-                <div class="name">坚果云</div>
-                <div class="desc">自动同步云盘，文件多端同步+历史版本，写论文不怕丢</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">坚果云</div><div class="desc">国内稳定网盘，文件同步备份</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.forestapp.cc/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🌲</div>
-              <div class="info">
-                <div class="name">Forest 专注森林</div>
-                <div class="desc">专注计时APP，种树机制让你放下手机，考研/备考专注神器</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Forest 专注森林</div><div class="desc">种树戒手机，专注计时器</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.tomatolife.cn/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://www.tomatolist.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🍅</div>
-              <div class="info">
-                <div class="name">番茄ToDo</div>
-                <div class="desc">番茄钟+待办+数据统计，备考党用它记录学习时长</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">番茄ToDo</div><div class="desc">番茄钟+待办，学习打卡</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.51jianzhi.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">✂️</div>
-              <div class="info">
-                <div class="name">极简简历</div>
-                <div class="desc">在线做简历，模板多，一键导出PDF，求职保研都能用</div>
-              </div>
-              <div class="arrow">↗</div>
+            <a class="res-link" href="https://www.jianlimuban.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">📄</div>
+              <div class="info"><div class="name">极简简历</div><div class="desc">在线简历制作，模板简洁</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://trello.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📋</div>
-              <div class="info">
-                <div class="name">Trello</div>
-                <div class="desc">看板式任务管理，大作业/项目/团队协作一目了然</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Trello</div><div class="desc">看板式任务管理，小组协作</div></div><div class="arrow">↗</div>
             </a>
           </div>
         </div>
@@ -4963,87 +4482,47 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <!-- 设计素材库 -->
       <div class="reslib-cat-pane" id="reslib-design">
         <div class="card">
-          <h3>🎨 设计素材库 · 做PPT、做海报、找图都在这</h3>
+          <h3>🎨 设计素材库 · 图片图标PPT</h3>
           <div class="grid grid-2" style="margin-top:10px">
             <a class="res-link" href="https://www.canva.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🎨</div>
-              <div class="info">
-                <div class="name">Canva 可画</div>
-                <div class="desc">在线设计神器，PPT/海报/简历/封面，模板拖拖拽拽就做好</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Canva 可画</div><div class="desc">在线设计，海报/PPT/简历模板</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🎯</div>
-              <div class="info">
-                <div class="name">Figma</div>
-                <div class="desc">专业级设计工具，做UI/原型/插画，免费版学生完全够用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🖌️</div>
+              <div class="info"><div class="name">Figma</div><div class="desc">UI设计神器，在线协作</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🖼️</div>
-              <div class="info">
-                <div class="name">Unsplash</div>
-                <div class="desc">免费高清图片素材，全部可商用，做PPT/海报找图首选</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">📷</div>
+              <div class="info"><div class="name">Unsplash</div><div class="desc">高清免费图片，商用免授权</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.pexels.com/zh-cn/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">📸</div>
-              <div class="info">
-                <div class="name">Pexels</div>
-                <div class="desc">另一个免费图库，还有免费视频素材，中文站访问快</div>
-              </div>
-              <div class="arrow">↗</div>
+            <a class="res-link" href="https://www.pexels.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🖼️</div>
+              <div class="info"><div class="name">Pexels</div><div class="desc">免费图片视频，质量高</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🌐</div>
-              <div class="info">
-                <div class="name">Pixabay</div>
-                <div class="desc">图片+插画+视频+音乐，全免费可商用，资源最多最全</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🎭</div>
+              <div class="info"><div class="name">Pixabay</div><div class="desc">插画/矢量图/视频，全部免费</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🎭</div>
-              <div class="info">
-                <div class="name">阿里巴巴图标库</div>
-                <div class="desc">免费矢量图标库，做PPT/网页/海报找图标都来这</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🎯</div>
+              <div class="info"><div class="name">阿里图标库</div><div class="desc">海量矢量图标，免费商用</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.iconfinder.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🔣</div>
-              <div class="info">
-                <div class="name">Iconfinder</div>
-                <div class="desc">英文图标库，风格多，免费的也够日常用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🔍</div>
+              <div class="info"><div class="name">Iconfinder</div><div class="desc">英文图标搜索引擎，种类多</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.pptstore.net/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://www.tukuppt.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📊</div>
-              <div class="info">
-                <div class="name">PPT 模板网</div>
-                <div class="desc">大量免费/付费PPT模板，答辩/汇报/求职都能找到合适的</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">PPT模板网</div><div class="desc">海量PPT模板，免费下载</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.ypppt.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">💼</div>
-              <div class="info">
-                <div class="name">优品PPT</div>
-                <div class="desc">全免费PPT模板下载站，分类清晰，不用登录直接下</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">📁</div>
+              <div class="info"><div class="name">优品PPT</div><div class="desc">精品PPT模板，完全免费</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.fonts.net.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🔤</div>
-              <div class="info">
-                <div class="name">字体天下</div>
-                <div class="desc">中英文字体下载，做设计/做PPT缺字体来这找</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">字体天下</div><div class="desc">中文字体下载，分类齐全</div></div><div class="arrow">↗</div>
             </a>
           </div>
         </div>
@@ -5052,87 +4531,47 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <!-- 文档工具库 -->
       <div class="reslib-cat-pane" id="reslib-docs">
         <div class="card">
-          <h3>📄 文档工具库 · PDF处理、格式转换、压缩</h3>
+          <h3>📄 文档工具库 · PDF格式转换</h3>
           <div class="grid grid-2" style="margin-top:10px">
-            <a class="res-link" href="https://smallpdf.com/cn" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://smallpdf.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📑</div>
-              <div class="info">
-                <div class="name">SmallPDF</div>
-                <div class="desc">PDF神器，压缩/合并/分割/转Word/转PPT，全能且好用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">SmallPDF</div><div class="desc">PDF转换/压缩/合并，好用</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.ilovepdf.com/zh-cn" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">❤️</div>
-              <div class="info">
-                <div class="name">iLovePDF</div>
-                <div class="desc">另一个PDF全能工具，完全免费，功能比SmallPDF还全</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">iLovePDF</div><div class="desc">PDF工具全家桶，免费够用</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://convertio.co/zh/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://convertio.co/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🔄</div>
-              <div class="info">
-                <div class="name">Convertio</div>
-                <div class="desc">万能格式转换，文档/图片/音视频/电子书，300+格式互转</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Convertio</div><div class="desc">万能格式转换，支持300+格式</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://tinypng.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🗜️</div>
-              <div class="info">
-                <div class="name">TinyPNG</div>
-                <div class="desc">图片无损压缩，压完几乎看不出区别，上传图片必备</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">TinyPNG</div><div class="desc">图片压缩，体积小画质不变</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.onlineocr.net/zh_hans/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">👁️</div>
-              <div class="info">
-                <div class="name">Online OCR</div>
-                <div class="desc">在线文字识别，图片/PDF转可编辑文字，免费够用</div>
-              </div>
-              <div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://www.remove.bg/zh" target="_blank" rel="noopener noreferrer">
-              <div class="ico">✂️</div>
-              <div class="info">
-                <div class="name">Remove.bg</div>
-                <div class="desc">一键抠图，上传自动去背景，做证件照/海报/简历都用得上</div>
-              </div>
-              <div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://www.baidufanyi.com/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🌐</div>
-              <div class="info">
-                <div class="name">百度翻译</div>
-                <div class="desc">网页版翻译，支持文档翻译，读外文文献快速扫读</div>
-              </div>
-              <div class="arrow">↗</div>
-            </a>
-            <a class="res-link" href="https://fanyi.bing.com/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://www.onlineocr.net/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🔍</div>
-              <div class="info">
-                <div class="name">必应翻译</div>
-                <div class="desc">微软翻译，网页翻译效果好，整页翻译功能实用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">Online OCR</div><div class="desc">图片转文字，免费在线识别</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.didaoyan.com/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://www.remove.bg/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">✂️</div>
+              <div class="info"><div class="name">Remove.bg</div><div class="desc">一键抠图，AI自动去背景</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://fanyi.baidu.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🌐</div>
+              <div class="info"><div class="name">百度翻译</div><div class="desc">文档翻译/网页翻译，方便</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://cn.bing.com/translator" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🔤</div>
+              <div class="info"><div class="name">必应翻译</div><div class="desc">微软翻译，准确度高</div></div><div class="arrow">↗</div>
+            </a>
+            <a class="res-link" href="https://www.diandidaoyan.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📝</div>
-              <div class="info">
-                <div class="name">地道言 · 论文润色</div>
-                <div class="desc">AI论文英文润色，学术用语优化，写英文论文辅助</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">地道言</div><div class="desc">英语写作润色，语法纠错</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.qiniu.com/products/qr" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://cli.im/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📱</div>
-              <div class="info">
-                <div class="name">七牛云二维码生成器</div>
-                <div class="desc">免费生成二维码，网址/文本/名片都能生成，做海报常用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">草料二维码</div><div class="desc">二维码生成/解码，免费</div></div><div class="arrow">↗</div>
             </a>
           </div>
         </div>
@@ -5141,95 +4580,51 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <!-- 升学资源库 -->
       <div class="reslib-cat-pane" id="reslib-edu">
         <div class="card">
-          <h3>🎯 升学资源库 · 保研/考研/留学 官方入口</h3>
+          <h3>🎯 升学资源库 · 官方入口直达</h3>
           <div class="grid grid-2" style="margin-top:10px">
             <a class="res-link" href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">📋</div>
-              <div class="info">
-                <div class="name">中国研究生招生信息网</div>
-                <div class="desc">研招网 · 考研报名/调剂/查分唯一官方入口</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">📚</div>
+              <div class="info"><div class="name">研招网</div><div class="desc">考研报名/查分/调剂唯一官网</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.cdgdc.edu.cn/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🏆</div>
-              <div class="info">
-                <div class="name">教育部学位与研究生教育发展中心</div>
-                <div class="desc">学科评估结果查询，选校选专业的权威参考</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">🎓</div>
+              <div class="info"><div class="name">学位中心</div><div class="desc">学科评估结果查询</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.chsi.com.cn/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🎓</div>
-              <div class="info">
-                <div class="name">学信网</div>
-                <div class="desc">学籍/学历查询，征兵/政审/求职都需要的官方平台</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="ico">📋</div>
+              <div class="info"><div class="name">学信网</div><div class="desc">学籍/学历/征兵，官方查询</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📝</div>
-              <div class="info">
-                <div class="name">四六级报名官网</div>
-                <div class="desc">CET报名+查分唯一入口，别点错钓鱼网站</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">四六级报名官网</div><div class="desc">CET报名/查分唯一入口</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://ncre-bm.neea.cn/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">💻</div>
-              <div class="info">
-                <div class="name">计算机等级考试报名</div>
-                <div class="desc">NCRE全国计算机等级考试报名官网，二级MS Office最实用</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">计算机等级考试</div><div class="desc">NCRE报名/查分官方站</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">👩‍🏫</div>
-              <div class="info">
-                <div class="name">中小学教师资格考试网</div>
-                <div class="desc">教资笔试面试报名+查分官方入口</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">中小学教资考试</div><div class="desc">教师资格证报名官网</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.moj.gov.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">⚖️</div>
-              <div class="info">
-                <div class="name">司法部官网（法考）</div>
-                <div class="desc">法律职业资格考试报名+公告官方发布渠道</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">司法部法考中心</div><div class="desc">法律职业资格考试官网</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.ielts.org.cn/" target="_blank" rel="noopener noreferrer">
+            <a class="res-link" href="https://ielts.neea.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🇬🇧</div>
-              <div class="info">
-                <div class="name">雅思考试中文官网</div>
-                <div class="desc">雅思报名+查分+考试信息，留学英语考试入口</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">雅思考试官网</div><div class="desc">IELTS报名/查分</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://toefl.neea.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🇺🇸</div>
-              <div class="info">
-                <div class="name">托福考试中文官网</div>
-                <div class="desc">TOEFL报名+查分官方入口，北美留学必备</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">托福考试官网</div><div class="desc">TOEFL报名/查分</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://www.csc.edu.cn/" target="_blank" rel="noopener noreferrer">
               <div class="ico">🌏</div>
-              <div class="info">
-                <div class="name">国家留学网</div>
-                <div class="desc">公派留学/奖学金申请官方平台，想出国深造的必看</div>
-              </div>
-              <div class="arrow">↗</div>
+              <div class="info"><div class="name">国家留学网</div><div class="desc">公派留学申报官方平台</div></div><div class="arrow">↗</div>
             </a>
-          </div>
-          <div class="callout callout-warn" style="margin-top:12px;font-size:12px">
-            <strong>⚠️ 重要提醒：</strong>报名/查分类网站认准官方域名（.gov.cn/.edu.cn结尾），不要从百度广告点进去，防止钓鱼网站骗钱。
           </div>
         </div>
       </div>
-
     </section>
 
 
@@ -6667,361 +6062,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <p style="font-size:13px;color:var(--muted)"><strong>表现：</strong>每个 AI 都注册，结果每天还是只用 1 个。<br><strong>对策：</strong>固定"主力 1 个 + 场景补充 2 个"就够。推荐组合：DeepSeek（主力）+ Kimi（长文）+ 豆包（口语）。</p>
         </div>
       </div>
-
-
-      <!-- E. AI 知识蒸馏专题 -->
-      <h3 style="margin:20px 0 10px">专题 · AI 知识蒸馏：把厚书变薄、把杂乱变有序</h3>
-      <div class="callout callout-warn" style="margin-bottom:14px">
-        <strong>解决什么真实问题：</strong>一学期课本堆成山、网课几十节、笔记东一张西一张，期末复习不知道从哪下手。用 AI 把资料"蒸馏"成结构化的知识体系，复习效率翻倍。
-      </div>
-
-      <div class="card" style="margin-bottom:16px">
-        <h3>蒸馏 5 步法 · 通用流程</h3>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">1</div>
-            <div>
-              <strong>收集素材</strong>
-              <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">准备好要蒸馏的内容：PDF 课本、网页链接、课堂录音转文字、手写笔记拍照等。文本类效果最好。</p>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">2</div>
-            <div>
-              <strong>设定目标</strong>
-              <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">想清楚你要什么：是"框架梳理"还是"考点提炼"？是"速记笔记"还是"对比分析"？目标越具体，蒸馏效果越好。</p>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">3</div>
-            <div>
-              <strong>投喂 + 指令</strong>
-              <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">把资料喂给 AI（粘贴文本 / 上传文件 / 给链接），加上明确的指令。用下面的现成 Prompt 模板，不用自己想。</p>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">4</div>
-            <div>
-              <strong>追问细化</strong>
-              <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">第一轮输出只是初稿。针对你觉得不清楚、不够细的部分继续追问，让 AI 展开、举例、对比。好东西是"聊"出来的。</p>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">5</div>
-            <div>
-              <strong>整理存档</strong>
-              <p style="font-size:13px;line-height:1.7;margin:2px 0 0 0">把蒸馏结果复制到笔记里，加上自己的理解和补充。AI 是初稿，你才是最终编辑。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h4 style="margin:14px 0 10px">4 种最实用的蒸馏场景 · 附现成 Prompt</h4>
-      <div class="grid grid-2" style="margin-bottom:16px">
-        <div class="card">
-          <h4>📖 课本章节蒸馏</h4>
-          <p style="font-size:12px;color:var(--muted)"><strong>痛点：</strong>一章几十页，看完抓不住重点。</p>
-          <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请阅读下面这章内容，帮我蒸馏出：
-1. 本章核心观点（3句话）
-2. 重要概念清单 + 定义
-3. 逻辑框架（用箭头表示关系）
-4. 典型考点/应用场景
-5. 容易混淆的点 + 区分方法
-
-内容如下：
-[粘贴课本章节文本]</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--muted)">💡 建议用 Kimi（支持上传 PDF）或 DeepSeek</div>
-        </div>
-
-        <div class="card">
-          <h4>🌐 网站/公众号蒸馏</h4>
-          <p style="font-size:12px;color:var(--muted)"><strong>痛点：</strong>保研机构/考试官网信息分散，翻来翻去找不到重点。</p>
-          <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请帮我整理这个网站/文章的内容：
-1. 有哪些栏目/板块，分别讲什么
-2. 核心信息点汇总（分类整理）
-3. 时间节点/重要日期列表
-4. 价格/费用信息（如果有）
-5. 有哪些说法前后不一致
-6. 我下一步应该做什么
-
-内容/链接：
-[粘贴内容或给链接]</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--muted)">💡 建议用 Kimi（支持长链接解析）</div>
-        </div>
-
-        <div class="card">
-          <h4>🎬 网课/讲座蒸馏</h4>
-          <p style="font-size:12px;color:var(--muted)"><strong>痛点：</strong>两小时的课，回头复习不知道重点在哪。</p>
-          <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请把这段课程文字稿整理成学习笔记：
-1. 课程主题和核心论点
-2. 知识点框架（分点列出）
-3. 老师强调的重点（标记★）
-4. 举例/案例
-5. 课后思考题/作业要求
-6. 我没听懂的地方 + 建议补充内容
-
-文字稿如下：
-[粘贴转写文本]</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--muted)">💡 先录音转文字（讯飞听见/豆包语音），再用 DeepSeek 整理</div>
-        </div>
-
-        <div class="card">
-          <h4>📊 多资料对比蒸馏</h4>
-          <p style="font-size:12px;color:var(--muted)"><strong>痛点：</strong>几本参考书说法不一样，不知道信谁。</p>
-          <div style="background:var(--paper-bg);padding:8px;border-radius:6px;font-size:11.5px;font-family:monospace;white-space:pre-wrap;line-height:1.6;border:1px solid var(--border)">请对比以下几份资料：
-1. 几份资料的共同点
-2. 几份资料的不同点（观点差异）
-3. 哪份资料更权威，为什么
-4. 互补内容汇总
-5. 我应该按什么顺序学习
-6. 最终知识体系整合版
-
-资料A：[粘贴A]
-资料B：[粘贴B]</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--muted)">💡 建议用 DeepSeek（逻辑推理强）</div>
-        </div>
-      </div>
-
-      <!-- F. AI 对话直达 -->
-      <h3 style="margin:20px 0 10px">AI 对话直达 · 点一下就开聊</h3>
-      <div class="callout callout-info" style="margin-bottom:14px">
-        <strong>怎么用：</strong>选一个场景，点"打开 AI 开聊"，会自动跳转到对应的 AI 工具。进去后把下面的 Prompt 模板复制粘贴，换掉方括号里的内容就能直接用。
-      </div>
-
-      <div class="grid grid-3" style="margin-bottom:16px">
-        <div class="card" style="text-align:center">
-          <div style="font-size:36px;margin-bottom:8px">🗣</div>
-          <h4 style="margin:0 0 4px 0">英语口语陪练</h4>
-          <p style="font-size:12px;color:var(--muted);margin:0 0 8px 0">用豆包练口语<br>四级/六级/雅思都能练</p>
-          <a href="https://www.doubao.com/chat/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="width:100%;display:block;text-align:center">打开豆包开练 ↗</a>
-        </div>
-        <div class="card" style="text-align:center">
-          <div style="font-size:36px;margin-bottom:8px">📚</div>
-          <h4 style="margin:0 0 4px 0">长文/资料蒸馏</h4>
-          <p style="font-size:12px;color:var(--muted);margin:0 0 8px 0">用 Kimi 读 PDF/长文<br>一次最多 200 万字</p>
-          <a href="https://kimi.moonshot.cn/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-teal" style="width:100%;display:block;text-align:center">打开 Kimi 蒸馏 ↗</a>
-        </div>
-        <div class="card" style="text-align:center">
-          <div style="font-size:36px;margin-bottom:8px">🧠</div>
-          <h4 style="margin:0 0 4px 0">学习答疑/解题</h4>
-          <p style="font-size:12px;color:var(--muted);margin:0 0 8px 0">用 DeepSeek 讲题<br>推理强、免费</p>
-          <a href="https://www.deepseek.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-coral" style="width:100%;display:block;text-align:center">打开 DeepSeek ↗</a>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:16px">
-        <h3>12 个现成 Prompt · 复制粘贴就能用</h3>
-        <div style="margin-bottom:10px">
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span class="tag tag-teal" style="cursor:pointer" onclick="filterAiPrompts(&quot;all&quot;)">全部</span>
-            <span class="tag" style="cursor:pointer" onclick="filterAiPrompts(&quot;study&quot;)">学习类</span>
-            <span class="tag" style="cursor:pointer" onclick="filterAiPrompts(&quot;english&quot;)">英语类</span>
-            <span class="tag" style="cursor:pointer" onclick="filterAiPrompts(&quot;career&quot;)">升学/求职</span>
-            <span class="tag" style="cursor:pointer" onclick="filterAiPrompts(&quot;life&quot;)">生活类</span>
-          </div>
-        </div>
-        <div id="aiPromptList" style="display:flex;flex-direction:column;gap:8px">
-          <div class="ai-prompt-item" data-cat="study">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">📖 课本章节速读笔记</strong>
-              <span class="tag tag-teal" style="font-size:11px">学习类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我把这章内容整理成复习笔记：
-1. 核心观点（3句话）
-2. 重要概念+定义
-3. 知识框架图（文字箭头）
-4. 典型考点
-5. 易混点区分
-
-内容：[粘贴]</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="study">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">❓ 错题深度分析</strong>
-              <span class="tag tag-teal" style="font-size:11px">学习类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">这道题我做错了：
-题目：[粘贴]
-我的答案：[]
-正确答案：[]
-
-请分析：
-1. 我错在哪？什么知识点没掌握？
-2. 正确解题思路（一步步）
-3. 这类题的解题套路
-4. 出2道类似题练手</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="english">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">🗣 日常口语陪练</strong>
-              <span class="tag tag-blue" style="font-size:11px">英语类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">Let's practice English conversation.
-You are my friend. Topic: [话题]
-Keep sentences simple (CET-4 level).
-Correct my grammar mistakes gently.
-Ask questions to keep it going.
-Suggest better expressions each time.</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="english">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">✍️ 作文批改+提升</strong>
-              <span class="tag tag-blue" style="font-size:11px">英语类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">批改这篇作文：
-题目：[]
-作文：[粘贴]
-
-请批改：
-1. 语法错误+改正
-2. 可替换的地道表达
-3. 高级句式建议
-4. 结构逻辑评价
-5. 打分（四级标准）
-6. 改写提升版</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="english">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">📝 翻译练习+讲解</strong>
-              <span class="tag tag-blue" style="font-size:11px">英语类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">请帮我做翻译练习：
-原文：[中文段落]
-我的翻译：[你的翻译]
-
-请：
-1. 给出参考译文
-2. 指出我翻译中的错误
-3. 我用得好的地方
-4. 关键短语和句型讲解
-5. 这类话题的高频词汇</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="career">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">💼 英文自我介绍</strong>
-              <span class="tag tag-coral" style="font-size:11px">升学/求职</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我写一份英文自我介绍，用于 [保研面试/求职]：
-我的信息：
-- 学校/专业：[]
-- 年级：[]
-- 主要经历：[]
-- 核心优势：[]
-- 目标：[]
-
-要求：
-- 2分钟左右（250-300词）
-- 自然不生硬
-- 突出亮点，逻辑清晰
-- 适合口语表达</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="career">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">📄 简历润色</strong>
-              <span class="tag tag-coral" style="font-size:11px">升学/求职</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我润色这份简历，目标是 [保研夏令营/实习]：
-我的简历：
-[粘贴简历内容]
-
-请：
-1. 整体评价：哪些好、哪些要改
-2. 经历描述改写：更专业，量化成果
-3. 排版建议：怎么组织更清晰
-4. 有没有遗漏的重要信息
-5. 针对性建议</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="career">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">🎯 保研定位分析</strong>
-              <span class="tag tag-coral" style="font-size:11px">升学/求职</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我是 [学校] [专业] 本科生，想保研。
-我的情况：
-- 绩点排名：[]
-- 英语：[]
-- 竞赛/科研：[]
-- 感兴趣的方向：[]
-
-请帮我分析：
-1. 我的定位：冲什么学校？稳妥的有哪些？保底？
-2. 推荐的具体院校和专业方向
-3. 我现在的短板是什么？怎么补？
-4. 夏令营/预推免的策略建议
-5. 时间线规划</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="study">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">📅 备考计划制定</strong>
-              <span class="tag tag-teal" style="font-size:11px">学习类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我要备考 [考试]，时间还有 [X] 天，
-目前基础：[]，每天能学 [X] 小时。
-
-请制定备考计划：
-1. 分几个阶段？每阶段目标？
-2. 每阶段具体学习内容
-3. 每日时间分配（各科比例）
-4. 每周/每月复盘方法
-5. 避坑建议</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="life">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">💬 高情商回复生成</strong>
-              <span class="tag tag-gray" style="font-size:11px">生活类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">帮我想一个回复：
-场景：[描述场景]
-对方说的话：[]
-我的想法/感受：[]
-我想达到的效果：[如"委婉拒绝但不伤人"]
-
-请给我 3 个不同风格的回复：
-1. 委婉礼貌型
-2. 直接真诚型
-3. 轻松幽默型
-并分析每个选项的适用场景和效果。</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="life">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">💰 月度预算规划</strong>
-              <span class="tag tag-gray" style="font-size:11px">生活类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我是大学生，每月生活费 [X] 元。
-固定支出：
-- 吃饭：约[]元
-- 交通：约[]元
-- 通讯：约[]元
-- 其他：[]
-
-我想：[存多少钱/买什么]
-
-请帮我规划：
-1. 合理的预算分配（各项比例）
-2. 哪些地方可以省钱（具体建议）
-3. 怎么存钱最有效
-4. 大学生容易踩的消费坑</div>
-          </div>
-          <div class="ai-prompt-item" data-cat="study">
-            <div style="display:flex;justify-content:space-between;align-items:start">
-              <strong style="font-size:13px">🧩 知识体系构建</strong>
-              <span class="tag tag-teal" style="font-size:11px">学习类</span>
-            </div>
-            <div style="font-size:11.5px;background:var(--paper-bg);padding:6px 8px;border-radius:6px;margin-top:4px;font-family:monospace;white-space:pre-wrap;line-height:1.6">我正在学 [学科/课程]，
-已经学了：[列已学章节]
-
-请帮我构建知识体系：
-1. 这门课的核心框架是什么
-2. 每个分支下的重要概念和理论
-3. 各分支之间有什么联系
-4. 典型的应用场景
-5. 前沿进展/热点方向
-6. 我接下来应该按什么顺序学</div>
-          </div>
-        </div>
-      </div>
-
-
 
       <div class="callout callout-ok" style="margin-top:16px">
         <strong>AI 使用准则（建议设为手机壁纸）：</strong><br>
@@ -15326,55 +14366,20 @@ function gpaRowGp(inp){
 }
 function gpaDelRow(btn){var tr=btn.closest('tr');if(tr)tr.parentNode.removeChild(tr);gpaCalc();}
 function gpaClear(){var tbody=document.getElementById('gpaRows');if(tbody)tbody.innerHTML='';var r=document.getElementById('gpaResult');if(r)r.innerHTML='';}
-/* ── 回到顶部按钮 ── */
-/* ── 页面悬浮目录（长页面自动出现） ── */
-function initToc(){
+function switchResLibCat(catId,evt){
   try{
-    var view=document.querySelector('.view.active');if(!view)return;
-    var headings=view.querySelectorAll('h2, h3');
-    if(headings.length<4)return; // 少于4个标题不显示目录
-    // 移除旧的
-    var old=document.getElementById('floatToc');if(old)old.remove();
-    var oldBtn=document.getElementById('tocToggle');if(oldBtn)oldBtn.remove();
-    // 生成目录
-    var toc=document.createElement('div');
-    toc.id='floatToc';toc.className='toc-float show';
-    var html='<div class="toc-title">📑 本页目录</div>';
-    for(var i=0;i<headings.length;i++){
-      var h=headings[i];
-      var id='toc-'+i;
-      h.id=id;
-      var txt=h.textContent.trim().substring(0,20);
-      var lv=h.tagName==='H2'?0:1;
-      html+='<a href="#'+id+'" style="padding-left:'+(8+lv*12)+'px" onclick="event.preventDefault();document.getElementById(\''+id+'\').scrollIntoView({behavior:\'smooth\'})">'+txt+'</a>';
-    }
-    toc.innerHTML=html;
-    document.body.appendChild(toc);
-    // 滚动高亮
-    window.addEventListener('scroll',function(){
-      var t=document.getElementById('floatToc');if(!t)return;
-      var links=t.querySelectorAll('a');
-      var current='';
-      for(var j=0;j<headings.length;j++){
-        var rect=headings[j].getBoundingClientRect();
-        if(rect.top<=100){current='toc-'+j;}
-      }
-      links.forEach(function(a){a.classList.remove('active');var h=a.getAttribute('href');if(h==='#'+current)a.classList.add('active');});
+    var e=evt||window.event;
+    var panes=document.querySelectorAll('.reslib-cat-pane');
+    panes.forEach(function(p){p.classList.remove('active')});
+    var target=document.getElementById(catId);if(target)target.classList.add('active');
+    var tabs=document.querySelectorAll('#reslibCatTabs .tag');
+    tabs.forEach(function(t){
+      t.classList.remove('tag-teal');
+      t.classList.add('tag-blank');
     });
-  }catch(e){}
+    if(e&&e.target){e.target.classList.remove('tag-blank');e.target.classList.add('tag-teal');}
+  }catch(err){console.log(err);}
 }
-/* 在切换视图时重新生成目录 */
-var _origSwitchView=switchView;
-switchView=function(v){
-  _origSwitchView(v);
-  setTimeout(function(){
-    try{
-      var t=document.getElementById('floatToc');if(t)t.remove();
-      initToc();
-    }catch(e){}
-  },100);
-};
-
 function initBackToTop(){
   try{
     var btn=document.createElement('div');
@@ -15392,21 +14397,6 @@ function initBackToTop(){
     });
   }catch(e){}
 }
-function switchResLibCat(catId,evt){
-  try{
-    var e=evt||window.event;
-    var panes=document.querySelectorAll('.reslib-cat-pane');
-    panes.forEach(function(p){p.classList.remove('active')});
-    var target=document.getElementById(catId);if(target)target.classList.add('active');
-    var tabs=document.querySelectorAll('#reslibCatTabs .tag');
-    tabs.forEach(function(t){
-      t.classList.remove('tag-teal');
-      t.classList.add('tag-blank');
-    });
-    if(e&&e.target){e.target.classList.remove('tag-blank');e.target.classList.add('tag-teal');}
-  }catch(err){console.log(err);}
-}
-
 function gpaCalc(){
   var box=document.getElementById('gpaResult');if(!box)return;
   var names=document.querySelectorAll('#gpaRows .gpa-name');

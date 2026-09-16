@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>四级写作万能句与高分模板 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.template-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:12px 0;font-size:14px;line-height:1.8}
+.template-box .template-title{font-weight:700;color:var(--teal);margin-bottom:8px;font-size:14px}
+.sentence-item{padding:8px 0;border-bottom:1px dashed var(--border)}
+.sentence-item:last-child{border-bottom:none}
+.sentence-en{color:var(--primary);font-weight:500;margin-bottom:2px}
+.sentence-cn{color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">四级写作万能句与高分模板</div>
+</div>
+<div class="container">
+
+<h1>✏️ 四级写作万能句与高分模板</h1>
+<p class="subtitle">写作占15%，是最容易短期提分的板块。背熟万能句+模板，考场直接套用。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、开头段万能句</a>
+  <a href="#s2">二、中间论证万能句</a>
+  <a href="#s3">三、结尾段万能句</a>
+  <a href="#s4">四、15个高级词汇替换表</a>
+  <a href="#s5">五、5类作文模板与范文</a>
+  <a href="#s6">六、写作避坑10条</a>
+  <a href="#s7">七、字数控制与时间分配</a>
+</div>
+
+<h2 id="s1">一、开头段万能句</h2>
+<p>好的开头是成功的一半。四级作文开头段通常写3句话：引入话题+提出争议/观点+引出下文。</p>
+
+<h3>1.1 现象引入型</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">Nowadays, the phenomenon of ______ has aroused wide concern among the public.</div>
+    <div class="sentence-cn">如今，______现象引起了公众的广泛关注。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">In recent years, ______ has become a hot topic / a matter of concern.</div>
+    <div class="sentence-cn">近年来，______已成为一个热门话题/备受关注的问题。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">With the rapid development of ______, more and more people are beginning to realize that ______.</div>
+    <div class="sentence-cn">随着______的快速发展，越来越多的人开始意识到______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">It is widely acknowledged that ______ has brought about profound changes in our daily life.</div>
+    <div class="sentence-cn">人们普遍认为，______给我们的日常生活带来了深刻的变化。</div>
+  </div>
+</div>
+
+<h3>1.2 观点引入型</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">When it comes to ______, people's opinions differ from person to person.</div>
+    <div class="sentence-cn">当谈到______时，人们的观点因人而异。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">There is a heated debate over whether ______ or not.</div>
+    <div class="sentence-cn">关于是否______，存在着激烈的争论。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">Some people hold the view that ______, while others argue that ______.</div>
+    <div class="sentence-cn">一些人认为______，而另一些人则认为______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">From my perspective / As far as I am concerned, I am in favor of the former / latter view.</div>
+    <div class="sentence-cn">在我看来，我支持前者/后者的观点。</div>
+  </div>
+</div>
+
+<h3>1.3 问题引入型</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">Nowadays, ______ has become a serious problem we have to face.</div>
+    <div class="sentence-cn">如今，______已成为我们必须面对的一个严重问题。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">The issue of ______ has been brought into public focus recently.</div>
+    <div class="sentence-cn">______问题最近已成为公众关注的焦点。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">It is high time we took effective measures to solve this problem.</div>
+    <div class="sentence-cn">是我们采取有效措施解决这个问题的时候了。</div>
+  </div>
+</div>
+
+<div class="callout callout-info">
+  <strong>开头段黄金结构：</strong>第1句引入话题（背景/现象）→ 第2句提出争议或问题 → 第3句表明自己观点或引出下文。三句话搞定，简洁有力。
+</div>
+
+<h2 id="s2">二、中间论证万能句</h2>
+<p>中间段是文章的主体，一般写2-3个论点，每个论点要有论据支撑（理由、举例、数据、对比等）。</p>
+
+<h3>2.1 引出理由</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">There are several reasons accounting for this phenomenon.</div>
+    <div class="sentence-cn">有几个原因可以解释这一现象。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">First and foremost / To begin with, ______. Furthermore / Moreover / In addition, ______. Last but not least, ______.</div>
+    <div class="sentence-cn">首先，______。其次，______。最后但同样重要的是，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">One of the primary causes is that ______. Another contributing factor is that ______.</div>
+    <div class="sentence-cn">主要原因之一是______。另一个促成因素是______。</div>
+  </div>
+</div>
+
+<h3>2.2 举例论证</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">A case in point is ______.</div>
+    <div class="sentence-cn">一个恰当的例子是______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">For example / For instance, ______.</div>
+    <div class="sentence-cn">例如，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">Take ______ as an example, it can well illustrate this point.</div>
+    <div class="sentence-cn">以______为例，它可以很好地说明这一点。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">According to a recent survey conducted by ______, about ______% of people ______.</div>
+    <div class="sentence-cn">根据______最近进行的一项调查，大约______%的人______。</div>
+  </div>
+</div>
+
+<h3>2.3 因果关系</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">As a result / Consequently / Therefore, ______.</div>
+    <div class="sentence-cn">因此，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">Due to / Owing to / Because of ______, ______.</div>
+    <div class="sentence-cn">由于______，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">This is mainly because ______.</div>
+    <div class="sentence-cn">这主要是因为______。</div>
+  </div>
+</div>
+
+<h3>2.4 对比与转折</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">On the one hand, ______. On the other hand, ______.</div>
+    <div class="sentence-cn">一方面，______。另一方面，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">In contrast / On the contrary, ______.</div>
+    <div class="sentence-cn">相比之下/恰恰相反，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">However / Nevertheless / Nonetheless, we should not ignore the fact that ______.</div>
+    <div class="sentence-cn">然而，我们不应该忽视______这一事实。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">Although ______ has its advantages, we cannot turn a blind eye to its disadvantages.</div>
+    <div class="sentence-cn">虽然______有其优势，但我们不能忽视其劣势。</div>
+  </div>
+</div>
+
+<h2 id="s3">三、结尾段万能句</h2>
+<p>结尾段要简洁有力，总结全文并升华主题。一般写2-3句话。</p>
+
+<h3>3.1 总结观点</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">In conclusion / To sum up / In summary, ______.</div>
+    <div class="sentence-cn">总之，______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">From what has been discussed above, we may safely draw the conclusion that ______.</div>
+    <div class="sentence-cn">通过以上讨论，我们可以有把握地得出结论：______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">Taking all these factors into consideration, we can come to the conclusion that ______.</div>
+    <div class="sentence-cn">考虑到所有这些因素，我们可以得出结论：______。</div>
+  </div>
+</div>
+
+<h3>3.2 提出建议</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">It is suggested that we should take effective measures to ______.</div>
+    <div class="sentence-cn">建议我们应采取有效措施来______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">Only in this way can we ______.</div>
+    <div class="sentence-cn">只有这样，我们才能______。（倒装句，加分！）</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">It is high time that we took immediate action to address this issue.</div>
+    <div class="sentence-cn">是我们立即采取行动解决这个问题的时候了。</div>
+  </div>
+</div>
+
+<h3>3.3 展望未来</h3>
+<div class="template-box">
+  <div class="sentence-item">
+    <div class="sentence-en">Looking ahead, we have every reason to believe that ______.</div>
+    <div class="sentence-cn">展望未来，我们完全有理由相信______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">With joint efforts, I am convinced that ______.</div>
+    <div class="sentence-cn">通过共同努力，我相信______。</div>
+  </div>
+  <div class="sentence-item">
+    <div class="sentence-en">The future of ______ is promising / bright as long as we ______.</div>
+    <div class="sentence-cn">只要我们______，______的未来是光明的。</div>
+  </div>
+</div>
+
+<h2 id="s4">四、15个高级词汇替换表</h2>
+<p>想拿高分，就要用更高级的词汇替换掉那些人人都用的"大路货"。下面这15组替换词是阅卷老师最爱看的。</p>
+
+<table>
+  <tr><th style="width:30%">普通词</th><th style="width:35%">高级替换</th><th>适用场景</th></tr>
+  <tr><td>important</td><td>vital / crucial / essential / significant</td><td>表示"重要的"</td></tr>
+  <tr><td>very</td><td>extremely / remarkably / tremendously</td><td>表示"非常"</td></tr>
+  <tr><td>many / a lot of</td><td>numerous / a multitude of / a great many</td><td>表示"很多"</td></tr>
+  <tr><td>good</td><td>beneficial / favorable / positive / advantageous</td><td>表示"好的"</td></tr>
+  <tr><td>bad</td><td>harmful / detrimental / adverse / negative</td><td>表示"坏的"</td></tr>
+  <tr><td>think</td><td>maintain / contend / argue / hold the view that</td><td>表示"认为"</td></tr>
+  <tr><td>say</td><td>claim / assert / state / point out</td><td>表示"说"</td></tr>
+  <tr><td>because</td><td>due to / owing to / on account of / in that</td><td>表示"因为"</td></tr>
+  <tr><td>so</td><td>consequently / therefore / hence / accordingly</td><td>表示"所以"</td></tr>
+  <tr><td>but / however</td><td>nevertheless / nonetheless / whereas</td><td>表示"但是"</td></tr>
+  <tr><td>show</td><td>demonstrate / illustrate / indicate / reveal</td><td>表示"展示/表明"</td></tr>
+  <tr><td>get</td><td>obtain / acquire / attain / gain</td><td>表示"获得"</td></tr>
+  <tr><td>help</td><td>contribute to / facilitate / assist in</td><td>表示"帮助/促进"</td></tr>
+  <tr><td>more and more</td><td>an increasing number of / a growing number of</td><td>表示"越来越多的"</td></tr>
+  <tr><td>in my opinion</td><td>from my perspective / as far as I am concerned</td><td>表示"在我看来"</td></tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>高级替换词要适度使用，不要为了炫技而堆砌。一篇文章里用5-8个高级词就够了，关键是要用对、用得自然。用错了反而扣分。
+</div>
+
+<h2 id="s5">五、5类作文模板与范文</h2>
+
+<h3>5.1 议论文模板（观点对比类）</h3>
+<div class="template-box">
+  <div class="template-title">模板结构</div>
+  <p><strong>开头段：</strong>引出话题 + 两种观点 + 表明立场</p>
+  <p><strong>中间段1：</strong>支持方观点及理由（2-3点）</p>
+  <p><strong>中间段2：</strong>反对方观点及理由（2-3点）</p>
+  <p><strong>结尾段：</strong>总结 + 重申个人观点</p>
+</div>
+
+<div class="callout callout-ok">
+  <strong>完整范文：Online Education</strong><br><br>
+  <p>Nowadays, online education has become a hot topic among people, especially among the young. When it comes to whether online education can replace traditional classroom teaching, people's opinions differ from person to person.</p>
+  <p>Some people hold the view that online education will eventually take the place of traditional learning. There are several reasons for their argument. First and foremost, online courses are much more flexible and convenient — students can learn anytime and anywhere. Furthermore, online education is usually more affordable, which makes quality education accessible to more people. Last but not least, the Internet provides abundant learning resources that are not limited by geography.</p>
+  <p>However, others argue that traditional classroom teaching is still irreplaceable. For one thing, face-to-face interaction between teachers and students is essential for effective learning. For another, studying in a classroom helps students develop discipline and communication skills. In addition, technical issues and lack of self-discipline may undermine the quality of online learning.</p>
+  <p>From my perspective, online education and traditional classroom teaching should complement each other rather than compete. Online education is a great supplement to traditional teaching, but it cannot fully replace the unique value of classroom learning. The best approach is to combine the advantages of both to create a better learning experience.</p>
+</div>
+
+<h3>5.2 现象解释型模板</h3>
+<div class="template-box">
+  <div class="template-title">模板结构</div>
+  <p><strong>开头段：</strong>描述现象 + 点明普遍性</p>
+  <p><strong>中间段：</strong>分析原因（3个原因+论据）</p>
+  <p><strong>结尾段：</strong>评价影响 + 展望/建议</p>
+</div>
+
+<div class="callout callout-ok">
+  <strong>完整范文：The Sharing Economy</strong><br><br>
+  <p>With the rapid development of the Internet, the sharing economy has emerged as a new economic model in recent years. From bike-sharing to car-sharing, from shared power banks to shared offices, sharing economy has penetrated into every aspect of our daily life.</p>
+  <p>There are several factors accounting for the booming sharing economy. First and foremost, the widespread use of smartphones and mobile payment has laid a solid technical foundation for sharing platforms. Furthermore, people are becoming more environmentally conscious and prefer to use resources more efficiently. Last but not least, the sharing economy provides people with more affordable and convenient services, which perfectly meets the needs of modern urban life.</p>
+  <p>However, the sharing economy also brings about some challenges, such as management difficulties and safety concerns. To sum up, the sharing economy is an irreversible trend that has brought tremendous convenience to our lives. With proper regulation and management, it will continue to thrive and benefit more people in the future.</p>
+</div>
+
+<h3>5.3 问题解决型模板</h3>
+<div class="template-box">
+  <div class="template-title">模板结构</div>
+  <p><strong>开头段：</strong>提出问题 + 问题的严重性</p>
+  <p><strong>中间段：</strong>分析原因 + 提出解决措施（3条）</p>
+  <p><strong>结尾段：</strong>发出呼吁 + 展望未来</p>
+</div>
+
+<div class="callout callout-ok">
+  <strong>完整范文：Environmental Pollution</strong><br><br>
+  <p>Nowadays, environmental pollution has become a serious problem facing people all over the world. Air pollution, water pollution and soil pollution are threatening our health and the future of our planet. It is high time we took effective measures to address this issue.</p>
+  <p>To solve this problem, various measures can be taken. First and foremost, the government should enact stricter laws and regulations to control pollution and punish those who violate environmental standards. Furthermore, enterprises should take their social responsibility by adopting cleaner production technologies and reducing pollutant emissions. Last but not least, every individual should raise environmental awareness and take small actions in daily life, such as saving water, reducing waste and using public transportation.</p>
+  <p>In conclusion, environmental protection requires the joint efforts of the government, enterprises and every citizen. Only when everyone participates can we effectively solve the pollution problem and build a cleaner and more beautiful world. Let us take action now before it is too late.</p>
+</div>
+
+<h3>5.4 图表作文模板</h3>
+<div class="template-box">
+  <div class="template-title">模板结构</div>
+  <p><strong>开头段：</strong>描述图表内容 + 总体趋势</p>
+  <p><strong>中间段：</strong>具体数据分析 + 原因分析</p>
+  <p><strong>结尾段：</strong>预测趋势 + 建议/评价</p>
+</div>
+
+<div class="callout callout-ok">
+  <strong>完整范文：Changes in College Students' Spending</strong><br><br>
+  <p>The chart above clearly shows the changes in college students' spending habits over the past five years. As can be seen from the chart, spending on education and digital products has been increasing significantly, while spending on food and daily necessities has remained relatively stable.</p>
+  <p>Several reasons can account for this trend. First and foremost, with the growing competition in the job market, more and more college students are willing to invest in self-improvement, such as taking training courses and obtaining certificates. Furthermore, the rapid development of digital technology has made various electronic products indispensable for study and daily life. In addition, the improvement of living standards also enables students to spend more on areas besides basic necessities.</p>
+  <p>From my perspective, this trend reflects the changing priorities of college students. It is positive that they are paying more attention to self-development. However, they should also develop rational consumption habits and avoid blind comparison and excessive spending. After all, financial management is an important skill for future life.</p>
+</div>
+
+<h3>5.5 应用文模板（书信/倡议书）</h3>
+<div class="template-box">
+  <div class="template-title">书信格式模板</div>
+  <p><strong>称呼：</strong>Dear ______,</p>
+  <p><strong>开头段：</strong>自我介绍/写信目的</p>
+  <p><strong>中间段：</strong>具体内容（原因/建议/详情）</p>
+  <p><strong>结尾段：</strong>感谢/期待回复</p>
+  <p><strong>落款：</strong>Yours sincerely / Yours truly,<br>______（名字）</p>
+</div>
+
+<div class="callout callout-ok">
+  <strong>完整范文：A Letter of Application</strong><br><br>
+  <p>Dear Sir or Madam,</p>
+  <p>I am writing to apply for the position of part-time English tutor advertised on your website. I believe my background and experience make me a suitable candidate for this role.</p>
+  <p>To begin with, I am a sophomore majoring in English at Peking University, with excellent academic performance. I have passed TEM-4 with a high score and won first prize in the National English Speech Contest. Furthermore, I have one year of experience in teaching English to middle school students, which has helped me develop good communication skills and teaching methods. Last but not least, I am patient, responsible and passionate about teaching. I always try my best to help students improve their English in an interesting and effective way.</p>
+  <p>I would be grateful if you could give me an opportunity for an interview. I am available at your convenience and look forward to your early reply.</p>
+  <p>Yours sincerely,<br>Li Ming</p>
+</div>
+
+<h2 id="s6">六、写作避坑10条</h2>
+<ol>
+  <li><strong>不要跑题：</strong>审题一定要仔细，把题目要求的每个点都覆盖到。跑题直接降档，写得再好也没用。</li>
+  <li><strong>不要全用简单句：</strong>适当用一些复合句、从句、倒装句、强调句，句式要有变化。但不要为了复杂而复杂。</li>
+  <li><strong>不要拼写错误：</strong>常见易错词要记准。拼错一个单词扣0.5分，积少成多。拿不准的词换个你会的。</li>
+  <li><strong>不要语法错误：</strong>主谓一致、时态、单复数、冠词这些基础语法不能错。低级错误扣分很狠。</li>
+  <li><strong>不要用中式英语：</strong>不要按中文语序直译。不确定的表达换一种说法，用你最有把握的句型。</li>
+  <li><strong>不要字数不够：</strong>四级要求120-180词。少于120词扣分，最好控制在150-180词之间。</li>
+  <li><strong>不要字迹潦草：</strong>阅卷老师一天看几百份卷子，字写得清楚工整印象分就高。可以不漂亮，但一定要清楚。</li>
+  <li><strong>不要乱用模板：</strong>模板可以用，但要灵活变通。完全照搬模板痕迹太重，老师一眼就能看出来。</li>
+  <li><strong>不要只写不检查：</strong>写完一定要留2-3分钟检查，重点检查拼写、语法、时态、单复数这些低级错误。</li>
+  <li><strong>不要超时：</strong>写作限时30分钟，审题5分钟+写作20分钟+检查5分钟。超时会影响后面的听力和阅读。</li>
+</ol>
+
+<h2 id="s7">七、字数控制与时间分配</h2>
+
+<h3>7.1 时间分配（30分钟）</h3>
+<table>
+  <tr><th>步骤</th><th>时间</th><th>做什么</th></tr>
+  <tr><td>审题</td><td>3-5分钟</td><td>读题、确定体裁、列大纲、想论点</td></tr>
+  <tr><td>写开头段</td><td>3-4分钟</td><td>三句话：引入+争议+观点</td></tr>
+  <tr><td>写中间段</td><td>12-15分钟</td><td>2-3个论点，每个论点配论据</td></tr>
+  <tr><td>写结尾段</td><td>2-3分钟</td><td>总结+建议/展望</td></tr>
+  <tr><td>检查修改</td><td>3-5分钟</td><td>查拼写、语法、时态、单复数</td></tr>
+</table>
+
+<h3>7.2 字数分配（建议150-180词）</h3>
+<table>
+  <tr><th>段落</th><th>字数</th><th>句子数</th></tr>
+  <tr><td>开头段</td><td>30-40词</td><td>2-3句</td></tr>
+  <tr><td>中间段1</td><td>40-50词</td><td>3-4句</td></tr>
+  <tr><td>中间段2</td><td>40-50词</td><td>3-4句</td></tr>
+  <tr><td>结尾段</td><td>25-35词</td><td>2句</td></tr>
+  <tr><td><b>合计</b></td><td><b>140-180词</b></td><td><b>10-13句</b></td>
+</tr>
+</table>
+
+<div class="callout callout-info">
+  <strong>提分小技巧：</strong>考前背3-5个万能句型和5组高级替换词，考试时灵活套用。字迹工整很重要——同样的内容，工整的字迹可能比潦草的多拿3-5分。平时练习一定要限时写，培养时间感。
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="cet4_reading.html">
+      <div class="ri-ico">📖</div>
+      <div class="ri-title">四级阅读技巧</div>
+      <div class="ri-desc">五大题型+答题方法</div>
+    </a>
+    <a class="related-item" href="cet4_translation.html">
+      <div class="ri-ico">🇨🇳</div>
+      <div class="ri-title">四级翻译高频词</div>
+      <div class="ri-desc">传统文化+社会发展</div>
+    </a>
+    <a class="related-item" href="cet4_listening.html">
+      <div class="ri-ico">🎧</div>
+      <div class="ri-title">四级听力技巧</div>
+      <div class="ri-desc">四步法+常见陷阱</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>
