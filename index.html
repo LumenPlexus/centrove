@@ -2114,17 +2114,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       </div>
       <!-- 删除六个功能直达卡：与底栏/侧边栏重复，全部并入导航，避免冗余 -->
 
-      <div class="card" style="margin-bottom:14px;padding:10px 14px;background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-          <div style="font-size:12px;font-weight:600;color:var(--primary)">📊 今日进度</div>
-          <div style="display:flex;gap:16px;font-size:12.5px;color:var(--text);flex-wrap:wrap">
-            <span>今日安放 <b id="todayCheckin" style="color:var(--primary)">0/5</b></span>
-            <span id="streakInfo" style="color:var(--hint)">连续 0 天</span>
-            <span>待办 <b id="todayTaskCount" style="color:var(--coral)">0</b> 件</span>
-          </div>
-        </div>
-      </div>
-
       <!-- 今日心语 · 每日一句（金句＋鼓励合成一卡，可换新、不重复、按日期自动轮换） -->
       <div class="card mind-card" style="margin-bottom:16px;background:linear-gradient(135deg,#F1EADE,#EDE5D4);border-color:#D8CBB2">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
@@ -17834,37 +17823,7 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
       card.insertBefore(tag,card.firstChild);
     })();
 
-    /* 3) 新手入门引导弹窗：仅首次弹一次，文案按定稿，关闭后永久记忆 */
-    /* 为兼容已出现过的其他首访提示，避免叠加：若已看过任意引导则跳过 */
-    function qxOpenGuide(){
-      var ov=document.createElement('div');
-      ov.id='qxGuideOverlay';
-      ov.style.cssText='position:fixed;inset:0;background:rgba(20,16,12,.5);z-index:99990;display:flex;align-items:center;justify-content:center;padding:20px;animation:qxFade .25s ease';
-      ov.innerHTML='<div role="dialog" aria-modal="true" aria-label="新手入门引导" style="background:var(--card);border:1px solid var(--border);border-radius:18px;max-width:340px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 16px 60px rgba(0,0,0,.4)">'+
-        '<div style="font-size:20px;font-weight:800;color:var(--primary);letter-spacing:2px;margin-bottom:10px">一「栖」一「匣」</div>'+
-        '<div style="font-size:13.5px;color:var(--text);line-height:2;text-align:left">收纳成长诸事，锚定方向，落实眼前规划。为你收拢学业、目标与日常安排。<b style="color:var(--primary)">—— 栖匣，致每一位精进者</b><br>把每一天妥善安放，步步趋近心中所向。</div>'+
-        '<button id="qxGuideClose" class="btn btn-primary" style="width:100%;margin-top:16px;padding:11px;font-size:15px">好的 · 开始安放今天</button>'+
-        '<div style="font-size:11px;color:var(--hint);margin-top:10px;line-height:1.7">这段引导只会出现一次；之后可在「系统 → 关于产品」重看全景导览。</div>'+
-        '</div>';
-      document.body.appendChild(ov);
-      function close(){SSL('qx_seek','1');ov.parentNode&&ov.parentNode.removeChild(ov);}
-      ov.querySelector('#qxGuideClose').onclick=close;
-      ov.addEventListener('click',function(e){if(e.target===ov)close();});
-      window.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.contains(ov))close();});
-    }
-    if(LS('qx_seek','')!=='1'){
-      /* 与「年级向导」错峰：等年级选定/跳过后再引导，绝不叠加；已看过任一导览则直接跳过 */
-      var panoSeen=LS('pp_pano_v4_seen','')==='1'||LS('pp_quickstart_ok','')==='1'||LS('pp_splash_seen','')==='1';
-      if(panoSeen){SSL('qx_seek','1');}
-      else{
-        var gTries=0;
-        (function waitGrade(){
-          if(document.body.contains(el('qxGuideOverlay')))return;
-          if(LS('pp_grade_done','')==='1'||LS('pp_grade','')!==''){setTimeout(qxOpenGuide,500);}
-          else{gTries++;if(gTries<16)setTimeout(waitGrade,600);}
-        })();
-      }
-    }
+    /* 3) 新手入门引导弹窗：已按要求彻底移除（不再弹出「一栖一匣」首访弹窗） */
 
     /* 4) 草稿自动保存：长文本编辑区失焦即存、重开恢复（绝不覆盖已填内容） */
     var draftIds=[];
