@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>思维导图工具横向评测 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">思维导图工具横向评测</div>
+</div>
+<div class="container">
+
+<h1>🧠 思维导图工具横向评测：四款主流工具怎么选</h1>
+<div class="meta-row">
+  <span>工具评测 · 经验蒸馏</span>
+  <span class="score">⭐ 8.7</span>
+  <span>入门难度</span>
+  <span>选对即用</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">思维导图</span>
+  <span class="tag tag-coral">工具</span>
+  <span class="tag tag-blue">效率</span>
+  <span class="tag tag-teal">大学通用</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>思维导图工具没有绝对最好，只有最匹配场景。XMind颜值高适合正式输出，幕布大纲转图极简适合快速梳理，飞书思维导图免费且能嵌文档适合协作，MindMaster模板多适合新手。但比选工具更要紧的是——导图是用来建框架的，不是用来抄板书。用错了，再好的工具也白搭。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、四款工具详细对比表</a>
+  <a href="#s2">二、XMind详细评价</a>
+  <a href="#s3">三、MindMaster详细评价</a>
+  <a href="#s4">四、幕布详细评价</a>
+  <a href="#s5">五、飞书思维导图详细评价</a>
+  <a href="#s6">六、选择建议：根据场景推荐</a>
+  <a href="#s7">七、思维导图的正确用法</a>
+  <a href="#s8">八、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、四款工具详细对比表</h2>
+<p>先看一张总览表，对四款工具的功能、价格、优势劣势有个整体印象，再往下看每款的细评。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>工具</th><th>核心功能</th><th>价格</th><th>优势</th><th>劣势</th><th>适合场景</th></tr>
+  <tr><td>XMind</td><td>专业导图绘制，多种结构</td><td>免费够用，Pro约¥388/年</td><td>颜值高、模板多、导出格式全</td><td>协作弱、移动端一般、Pro才解锁部分主题</td><td>正式输出、复习框架、汇报</td></tr>
+  <tr><td>MindMaster</td><td>导图+大纲，模板商城大</td><td>免费版够用，高级版约¥298/年</td><td>模板丰富、上手快、多平台</td><td>界面偏繁、广告多、协作一般</td><td>新手、课程笔记、计划</td></tr>
+  <tr><td>幕布</td><td>大纲↔导图一键切换</td><td>基础免费，高级约¥99/年</td><td>极简、大纲输入快、免费够用、可协作</td><td>导图样式少、不适合复杂美化</td><td>快速梳理、读书笔记、清单</td></tr>
+  <tr><td>飞书思维导图</td><td>内嵌飞书文档，实时协作</td><td>完全免费</td><td>免费、协作强、能嵌文档/表格</td><td>功能基础、样式有限、需飞书账号</td><td>团队协作、课程组、会议纪要</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>一句话预览：</strong>要好看选XMind，要快选幕布，要免费协作选飞书，要模板多选MindMaster。下面逐个细说。
+</div>
+
+<h2 id="s2">二、XMind详细评价</h2>
+<p>XMind是国内认知度最高的思维导图工具，定位偏"专业绘制"，适合对颜值和导出质量有要求的同学。</p>
+<ul>
+  <li><strong>颜值：</strong>四款里最好看，主题样式丰富，鱼骨图、矩阵图、时间线等多种结构都有，导出图片质量高，适合放进作业和汇报。</li>
+  <li><strong>功能：</strong>支持大纲模式、主题切换、笔记附件、标记图标、演说模式（可像PPT一样放映）。Pro版有更多结构和主题。</li>
+  <li><strong>模板：</strong>自带不少模板，但不如MindMaster多；可从社区下载。</li>
+  <li><strong>导出格式：</strong>图片/PDF/Markdown/Word/PPT/OPML都支持，这是它一大优势，方便复用。</li>
+  <li><strong>价格：</strong>免费版功能够日常用，Pro约¥388/年，对一般学生来说免费版即可。</li>
+</ul>
+<div class="callout callout-ok">
+  <strong>适合：</strong>要做正式输出（作业、汇报、复习框架图）的同学；对导图美观度有要求的；需要导出多种格式复用的。
+</div>
+
+<h2 id="s3">三、MindMaster详细评价</h2>
+<p>MindMaster（亿图旗下）主打"模板多+易上手"，对零基础新手比较友好。</p>
+<ul>
+  <li><strong>模板：</strong>模板商城是它最大卖点，涵盖学习、计划、项目管理等，新手直接套模板就能出图。</li>
+  <li><strong>易用性：</strong>操作直观，拖拽即可，大纲和导图可切换，上手曲线平缓。</li>
+  <li><strong>协作：</strong>支持多人协作，但体验不如飞书顺滑。</li>
+  <li><strong>价格：</strong>免费版够用，高级版约¥298/年，解锁更多模板和云同步。</li>
+</ul>
+<div class="callout callout-warn">
+  <strong>注意：</strong>免费版有广告、部分模板锁定，界面元素偏多，有人觉得略繁杂。
+</div>
+<div class="callout callout-ok">
+  <strong>适合：</strong>第一次用思维导图、想要现成模板套用的同学；做课程笔记和学习计划。
+</div>
+
+<h2 id="s4">四、幕布详细评价</h2>
+<p>幕布的思路很特别——它本质是"大纲笔记工具"，但能一键把大纲转成思维导图。适合"先列大纲再出图"的同学。</p>
+<ul>
+  <li><strong>大纲转导图：</strong>这是幕布的核心卖点。你像写清单一样敲大纲，一键就能变成导图，输入效率极高。</li>
+  <li><strong>极简：</strong>界面干净，没有花哨功能，专注内容本身。</li>
+  <li><strong>免费：</strong>基础功能免费够用，高级版约¥99/年解锁更多主题和导出。</li>
+  <li><strong>协作：</strong>支持多人协作和分享，轻量好用。</li>
+</ul>
+<div class="callout callout-warn">
+  <strong>注意：</strong>幕布的导图样式相对少，不适合做复杂美化；更像"大纲工具带导图功能"，而非专业导图软件。
+</div>
+<div class="callout callout-ok">
+  <strong>适合：</strong>读书笔记、快速梳理思路、列清单型内容；喜欢先列大纲再出图的同学。
+</div>
+
+<h2 id="s5">五、飞书思维导图详细评价</h2>
+<p>飞书文档里内置了思维导图功能，最大优势是"免费+协作+能嵌进文档"，对已经在用飞书的同学几乎零成本。</p>
+<ul>
+  <li><strong>内嵌文档：</strong>思维导图可以作为块插入飞书文档/表格，和文字、表格混排，信息整合度高。</li>
+  <li><strong>协作：</strong>多人实时协作是四款里最强的，适合课程组、社团一起整理。</li>
+  <li><strong>免费：</strong>完全免费，只要有飞书账号即可。</li>
+  <li><strong>功能基础：</strong>样式和结构比XMind少，更适合做"梳理型"导图而非"美观型"导图。</li>
+</ul>
+<div class="callout callout-ok">
+  <strong>适合：</strong>团队/小组协作整理、课程组共建知识库、会议纪要梳理；已在飞书生态里的同学。
+</div>
+
+<h2 id="s6">六、选择建议：根据场景推荐</h2>
+<p>不要被"哪个最好"绑架，按你的主要使用场景来选。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>你的场景</th><th>推荐工具</th><th>理由</th></tr>
+  <tr><td>期末复习搭知识框架</td><td>XMind（要美观）或幕布（要快）</td><td>XMind导图清晰适合反复看；幕布输入快适合边复习边补</td></tr>
+  <tr><td>读书笔记/列大纲</td><td>幕布</td><td>大纲输入快，一键转图，极简不干扰阅读</td></tr>
+  <tr><td>课程作业/汇报展示</td><td>XMind</td><td>导出图片美观，结构丰富，适合放进作业</td></tr>
+  <tr><td>小组协作整理</td><td>飞书思维导图</td><td>免费+实时协作+嵌文档，最适合共建</td></tr>
+  <tr><td>新手第一次用</td><td>MindMaster</td><td>模板多，套模板就能上手</td></tr>
+  <tr><td>只想快速记个清单</td><td>幕布或飞书</td><td>轻量，不折腾</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>实在选不出来？</strong>先用幕布跑通"列大纲转导图"的流程，熟悉思维导图的用法后，再根据需要换到XMind做美化。别一上来就纠结工具，先把导图用起来。
+</div>
+
+<h2 id="s7">七、思维导图的正确用法</h2>
+<p>工具再好，用错了也白搭。思维导图最常见的误用是——<strong>把它当"抄板书工具"</strong>：上课老师写什么，自己在导图里照抄一遍，结果导图又大又乱，根本看不出重点。</p>
+
+<h3>导图是用来建框架的</h3>
+<ul>
+  <li><strong>一级分支=章/大主题，二级=核心考点，三级最多到易错点。</strong>再细的内容回到笔记里找，别全塞进导图。</li>
+  <li><strong>每分支用关键词，不写整句。</strong>3-7个字最佳，眼睛一扫就抓住重点。</li>
+  <li><strong>用颜色标掌握程度。</strong>红=不会、黄=半懂、绿=已掌握，导图瞬间变成复习地图。</li>
+  <li><strong>导图要随复习迭代。</strong>学新内容往里补，发现薄弱标红，导图本身就是你的学习进度图。</li>
+</ul>
+
+<h3>什么情况不适合用导图</h3>
+<ul>
+  <li>纯线性流程、步骤明确的（用流程图/清单更清楚）</li>
+  <li>细节多、需要完整句子的（用普通笔记更合适）</li>
+  <li>只是为了"好看"而做导图（浪费时间，不如直接复习）</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>一句忠告：</strong>别把时间花在美化导图上。导图的价值在"帮你看清结构"，不在"好看"。一个丑但结构清晰的导图，远胜一个漂亮但内容混乱的导图。
+</div>
+
+<h2 id="s8">八、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>四款定位：</strong>XMind颜值高正式输出、MindMaster模板多适合新手、幕布大纲转图极简、飞书免费协作嵌文档</li>
+    <li><strong>价格：</strong>XMind免费够用Pro¥388/年、MindMaster免费够用高级¥298/年、幕布免费够用高级¥99/年、飞书完全免费</li>
+    <li><strong>场景匹配：</strong>复习框架选XMind/幕布、读书笔记选幕布、作业汇报选XMind、小组协作选飞书、新手选MindMaster</li>
+    <li><strong>核心用法：</strong>导图是用来建框架的，不是用来抄板书</li>
+    <li><strong>分支原则：</strong>一级章/二级考点/三级易错点，每分支3-7字关键词，不写整句</li>
+    <li><strong>颜色管理：</strong>红=不会、黄=半懂、绿=已掌握，导图变复习地图</li>
+    <li><strong>迭代使用：</strong>随复习补内容、标薄弱，导图即学习进度图</li>
+    <li><strong>别美化上瘾：</strong>结构清晰比好看重要，别在美化上耗时间</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r004.html">
+      <div class="ri-ico">📚</div>
+      <div class="ri-title">期末两周冲刺复习法</div>
+      <div class="ri-desc">用导图搭知识框架</div>
+    </a>
+    <a class="related-item" href="r005.html">
+      <div class="ri-ico">📝</div>
+      <div class="ri-title">康奈尔笔记法</div>
+      <div class="ri-desc">课堂笔记与5R复盘</div>
+    </a>
+    <a class="related-item" href="r011.html">
+      <div class="ri-ico">🗂️</div>
+      <div class="ri-title">Notion新手入门</div>
+      <div class="ri-desc">知识库与笔记管理</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：工具评测 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

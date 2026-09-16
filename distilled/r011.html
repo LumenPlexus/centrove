@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>Notion新手入门 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">Notion新手入门</div>
+</div>
+<div class="container">
+
+<h1>🗂️ Notion新手入门：大学生怎么用Notion管好学习与生活</h1>
+<div class="meta-row">
+  <span>工具教程 · 经验蒸馏</span>
+  <span class="score">⭐ 8.8</span>
+  <span>入门难度</span>
+  <span>1天上手</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">Notion</span>
+  <span class="tag tag-coral">知识管理</span>
+  <span class="tag tag-blue">效率</span>
+  <span class="tag tag-teal">大学通用</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>Notion的本质是"积木式"笔记——一切都是Block，可以自由拼装。大学生用它管学习生活，只需要掌握四个核心概念（Page/Database/Block/Relation），再套用四套现成模板（课程笔记库/读书清单/任务看板/习惯追踪）就能跑起来。最大的坑是"过度设计"——花在搭页面上的时间比真正用它还多。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、四个核心概念</a>
+  <a href="#s2">二、5分钟创建第一个页面</a>
+  <a href="#s3">三、必备模板1：课程笔记库</a>
+  <a href="#s4">四、必备模板2：读书清单</a>
+  <a href="#s5">五、必备模板3：任务看板</a>
+  <a href="#s6">六、必备模板4：习惯追踪</a>
+  <a href="#s7">七、Notion使用技巧</a>
+  <a href="#s8">八、两个常见误区</a>
+  <a href="#s9">九、Notion替代方案（免费）</a>
+  <a href="#s10">十、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、四个核心概念</h2>
+<p>Notion看着复杂，其实就四个概念。理解了这四个，其他都是它们的组合。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>概念</th><th>是什么</th><th>类比</th></tr>
+  <tr><td>Page 页面</td><td>一个笔记页，可以放文字、图片、表格等任何内容</td><td>一张白纸</td></tr>
+  <tr><td>Block 区块</td><td>页面里的最小单元，一段文字、一个标题、一张图都是一个Block</td><td>乐高积木</td></tr>
+  <tr><td>Database 数据库</td><td>结构化的表格，有字段(列)和记录(行)，可切换多种视图</td><td>一张Excel表</td></tr>
+  <tr><td>Relation 关联</td><td>把两个数据库连起来，记录之间可以互相关联</td><td>表与表之间的外键</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>理解关键：</strong>Notion里一切都是Block——你打的每段字、插的每个表格都是Block。Block可以拖动排序、嵌套、转换类型。这种"积木式"组合让Notion极其灵活，但也是它上手略慢的原因。
+</div>
+
+<h2 id="s2">二、5分钟创建第一个页面</h2>
+<ol>
+  <li><strong>注册登录：</strong>用学校邮箱注册，教育版免费且功能全</li>
+  <li><strong>新建页面：</strong>点左上角"+ New page"，输入标题</li>
+  <li><strong>加内容：</strong>直接打字就是文字Block；输入"/"调出命令菜单，可加标题、待办、引用、表格等</li>
+  <li><strong>换图标和封面：</strong>点标题上方可加emoji图标和封面图，让页面好看</li>
+  <li><strong>嵌套页面：</strong>在页面里输入"/page"可创建子页面，形成树状结构</li>
+</ol>
+
+<div class="callout callout-ok">
+  <strong>第一个页面建议：</strong>做个"个人主页"，把课程笔记库、读书清单、任务看板、习惯追踪都作为子页面挂在下面，作为你的Notion入口。
+</div>
+
+<h2 id="s3">三、必备模板1：课程笔记库</h2>
+<p>这是大学生最该先搭的模板——把所有课程笔记集中管理，按科目+标签+日期检索。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>字段</th><th>类型</th><th>说明</th></tr>
+  <tr><td>科目</td><td>Select 单选</td><td>高数/英语/专业课…</td></tr>
+  <tr><td>章节</td><td>Text 文本</td><td>第几章/主题</td></tr>
+  <tr><td>标签</td><td>Multi-select 多选</td><td>定义/公式/例题/易错点</td></tr>
+  <tr><td>日期</td><td>Date 日期</td><td>上课或复习日期</td></tr>
+  <tr><td>掌握度</td><td>Select</td><td>红/黄/绿</td></tr>
+  <tr><td>笔记正文</td><td>Page(点击展开)</td><td>点进去写详细内容</td></tr>
+</table></div>
+<p><strong>用法：</strong>每节课后新建一条记录，点开写正文；复习时按科目或标签筛选，红色掌握度的优先看。配合"按科目分组"视图，一眼看清每科进度。</p>
+
+<h2 id="s4">四、必备模板2：读书清单</h2>
+<p>把在读/已读的书管起来，加评分和笔记，避免"读完就忘"。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>字段</th><th>类型</th><th>说明</th></tr>
+  <tr><td>书名</td><td>Title 标题</td><td>主键</td></tr>
+  <tr><td>状态</td><td>Select</td><td>在读/已读/想读</td></tr>
+  <tr><td>评分</td><td>Number(1-5)</td><td>打星</td></tr>
+  <tr><td>类型</td><td>Multi-select</td><td>专业/小说/传记/工具</td></tr>
+  <tr><td>笔记</td><td>Page</td><td>点开写摘录和读后感</td></tr>
+  <tr><td>读完日期</td><td>Date</td><td>已读才填</td></tr>
+</table></div>
+<p><strong>用法：</strong>想读的加进"想读"；开始读改"在读"；读完改"已读"+打分+写笔记。用看板视图按状态分三栏，进度一目了然。</p>
+
+<h2 id="s5">五、必备模板3：任务看板</h2>
+<p>管理作业、项目、待办，用看板视图分三栏，是最直观的任务管理方式。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>字段</th><th>类型</th><th>说明</th></tr>
+  <tr><td>任务名</td><td>Title</td><td>主键</td></tr>
+  <tr><td>状态</td><td>Select</td><td>待办/进行中/已完成</td></tr>
+  <tr><td>截止日期</td><td>Date</td><td>排期</td></tr>
+  <tr><td>优先级</td><td>Select</td><td>高/中/低</td></tr>
+  <tr><td>科目/分类</td><td>Select</td><td>课程/社团/个人</td></tr>
+</table></div>
+<p><strong>用法：</strong>用Board看板视图按状态分栏，拖拽卡片即可改变状态。配合日历视图看截止日期分布，避免作业撞期。</p>
+
+<h2 id="s6">六、必备模板4：习惯追踪</h2>
+<p>每日打卡+月度统计，把好习惯可视化，是坚持的好帮手。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>字段</th><th>类型</th><th>说明</th></tr>
+  <tr><td>日期</td><td>Date</td><td>主键，每天一条</td></tr>
+  <tr><td>背单词</td><td>Checkbox 复选</td><td>打勾=完成</td></tr>
+  <tr><td>运动</td><td>Checkbox</td><td></td></tr>
+  <tr><td>早起</td><td>Checkbox</td><td></td></tr>
+  <tr><td>读书</td><td>Checkbox</td><td></td></tr>
+  <tr><td>备注</td><td>Text</td><td>当天特殊情况</td></tr>
+</table></div>
+<p><strong>用法：</strong>每天一条记录，做完的习惯打勾。月度用日历视图，绿格子多的天就是好状态。坚持一个月，看满屏的勾会很有成就感。</p>
+
+<h2 id="s7">七、Notion使用技巧</h2>
+
+<h3>快捷键（最高频）</h3>
+<div class="table-wrap"><table>
+  <tr><th>快捷键</th><th>作用</th></tr>
+  <tr><td>/</td><td>调出命令菜单，加任何Block</td></tr>
+  <tr><td>## + 空格</td><td>二级标题</td></tr>
+  <tr><td>- + 空格</td><td>无序列表</td></tr>
+  <tr><td>[] + 空格</td><td>待办事项</td></tr>
+  <tr><td>&gt; + 空格</td><td>引用块</td></tr>
+  <tr><td>Ctrl/Cmd + D</td><td>复制当前Block</td></tr>
+  <tr><td>拖拽Block左侧⋮⋮</td><td>移动/嵌套Block</td></tr>
+</table></div>
+
+<h3>数据库视图</h3>
+<p>同一个数据库可以切多种视图，数据不变，看法不同：</p>
+<ul>
+  <li><strong>Table 表格：</strong>默认，适合录入和编辑</li>
+  <li><strong>Board 看板：</strong>按某字段分栏，适合任务/状态管理</li>
+  <li><strong>Calendar 日历：</strong>按日期看，适合排期</li>
+  <li><strong>Gallery 画廊：</strong>卡片式，适合带封面图的内容</li>
+  <li><strong>Filter 筛选 + Group 分组：</strong>只看某科/某状态，自动归类</li>
+</ul>
+
+<h3>模板功能</h3>
+<p>数据库可以设"模板按钮"，新建记录时自动套用预设结构（如每条课程笔记都自带"定义/公式/例题"三个标题），省得每次重排。</p>
+
+<div class="callout callout-info">
+  <strong>进阶玩法：</strong>用Relation把"课程笔记库"和"任务看板"关联——某条作业可以链接到对应的课程笔记，点一下就跳过去复习，信息打通。
+</div>
+
+<h2 id="s8">八、两个常见误区</h2>
+
+<h3>误区一：过度设计</h3>
+<p>新手最容易犯的错——一上来就搭十几个数据库、七八种视图、各种关联和公式，页面华丽得像作品集，结果维护起来累死，两周后弃用。</p>
+<p><strong>正确做法：</strong>先从最简单的开始（一个课程笔记库+一个任务看板就够），用一周，发现哪里不顺再加。Notion的强大是"能扩展"，不是"一上来就全铺开"。</p>
+
+<h3>误区二：花太多时间搭页面而非用</h3>
+<p>沉迷调图标、选封面、排颜色，花在"美化系统"上的时间比真正记笔记/管任务还多。这违背了工具的初衷——工具是来帮你做事的，不是来给你"玩"的。</p>
+<p><strong>正确做法：</strong>页面能用就行，内容比形式重要。把时间花在"往里填内容"上，而不是"让它更好看"上。</p>
+
+<div class="callout callout-warn">
+  <strong>判断标准：</strong>如果你一周里在Notion里"搭系统"超过3小时、"填内容"不足1小时，说明你已经在过度设计了。停下来，先用起来。
+</div>
+
+<h2 id="s9">九、Notion替代方案（免费）</h2>
+<p>Notion虽好，但有人嫌慢、嫌复杂、嫌要科学上网。下面是几款免费替代品。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>工具</th><th>优势</th><th>适合人群</th></tr>
+  <tr><td>飞书文档</td><td>国内速度快、协作强、文档+表格+思维导图一体、免费</td><td>国内用户、团队协作、已用飞书生态</td></tr>
+  <tr><td>语雀</td><td>知识库结构清晰、编辑流畅、免费版够用</td><td>喜欢"知识库"式管理的同学</td></tr>
+  <tr><td>Obsidian</td><td>本地存储、双链笔记、极客向、完全免费</td><td>注重隐私、喜欢本地文件、爱折腾的同学</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>选择建议：</strong>想要"数据库式"灵活管理选Notion；想要国内顺畅+协作选飞书；想要知识库式结构选语雀；想要本地双链+极客玩法选Obsidian。工具不重要，重要的是先用起来。
+</div>
+
+<h2 id="s10">十、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>四核心概念：</strong>Page(页面)/Block(积木区块)/Database(数据库)/Relation(关联)</li>
+    <li><strong>积木式：</strong>一切都是Block，可拖动/嵌套/转换，灵活但上手略慢</li>
+    <li><strong>5分钟建页：</strong>注册→新建页面→打字+斜杠命令→加图标封面→嵌套子页面</li>
+    <li><strong>四套模板：</strong>课程笔记库(科目+标签+日期+掌握度)、读书清单(状态+评分+笔记)、任务看板(待办/进行中/已完成)、习惯追踪(每日打卡+月度统计)</li>
+    <li><strong>高频快捷键：</strong>/调命令、##标题、[]待办、拖拽⋮⋮移动Block</li>
+    <li><strong>数据库视图：</strong>Table/Board/Calendar/Gallery+筛选分组，同数据多看法</li>
+    <li><strong>模板按钮：</strong>新建记录自动套预设结构，省重排</li>
+    <li><strong>误区一过度设计：</strong>从最简单开始，用一周再扩展</li>
+    <li><strong>误区二搭页大于用：</strong>内容比形式重要，别沉迷美化</li>
+    <li><strong>免费替代：</strong>飞书(国内协作)/语雀(知识库)/Obsidian(本地双链)</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r005.html">
+      <div class="ri-ico">📝</div>
+      <div class="ri-title">康奈尔笔记法</div>
+      <div class="ri-desc">用Notion做康奈尔笔记</div>
+    </a>
+    <a class="related-item" href="r010.html">
+      <div class="ri-ico">⏰</div>
+      <div class="ri-title">GTD时间管理法</div>
+      <div class="ri-desc">用数据库搭GTD系统</div>
+    </a>
+    <a class="related-item" href="r009.html">
+      <div class="ri-ico">🧠</div>
+      <div class="ri-title">思维导图工具横向评测</div>
+      <div class="ri-desc">搭知识框架的工具</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：工具教程 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>GTD时间管理法 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">GTD时间管理法</div>
+</div>
+<div class="container">
+
+<h1>⏰ GTD时间管理法：五步流程管好你所有的事</h1>
+<div class="meta-row">
+  <span>时间管理 · 经验蒸馏</span>
+  <span class="score">⭐ 9.0</span>
+  <span>中等难度</span>
+  <span>2周上手</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">时间管理</span>
+  <span class="tag tag-coral">GTD</span>
+  <span class="tag tag-blue">大学通用</span>
+  <span class="tag tag-teal">效率</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>GTD（Getting Things Done）的核心不是"列清单"，而是用五步流程——收集→理清→组织→回顾→执行——把脑子里乱七八糟的事全部倒出来，分门别类放进不同清单，让大脑从"记事"中解放，专注"做事"。它比简单待办清单强在：把"项目"和"下一步行动"分开，让每个任务都有可立即执行的第一步。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、五步流程总览</a>
+  <a href="#s2">二、收集箱怎么建</a>
+  <a href="#s3">三、理清四问</a>
+  <a href="#s4">四、组织分类：四类清单</a>
+  <a href="#s5">五、每周回顾怎么做</a>
+  <a href="#s6">六、大学生GTD实践</a>
+  <a href="#s7">七、GTD vs 简单待办清单</a>
+  <a href="#s8">八、常见失败原因和解决方案</a>
+  <a href="#s9">九、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、五步流程总览</h2>
+<p>GTD由戴维·艾伦提出，思路是：<strong>大脑是用来思考的，不是用来记事的。</strong>把所有"该做的事"从脑子里倒出来，放进一个可靠的系统，大脑才能安心专注眼前的工作。整个流程就五步。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>步骤</th><th>动作</th><th>解决什么问题</th><th>频率</th></tr>
+  <tr><td>① 收集 Capture</td><td>把所有想法/任务/待办都丢进收集箱</td><td>不漏事，大脑不用记</td><td>随时</td></tr>
+  <tr><td>② 理清 Clarify</td><td>逐条问清楚它是什么、要不要做、下一步是什么</td><td>把模糊想法变成明确行动</td><td>每天或每周</td></tr>
+  <tr><td>③ 组织 Organize</td><td>把理清后的任务分进不同清单</td><td>该做的有地方放，找得到</td><td>每天或每周</td></tr>
+  <tr><td>④ 回顾 Reflect</td><td>定期检查所有清单，更新进度</td><td>系统不失效，不积压</td><td>每周一次</td></tr>
+  <tr><td>⑤ 执行 Engage</td><td>从清单里挑出当下该做的，去做</td><td>专注眼前，不被其他事干扰</td><td>每天</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>核心理念：</strong>前四步都是为了第五步——执行时你只看清单，不用再动脑想"我还有什么没做"。大脑从"记事+做事"双重负担，变成只"做事"，效率自然翻倍。
+</div>
+
+<h2 id="s2">二、收集箱怎么建</h2>
+<p>收集箱是GTD的入口，原则只有一个：<strong>把所有想到的事，第一时间倒进去，别让它们占着大脑内存。</strong></p>
+
+<h3>工具选择</h3>
+<ul>
+  <li><strong>手机备忘录/提醒事项：</strong>最随手，随手记随手丢</li>
+  <li><strong>滴答清单/番茄ToDo：</strong>专门的待办App，能收件箱+分类</li>
+  <li><strong>Notion/飞书：</strong>适合喜欢结构化的同学，能建数据库</li>
+  <li><strong>纸笔便签：</strong>最专注，但不易检索</li>
+</ul>
+
+<h3>收集原则</h3>
+<ul>
+  <li><strong>只收集，不处理。</strong>收集箱只负责"记下来"，不要边记边想怎么做，那会打断当前任务。</li>
+  <li><strong>数量越多越好。</strong>不管是作业、想看的电影、突然冒出的点子，都丢进去。收集箱容量无限。</li>
+  <li><strong>所有入口汇到一个收集箱。</strong>别分散在微信、备忘录、脑子里好几处，统一倒进一个地方，避免漏。</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>关键：</strong>收集箱要定期清空（理清+组织），否则它会越堆越多，最后变成"再也不看的清单"。收集箱是临时仓库，不是永久墓地。
+</div>
+
+<h2 id="s3">三、理清四问</h2>
+<p>收集箱满了，就要逐条理清。对每一条，问下面四个问题，把它变成"明确的行动"或"该扔掉的废件"。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>问题</th><th>判断</th><th>去向</th></tr>
+  <tr><td>① 这是什么？</td><td>明确这条到底是什么事</td><td>—</td></tr>
+  <tr><td>② 能不能做？（可行动吗）</td><td>如果不可行动：是参考资料→存参考资料；是想法→待将来清单；是垃圾→删掉</td><td>参考资料/待将来/删除</td></tr>
+  <tr><td>③ 要不要做？</td><td>不做：删掉或待将来</td><td>删除/待将来</td></tr>
+  <tr><td>④ 下一步是什么？多久能做完？</td><td>能2分钟内做完→立刻做；需要多步→项目；单步→下一步行动</td><td>立即做/项目/下一步行动</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>2分钟原则：</strong>如果一件事2分钟内能做完，别进清单，立刻做掉。否则记进清单的"整理时间"反而比"做完它"还长。
+</div>
+
+<h2 id="s4">四、组织分类：四类清单</h2>
+<p>理清后，把任务分进下面四类清单。这是GTD最关键的结构，也是它和普通待办清单的核心区别。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>清单</th><th>放什么</th><th>例子</th></tr>
+  <tr><td>下一步行动<br>Next Actions</td><td>能立即执行的单步任务，要有明确动作和地点</td><td>"今晚8点在图书馆写高数第3章作业"</td></tr>
+  <tr><td>项目<br>Projects</td><td>需要多步骤、多天才能完成的目标</td><td>"准备四级""写毕业论文""找暑期实习"</td></tr>
+  <tr><td>待将来<br>Someday/Maybe</td><td>想做但现在不做的，以后再说</td><td>"学吉他""看某本书""去某地旅游"</td></tr>
+  <tr><td>参考资料<br>Reference</td><td>不是任务，是有用资料</td><td>"某老师的课件""某网站链接""某篇好文"</td></tr>
+</table></div>
+
+<h3>项目要拆解成"下一步行动"</h3>
+<p>项目（多步目标）不能直接执行，必须拆成一个个"下一步行动"才能做。这是很多人用GTD失败的地方——把项目当任务，结果看着"写毕业论文"这种大目标不知从何下手。拆法：</p>
+<ul>
+  <li>问自己："这个项目，我现在能立刻做的第一个具体动作是什么？"</li>
+  <li>把第一个动作写成下一步行动，放进行动清单</li>
+  <li>做完这一步，再确定下一个动作，逐步推进</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>判断"下一步行动"写得好不好：</strong>好的下一步行动是"动词开头+具体+可立即执行"，比如"打开Word列论文提纲"；坏的写法是"写论文"——太模糊，大脑一看到就拖延。
+</div>
+
+<h2 id="s5">五、每周回顾怎么做</h2>
+<p>每周回顾是GTD保持不失效的关键。不做回顾，清单会越积越多，最后放弃。建议每周固定时间（比如周日晚）花30分钟做一次。</p>
+
+<div class="callout callout-info">
+  <strong>每周回顾检查清单：</strong>
+  <br>□ 清空收集箱（逐条理清+组织）
+  <br>□ 回顾下一步行动清单：做完的勾掉，没做的问"还做吗/为什么没做"
+  <br>□ 回顾项目清单：每个项目的下一步行动是否已确定
+  <br>□ 回顾待将来清单：有没有该升级为现在做的
+  <br>□ 回顾日历：下周的固定安排是否都记了
+  <br>□ 清理过期/已完成的内容
+</div>
+
+<div class="callout callout-ok">
+  <strong>回顾的价值：</strong>每周一次"全局扫视"，让你对"我手里有多少事、哪些在推进、哪些卡住了"心里有数。这种掌控感会大幅降低焦虑。
+</div>
+
+<h2 id="s6">六、大学生GTD实践</h2>
+<p>大学的事可以分四类，每类用GTD的方式管。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>类别</th><th>怎么管</th><th>例子</th></tr>
+  <tr><td>课程作业</td><td>按截止日期排进下一步行动，用日历标截止日</td><td>"周五前交英语作文"→拆成"今晚列提纲""明晚写初稿"</td></tr>
+  <tr><td>社团活动</td><td>作为项目管理，拆成具体行动</td><td>"办迎新晚会"→拆成"今天拉群""明天定场地"…</td></tr>
+  <tr><td>个人项目</td><td>放项目清单，定期推进</td><td>"准备四级""自学Python""找实习"</td></tr>
+  <tr><td>日常琐事</td><td>能2分钟做掉的立刻做，否则进下一步行动</td><td>"回某消息""取快递""交网费"</td></tr>
+</table></div>
+
+<h2 id="s7">七、GTD vs 简单待办清单的区别</h2>
+<p>很多人觉得"我不就是列个待办清单吗，GTD不就多了几步？"区别其实很大。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>维度</th><th>简单待办清单</th><th>GTD</th></tr>
+  <tr><td>记录方式</td><td>想到就往清单加</td><td>先收集箱，再理清+组织</td></tr>
+  <tr><td>任务颗粒度</td><td>常是大目标("写论文")</td><td>拆成可执行的下一步行动("列提纲")</td></tr>
+  <tr><td>项目 vs 行动</td><td>混在一起</td><td>项目(多步)和行动(单步)分开</td></tr>
+  <tr><td>非任务信息</td><td>没地方放</td><td>有参考资料/待将来清单</td></tr>
+  <tr><td>回顾机制</td><td>没有</td><td>每周回顾保持系统新鲜</td></tr>
+  <tr><td>大脑负担</td><td>还是要记"我还有什么没做"</td><td>全交给系统，大脑只专注做</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>一句话：</strong>简单清单是"备忘录"，GTD是"管理系统"。事少时清单够用，事一多，清单就乱，GTD的优势才显现。
+</div>
+
+<h2 id="s8">八、常见失败原因和解决方案</h2>
+
+<h3>失败一：收集箱不清空</h3>
+<p>只往里加不往外清，收集箱堆成几百条，看到就心累，干脆放弃。</p>
+<p><strong>解决：</strong>固定每周清空一次收集箱，把每条理清并归入相应清单。清不动的，多半是没想清楚"下一步是什么"——逼自己写出第一个动作。</p>
+
+<h3>失败二：把项目当行动</h3>
+<p>清单里全是"写论文""准备面试"这种大目标，每个都模糊，结果一个都不开始。</p>
+<p><strong>解决：</strong>每个项目必须拆出至少一个"动词开头、可立即做"的下一步行动。看到行动就知道从哪下手，拖延就消失了。</p>
+
+<h3>失败三：不回顾</h3>
+<p>系统搭好了，但从不回顾，清单过期失效，慢慢不再信任这个系统。</p>
+<p><strong>解决：</strong>每周固定30分钟回顾雷打不动。回顾不是负担，是让你重新掌控全局的安心时刻。</p>
+
+<h3>失败四：过度设计系统</h3>
+<p>折腾各种标签、视图、模板，花在"管理系统"上的时间比"做事"还多。</p>
+<p><strong>解决：</strong>系统越简单越好用。先跑通五步基础流程，等真不够用了再加功能。工具用最顺手的即可。</p>
+
+<div class="callout callout-warn">
+  <strong>总原则：</strong>GTD是手段不是目的。如果某步让你觉得"好麻烦不想做"，就简化它，直到你能持续跑下去。能坚持的简陋系统，胜过坚持不了的高级系统。
+</div>
+
+<h2 id="s9">九、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>核心理念：</strong>大脑用来思考不是记事，把所有事倒进系统，专注做事</li>
+    <li><strong>五步流程：</strong>收集→理清→组织→回顾→执行，前四步为第五步服务</li>
+    <li><strong>收集箱：</strong>只收集不处理，所有入口汇到一个，定期清空</li>
+    <li><strong>理清四问：</strong>是什么→能不能做→要不要做→下一步是什么/多久做完</li>
+    <li><strong>2分钟原则：</strong>2分钟内能做完的立刻做，别进清单</li>
+    <li><strong>四类清单：</strong>下一步行动(单步可做)/项目(多步)/待将来/参考资料</li>
+    <li><strong>项目拆行动：</strong>每个项目要有"动词开头+具体+可立即做"的下一步行动</li>
+    <li><strong>每周回顾：</strong>固定30分钟清空收集箱+更新各清单，保持系统不失效</li>
+    <li><strong>vs简单清单：</strong>GTD拆行动、分项目/行动、有回顾，事多时优势明显</li>
+    <li><strong>四大失败：</strong>不清空收集箱、把项目当行动、不回顾、过度设计</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r008.html">
+      <div class="ri-ico">🎯</div>
+      <div class="ri-title">四象限法则用错了反而更乱</div>
+      <div class="ri-desc">按重要紧急分优先级</div>
+    </a>
+    <a class="related-item" href="r011.html">
+      <div class="ri-ico">🗂️</div>
+      <div class="ri-title">Notion新手入门</div>
+      <div class="ri-desc">用数据库搭GTD系统</div>
+    </a>
+    <a class="related-item" href="r007.html">
+      <div class="ri-ico">🍅</div>
+      <div class="ri-title">番茄工作法为什么对你没用</div>
+      <div class="ri-desc">专注执行的正确姿势</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：时间管理 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

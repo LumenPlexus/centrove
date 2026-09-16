@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>期末两周冲刺复习法 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">期末两周冲刺复习法</div>
+</div>
+<div class="container">
+
+<h1>📚 期末两周冲刺复习法：搭骨架→填肉→刷题→查漏</h1>
+<div class="meta-row">
+  <span>备考方法 · 经验蒸馏</span>
+  <span class="score">⭐ 9.1</span>
+  <span>中等难度</span>
+  <span>2周见效</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">期末</span>
+  <span class="tag tag-coral">复习</span>
+  <span class="tag tag-blue">备考</span>
+  <span class="tag tag-teal">大学通用</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>两周时间足够把一学期的课救回来，前提是别一上来就刷题。正确的顺序是先搭知识骨架（知道整本书在讲什么），再填肉（把每个考点补实），再刷题（练手感找套路），最后查漏（专攻薄弱点）。跳过骨架直接刷题，是大多数人复习低效的根源。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、为什么两周能救回来：四阶段总览</a>
+  <a href="#s2">二、第一阶段：搭骨架（第1-3天）</a>
+  <a href="#s3">三、第二阶段：填肉（第4-8天）</a>
+  <a href="#s4">四、第三阶段：刷题（第9-12天）</a>
+  <a href="#s5">五、第四阶段：查漏（第13-14天）</a>
+  <a href="#s6">六、不同专业的适配</a>
+  <a href="#s7">七、思维导图搭建知识框架</a>
+  <a href="#s8">八、错题本怎么用最有效</a>
+  <a href="#s9">九、考前一天的终极清单</a>
+  <a href="#s10">十、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、为什么两周能救回来：四阶段总览</h2>
+<p>很多人到期末前两周才开始慌，觉得自己一学期没学，肯定来不及了。其实两周时间——大约100-120小时的净学习时间——足够把大部分科目从"几乎没学"拉到"能及格甚至冲中等"。关键不在时间多少，而在<strong>顺序对不对</strong>。</p>
+
+<p>最常见的错误顺序是：一上来就刷题。结果题目不会做，回去翻书，翻完再做又错，一来一回三天过去了，脑子里还是一盘散沙。正确的顺序应该反过来——<strong>先有框架，再填细节，再练题，最后补漏。</strong>这就是下面四阶段的逻辑。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>阶段</th><th>天数</th><th>目标</th><th>产出</th><th>验收标准</th></tr>
+  <tr><td>① 搭骨架</td><td>第1-3天</td><td>建立整本书的知识框架，知道考什么</td><td>一张全章思维导图</td><td>能凭导图讲清全书脉络</td></tr>
+  <tr><td>② 填肉</td><td>第4-8天</td><td>把每个考点补实，吃透定义/公式/推导</td><td>每章一份精简笔记</td><td>每个考点能用自己的话讲出来</td></tr>
+  <tr><td>③ 刷题</td><td>第9-12天</td><td>练手感、找题型套路、暴露盲区</td><td>错题本</td><td>常见题型看到就能下笔</td></tr>
+  <tr><td>④ 查漏</td><td>第13-14天</td><td>专攻错题和薄弱考点，回归课本</td><td>薄弱点攻克清单</td><td>错题本上的题能做对</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>时间分配原则：</strong>四阶段大致按 3:5:4:2 的天数比例。但可以根据自己的基础调整——基础差就多给"填肉"，基础好就压缩前两阶段、多留时间刷题。
+</div>
+
+<h2 id="s2">二、第一阶段：搭骨架（第1-3天）</h2>
+<p>搭骨架的目标只有一个：<strong>用最短的时间，搞清楚"这门课一共讲了哪几大块、每块里有哪些核心考点"。</strong>这时候不要纠结细节，能搭出框架就行。</p>
+
+<h3>怎么搭骨架</h3>
+<ol>
+  <li><strong>先看目录和考纲：</strong>把教材目录和老师发的考纲对照看一遍，圈出明确要考的章节，划掉不考的。</li>
+  <li><strong>扫每章的小标题和本章小结：</strong>不读正文，只读每节标题+每章末尾的"本章小结"。这一遍只是"扫描"，目的是知道每章有哪些概念。</li>
+  <li><strong>画一张全书的思维导图：</strong>以章为一级分支，以核心考点为二级分支。这一步是搭骨架的核心产出。</li>
+  <li><strong>用导图给同学讲一遍</strong>（或对着空气讲一遍）：能顺下来就说明框架立住了；卡住的地方，就是后面填肉要重点补的。</li>
+</ol>
+
+<h3>时间分配</h3>
+<ul>
+  <li>第1天：通读目录+考纲，划范围，列出所有章节的核心考点清单</li>
+  <li>第2天：画全书思维导图，逐章补二级分支</li>
+  <li>第3天：对着导图自讲一遍，标出"讲不通"的章节作为填肉重点</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>验收标准：</strong>合上课本，看着自己画的思维导图，能把这门课"在讲什么、分几块、每块考什么"讲清楚。讲不通的章节标注出来，进入第二阶段时优先补。
+</div>
+
+<h2 id="s3">三、第二阶段：填肉（第4-8天）</h2>
+<p>有了骨架，现在往里面填内容。填肉的目标是<strong>把每个核心考点吃透——定义是什么、公式怎么来的、典型题型长什么样。</strong>这一阶段是最累的，也是真正涨分的主力阶段。</p>
+
+<h3>具体操作</h3>
+<ul>
+  <li><strong>按考点逐一攻破，不按页码顺序读。</strong>对照第一阶段标出的考点清单，一个一个来，每个考点走"读教材→记公式→做2-3道例题→用自己的话讲一遍"的小循环。</li>
+  <li><strong>每个考点产出一份精简笔记。</strong>笔记只记：定义一句话、核心公式、易错点、一个典型例题。不要抄整段课本。</li>
+  <li><strong>用费曼法验证。</strong>每个考点讲不通，就回到教材再读，直到能讲顺。这一步能把"看懂"和"真懂"区分开。</li>
+  <li><strong>把"卡壳清单"的章节优先处理。</strong>第一天搭骨架时标出的薄弱章节，这5天里要重点攻克，不能拖到最后。</li>
+</ul>
+
+<div class="table-wrap"><table>
+  <tr><th>天数</th><th>上午（2-3h）</th><th>下午（2-3h）</th><th>晚上（1-2h）</th></tr>
+  <tr><td>第4天</td><td>攻克薄弱章A</td><td>攻克薄弱章B</td><td>费曼复述+整理笔记</td></tr>
+  <tr><td>第5天</td><td>考点章节C</td><td>考点章节D</td><td>做配套例题</td></tr>
+  <tr><td>第6天</td><td>考点章节E</td><td>补前两天没讲通的</td><td>费曼复述</td></tr>
+  <tr><td>第7天</td><td>考点章节F</td><td>考点章节G</td><td>整理全章笔记</td></tr>
+  <tr><td>第8天</td><td>扫尾剩余考点</td><td>全章笔记合并到导图</td><td>对着导图自讲，查漏</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>注意：</strong>填肉阶段最常见的坑是"抄书式笔记"——把课本整段抄下来，看着像学了，其实没进脑子。笔记必须是用自己的话压缩，且每个考点都有"易错点"这一栏。
+</div>
+
+<h2 id="s4">四、第三阶段：刷题（第9-12天）</h2>
+<p>骨架和血肉都有了，现在该练手感了。刷题阶段的目标有三个：<strong>熟悉题型套路、练做题速度、把没掌握的考点暴露出来。</strong>刷题不是为了"刷过瘾"，而是为了"刷出问题"。</p>
+
+<h3>刷题顺序</h3>
+<ol>
+  <li><strong>先做课后题和往年真题。</strong>课后题最贴近考点，真题最贴近考试风格。这两类优先，模拟题放最后。</li>
+  <li><strong>按章节刷，不要混着刷。</strong>一章一章过，每章刷完总结"这章常考哪几类题型"。</li>
+  <li><strong>限时做整套真题。</strong>第11-12天开始整套限时模考，训练时间分配和考场心态。</li>
+</ol>
+
+<h3>每道错题怎么处理</h3>
+<ul>
+  <li>不只对答案，要写清楚"错在哪一步、属于哪类错误"</li>
+  <li>归因到考点：是概念不清、公式记错、计算失误，还是题型没见过</li>
+  <li>把同类错题放一起，方便第四阶段集中突破</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>刷题量参考：</strong>理工科每科建议刷15-25套题量的题（按章算），文科以背诵框架为主、真题刷5-8套即可。题不在多，在"每道错题都搞懂"。
+</div>
+
+<h2 id="s5">五、第四阶段：查漏（第13-14天）</h2>
+<p>最后两天不要再刷新题了，意义不大。这两天专门干一件事：<strong>把错题本和薄弱考点啃下来。</strong></p>
+
+<h3>具体操作</h3>
+<ul>
+  <li><strong>第13天：</strong>把错题本从头到尾过一遍，遮住答案重做，做不对的标记重点。</li>
+  <li><strong>第13天：</strong>对着全书思维导图，逐个考点自讲一遍，讲不通的回去翻笔记。</li>
+  <li><strong>第14天（考前一天）：</strong>只看错题本里的星号题+易错点清单，不再学新东西，保持状态。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>验收标准：</strong>错题本能遮答案重做且正确率≥80%；思维导图每个考点都能讲清。达到这两条，及格基本稳了，冲中等以上也有把握。
+</div>
+
+<h2 id="s6">六、不同专业的适配</h2>
+<p>四阶段的框架是通用的，但不同专业侧重不同。下面是三类专业的适配建议。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>专业类型</th><th>搭骨架侧重</th><th>填肉侧重</th><th>刷题侧重</th><th>关键提醒</th></tr>
+  <tr><td>理工科<br>（高数/物理/编程）</td><td>公式体系+定理条件</td><td>公式推导+典型例题</td><td>重刷题，套题量大</td><td>公式必须亲手推一遍，别只背结论</td></tr>
+  <tr><td>文科<br>（历史/文学/法学）</td><td>时间线/流派/框架</td><td>背诵要点+答题模板</td><td>刷真题找答题套路</td><td>框架比细节重要，先有树后长叶</td></tr>
+  <tr><td>商科<br>（经管/会计）</td><td>概念体系+流程</td><td>公式+案例+背诵</td><td>计算题+论述题混合</td><td>计算和背诵并重，不能偏废</td></tr>
+</table></div>
+
+<h2 id="s7">七、思维导图搭建知识框架</h2>
+<p>思维导图是搭骨架阶段最趁手的工具，但很多人用错了——把它当"抄板书"用，把书上每个小标题都抄进导图，结果导图又大又乱，根本看不清重点。</p>
+
+<h3>正确用法</h3>
+<ul>
+  <li><strong>导图是用来建框架的，不是用来抄书。</strong>一级分支是章，二级是核心考点，三级最多到"易错点"。再细的内容回到笔记里找。</li>
+  <li><strong>每分支用关键词，不写整句。</strong>一个分支3-7个字最好，眼睛一扫就抓住重点。</li>
+  <li><strong>用颜色区分掌握程度。</strong>红色=完全不会，黄色=半懂，绿色=已掌握。复习时一眼看出该补哪。</li>
+  <li><strong>导图要随着复习迭代。</strong>填肉阶段往里补，查漏阶段在薄弱分支上标红，导图本身就是你的复习地图。</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>工具推荐：</strong>纸笔最快、最专注，适合搭初版骨架；XMind/幕布适合后续迭代和导出。工具不重要，关键是别把时间花在美化导图上。
+</div>
+
+<h2 id="s8">八、错题本怎么用最有效</h2>
+<p>错题本是冲刺复习里性价比最高的工具，但90%的人用错了——只是把错题和正确答案抄一遍，这样做几乎没用。</p>
+
+<h3>错题本该记什么</h3>
+<ol>
+  <li><strong>题目来源+题号：</strong>方便回头找原题。</li>
+  <li><strong>错误原因（最重要）：</strong>是概念不清、公式记错、计算失误，还是题型没见过？写具体。</li>
+  <li><strong>正确思路：</strong>正确的解法第一步第二步是什么，关键转折在哪。</li>
+  <li><strong>经验教训：</strong>下次遇到类似题要警惕什么，比如"看到某条件先想到某结论"。</li>
+</ol>
+
+<h3>错题怎么分类复习</h3>
+<div class="table-wrap"><table>
+  <tr><th>错误类型</th><th>对应问题</th><th>解决方法</th></tr>
+  <tr><td>概念不清</td><td>填肉没吃透</td><td>回课本重读定义+费曼复述</td></tr>
+  <tr><td>公式记错/不会用</td><td>没亲手推过</td><td>把公式推导写一遍+做3道同公式题</td></tr>
+  <tr><td>计算失误</td><td>手生/粗心</td><td>限时训练+检查习惯</td></tr>
+  <tr><td>题型没见过</td><td>刷题不够</td><td>同题型集中刷5-10道找套路</td></tr>
+  <tr><td>审题看错</td><td>不仔细</td><td>读题划关键词，看清选对还是选错</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>复习错题的方法：</strong>每周和考前各复习一次，遮住答案重做，不是"看一遍"。同一道题错两次以上标星号，重点突破。
+</div>
+
+<h2 id="s9">九、考前一天的终极清单</h2>
+<p>考前一天不要再学新东西，保持状态最重要。下面是一份可照做的清单。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>时段</th><th>做什么</th><th>目的</th></tr>
+  <tr><td>上午</td><td>过一遍思维导图，逐考点自讲</td><td>确认整体框架都在</td></tr>
+  <tr><td>下午</td><td>只看错题本星号题+易错点清单</td><td>把最可能丢分的地方堵上</td></tr>
+  <tr><td>傍晚</td><td>准备好文具、证件、计算器，查考场</td><td>避免第二天临时慌乱</td></tr>
+  <tr><td>晚上</td><td>不再刷题，看轻松内容，11点前睡</td><td>养足精神，状态比多背一个点值钱</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>考场上的心态：</strong>遇到不会的题先跳过，别死磕；先拿稳该拿的分。考试比的是"会的都做对"，不是"难题都做出来"。
+</div>
+
+<h2 id="s10">十、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>四阶段顺序：</strong>搭骨架(1-3天)→填肉(4-8天)→刷题(9-12天)→查漏(13-14天)，比例约3:5:4:2</li>
+    <li><strong>搭骨架：</strong>看目录+考纲+章节小结，画全书思维导图，能自讲脉络就算过</li>
+    <li><strong>填肉：</strong>按考点逐一攻破，每考点配费曼复述，产出精简笔记，不抄书</li>
+    <li><strong>刷题：</strong>先课后题+真题，按章刷，错题写清错误原因，第11-12天整套限时模考</li>
+    <li><strong>查漏：</strong>最后两天只啃错题本和薄弱考点，不再学新东西</li>
+    <li><strong>专业适配：</strong>理工重公式刷题、文科重框架背诵、商科混合</li>
+    <li><strong>思维导图：</strong>用来建框架不抄书，关键词+颜色标掌握程度，随复习迭代</li>
+    <li><strong>错题本：</strong>记错误原因+正确思路+教训，遮答案重做复习，错两次标星号</li>
+    <li><strong>考前一天：</strong>过导图+看星号错题，11点前睡，状态比多背一个点值钱</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r003.html">
+      <div class="ri-ico">🗣️</div>
+      <div class="ri-title">费曼学习法</div>
+      <div class="ri-desc">讲给别人听检验会不会</div>
+    </a>
+    <a class="related-item" href="r006.html">
+      <div class="ri-ico">📐</div>
+      <div class="ri-title">高数期末不挂科</div>
+      <div class="ri-desc">3天过完核心考点</div>
+    </a>
+    <a class="related-item" href="r005.html">
+      <div class="ri-ico">📝</div>
+      <div class="ri-title">康奈尔笔记法</div>
+      <div class="ri-desc">课堂笔记与5R复盘</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：备考方法 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

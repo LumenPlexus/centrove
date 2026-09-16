@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>康奈尔笔记法 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">康奈尔笔记法</div>
+</div>
+<div class="container">
+
+<h1>📝 康奈尔笔记法：上课记、课后补、考前复盘一条龙</h1>
+<div class="meta-row">
+  <span>学习方法 · 经验蒸馏</span>
+  <span class="score">⭐ 9.0</span>
+  <span>入门难度</span>
+  <span>持续见效</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">笔记法</span>
+  <span class="tag tag-coral">课堂</span>
+  <span class="tag tag-blue">复习</span>
+  <span class="tag tag-teal">大学通用</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>康奈尔笔记法的精髓不是"分区"本身，而是把"上课记→课后补→复习回忆"三个动作塞进同一张纸。右大栏上课记要点，左小栏课后提炼线索词，底部总结一句话。复习时遮住右边，只看左边线索回忆右边——这就是5R复盘法的核心。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、康奈尔笔记的三块分区</a>
+  <a href="#s2">二、上课怎么记：记什么/不记什么/怎么缩写</a>
+  <a href="#s3">三、课后怎么补充：线索区和总结区</a>
+  <a href="#s4">四、5R复盘法：康奈尔的复习引擎</a>
+  <a href="#s5">五、康奈尔笔记 vs 普通笔记效率对比</a>
+  <a href="#s6">六、手机/电脑版康奈尔笔记工具推荐</a>
+  <a href="#s7">七、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、康奈尔笔记的三块分区</h2>
+<p>康奈尔笔记法由康奈尔大学教授沃尔特·鲍克发明，核心是把一张纸分成三块，每块承担不同功能。它不是"好看"，而是<strong>把记笔记和复习笔记的流程结构化</strong>——记的时候知道记在哪，复习的时候知道从哪回忆。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>分区</th><th>位置/比例</th><th>什么时候用</th><th>写什么</th></tr>
+  <tr><td>笔记区</td><td>右侧，约占70%</td><td>上课时实时记录</td><td>老师讲的内容要点、板书、例子</td></tr>
+  <tr><td>线索区</td><td>左侧，约占20%</td><td>课后整理时补充</td><td>关键词、问题、考点提示</td></tr>
+  <tr><td>总结区</td><td>底部，约占10%</td><td>课后整理时补充</td><td>本页核心内容的一句话概括</td></tr>
+</table></div>
+
+<p>比例不是死的，关键是<strong>右侧要够大能记下上课内容，左侧要够窄逼你只写关键词，底部要小逼你高度压缩</strong>。很多人把左侧写满句子，就把康奈尔笔记用成了普通笔记，失去了"线索-回忆"的功能。</p>
+
+<div class="callout callout-info">
+  <strong>最简做法：</strong>拿一张A4纸，左侧折出约5cm宽作线索区，底部留约5cm高作总结区，剩下的大区就是笔记区。每页对应一节课或一个主题。
+</div>
+
+<h2 id="s2">二、上课怎么记：记什么/不记什么/怎么缩写</h2>
+<p>笔记区是上课实时用的，关键是要快、要准。大学课堂信息量大，什么都记肯定记不全，所以"记什么"比"记得多"更重要。</p>
+
+<h3>该记什么</h3>
+<ul>
+  <li><strong>老师反复强调、说"这个要考/重点"的内容</strong>——这是最明确的信号</li>
+  <li><strong>板书的标题、公式、结构图</strong>——这些通常就是知识骨架</li>
+  <li><strong>定义、定理、结论的精确表述</strong>——考试常考"概念辨析"</li>
+  <li><strong>老师举的例子和案例</strong>——例子是理解抽象概念的关键</li>
+  <li><strong>自己没听懂、有疑问的地方</strong>——打个问号标记，课后补</li>
+</ul>
+
+<h3>不该记什么</h3>
+<ul>
+  <li>课本上原样有的整段文字——标个页码就行，别抄</li>
+  <li>老师的过渡语、闲聊、重复的话</li>
+  <li>自己已经完全掌握的简单内容</li>
+  <li>逐字逐句的口头原话——记要点不记原话</li>
+</ul>
+
+<h3>怎么缩写提速</h3>
+<div class="table-wrap"><table>
+  <tr><th>缩写技巧</th><th>例子</th><th>说明</th></tr>
+  <tr><td>用符号代替文字</td><td>∵ ∴ → ↑ ↓ ≠ ≈</td><td>因为/所以/导致/上升/下降/不等于/约等于</td></tr>
+  <tr><td>缩长词为首字母或前几字</td><td>定→定义，导→求导，积→积分</td><td>自己能看懂就行</td></tr>
+  <tr><td>箭头串步骤</td><td>条件A → 结论B → 应用C</td><td>逻辑链一眼看清</td></tr>
+  <tr><td>缩进表示层级</td><td>一级不缩进，二级缩一格</td><td>体现知识结构</td></tr>
+  <tr><td>留空跳过</td><td>没跟上先画横线占位</td><td>课后补，别卡住一处分</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>上课记笔记的最大忌讳：</strong>追求记得全、记得美。一旦你把注意力放在"把字写好看、把格式排整齐"上，就听不进老师在讲什么了。笔记是给自己复习用的，潦草没关系，能抓住要点才重要。
+</div>
+
+<h2 id="s3">三、课后怎么补充：线索区和总结区</h2>
+<p>康奈尔笔记和普通笔记最大的区别，就在这一步。普通笔记记完就结束了，康奈尔笔记要求你<strong>课后24小时内回到笔记，做两件事</strong>——填线索区和关键词、写总结区的一句话。</p>
+
+<h3>线索区填什么</h3>
+<ul>
+  <li><strong>把右栏要点反推成"问题"或"关键词"。</strong>比如右栏记了"极限的ε-δ定义"，左栏就写"什么是ε-δ定义？"——复习时看着这个问题回忆右边内容。</li>
+  <li><strong>标出可能的考点。</strong>用"★"或"考"标记老师强调过的地方。</li>
+  <li><strong>补全上课跳过的空白。</strong>上课留横线的地方，这时候查书补上。</li>
+  <li><strong>记下自己的疑问。</strong>还没想通的标"？"，方便问老师或同学。</li>
+</ul>
+
+<h3>总结区写什么</h3>
+<ul>
+  <li><strong>一句话概括本页核心。</strong>比如"本页讲极限的严格定义及其与直观理解的关系"。</li>
+  <li><strong>这一句话要能脱离右边独立成立。</strong>复习时只看总结，就该知道这页讲什么。</li>
+  <li><strong>如果一句话写不出，说明这页你还没消化。</strong>这时候回去重读，直到能压缩成一句话。</li>
+</ul>
+
+<div class="callout callout-ok">
+  <strong>关键提醒：</strong>线索区和总结区必须是课后自己消化后写的，不能上课时硬挤。上课只记笔记区，课后补另外两区——这个时间差正是康奈尔法让知识"长进脑子"的关键。
+</div>
+
+<h2 id="s4">四、5R复盘法：康奈尔的复习引擎</h2>
+<p>康奈尔笔记配套的复习方法叫5R法，五个动作对应笔记的五个用法。掌握5R，康奈尔笔记才真正发挥威力。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>步骤</th><th>动作</th><th>什么时候做</th><th>怎么做</th></tr>
+  <tr><td>① Record 记录</td><td>上课记笔记区</td><td>上课时</td><td>右栏记要点，用缩写，留白补</td></tr>
+  <tr><td>② Reduce 简化</td><td>课后提炼线索区</td><td>课后24h内</td><td>把右栏要点变成左栏关键词/问题</td></tr>
+  <tr><td>③ Recite 背诵</td><td>遮右忆左</td><td>每次复习时</td><td>遮住右栏，只看左栏线索，凭记忆复述右栏内容</td></tr>
+  <tr><td>④ Reflect 思考</td><td>写感悟和联系</td><td>复习时</td><td>在底部或留白处写下与其他知识的联系、自己的理解</td></tr>
+  <tr><td>⑤ Review 复习</td><td>定期回顾</td><td>每周+考前</td><td>每周花10分钟过一遍本周笔记，考前集中复述</td></tr>
+</table></div>
+
+<h3>第三个R——Recite 是核心</h3>
+<p>很多人康奈尔笔记用了很久却没效果，就是因为跳过了Recite。复习时只是"把右栏再看一遍"，这等于又退回了普通笔记的读笔记模式。</p>
+<p><strong>正确做法：</strong>复习时拿张纸遮住右栏，只露左栏的关键词/问题，逼自己凭记忆把右栏内容讲出来。讲不出来或讲错的，就是没掌握的，重点标出。<strong>这种"主动回忆"的留存率是"重读笔记"的2-3倍。</strong></p>
+
+<h2 id="s5">五、康奈尔笔记 vs 普通笔记效率对比</h2>
+<p>很多人觉得"笔记嘛，记得下就行，搞那么多分区太麻烦"。但康奈尔法的真正价值不在记的时候，而在复习的时候。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>对比维度</th><th>普通笔记</th><th>康奈尔笔记</th></tr>
+  <tr><td>上课时</td><td>从头记到尾，可能记得更全</td><td>只记右栏要点，注意力更集中</td></tr>
+  <tr><td>课后整理</td><td>通常不整理，记完就完了</td><td>强制24h内补线索区+总结，等于再学一遍</td></tr>
+  <tr><td>复习方式</td><td>重读笔记，被动输入</td><td>遮右忆左，主动回忆</td></tr>
+  <tr><td>知识留存（1周后）</td><td>约30%-40%</td><td>约60%-70%（主动回忆加持）</td></tr>
+  <tr><td>薄弱点暴露</td><td>看不出来哪没懂</td><td>复述时卡住的地方就是盲区</td></tr>
+  <tr><td>考前效率</td><td>要重读全部笔记</td><td>只看左栏线索复述，速度快3倍</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>结论：</strong>康奈尔法的"麻烦"只在课后多花5-10分钟补两区，换来的是复习效率翻倍和留存率大幅提升。这是一笔极其划算的买卖。
+</div>
+
+<h2 id="s6">六、手机/电脑版康奈尔笔记工具推荐</h2>
+<p>纸笔康奈尔最专注、零干扰，但有人想用电子版方便检索和同步。下面是几款适合做康奈尔笔记的工具。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>工具</th><th>平台</th><th>康奈尔实现方式</th><th>适合人群</th></tr>
+  <tr><td>Notion</td><td>全平台</td><td>用表格或分栏实现三区，可加数据库</td><td>喜欢结构化、跨设备同步</td></tr>
+  <tr><td>GoodNotes/Notability</td><td>iPad</td><td>用模板纸或自己画分栏，手写体验好</td><td>有iPad+手写笔、爱手写</td></tr>
+  <tr><td>OneNote</td><td>全平台</td><td>无限画布+分区，自由度高</td><td>Windows用户、跨设备</td></tr>
+  <tr><td>语雀</td><td>全平台</td><td>用表格分三栏，文档式</td><td>国内用户、团队协作</td></tr>
+  <tr><td>纸笔A4</td><td>无</td><td>折纸分栏，最原始</td><td>所有人，尤其易分心者</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>工具选择原则：</strong>别在工具上花太多时间。先用纸笔跑通流程，习惯了再迁移到电子版。很多人下载一堆App、研究半天模板，结果一节课都没好好记——这是本末倒置。
+</div>
+
+<h2 id="s7">七、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>三区：</strong>笔记区(右70%上课记)→线索区(左20%课后补)→总结区(底10%课后一句话)</li>
+    <li><strong>上课只记右栏：</strong>记老师强调的、定义公式、例子、疑问；不抄课本原文</li>
+    <li><strong>缩写提速：</strong>用符号、首字母、箭头串步骤，留白跳过没跟上的</li>
+    <li><strong>课后24h内补两区：</strong>左栏把要点变关键词/问题，底栏压缩成一句话</li>
+    <li><strong>5R复盘：</strong>记录→简化→背诵(遮右忆左)→思考→复习，Recite是核心</li>
+    <li><strong>主动回忆：</strong>复习时遮右栏凭左栏复述，留存率是重读的2-3倍</li>
+    <li><strong>vs普通笔记：</strong>多花5-10分钟补两区，换复习效率翻倍和留存率提升</li>
+    <li><strong>工具：</strong>先用纸笔跑通，Notion/GoodNotes/OneNote可电子化，别在工具上耗时间</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r003.html">
+      <div class="ri-ico">🗣️</div>
+      <div class="ri-title">费曼学习法</div>
+      <div class="ri-desc">讲给别人听检验会不会</div>
+    </a>
+    <a class="related-item" href="r004.html">
+      <div class="ri-ico">📚</div>
+      <div class="ri-title">期末两周冲刺复习法</div>
+      <div class="ri-desc">分阶段高效备考</div>
+    </a>
+    <a class="related-item" href="r011.html">
+      <div class="ri-ico">🗂️</div>
+      <div class="ri-title">Notion新手入门</div>
+      <div class="ri-desc">电子笔记与知识库</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：学习方法 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

@@ -3,10 +3,30 @@
   "updated": "2026-09-16",
   "total": 20,
   "categories": [
-    {"id": "study", "name": "学业学习", "icon": "📚", "count": 6},
-    {"id": "research", "name": "科研学术", "icon": "🔬", "count": 4},
-    {"id": "tools", "name": "效率工具", "icon": "⚡", "count": 5},
-    {"id": "career", "name": "职业发展", "icon": "💼", "count": 5}
+    {
+      "id": "study",
+      "name": "学业学习",
+      "icon": "📚",
+      "count": 6
+    },
+    {
+      "id": "research",
+      "name": "科研学术",
+      "icon": "🔬",
+      "count": 4
+    },
+    {
+      "id": "tools",
+      "name": "效率工具",
+      "icon": "⚡",
+      "count": 5
+    },
+    {
+      "id": "career",
+      "name": "职业发展",
+      "icon": "💼",
+      "count": 5
+    }
   ],
   "resources": [
     {
@@ -16,7 +36,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "study",
-      "tags": ["四级", "阅读", "英语", "备考"],
+      "tags": [
+        "四级",
+        "阅读",
+        "英语",
+        "备考"
+      ],
       "score": 9.2,
       "difficulty": "入门",
       "timeCost": "2-4周见效",
@@ -28,7 +53,10 @@
         "错题本不是抄答案，是标注「为什么错」和「下次怎么避免」"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r002", "r003"],
+      "related": [
+        "r002",
+        "r003"
+      ],
       "hasDetail": true
     },
     {
@@ -38,7 +66,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "study",
-      "tags": ["记忆", "单词", "学习方法", "复习"],
+      "tags": [
+        "记忆",
+        "单词",
+        "学习方法",
+        "复习"
+      ],
       "score": 8.8,
       "difficulty": "入门",
       "timeCost": "长期使用",
@@ -50,7 +83,10 @@
         "睡前复习+晨起自测，是记忆效率最高的两个时间点"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r001", "r007"],
+      "related": [
+        "r001",
+        "r007"
+      ],
       "hasDetail": true
     },
     {
@@ -60,7 +96,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "study",
-      "tags": ["学习方法", "费曼", "理解", "输出"],
+      "tags": [
+        "学习方法",
+        "费曼",
+        "理解",
+        "输出"
+      ],
       "score": 9.0,
       "difficulty": "入门",
       "timeCost": "每章30-60分钟",
@@ -72,8 +113,11 @@
         "第四步：回到书本/笔记，把卡壳的地方搞懂，再讲一遍"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r002", "r004"],
-      "hasDetail": false
+      "related": [
+        "r002",
+        "r004"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r004",
@@ -82,7 +126,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "study",
-      "tags": ["期末", "复习", "专业课", "突击"],
+      "tags": [
+        "期末",
+        "复习",
+        "专业课",
+        "突击"
+      ],
       "score": 8.5,
       "difficulty": "入门",
       "timeCost": "2周",
@@ -94,8 +143,11 @@
         "第13-14天：回顾错题+背重点+模拟考试"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r003", "r005"],
-      "hasDetail": false
+      "related": [
+        "r003",
+        "r005"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r005",
@@ -104,7 +156,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "study",
-      "tags": ["笔记", "学习方法", "课堂", "复习"],
+      "tags": [
+        "笔记",
+        "学习方法",
+        "课堂",
+        "复习"
+      ],
       "score": 8.3,
       "difficulty": "入门",
       "timeCost": "每节课后10分钟",
@@ -116,8 +173,11 @@
         "复习方法：盖住笔记区，看线索区回忆，想不起来再看"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r004", "r002"],
-      "hasDetail": false
+      "related": [
+        "r004",
+        "r002"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r006",
@@ -126,7 +186,12 @@
       "sourceUrl": "",
       "type": "cheatsheet",
       "category": "study",
-      "tags": ["高数", "期末", "数学", "公式"],
+      "tags": [
+        "高数",
+        "期末",
+        "数学",
+        "公式"
+      ],
       "score": 8.7,
       "difficulty": "入门",
       "timeCost": "3天",
@@ -138,8 +203,10 @@
         "微分方程：可分离变量 + 一阶线性 + 二阶常系数齐次"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r004"],
-      "hasDetail": false
+      "related": [
+        "r004"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r007",
@@ -148,7 +215,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "tools",
-      "tags": ["番茄钟", "时间管理", "专注", "效率"],
+      "tags": [
+        "番茄钟",
+        "时间管理",
+        "专注",
+        "效率"
+      ],
       "score": 8.4,
       "difficulty": "入门",
       "timeCost": "1周养成习惯",
@@ -160,7 +232,10 @@
         "正确做法：前一天晚上规划好明天要吃几个番茄，每个对应一件具体事"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r008", "r009"],
+      "related": [
+        "r008",
+        "r009"
+      ],
       "hasDetail": true
     },
     {
@@ -170,7 +245,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "tools",
-      "tags": ["时间管理", "任务管理", "四象限", "效率"],
+      "tags": [
+        "时间管理",
+        "任务管理",
+        "四象限",
+        "效率"
+      ],
       "score": 8.6,
       "difficulty": "入门",
       "timeCost": "每天5分钟规划",
@@ -182,8 +262,11 @@
         "第四象限（不重要不紧急）：少做或不做（刷短视频、无意义闲聊）"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r007", "r010"],
-      "hasDetail": false
+      "related": [
+        "r007",
+        "r010"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r009",
@@ -192,7 +275,12 @@
       "sourceUrl": "",
       "type": "review",
       "category": "tools",
-      "tags": ["思维导图", "工具对比", "效率", "笔记"],
+      "tags": [
+        "思维导图",
+        "工具对比",
+        "效率",
+        "笔记"
+      ],
       "score": 8.2,
       "difficulty": "入门",
       "timeCost": "10分钟阅读",
@@ -204,8 +292,11 @@
         "飞书思维导图：内嵌在文档里，适合团队协作和边写边整理"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r007", "r011"],
-      "hasDetail": false
+      "related": [
+        "r007",
+        "r011"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r010",
@@ -214,7 +305,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "tools",
-      "tags": ["GTD", "时间管理", "任务管理", "效率"],
+      "tags": [
+        "GTD",
+        "时间管理",
+        "任务管理",
+        "效率"
+      ],
       "score": 8.5,
       "difficulty": "进阶",
       "timeCost": "2-3周建立系统",
@@ -227,8 +323,11 @@
         "执行：根据情境选任务做，不用想先做什么"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r008", "r007"],
-      "hasDetail": false
+      "related": [
+        "r008",
+        "r007"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r011",
@@ -237,7 +336,12 @@
       "sourceUrl": "",
       "type": "tutorial",
       "category": "tools",
-      "tags": ["Notion", "知识管理", "笔记", "效率工具"],
+      "tags": [
+        "Notion",
+        "知识管理",
+        "笔记",
+        "效率工具"
+      ],
       "score": 8.8,
       "difficulty": "入门",
       "timeCost": "2-3小时上手",
@@ -250,8 +354,11 @@
         "别追求完美：先从一个模板开始用，慢慢加"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r009", "r012"],
-      "hasDetail": false
+      "related": [
+        "r009",
+        "r012"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r012",
@@ -260,7 +367,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "research",
-      "tags": ["文献", "论文", "科研", "阅读方法"],
+      "tags": [
+        "文献",
+        "论文",
+        "科研",
+        "阅读方法"
+      ],
       "score": 9.1,
       "difficulty": "进阶",
       "timeCost": "每篇1-3小时",
@@ -272,7 +384,10 @@
         "做笔记：别抄原文，用自己的话总结「它解决了什么问题、用了什么方法、结果怎样」"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r013", "r014"],
+      "related": [
+        "r013",
+        "r014"
+      ],
       "hasDetail": true
     },
     {
@@ -282,7 +397,12 @@
       "sourceUrl": "",
       "type": "tutorial",
       "category": "research",
-      "tags": ["Zotero", "文献管理", "科研工具", "引用"],
+      "tags": [
+        "Zotero",
+        "文献管理",
+        "科研工具",
+        "引用"
+      ],
       "score": 9.0,
       "difficulty": "入门",
       "timeCost": "1小时上手",
@@ -295,8 +415,11 @@
         "同步：注册账号免费同步300MB，够存几千条文献题录"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r012", "r015"],
-      "hasDetail": false
+      "related": [
+        "r012",
+        "r015"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r014",
@@ -305,7 +428,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "research",
-      "tags": ["文献综述", "论文写作", "科研", "学术写作"],
+      "tags": [
+        "文献综述",
+        "论文写作",
+        "科研",
+        "学术写作"
+      ],
       "score": 8.9,
       "difficulty": "进阶",
       "timeCost": "2-4周",
@@ -317,8 +445,11 @@
         "写作技巧：每段第一句是主旨句，每段之间有逻辑衔接"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r012", "r016"],
-      "hasDetail": false
+      "related": [
+        "r012",
+        "r016"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r015",
@@ -327,7 +458,12 @@
       "sourceUrl": "",
       "type": "guide",
       "category": "research",
-      "tags": ["科研", "实验室", "本科生", "保研"],
+      "tags": [
+        "科研",
+        "实验室",
+        "本科生",
+        "保研"
+      ],
       "score": 8.7,
       "difficulty": "入门",
       "timeCost": "1-2学期",
@@ -339,8 +475,11 @@
         "多久能出成果：通常1-2学期，从打杂到参与项目到有自己的贡献"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r014", "r004"],
-      "hasDetail": false
+      "related": [
+        "r014",
+        "r004"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r016",
@@ -349,7 +488,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "career",
-      "tags": ["简历", "求职", "应届生", "实习"],
+      "tags": [
+        "简历",
+        "求职",
+        "应届生",
+        "实习"
+      ],
       "score": 8.8,
       "difficulty": "入门",
       "timeCost": "3-5小时",
@@ -361,7 +505,10 @@
         "STAR法则：情境→任务→行动→结果，结果部分最容易被忽略但最重要"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r017", "r018"],
+      "related": [
+        "r017",
+        "r018"
+      ],
       "hasDetail": true
     },
     {
@@ -371,7 +518,12 @@
       "sourceUrl": "",
       "type": "guide",
       "category": "career",
-      "tags": ["实习", "求职", "应届生", "面试"],
+      "tags": [
+        "实习",
+        "求职",
+        "应届生",
+        "面试"
+      ],
       "score": 8.6,
       "difficulty": "入门",
       "timeCost": "2-4周",
@@ -384,8 +536,11 @@
         "心态：被拒很正常，10投1面是常态，坚持投"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r016", "r019"],
-      "hasDetail": false
+      "related": [
+        "r016",
+        "r019"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r018",
@@ -394,7 +549,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "career",
-      "tags": ["面试", "自我介绍", "求职", "应届生"],
+      "tags": [
+        "面试",
+        "自我介绍",
+        "求职",
+        "应届生"
+      ],
       "score": 8.9,
       "difficulty": "入门",
       "timeCost": "1小时准备",
@@ -406,8 +566,11 @@
         "结尾引导：「我对XX方面比较熟悉，您可以重点问我这方面的问题」"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r016", "r020"],
-      "hasDetail": false
+      "related": [
+        "r016",
+        "r020"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r019",
@@ -416,7 +579,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "career",
-      "tags": ["群面", "无领导小组", "面试", "求职"],
+      "tags": [
+        "群面",
+        "无领导小组",
+        "面试",
+        "求职"
+      ],
       "score": 8.5,
       "difficulty": "进阶",
       "timeCost": "3-5次练习",
@@ -429,8 +597,11 @@
         "核心原则：团队成功你才成功，别拆台、别只顾自己表现"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r018", "r017"],
-      "hasDetail": false
+      "related": [
+        "r018",
+        "r017"
+      ],
+      "hasDetail": true
     },
     {
       "id": "r020",
@@ -439,7 +610,12 @@
       "sourceUrl": "",
       "type": "methodology",
       "category": "career",
-      "tags": ["职业规划", "自我认知", "求职", "迷茫"],
+      "tags": [
+        "职业规划",
+        "自我认知",
+        "求职",
+        "迷茫"
+      ],
       "score": 9.0,
       "difficulty": "入门",
       "timeCost": "1-2周自我探索",
@@ -452,7 +628,10 @@
         "别等到「想清楚了」再行动：行动中才能想清楚"
       ],
       "distilledAt": "2026-09-16",
-      "related": ["r017", "r016"],
+      "related": [
+        "r017",
+        "r016"
+      ],
       "hasDetail": true
     }
   ]

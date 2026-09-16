@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>高数期末不挂科：3天过完核心考点 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">高数期末不挂科</div>
+</div>
+<div class="container">
+
+<h1>📐 高数期末不挂科：3天过完核心考点</h1>
+<div class="meta-row">
+  <span>备考方法 · 经验蒸馏</span>
+  <span class="score">⭐ 8.9</span>
+  <span>中等难度</span>
+  <span>3天急救</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">高数</span>
+  <span class="tag tag-coral">期末</span>
+  <span class="tag tag-blue">急救</span>
+  <span class="tag tag-teal">公式速查</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>高数看似内容多，期末常考的核心考点其实就四大模块：极限、求导、积分、微分方程。3天急救的逻辑是——第一天背全公式+过极限与求导，第二天啃积分，第三天补微分方程+限时刷真题。目标不同策略不同：保及格只抓"公式+套路题"，冲高分才需要啃证明。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、四大模块速查表</a>
+  <a href="#s2">二、每个模块的常考题型与解法套路</a>
+  <a href="#s3">三、等价无穷小替换表（8组）</a>
+  <a href="#s4">四、基本求导公式表（16个）</a>
+  <a href="#s5">五、基本积分公式表（17个）</a>
+  <a href="#s6">六、3天复习时间表</a>
+  <a href="#s7">七、及格线与冲高分的不同策略</a>
+  <a href="#s8">八、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、四大模块速查表</h2>
+<p>高数一学期讲了很多，但期末卷子上反复出现的核心模块就四个。先看清楚这四块各自在考什么，急救复习才有方向。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>模块</th><th>核心内容</th><th>占分比重</th><th>难度</th><th>急救重点</th></tr>
+  <tr><td>极限</td><td>数列极限、函数极限、等价无穷小、洛必达</td><td>约15%-20%</td><td>★★</td><td>背等价无穷小+洛必达套路</td></tr>
+  <tr><td>求导</td><td>各种求导法则、隐函数/参数方程求导、高阶导数</td><td>约20%-25%</td><td>★★</td><td>背16个基本求导公式</td></tr>
+  <tr><td>积分</td><td>不定积分、定积分、换元法、分部积分</td><td>约25%-30%</td><td>★★★</td><td>背17个积分公式+练换元分部</td></tr>
+  <tr><td>微分方程</td><td>可分离变量、一阶线性、二阶常系数</td><td>约15%-20%</td><td>★★</td><td>记三类方程的解法模板</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>说明：</strong>不同学校、不同学期占分略有差异，但四模块合计通常占卷面75%以上。把这四块拿下，及格基本稳；想把分数拉到80+，再补偏导数/级数/多元积分等延伸内容。
+</div>
+
+<h2 id="s2">二、每个模块的常考题型与解法套路</h2>
+
+<h3>2.1 极限模块</h3>
+<ul>
+  <li><strong>0/0型或∞/∞型：</strong>优先洛必达，分子分母同时求导；能用等价无穷小先替换简化再洛必达</li>
+  <li><strong>1^∞型：</strong>凑e，用 lim(1+x)^(1/x)→e 或取对数转成乘积</li>
+  <li><strong>∞-∞型：</strong>通分或有理化转成0/0型</li>
+  <li><strong>含根号：</strong>有理化或换元</li>
+  <li><strong>分段函数在分界点：</strong>用左右极限判断连续性或可导性</li>
+</ul>
+
+<h3>2.2 求导模块</h3>
+<ul>
+  <li><strong>复合函数：</strong>链式法则，由外向内逐层求导相乘</li>
+  <li><strong>乘积/商：</strong>乘法法则(uv)'=u'v+uv'，除法法则(u/v)'=(u'v-uv')/v²</li>
+  <li><strong>隐函数：</strong>两边对x求导，把y看作x的函数，解出dy/dx</li>
+  <li><strong>参数方程：</strong>dy/dx=(dy/dt)/(dx/dt)</li>
+  <li><strong>对数求导法：</strong>幂指函数或连乘，先取对数再求导</li>
+  <li><strong>高阶导数：</strong>逐阶求，或用莱布尼茨公式</li>
+</ul>
+
+<h3>2.3 积分模块</h3>
+<ul>
+  <li><strong>凑微分（第一换元）：</strong>把被积函数凑成f(φ(x))φ'(x)的形式</li>
+  <li><strong>第二换元：</strong>三角换元（√(a²-x²)用x=asint）或有理换元</li>
+  <li><strong>分部积分：</strong>∫u dv = uv - ∫v du，按"反对幂指三"选u</li>
+  <li><strong>定积分：</strong>牛顿-莱布尼茨公式，注意奇偶函数在对称区间简化</li>
+  <li><strong>变限积分求导：</strong>上限是函数时要乘以上限的导数</li>
+</ul>
+
+<h3>2.4 微分方程模块</h3>
+<ul>
+  <li><strong>可分离变量：</strong>把dy和dx分开两边各自积分</li>
+  <li><strong>一阶线性：</strong>套公式 y=e^(-∫Pdx)·[∫Q·e^(∫Pdx)dx+C]</li>
+  <li><strong>二阶常系数齐次：</strong>写特征方程r²+pr+q=0，按判别式三种情况写通解</li>
+  <li><strong>二阶非齐次：</strong>齐次通解+特解，特解用待定系数法</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>急救提示：</strong>微分方程看似难，其实是"套模板"的题——先判断属于哪一类方程，再套对应解法。背熟三类方程的特征和解法，比硬推导有效得多。
+</div>
+
+<h2 id="s3">三、等价无穷小替换表（8组）</h2>
+<p>当x→0时，下面8组等价无穷小是极限题的速算利器。背熟后很多极限题能秒杀。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>序号</th><th>等价无穷小（x→0）</th><th>备注</th></tr>
+  <tr><td>1</td><td>sinx ~ x</td><td>最基础</td></tr>
+  <tr><td>2</td><td>tanx ~ x</td><td></td></tr>
+  <tr><td>3</td><td>arcsinx ~ x</td><td></td></tr>
+  <tr><td>4</td><td>arctanx ~ x</td><td></td></tr>
+  <tr><td>5</td><td>1-cosx ~ ½x²</td><td>注意是x²</td></tr>
+  <tr><td>6</td><td>ln(1+x) ~ x</td><td></td></tr>
+  <tr><td>7</td><td>e^x-1 ~ x</td><td></td></tr>
+  <tr><td>8</td><td>(1+x)^α-1 ~ αx</td><td>特例：(1+x)^(1/n)-1 ~ x/n</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>使用禁忌：</strong>等价无穷小只能用在乘除法中替换，<strong>不能在加减法中替换</strong>！比如 lim (tanx-sinx)/x³，不能把tanx和sinx都换成x（会得到0），必须用泰勒展开或洛必达。这是最常见的扣分点。
+</div>
+
+<h2 id="s4">四、基本求导公式表（16个）</h2>
+<p>这16个公式是求导和积分的根基，必须滚瓜烂熟。考前默写一遍，能默全才上考场。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>序号</th><th>函数 f(x)</th><th>导数 f'(x)</th></tr>
+  <tr><td>1</td><td>c（常数）</td><td>0</td></tr>
+  <tr><td>2</td><td>x^n</td><td>n·x^(n-1)</td></tr>
+  <tr><td>3</td><td>sinx</td><td>cosx</td></tr>
+  <tr><td>4</td><td>cosx</td><td>-sinx</td></tr>
+  <tr><td>5</td><td>tanx</td><td>sec²x</td></tr>
+  <tr><td>6</td><td>cotx</td><td>-csc²x</td></tr>
+  <tr><td>7</td><td>secx</td><td>secx·tanx</td></tr>
+  <tr><td>8</td><td>cscx</td><td>-cscx·cotx</td></tr>
+  <tr><td>9</td><td>a^x</td><td>a^x·lna</td></tr>
+  <tr><td>10</td><td>e^x</td><td>e^x</td></tr>
+  <tr><td>11</td><td>log_a x</td><td>1/(x·lna)</td></tr>
+  <tr><td>12</td><td>lnx</td><td>1/x</td></tr>
+  <tr><td>13</td><td>arcsinx</td><td>1/√(1-x²)</td></tr>
+  <tr><td>14</td><td>arccosx</td><td>-1/√(1-x²)</td></tr>
+  <tr><td>15</td><td>arctanx</td><td>1/(1+x²)</td></tr>
+  <tr><td>16</td><td>arccotx</td><td>-1/(1+x²)</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>记忆窍门：</strong>反三角函数的导数，arcsin和arccos差个负号、arctan和arccot差个负号；指数a^x比e^x多一个lna；对数log_a x比lnx多除个lna。成对记，记一组送一组。
+</div>
+
+<h2 id="s5">五、基本积分公式表（17个）</h2>
+<p>积分公式本质是求导公式的逆运算。这17个是凑微分和换元的弹药库，背熟才能在积分题里"对上号"。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>序号</th><th>被积函数</th><th>原函数</th></tr>
+  <tr><td>1</td><td>0</td><td>c</td></tr>
+  <tr><td>2</td><td>x^n（n≠-1）</td><td>x^(n+1)/(n+1)</td></tr>
+  <tr><td>3</td><td>1/x</td><td>ln|x|</td></tr>
+  <tr><td>4</td><td>sinx</td><td>-cosx</td></tr>
+  <tr><td>5</td><td>cosx</td><td>sinx</td></tr>
+  <tr><td>6</td><td>sec²x</td><td>tanx</td></tr>
+  <tr><td>7</td><td>csc²x</td><td>-cotx</td></tr>
+  <tr><td>8</td><td>secx·tanx</td><td>secx</td></tr>
+  <tr><td>9</td><td>cscx·cotx</td><td>-cscx</td></tr>
+  <tr><td>10</td><td>a^x</td><td>a^x/lna</td></tr>
+  <tr><td>11</td><td>e^x</td><td>e^x</td></tr>
+  <tr><td>12</td><td>1/√(1-x²)</td><td>arcsinx</td></tr>
+  <tr><td>13</td><td>-1/√(1-x²)</td><td>arccosx</td></tr>
+  <tr><td>14</td><td>1/(1+x²)</td><td>arctanx</td></tr>
+  <tr><td>15</td><td>-1/(1+x²)</td><td>arccotx</td></tr>
+  <tr><td>16</td><td>1/(x√(x²-1))</td><td>arcsec|x|</td></tr>
+  <tr><td>17</td><td>tanx</td><td>-ln|cosx|</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>用法：</strong>拿到一道积分题，第一步先看被积函数像不像上面某个的变形（差个常数倍、复合个内层）。像，就凑微分；不像，再考虑换元或分部。背熟这表，凑微分的速度会快很多。
+</div>
+
+<h2 id="s6">六、3天复习时间表</h2>
+<p>下面是一份3天急救计划，适合平时基本没学、目标"不挂科"的同学。每天约6-8小时净学习时间。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>时间</th><th>第1天（极限+求导）</th><th>第2天（积分）</th><th>第3天（微分方程+模考）</th></tr>
+  <tr><td>上午2h</td><td>默写16个求导公式+17个积分公式</td><td>复习换元法，做8道凑微分</td><td>记三类微分方程解法模板</td></tr>
+  <tr><td>上午2h</td><td>过极限题型+背8组等价无穷小</td><td>做6道第二换元+6道分部</td><td>做6道微分方程题</td></tr>
+  <tr><td>下午2h</td><td>练15道极限计算题</td><td>做定积分+变限积分10道</td><td>限时刷1套真题</td></tr>
+  <tr><td>下午2h</td><td>练15道求导题（含隐函数/参数）</td><td>整理积分错题，归类套路</td><td>对答案，错题归因</td></tr>
+  <tr><td>晚上1-2h</td><td>费曼复述今天公式+错题</td><td>费曼复述积分套路</td><td>只看错题本+公式表</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>急救原则：</strong>3天时间紧，<strong>放弃偏题怪题和证明题</strong>，只抓"套公式能做的计算题"。这些题在卷子上占60%以上，拿下就够及格了。证明题和综合应用题，时间不够就战略性放弃。
+</div>
+
+<h2 id="s7">七、及格线与冲高分的不同策略</h2>
+<p>目标不同，复习重点完全不同。先想清楚你要的是"60分保命"还是"80+冲绩点"，再决定怎么分配3天。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>维度</th><th>保及格（目标60分）</th><th>冲高分（目标80+）</th></tr>
+  <tr><td>公式</td><td>求导16个+积分17个必须默全</td><td>公式+推导过程都要会</td></tr>
+  <tr><td>题型</td><td>只刷套公式的计算题</td><td>计算题+证明题+综合应用题都要练</td></tr>
+  <tr><td>积分</td><td>会凑微分+基本换元即可</td><td>第二换元+分部+有理积分都要熟</td></tr>
+  <tr><td>微分方程</td><td>三类方程套模板</td><td>非齐次特解待定系数要会</td></tr>
+  <tr><td>证明题</td><td>战略性放弃</td><td>中值定理/单调性/不等式证明要练</td></tr>
+  <tr><td>延伸内容</td><td>偏导/级数/二重积分能放则放</td><td>都要覆盖，尤其偏导和二重积分</td></tr>
+  <tr><td>模考</td><td>刷1套真题熟悉节奏</td><td>刷3套以上+总结题型</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>一个判断：</strong>如果你连基本求导公式都默不全，别想着冲高分——老老实实背公式+刷套公式题，先把及格线焊死，比什么都重要。基础没到60分谈冲高分，是自欺欺人。
+</div>
+
+<h2 id="s8">八、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>四大模块：</strong>极限(15-20%)→求导(20-25%)→积分(25-30%)→微分方程(15-20%)，合计75%+分</li>
+    <li><strong>极限套路：</strong>0/0用洛必达，1^∞凑e，∞-∞通分；等价无穷小只在乘除中用</li>
+    <li><strong>求导套路：</strong>复合用链式，隐函数两边求导，参数方程dy/dx=(dy/dt)/(dx/dt)</li>
+    <li><strong>积分套路：</strong>先凑微分→换元→分部；分部按"反对幂指三"选u</li>
+    <li><strong>微分方程：</strong>先判类型再套模板：可分离/一阶线性/二阶常系数</li>
+    <li><strong>等价无穷小8组：</strong>sin/tan/arcsin/arctan~x，1-cos~½x²，ln(1+x)~x，e^x-1~x，(1+x)^α-1~αx</li>
+    <li><strong>求导16公式+积分17公式：</strong>必须默全，是所有计算的弹药库</li>
+    <li><strong>3天计划：</strong>D1极限+求导，D2积分，D3微分方程+模考</li>
+    <li><strong>保及格：</strong>只抓套公式计算题，放弃证明和怪题；冲高分才需练证明和延伸内容</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r004.html">
+      <div class="ri-ico">📚</div>
+      <div class="ri-title">期末两周冲刺复习法</div>
+      <div class="ri-desc">分阶段高效备考</div>
+    </a>
+    <a class="related-item" href="r003.html">
+      <div class="ri-ico">🗣️</div>
+      <div class="ri-title">费曼学习法</div>
+      <div class="ri-desc">讲给别人听检验会不会</div>
+    </a>
+    <a class="related-item" href="r005.html">
+      <div class="ri-ico">📝</div>
+      <div class="ri-title">康奈尔笔记法</div>
+      <div class="ri-desc">课堂笔记与5R复盘</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：备考方法 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>

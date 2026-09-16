@@ -13609,40 +13609,7 @@ function renderCet6Reading(){
       '<span style="font-size:13px;color:var(--hint)">第 '+(idx+1)+' 篇 / 共 '+CET6_READINGS.length+' 篇 · 六级真题风格 · 点"换一篇"切换</span>'+
       '<button class="btn btn-sm btn-primary" onclick="nextCet6Reading()">换一篇</button>'+
     '</div>'+
-    '
-      <!-- 资源蒸馏库入口 -->
-      <div class="card" style="margin-bottom:16px">
-        <h3>📚 资源蒸馏库 · Agent精选知识库</h3>
-        <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">从海量学习资源中蒸馏出精华：学习方法、科研技巧、求职攻略、效率工具，结构化整理，点开就能用。</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
-          <a href="distilled/index.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;grid-column:span 1">
-            <div style="padding:12px;background:linear-gradient(135deg,#F5EFE0,#EDE4CF);border-radius:10px;border:1px solid var(--primary-mid);cursor:pointer;transition:all .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <div style="font-size:22px;margin-bottom:6px">📖</div>
-              <div style="font-size:13px;font-weight:700;color:var(--primary)">进入蒸馏库</div>
-              <div style="font-size:11px;color:var(--primary-dark);margin-top:3px;opacity:.8">20篇精选 · 4大分类</div>
-            </div>
-          </a>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;grid-column:span 2">
-            <div style="padding:10px;background:var(--bg);border-radius:8px">
-              <div style="font-size:12px;font-weight:600;color:var(--text)">📚 学业学习</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px">四级阅读·记忆法·期末冲刺</div>
-            </div>
-            <div style="padding:10px;background:var(--bg);border-radius:8px">
-              <div style="font-size:12px;font-weight:600;color:var(--text)">🔬 科研学术</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px">文献阅读·Zotero·综述写作</div>
-            </div>
-            <div style="padding:10px;background:var(--bg);border-radius:8px">
-              <div style="font-size:12px;font-weight:600;color:var(--text)">⚡ 效率工具</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px">番茄工作法·GTD·Notion</div>
-            </div>
-            <div style="padding:10px;background:var(--bg);border-radius:8px">
-              <div style="font-size:12px;font-weight:600;color:var(--text)">💼 职业发展</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px">简历写法·面试·职业规划</div>
-            </div>
-          </div>
-        </div>
-      </div>
-<div class="card" style="margin-bottom:16px">'+
+    '<div class="card" style="margin-bottom:16px">'+
       '<h3>'+r.title+'</h3>'+
       '<h4>原文</h4><p style="line-height:2.0;color:var(--text);font-size:16px">'+r.en+'</p>'+
       '<h4>重点词汇</h4><div style="margin-bottom:6px">'+nv+'</div>'+

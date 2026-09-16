@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>Zotero从零开始 · 资源蒸馏库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.meta-row .score{color:#D4882F;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.summary-card strong{color:var(--text)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+h2{font-size:18px;color:var(--primary);margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6}
+th{background:var(--primary-light);color:var(--primary);padding:8px 10px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+@media(max-width:768px){
+  table{font-size:12.5px;min-width:480px}
+  th,td{padding:6px 8px}
+}
+.key-points{background:var(--teal-light);border-radius:var(--radius);padding:16px;margin:24px 0}
+.key-points h3{color:var(--teal);margin-top:0;margin-bottom:10px;font-size:15px}
+.key-points ul{margin-left:20px}
+.key-points li{color:var(--text);margin-bottom:8px}
+.related{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+.source-link{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.source-link a{color:var(--primary);text-decoration:none}
+.source-link a:hover{text-decoration:underline}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="location.href='index.html'" title="返回蒸馏库">←</div>
+  <div class="title">Zotero从零开始</div>
+</div>
+<div class="container">
+
+<h1>📑 Zotero从零开始：文献管理与一键引用全流程</h1>
+<div class="meta-row">
+  <span>工具教程 · 经验蒸馏</span>
+  <span class="score">⭐ 8.9</span>
+  <span>入门难度</span>
+  <span>1天上手</span>
+</div>
+<div class="tags">
+  <span class="tag tag-teal">Zotero</span>
+  <span class="tag tag-coral">文献管理</span>
+  <span class="tag tag-blue">论文写作</span>
+  <span class="tag tag-teal">科研</span>
+</div>
+
+<div class="summary-card">
+  <strong>核心观点：</strong>Zotero是免费开源的文献管理神器，装好"三件套"（桌面端+浏览器插件+Word插件）后，从抓取文献、整理PDF、到Word里一键插入引用、自动生成参考文献，全流程自动化。本科阶段一篇课程论文引用十几篇文献，手动整理格式要花几小时，用Zotero只要几分钟。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、安装三件套</a>
+  <a href="#s2">二、建库方法：文件夹与标签</a>
+  <a href="#s3">三、抓取文献：知网/Scholar/期刊一键收藏</a>
+  <a href="#s4">四、文献管理：批量编辑/去重/PDF标注</a>
+  <a href="#s5">五、Word中插入引用</a>
+  <a href="#s6">六、同步和备份</a>
+  <a href="#s7">七、高级技巧</a>
+  <a href="#s8">八、常见问题</a>
+  <a href="#s9">九、核心要点回顾</a>
+</div>
+
+<h2 id="s1">一、安装三件套</h2>
+<p>Zotero要发挥全部威力，必须装三样东西，缺一个都会卡壳。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>组件</th><th>作用</th><th>怎么装</th></tr>
+  <tr><td>① 桌面端</td><td>主程序，管理所有文献和PDF</td><td>官网下载安装，免费</td></tr>
+  <tr><td>② 浏览器插件</td><td>在网页上一键抓取文献信息</td><td>装好桌面端后会提示安装，支持Chrome/Edge/Firefox</td></tr>
+  <tr><td>③ Word插件</td><td>在Word里一键插入引用、生成参考文献</td><td>装桌面端时一般自动装好，没有的话在Zotero设置里手动添加</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>注册账号：</strong>去zotero.org注册一个免费账号，用于多设备同步。注册后在桌面端"编辑→首选项→同步"里登录账号。
+</div>
+
+<div class="callout callout-warn">
+  <strong>新手第一坑：</strong>只装了桌面端没装浏览器插件，结果每次都得手动录入文献信息，累且易错。浏览器插件是Zotero的灵魂，一定要装。
+</div>
+
+<h2 id="s2">二、建库方法：文件夹与标签</h2>
+<p>文献一多就乱，建库要趁早。Zotero提供两种组织方式，建议搭配使用。</p>
+
+<h3>分类文件夹（按主题/项目）</h3>
+<ul>
+  <li>建顶层文件夹：如"毕业论文""课程作业""综述方向"</li>
+  <li>建子文件夹：如"毕业论文/相关综述""毕业论文/方法文献"</li>
+  <li>一篇文献可同时属于多个文件夹（Zotero用"分类"而非物理移动，不会复制占空间）</li>
+</ul>
+
+<h3>标签系统（按特征）</h3>
+<ul>
+  <li>给文献打标签：如"必读""方法参考""已读完""待精读"</li>
+  <li>彩色标签：重要标签可设颜色，左侧栏一眼可见</li>
+  <li>按标签筛选：点左侧标签，只显示该标签的文献</li>
+</ul>
+
+<div class="table-wrap"><table>
+  <tr><th>组织方式</th><th>适合</th><th>例子</th></tr>
+  <tr><td>文件夹</td><td>按项目/主题归类</td><td>毕业论文、课程A论文、综述方向</td></tr>
+  <tr><td>标签</td><td>按特征/状态标注</td><td>必读、已读、方法参考、待精读</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>最佳实践：</strong>文件夹管"属于哪个项目"，标签管"读到什么程度/是什么类型"。两者叠加，几千篇文献也能秒找到。
+</div>
+
+<h2 id="s3">三、抓取文献：知网/Scholar/期刊一键收藏</h2>
+<p>这是Zotero最爽的功能。在文献网页上，浏览器插件图标会变成"文件夹/书"的样子，点一下就能自动抓取标题、作者、年份、期刊、DOI，连PDF一起下。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>来源</th><th>抓取方式</th><th>注意</th></tr>
+  <tr><td>知网</td><td>在检索结果页点插件图标，可批量勾选多篇</td><td>中文文献信息抓取较准，PDF需登录后才能下</td></tr>
+  <tr><td>Google Scholar</td><td>在结果页点插件图标</td><td>需能访问Scholar，PDF通常能直接下</td></tr>
+  <tr><td>期刊官网</td><td>在文章详情页点插件图标</td><td>大部分英文期刊支持很好</td></tr>
+  <tr><td>已有PDF</td><td>把PDF拖进Zotero，它会自动提取元数据</td><td>提取不准时可右键"重新获取元数据"</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>常见问题：</strong>中文文献（知网）有时抓取不全或PDF下不下来，多半是因为没登录知网账号。先在浏览器登录知网，再点插件抓取，成功率会高很多。
+</div>
+
+<h2 id="s4">四、文献管理：批量编辑/去重/PDF标注</h2>
+
+<h3>批量编辑</h3>
+<ul>
+  <li>选中多篇文献，右侧栏可同时改某些字段</li>
+  <li>拖拽多篇到某文件夹，批量归类</li>
+  <li>批量打标签：选中多篇，拖到左侧标签上</li>
+</ul>
+
+<h3>去重</h3>
+<p>重复抓取会产生重复条目。点"文件→检查重复条目"，Zotero会列出疑似重复的，可合并或删除。建议每周整理时跑一次。</p>
+
+<h3>PDF标注</h3>
+<ul>
+  <li>双击文献里的PDF，Zotero内置阅读器打开</li>
+  <li>可高亮、下划线、加便签，标注会同步保存在该条目下</li>
+  <li>标注内容可在左侧栏查看，写综述时直接复制引用</li>
+</ul>
+
+<div class="callout callout-info">
+  <strong>进阶：</strong>Zotero 6+支持在PDF里提取所有高亮标注成笔记，写文献综述时把这些标注整理一下就是现成素材。
+</div>
+
+<h2 id="s5">五、Word中插入引用</h2>
+<p>这是Zotero省时间最多的地方。装好Word插件后，Word里会有Zotero选项卡。</p>
+
+<h3>基本流程</h3>
+<ol>
+  <li><strong>光标定位：</strong>在要插引用的地方点一下</li>
+  <li><strong>点"Add/Edit Citation"：</strong>弹出搜索框</li>
+  <li><strong>搜文献：</strong>输作者名或标题关键词，选中要引的那篇</li>
+  <li><strong>确认：</strong>引用自动插入，格式按你选的样式生成</li>
+  <li><strong>生成参考文献：</strong>点"Add/Edit Bibliography"，所有引用过的文献自动列成参考文献表</li>
+</ol>
+
+<h3>切换格式</h3>
+<p>点"Document Preferences"可一键切换引用样式（如APA、GB/T 7714、IEEE），全文引用和参考文献表同时变格式。改投稿期刊不用重排，点一下就行。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>样式</th><th>常用场景</th></tr>
+  <tr><td>APA</td><td>社科、心理学、教育学</td></tr>
+  <tr><td>GB/T 7714</td><td>国内期刊、毕业论文</td></tr>
+  <tr><td>IEEE</td><td>工科、计算机</td></tr>
+  <tr><td>Chicago</td><td>历史、艺术</td></tr>
+</table></div>
+
+<div class="callout callout-ok">
+  <strong>最大价值：</strong>引用顺序变了、增删了文献、要换格式——这些手动改能让人崩溃的事，Zotero一键搞定。本科四年用它，能省下几十个小时。
+</div>
+
+<h2 id="s6">六、同步和备份</h2>
+<p>Zotero官方免费账户给300MB同步空间。文献信息（条目）很小，300MB能存几千条；但PDF占空间大，几百篇PDF就可能超。</p>
+
+<div class="table-wrap"><table>
+  <tr><th>方案</th><th>说明</th><th>成本</th></tr>
+  <tr><td>官方同步</td><td>条目同步够用，PDF可能超</td><td>免费300MB，扩容付费</td></tr>
+  <tr><td>WebDAV同步PDF</td><td>用坚果云等WebDAV服务同步PDF附件</td><td>坚果云免费版够个人用</td></tr>
+  <tr><td>不同步PDF</td><td>只同步条目，PDF存本地</td><td>免费，但换设备看不到PDF</td></tr>
+  <tr><td>本地备份</td><td>定期把Zotero数据文件夹拷到别处</td><td>免费，最稳妥</td></tr>
+</table></div>
+
+<div class="callout callout-warn">
+  <strong>重要：</strong>不管用哪种同步，一定要做本地备份。文献库是几年的积累，丢了重建代价极大。每月把Zotero数据文件夹复制到移动硬盘或网盘一次。
+</div>
+
+<h2 id="s7">七、高级技巧</h2>
+
+<h3>群组文献库</h3>
+<p>建一个Group，邀请同组同学加入，大家共同往里加文献、共享PDF。适合课题组、课程小组共建文献库。</p>
+
+<h3>笔记功能</h3>
+<ul>
+  <li>每篇文献下可建笔记，记录读后感、关键结论、可引用的句子</li>
+  <li>笔记支持Markdown格式，可加标签</li>
+  <li>写综述时，把多篇文献的笔记汇总成一篇，比从头翻PDF快得多</li>
+</ul>
+
+<h3>标签筛选与保存搜索</h3>
+<ul>
+  <li>给"必读精读"的文献打标签，一键筛出</li>
+  <li>"保存搜索"：把常用筛选条件存成虚拟文件夹，新增符合条件的文献自动归入</li>
+</ul>
+
+<h2 id="s8">八、常见问题</h2>
+<div class="table-wrap"><table>
+  <tr><th>问题</th><th>原因</th><th>解决</th></tr>
+  <tr><td>中文文献抓取不全</td><td>没登录知网/插件版本旧</td><td>浏览器登录知网账号，更新插件，必要时手动补字段</td></tr>
+  <tr><td>PDF打不开</td><td>默认阅读器设置/文件损坏</td><td>在Zotero设置里指定用内置阅读器，或重新下载PDF</td></tr>
+  <tr><td>引用格式不对</td><td>选错样式/样式版本旧</td><td>在"Document Preferences"选对样式，样式库可在线更新</td></tr>
+  <tr><td>Word里没有Zotero选项卡</td><td>Word插件没装好/被禁用</td><td>在Zotero"首选项→文字处理"里重装，或在Word"加载项"里启用</td></tr>
+  <tr><td>同步报错</td><td>空间满/网络问题</td><td>清理无用PDF或改用WebDAV，检查网络</td></tr>
+</table></div>
+
+<div class="callout callout-info">
+  <strong>GB/T 7714样式：</strong>国内毕业论文常用，Zotero默认可能没有最新版，可在Zotero样式仓库搜索"China"相关样式安装。
+</div>
+
+<h2 id="s9">九、核心要点回顾</h2>
+<div class="key-points">
+  <h3>🎯 核心要点回顾</h3>
+  <ul>
+    <li><strong>三件套：</strong>桌面端(主程序)+浏览器插件(抓文献)+Word插件(插引用)，缺一不可</li>
+    <li><strong>建库：</strong>文件夹管项目/主题，标签管状态/类型，叠加使用</li>
+    <li><strong>抓取：</strong>知网/Scholar/期刊网页点插件图标一键抓，含PDF</li>
+    <li><strong>中文文献：</strong>先登录知网账号再抓，成功率更高</li>
+    <li><strong>管理：</strong>批量编辑、定期去重、PDF内置标注同步保存</li>
+    <li><strong>Word引用：</strong>Add Citation插入→Add Bibliography生成参考文献，换样式一键变格式</li>
+    <li><strong>常用样式：</strong>APA(社科)、GB/T 7714(国内)、IEEE(工科)、Chicago(人文)</li>
+    <li><strong>同步：</strong>免费300MB条目够用，PDF用WebDAV(坚果云)扩展，务必本地备份</li>
+    <li><strong>高级：</strong>群组共建库、笔记记读后感、保存搜索做虚拟文件夹</li>
+    <li><strong>常见坑：</strong>中文抓取不全先登录、Word没选项卡重装插件、格式不对更新样式</li>
+  </ul>
+</div>
+
+<div class="related">
+  <h3>📚 相关资源</h3>
+  <div class="related-list">
+    <a class="related-item" href="r014.html">
+      <div class="ri-ico">📖</div>
+      <div class="ri-title">如何写好文献综述</div>
+      <div class="ri-desc">用Zotero管文献写综述</div>
+    </a>
+    <a class="related-item" href="r015.html">
+      <div class="ri-ico">🔬</div>
+      <div class="ri-title">本科生怎么找科研机会</div>
+      <div class="ri-desc">科研入门与文献积累</div>
+    </a>
+    <a class="related-item" href="r011.html">
+      <div class="ri-ico">🗂️</div>
+      <div class="ri-title">Notion新手入门</div>
+      <div class="ri-desc">知识库与笔记管理</div>
+    </a>
+  </div>
+</div>
+
+<div class="source-link">
+  📌 来源：工具教程 · 经验蒸馏 · 蒸馏于 2026-09-16
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>
