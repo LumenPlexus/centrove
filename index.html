@@ -1743,6 +1743,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   }
   function show(){
     var e=bs();if(!e)return;
+    /* 关闭浏览器原生滚动恢复：重新打开/刷新后一律从顶部开始，
+       板块内位置由本产品的记忆机制接管，避免"闪屏后落在页面最下方" */
+    try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } }catch(_er){}
     document.documentElement.classList.add('state-splash'); /* 闪屏期间隐藏顶栏 */
     chrome(true);   /* 内联强隐顶栏+底栏，确保闪屏期间不出现 */
     e.style.display='flex';e.style.opacity='1';
@@ -10050,6 +10053,14 @@ function uiAlert(msg){
 
 var _curView='home';
 function switchView(name){
+  if(name===_curView){
+    /* 重复点击当前所在板块：仅回到顶部，不触发切换 */
+    try{window.scrollTo(0,0);}catch(e){}
+    return;
+  }
+  /* 记录离开的旧板块当前停留位置。必须在 _curView 切换前保存，
+     否则旧板块的滚动位置会被误记到新板块头上，导致"点其他板块都在最下方"。 */
+  try{viewMemSave();}catch(e){}
   _curView=name;
   try{localStorage.setItem('pp_last_view',name);localStorage.setItem('pp_last_scroll',window.scrollY);}catch(e){}
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active')});
@@ -10058,8 +10069,6 @@ function switchView(name){
   var ni=document.querySelector('.nav-item[data-view="'+name+'"]');if(ni)ni.classList.add('active');
   var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('show');
   var ov=document.getElementById('sidebarOverlay');if(ov)ov.classList.remove('show');
-  /* 记录离开当前板块时停留的位置，供切回来时恢复到原处 */
-  try{viewMemSave();}catch(e){}
   if(name==='journal')loadJournal();
   window.scrollTo(0,0);
   applyStoredTab(name);
