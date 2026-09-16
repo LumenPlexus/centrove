@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#F5EDE0">
+<title>公务员考试备考全指南 · 栖匣知识库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF5EB;--card:#FFFDF6;--text:#3E2F1F;--muted:#7A6A55;--hint:#A89580;
+  --primary:#5C4030;--primary-light:#EFE2D0;--primary-mid:#A08060;
+  --teal:#3D6B5F;--teal-light:#E0EEE8;
+  --coral:#B5533A;--coral-light:#F5DED4;
+  --border:#E8DFCE;--border-strong:#D4C7AE;
+  --radius:14px;--radius-sm:10px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1510;--card:#261D16;--text:#E8DFCE;--muted:#A89580;--hint:#7A6A55;
+    --primary:#C9A87C;--primary-light:#3A2C1E;--primary-mid:#8B6F4E;
+    --teal:#6BA89A;--teal-light:#1F332D;
+    --coral:#D4876F;--coral-light:#3A2219;
+    --border:#33281C;--border-strong:#4A3A28;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;padding-bottom:40px}
+.header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.back-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);cursor:pointer;font-size:18px;color:var(--text)}
+.title{flex:1;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin-bottom:6px;color:var(--primary)}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:16px}
+h2{font-size:17px;color:var(--primary);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--primary-light)}
+h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+p{margin-bottom:10px}
+ul,ol{margin:8px 0 12px 24px}
+li{margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--hint);font-weight:600;background:var(--bg)}
+.callout{padding:12px 14px;border-radius:10px;margin:12px 0;font-size:14px;line-height:1.7}
+.callout-info{background:var(--primary-light);border-left:3px solid var(--primary-mid)}
+.callout-warn{background:var(--coral-light);border-left:3px solid var(--coral)}
+.callout-ok{background:var(--teal-light);border-left:3px solid var(--teal)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-blue{background:var(--primary-light);color:var(--primary)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.toc-title{font-weight:700;color:var(--primary);margin-bottom:8px;font-size:14px}
+.toc a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;border-radius:8px;font-size:14px;margin-bottom:2px}
+.toc a:hover{background:var(--primary-light);color:var(--primary)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media(max-width:500px){.grid-2{grid-template-columns:1fr}}
+.back-top{position:fixed;right:16px;bottom:60px;width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,.15);font-size:16px}
+.back-top.show{opacity:1}
+.related{margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.related h3{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:10px}
+.related-list{display:flex;gap:10px;flex-wrap:wrap}
+.related-item{flex:1;min-width:140px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text)}
+.related-item:hover{border-color:var(--primary-mid)}
+.related-item .ri-ico{font-size:20px;margin-bottom:4px}
+.related-item .ri-title{font-size:13px;font-weight:600}
+.related-item .ri-desc{font-size:11px;color:var(--muted);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back-btn" onclick="history.back()" title="返回">←</div>
+  <div class="title">公务员考试备考全指南</div>
+</div>
+<div class="container">
+
+<h1>🏛️ 公务员考试备考全指南</h1>
+<p class="subtitle">国考+省考全覆盖，行测申论系统备考，选岗+规划+资料+避坑一篇搞定。</p>
+
+<div class="toc">
+  <div class="toc-title">📑 目录</div>
+  <a href="#s1">一、公考是什么</a>
+  <a href="#s2">二、考试结构详解</a>
+  <a href="#s3">三、行测5大模块：常识判断</a>
+  <a href="#s4">四、行测5大模块：言语理解</a>
+  <a href="#s5">五、行测5大模块：数量关系</a>
+  <a href="#s6">六、行测5大模块：判断推理</a>
+  <a href="#s7">七、行测5大模块：资料分析</a>
+  <a href="#s8">八、申论备考全攻略</a>
+  <a href="#s9">九、选岗技巧</a>
+  <a href="#s10">十、备考规划与避坑</a>
+</div>
+
+<h2 id="s1">一、公考是什么</h2>
+
+<h3>国考 vs 省考</h3>
+<p>公务员考试主要分为国家公务员考试（国考）和各省公务员考试（省考），两者都是成为公务员的主要途径。</p>
+
+<table>
+  <tr><th>对比维度</th><th>国考</th><th>省考</th></tr>
+  <tr><td>组织单位</td><td>国家公务员局</td><td>各省省委组织部</td></tr>
+  <tr><td>招录单位</td><td>中央机关及直属机构（如国税、海关、铁路公安等）</td><td>省、市、县、乡四级机关</td></tr>
+  <tr><td>招考范围</td><td>全国范围，不限户籍（部分岗位有户籍限制）</td><td>本省为主，部分岗位有户籍限制</td></tr>
+  <tr><td>考试时间</td><td>每年10月报名，11月底或12月初笔试</td><td>多数省份参加联考（3-4月），部分省份单独命题</td></tr>
+  <tr><td>考试难度</td><td>难度较大，竞争激烈</td><td>难度相对较低（各省差异大）</td></tr>
+  <tr><td>薪资待遇</td><td>中央部委和经济发达地区待遇好，中西部相对一般</td><td>经济发达省份待遇好，差异较大</td></tr>
+  <tr><td>发展前景</td><td>平台高，晋升空间相对大</td><td>基层岗位多，晋升相对慢</td></tr>
+</table>
+
+<h3>报考条件</h3>
+<table>
+  <tr><th>条件类型</th><th>具体要求</th></tr>
+  <tr><td><b>国籍要求</b></td><td>具有中华人民共和国国籍</td></tr>
+  <tr><td><b>年龄要求</b></td><td>一般18周岁以上、35周岁以下，应届硕士研究生和博士研究生（非在职）可放宽到40周岁以下</td></tr>
+  <tr><td><b>学历要求</b></td><td>具有大学专科及以上文化程度（绝大多数岗位要求本科及以上）</td></tr>
+  <tr><td><b>专业要求</b></td><td>大部分岗位有专业限制，少数"三不限"岗位无专业限制</td></tr>
+  <tr><td><b>政治面貌</b></td><td>部分岗位要求中共党员或共青团员</td></tr>
+  <tr><td><b>工作经历</b></td><td>部分岗位要求2年及以上基层工作经历</td></tr>
+</table>
+
+<h3>考试时间</h3>
+<table>
+  <tr><th>考试类型</th><th>报名时间</th><th>笔试时间</th><th>面试时间</th></tr>
+  <tr><td>国考</td><td>10月中下旬</td><td>11月底/12月初</td><td>次年2-3月</td></tr>
+  <tr><td>省考（联考）</td><td>2-3月</td><td>3月底/4月初</td><td>5-7月</td></tr>
+  <tr><td>江苏省考</td><td>11月</td><td>12月</td><td>次年2-3月</td></tr>
+  <tr><td>浙江省考</td><td>11-12月</td><td>12月/1月</td><td>次年3-4月</td></tr>
+  <tr><td>广东省考</td><td>1-2月</td><td>2-3月</td><td>4-5月</td></tr>
+  <tr><td>山东省考</td><td>11月</td><td>12月</td><td>次年2-3月</td></tr>
+</table>
+
+<div class="callout callout-info">
+  <strong>温馨提示：</strong>以上为近年大致时间，具体以当年公告为准。国考和省考并不冲突，只要时间不冲突，可以同时报考多个考试，增加上岸机会。
+</div>
+
+<h2 id="s2">二、考试结构详解</h2>
+
+<h3>行测（行政职业能力测验）</h3>
+<p>行测全部为客观题（选择题），考试时间120分钟，满分100分。主要考查与公务员职业密切相关的基本素质和能力要素。</p>
+
+<table>
+  <tr><th>模块</th><th>题量（国考）</th><th>参考分值</th><th>建议用时</th></tr>
+  <tr><td>常识判断</td><td>20题</td><td>约0.5分/题，共10分</td><td>5-8分钟</td></tr>
+  <tr><td>言语理解与表达</td><td>40题</td><td>约0.8分/题，共32分</td><td>30-35分钟</td></tr>
+  <tr><td>数量关系</td><td>10-15题</td><td>约1分/题，共10-15分</td><td>10-15分钟</td></tr>
+  <tr><td>判断推理</td><td>40题</td><td>约0.6-0.8分/题，共28-30分</td><td>30-35分钟</td></tr>
+  <tr><td>资料分析</td><td>20题</td><td>约1分/题，共20分</td><td>20-25分钟</td></tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>时间紧迫：</strong>行测120分钟做130-135道题（国考副省级135题、地市级130题），平均每道题不到1分钟。做题速度和时间分配至关重要，大部分人做不完所有题目，学会取舍是行测的必修课。
+</div>
+
+<h3>申论</h3>
+<p>申论全部为主观题，考试时间150-180分钟，满分100分。主要考查阅读理解能力、综合分析能力、提出和解决问题能力、贯彻执行能力、文字表达能力。</p>
+
+<table>
+  <tr><th>题型</th><th>题量</th><th>分值（约）</th><th>考查能力</th></tr>
+  <tr><td>归纳概括题</td><td>1-2题</td><td>10-15分/题</td><td>阅读理解能力</td></tr>
+  <tr><td>提出对策题</td><td>0-1题</td><td>15-20分/题</td><td>解决问题能力</td></tr>
+  <tr><td>综合分析题</td><td>1题</td><td>15-20分/题</td><td>综合分析能力</td></tr>
+  <tr><td>贯彻执行题（应用文）</td><td>1题</td><td>20-25分/题</td><td>贯彻执行能力</td></tr>
+  <tr><td>大作文（议论文）</td><td>1题</td><td>35-40分/题</td><td>文字表达能力</td></tr>
+</table>
+
+<h2 id="s3">三、行测5大模块：常识判断</h2>
+
+<h3>题型特点</h3>
+<p>常识判断主要考查应知应会的基本知识以及运用这些知识分析判断的基本能力，涉及政治、经济、法律、历史、文化、地理、环境、自然、科技等多个领域。</p>
+<ul>
+  <li><strong>题量：</strong>20道题</li>
+  <li><strong>特点：</strong>范围广、内容杂、分值低、复习性价比不高</li>
+  <li><strong>目标：</strong>正确率60%左右即可，不建议花太多时间</li>
+</ul>
+
+<h3>备考策略</h3>
+<ol>
+  <li>
+    <strong>抓大放小，重点突破</strong>
+    <p>常识内容太多，不可能面面俱到。重点关注时政热点、法律常识、历史人文这三大块，它们占常识分值的60%以上。</p>
+  </li>
+  <li>
+    <strong>利用碎片时间积累</strong>
+    <p>每天花15-20分钟看常识，不要花整块时间。利用通勤、排队等碎片时间，刷几道常识题、看几条知识点。</p>
+  </li>
+  <li>
+    <strong>关注时政热点</strong>
+    <p>时政是常识判断的必考内容，通常考近一年的重大时政。平时多关注新闻联播、人民日报、半月谈，考前看时政汇总。</p>
+  </li>
+  <li>
+    <strong>法律常识有侧重</strong>
+    <p>重点关注宪法、民法典、行政法、刑法中的基本概念和新修订的法律，不需要深入研究。</p>
+  </li>
+  <li>
+    <strong>蒙题技巧</strong>
+    <p>① 选项中出现绝对化表述（"全部""所有""唯一"）一般是错的；② 符合民族自豪感的选项通常是对的；③ 时间排序题可以用首尾排除法。</p>
+  </li>
+</ol>
+
+<div class="callout callout-ok">
+  <strong>常识备考心态：</strong>常识是投入产出比最低的模块，不要花太多时间在上面。每天积累一点，考前集中看时政，保持60%左右的正确率就够了。把时间留给言语、判断、资料这三大提分模块。
+</div>
+
+<h2 id="s4">四、行测5大模块：言语理解与表达</h2>
+
+<h3>题型概述</h3>
+<p>言语理解与表达是行测的重头戏，题量最大（40题），分值最高（约32分）。主要考查运用语言文字进行思考和交流、迅速准确地理解和把握文字材料内涵的能力。</p>
+
+<h3>三大题型</h3>
+<table>
+  <tr><th>题型</th><th>题量（约）</th><th>特点</th><th>重要程度</th></tr>
+  <tr><td>选词填空（逻辑填空）</td><td>15-20题</td><td>考查词语辨析和语境理解</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>片段阅读</td><td>15-18题</td><td>考查对文段主旨、细节、意图的理解</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>语句表达</td><td>2-5题</td><td>语句排序、语句填空、下文推断</td><td>⭐⭐⭐</td></tr>
+</table>
+
+<h3>选词填空备考</h3>
+<p>选词填空是言语理解中错误率最高的题型，很多人凭语感做题，结果一错一大片。</p>
+
+<h3>解题方法</h3>
+<ol>
+  <li><strong>分析语境：</strong>先读文段，理解空格前后的逻辑关系（转折、递进、因果、并列、解释说明等）</li>
+  <li><strong>找对应点：</strong>在空格前后找提示信息，寻找与空格对应的词语或句子</li>
+  <li><strong>辨析选项：</strong>从词义侧重、感情色彩、搭配对象、语义轻重等角度辨析词语差异</li>
+  <li><strong>代入验证：</strong>把选中的答案代入原文，读一遍看是否通顺</li>
+</ol>
+
+<h3>高频考点</h3>
+<ul>
+  <li><strong>转折关系：</strong>但是、然而、却、事实上、实际上 → 前后语义相反</li>
+  <li><strong>递进关系：</strong>甚至、更、乃至、不仅...而且 → 语义前轻后重</li>
+  <li><strong>因果关系：</strong>因为、所以、因此、导致 → 前后有因果联系</li>
+  <li><strong>并列关系：</strong>和、与、分号、顿号 → 前后语义相近或相关</li>
+  <li><strong>解释关系：</strong>冒号、破折号、也就是说、即 → 后文对前文进行解释</li>
+</ul>
+
+<div class="callout callout-warn">
+  <strong>常见误区：</strong>不要用语感做题！不要用语感做题！不要用语感做题！重要的事情说三遍。逻辑填空考的是逻辑，不是语感。每一道题都要在原文中找到依据，找到那个提示你选这个答案的"证据"。
+</div>
+
+<h3>片段阅读备考</h3>
+<p>片段阅读是言语理解的拿分重点，掌握方法后正确率可以很高。</p>
+
+<h3>常见题型及解法</h3>
+<table>
+  <tr><th>题型</th><th>识别标志</th><th>解题方法</th></tr>
+  <tr><td>主旨概括题</td><td>主要内容、核心观点、中心思想、概括最准确</td><td>找中心句（首尾句、转折后、对策句），同义替换</td></tr>
+  <tr><td>意图判断题</td><td>意在说明、想表达、启示、寓意</td><td>先找主旨，再判断意图（优先选合理引申，没有就选主旨）</td></tr>
+  <tr><td>细节理解题</td><td>正确/不正确、符合/不符合、可以推出</td><td>选项与原文一一对应，注意偷换概念、偷换时态、偷换数量、偷换逻辑</td></tr>
+  <tr><td>态度观点题</td><td>作者态度、观点、评价</td><td>找带有感情色彩的词语，注意转折后</td></tr>
+  <tr><td>标题填入题</td><td>最适合的标题</td><td>概括主旨+吸引眼球，新闻看导语，说明文看说明对象</td></tr>
+</table>
+
+<h3>片段阅读提速技巧</h3>
+<ul>
+  <li><strong>先看问题，再读文段：</strong>带着问题读，有针对性</li>
+  <li><strong>抓关联词：</strong>转折、因果、递进、条件关联词后面是重点</li>
+  <li><strong>抓行文脉络：</strong>总分、分总、总分总，总句是重点</li>
+  <li><strong>略读举例和背景：</strong>例子、数据、背景介绍可以快速扫</li>
+  <li><strong>主题词法：</strong>正确选项一定包含文段的主题词（核心话题）</li>
+</ul>
+
+<h3>语句表达备考</h3>
+<ul>
+  <li><strong>语句排序题：</strong>先看选项确定首句（背景引入、下定义适合做首句；关联词后半部分、指代词不适合做首句），然后找捆绑（指代词、关联词、共同信息），最后验证</li>
+  <li><strong>语句填空题：</strong>横线在开头（总领全文）、在中间（承上启下）、在结尾（总结前文），注意话题一致</li>
+  <li><strong>下文推断题：</strong>重点看尾句，尾句提出新话题，下文就围绕新话题展开</li>
+</ul>
+
+<h2 id="s5">五、行测5大模块：数量关系</h2>
+
+<h3>题型概述</h3>
+<p>数量关系主要考查理解、把握事物间量化关系和解决数量关系问题的能力，主要涉及数据关系的分析、推理、判断、运算等。这是很多考生最头疼的模块。</p>
+<ul>
+  <li><strong>题量：</strong>国考副省级15题，地市级10题</li>
+  <li><strong>特点：</strong>难度大、耗时长、分值高</li>
+  <li><strong>策略：</strong>不放弃但也不恋战，挑简单的做，难题蒙</li>
+</ul>
+
+<h3>常考题型</h3>
+<table>
+  <tr><th>题型</th><th>考查频率</th><th>难度</th><th>建议掌握程度</th></tr>
+  <tr><td>工程问题</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐</td><td>必须掌握</td></tr>
+  <tr><td>经济利润问题</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>必须掌握</td></tr>
+  <tr><td>行程问题</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>掌握基础题型</td></tr>
+  <tr><td>排列组合与概率</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>掌握基础题型</td></tr>
+  <tr><td>几何问题</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>掌握基本公式</td></tr>
+  <tr><td>容斥原理</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>必须掌握</td></tr>
+  <tr><td>最值问题</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>掌握套路</td></tr>
+  <tr><td>年龄问题</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>必须掌握</td></tr>
+  <tr><td>日期周期问题</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>掌握基础</td></tr>
+  <tr><td>溶液问题</td><td>⭐⭐</td><td>⭐⭐</td><td>了解即可</td></tr>
+  <tr><td>牛吃草问题</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>记住公式</td></tr>
+</table>
+
+<h3>备考策略</h3>
+<ol>
+  <li>
+    <strong>掌握基础题型</strong>
+    <p>把工程、经济利润、容斥、年龄等简单题型学透，这些是必拿分的。考试时先扫一遍，挑这些简单题做。</p>
+  </li>
+  <li>
+    <strong>学会代入排除法</strong>
+    <p>数量关系是选择题，很多题目不需要硬算，把选项代进去验证可能更快。年龄问题、多位数问题、余数问题优先用代入排除。</p>
+  </li>
+  <li>
+    <strong>掌握方程法</strong>
+    <p>方程法是最通用的方法，虽然可能不是最快的，但最稳妥。熟练掌握一元一次方程、二元一次方程的解法。</p>
+  </li>
+  <li>
+    <strong>数字特性法</strong>
+    <p>利用奇偶特性、倍数特性、尾数特性快速排除选项，提高解题速度。</p>
+  </li>
+  <li>
+    <strong>有舍有得</strong>
+    <p>10-15道题中，一般有5-6道简单题，3-4道中等题，2-3道难题。把简单和中等的做对，难题直接蒙，数量关系就不会拖后腿。</p>
+  </li>
+</ol>
+
+<div class="callout callout-info">
+  <strong>数量关系时间分配：</strong>建议给数量关系留10-15分钟。先花1分钟扫一眼所有题，挑出3-5道最简单的做，保证做对。剩下的题蒙同一个选项（比如都蒙B或都蒙C），这样正确率大概在30-40%，已经够用了。
+</div>
+
+<h2 id="s6">六、行测5大模块：判断推理</h2>
+
+<h3>题型概述</h3>
+<p>判断推理主要考查对各种事物关系的分析推理能力，涉及对图形、语词概念、事物关系和文字材料的理解、比较、组合、演绎和归纳等。题量大、技巧性强、提分快。</p>
+
+<table>
+  <tr><th>题型</th><th>题量</th><th>特点</th><th>提分难度</th></tr>
+  <tr><td>图形推理</td><td>10题</td><td>看图找规律，技巧性强</td><td>⭐⭐⭐</td></tr>
+  <tr><td>定义判断</td><td>10题</td><td>给定义找匹配，考查理解能力</td><td>⭐⭐</td></tr>
+  <tr><td>类比推理</td><td>10题</td><td>找词语间逻辑关系，阅读量小</td><td>⭐⭐</td></tr>
+  <tr><td>逻辑判断</td><td>10题</td><td>形式逻辑+论证推理，难度最大</td><td>⭐⭐⭐⭐</td></tr>
+</table>
+
+<h3>图形推理</h3>
+<p>图形推理是判断推理中最有意思也最让人头疼的题型。掌握规律后其实很简单。</p>
+
+<h3>核心考点</h3>
+<ol>
+  <li>
+    <strong>位置规律</strong>
+    <p>元素组成相同看位置。考点：平移、旋转、翻转。</p>
+  </li>
+  <li>
+    <strong>样式规律</strong>
+    <p>元素组成相似看样式。考点：遍历、加减同异、黑白运算。</p>
+  </li>
+  <li>
+    <strong>属性规律</strong>
+    <p>元素组成不同且不相似，先看属性。考点：对称性、曲直性、开闭性。</p>
+  </li>
+  <li>
+    <strong>数量规律</strong>
+    <p>元素组成不同，属性没规律，看数量。考点：点、线、面、素、角。</p>
+  </li>
+  <li>
+    <strong>空间重构</strong>
+    <p>折纸盒、拆纸盒问题。方法：相对面、相邻面、画边法。</p>
+  </li>
+  <li>
+    <strong>特殊规律</strong>
+    <p>功能元素、图形间关系、平面拼合等。</p>
+  </li>
+</ol>
+
+<h3>解题思路</h3>
+<ul>
+  <li>图形相同 → 看位置（平移、旋转、翻转）</li>
+  <li>图形相似 → 看样式（遍历、加减同异、黑白运算）</li>
+  <li>图形不同 → 先属性（对称、曲直、开闭）→ 后数量（点、线、面、素）</li>
+  <li>空间类 → 相对面、相邻面、画边法</li>
+</ul>
+
+<h3>定义判断</h3>
+<p>定义判断是给一个或多个定义，然后从选项中找出符合或不符合定义的答案。</p>
+<ul>
+  <li><strong>解题步骤：</strong>看清楚问"属于"还是"不属于" → 找定义中的关键词（主体、客体、方式、目的、原因、结果、条件）→ 选项与定义逐一比对</li>
+  <li><strong>常见陷阱：</strong>偷换主体、偷换客体、偷换概念、无中生有</li>
+  <li><strong>提速技巧：</strong>多定义题，问哪个定义先看哪个，其他定义可以先不看</li>
+</ul>
+
+<h3>类比推理</h3>
+<p>类比推理是给出一组相关的词，找出与之在逻辑关系上最为贴近或相似的词。</p>
+
+<h3>常见逻辑关系</h3>
+<table>
+  <tr><th>关系类型</th><th>具体内容</th><th>例子</th></tr>
+  <tr><td>语义关系</td><td>近义、反义、比喻义、象征义</td><td>高兴：开心；勤奋：懒惰</td></tr>
+  <tr><td>逻辑关系</td><td>全同、并列、包含、交叉、对应</td><td>北京：中华人民共和国首都；苹果：水果</td></tr>
+  <tr><td>语法关系</td><td>主谓、动宾、偏正</td><td>学生：学习；打扫：卫生</td></tr>
+</table>
+
+<ul>
+  <li><strong>解题技巧：</strong>先看一级关系（语义/逻辑/语法），再看二级辨析（感情色彩、词性、程度、自然/人工、必然/或然等）</li>
+  <li><strong>造句法：</strong>把两个词造成句子，看选项是否也能造成同样结构的句子</li>
+  <li><strong>常见陷阱：</strong>顺序反了、关系搞错了、常识不足</li>
+</ul>
+
+<h3>逻辑判断</h3>
+<p>逻辑判断是判断推理中难度最大的部分，包括形式逻辑和论证推理两大类。</p>
+
+<h3>形式逻辑</h3>
+<ul>
+  <li><strong>翻译推理：</strong>先翻译后推理。记住"如果...那么..."前推后，"只有...才..."后推前。掌握逆否等价、德摩根定律。</li>
+  <li><strong>组合排列：</strong>题干给出一组对象和信息，要求进行匹配。方法：排除法、代入法、列表法、最大信息法。</li>
+  <li><strong>真假推理：</strong>几个人说话，有真有假，判断谁说真话谁说假话。方法：找矛盾关系（必有一真一假）、找反对关系。</li>
+</ul>
+
+<h3>论证推理</h3>
+<ul>
+  <li><strong>加强型：</strong>最常见的是搭桥（论据和论点之间建立联系）和补充论据。</li>
+  <li><strong>削弱型：</strong>最常见的是否定论点、拆桥、否定论据、另有他因、因果倒置。</li>
+  <li><strong>解题步骤：</strong>找论点 → 找论据 → 分析论证方式 → 看选项（加强/削弱）</li>
+  <li><strong>力度比较：</strong>直接加强/削弱 > 间接加强/削弱；必然性 > 可能性</li>
+</ul>
+
+<h2 id="s7">七、行测5大模块：资料分析</h2>
+
+<h3>题型概述</h3>
+<p>资料分析主要考查对各种形式的文字、图表等资料的综合理解与分析加工能力。这是行测中最容易拿满分的模块，也是提分最快的模块。</p>
+<ul>
+  <li><strong>题量：</strong>4篇资料，每篇5题，共20题</li>
+  <li><strong>特点：</strong>套路性强、提分快、性价比最高</li>
+  <li><strong>目标：</strong>正确率85%以上，最好能全对</li>
+</ul>
+
+<h3>常考统计术语</h3>
+<table>
+  <tr><th>术语</th><th>含义</th><th>公式</th></tr>
+  <tr><td>基期量</td><td>作为参照标准的时期的数值</td><td>基期量 = 现期量 / (1+增长率)</td></tr>
+  <tr><td>现期量</td><td>当前时期的数值</td><td>现期量 = 基期量 × (1+增长率)</td></tr>
+  <tr><td>增长率</td><td>增长量与基期量的比值</td><td>增长率 = (现期量-基期量)/基期量 = 增长量/基期量</td></tr>
+  <tr><td>增长量</td><td>现期量与基期量的差值</td><td>增长量 = 现期量 - 基期量 = 基期量×增长率</td></tr>
+  <tr><td>比重</td><td>部分占总体的比例</td><td>比重 = 部分/整体 × 100%</td></tr>
+  <tr><td>平均数</td><td>总量除以份数</td><td>平均数 = 总量/份数</td></tr>
+  <tr><td>倍数</td><td>A是B的多少倍</td><td>倍数 = A/B</td></tr>
+  <tr><td>同比</td><td>与上年同期相比</td><td>—</td></tr>
+  <tr><td>环比</td><td>与上一个统计周期相比</td><td>—</td></tr>
+</table>
+
+<h3>速算技巧</h3>
+<ol>
+  <li>
+    <strong>截位直除法</strong>
+    <p>除法运算时，根据选项差距决定截取几位有效数字。选项差距大（首位不同），分子分母都截两位；选项差距小（首位相同），分母截三位。</p>
+  </li>
+  <li>
+    <strong>特殊分数法</strong>
+    <p>把百分数转化为特殊分数，简化计算。例如：50%=1/2，33.3%≈1/3，25%=1/4，20%=1/5，16.7%≈1/6，14.3%≈1/7，12.5%=1/8，11.1%≈1/9，10%=1/10。</p>
+  </li>
+  <li>
+    <strong>分数比较</strong>
+    <p>一大一小直接看（分子大分母小的分数大）；同大同小看速度（分子增长快的分数大）。</p>
+  </li>
+  <li>
+    <strong>尾数法</strong>
+    <p>加减法运算中，选项尾数不同时，只算尾数即可。</p>
+  </li>
+  <li>
+    <strong>估算法</strong>
+    <p>选项差距大时，可以大胆估算，不用精确计算。</p>
+  </li>
+</ol>
+
+<h3>高频考点</h3>
+<table>
+  <tr><th>考点</th><th>考查频率</th><th>核心公式/方法</th></tr>
+  <tr><td>增长率计算</td><td>⭐⭐⭐⭐⭐</td><td>r = (现期-基期)/基期</td></tr>
+  <tr><td>增长量计算</td><td>⭐⭐⭐⭐⭐</td><td>增长量 = 现期/(1+r) × r （特殊分数法）</td></tr>
+  <tr><td>基期量计算</td><td>⭐⭐⭐⭐</td><td>基期 = 现期/(1+r) （截位直除）</td></tr>
+  <tr><td>比重计算</td><td>⭐⭐⭐⭐⭐</td><td>现期比重 = 部分/整体</td></tr>
+  <tr><td>基期比重</td><td>⭐⭐⭐⭐</td><td>基期比重 = 现期比重 × (1+整体增长率)/(1+部分增长率)</td></tr>
+  <tr><td>两期比重比较</td><td>⭐⭐⭐⭐</td><td>部分增长率 > 整体增长率，比重上升；反之下降</td></tr>
+  <tr><td>平均数计算</td><td>⭐⭐⭐⭐</td><td>平均数 = 总量/份数</td></tr>
+  <tr><td>平均数增长率</td><td>⭐⭐⭐</td><td>(a-b)/(1+b) （a是分子增长率，b是分母增长率）</td></tr>
+  <tr><td>倍数计算</td><td>⭐⭐⭐</td><td>是几倍 = A/B；多几倍 = A/B - 1</td></tr>
+  <tr><td>综合分析</td><td>⭐⭐⭐⭐⭐</td><td>每篇最后一题，四个选项逐一判断</td></tr>
+</table>
+
+<div class="callout callout-ok">
+  <strong>资料分析提分秘诀：</strong>资料分析是行测中唯一可能拿满分的模块。提分方法就是：① 记住所有公式和术语；② 熟练掌握速算技巧；③ 大量刷题，每天做2-4篇。坚持一个月，正确率从50%提升到90%完全没问题。
+</div>
+
+<h3>做题注意事项</h3>
+<ul>
+  <li><strong>先看问题再找数据：</strong>带着问题去材料里找，不要先读材料</li>
+  <li><strong>注意时间和单位：</strong>看清是同比还是环比，单位是否一致（亿元vs万元）</li>
+  <li><strong>不要硬算：</strong>能估算就估算，能排除就排除</li>
+  <li><strong>综合分析题策略：</strong>先看简单的选项，难的选项先跳过；按照CDBA的顺序看</li>
+  <li><strong>避免常见陷阱：</strong>时间陷阱、单位陷阱、概念陷阱、范围陷阱</li>
+</ul>
+
+<h2 id="s8">八、申论备考全攻略</h2>
+
+<h3>申论五大题型</h3>
+
+<h3>1. 归纳概括题</h3>
+<p>归纳概括题是申论的基础题型，也是必考题型。要求从给定材料中提炼、概括出要点。</p>
+<ul>
+  <li><strong>常见设问：</strong>概括问题、原因、影响、做法、经验、特点等</li>
+  <li><strong>评分标准：</strong>全面、准确、简洁、有条理</li>
+  <li><strong>解题步骤：</strong>审题（明确概括对象和范围）→ 找点（回到材料找相关要点）→ 加工（同类合并、异类罗列）→ 书写（分条作答，用序号标清）</li>
+  <li><strong>提分关键：</strong>答案全部来自材料，不要自己瞎编；宁滥勿缺，要点尽量全</li>
+</ul>
+
+<h3>2. 提出对策题</h3>
+<p>提出对策题要求针对材料中的问题，提出解决的对策建议。</p>
+<ul>
+  <li><strong>常见设问：</strong>提出对策、建议、措施、方案等</li>
+  <li><strong>对策来源：</strong>① 材料中直接给的对策（摘抄）；② 问题原因反推对策；③ 经验教训转化为对策</li>
+  <li><strong>对策要求：</strong>针对性（针对问题）、可行性（能落地）、可操作性（具体怎么做）</li>
+  <li><strong>常见对策角度：</strong>思想观念、制度机制、监督管理、人才队伍、资金投入、技术手段、宣传教育</li>
+</ul>
+
+<h3>3. 综合分析题</h3>
+<p>综合分析题是申论中难度较大的题型，要求对材料中的某句话、某个现象进行分析。</p>
+<ul>
+  <li><strong>常见类型：</strong>词语解释型、句子理解型、观点评价型、比较分析型、启示型</li>
+  <li><strong>答题思路：</strong>是什么（解释含义/亮明观点）→ 为什么（分析原因/影响/理由）→ 怎么办（提出对策/总结升华）</li>
+  <li><strong>核心方法：</strong>围绕核心话题，从材料中找所有相关的信息点，按照逻辑组织答案</li>
+</ul>
+
+<h3>4. 贯彻执行题（应用文写作）</h3>
+<p>贯彻执行题考查应用文写作能力，是近年来申论考试的重点，分值高、形式多样。</p>
+<ul>
+  <li><strong>常见文种：</strong>倡议书、宣传稿、讲话稿、调研报告、建议书、公开信、通知、短评、导言等</li>
+  <li><strong>格式要素：</strong>标题、称谓、正文、落款（发文机关+日期）。注意不同文种格式不同</li>
+  <li><strong>正文结构：</strong>开头（背景/目的）→ 主体（主要内容，根据文种和题目要求确定）→ 结尾（呼吁/总结）</li>
+  <li><strong>提分关键：</strong>格式分不能丢；内容要点来自材料；语言符合文种风格</li>
+</ul>
+
+<h3>5. 大作文（议论文写作）</h3>
+<p>大作文是申论的重头戏，分值最高，也是拉分的关键。要求根据给定材料，自选角度，自拟题目，写一篇议论文。</p>
+
+<h3>评分标准</h3>
+<table>
+  <tr><th>档次</th><th>分值</th><th>标准</th></tr>
+  <tr><td>一类文</td><td>32-40分</td><td>立意明确，见解深刻，结构完整，逻辑严谨，语言流畅，论证充分</td></tr>
+  <tr><td>二类文</td><td>24-31分</td><td>立意明确，结构完整，逻辑清晰，语言通顺，论证较充分</td></tr>
+  <tr><td>三类文</td><td>16-23分</td><td>立意基本明确，结构较完整，语言基本通顺，论证不够充分</td></tr>
+  <tr><td>四类文</td><td>15分以下</td><td>立意不明确，结构不完整，语病较多，字数不够</td></tr>
+</table>
+
+<h3>写作步骤</h3>
+<ol>
+  <li>
+    <strong>第一步：立意（确定中心论点）</strong>
+    <p>仔细审题，结合材料，确定文章的核心观点。立意要准确、明确、深刻。</p>
+  </li>
+  <li>
+    <strong>第二步：拟题（拟定标题）</strong>
+    <p>标题要体现中心论点，简洁有力。常用方法：对仗式、比喻式、主副标题式。</p>
+  </li>
+  <li>
+    <strong>第三步：结构（搭建框架）</strong>
+    <p>五段三分式最稳妥：开头（引出论点）+ 三个分论点段落 + 结尾（总结升华）。</p>
+  </li>
+  <li>
+    <strong>第四步：论证（充实内容）</strong>
+    <p>每个分论点都要有论据支撑。论据可以来自材料，也可以用自己积累的素材。论证方法：举例论证、道理论证、对比论证、引用论证。</p>
+  </li>
+  <li>
+    <strong>第五步：书写（落笔成文）</strong>
+    <p>字迹工整，卷面整洁，不涂改。字数控制在要求范围内（一般1000-1200字）。</p>
+  </li>
+</ol>
+
+<h3>申论备考方法</h3>
+<ul>
+  <li><strong>多做真题：</strong>申论真题至少做3遍，每一遍都有新收获</li>
+  <li><strong>重视小题：</strong>小题占60分，是拉分的关键。大作文分差反而不大</li>
+  <li><strong>积累素材：</strong>关注人民日报评论、半月谈、学习强国，积累金句和案例</li>
+  <li><strong>练字：</strong>字写得好，申论至少多拿3-5分。每天练15分钟字</li>
+  <li><strong>多动笔写：</strong>不要只看不写，一定要自己动手写答案，然后对照参考答案修改</li>
+  <li><strong>材料为王：</strong>申论答案80%来自材料，不要脱离材料自己瞎写</li>
+</ul>
+
+<h2 id="s9">九、选岗技巧</h2>
+
+<p>考得好不如报得好。选岗直接决定了你的竞争激烈程度和上岸概率。</p>
+
+<h3>选岗原则</h3>
+<ol>
+  <li>
+    <strong>限制条件越多越好</strong>
+    <p>岗位限制条件越多，符合条件的人越少，竞争越小。优先选择有专业限制、学历限制、工作经验限制、政治面貌限制的岗位。三不限岗位竞争最激烈，慎选。</p>
+  </li>
+  <li>
+    <strong>招的人多的岗位优先</strong>
+    <p>招2个人的岗位比招1个人的岗位进面概率大。招1个人的岗位，万一碰到一个学霸，你就没机会了。招多个人的岗位，进面机会更多。</p>
+  </li>
+  <li>
+    <strong>避开热门地区和热门部门</strong>
+    <p>一线城市、省会城市、核心部门（两办、组织部、纪委）竞争非常激烈。如果实力不是特别强，可以考虑地级市、县乡基层岗位或者相对冷门的部门。</p>
+  </li>
+  <li>
+    <strong>结合自身优势选岗</strong>
+    <p>如果你是党员、有基层工作经验、有专业证书，那就选有这些限制条件的岗位，把竞争者过滤掉。</p>
+  </li>
+  <li>
+    <strong>不要盲目追求"好"岗位</strong>
+    <p>很多人盯着"好岗位"报，结果扎堆炮灰。有时候，能考上的岗位就是最好的岗位。先上岸再图发展。</p>
+  </li>
+</ol>
+
+<h3>选岗步骤</h3>
+<ol>
+  <li><strong>下载职位表：</strong>公告发布后，下载职位表Excel文件</li>
+  <li><strong>筛选条件：</strong>用筛选功能，按专业、学历、政治面貌、工作经验等条件筛选</li>
+  <li><strong>初步备选：</strong>筛出自己符合条件的岗位，列出清单</li>
+  <li><strong>对比分析：</strong>对比各岗位的招录人数、部门、地区、发展前景</li>
+  <li><strong>观望报名人数：</strong>报名期间每天看报名人数统计，避开过热岗位</li>
+  <li><strong>最终报名：</strong>在报名截止前1-2天确定最终岗位，完成报名</li>
+</ol>
+
+<div class="callout callout-warn">
+  <strong>报名注意事项：</strong>① 不要最后一天才报名，万一审核不通过就没机会改了；② 报名信息要如实填写，弄虚作假会被记入诚信档案；③ 缴费成功才算报名完成，不要忘记缴费。
+</div>
+
+<h2 id="s10">十、备考规划与避坑</h2>
+
+<h3>6个月备考计划</h3>
+
+<table>
+  <tr><th>阶段</th><th>时间</th><th>任务</th><th>每日学习时长</th></tr>
+  <tr><td>基础阶段</td><td>第1-2个月</td><td>系统学习行测5大模块和申论各题型的基础知识和解题方法</td><td>4-5小时</td></tr>
+  <tr><td>强化阶段</td><td>第3-4个月</td><td>分模块刷题，强化技巧，提升速度和正确率</td><td>5-6小时</td></tr>
+  <tr><td>真题阶段</td><td>第5个月</td><td>做历年真题，整套模考，查漏补缺</td><td>6-7小时</td></tr>
+  <tr><td>冲刺阶段</td><td>第6个月</td><td>回顾错题，模拟考试，调整状态</td><td>5-6小时</td></tr>
+</table>
+
+<h3>各阶段详细规划</h3>
+
+<h3>基础阶段（2个月）</h3>
+<ul>
+  <li>跟着视频课系统学习，每个模块逐一攻克</li>
+  <li>边学边做笔记，整理知识框架</li>
+  <li>每学完一个模块，做对应的练习题巩固</li>
+  <li>学习顺序建议：资料分析 → 判断推理 → 言语理解 → 数量关系 → 常识判断</li>
+  <li>申论同步开始，先学习各种题型的答题方法</li>
+</ul>
+
+<h3>强化阶段（2个月）</h3>
+<ul>
+  <li>分模块大量刷题，每个模块刷1000题以上</li>
+  <li>建立错题本，分析错题原因</li>
+  <li>开始限时训练，提高做题速度</li>
+  <li>申论开始动笔写，每周做1-2套申论题</li>
+  <li>积累申论素材和作文金句</li>
+</ul>
+
+<h3>真题阶段（1个月）</h3>
+<ul>
+  <li>做近10年国考真题和近5年目标省份的省考真题</li>
+  <li>严格按照考试时间模拟，上午行测下午申论</li>
+  <li>做完后认真分析，统计各模块正确率</li>
+  <li>找到薄弱环节，针对性强化</li>
+</ul>
+
+<h3>冲刺阶段（1个月）</h3>
+<ul>
+  <li>回顾错题本和笔记，查漏补缺</li>
+  <li>每周做2-3套模拟题，保持做题手感</li>
+  <li>调整作息，按照考试时间安排学习</li>
+  <li>关注时政热点，积累申论素材</li>
+  <li>保持良好心态，不要焦虑</li>
+</ul>
+
+<h3>备考资料推荐</h3>
+<table>
+  <tr><th>资料类型</th><th>推荐</th><th>说明</th></tr>
+  <tr><td>教材</td><td>行测的思维（粉笔）、申论的规矩（粉笔）</td><td>知识点全面，适合零基础入门</td></tr>
+  <tr><td>题库</td><td>粉笔5000题、中公专项题库</td><td>分模块刷题必备</td></tr>
+  <tr><td>真题</td><td>历年真题（粉笔/中公/华图）</td><td>必须做，选择解析详细的版本</td></tr>
+  <tr><td>APP</td><td>粉笔教育</td><td>利用碎片时间刷题，模考大赛必参加</td></tr>
+  <tr><td>视频课</td><td>粉笔980系统班</td><td>系统全面，性价比高，适合零基础</td></tr>
+  <tr><td>申论素材</td><td>人民日报评论、半月谈、学习强国</td><td>积累申论素材和规范表达</td></tr>
+</table>
+
+<h3>备考避坑</h3>
+<ol>
+  <li>
+    <strong>不要只听课不刷题</strong>
+    <p>听课是被动学习，刷题才是主动学习。很多人听了很多课，感觉都懂了，一做题就错。听完课一定要大量刷题，把方法内化为自己的能力。</p>
+  </li>
+  <li>
+    <strong>不要盲目刷题不总结</strong>
+    <p>刷题不是目的，掌握方法才是。做完题一定要总结，分析错题原因，找出自己的薄弱点，针对性改进。错题本比新题更有价值。</p>
+  </li>
+  <li>
+    <strong>不要偏科</strong>
+    <p>行测五个模块都不能放弃。数量关系和常识可以少花时间，但不能完全不学。申论更不能放弃，很多人行测高分申论拉胯，照样上不了岸。</p>
+  </li>
+  <li>
+    <strong>不要忽视真题</strong>
+    <p>真题是最好的复习资料，质量远高于模拟题。真题至少做3遍：第一遍按模块做，第二遍整套做，第三遍只做错题。</p>
+  </li>
+  <li>
+    <strong>不要不列计划</strong>
+    <p>备考是一个漫长的过程，没有计划很容易懈怠。制定详细的学习计划，每天完成什么任务，每周达到什么目标，心里要有数。</p>
+  </li>
+  <li>
+    <strong>不要和别人比进度</strong>
+    <p>每个人的基础和学习效率不同，进度快慢不代表最终成绩。按自己的节奏来，扎实学好每一个知识点。</p>
+  </li>
+  <li>
+    <strong>不要只注重行测忽略申论</strong>
+    <p>很多考生把90%的时间花在行测上，申论只花10%，结果申论拖后腿。行测拉分难，申论拉分容易。得申论者得天下。</p>
+  </li>
+  <li>
+    <strong>不要熬夜学习</strong>
+    <p>公考备考是持久战，身体是革命的本钱。保持规律作息，每天高效学习8小时，比熬夜学习12小时效果好得多。</p>
+  </li>
+  <li>
+    <strong>不要轻易放弃</strong>
+    <p>公考竞争激烈，一次上岸是少数，很多人考了好几次才上岸。坚持下去，不断总结提升，总有一天会上岸的。</p>
+  </li>
+  <li>
+    <strong>不要把考公当成唯一出路</strong>
+    <p>保持平常心，考公只是众多职业选择中的一个。努力了就不后悔，即使没考上，备考过程中学到的知识和能力也是你的财富。</p>
+  </li>
+</ol>
+
+<div class="callout callout-ok">
+  <strong>最后想说：</strong>公务员考试是一场实力+运气的较量。实力是基础，运气是加分项。我们能做的就是不断提升自己的实力，机会来的时候才能牢牢抓住。愿每一个努力的人都能得偿所愿，成功上岸！
+</div>
+
+<div class="related">
+  <h3>📚 相关内容</h3>
+  <div class="related-list">
+    <a class="related-item" href="fakao_guide.html">
+      <div class="ri-ico">⚖️</div>
+      <div class="ri-title">法考备考全攻略</div>
+      <div class="ri-desc">零基础到拿证完整路线</div>
+    </a>
+    <a class="related-item" href="jiaoshi_guide.html">
+      <div class="ri-ico">👩‍🏫</div>
+      <div class="ri-title">教资考试全攻略</div>
+      <div class="ri-desc">笔试+面试一次过</div>
+    </a>
+    <a class="related-item" href="computer2_guide.html">
+      <div class="ri-ico">💻</div>
+      <div class="ri-title">计算机二级攻略</div>
+      <div class="ri-desc">MS Office 通关秘籍</div>
+    </a>
+  </div>
+</div>
+
+</div>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('backTop');
+  if(window.scrollY>300){b.classList.add('show');}else{b.classList.remove('show');}
+});
+</script>
+</body>
+</html>
