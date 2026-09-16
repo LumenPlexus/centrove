@@ -775,7 +775,7 @@
       '<div class="card" style="margin-bottom:14px">' +
       '<h3>三分钟上手</h3>' +
       '<ol style="line-height:1.9;color:var(--muted)">' +
-      '<li><b>打开即开始：</b>无需注册登录，点击左侧或底部导航切换板块即可使用。</li>' +
+      '<li><b>打开即开始：</b>无需单独注册即可开箱使用，点击左侧或底部导航切换板块即可；需要跨设备延续时可登录账号开启同步。</li>' +
       '<li><b>记录一件事：</b>在「今日概览」添加待办、倒数日；在「习惯养成」创建打卡；在「记账」记录收支。</li>' +
       '<li><b>备份数据：</b>点击顶部「更多工具 → 导出数据备份」，把 JSON 文件保存到手机或云盘，数据就不会随浏览器缓存丢失。</li>' +
       '</ol></div>' +
@@ -793,7 +793,7 @@
       '<details><summary>深色/浅色模式怎么切换？</summary><p>点击顶栏的月亮/太阳图标即可切换主题，偏好会自动保存在本地。所有卡片、按钮、图表都适配了两套配色，夜间使用更护眼。</p></details>' +
       '<details><summary>离线后还能用吗？</summary><p>可以。首次打开后，Service Worker 会把网站资源缓存到本地。之后即使断网，只要不清理浏览器缓存，仍可正常打开和使用。<br>注意：首次加载、后续更新版本、以及主动「清除网站数据」后需要重新联网。</p></details>' +
       '<details><summary>更新版本后内容会变吗？</summary><p>网站功能和内置文案会随版本更新，但你的个人数据（待办、日记、记账等）保存在浏览器本地，不会因为我们发布新版而丢失。<br>如果你发现打开的是旧版，请下拉刷新或「退出浏览器重新进入」。</p></details>' +
-      '<details><summary>隐私与数据安全</summary><p>栖匣不注册、不登录、默认不上传任何个人信息。反馈内容仅保存在本地；WebDAV 云备份需要手动配置，密码不会被明文保存在本地。<br>心理测评、理财兼职、备考信息等内容仅供成长参考，不构成专业建议。</p></details>' +
+      '<details><summary>隐私与数据安全</summary><p>栖匣默认隐私优先：数据加密保存在本机，不开设非必要的个人信息收集；可手动配置 WebDAV（如坚果云）实现云端备份与多端同步，密码不会被明文保存。<br>心理测评、理财兼职、备考信息等内容仅供成长参考，不构成专业建议。</p></details>' +
       '<details><summary>遇到 Bug 或想提建议？</summary><p>可以通过「系统设置 → 帮助与反馈」提交，反馈会保存在本地，你可以在「我的反馈」中查看历史记录。<br>如需联系创作者，请通过你获得栖匣的渠道留言。</p></details>' +
       '<details><summary>常见问题快速排查</summary><p><b>打开空白：</b>检查网络后刷新；若用微信打开，请换 Safari/Chrome。<br><b>数据不见了：</b>是否清过缓存？是否换了浏览器？可尝试导入之前的 JSON 备份。<br><b>某些按钮点不动：</b>尝试退出重进或关闭省电模式。<br><b>首页显示旧版：</b>下拉刷新或清除浏览器缓存。</p></details>' +
       '</div>';
@@ -1178,7 +1178,7 @@
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function () { try { URL.revokeObjectURL(url); } catch (e) {} }, 2000);
     } catch (e2) {}
-    try { toast('已生成本地故障快照文件（仅保存到本机，不上传任何数据）'); } catch (e3) {}
+    try { toast('已生成本地故障快照文件（仅保存在本设备，不会发送到云端）'); } catch (e3) {}
   }
   NS.supportSnapshot = supportSnapshot;
 
@@ -1190,7 +1190,7 @@
       rep.setAttribute('data-qxsnap', '1');
       var w = el('div');
       w.style.cssText = 'margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border:1px dashed var(--border-strong);border-radius:10px;padding:10px 12px;background:var(--card)';
-      w.innerHTML = '<span style="font-size:12.5px;color:var(--muted)">遇到异常？可生成本地故障快照（仅保存在本机，不上传任何数据）</span>' +
+      w.innerHTML = '<span style="font-size:12.5px;color:var(--muted)">遇到异常？可生成本地故障快照（仅保存在本设备，不会发送到云端）</span>' +
         '<button class="btn btn-sm" style="background:var(--card);color:var(--primary);border-color:var(--border-strong)" onclick="try{QixiaUpgrade&&QixiaUpgrade.supportSnapshot&&QixiaUpgrade.supportSnapshot();}catch(e){}">导出快照</button>';
       rep.parentNode.insertBefore(w, rep.nextSibling);
     } catch (e) {}

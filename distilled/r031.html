@@ -128,7 +128,6 @@ tr:nth-child(even) td{background:var(--card-soft)}
 <h1>📄 读懂一篇顶刊论文：AI工具辅助阅读法</h1>
 <div class="meta-row">
   <span>经验蒸馏 · 科研文献阅读法</span>
-  <span class="score">⭐ 8.8</span>
   <span>进阶难度</span>
   <span>每篇30分钟</span>
 </div>
@@ -453,16 +452,6 @@ tr:nth-child(even) td{background:var(--card-soft)}
     });
     update();
   });
-
-  /* ---------- 阅读时长估算 ---------- */
-  try{
-    var txt=(document.body.textContent||'').trim();
-    var cjk=(txt.match(/[\u4e00-\u9fa5]/g)||[]).length;
-    var words=(txt.match(/[a-zA-Z]+/g)||[]).length;
-    var mins=Math.max(1,Math.round(cjk/350+words/120));
-    var mr=document.querySelector('.meta-row');
-    if(mr){ var c=document.createElement('span'); c.className='chip'; c.textContent='\u2615 \u7ea6 '+mins+' \u5206\u949f\u8bfb\u5b8c'; mr.appendChild(c); }
-  }catch(e){}
 })();
 </script>
 </body>

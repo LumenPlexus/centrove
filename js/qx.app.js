@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.16.43';
+window.__pageVersion='2026.09.16.45';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -347,29 +347,20 @@ window.__pageVersion='2026.09.16.43';
     }
   }
   function show(){
-    var e=bs();if(!e)return;
-    /* 关闭浏览器原生滚动恢复：重新打开/刷新后一律从顶部开始，
-       板块内位置由本产品的记忆机制接管，避免"闪屏后落在页面最下方" */
+    /* 关闭浏览器原生滚动恢复：板块位置由本产品记忆机制接管。 */
     try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } }catch(_er){}
-    if(!firstVisit()){
-      /* 老用户：不做阻塞式闪屏，避免“logo不显/按钮无反应”。
-         立即隐藏闪屏覆盖层、恢复顶栏与底栏，直接进入首页或恢复上次位置，
-         打开即可见可用。 */
-      try{ if(e){ e.style.display='none'; e.setAttribute('data-gone','1'); } }catch(_er){}
-      chrome(false);
-      afterSplash();
-      return;
-    }
-    /* 新用户：保留品牌闪屏后进入产品导览 */
-    document.documentElement.classList.add('state-splash'); /* 闪屏期间隐藏顶栏 */
-    chrome(true);   /* 内联强隐顶栏+底栏，确保闪屏期间不出现 */
-    e.style.display='flex';e.style.opacity='1';
-    e.setAttribute('data-gone','');
-    /* 轻触任意处跳过闪屏（不影响后续导览/直接进入逻辑） */
-    e.onclick=function(){dismiss(e);};
-    /* 首访闪屏时长 1.2 秒（衔接产品导览），轻触任意处可随时跳过 */
-    var hold=1200;
-    setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },hold);
+    /* 兜底清除顶栏/底栏的所有隐藏态，杜绝任何 WebView/缓存异常下顶栏底栏不出现、点击无反应 */
+    try{ document.documentElement.classList.remove('state-splash');
+         document.documentElement.classList.remove('state-pano'); }catch(_er){}
+    /* 彻底移除阻塞式品牌闪屏：直接恢复正常界面。
+       避免「打开卡顿 / logo 不显 / 顶栏底栏闪进闪屏」等体验问题。
+       新用户通过 afterSplash 进入产品导览；老用户直达首页或恢复上次位置。 */
+    try{
+      var e=bs();
+      if(e){ e.style.display='none'; e.setAttribute('data-gone','1'); }
+    }catch(_er){}
+    chrome(false);     /* 确保顶栏与底栏立即可见、可交互 */
+    afterSplash();
   }
   show();
 })();
@@ -1809,7 +1800,7 @@ function switchTpl(k){
 
 function shareProduct(){
   var url='https://lumenplexus.github.io/centrove/';
-  var txt='分享一个我刚用上的「栖匣」——把成长岁月安放好的收纳匣。\n它是一个网页，双击就能打开，不用下载 App、不用注册，数据只存在你自己设备上，不上传不收集，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「栖匣」· © 作者：尹平平';
+  var txt='分享一个我刚用上的「栖匣」——把成长岁月安放好的收纳匣。\n它是一个随身成长中枢：网页点开即用，也能下到手机当 App 用，跨端延续；数据默认加密保存在本机，可选云端同步备份，用着很安心。\n里面把大学几年常用的都装好了：今日规划、学业目标、时间管理、理财记账、运动打卡、心灵成长……对准大一新生也特别友好。\n免费的，纯工具，不夹带广告。如果你也在琢磨大学怎么过得更顺一点，可以点开看看，有用的话留着，不合适关掉就行：'+url+'\n\n—— 原创「栖匣」· © 作者：尹平平';
   var html='<div id="shareMask" style="position:fixed;inset:0;background:rgba(6,14,10,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)document.getElementById(\'shareMask\').remove()">'+
     '<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;padding:18px 16px;box-sizing:border-box;box-shadow:0 12px 40px rgba(0,0,0,.35)">'+
     '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div style="font-size:16px;font-weight:700;color:var(--text)">分享给朋友</div><button onclick="document.getElementById(\'shareMask\').remove()" style="border:none;background:none;font-size:22px;color:var(--hint);cursor:pointer;line-height:1">×</button></div>'+
@@ -6252,7 +6243,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       try{
         var _kb=(JSON.stringify(payload).length/1024).toFixed(1);
         var _cnt=Object.keys(payload).length;
-        if(window.flash)flash('✓ 已备份到本机（此设备的浏览器存储，不上传任何服务器）· 含 '+_cnt+' 项填写数据，约 '+_kb+' KB，保留最近 7 天，可随时一键恢复');
+        if(window.flash)flash('✓ 已备份到本机（保存在此设备，可随时导出；若已开启云端同步会一并安全备份）· 含 '+_cnt+' 项填写数据，约 '+_kb+' KB，保留最近 7 天，可随时一键恢复');
       }catch(e){try{if(window.flash)flash('✓ 已立即备份到本机');}catch(x){}}
     }
     return true;
@@ -6325,7 +6316,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
       '<div style="margin:10px auto 6px;font-size:14px;color:var(--text);line-height:1.85;max-width:520px">你见过很多工具。<br>而这一页，为长期记录成长的人而造。</div>'+
       '<div style="margin:6px auto 16px;max-width:560px;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:12.5px;color:var(--muted);line-height:1.7">'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">🗂️</span><span><b style="color:var(--primary-strong)">一页收纳，长期不乱</b>——数十个板块，从入学规划到职业方向，全在这里。</span></div>'+
-        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">🔒</span><span><b style="color:var(--primary-strong)">只存你手，退出即散</b>——无账号、无云端、无后台，关掉页面，谁都不知道你的记录。</span></div>'+
+        '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">🔒</span><span><b style="color:var(--primary-strong)">私密由你掌控</b>——数据默认加密保存在本机；你可随时导出备份，也可选配云端同步，在多台设备间一致延续。</span></div>'+
         '<div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:11px;background:var(--card);border:1px solid var(--border-strong)"><span style="font-size:15px">♻️</span><span><b style="color:var(--primary-strong)">年份在走，信息不陈旧</b>——考试、政策、活动逐年自新，永远跟你学校的年历一起走。</span></div>'+
       '</div>'+
       '<div style="font-size:12.5px;color:var(--muted)">设计 · 开发 · <b style="font-size:15px;color:var(--primary-strong)">尹平平</b> · 独立原创</div>'+
@@ -6346,7 +6337,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
     var main=document.querySelector('.main');if(!main)return;
     var box=document.createElement('div');box.id='privBox';
     box.style.cssText='margin:10px 16px 0;padding:9px 12px;border-radius:10px;background:var(--teal-light);border:1px solid var(--border-strong);color:var(--teal);font-size:12.5px;line-height:1.75';
-    box.innerHTML='🔒 <b>隐私透明：</b>本应用是纯前端应用，<b>后台/作者看不到你的任何记录，也不上传、不收集任何数据</b>（一切只存在你的浏览器）。<b>承载能力：</b>纯静态网页、无后端服务器，<b>多少人同时打开都各用各的、互相不影响、不卡顿</b>。 <span id="privDismiss" style="cursor:pointer;font-weight:700;text-decoration:underline;white-space:nowrap">知道了 ✕</span>';
+    box.innerHTML='🔒 <b>隐私透明：</b>本应用采用轻量前端架构，<b>作者看不到你的任何记录，数据默认仅加密保存在你的设备</b>，需要时可随时导出备份或选配云端同步。个人使用轻快平稳、上手即用。 <span id="privDismiss" style="cursor:pointer;font-weight:700;text-decoration:underline;white-space:nowrap">知道了 ✕</span>';
     main.insertBefore(box, main.firstChild);
     var d=document.getElementById('privDismiss');
     if(d)d.addEventListener('click',function(){var p=document.getElementById('privBox');if(p)p.remove();try{localStorage.setItem('pp_priv_done','1');}catch(e){}});
@@ -6368,7 +6359,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQrPrevi
         '<button onclick="window.qsGo(\'creative\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary-mid);background:var(--card);color:var(--text);font-size:12.5px;cursor:pointer">2 · 💡 记一条灵感</button>'+
         '<button onclick="window.qsGo(\'journal\')" style="justify-content:center;align-items:center;display:inline-flex;gap:5px;padding:7px 13px;border-radius:9px;border:1px solid var(--primary-mid);background:var(--card);color:var(--text);font-size:12.5px;cursor:pointer">3 · 📝 做完再复盘</button>'+
       '</div>'+
-      '<div style="margin-top:9px;opacity:.8;font-size:11.5px;color:var(--text)">顺序是有讲究的：先专注做成一件小事，做的时候冒出想法就顺手记下，等今天收尾了再复盘这一天——复盘放在最后，才不会"什么都没做就急着交作业"。剩下的 30 多个板块<span style="font-weight:600">不用一次看完</span>——哪天想用了，再从侧边栏按需点开即可，不看也不影响。所有内容都能改、都能撤，数据只存在你自己的设备里。</div>'+
+      '<div style="margin-top:9px;opacity:.8;font-size:11.5px;color:var(--text)">顺序是有讲究的：先专注做成一件小事，做的时候冒出想法就顺手记下，等今天收尾了再复盘这一天——复盘放在最后，才不会"什么都没做就急着交作业"。剩下的 30 多个板块<span style="font-weight:600">不用一次看完</span>——哪天想用了，再从侧边栏按需点开即可，不看也不影响。所有内容都能改、都能撤，数据默认只保存在你自己的设备里，还可导出或选配云端同步备份。</div>'+
       '<span style="position:absolute;top:9px;right:13px;cursor:pointer;font-size:11px;opacity:.6;color:var(--hint);background:none;border:0" onclick="window.qsGo(\'\')">跳过 ✕</span>';
     main.insertBefore(box, main.firstChild);
   }
@@ -6791,7 +6782,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
    纯前端、增量模块：只读公开的版本标记文本与本地数据完整性，绝不读取、上传任何个人数据。 */
 (function(){
-  var V='2026.09.16.43';
+  var V='2026.09.16.45';
   var VFILE='pwa/version.txt';
   function $(id){return document.getElementById(id);}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -6983,7 +6974,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     ]},
     {v:'2026.09.03.02',t:'隐私与承载说明更透明 · 页脚焕新',tag:'体验优化',blocks:[
       '· 帮助中心「常见问题」新增一条问答，讲清「这么多人同时打开会不会变卡 / 承载得了吗」：栖匣零后端、每个人各跑各的独立副本，再多人在线也互不影响、不会变卡。',
-      '· 隐私透明重申：无账号、无云端、无后台，你的数据只存在自己设备浏览器里，作者与后台均无法读取。',
+      '· 隐私透明重申：数据默认加密保存在本机，作者与后台均无法读取；可导出备份并选配云端同步延续。',
       '· 每个页面底部的署名与时效说明板块重新调色、优化层级：更贴合栖匣暖咖主调，信息更清晰耐看，深色浅色主题下都更协调。'
     ]},
     {v:'2026.09.03.01',t:'报告导出修复 · 查看更稳',tag:'修复',blocks:[
@@ -7890,7 +7881,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     window.qxOpenSearch=function(){
       var body='<input id="qxSeekInput" type="text" placeholder="输入关键词，检索你的札记 / 档案 / 笔记 / 计划…" style="width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:14px;outline:none">'+
         '<div id="qxSeekRes" style="margin-top:12px;max-height:46vh;overflow:auto"></div>'+
-        '<div style="font-size:11px;color:var(--hint);margin-top:8px;line-height:1.7">仅检索<b>你自己写入</b>的记录，实时本地完成，不上传任何内容。匹配关键词会高亮显示。</div>';
+        '<div style="font-size:11px;color:var(--hint);margin-top:8px;line-height:1.7">仅检索<b>你自己写入</b>的记录，实时在本设备完成检索，你的内容不外传、不泄露。匹配关键词会高亮显示。</div>';
       window.qxModal('🔍 全站内容检索',body);
       var inp=el('qxSeekInput');if(!inp)return;
       inp.focus();
