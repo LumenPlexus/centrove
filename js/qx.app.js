@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.17.6';
+window.__pageVersion='2026.09.17.7';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -339,7 +339,7 @@ window.__pageVersion='2026.09.17.6';
         _hh=_hh.replace(/^#view-/,'');
         var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
         var _rS=null;
-        try{ var _rRaw=sessionStorage.getItem(window.SCROLL_RESTORE_KEY||'qixia_scroll_restore'); if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
+        try{ var _rKey=window.SCROLL_RESTORE_KEY||'qixia_scroll_restore'; var _rRaw=sessionStorage.getItem(_rKey); if(!_rRaw){_rRaw=localStorage.getItem(_rKey);} if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
         var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
         var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
         /* 返回恢复（关键修复）：点外链/切走后回到「你离开时的板块」，并把滚动还原到你离开的位置，
@@ -377,7 +377,9 @@ window.__pageVersion='2026.09.17.6';
   function _detectBoot(){
     try{
       var _rS=null;
-      var _raw=sessionStorage.getItem(window.SCROLL_RESTORE_KEY||'qixia_scroll_restore');
+      var _key=window.SCROLL_RESTORE_KEY||'qixia_scroll_restore';
+      var _raw=sessionStorage.getItem(_key);
+      try{ if(!_raw){_raw=localStorage.getItem(_key);} }catch(e){}
       if(_raw){_rS=JSON.parse(_raw);}
       var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
       var _hh=(''+(location.hash||'')).replace(/^#view-/,'');
@@ -5036,6 +5038,10 @@ function saveScrollState(){
       ts: Date.now()
     };
     sessionStorage.setItem(SCROLL_RESTORE_KEY, JSON.stringify(state));
+    /* 同步写一份到 localStorage：部分移动端返回重载时 sessionStorage 会被清空，
+       仅靠 session 会导致返回检测失效、退回「闪屏+闪现」。localStorage 可跨会话存活，
+       是「从外链返回必能识别并直达原位」的可靠兜底。 */
+    try{ localStorage.setItem(SCROLL_RESTORE_KEY, JSON.stringify(state)); }catch(e){}
   }catch(e){}
 }
 
