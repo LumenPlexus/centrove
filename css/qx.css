@@ -1574,16 +1574,16 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 [data-theme="dark"] .ai-go-row .btn-primary{color:#FFF7E2!important}
 [data-theme="dark"] .ai-go-row .btn:not(.btn-primary){background:#26211A!important;border-color:#3C3427!important;color:#D8CBB2!important}
 
-/* ═══ 长内容自动折叠（展开全部/收起）═══ */
+/* ═══ 长内容折叠：卡片标题右侧小箭头，点标题即可展开/收起正文（顶部折叠，不截断文字）═══ */
 .card,.callout{position:relative}
-.has-fold{padding-bottom:46px}
-.has-fold:not(.is-open){max-height:212px;overflow:hidden}
-.has-fold:not(.is-open)::after{content:"";position:absolute;left:0;right:0;bottom:46px;height:44px;background:linear-gradient(180deg,transparent,var(--bg));pointer-events:none}
-.fold-bar{position:absolute;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;justify-content:center;gap:5px;border:0;background:linear-gradient(180deg,transparent,rgba(74,58,40,.03));color:var(--primary-mid);font-size:12.5px;font-weight:700;cursor:pointer;border-top:1px dashed var(--border);z-index:3;transition:color .15s}
-.fold-bar:hover{color:var(--primary)}
-.fold-bar .fold-ic{transition:transform .2s}
-.has-fold.is-open .fold-bar .fold-ic{transform:rotate(180deg)}
+.fold-heading{display:flex;align-items:center;flex-wrap:wrap;gap:6px;cursor:pointer;-webkit-user-select:none;user-select:none;transition:color .15s}
+.fold-heading .fold-chev{margin-left:auto;flex-shrink:0;width:24px;height:24px;border-radius:7px;border:0;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .22s,background .15s;padding:0;font-size:12px;line-height:1}
+.fold-heading .fold-chev:hover{background:var(--primary-light);color:var(--primary)}
+.fold-heading .fold-chev svg{display:block}
+.is-folded > *:not(.fold-heading){display:none!important}
+.is-folded .fold-heading .fold-chev{transform:rotate(-90deg)}
 
-/* ═══ 提示条右上角 ✕ 可自行关闭 ═══ */
-.dismiss-x{position:absolute;top:9px;right:9px;width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--hint);font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;opacity:.8;transition:all .15s;padding:0}
-.dismiss-x:hover{opacity:1;color:#fff;background:var(--coral);border-color:var(--coral)}
+/* ═══ 提示条右上角 ✕ 可自行关闭（仅添加到明确标记 data-removable 的无关紧要说明）═══ */
+.dismiss-x{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;border:0;background:var(--border);color:var(--muted);font-size:10px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;opacity:.75;transition:all .15s;padding:0}
+.dismiss-x:hover{opacity:1;color:#fff;background:var(--coral)}
+[data-removable],.callout[data-removable]{padding-right:34px}

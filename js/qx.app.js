@@ -6792,8 +6792,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   var CHANGES=[
     {v:'2026.09.17.2',t:'闪屏更优雅 · 页面可折叠 · AI 一键开聊升级',tag:'体验升级',blocks:[
       '· 品牌闪屏回归：每次打开优雅亮相约 1.8 秒（轻触可跳过），顶栏与底栏不再闪现，第一眼更干净。',
-      '· 长内容自动折叠：较长的攻略与说明会自动收起，点「展开全部」即可查看，页面更清爽，选择会被记住。',
-      '· 提示可自行关闭：不想要的小提示与说明，点右上角 ✕ 即可删除，不再打扰。',
+      '· 长卡片可折叠：较长的攻略与说明，点卡片标题右侧小箭头即可收起/展开，页面更清爽，选择会被记住。',
+      '· 提示可自行关闭：不想要的小提示，点右上角 ✕ 即可关闭，不再打扰。',
       '· AI 一键开聊升级：每张 AI 卡片都配好了「对话剧本」（开场+追问），点一下复制整套、直达聊天页，粘贴即聊，不会聊着聊着就断了。'
      ]},
     {v:'2026.09.15.40',t:'板块错位修复 · 学业内容大幅丰富',tag:'核心修复+内容升级',blocks:[
@@ -9058,7 +9058,7 @@ function maybeOpenPrefPick(){
 /* ═══ 页面自治：长内容自动折叠 + 提示条可自行关闭 + AI「点开即聊」═══
    折叠/关闭状态记在 localStorage，用户自控页面长短，互不干扰。 */
 (function(){
-  var FOLD_KEY='qx_fold_v2', HIDE_KEY='qx_hide_v2';
+  var FOLD_KEY='qx_fold_v3', HIDE_KEY='qx_hide_v3';
   function g(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return{}}}
   function s(k,o){try{localStorage.setItem(k,JSON.stringify(o))}catch(e){}}
   function hsh(t){var h=0;t=String(t||'').replace(/\s+/g,'');for(var i=0;i<t.length;i++){h=(h*31+t.charCodeAt(i))>>>0}return 'x'+h.toString(36)}
@@ -9066,47 +9066,62 @@ function maybeOpenPrefPick(){
     var h=el.querySelector('h1,h2,h3,h4');
     return hsh((el.tagName||'')+':'+((h&&h.innerText)||el.innerText).slice(0,26));
   }
-  /* ── 1) 长内容折叠：超过阈值的卡片/提示条自动收起，点「展开全部」再看 ── */
+  /* ── 1) 长内容折叠：找出每张长卡，把「标题」变成可点击的折叠头，标题右侧加小箭头，点击展开/收起正文 ── */
   function fold(){
     var mp=g(FOLD_KEY);
     var list=document.querySelectorAll('.view .card, .view .callout');
     for(var i=0;i<list.length;i++){
       var el=list[i];
+      /* 跳过嵌套在其它卡片内部的卡片，统一交给最外层卡片折叠，避免多层箭头 */
+      var inCard=el.closest('.view .card');
+      if(inCard&&inCard!==el)continue;
       if(el.closest('[data-nofold]')||el.getAttribute('data-nofold')==='' )continue;
       if(el.querySelector('.ai-grid'))continue;                 /* 直达宫格不折 */
       if(el.querySelector('.res-list')||el.querySelectorAll('.res-link').length>=3)continue; /* 资源列表不折 */
-      if(el.querySelector('input,textarea,select,button.calc'))continue;                     /* 工具卡不折 */
+      if(el.querySelector('input,textarea,select,button.calc'))continue;               /* 工具卡不折 */
       var txt=(el.innerText||'').replace(/\s+/g,'');
       var liN=el.querySelectorAll('li').length;
-      var trN=el.querySelectorAll('tr').length;
       if(txt.length<440)continue;                               /* 短内容不折 */
+      if(liN<3&&txt.length<700)continue;                        /* 纯段落短文不折 */
+      /* 取卡片第一个标题作为折叠头 */
+      var head=el.querySelector(':scope > h1,:scope > h2,:scope > h3,:scope > h4');
+      if(!head)continue;
+      if(el.querySelector('.fold-chev'))continue;               /* 已处理过 */
       var k=keyOf(el);
       el.setAttribute('data-foldkey',k);
-      el.classList.add('has-fold');
-      var bar=el.querySelector('.fold-bar');
-      if(!bar){
-        bar=document.createElement('button');
-        bar.type='button';
-        bar.className='fold-bar';
-        bar.setAttribute('aria-label','展开/收起');
-        bar.innerHTML='<span class="fold-txt">展开全部</span><span class="fold-ic">▾</span>';
-        bar.addEventListener('click',function(){
-          var open=el.classList.toggle('is-open');
-          var mm=g(FOLD_KEY);mm[k]=open;s(FOLD_KEY,mm);
-          bar.querySelector('.fold-txt').textContent=open?'收起':'展开全部';
-        });
-        el.appendChild(bar);
-      }
-      if(mp[k]===true){el.classList.add('is-open');bar.querySelector('.fold-txt').textContent='收起';}
+      head.classList.add('fold-heading');
+      head.setAttribute('data-foldtarget','');
+      /* 折叠函数：切换 is-folded（连同记忆保存与联动） */
+      var toggle=function(){
+        var open=el.classList.toggle('is-folded');
+        var mm=g(FOLD_KEY);mm[k]=open;s(FOLD_KEY,mm);
+        __foldEmit(el,open);
+        return open;
+      };
+      /* 标题行整体可点：更符合「标题上方折叠」的直觉，热区更大 */
+      head.addEventListener('click',function(e){
+        if(e.target&&e.target.closest&&e.target.closest('a,button,input,select,textarea,.res-link'))return;
+        e.preventDefault();e.stopPropagation();toggle();
+      });
+      /* 右侧小箭头：也直接可点（onclick 兜底，确保任何 WebView 都生效） */
+      var chev=document.createElement('button');
+      chev.type='button';chev.className='fold-chev';chev.setAttribute('aria-label','展开/收起');
+      chev.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>';
+      chev.onclick=function(e){e.preventDefault();e.stopPropagation();toggle();};
+      head.appendChild(chev);
+      var remembered=mp[k];
+      /* 默认全部展开（内容清晰可见）；仅当用户此前主动收起过（记忆 true=已收）才收起 */
+      if(remembered===true){el.classList.add('is-folded');}
+      else{el.classList.remove('is-folded');}
     }
   }
-  /* ── 2) 提示条可关闭：每个 callout 右上角出现 ✕，点一下从此不再打扰 ── */
+  function __foldEmit(el,open){try{if(window.afterFold&&el)window.afterFold(el,open);}catch(e){}}
+  /* ── 2) 提示条可关闭：仅对明确标记 data-removable 的无关紧要说明，右上角加 ✕，点一下从此不再打扰 ── */
   function dismiss(){
     var mp=g(HIDE_KEY);
-    var list=document.querySelectorAll('.view .callout, [data-removable]');
+    var list=document.querySelectorAll('[data-removable]');
     for(var i=0;i<list.length;i++){
       var el=list[i];
-      if(el.getAttribute('data-nodismiss')==='')continue;
       var k=keyOf(el)+'h';
       el.setAttribute('data-hidekey',k);
       if(mp[k]){el.style.display='none';continue;}
