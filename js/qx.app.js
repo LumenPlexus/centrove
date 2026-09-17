@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.17.5';
+window.__pageVersion='2026.09.17.6';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -398,16 +398,31 @@ window.__pageVersion='2026.09.17.5';
     if(!e){
       chrome(false);
       afterSplash();
-      /* 返回免闪屏直达：内容/图片可能稍后才完整布局，此时立即 scrollTo 会被钳制到不足的高度。
-         故在引入若干延时点 + 窗口 load 完成后反复精确定位，确保最终稳稳停在目标位置。 */
+      /* 返回免闪屏直达：head 里已把整页用 visibility:hidden 藏住（__qxReturnHold）。
+         这里反复精确定位，且仅在滚动已真正到达目标位后，才解除隐藏一次性显现——
+         因此用户看不到「先首页、再从上往下滑」的任何画面，直接就落在原位置。 */
       if(_bootRestore&&_bootRestore.restore&&_bootRestore.scroll>0){
         var _bt=_bootRestore.scroll;
-        var _dl=[80,200,400,800,1400];
-        for(var _i=0;_i<_dl.length;_i++){(function(d){setTimeout(function(){_quickJump(_bt);},d);})(_dl[_i]);}
-        try{ window.addEventListener('load',function(){ _quickJump(_bt); setTimeout(function(){_quickJump(_bt);},200); }); }catch(_er){}
+        var _released=false;
+        function _releaseHold(){
+          if(_released)return; _released=true;
+          try{ document.documentElement.style.visibility=''; window.__qxReturnHold=false; }catch(_er){}
+        }
+        function _attempt(reached){
+          _quickJump(_bt);
+          try{ if(reached||window.scrollY>=_bt-4){ _releaseHold(); return true; } }catch(_er){ _releaseHold(); return true; }
+          return false;
+        }
+        var _dl=[0,80,200,400,700,1200,2200];
+        for(var _i=0;_i<_dl.length;_i++){(function(d){setTimeout(function(){ _attempt(_i===_dl.length-1); },d);})(_dl[_i]);}
+        try{ window.addEventListener('load',function(){ _attempt(true); setTimeout(function(){_quickJump(_bt);},200); }); }catch(_er){}
+        /* 兜底：最长约2.8秒内无论如何解除隐藏，避免永久白屏 */
+        setTimeout(function(){ _quickJump(_bt); _releaseHold(); },2800);
       }
       return;
     }
+    /* 兜底：若 head 因残留记录设过整页隐藏却走了闪屏路径，立即解除，避免整页空白 */
+    try{ if(window.__qxReturnHold){document.documentElement.style.visibility='';window.__qxReturnHold=false;} }catch(_er){}
     /* 品牌闪屏：每次冷启动优雅亮相约 1.8 秒（轻触可跳过）。
        闪屏期间用 state-splash + hidden 属性强隐顶栏/底栏/悬浮按钮，杜绝「顶栏底栏闪进闪屏」；
        结束后按首访与否决定弹产品导览或直接进产品。 */
