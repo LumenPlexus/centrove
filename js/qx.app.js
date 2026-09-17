@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.17.3';
+window.__pageVersion='2026.09.17.4';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -310,6 +310,12 @@ window.__pageVersion='2026.09.17.3';
   }
   function dismiss(e){
     if(!e)return;
+    /* 返回恢复：在淡出开始前就把视图与滚动位置定格在你离开的地方，
+       于是淡出全过程直接露出目标位，不再出现「先闪顶部再跳过去」 */
+    if(_bootRestore&&_bootRestore.restore){
+      try{ if(typeof switchView==='function') switchView(_bootRestore.view,{keepPos:1}); }catch(_e){}
+      _quickJump(_bootRestore.scroll);
+    }
     document.documentElement.classList.remove('state-splash'); /* 闪屏结束：恢复顶栏 */
     chrome(false);
     e.style.opacity='0';
@@ -345,14 +351,41 @@ window.__pageVersion='2026.09.17.3';
            - 浏览器后退到不同板块(reload 场景)：_rS.view !== _view → 不错误回滚旧位置
            - 从外链返回同一板块：_rS.view === _view 且 scroll>0 → 精确回到离开时的位置 */
         var _restoreScroll=_recent&&_rS&&_rS.view===_view&&_rS.scroll>0;
-        if(typeof switchView==='function'){ switchView(_view); } /* 切换板块本身即回顶部 */
+        /* 恢复场景传 keepPos：禁止 switchView 先回顶（否则会"先闪顶部再跳目标位"）；
+           位置已在 dismiss 淡出前就位，此处用 auto 即时校一次，并留两次迟些的兜底校正 */
+        if(typeof switchView==='function'){ switchView(_view,_restoreScroll?{keepPos:1}:null); }
         if(_restoreScroll){
           var _target=(_rS.scroll||0);
-          setTimeout(function(){try{window.scrollTo(0,_target);}catch(e){}},80);
-          setTimeout(function(){try{window.scrollTo(0,_target);}catch(e){}},380);
+          _quickJump(_target);
+          setTimeout(function(){_quickJump(_target);},80);
+          setTimeout(function(){_quickJump(_target);},380);
         }
       }catch(e){ try{if(typeof switchView==='function')switchView('home');}catch(e2){} }
     }
+  }
+  /* 返回恢复专用：快速即时定位（覆盖页面级 smooth，瞬间到位，不产生"从顶滑到目标"的动画） */
+  function _quickJump(y){
+    var de=document.documentElement,prev='';
+    try{prev=de.style.scrollBehavior;}catch(e){}
+    try{de.style.scrollBehavior='auto';}catch(e){}
+    try{window.scrollTo(0,y);}catch(e){}
+    try{window.scrollTo(0,y);}catch(e){}
+    try{de.style.scrollBehavior=prev;}catch(e){}
+  }
+  /* 判定本次是否为「返回恢复」：要恢复的目标板块与滚动位置 */
+  var _bootRestore=null;
+  function _detectBoot(){
+    try{
+      var _rS=null;
+      var _raw=sessionStorage.getItem(window.SCROLL_RESTORE_KEY||'qixia_scroll_restore');
+      if(_raw){_rS=JSON.parse(_raw);}
+      var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
+      var _hh=(''+(location.hash||'')).replace(/^#view-/,'');
+      var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
+      var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
+      var _restore=_recent&&_rS&&_rS.view===_view&&_rS.scroll>0;
+      return {view:_view,scroll:_restore?(_rS.scroll||0):0,restore:!!_restore};
+    }catch(e){ return {view:'home',scroll:0,restore:false}; }
   }
   function show(){
     /* 关闭浏览器原生滚动恢复：板块位置由本产品记忆机制接管。 */
@@ -367,8 +400,11 @@ window.__pageVersion='2026.09.17.3';
     e.style.display='flex';e.style.opacity='1';
     e.setAttribute('data-gone','');
     e.onclick=function(){dismiss(e);};
-    /* 默认 1.8 秒；支持 ?splash=毫秒 调试用（如 ?splash=8000 便于观察） */
-    var _dur=1800;
+    /* 返回恢复：提前识别，缩短闪屏并让内容在淡出前就位，返回时"直接到位、无顶闪"；
+       首次访问不吃这套（走导览流程）。 */
+    _bootRestore=firstVisit()?null:_detectBoot();
+    /* 默认 1.8 秒（返回恢复则压缩到约 0.5 秒，少让用户等闪屏）；支持 ?splash=毫秒 调试用 */
+    var _dur=(_bootRestore&&_bootRestore.restore)?480:1800;
     try{ var _m=location.search.match(/[?&]splash=(\d+)/); if(_m&&_m[1]){_dur=Math.min(30000,parseInt(_m[1],10)||1800);} }catch(_e){}
     setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },_dur);
   }
@@ -752,13 +788,14 @@ function _scrollViewTop(){
   try{window.scrollTo(0,0);}catch(e){}
   try{de.style.scrollBehavior=prev;}catch(e){}
 }
-function switchView(name){
+function switchView(name, opts){
+  var keepPos=!!(opts&&opts.keepPos); /* 从外链/切走返回同一板块时置1：禁止回顶，直接保留/恢复原位置 */
   if(name===_curView){
-    /* 重复点击当前所在板块：仅回到顶部，不触发切换 */
-    _scrollViewTop();
+    /* 重复点击当前所在板块：仅回到顶部，不触发切换（keepPos 时则保持原位不动） */
+    if(!keepPos)_scrollViewTop();
     return;
   }
-  /* 切换板块：一律回到该板块顶部，不记忆上一板块/本板块的滚动位置，避免"滑来滑去" */
+  /* 切换板块：默认回到该板块顶部；keepPos 时例外（返回恢复场景），保持滚动位置 */
   _curView=name;
   try{localStorage.setItem('pp_last_view',name);}catch(e){}
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active')});
@@ -768,7 +805,7 @@ function switchView(name){
   var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('show');
   var ov=document.getElementById('sidebarOverlay');if(ov)ov.classList.remove('show');
   if(name==='journal')loadJournal();
-  _scrollViewTop();
+  if(!keepPos)_scrollViewTop();
   applyStoredTab(name);
   /* 重建当前板块的悬浮目录 */
   try{if(window.buildToc)buildToc(name);}catch(e){}
@@ -6658,7 +6695,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     }catch(e){}
   }
   /* 每次切换视图即校准（防渲染重建后卡片/开关丢失） */
-  try{(function(){var sw=window.switchView;window.switchView=function(n){var r=typeof sw==='function'?sw.call(this,n):undefined;try{setTimeout(boot,60);}catch(e){}return r;};})();}catch(e){}
+  try{(function(){var sw=window.switchView;window.switchView=function(){var r=typeof sw==='function'?sw.apply(this,arguments):undefined;try{setTimeout(boot,60);}catch(e){}return r;};})();}catch(e){}
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,80);});}else{setTimeout(boot,80);}
 })();
 
@@ -6786,7 +6823,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(qxInit,350);});
   else setTimeout(qxInit,350);
   // 切换视图后刷新 core 位
-  try{var _sw=window.switchView&&window.switchView.bind(window);window.switchView=function(n){var r=typeof _sw==='function'?_sw(n):undefined;refreshViews();setTimeout(refreshNav,30);return r;};}catch(e){}
+  try{var _sw=window.switchView&&window.switchView.bind(window);window.switchView=function(){var r=typeof _sw==='function'?_sw.apply(this,arguments):undefined;refreshViews();setTimeout(refreshNav,30);return r;};}catch(e){}
 })();
 
 /* ═══════ 栖匣 · 版本自检 / 更新日志 / 更新提示(非强制) / 无痕与容量告警 ═══════
