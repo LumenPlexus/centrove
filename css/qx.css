@@ -1574,14 +1574,36 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 [data-theme="dark"] .ai-go-row .btn-primary{color:#FFF7E2!important}
 [data-theme="dark"] .ai-go-row .btn:not(.btn-primary){background:#26211A!important;border-color:#3C3427!important;color:#D8CBB2!important}
 
-/* ═══ 长内容折叠：卡片标题右侧小箭头，点标题即可展开/收起正文（顶部折叠，不截断文字）═══ */
+/* ═══ 长内容折叠：两种款式交替，默认全部展开、不截断文字。
+       A款 ·「标题下细分隔 + 全宽细腻胶囊栏」——最贴合参考样式：标题下一小段软分隔，然后一条圆角胶囊「▾ 收起正文 / ▴ 展开正文」，最大最自然；
+       B款 ·「标题行右上小圆箭头」——更小巧、更克制，用作交替避免每张卡都千篇一律。
+       点胶囊栏(或整行标题)即可收起/展开正文，折叠时仅隐藏正文，标题与折叠控件常驻。
+       控件用原生 <button> / 直接 on 事件托管，任何 WebView 里都必定能点中 ═══ */
 .card,.callout{position:relative}
 .fold-heading{display:flex;align-items:center;flex-wrap:wrap;gap:6px;cursor:pointer;-webkit-user-select:none;user-select:none;transition:color .15s}
-.fold-heading .fold-chev{margin-left:auto;flex-shrink:0;width:24px;height:24px;border-radius:7px;border:0;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .22s,background .15s;padding:0;font-size:12px;line-height:1}
-.fold-heading .fold-chev:hover{background:var(--primary-light);color:var(--primary)}
-.fold-heading .fold-chev svg{display:block}
-.is-folded > *:not(.fold-heading){display:none!important}
-.is-folded .fold-heading .fold-chev{transform:rotate(-90deg)}
+.fold-heading:hover{color:var(--primary)}
+.fold-heading > svg{flex:0 0 auto}
+/* A款 标题行下方一条细柔虚线分隔，让胶囊栏与正文分层更清楚 */
+.fold-heading-a{border-bottom:1px dashed var(--border);padding-bottom:8px;margin-bottom:0}
+/* A款 全宽细腻胶囊折叠栏（贴合参考样式的首图） */
+.fold-bar{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;margin:7px 0 9px;padding:5px 14px;border-radius:999px;background:var(--card);border:1px solid var(--border-strong);color:var(--primary);font-size:12.5px;font-weight:600;line-height:1.6;font-family:inherit;cursor:pointer;-webkit-user-select:none;user-select:none;transition:all .18s}
+.fold-bar .fb-chev{flex:0 0 auto;transition:transform .2s}
+.fold-bar:hover{background:var(--primary-light);border-color:var(--primary-mid);color:var(--primary-strong)}
+.fold-bar .fb-ex{display:none}
+/* B款 标题行右上小圆箭头（交替款） */
+.fold-toggle{flex-shrink:0;margin-left:auto;display:inline-flex;align-items:center;cursor:pointer;border:0;background:none;padding:0;color:var(--primary)}
+.fold-chev{width:26px;height:26px;border-radius:50%;border:1px solid var(--border-strong);background:var(--card);color:var(--primary);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .22s,border-color .15s,color .15s,background .15s;padding:0}
+.fold-chev:hover{border-color:var(--primary-mid);color:var(--primary);background:var(--primary-light)}
+.fold-chev svg{display:block}
+/* 折叠态：胶囊/箭头翻转 180°，胶囊文字由「收起正文」换成「展开正文」 */
+.is-folded .fold-heading-a{border-bottom-style:solid}
+.is-folded .fold-bar{border-style:dashed;background:var(--bg);border-color:var(--border);color:var(--muted)}
+.is-folded .fold-bar .fb-chev{transform:rotate(180deg)}
+.is-folded .fold-bar .fb-col{display:none}
+.is-folded .fold-bar .fb-ex{display:inline}
+.is-folded .fold-chev{transform:rotate(180deg);border-color:var(--border);background:var(--bg);color:var(--muted)}
+/* 折叠正文规则：仅隐藏正文，标题行 + 折叠栏常驻，便于随时再展开 */
+.is-folded > :not(.fold-heading):not(.fold-bar){display:none!important}
 
 /* ═══ 提示条右上角 ✕ 可自行关闭（仅添加到明确标记 data-removable 的无关紧要说明）═══ */
 .dismiss-x{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;border:0;background:var(--border);color:var(--muted);font-size:10px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;opacity:.75;transition:all .15s;padding:0}

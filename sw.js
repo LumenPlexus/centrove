@@ -1,4 +1,4 @@
-/* 栖匣 · Service Worker v43
+/* 栖匣 · Service Worker v45
    策略：stale-while-revalidate（秒开 + 后台自动更新）
    
    适用场景：
@@ -12,7 +12,7 @@
    - version.txt / sw.js：永远网络，绝不缓存
    - activate：清空ALL旧缓存
    - skipWaiting + clients.claim：新SW立即接管 */
-var VERSION = '2026.09.17.v44';
+var VERSION = '2026.09.17.v46';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -21,9 +21,9 @@ var PRECACHE_URLS = [
   './index.html',
   './share.html',
   './css/upgrade.css',
-  './css/qx.css',
+  './css/qx.css?v=46',
   './js/upgrade.js',
-  './js/qx.app.js',
+  './js/qx.app.js?v=46',
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',

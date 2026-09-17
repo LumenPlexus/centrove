@@ -6792,7 +6792,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   var CHANGES=[
     {v:'2026.09.17.2',t:'闪屏更优雅 · 页面可折叠 · AI 一键开聊升级',tag:'体验升级',blocks:[
       '· 品牌闪屏回归：每次打开优雅亮相约 1.8 秒（轻触可跳过），顶栏与底栏不再闪现，第一眼更干净。',
-      '· 长卡片可折叠：较长的攻略与说明，点卡片标题右侧小箭头即可收起/展开，页面更清爽，选择会被记住。',
+      '· 长卡片可折叠：较长的攻略与说明，点卡片标题右侧的「▪ 收起/展开」小胶囊或箭头即可收起/展开，默认全部展开、选择会被记住。',
       '· 提示可自行关闭：不想要的小提示，点右上角 ✕ 即可关闭，不再打扰。',
       '· AI 一键开聊升级：每张 AI 卡片都配好了「对话剧本」（开场+追问），点一下复制整套、直达聊天页，粘贴即聊，不会聊着聊着就断了。'
      ]},
@@ -9058,7 +9058,7 @@ function maybeOpenPrefPick(){
 /* ═══ 页面自治：长内容自动折叠 + 提示条可自行关闭 + AI「点开即聊」═══
    折叠/关闭状态记在 localStorage，用户自控页面长短，互不干扰。 */
 (function(){
-  var FOLD_KEY='qx_fold_v3', HIDE_KEY='qx_hide_v3';
+  var FOLD_KEY='qx_fold_v4', HIDE_KEY='qx_hide_v3';
   function g(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return{}}}
   function s(k,o){try{localStorage.setItem(k,JSON.stringify(o))}catch(e){}}
   function hsh(t){var h=0;t=String(t||'').replace(/\s+/g,'');for(var i=0;i<t.length;i++){h=(h*31+t.charCodeAt(i))>>>0}return 'x'+h.toString(36)}
@@ -9066,54 +9066,96 @@ function maybeOpenPrefPick(){
     var h=el.querySelector('h1,h2,h3,h4');
     return hsh((el.tagName||'')+':'+((h&&h.innerText)||el.innerText).slice(0,26));
   }
-  /* ── 1) 长内容折叠：找出每张长卡，把「标题」变成可点击的折叠头，标题右侧加小箭头，点击展开/收起正文 ── */
+  /* ── 1) 长内容折叠：找出每张长卡，把它的正文变成可收起的。
+       两种款式交替，避免千篇一律：
+          A款「标题细分隔 + 全宽细腻胶囊栏」——最贴合首图参考样式，用在最大的卡片上；
+          B款「标题行右上小圆箭头」——更小巧，用作交替。
+       控件一律用原生 <button>/直接事件托管 + 全局捕获兜底，任何 WebView 里都必定能点中。
+       默认全部展开、不截断文字；折叠时仅隐藏正文，标题行与折叠控件常驻，随时可再展开。 ── */
   function fold(){
     var mp=g(FOLD_KEY);
-    var list=document.querySelectorAll('.view .card, .view .callout');
-    for(var i=0;i<list.length;i++){
-      var el=list[i];
-      /* 跳过嵌套在其它卡片内部的卡片，统一交给最外层卡片折叠，避免多层箭头 */
-      var inCard=el.closest('.view .card');
-      if(inCard&&inCard!==el)continue;
-      if(el.closest('[data-nofold]')||el.getAttribute('data-nofold')==='' )continue;
-      if(el.querySelector('.ai-grid'))continue;                 /* 直达宫格不折 */
-      if(el.querySelector('.res-list')||el.querySelectorAll('.res-link').length>=3)continue; /* 资源列表不折 */
-      if(el.querySelector('input,textarea,select,button.calc'))continue;               /* 工具卡不折 */
-      var txt=(el.innerText||'').replace(/\s+/g,'');
-      var liN=el.querySelectorAll('li').length;
-      if(txt.length<440)continue;                               /* 短内容不折 */
-      if(liN<3&&txt.length<700)continue;                        /* 纯段落短文不折 */
-      /* 取卡片第一个标题作为折叠头 */
-      var head=el.querySelector(':scope > h1,:scope > h2,:scope > h3,:scope > h4');
+    var cards=document.querySelectorAll('.view .card, .view .callout');
+    var order=0;
+    for(var i=0;i<cards.length;i++){
+      var card=cards[i];
+      if(card.closest('[data-nofold]')||card.getAttribute('data-nofold')==='')continue;
+      if(card.classList.contains('qx-fold'))continue;                        /* 系统自带折叠的卡不重复处理 */
+      if(card.querySelector('.ai-grid,.res-list'))continue;                  /* 直达宫格/资源列不折 */
+      if(card.querySelector('.qx-foldbtn,.fold-toggle,.fold-bar'))continue;  /* 已有折叠控件的不重复 */
+      if(card.querySelector('.editable-table,[contenteditable="true"]'))continue; /* 可编辑表格/内容不折，避免藏住编辑入口 */
+      /* 嵌套在其它卡片内部的卡不折，统一交给最外层卡片 */
+      if(card.parentNode&&card.parentNode.closest&&card.parentNode.closest('.view .card'))continue;
+      var explicit=card.hasAttribute('data-fold');                          /* 用户明确标记要折叠的卡（如交互类的每日25词） */
+      var txt=(card.innerText||'').replace(/\s+/g,'');
+      var liN=card.querySelectorAll('li').length;
+      /* 自动补充折叠只针对「内容扎实的长信息卡」，且避免藏住操作按钮；
+         用户显式 data-fold 的卡不受这些限制，一律可折叠 */
+      if(!explicit&&card.querySelector('input,textarea,select,button'))continue; /* 交互工具卡不自动折，避免收起后藏住操作入口 */
+      if(!(explicit||liN>=4||txt.length>=360))continue;                       /* 只有明确标记、或 ≥4 要点、或正文 ≥360 字的长卡才给折叠 */
+      var head=card.querySelector(':scope > h1,:scope > h2,:scope > h3,:scope > h4');
       if(!head)continue;
-      if(el.querySelector('.fold-chev'))continue;               /* 已处理过 */
-      var k=keyOf(el);
-      el.setAttribute('data-foldkey',k);
+      var k=keyOf(card);
+      card.setAttribute('data-foldkey',k);
       head.classList.add('fold-heading');
-      head.setAttribute('data-foldtarget','');
-      /* 折叠函数：切换 is-folded（连同记忆保存与联动） */
-      var toggle=function(){
-        var open=el.classList.toggle('is-folded');
-        var mm=g(FOLD_KEY);mm[k]=open;s(FOLD_KEY,mm);
-        __foldEmit(el,open);
-        return open;
-      };
-      /* 标题行整体可点：更符合「标题上方折叠」的直觉，热区更大 */
-      head.addEventListener('click',function(e){
-        if(e.target&&e.target.closest&&e.target.closest('a,button,input,select,textarea,.res-link'))return;
-        e.preventDefault();e.stopPropagation();toggle();
-      });
-      /* 右侧小箭头：也直接可点（onclick 兜底，确保任何 WebView 都生效） */
-      var chev=document.createElement('button');
-      chev.type='button';chev.className='fold-chev';chev.setAttribute('aria-label','展开/收起');
-      chev.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>';
-      chev.onclick=function(e){e.preventDefault();e.stopPropagation();toggle();};
-      head.appendChild(chev);
-      var remembered=mp[k];
-      /* 默认全部展开（内容清晰可见）；仅当用户此前主动收起过（记忆 true=已收）才收起 */
-      if(remembered===true){el.classList.add('is-folded');}
-      else{el.classList.remove('is-folded');}
+      head.setAttribute('data-foldhead','');
+      order++;
+      if(order%2===1){                                                       /* A款：标题下分隔 + 全宽胶囊栏 */
+        head.classList.add('fold-heading-a');
+        head.after(makeFoldBar(card));
+      }else{                                                                 /* B款：标题行右上小圆箭头 */
+        head.appendChild(makeFoldChev(card));
+      }
+      if(mp[k]===true){card.classList.add('is-folded');}                     /* 默认全部展开，仅恢复用户此前主动收起过的 */
     }
+    bindFoldClicks();
+  }
+  function bindFoldCtrl(el,card){
+    el.addEventListener('click',function(e){if(e.preventDefault)e.preventDefault();if(e.stopPropagation)e.stopPropagation();__foldToggle(card);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();__foldToggle(card);}});
+  }
+  function makeFoldBar(card){
+    var b=document.createElement('button');
+    b.type='button';
+    b.className='fold-bar fold-state';
+    b.setAttribute('aria-label','收起/展开正文');
+    b.innerHTML='<svg class="fb-chev" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M7 10l5 5 5-5"/></svg>'
+      +'<span class="fb-col">收起正文</span><span class="fb-ex">展开正文</span>';
+    bindFoldCtrl(b,card);
+    return b;
+  }
+  function makeFoldChev(card){
+    var t=document.createElement('span');
+    t.className='fold-toggle fold-chev fold-state';
+    t.setAttribute('role','button');
+    t.setAttribute('tabindex','0');
+    t.setAttribute('aria-label','收起/展开正文');
+    t.innerHTML='<svg class="fc-d" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>';
+    bindFoldCtrl(t,card);
+    return t;
+  }
+  function __foldToggle(card){
+    if(!card)return;
+    var open=card.classList.toggle('is-folded');
+    var k=card.getAttribute('data-foldkey');
+    var mm=g(FOLD_KEY);if(mm[k]!==open){mm[k]=open;s(FOLD_KEY,mm);}
+    __foldEmit(card,open);
+  }
+  function bindFoldClicks(){
+    if(window.__foldBound)return;
+    window.__foldBound=true;
+    /* 折叠控件本身已直接绑定；这里仅负责「点整行标题」也能收起/展开，作为兜底 */
+    document.addEventListener('click',function(e){
+      if(e.defaultPrevented)return;
+      var t=e.target;
+      while(t&&t.nodeType===1&&t!==document){
+        if(t.hasAttribute&&t.hasAttribute('data-foldhead')){
+          var orig=e.target;
+          var interactive=orig.closest?(orig.closest('a,button,input,select,textarea')||orig.closest('.fold-toggle,.fold-bar')):false;
+          if(!interactive){var c=t.closest('[data-foldkey]');if(c){e.preventDefault();if(e.stopPropagation)e.stopPropagation();__foldToggle(c);return;}}
+        }
+        t=t.parentNode;
+      }
+    },true);
   }
   function __foldEmit(el,open){try{if(window.afterFold&&el)window.afterFold(el,open);}catch(e){}}
   /* ── 2) 提示条可关闭：仅对明确标记 data-removable 的无关紧要说明，右上角加 ✕，点一下从此不再打扰 ── */

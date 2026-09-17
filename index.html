@@ -5,7 +5,7 @@
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=46" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
@@ -354,7 +354,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js"></script></head>
+<script defer src="js/qx.app.js?v=46"></script></head>
 <body>
 
 
@@ -880,7 +880,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             </tbody>
           </table>
         </div>
-        <div class="card" style="margin-top:16px">
+        <div class="card" style="margin-top:16px" data-fold>
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>备考资料避坑指南 · 少花冤枉钱</h3>
           <div class="grid grid-2">
             <div>
@@ -951,7 +951,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             </a>
           </div>
         </div>
-<div class="card">
+<div class="card" data-fold>
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M9 4v16M4 9h5"></path></svg>每日25词 · 艾宾浩斯</h3>
             <p>按遗忘曲线复习：1天·2天·4天·7天·15天。今日新词+复习词：</p>
             <div id="wordList"><div style="padding:16px;background:var(--bg);border-radius:8px;text-align:center"><p style="color:var(--hint);font-size:15px;margin-bottom:8px">今日还没添加单词 · 点击"载入今日25词"自动推荐四级高频词</p><p style="font-size:13px;color:var(--hint)">词库共100+词，每日按日期循环推荐25词，含熟词生义+巧记+真题例句+有道标准发音</p></div></div>
@@ -974,7 +974,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
               <div id="dictationResult" style="margin-top:8px;font-size:13px"></div>
             </div>
           </div>
-      <div style="margin-top:16px"><div class="card">
+      <div style="margin-top:16px"><div class="card" data-fold>
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>高分作文模板 · 每日刷新</h3>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
               <span class="tag tag-teal" id="essayType">问题解决型 · 议论文 / 社会问题</span>
