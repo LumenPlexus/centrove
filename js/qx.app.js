@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.17.4';
+window.__pageVersion='2026.09.17.5';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -339,7 +339,7 @@ window.__pageVersion='2026.09.17.4';
         _hh=_hh.replace(/^#view-/,'');
         var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
         var _rS=null;
-        try{ var _rRaw=sessionStorage.getItem(SCROLL_RESTORE_KEY); if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
+        try{ var _rRaw=sessionStorage.getItem(window.SCROLL_RESTORE_KEY||'qixia_scroll_restore'); if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
         var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
         var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
         /* 返回恢复（关键修复）：点外链/切走后回到「你离开时的板块」，并把滚动还原到你离开的位置，
@@ -390,21 +390,34 @@ window.__pageVersion='2026.09.17.4';
   function show(){
     /* 关闭浏览器原生滚动恢复：板块位置由本产品记忆机制接管。 */
     try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } }catch(_er){}
-    /* 品牌闪屏：每次打开都优雅亮相约 1.8 秒（轻触可跳过）。
+    /* 是否为「返回恢复」：尽早判定（读 sessionStorage 中的离开记录）。
+       返回/切走后再回来时：直接跳过闪屏、立刻回到你离开的位置（用户明确诉求，"一下子就到，不要闪屏"）；
+       只有真正的冷启动才保留品牌闪屏。 */
+    _bootRestore=firstVisit()?null:_detectBoot();
+    var e=(_bootRestore&&_bootRestore.restore)?null:bs();
+    if(!e){
+      chrome(false);
+      afterSplash();
+      /* 返回免闪屏直达：内容/图片可能稍后才完整布局，此时立即 scrollTo 会被钳制到不足的高度。
+         故在引入若干延时点 + 窗口 load 完成后反复精确定位，确保最终稳稳停在目标位置。 */
+      if(_bootRestore&&_bootRestore.restore&&_bootRestore.scroll>0){
+        var _bt=_bootRestore.scroll;
+        var _dl=[80,200,400,800,1400];
+        for(var _i=0;_i<_dl.length;_i++){(function(d){setTimeout(function(){_quickJump(_bt);},d);})(_dl[_i]);}
+        try{ window.addEventListener('load',function(){ _quickJump(_bt); setTimeout(function(){_quickJump(_bt);},200); }); }catch(_er){}
+      }
+      return;
+    }
+    /* 品牌闪屏：每次冷启动优雅亮相约 1.8 秒（轻触可跳过）。
        闪屏期间用 state-splash + hidden 属性强隐顶栏/底栏/悬浮按钮，杜绝「顶栏底栏闪进闪屏」；
        结束后按首访与否决定弹产品导览或直接进产品。 */
-    var e=bs();
-    if(!e){ chrome(false); afterSplash(); return; }
     document.documentElement.classList.add('state-splash');
     chrome(true);
     e.style.display='flex';e.style.opacity='1';
     e.setAttribute('data-gone','');
     e.onclick=function(){dismiss(e);};
-    /* 返回恢复：提前识别，缩短闪屏并让内容在淡出前就位，返回时"直接到位、无顶闪"；
-       首次访问不吃这套（走导览流程）。 */
-    _bootRestore=firstVisit()?null:_detectBoot();
-    /* 默认 1.8 秒（返回恢复则压缩到约 0.5 秒，少让用户等闪屏）；支持 ?splash=毫秒 调试用 */
-    var _dur=(_bootRestore&&_bootRestore.restore)?480:1800;
+    /* 默认 1.8 秒；支持 ?splash=毫秒 调试用（如 ?splash=8000 便于观察） */
+    var _dur=1800;
     try{ var _m=location.search.match(/[?&]splash=(\d+)/); if(_m&&_m[1]){_dur=Math.min(30000,parseInt(_m[1],10)||1800);} }catch(_e){}
     setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },_dur);
   }
