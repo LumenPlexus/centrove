@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.17.2';
+window.__pageVersion='2026.09.17.3';
 ;
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
@@ -336,9 +336,17 @@ window.__pageVersion='2026.09.17.2';
         try{ var _rRaw=sessionStorage.getItem(SCROLL_RESTORE_KEY); if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
         var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
         var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
-        var _keepScroll=_recent&&_rS&&!_hasHash&&_rS.view===_view&&(_rS.scroll>0);
+        /* 返回恢复（关键修复）：点外链/切走后回到「你离开时的板块」，并把滚动还原到你离开的位置，
+           而不是停在板块顶部。此前用 !_hasHash 判定恢复，但应用内切换板块后地址栏随时带着
+           #view-… 的 hash（switchView 通过 pushState 回写），导致从外链返回时 _hasHash 恒为真，
+           _keepScroll 恒为假 → 恢复永远不触发 → 每次外链返回都回到顶部。这正是用户反复反馈的 bug。
+           现在只看：是否有「刚离开」的记录 + 目标板块就是你离开的板块 + 离开时确实滚动过。
+           - 冷启动 / 新开带 #view 的链接：无近期记录(_recent=false) → 正常停在对应板块顶部
+           - 浏览器后退到不同板块(reload 场景)：_rS.view !== _view → 不错误回滚旧位置
+           - 从外链返回同一板块：_rS.view === _view 且 scroll>0 → 精确回到离开时的位置 */
+        var _restoreScroll=_recent&&_rS&&_rS.view===_view&&_rS.scroll>0;
         if(typeof switchView==='function'){ switchView(_view); } /* 切换板块本身即回顶部 */
-        if(_keepScroll){
+        if(_restoreScroll){
           var _target=(_rS.scroll||0);
           setTimeout(function(){try{window.scrollTo(0,_target);}catch(e){}},80);
           setTimeout(function(){try{window.scrollTo(0,_target);}catch(e){}},380);
