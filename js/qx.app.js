@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.56';
+window.__pageVersion='2026.09.18.57';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -8302,6 +8302,33 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     var d=new Date();
     return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   }
+  /* 按“天”聚合完成度（待办/打卡/四象限/复盘 四路求和），供历史动量计算复用 */
+  function dayFor(k){
+    var done=0,total=0;
+    var tasks=LSJ('pp_tasks',[]);
+    var tt=(tasks||[]).filter(function(t){return !t.date||t.date===k;});
+    if(tt.length){ var td=tt.filter(function(t){return t.done;}).length; done+=td; total+=tt.length; }
+    var defs=LSJ('pp_checkinDefs',[]), cins=LSJ('pp_checkins',{}), tc=cins[k]||{};
+    if(defs&&defs.length){ var cd=(defs||[]).filter(function(f){return tc[f.id];}).length; done+=cd; total+=defs.length; }
+    var q=LSJ('pp_quadrants',{}), tq=q[k]||{}, qa=0, qd=0;
+    ['q1','q2','q3','q4'].forEach(function(g){(tq[g]||[]).forEach(function(it){qa++; if(it&&it.done)qd++;});});
+    if(qa){ done+=qd; total+=qa; }
+    var j=LSJ('pp_journals',{}), jt=j[k]||{};
+    if(jt&&jt.constructor===Object){
+      if(((jt.done||'')+(jt.learn||'')+(jt.improve||'')+(jt.tomorrow||'')).trim()){ done+=1; total+=1; }
+    }
+    return {done:done,total:total,pct:total?Math.round(done/total*100):0};
+  }
+  function shiftDate(key,n){ try{var p=key.split('-').map(Number);var d=new Date(p[0],p[1]-1,p[2]);d.setDate(d.getDate()+n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}catch(e){return key;} }
+  /* 成长动量：连续“安放”天数（从最近有数据的一天往前数）+ 近7天完成度趋势 */
+  function momentum(){
+    var end=tk(), bars=[], streak=0;
+    var y1=dayFor(end).pct>0, y0=dayFor(shiftDate(end,-1)).pct>0;
+    var anchor=y1?end:(y0?shiftDate(end,-1):end);
+    if(dayFor(anchor).pct>0){ streak=1; var d=anchor, n=0; while(n<366&&dayFor(shiftDate(d,-1)).pct>0){ streak++; d=shiftDate(d,-1); n++; } }
+    for(var i=6;i>=0;i--){ bars.push(dayFor(shiftDate(end,-i)).pct); }
+    return {streak:streak,bars:bars,todayPct:dayFor(end).pct};
+  }
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 
   function stats(){
@@ -8348,6 +8375,18 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       card.parentNode.insertBefore(host,card.nextSibling);
     }
     var s=stats(), R=34, C=2*Math.PI*R, off=C*(1-s.pct/100);
+    var mom=momentum();
+    var lastBarTitle=mom.bars[6]+'%';
+    var momRow='<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px">'+
+      '<span style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:'+(mom.streak>0?'var(--primary)':'var(--hint)')+'">'+
+        '🔥 连续安放 <b style="font-size:15px">'+mom.streak+'</b> 天</span>'+
+      '<span style="width:1px;height:14px;background:var(--border)"></span>'+
+      '<span style="font-size:12px;color:var(--hint)">近7天动量</span>'+
+      '<span style="display:flex;gap:3px;align-items:flex-end">'+
+        mom.bars.map(function(b,i){var on=i===6;var hw=Math.max(3,Math.round(b/100*26));
+          return '<span title="'+(on?'今天 · ':(i===5?'昨天 · ':'前'+(6-i)+'天 · '))+b+'%" style="display:inline-block;width:7px;height:'+hw+'px;border-radius:2px;background:'+(on?'var(--gold)':'var(--border-strong)')+'"></span>';
+        }).join('')+
+      '</span></div>';
     host.innerHTML=
       '<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">'+
         '<svg width="86" height="86" viewBox="0 0 86 86" style="flex-shrink:0" role="img" aria-label="今日完成度 '+s.pct+'%">'+
@@ -8365,6 +8404,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
           '</div>'+
         '</div>'+
       '</div>'+
+      momRow+
       (s.parts.length?('<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">'+
         s.parts.map(function(p){
           var okk=p.d>=p.t;
@@ -9398,6 +9438,43 @@ function maybeOpenPrefPick(){
       document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
     }catch(e2){}
   }
+  /* ── AI 打开方式 · 智能拉起调度 ─────────────────────────────
+     需求：用户手机上装了对应 AI 的 App，就不要再开网页，而是直接跳到 App。
+     实现原理（不伪造任何 scheme，靠系统原生能力，安全且无副作用）：
+       ① 判断环境：微信/QQ 等内置 webview 无法安全调起外部 App → 打开网页版并提醒“在浏览器中打开”。
+       ② 系统浏览器（Chrome/Safari 等）→ 用官方 https 链接做“同页调起”：
+          iOS Universal Link / Android App Link 会让系统在【已装该 App】时自动跳到 App，
+          【没装】时则如常打开网页版 —— 由系统判定，精准、无弹窗、无失败残留。
+       ③ 剧本/提示词已在点击时复制完毕，无论进 App 还是网页都能直接开聊。
+     该方案即用户要的“自动检测有（装了）就直接跳 App”，且对尚未配置通用链接的 AI 自动退化为网页。 */
+  function ageAIHandoff(name,url,isScript){
+    var ua=((navigator.userAgent||'')+' '+(navigator.vendor||'')).toLowerCase();
+    var inWeChat=ua.indexOf('micromessenger')>=0||ua.indexOf(' zf_unionstrategy')>=0;
+    var inQQweb=ua.indexOf(' qq/')>=0||ua.indexOf('tencentmail')>=0||ua.indexOf('wxwork')>=0;
+    var inDing=ua.indexOf('dingtalk')>=0;
+    var embedded=inWeChat||inQQweb||inDing;
+    var copyTxt=isScript?('「'+name+'」对话剧本已复制（开场+追问），只差最后一步直接贴给 AI 开聊'):('「'+name+'」开聊提示词已复制');
+    if(embedded){
+      /* 内置浏览器：调不起 App → 打开网页版，并引导用系统浏览器以调起已装的 App */
+      try{window.open(url,'_blank','noopener');}catch(e){ try{location.href=url;}catch(e2){} }
+      toast(copyTxt+placeURunAppHint(name));
+      return;
+    }
+    /* 系统浏览器：同页调起 —— 系统按 App Links/Universal Link 判定「装了就进 App，没装就开网页」 */
+    var note=isScript?('「'+name+'」对话剧本已复制 · 若本机已装 '+name+' 将自动打开 App，没装则打开网页版，粘贴即聊'):(name+' 已打开 · 本机装了 App 会直接跳转，没装则开网页版');
+    try{ window.__aivib && window.__aivib(); }catch(e){}
+    setTimeout(function(){
+      try{ location.href=url; }
+      catch(e){ try{ window.open(url,'_blank','noopener'); }catch(e2){ try{ location.href=url; }catch(e3){} } }
+    },240);
+    toast(note);
+  }
+  function placeURunAppHint(name){
+    try{
+      if(!navigator.userAgent||/(micro|work)/i.test(navigator.userAgent)===false)return '';
+    }catch(e){}
+    return '。在「微信」里无法调起 App，请点右上角⌜在浏览器打开⌟后，装了 '+name+' 会自动跳 App';
+  }
   document.addEventListener('click',function(ev){
     var b=ev.target&&ev.target.closest?ev.target.closest('[data-ai]'):null;
     if(!b||!b.getAttribute('data-ai'))return;
@@ -9411,8 +9488,10 @@ function maybeOpenPrefPick(){
     }
     var url=b.getAttribute('data-url')||'';
     if(url){
-      setTimeout(function(){try{window.open(url,'_blank','noopener');}catch(e){try{location.href=url;}catch(e2){}}},280);
-      toast(isScript?('已复制「'+name+'」对话剧本（开场+追问）· '+name+' 已打开，粘贴即聊，按剧本追问到底'):(pr?('已复制「'+name+'」开聊提示词 · '+name+' 已打开，粘贴即聊'):(name+' 已打开')));
+      /* 智能拉起：系统浏览器里「本机装了 App → 直接跳 App，没装 → 打开网页版」；
+         微信/QQ 等内置浏览器无法安全调起 App，退而打开网页并提醒“在浏览器中打开”。 */
+      try{ ageAIHandoff(name,url,isScript); }catch(e){ try{window.open(url,'_blank','noopener')}catch(e2){ try{location.href=url}catch(e3){} } }
+      return;
     }else{
       toast(isScript?('「'+name+'」对话剧本已复制 · 直接粘贴即可开聊'):(pr?('「'+name+'」提示词已复制 · 直接粘贴即可对话'):(name+' 已就绪')));
     }
