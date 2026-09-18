@@ -359,7 +359,8 @@ img[alt="栖匣"] { color: transparent; }
     white-space: nowrap;
     margin-left: auto;
   }
-}
+
+/* 顶部导航已停用注释被删除，此处已用不相干的空行隔开，避免刷新规则块悬挂 */
 
 @media (max-width: 420px) {
   /* 超小屏：今日心语标题与按钮分两行，按钮完整显示 */
@@ -1061,6 +1062,40 @@ select:focus {
 ::selection {
   background: rgba(179, 133, 70, 0.24);
   color: var(--text);
+}
+
+/* ── F1.5 全站系统自带蓝色彻底清除（根治级兜底） ──
+   移动端 WebView / HarmonyOS 浏览器 / iOS Safari 对任何可点元素（span、div、li、
+   details 的整个可折叠区、summary、label、table 行等）在触摸/激活时，都可能套上一层
+   系统内核自动添加的半透明蓝色激活态（tap-highlight / 蓝色底），样式表无从逐一覆盖。
+   这里对全站所有元素做强兜底：清空内核触控高亮、长按高亮、选择高亮残留。
+   优先级最高，可对抗内联样式与系统 UA 默认样式。 */
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+}
+html {
+  -webkit-tap-highlight-color: transparent !important;
+}
+body {
+  -webkit-tap-highlight-color: transparent !important;
+}
+summary {
+  -webkit-tap-highlight-color: transparent !important;
+}
+/* 系统自带 checkbox / radio 的默认选中着色（accent-color 默认蓝）统一为暖金棕，
+   与整体暖木栖调一致，杜绝内核默认蓝色勾选/圆点 */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary, #6B4D33) !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+input[type="checkbox"] + span,
+input[type="radio"] + span {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* ── F2. 折叠/手风琴控件激活态清蓝：统一暖棕，掐掉系统自带闪蓝 ──
