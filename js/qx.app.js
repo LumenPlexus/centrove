@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.71';
+window.__pageVersion='2026.09.18.72';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -4823,7 +4823,7 @@ function renderCountdowns(){
         '<div style="height:100%;width:'+mid+'%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:3px"></div>'+
       '</div>'+
       '<div style="font-size:12.5px;color:var(--text);line-height:1.7">▶ 这一程该做：<b style="color:var(--primary)">'+stage+'</b> —— '+detail+'</div>'+
-      '<div style="font-size:11px;color:var(--hint);margin-top:7px">倒排不会让你焦虑——它只是把「还剩 N 天」变成「今天做一件真正有用的」。每一步都算，断了也不丢人。</div>'+
+      '<div style="font-size:11px;color:var(--hint);margin-top:7px">倒排不会让你焦虑——它只是把「还剩 N 天」变成「今天做一件真正有用的」。每一步都算数，明天接着来。</div>'+
     '</div>';
   }
   if(!list.length){
@@ -8258,7 +8258,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     }
     var s=stats(), R=34, C=2*Math.PI*R, off=C*(1-s.pct/100);
     var mom=momentum();
-    /* 差异化：从「毕业目标 / 硬仗」倒计时下钻到今天的最重要一件 + 免罚动量（断了不丢人，方向比不断更重要）
+    /* 差异化：从「毕业目标 / 硬仗」倒计时下钻到今天的最重要一件 + 温和动量（不惩罚断签，方向比中断更重要）
        竞品多为空壳工具且惩罚断签——栖匣用「硬仗倒计时→今天该做的一件」给出确定性，用免罚文案留住用户。 */
     var cds=[];try{var _s=localStorage.getItem('pp_countdowns');if(_s){var _a=JSON.parse(_s);if(_a&&_a.length!==undefined){var _t=new Date();_t.setHours(0,0,0,0);for(var _i=0;_i<_a.length;_i++){var c=_a[_i];if(!c||!c.date)continue;var _tg=new Date((c.date+'').slice(0,10)+'T00:00:00');var _df=Math.round((_tg-_t)/86400000);if(_df>=0){cds.push({n:(c.name||'一件事'),d:_df});}}}}}catch(e){}
     cds.sort(function(a,b){return a.d-b.d;});if(cds.length>3)cds=cds.slice(0,3);
@@ -8266,7 +8266,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     var momRow='';
     momRow+='<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px">'+
       '<span style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:'+(mom.streak>0?'var(--primary)':'var(--gold)')+'">'+
-        (mom.streak>0?('🎯 已安放 <b style="font-size:15px">'+mom.streak+'</b> 天 · '+(mom.forgiven>0?('已顺延 '+mom.forgiven+' 天，不算断'):'方向比不断更更重要')):('🎯 今天开工 · 先安放一件小事就行'))+
+        (mom.streak>0?('🎯 已安放 <b style="font-size:15px">'+mom.streak+'</b> 天 · '+(mom.forgiven>0?('已顺延 '+mom.forgiven+' 天'):'稳步前进')):('🎯 今天开工 · 先安放一件小事就行'))+
       '</span>'+
       '<span style="width:1px;height:14px;background:var(--border)"></span>'+
       '<span style="font-size:12px;color:var(--hint)">近7天动量</span>'+

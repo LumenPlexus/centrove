@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.71"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.72"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -72,9 +72,9 @@
     }
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=68" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=72" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
-  <link rel="preload" href="js/qx.app.js?v=68" as="script">
+  <link rel="preload" href="js/qx.app.js?v=72" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
@@ -426,7 +426,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=68"></script></head>
+<script defer src="js/qx.app.js?v=72"></script></head>
 <body>
 
 
@@ -7195,7 +7195,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
       <div class="card" style="margin-top:16px">
         <h3>⭐ 我的板块偏好 · 外观</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">「今日安放」主线板块默认固定：它把<b>毕业目标 → 硬仗倒计时 → 今天的一小步</b>一路下钻，断了不丢人、不惩罚你。用得上就多停留，用不上随时收起，绝不影响你用最有用的部分。其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏。</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">「今日安放」主线板块默认固定：它把<b>毕业目标 → 硬仗倒计时 → 今天的一小步</b>一路下钻，不给你打分、不施加压力。用得上就多停留，用不上随时收起，绝不影响你用最有用的部分。其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏。</p>
         <div>
           <button class="btn btn-primary" onclick="openModulePick()">调整我感兴趣的板块</button>
           <span id="prefStatus" style="display:inline-block;font-size:12px;color:var(--hint);margin-left:10px;vertical-align:middle"></span>
@@ -7919,7 +7919,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <tr><td>社交状态</td><td contenteditable="true" data-key="mind-social" style="cursor:text;background:var(--bg)"></td><td contenteditable="true" data-key="mind-social-note" style="cursor:text;background:var(--bg)"></td></tr>
             </tbody>
           </table>
-          <div class="callout callout-info" style="margin-top:8px">打分规则：5=很好，3=一般，1=很差。持续低分不丢人，主动求助是强者的选择。</div>
+          <div class="callout callout-info" style="margin-top:8px">打分规则：5=很好，3=一般，1=很差。持续低分也很正常，学会主动求助，本身就是变强。</div>
         </div>
       </div>
       <div class="card" style="margin-top:16px">
