@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.54';
+window.__pageVersion='2026.09.18.55';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
