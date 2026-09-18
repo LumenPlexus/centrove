@@ -2876,78 +2876,123 @@ function prefDoneFlag(){try{return localStorage.getItem(PREF_DONE)==='1';}catch(
 function savePref(arr,mode){try{localStorage.setItem(PREF_KEY,JSON.stringify(arr||[]));localStorage.setItem(PREF_MODE,mode||'fav');localStorage.setItem(PREF_DONE,'1');}catch(e){}}
 function focusModeAll(){ savePref(prefModules(),'all'); renderFocus(); }
 function focusModeFav(){ savePref(prefModules(),'fav'); renderFocus(); }
-function updatePrefStatus(){
-  try{
-    var s=document.getElementById('prefStatus');if(!s)return;
-    var sel=prefModules(),done=prefDoneFlag();
-    if(!done){s.textContent='尚未挑选 · 默认展示全部板块';}
-    else if(sel.length===0){s.textContent='已选择“展示全部板块”';}
-    else{s.textContent='已选 '+sel.length+' 个常用模块 · 首页优先展示';}
-  }catch(e){}
+/* ── 核心板块：栖匣的「今日安放」主线 —— 始终固定展示，不计入“我感兴趣”的自选 ──
+   产品主线：把心里盘旋的事写进匣子 → 轻重缓急分拣 → 拆成今天可落地的一小步 →
+   专注执行 → 晚间复盘积攒成长。以下六个即这条主线的日常载体，属于“核心”，
+   无论用户选了什么，都固定在首页与侧边栏展示。 */
+var CORE_ITEMS=[['quadrant','🗂','轻重缓急'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['timer','🍅','心流计时'],['journal','📖','时光札记'],['study','📘','学业精进']];
+var CORE_MODULES={};for(var _ci=0;_ci<CORE_ITEMS.length;_ci++){CORE_MODULES[CORE_ITEMS[_ci][0]]=1;}
+function isCore(v){return !!CORE_MODULES[v];}
+/* 从 NAV_ALL 里取某视图的条目（名称/emoji/图标），找不到返回 null */
+var _navItemByView={};(function(){for(var _i=0;_i<NAV_ALL.length;_i++){var _g=NAV_ALL[_i];for(var _j=0;_j<_g.items.length;_j++){_navItemByView[_g.items[_j][0]]=_g.items[_j];}}})();
+function navItemInfo(v){return _navItemByView[v]||null;}
+/* 生成首页板块卡片 HTML（复用侧边栏线性图标优先，emoji 兜底） */
+function focusBoardHTML(v,extraCls){
+  var it=navItemInfo(v);if(!it)return'';
+  var _ic=navIconFor(it[0]);
+  var cls='focus-board'+(extraCls?' '+extraCls:'');
+  return '<div class="'+cls+'" data-go="'+it[0]+'" tabindex="0" role="button" onclick="switchView(\''+it[0]+'\')" title="前往『'+it[2]+'』"><span class="fb-ico'+(_ic?' fb-svg':'')+'">'+(_ic||it[1])+'</span><span class="fb-na">'+it[2]+'</span></div>';
 }
 function renderFocus(){
   var cont=document.getElementById('focusStart');if(!cont)return;
-  var sel=prefModules(), mode=prefMode(), done=prefDoneFlag();
-  var favOnly=done && mode==='fav' && sel.length>0;
+  var sel=prefModules(), done=prefDoneFlag(), mode=prefMode();
+  var favOnly=done && mode==='fav';   /* 进入“我的关注”模式即收拢：核心固定 + 自选，其余进“更多板块” */
+  /* 自选但非核心的板块 = “我感兴趣” */
+  var extraSel=[];for(var _x=0;_x<sel.length;_x++){if(!isCore(sel[_x]))extraSel.push(sel[_x]);}
   var html='';
-  /* 模式工具条：聚焦常用 vs 展示全部 + 随时调整 */
   html+='<div class="focus-toolbar">'
-    +'<span class="ft-label">'+(favOnly?('只显示你常用 '+sel.length+' 个 · 其余已藏入侧边栏'):'已显示全部板块 · 也可只看常用')+'</span>'
+    +'<span class="ft-label">'+(favOnly?'核心「今日安放」已固定，另加 '+extraSel.length+' 个你感兴趣的':'按成长主线推荐 · 先看核心，更多板块可展开')+'</span>'
     +'<span class="ft-btns">';
   if(favOnly){ html+='<button class="ft-btn" onclick="focusModeAll()">显示全部板块</button>'; }
-  else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看常用</button>'; }
-  html+='<button class="ft-btn ghost" onclick="openModulePick()">调整常用</button>';
+  else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看我的关注</button>'; }
+  html+='<button class="ft-btn ghost" onclick="openModulePick()">'+(favOnly?'调整我的关注':'挑我感兴趣的')+'</button>';
   html+='</span></div>';
-  /* 两级导航：先一组「大板块」，点击展开进入其「细分板块」；聚焦模式只渲染已选常用，系统板块恒常保留 */
-  for(var si=0;si<NAV_ALL.length;si++){
-    var sec=NAV_ALL[si];
-    var isSys=!!PREF_SYS[sec.items[0]&&sec.items[0][0]];
-    var items=[];var k;
-    for(k=0;k<sec.items.length;k++){
-      if(isSys || !favOnly || sel.indexOf(sec.items[k][0])>=0){ items.push(sec.items[k]); }
-    }
-    if(items.length===0){ continue; }   /* 聚焦模式下整组无常用模块 → 整组隐藏 */
-    html+='<div class="focus-group'+(si===0?' open':'')+'">'
-      +'<button class="fg-head" role="button" aria-expanded="'+(si===0?'true':'false')+'" onclick="toggleFocusGroup(this)">'
-      +'<span class="fg-caret">'+((si===0)?'–':'+')+'</span>'
-      +'<span class="fg-name">'+sec.g+'</span>'
-      +(isSys?'':'<span class="fg-count">'+items.length+' 个板块</span>')
-      +'</button>'
+
+  /* ① 核心 · 今日安放（固定，始终第一个展开） */
+  html+='<div class="focus-group open">'
+    +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
+    +'<span class="fg-caret">–</span><span class="fg-name">核心 · 今日安放</span>'
+    +'<span class="fg-count">'+CORE_ITEMS.length+' 个 · 始终展示</span></button>'
+    +'<div class="fg-body"><div class="focus-grid">';
+  for(var _c=0;_c<CORE_ITEMS.length;_c++){ html+=focusBoardHTML(CORE_ITEMS[_c][0]); }
+  html+='</div></div></div>';
+
+  /* ② 我感兴趣的（仅“我的关注”模式，且确实有自选时） */
+  if(favOnly && extraSel.length>0){
+    html+='<div class="focus-group open">'
+      +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
+      +'<span class="fg-caret">–</span><span class="fg-name">我感兴趣的</span>'
+      +'<span class="fg-count">'+extraSel.length+' 个</span></button>'
       +'<div class="fg-body"><div class="focus-grid">';
-    for(var j=0;j<items.length;j++){
-      var it=items[j];
-      var _ic=navIconFor(it[0]);
-      html+='<div class="focus-board" data-go="'+it[0]+'" tabindex="0" role="button" onclick="switchView(\''+it[0]+'\')" title="前往『"+it[2]+"』"><span class="fb-ico'+( _ic?' fb-svg':'')+'">'+(_ic||it[1])+'</span><span class="fb-na">'+it[2]+'</span></div>';
-    }
+    for(var _e=0;_e<extraSel.length;_e++){ html+=focusBoardHTML(extraSel[_e]); }
     html+='</div></div></div>';
+  }
+
+  /* ③ 更多板块：全量/未完成挑选时，展示全部内容分类（剔除核心项），折叠在最下 */
+  if(!favOnly){
+    for(var si=0;si<NAV_ALL.length;si++){
+      var sec=NAV_ALL[si];
+      var isSys=!!PREF_SYS[sec.items[0]&&sec.items[0][0]];
+      if(isSys)continue;
+      var items=[];for(var k=0;k<sec.items.length;k++){ if(!isCore(sec.items[k][0]))items.push(sec.items[k]); }
+      if(items.length===0)continue;
+      html+='<div class="focus-group'+(si===0?' open':'')+'">'
+        +'<button class="fg-head" role="button" aria-expanded="'+(si===0?'true':'false')+'" onclick="toggleFocusGroup(this)">'
+        +'<span class="fg-caret">'+(si===0?'–':'+')+'</span>'
+        +'<span class="fg-name">'+sec.g+'</span>'
+        +'<span class="fg-count">'+items.length+' 个板块</span></button>'
+        +'<div class="fg-body"><div class="focus-grid">';
+      for(var j=0;j<items.length;j++){ html+=focusBoardHTML(items[j][0]); }
+      html+='</div></div></div>';
+    }
+    html+='<div style="margin-top:14px;text-align:center"><button class="ft-btn ghost" onclick="openModulePick()">挑出我感兴趣的，收起用不到的板块</button></div>';
+  }else{
+    /* “我的关注”模式：给一个展开全部板块的便捷入口 */
+    html+='<div style="margin-top:14px;text-align:center;font-size:12px;color:var(--hint);line-height:1.8">其余板块已收进侧边栏「更多板块」，需要时点开即可，随时可回来调整。<br><button class="ft-btn ghost" style="margin-top:8px" onclick="openModulePick()">挑我感兴趣的板块</button></div>';
   }
   cont.innerHTML=html;
   cont.style.display='block';
   updatePrefStatus();
   applyHeroCollapse(); applyFocusCollapse(); applySidebarFilter();
 }
-/* 模块偏好选择浮层 */
+function updatePrefStatus(){
+  try{
+    var s=document.getElementById('prefStatus');if(!s)return;
+    var sel=prefModules(),done=prefDoneFlag(),mode=prefMode();
+    if(!done){s.textContent='尚未挑选 · 展示核心 + 全部板块';}
+    else if(mode==='all'){s.textContent='已选择展示全部板块';}
+    else{var ex=[];for(var i=0;i<sel.length;i++){if(!isCore(sel[i]))ex.push(sel[i]);}s.textContent='展示核心「今日安放」+ '+ex.length+' 个我感兴趣的板块';}
+  }catch(e){}
+}
+/* 模块偏好选择浮层：核心「今日安放」固定常显（不可取消，带徽章），其余板块按“我感兴趣”自由增删 */
+function mpCount(){var c=0;document.querySelectorAll('#modulePick .mp-chip.on:not(.core)').forEach(function(x){c++;});return c;}
 function openModulePick(){
   var el=document.getElementById('modulePick');if(!el)return;
   var m=document.getElementById('modulePickMask');if(!m)return;
   var wrap=document.getElementById('modulePickBody');if(!wrap)return;
   var sel=prefModules();
   var groups=[];
-  for(var gi=0;gi<NAV_ALL.length;gi++){ if(!PREF_SYS[NAV_ALL[gi].items[0]&&NAV_ALL[gi].items[0][0]]){ groups.push(NAV_ALL[gi]); } }
+  for(var gi=0;gi<NAV_ALL.length;gi++){ var _f=NAV_ALL[gi].items&&NAV_ALL[gi].items[0]&&NAV_ALL[gi].items[0][0]; if(!PREF_SYS[_f]){ groups.push(NAV_ALL[gi]); } }
   var html='';
   for(var g2=0;g2<groups.length;g2++){
     var sec=groups[g2];
     html+='<div class="mp-group"><div class="mp-gname">'+sec.g+'</div><div class="mp-grid">';
     for(var j=0;j<sec.items.length;j++){
       var it=sec.items[j];
-      var on=sel.indexOf(it[0])>=0;
+      var isCore2=isCore(it[0]);
+      var on=isCore2 || sel.indexOf(it[0])>=0;
       var _ic=navIconFor(it[0]);
-      html+='<div class="mp-chip'+(on?' on':'')+'" data-v="'+it[0]+'" role="button" tabindex="0" onclick="mpChip(this)"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span></div>';
+      if(isCore2){
+        /* 核心板块：固定常显，带“核心”徽章，不可取消 */
+        html+='<div class="mp-chip on core" data-core="1" data-v="'+it[0]+'" role="button" tabindex="0" style="cursor:default" title="核心板块：今日安放主线，始终展示"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span><span class="mp-tag">核心</span></div>';
+      }else{
+        html+='<div class="mp-chip'+(on?' on':'')+'" data-v="'+it[0]+'" role="button" tabindex="0" onclick="mpChip(this)"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span></div>';
+      }
     }
     html+='</div></div>';
   }
   wrap.innerHTML=html;
-  var cnt=document.getElementById('modulePickCount');if(cnt)cnt.textContent=sel.length;
+  var cnt=document.getElementById('modulePickCount');if(cnt)cnt.textContent=mpCount();
   m.classList.add('show'); el.classList.add('show');
   try{document.body.style.overflow='hidden';}catch(e){}
 }
@@ -2956,14 +3001,14 @@ function closeModulePick(){
   if(m)m.classList.remove('show'); if(el)el.classList.remove('show');
   try{document.body.style.overflow='';}catch(e){}
 }
-function mpChip(el){ if(!el)return; el.classList.toggle('on'); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=document.querySelectorAll('.mp-chip.on').length; }
-function mpSelectAll(){ document.querySelectorAll('#modulePick .mp-chip').forEach(function(c){c.classList.add('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=document.querySelectorAll('#modulePick .mp-chip').length; }
-function mpClear(){ document.querySelectorAll('#modulePick .mp-chip').forEach(function(c){c.classList.remove('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=0; }
+function mpChip(el){ if(!el)return; if(el.classList.contains('core'))return; el.classList.toggle('on'); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=mpCount(); }
+function mpSelectAll(){ document.querySelectorAll('#modulePick .mp-chip:not(.core).on').forEach(function(c){c.classList.add('on');}); document.querySelectorAll('#modulePick .mp-chip:not(.core)').forEach(function(c){c.classList.add('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=mpCount(); }
+function mpClear(){ document.querySelectorAll('#modulePick .mp-chip:not(.core)').forEach(function(c){c.classList.remove('on');}); var cnt=document.getElementById('modulePickCount'); if(cnt)cnt.textContent=mpCount(); }
 function mpConfirm(showAll){
-  var sel=[];document.querySelectorAll('#modulePick .mp-chip.on').forEach(function(e){sel.push(e.getAttribute('data-v'));});
+  var sel=[];document.querySelectorAll('#modulePick .mp-chip.on:not(.core)').forEach(function(e){sel.push(e.getAttribute('data-v'));});
   savePref(sel, showAll?'all':'fav');
-  closeModulePick(); renderFocus();
-  try{window.flash&&window.flash(showAll?'已展示全部板块':'已按你的选择整理首页常用模块');}catch(e){}
+  closeModulePick(); renderFocus(); applySidebarFilter();
+  try{window.flash&&window.flash(showAll?'已展示全部板块':'核心「今日安放」已固定 · 已整理你感兴趣的板块');}catch(e){}
 }
 /* 首页品牌主视觉区：可折叠（记住用户选择） */
 function heroCollapsed(){try{return localStorage.getItem('pp_hero_collapsed')==='1';}catch(e){return false;}}
@@ -2987,12 +3032,13 @@ function toggleFocusCollapse(){ try{localStorage.setItem('pp_focus_collapsed',fo
 function applySidebarFilter(){
   try{
     var sel=prefModules(),done=prefDoneFlag(),mode=prefMode();
-    var favOnly=done && mode==='fav' && sel.length>0;
+    var favOnly=done && mode==='fav';   /* “我的关注”模式：收拢非核心、非自选、非系统 */
     var sb=document.getElementById('sidebar'); if(!sb)return;
     var items=sb.querySelectorAll('.nav-item');
     for(var i=0;i<items.length;i++){
       var v=items[i].getAttribute('data-view');
-      items[i].classList.toggle('nav-hidden', !!favOnly && !!v && !PREF_SYS[v] && sel.indexOf(v)<0);
+      /* 核心板块「今日安放」与系统板块永不隐藏；其余仅在我的关注收拢模式下隐藏 */
+      items[i].classList.toggle('nav-hidden', !!favOnly && !!v && !isCore(v) && !PREF_SYS[v] && sel.indexOf(v)<0);
     }
     var secs=sb.querySelectorAll('.nav-section');
     for(var s=0;s<secs.length;s++){

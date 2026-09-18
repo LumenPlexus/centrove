@@ -203,6 +203,10 @@ html.state-splash #qxTop,html.state-pano #qxTop,html.state-splash .toc-btn,html.
   background:linear-gradient(90deg,#6E4F37,#7A583E);color:#FBF3E4;
   box-shadow:0 5px 14px -6px rgba(74,58,40,.35);font-weight:600;
 }
+/* ── 核心 · 今日安放：固定导航区，比普通分组更醒目 ── */
+.nav-section.nav-core-sec{color:var(--primary);font-weight:700;letter-spacing:2px}
+.nav-core-sec::after{content:"·常显";font-weight:500;opacity:.55;margin-left:2px}
+.nav-item.nav-core{color:var(--primary-strong)}
 
 /* ── 指标 / 数字：宋韵大字 + 木色数值 + 黄铜点缀 ── */
 .metric{background:linear-gradient(165deg,var(--card),var(--bg));border-radius:14px;padding:16px 17px;border:1px solid var(--border)}
@@ -538,32 +542,35 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>今日概览
     </div>
 
-    <div class="nav-section">锚愿匣 · 目标与行动</div>
-    <div class="nav-item" data-view="quadrant" onclick="switchView(&#39;quadrant&#39;)">
+    <div class="nav-section nav-core-sec">核心 · 今日安放</div>
+    <div class="nav-item nav-core" data-view="quadrant" onclick="switchView(&#39;quadrant&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急
     </div>
+    <div class="nav-item nav-core" data-view="goals" onclick="switchView(&#39;goals&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解
+    </div>
+    <div class="nav-item nav-core" data-view="habits" onclick="switchView(&#39;habits&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>习惯养成
+    </div>
+    <div class="nav-item nav-core" data-view="timer" onclick="switchView(&#39;timer&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时
+    </div>
+    <div class="nav-item nav-core" data-view="study" onclick="switchView(&#39;study&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进
+    </div>
+    <div class="nav-item nav-core" data-view="journal" onclick="switchView(&#39;journal&#39;)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记
+    </div>
+
+    <div class="nav-section">锚愿匣 · 目标与行动</div>
     <div class="nav-item" data-view="plans" onclick="switchView(&#39;plans&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘
-    </div>
-    <div class="nav-item" data-view="goals" onclick="switchView(&#39;goals&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解
     </div>
     <div class="nav-item" data-view="life" onclick="switchView(&#39;life&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3z"></path><path d="M9 3v15"></path><path d="M15 5.5v15"></path></svg>生涯蓝图
     </div>
 
-    <div class="nav-section">时栖录 · 时间与打卡</div>
-    <div class="nav-item" data-view="habits" onclick="switchView(&#39;habits&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>习惯养成
-    </div>
-    <div class="nav-item" data-view="timer" onclick="switchView(&#39;timer&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时
-    </div>
-
     <div class="nav-section">学业栖仓 · 学业成长</div>
-    <div class="nav-item" data-view="study" onclick="switchView(&#39;study&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进
-    </div>
     <div class="nav-item" data-view="exam" onclick="switchView(&#39;exam&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>考试规划
     </div>
@@ -600,9 +607,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
 
     <div class="nav-section">时光贮格 · 记录与成长</div>
-    <div class="nav-item" data-view="journal" onclick="switchView(&#39;journal&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记
-    </div>
     <div class="nav-item" data-view="stats" onclick="switchView(&#39;stats&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>成长档案
     </div>
@@ -657,7 +661,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 
     <div class="nav-section">设置 · 栖匣系统</div>
     <div class="nav-item" style="cursor:pointer;color:var(--primary);font-weight:600" onclick="openModulePick()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 3.6 3.9.3-3 2.6 1 3.8-3.5-2-3.5 2 1-3.8-3-2.6 3.9-.3z"></path><path d="M5 14c.6 1.2 1.6 2.1 2.8 2.7"></path><path d="M19 14c-.6 1.2-1.6 2.1-2.8 2.7"></path></svg>常用模块偏好
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 3.6 3.9.3-3 2.6 1 3.8-3.5-2-3.5 2 1-3.8-3-2.6 3.9-.3z"></path><path d="M5 14c.6 1.2 1.6 2.1 2.8 2.7"></path><path d="M19 14c-.6 1.2-1.6 2.1-2.8 2.7"></path></svg>挑我感兴趣的板块
     </div>
     <div class="nav-item" data-view="agent" onclick="switchView(&#39;agent&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"></path><path d="M9 17h6v3H9z"></path><circle cx="9" cy="11.5" r=".5" fill="currentColor"></circle><circle cx="15" cy="11.5" r=".5" fill="currentColor"></circle></svg>栖匣 助手
@@ -6958,10 +6962,10 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="restorePrepare()">重新开启开学准备清单</button>
       </div>
       <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F3EDDE,#F3EDDE);border-color:#E0D5BF">
-        <h3 style="color:var(--primary)">⭐ 常用模块偏好</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时会让你挑选最常用、最关心的板块；已选板块会优先展示在首页「轻松上手 · 分类导航」，其余板块只是暂时藏起，仍可随时从侧边栏或「显示全部板块」进去。这里可随时重新调整。</p>
+        <h3 style="color:var(--primary)">⭐ 挑我感兴趣的板块</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时，带「核心」徽章的「今日安放」板块已自动为你固定在侧边栏；其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏，随时可回来调整。</p>
         <div>
-          <button class="btn btn-primary" onclick="openModulePick()">调整我的常用模块</button>
+          <button class="btn btn-primary" onclick="openModulePick()">调整我感兴趣的板块</button>
           <span id="prefStatus" style="display:inline-block;font-size:12px;color:var(--hint);margin-left:10px;vertical-align:middle"></span>
         </div>
       </div>
@@ -8688,23 +8692,23 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
 
 
-<!-- ═══════ 常用模块偏好 · 选择浮层（首次入座后 / 设置里可随时重选） ═══════ -->
+<!-- ═══════ 板块偏好 · 选择浮层（首次入座 / 设置里可随时重挑） ═══════ -->
 <div class="mp-mask" id="modulePickMask"></div>
-<div class="mp" id="modulePick" role="dialog" aria-modal="true" aria-label="选择常用模块">
+<div class="mp" id="modulePick" role="dialog" aria-modal="true" aria-label="挑你感兴趣的板块">
   <div class="mp-inner">
     <button class="mp-close" onclick="closeModulePick()" title="关闭">✕</button>
     <div class="mp-head">
-      <h2>挑几个你最常用的板块</h2>
-      <p>点选你真正关心的板块，首页「轻松上手 · 分类导航」就会优先展示它们；其余板块只是暂时藏起，仍可随时从侧边栏或「显示全部板块」点进去。之后可在「系统设置 → 常用模块偏好」随时重新挑选。</p>
+      <h2>挑出你感兴趣的板块</h2>
+      <p>带「核心」徽章的「今日安放」板块已为你固定好——这会覆盖一条完整的主线：<b>把盘旋的事写进匣子 → 轻重缓急分拣 → 拆成今天能落地的一小步 → 专注执行 → 晚间复盘</b>，始终常显。其余板块按你的兴趣自由增选：选中的会进首页，未选会暂时收进侧边栏，随时可回来调整。</p>
     </div>
     <div class="mp-sub">
-      <span>已选 <b id="modulePickCount">0</b> 个</span>
+      <span>已选 <b id="modulePickCount">0</b> 个你感兴趣的</span>
       <span class="mp-quick"><button onclick="mpSelectAll()">全部选中</button><button onclick="mpClear()">清空</button></span>
     </div>
     <div class="mp-body" id="modulePickBody"></div>
     <div class="mp-foot">
-      <button class="mp-gbtn" onclick="mpConfirm(true)">先不选 · 展示全部板块</button>
-      <button class="mp-pbtn" onclick="mpConfirm(false)">完成 · 开始使用</button>
+      <button class="mp-gbtn" onclick="mpConfirm(true)">先都展示，稍后再挑</button>
+      <button class="mp-pbtn" onclick="mpConfirm(false)">按以上安排 · 开始使用</button>
     </div>
   </div>
 </div>

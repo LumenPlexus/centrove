@@ -1552,6 +1552,12 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .mp-chip .mp-tick{position:absolute;top:5px;right:6px;width:15px;height:15px;border-radius:50%;background:var(--border-strong);color:#fff;font-size:10px;line-height:15px;text-align:center;opacity:0;transform:scale(.5);transition:all .18s}
 .mp-chip.on{border-color:var(--primary);background:var(--primary-light);box-shadow:0 0 0 1px var(--primary) inset}
 .mp-chip.on .mp-tick{opacity:1;transform:scale(1);background:var(--primary)}
+/* 核心板块：固定常显，带金色“核心”徽章 */
+.mp-chip.core{border-color:#C2A15E;background:linear-gradient(135deg,#FBF4E4,#F3E8CF);box-shadow:0 0 0 1px #C2A15E inset}
+.mp-chip.core .mp-tick{display:none}
+.mp-chip .mp-tag{position:absolute;top:5px;right:6px;font-size:9.5px;line-height:1;padding:2px 5px;border-radius:6px;background:linear-gradient(90deg,#6E4F37,#7A583E);color:#FBF3E4;font-weight:600;letter-spacing:.2px}
+[data-theme="dark"] .mp-chip.core{background:#3A3123!important;border-color:#C2A15E!important}
+[data-theme="dark"] .mp-chip .mp-tag{background:linear-gradient(90deg,#8A6A45,#7A583E)}
 [data-theme="dark"] .mp-chip{background:#26211A!important;border-color:#3C3427!important}
 [data-theme="dark"] .mp-chip.on{background:#382F24!important;border-color:#6E4F37!important}
 [data-theme="dark"] .mp-chip .mp-na{color:#D8CBB2!important}
