@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.59';
+window.__pageVersion='2026.09.18.60';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -4799,10 +4799,37 @@ function renderCountdowns(){
   var list=getCountdowns();
   var box=document.getElementById('countdownList');
   if(!box)return;
+  /* 备考路径：#2 把最近的硬仗从「还有 N 天」升级成「从今天到考前的倒排行动表」。
+     阶段由剩余天数唯一确定（确定性倒排，非伪造进度），并附带免罚说明，缓解考试焦虑。 */
+  var prep='';
+  var upc=(list||[]).filter(function(x){var d=new Date((x.date||'')+'T00:00:00');var t=new Date();t.setHours(0,0,0,0);return d>=t;}).sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  if(upc.length){
+    var t0=new Date();t0.setHours(0,0,0,0);
+    var DD=Math.round((new Date(upc[0].date+'T00:00:00')-t0)/86400000);
+    var stage='',detail='',mid=Math.max(0,Math.min(100,Math.round(100-DD*3.3)));
+    if(DD>60){stage='打基础';detail='每周固定 3–4 次，过教材/大纲，建知识框架';}
+    else if(DD>30){stage='分模块';detail='按章节分期过一遍，开错题本';}
+    else if(DD>14){stage='强化';detail='刷真题 + 核心知识点背诵';}
+    else if(DD>7){stage='冲刺';detail='近 3 年真题计时，查漏补缺';}
+    else if(DD>3){stage='聚焦';detail='背重点 / 翻错题本，模拟 1–2 次';}
+    else if(DD>0){stage='临阵';detail='过提纲与错题本，早睡调状态';}
+    else{stage='就是今天';detail='按计划走完，稳住心态';}
+    prep='<div style="border:1px solid var(--border);border-radius:14px;padding:14px;background:var(--card);grid-column:1/-1;margin-bottom:2px">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:4px">'+
+        '<span style="font-size:14px;font-weight:700;color:var(--head)">📚 备考导引 · '+upc[0].name+'</span>'+
+        '<span style="font-size:12px;color:'+(DD<=7?'var(--coral)':'var(--gold)')+';font-weight:700">还有 '+DD+' 天 · 当前：'+stage+'</span>'+
+      '</div>'+
+      '<div style="height:6px;border-radius:3px;background:var(--bg);overflow:hidden;margin:8px 0">'+
+        '<div style="height:100%;width:'+mid+'%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:3px"></div>'+
+      '</div>'+
+      '<div style="font-size:12.5px;color:var(--text);line-height:1.7">▶ 这一程该做：<b style="color:var(--primary)">'+stage+'</b> —— '+detail+'</div>'+
+      '<div style="font-size:11px;color:var(--hint);margin-top:7px">倒排不会让你焦虑——它只是把「还剩 N 天」变成「今天做一件真正有用的」。每一步都算，断了也不丢人。</div>'+
+    '</div>';
+  }
   if(!list.length){
     box.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--hint);font-size:13px">还没有倒数日 · 在下方添加你的第一个重要事件</div>';
   }else{
-    box.innerHTML=list.map(function(item,i){
+    box.innerHTML=prep+list.map(function(item,i){
       var target=new Date(item.date+'T00:00:00');
       var today=new Date();
       today.setHours(0,0,0,0);
@@ -8334,14 +8361,22 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     return {done:done,total:total,pct:total?Math.round(done/total*100):0};
   }
   function shiftDate(key,n){ try{var p=key.split('-').map(Number);var d=new Date(p[0],p[1]-1,p[2]);d.setDate(d.getDate()+n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}catch(e){return key;} }
-  /* 成长动量：连续“安放”天数（从最近有数据的一天往前数）+ 近7天完成度趋势 */
+  /* 成长动量：连续“安放”天数（免罚弹性：允许1次单日顺延不算断）+ 近7天完成度趋势 */
   function momentum(){
-    var end=tk(), bars=[], streak=0;
+    var end=tk(), bars=[], streak=0, forgiven=0;
     var y1=dayFor(end).pct>0, y0=dayFor(shiftDate(end,-1)).pct>0;
-    var anchor=y1?end:(y0?shiftDate(end,-1):end);
-    if(dayFor(anchor).pct>0){ streak=1; var d=anchor, n=0; while(n<366&&dayFor(shiftDate(d,-1)).pct>0){ streak++; d=shiftDate(d,-1); n++; } }
+    var k, run=0, used=false;
+    if(y1){ k=end; used=false; }
+    else if(y0){ k=shiftDate(end,-1); used=true; forgiven=1; }  /* 今天空但昨天有 → 今天的空顺延，不算断 */
+    else { k=end; used=false; }
+    while(run<366){
+      if(dayFor(k).pct>0){ run++; k=shiftDate(k,-1); }
+      else if(!used && run>0 && dayFor(shiftDate(k,-1)).pct>0){ used=true; forgiven++; k=shiftDate(k,-1); }
+      else break;
+    }
+    streak=(y1||y0)?run:(dayFor(end).pct>0?run:0);
     for(var i=6;i>=0;i--){ bars.push(dayFor(shiftDate(end,-i)).pct); }
-    return {streak:streak,bars:bars,todayPct:dayFor(end).pct};
+    return {streak:streak,bars:bars,todayPct:dayFor(end).pct,forgiven:forgiven,daysWeek:bars.filter(function(b){return b>0;}).length,weekAvg:Math.round(bars.reduce(function(s,b){return s+b;},0)/7)};
   }
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 
@@ -8398,7 +8433,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     var momRow='';
     momRow+='<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px">'+
       '<span style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:'+(mom.streak>0?'var(--primary)':'var(--gold)')+'">'+
-        (mom.streak>0?('🎯 已安放 <b style="font-size:15px">'+mom.streak+'</b> 天 · 方向比不断更更重要'):('🎯 今天开工 · 先安放一件小事就行'))+
+        (mom.streak>0?('🎯 已安放 <b style="font-size:15px">'+mom.streak+'</b> 天 · '+(mom.forgiven>0?('已顺延 '+mom.forgiven+' 天，不算断'):'方向比不断更更重要')):('🎯 今天开工 · 先安放一件小事就行'))+
       '</span>'+
       '<span style="width:1px;height:14px;background:var(--border)"></span>'+
       '<span style="font-size:12px;color:var(--hint)">近7天动量</span>'+
@@ -8407,6 +8442,12 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
           return '<span title="'+(on?'今天 · ':(i===5?'昨天 · ':'前'+(6-i)+'天 · '))+b+'%" style="display:inline-block;width:7px;height:'+hw+'px;border-radius:2px;background:'+(on?'var(--gold)':'var(--border-strong)')+'"></span>';
         }).join('')+
       '</span></div>';
+    /* 本周一处灯火 · 周小结：结束一周时回望，制造回顾仪式感（免罚：点亮过就算数） */
+    momRow+='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:11px">'+
+      '<span style="font-size:11.5px;color:var(--muted);padding:5px 10px;border-radius:9px;background:var(--bg)">💡 本周一处灯火 · 点亮 '+mom.daysWeek+'/7 天</span>'+
+      '<span style="font-size:11.5px;color:var(--muted);padding:5px 10px;border-radius:9px;background:var(--bg)">本周平均安放 '+mom.weekAvg+'%</span>'+
+      '<span style="font-size:11.5px;color:var(--primary);padding:5px 10px;border-radius:9px;background:var(--primary-light)">连续安放 '+mom.streak+' 天'+(mom.forgiven>0?'（含顺延）':'')+'</span>'+
+      '</div>';
     if(cds.length){
       momRow+='<div style="margin-top:11px;padding:9px 11px;border:1px dashed var(--border-strong);border-radius:10px;background:var(--card)">'+
         '<div style="font-size:11.5px;color:var(--hint);letter-spacing:1px;margin-bottom:6px">⏳ 最近要打的硬仗 · 一步步走近毕业目标</div>'+
