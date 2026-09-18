@@ -1063,6 +1063,56 @@ select:focus {
   color: var(--text);
 }
 
+/* ── F2. 折叠/手风琴控件激活态清蓝：统一暖棕，掐掉系统自带闪蓝 ──
+   .fold-toggle/.fold-chev 是 span（非 button），原生 <summary> 也不在 F 段覆盖内，
+   移动端 WebView 点击时会自动加上系统自带的蓝色激活态（tap 高亮/蓝色底），这里统一覆盖。*/
+.fold-heading,
+.fold-toggle,
+.fold-chev,
+.fold-bar,
+summary,
+.qx-details summary,
+.help-grid summary,
+.cu-section summary,
+.cu-section,
+.qx-details {
+  -webkit-tap-highlight-color: transparent !important;
+}
+.fold-heading:hover,
+.fold-toggle:hover,
+.fold-chev:hover,
+.fold-bar:hover,
+summary:hover {
+  background: transparent !important;
+  color: var(--primary) !important;
+}
+.fold-heading:active,
+.fold-heading:focus,
+.fold-toggle:active,
+.fold-toggle:focus,
+.fold-chev:active,
+.fold-chev:focus,
+.fold-bar:active,
+.fold-bar:focus,
+summary:active,
+summary:focus,
+.qx-details summary:active,
+.help-grid summary:active,
+.cu-section summary:active {
+  background: var(--primary-light) !important;
+  color: var(--primary) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--primary-mid) !important;
+}
+.fold-toggle:focus-visible,
+.fold-chev:focus-visible,
+.fold-bar:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--gold) !important;
+  outline-offset: 2px;
+}
+
 /* ── G. 导航选中高亮：侧边栏 / 顶部标签 / 底部手机导航 ── */
 .nav-item.active,
 .nav-item.active:hover {
