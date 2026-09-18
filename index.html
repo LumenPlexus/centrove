@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.72"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.73"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -71,10 +71,31 @@
       },3500);
     }
   })();</script>
+  <!-- 可靠性兜底：在巨型主脚本(qx.app.min.js)加载完成前，先注入常用首屏函数的可用版本，
+       保证弱网/慢设备上点击顶栏、导航、logo容错都不会抛「is not defined」；主脚本就绪后真实现覆盖之。 -->
+  <script>(function(){
+    var doc=document, dQ='data-theme';
+    /* 主题切换兜底：不依赖主脚本也能即时切换日/夜，避免「点了没反应」 */
+    if(typeof window.toggleTheme!=='function'){
+      window.toggleTheme=function(){
+        var r=doc.documentElement;
+        var cur=r.getAttribute(dQ); var next=(cur==='dark'?'light':'dark');
+        r.setAttribute(dQ,next);
+        try{sessionStorage.setItem('pp_theme_v2',next);}catch(e){}
+      };
+    }
+    /* logo 容错兜底：主脚本未加载完图片就出错时，也能切到真实可用的本地图，绝不裂图 */
+    if(typeof window.logoFallback!=='function'){
+      window.logoFallback=function(img){ try{ if(img&&img.tagName==='IMG'){ img.src='pwa/favicon-final-192.png'; img.removeAttribute('srcset'); } }catch(e){ var _f=img; } };
+    }
+    /* 其余首屏按钮/导航：先置空函数占位，杜绝解析完成前点击抛错；主脚本随后逐个体覆盖 */
+    var noops=['toggleSidebar','setBottomActive','tbSearchGo','openModulePick','closeModulePick','mpConfirm','mpChip','qxdismiss','refreshMind','refreshHomeDaily','saveTodayGoal','toggleHeroCollapse','toggleFocusCollapse','spinMindReload','spinInspire','switchView'];
+    for(var i=0;i<noops.length;i++){ if(typeof window[noops[i]]!=='function'){ window[noops[i]]=function(){}; } }
+  })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=72" media="all">
-<link rel="preload" href="css/upgrade.css" as="style">
-  <link rel="preload" href="js/qx.app.js?v=72" as="script">
+  <link rel="stylesheet" href="css/qx.css?v=73" media="all">
+  <link rel="preload" href="css/upgrade.css" as="style">
+  <link rel="preload" href="js/qx.app.min.js?v=73" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
@@ -426,7 +447,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=72"></script></head>
+<script defer src="js/qx.app.min.js?v=73"></script></head>
 <body>
 
 

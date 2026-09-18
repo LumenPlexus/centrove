@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.72';
+window.__pageVersion='2026.09.18.73';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -469,8 +469,8 @@ window.__pageVersion='2026.09.18.72';
     e.style.display='flex';e.style.opacity='1';
     e.setAttribute('data-gone','');
     e.onclick=function(){dismiss(e);};
-    /* 默认 1.8 秒；支持 ?splash=毫秒 调试用（如 ?splash=8000 便于观察） */
-    var _dur=1800;
+    /* 默认 1.3 秒；支持 ?splash=毫秒 调试用（如 ?splash=8000 便于观察） */
+    var _dur=1300;
     try{ var _m=location.search.match(/[?&]splash=(\d+)/); if(_m&&_m[1]){_dur=Math.min(30000,parseInt(_m[1],10)||1800);} }catch(_e){}
     setTimeout(function(){ if(!e.getAttribute('data-gone')){e.setAttribute('data-gone','1');dismiss(e);} },_dur);
   }
@@ -3025,7 +3025,7 @@ function mpConfirm(showAll){
   try{window.flash&&window.flash(showAll?'已展示全部板块':'「主线 · 今日安放」已固定 · 已整理你感兴趣的板块');}catch(e){}
 }
 /* 首页品牌主视觉区：可折叠（记住用户选择） */
-function heroCollapsed(){try{return localStorage.getItem('pp_hero_collapsed')==='1';}catch(e){return false;}}
+function heroCollapsed(){try{var v=localStorage.getItem('pp_hero_collapsed'); if(v==null)return true;/* 新访客默认收起冗长品牌文案，首屏直接给「今日目标」动作 */ return v==='1';}catch(e){return true;}}
 function applyHeroCollapse(){
   var b=document.getElementById('heroBody'),t=document.getElementById('heroToggle');
   if(!b)return; var col=heroCollapsed();

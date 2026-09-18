@@ -1,0 +1,16 @@
+{
+  "name": "centrove",
+  "version": "1.0.0",
+  "description": "栖匣 · 大学生成长工坊",
+  "private": true,
+  "scripts": {
+    "build": "esbuild js/qx.app.js --minify --charset=utf8 --outfile=js/qx.app.min.js",
+    "test": "node --check js/qx.app.js"
+  },
+  "keywords": [],
+  "author": "尹平平",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

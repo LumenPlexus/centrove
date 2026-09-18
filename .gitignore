@@ -10,3 +10,5 @@ sync-server/data/
 # 系统/编辑器
 .DS_Store
 Thumbs.db
+# 本地构建依赖(不部署)
+node_modules/
