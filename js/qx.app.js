@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.57';
+window.__pageVersion='2026.09.18.58';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -2901,18 +2901,18 @@ function renderFocus(){
   var extraSel=[];for(var _x=0;_x<sel.length;_x++){if(!isCore(sel[_x]))extraSel.push(sel[_x]);}
   var html='';
   html+='<div class="focus-toolbar">'
-    +'<span class="ft-label">'+(favOnly?'核心「今日安放」已固定，另加 '+extraSel.length+' 个你感兴趣的':'按成长主线推荐 · 先看核心，更多板块可展开')+'</span>'
+    +'<span class="ft-label">'+(favOnly?'「果核 · 成长中枢」已固定，另加 '+extraSel.length+' 个你感兴趣的':'从毕业目标一步步安放进今天 · 先看果核，更多板块可展开')+'</span>'
     +'<span class="ft-btns">';
   if(favOnly){ html+='<button class="ft-btn" onclick="focusModeAll()">显示全部板块</button>'; }
   else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看我的关注</button>'; }
   html+='<button class="ft-btn ghost" onclick="openModulePick()">'+(favOnly?'调整我的关注':'挑我感兴趣的')+'</button>';
   html+='</span></div>';
 
-  /* ① 核心 · 今日安放（固定，始终第一个展开） */
+  /* ① 果核 · 成长中枢（固定，贯穿毕业到今日） */
   html+='<div class="focus-group open">'
     +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
-    +'<span class="fg-caret">–</span><span class="fg-name">核心 · 今日安放</span>'
-    +'<span class="fg-count">'+CORE_ITEMS.length+' 个 · 始终展示</span></button>'
+    +'<span class="fg-caret">–</span><span class="fg-name">果核 · 成长中枢</span>'
+    +'<span class="fg-count">'+CORE_ITEMS.length+' 个 · 贯穿毕业到今日</span></button>'
     +'<div class="fg-body"><div class="focus-grid">';
   for(var _c=0;_c<CORE_ITEMS.length;_c++){ html+=focusBoardHTML(CORE_ITEMS[_c][0]); }
   html+='</div></div></div>';
@@ -2984,7 +2984,7 @@ function openModulePick(){
       var _ic=navIconFor(it[0]);
       if(isCore2){
         /* 核心板块：固定常显，带“核心”徽章，不可取消 */
-        html+='<div class="mp-chip on core" data-core="1" data-v="'+it[0]+'" role="button" tabindex="0" style="cursor:default" title="核心板块：今日安放主线，始终展示"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span><span class="mp-tag">核心</span></div>';
+        html+='<div class="mp-chip on core" data-core="1" data-v="'+it[0]+'" role="button" tabindex="0" style="cursor:default" title="果核板块：贯穿毕业到今日的下钻中枢，始终展示"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span><span class="mp-tag">果核</span></div>';
       }else{
         html+='<div class="mp-chip'+(on?' on':'')+'" data-v="'+it[0]+'" role="button" tabindex="0" onclick="mpChip(this)"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span></div>';
       }
@@ -3008,7 +3008,7 @@ function mpConfirm(showAll){
   var sel=[];document.querySelectorAll('#modulePick .mp-chip.on:not(.core)').forEach(function(e){sel.push(e.getAttribute('data-v'));});
   savePref(sel, showAll?'all':'fav');
   closeModulePick(); renderFocus(); applySidebarFilter();
-  try{window.flash&&window.flash(showAll?'已展示全部板块':'核心「今日安放」已固定 · 已整理你感兴趣的板块');}catch(e){}
+  try{window.flash&&window.flash(showAll?'已展示全部板块':'「果核 · 成长中枢」已固定 · 已整理你感兴趣的板块');}catch(e){}
 }
 /* 首页品牌主视觉区：可折叠（记住用户选择） */
 function heroCollapsed(){try{return localStorage.getItem('pp_hero_collapsed')==='1';}catch(e){return false;}}
@@ -8376,10 +8376,16 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     }
     var s=stats(), R=34, C=2*Math.PI*R, off=C*(1-s.pct/100);
     var mom=momentum();
-    var lastBarTitle=mom.bars[6]+'%';
-    var momRow='<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px">'+
-      '<span style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:'+(mom.streak>0?'var(--primary)':'var(--hint)')+'">'+
-        '🔥 连续安放 <b style="font-size:15px">'+mom.streak+'</b> 天</span>'+
+    /* 差异化：从「毕业目标 / 硬仗」倒计时下钻到今天的最重要一件 + 免罚动量（断了不丢人，方向比不断更重要）
+       竞品多为空壳工具且惩罚断签——栖匣用「硬仗倒计时→今天该做的一件」给出确定性，用免罚文案留住用户。 */
+    var cds=[];try{var _s=localStorage.getItem('pp_countdowns');if(_s){var _a=JSON.parse(_s);if(_a&&_a.length!==undefined){var _t=new Date();_t.setHours(0,0,0,0);for(var _i=0;_i<_a.length;_i++){var c=_a[_i];if(!c||!c.date)continue;var _tg=new Date((c.date+'').slice(0,10)+'T00:00:00');var _df=Math.round((_tg-_t)/86400000);if(_df>=0){cds.push({n:(c.name||'一件事'),d:_df});}}}}}catch(e){}
+    cds.sort(function(a,b){return a.d-b.d;});if(cds.length>3)cds=cds.slice(0,3);
+    var tGoal='';try{tGoal=(localStorage.getItem('pp_todayGoal')||'').trim();}catch(e){tGoal='';}
+    var momRow='';
+    momRow+='<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px">'+
+      '<span style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:'+(mom.streak>0?'var(--primary)':'var(--gold)')+'">'+
+        (mom.streak>0?('🎯 已安放 <b style="font-size:15px">'+mom.streak+'</b> 天 · 方向比不断更更重要'):('🎯 今天开工 · 先安放一件小事就行'))+
+      '</span>'+
       '<span style="width:1px;height:14px;background:var(--border)"></span>'+
       '<span style="font-size:12px;color:var(--hint)">近7天动量</span>'+
       '<span style="display:flex;gap:3px;align-items:flex-end">'+
@@ -8387,6 +8393,20 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
           return '<span title="'+(on?'今天 · ':(i===5?'昨天 · ':'前'+(6-i)+'天 · '))+b+'%" style="display:inline-block;width:7px;height:'+hw+'px;border-radius:2px;background:'+(on?'var(--gold)':'var(--border-strong)')+'"></span>';
         }).join('')+
       '</span></div>';
+    if(cds.length){
+      momRow+='<div style="margin-top:11px;padding:9px 11px;border:1px dashed var(--border-strong);border-radius:10px;background:var(--card)">'+
+        '<div style="font-size:11.5px;color:var(--hint);letter-spacing:1px;margin-bottom:6px">⏳ 最近要打的硬仗 · 一步步走近毕业目标</div>'+
+        '<div style="display:flex;flex-wrap:wrap;gap:12px">'+
+          cds.map(function(c){var emg=c.d<=7;
+            return '<span style="display:inline-flex;align-items:center;gap:5px;font-size:12.5px;'+(emg?'font-weight:700;color:var(--coral)':'color:var(--text)')+'">'+
+              '<b style="font-size:16px;color:'+(emg?'var(--coral)':'var(--gold)')+'">'+c.d+'</b><span style="color:var(--hint);font-size:11.5px">天后</span> '+c.n+'</span>';
+          }).join('')+
+        '</div></div>';
+    }
+    if(tGoal){
+      momRow+='<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:9px;font-size:13px;color:var(--text)">'+
+        '<span style="font-size:14px">🎯</span><span style="color:var(--hint)">今天最该做的一件</span><b style="color:var(--primary);font-weight:600">'+tGoal.replace(/</g,'&lt;')+'</b></div>';
+    }
     host.innerHTML=
       '<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">'+
         '<svg width="86" height="86" viewBox="0 0 86 86" style="flex-shrink:0" role="img" aria-label="今日完成度 '+s.pct+'%">'+
