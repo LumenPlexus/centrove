@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.61"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.62"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -56,7 +56,7 @@
     }
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=61" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=62" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
@@ -409,7 +409,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=61"></script></head>
+<script defer src="js/qx.app.js?v=62"></script></head>
 <body>
 
 
@@ -7989,6 +7989,23 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
       
     </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🧪 考试规划 · 蒸馏知识库（官方报名直达 · 入口已核实）</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">别在百度搜"XX考试报名"，极易点进山寨缴费页。以下均为教育部/国家部委官方指定入口，报名与缴费一律认官网与学校通知。</p>
+      <div class="callout callout-warn" data-nodismiss><strong>反诈铁律：</strong>凡"先缴费再看题""包过""内部渠道改分"的，一律是坑。系统开放时间与费用，以本校及官网当年最新公告为准。</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+        <div class="res-link" style="cursor:default"><div class="ico">🎓</div><div class="info"><div class="name">学历与升学类</div><div class="desc">四六级、考研官方报名入口</div></div></div>
+        <a class="res-link" href="https://cet-bm.neea.edu.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div><div class="info"><div class="name">全国大学英语四、六级·报名网</div><div class="desc">cet-bm.neea.edu.cn · 资格审核/报名/缴费/准考证</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="https://yz.chsi.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"></path></svg></div><div class="info"><div class="name">研招网 · 中国研究生招生信息网</div><div class="desc">考研统考报名/推免/博士/分数线</div></div><div class="arrow">↗</div></a>
+        <div class="res-link" style="cursor:default"><div class="ico">💼</div><div class="info"><div class="name">就业与从业资格类</div><div class="desc">教资、计算机、会计、公考官方入口</div></div></div>
+        <a class="res-link" href="https://ntce.neea.edu.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"></path></svg></div><div class="info"><div class="name">中小学教师资格考试 NTCE</div><div class="desc">ntce.neea.edu.cn · 笔试/面试报名查询</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="https://ncre.neea.edu.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div><div class="info"><div class="name">全国计算机等级考试 NCRE</div><div class="desc">ncre.neea.edu.cn · 报名 ncre-bm.neea.edu.cn</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="http://kzp.mof.gov.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"></path><path d="M3 9h18M9 21V9"></path></svg></div><div class="info"><div class="name">全国会计资格评价网</div><div class="desc">财政部主办 · 初/中/高级会计报名</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="http://bm.scs.gov.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"></path><path d="M9 9h1M14 9h1M9 13h1M14 13h1M9 17h6"></path></svg></div><div class="info"><div class="name">公务员考试录用专题网站</div><div class="desc">bm.scs.gov.cn · 国考公告/报名</div></div><div class="arrow">↗</div></a>
+        <div class="res-link" style="cursor:default"><div class="ico">🗂</div><div class="info"><div class="name">统考总入口</div><div class="desc">教育部考试院·全部国家考试查询与报名入口</div></div></div>
+        <a class="res-link" href="https://www.neea.edu.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国教育考试网</div><div class="desc">四六级/教资/计算机/专四专八等总入口</div></div><div class="arrow">↗</div></a>
+      </div>
+    </div>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
@@ -8131,6 +8148,20 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="callout callout-ok" style="margin-top:10px"><strong>AI 辅助申报书三要三不要：</strong>可让 AI"梳理论点、整理措辞、把口水话改书面化、帮我列出优缺点"；不要直接整段照抄 AI 生成内容、不要让它编造数据/文献、不要依赖它替代自己的实地调研。申报书的核心（选题、数据、方案）必须真实是你自己做的——这是诚信红线。
       </div>
       
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>🧪 竞赛科研 · 蒸馏知识库（官方报名直达 · 入口已核实）</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">参赛通知以学校教务处/团委转发为准；报名与论文提交走赛事官网与官方系统，别走野路子代报名。</p>
+      <div class="callout callout-info"><strong>冲奖打法：</strong>大一大二先用校赛、大英赛等低门槛赛练手攒经验，大二大三挑 1~2 个有把握的 A 类赛（数模/挑战杯/蓝桥杯）重点冲奖；组队时补齐"建模/编程/写作"分工，比单打独斗胜率高得多。赛后把赛题、作品、答辩经验归档进栖匣，就是你的硬履历。</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+        <div class="res-link" style="cursor:default"><div class="ico">🏆</div><div class="info"><div class="name">影响力 A 类赛（认可度高）</div><div class="desc">数学建模 / 挑战杯 / 蓝桥杯官方入口</div></div></div>
+        <a class="res-link" href="https://www.mcm.edu.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg></div><div class="info"><div class="name">全国大学生数学建模竞赛（CUMCM）</div><div class="desc">mcm.edu.cn · 官网通知与赛题发布</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="https://cumcm.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div class="info"><div class="name">CUMCM 报名 / 提交系统</div><div class="desc">cumcm.cnki.net · 组队报名与论文上传</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="https://www.tiaozhanbei.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><div class="info"><div class="name">挑战杯（课外学术科技 / 创业计划）</div><div class="desc">tiaozhanbei.net · 全国"大挑"“小挑”官方</div></div><div class="arrow">↗</div></a>
+        <a class="res-link" href="https://dasai.lanqiao.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg></div><div class="info"><div class="name">蓝桥杯（软件 / 电子 / 设计）</div><div class="desc">dasai.lanqiao.cn · 全国大学生 IT 学科竞赛</div></div><div class="arrow">↗</div></a>
+        <div class="res-link" style="cursor:default"><div class="ico">📣</div><div class="info"><div class="name">获取通告的可靠渠道</div><div class="desc">正确打法是跟着学校走，不是自己瞎搜</div></div></div>
+        <div class="res-link" style="cursor:default"><div class="ico">🏫</div><div class="info"><div class="name">学校官网 / 教务处 / 校团委通知栏</div><div class="desc">大创、互联网+、各学科竞赛大多由学校统一组织报名，以当年最新通知为准；多关注学院通知群与公众号，提前准备材料不临时赶。</div></div></div>
+      </div>
     </div>
   </section>
 

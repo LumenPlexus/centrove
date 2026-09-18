@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.61';
+window.__pageVersion='2026.09.18.62';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -9113,6 +9113,114 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   }else{
     setTimeout(loop, 700);
   }
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════
+   论文进度追踪器（ppPaperProg）：把「写作七步法」做成可勾选清单 + 截止日期倒计时
+   + 与考试规划硬仗倒计时联动。数据存本地，防抖从 DOMContentLoaded 后注入，全防御。
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var K='pp_paper_progress';
+  var STEPS=[
+    ['选题小切口','小切口深挖，拒绝"论X之…"这类大题'],
+    ['查文献 20 篇','知网/万方/维普/Scholar，先读综述'],
+    ['列大纲','引言-问题-分析-结论-建议，先搭骨架'],
+    ['写初稿','一气呵成，前3天每天500字，卡住就跳'],
+    ['改二稿','补论据、修逻辑、删"正确的废话"'],
+    ['查重降重','先学校系统/PaperPass预查，逐段降'],
+    ['引用排版核对','GB/T 7714 引用 + 图表编号 + 通读']
+  ];
+  function load(){try{var v=localStorage.getItem(K);if(v)return JSON.parse(v);}catch(e){}return {dd:'',done:{}};}
+  function save(s){try{localStorage.setItem(K,JSON.stringify(s));}catch(e){}}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function dayDiff(dd){try{if(!dd)return null;var t=new Date();t.setHours(0,0,0,0);var g=new Date(String(dd).slice(0,10)+'T00:00:00');return Math.round((g-t)/86400000);}catch(e){return null;}}
+  function hardInfo(){
+    try{
+      var s=localStorage.getItem('pp_countdowns');if(!s)return null;
+      var a=JSON.parse(s);if(!a||!a.length)return null;
+      var kw=['论文','开题','毕设','毕业','学术','投稿'];var best=null;var t=new Date();t.setHours(0,0,0,0);
+      for(var i=0;i<a.length;i++){var c=a[i];if(!c||!c.date)continue;var nm=esc(c.name||'');var hit=false;for(var k=0;k<kw.length;k++){if(nm.indexOf(kw[k])>=0){hit=true;break;}}if(!hit)continue;
+        var g=new Date(String(c.date).slice(0,10)+'T00:00:00');var d=Math.round((g-t)/86400000);if(best==null||d<best.d)best={d:d,n:c.name||'一件事'};}
+      return best;
+    }catch(e){return null;}
+  }
+  function render(){
+    var host=document.getElementById('ppProgCard');if(!host)return;
+    var s=load();var n=STEPS.length;var done=0;for(var i=0;i<n;i++){if(s.done[i])done++;}
+    var pct=Math.round(done/n*100);
+    var d=dayDiff(s.dd);
+    var hard=hardInfo();
+    var ddH='';
+    if(s.dd){if(d==null)ddH='';else if(d<0)ddH='<b style="color:var(--coral)">已到截止日 '+Math.abs(d)+' 天，冲刺！</b>';else if(d<=7)ddH='<b style="color:var(--coral)">倒计时 '+d+' 天 · 紧</b>';else ddH='还剩 <b>'+d+'</b> 天';}
+    var hardH='';
+    if(hard&&hard.d<30)hardH='<div style="margin-top:6px;font-size:12px;color:var(--muted)">⏳ 你在「考试规划」里还有一个论文相关的硬仗：<b>'+esc(hard.n)+'</b>，剩 <b style="color:'+(hard.d<=7?'var(--coral)':'var(--gold)')+'">'+hard.d+'</b> 天。</div>';
+    var rows='';for(var j=0;j<n;j++){var on=!!s.done[j];
+      rows+='<label style="display:flex;align-items:flex-start;gap:8px;padding:5px 2px;cursor:pointer;border-bottom:1px dashed var(--border)">'
+        +'<input type="checkbox" '+(on?'checked':'')+' onclick="qxPaperStep('+j+')" style="margin-top:3px;width:15px;height:15px;accent-color:var(--primary)">'
+        +'<span style="flex:1;font-size:13px;line-height:1.6;color:'+(on?'var(--hint)':'var(--text)')+';text-decoration:'+(on?'line-through':'none')+'"><b>'+esc(STEPS[j][0])+'</b> <span style="color:var(--muted);font-weight:400">· '+esc(STEPS[j][1])+'</span></span></label>';}
+    var total=done===0?'<span style="color:var(--muted)">还没开始，先勾掉选题这一步试试</span>':(done===n?'全部完成 🎉':'已完成 <b>'+done+'</b>/'+n);
+    host.innerHTML=
+      '<div class="qx-details" style="display:block">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">'
+      +'<div style="font-weight:700;color:var(--head);display:flex;align-items:center;gap:6px">📈 你的论文进度</div>'
+      +'<div style="font-size:11px;color:var(--muted)">数据保存在本机 · 随时回来续写</div></div>'
+      +'<div style="margin:8px 0 4px;display:flex;align-items:center;gap:8px">'
+      +'<div style="flex:1;height:8px;border-radius:5px;background:var(--border);overflow:hidden"><div style="width:'+pct+'%;height:100%;background:linear-gradient(90deg,var(--primary),var(--gold));transition:width .3s"></div></div>'
+      +'<span style="font-size:12px;color:var(--primary);font-weight:700">'+pct+'%</span></div>'
+      +'<div style="font-size:12px;color:var(--text);margin-bottom:6px">'+total+'</div>'
+      +'<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0">'
+      +'<span style="font-size:12px;color:var(--muted)">截止日期：</span>'
+      +'<input type="date" value="'+esc(s.dd||'')+'" onchange="qxPaperDeadline(this.value)" style="font-size:12px;padding:3px 6px;border:1px solid var(--border-strong);border-radius:7px;background:var(--card);color:var(--text)">'
+      +'<span style="font-size:12px">'+(ddH||'<span style="color:var(--hint)">填上截止日就能看到倒计时</span>')+'</span></div>'
+      +hardH
+      +'<div style="margin-top:8px">'+rows+'</div></div>';
+  }
+  window.qxPaperStep=function(i){var s=load();if(s.done[i])delete s.done[i];else s.done[i]=1;save(s);render();};
+  window.qxPaperDeadline=function(v){var s=load();s.dd=v||'';save(s);render();};
+  function ensure(){
+    if(document.getElementById('ppProgCard'))return;
+    var v=document.getElementById('view-paper');if(!v)return;
+    var c=document.createElement('div');c.id='ppProgCard';c.className='card';c.style.marginTop='16px';v.appendChild(c);render();
+  }
+  var done2=false;function boot(){if(done2)return;done2=true;setTimeout(ensure,650);}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}else{boot();}
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════
+   书影音·成长画像（ppPortrait）：把你标记读过的书、想看清单、写过的札记
+   汇成一句话"你是谁"，注入成长档案顶部。只读统计，不伪造。全防御。
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  function get(){try{return window.getUserBooks?getUserBooks():null;}catch(e){return null;}}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function titleOf(it){if(it==null)return '';if(typeof it==='string')return it;if(typeof it==='object'){return it.title||it.name||it.book||'';}return '';}
+  function vis(){try{var v=localStorage.getItem('pp_vision_list');if(v){var a=JSON.parse(v);return a&&a.length?[].concat(a):[];}return [];}catch(e){return [];}}
+  function journals(){try{var j=window.DB?DB.get('journals',null):null;return (j?j.length:0);}catch(e){return 0;}}
+  function portrait(){
+    var books=[],braw=get();if(braw&&braw.length){for(var i=0;i<braw.length;i++){var t=titleOf(braw[i]);if(t)books.push(t);}}
+    var vs=vis();var jN=journals();
+    var tags=[];for(var b=0;b<books.length&&b<3;b++)tags.push({t:books[b],c:'📚'});
+    for(var v=0;v<vs.length&&tags.length<6;v++){var s=String(vs[v]||'').trim();if(s)tags.push({t:s.length>12?s.slice(0,12)+'…':s,c:'🎬'});}
+    var head=books.length===0&&vs.length===0?'你还没有标记任何书/影/音，先去「书影时序」把读过的书、想看的片加进来，这里就会出现你的成长自画像。':'你是一个持续往自己身上"加东西"的人。';
+    var chips=tags.length?tags.map(function(t){return '<span style="display:inline-block;margin:2px;padding:3px 9px;border-radius:14px;background:var(--primary-light);color:var(--primary-strong);font-size:12px">'+t.c+' '+esc(t.t)+'</span>';}).join(''):'';
+    return {html:
+      '<div style="font-weight:700;color:var(--head);display:flex;align-items:center;gap:6px">🧑‍🎨 你的成长画像</div>'
+      +'<div style="margin-top:6px;font-size:13px;line-height:1.8;color:var(--text)">'+head
+      +'（已收藏 <b>'+books.length+'</b> 本书、想看清单 <b>'+vs.length+'</b> 条'+(jN>0?('、写下 <b>'+jN+'</b> 篇札记'):'')+'）</div>'
+      +(chips?'<div style="margin-top:8px">'+chips+'</div>':'')};
+  }
+  function render(host){if(!host)return;var p=portrait();host.innerHTML=p.html;}
+  function ensure(){
+    var ph=document.getElementById('view-growth');if(!ph)return;
+    if(document.getElementById('growthPortrait'))return;
+    var h1=ph.querySelector('.page-head');var c=document.createElement('div');c.id='growthPortrait';c.className='card';c.style.cssText='margin:12px 2px 6px;';
+    if(h1){h1.insertAdjacentElement('afterend',c);}else{ph.insertBefore(c,ph.firstChild);}
+    render(c);
+  }
+  var dn=0;function boot(){if(dn)return;dn=1;setTimeout(function(){ensure();var c=document.getElementById('growthPortrait');if(c)render(c);},700);}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}else{boot();}
 })();
 
 
