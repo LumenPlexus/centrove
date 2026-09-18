@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.67"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.68"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -35,6 +35,9 @@
     /* 冷启动：正文 .app 始终可见(不隐藏)，杜绝白屏。仅让闪屏覆盖层显示并重启其纯CSS自动淡出；
        JS 就绪可自行提前结束。返回恢复场景不命中 __r，走下方整页遮罩，不受影响。 */
     if(!__r){
+      /* 冷启动首帧即隐藏顶栏/底栏/悬浮按钮(state-splash)：正文 .app 保持可见(不空白)，
+         只把“外层界面”藏到闪屏之后，杜绝“顶栏先于闪屏闪现、随后又消失再出现”的闪烁。 */
+      try{ document.documentElement.classList.add('state-splash'); }catch(e){}
       try{ var __bsp=document.getElementById('brandSplash'); if(__bsp){__bsp.style.display='flex'; __bsp.style.animation='none'; void __bsp.offsetWidth; __bsp.style.animation='';} }catch(e){}
       /* 极端兜底：若 CSS 动画/JS 均未淡出闪屏，最迟 2.4s 强制置空并隐藏，绝不留白屏(与上方动画一致)。 */
       setTimeout(function(){
@@ -67,9 +70,9 @@
     }
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=67" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=68" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
-  <link rel="preload" href="js/qx.app.js?v=67" as="script">
+  <link rel="preload" href="js/qx.app.js?v=68" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
@@ -421,7 +424,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=67"></script></head>
+<script defer src="js/qx.app.js?v=68"></script></head>
 <body>
 
 
@@ -554,7 +557,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>今日概览
     </div>
 
-    <div class="nav-section nav-core-sec">果核 · 成长中枢</div>
+    <div class="nav-section nav-core-sec">主线 · 今日安放</div>
     <div class="nav-item nav-core" data-view="quadrant" onclick="switchView(&#39;quadrant&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急
     </div>
@@ -7098,7 +7101,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
       <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F3EDDE,#F3EDDE);border-color:#E0D5BF">
         <h3 style="color:var(--primary)">⭐ 挑我感兴趣的板块</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时，带「果核」徽章的「成长中枢」板块已自动固定：它把<b>毕业目标 → 硬仗倒计时 → 今天的一小步</b>一路下钻，且断了不丢人、不惩罚你。其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏，随时可回来调整。</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时，带「主线」徽章的「今日安放」板块已自动固定：它把<b>毕业目标 → 硬仗倒计时 → 今天的一小步</b>一路下钻，且断了不丢人、不惩罚你。它是<b>按需主线</b>：用得上就多停留，用不上随时收起，绝不影响你用最有用的部分。其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏，随时可回来调整。</p>
         <div>
           <button class="btn btn-primary" onclick="openModulePick()">调整我感兴趣的板块</button>
           <span id="prefStatus" style="display:inline-block;font-size:12px;color:var(--hint);margin-left:10px;vertical-align:middle"></span>
@@ -8863,7 +8866,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <button class="mp-close" onclick="closeModulePick()" title="关闭">✕</button>
     <div class="mp-head">
       <h2>挑出你感兴趣的板块</h2>
-      <p>带「果核」徽章的「成长中枢」板块已为你固定好——它是一条贯穿<b>毕业目标 → 硬仗倒计时 → 今天能落地的一小步 → 专注执行 → 晚间复盘</b>的下钻主线，而且是<b>免罚的</b>：断了不丢人，方向比不断更重要。其余板块按你的兴趣自由增选：选中的会进首页，未选会暂时收进侧边栏，随时可回来调整。</p>
+      <p>带「主线」徽章的「今日安放」板块已为你固定好——它是一条贯穿<b>毕业目标 → 硬仗倒计时 → 今天能落地的一小步 → 专注执行 → 晚间复盘</b>的下钻主线，而且是<b>免罚的</b>：断了不丢人，方向比不断更重要。这条线<b>按需</b>：需要就常驻眼前，不需要时随时收起，你永远只面对对你有用的部分。其余板块按你的兴趣自由增选：选中的会进首页，未选会暂时收进侧边栏，随时可回来调整。</p>
     </div>
     <div class="mp-sub">
       <span>已选 <b id="modulePickCount">0</b> 个你感兴趣的</span>

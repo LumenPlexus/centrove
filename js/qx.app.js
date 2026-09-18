@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.67';
+window.__pageVersion='2026.09.18.68';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -2883,7 +2883,7 @@ function focusModeFav(){ savePref(prefModules(),'fav'); renderFocus(); }
 var CORE_ITEMS=[['quadrant','🗂','轻重缓急'],['goals','🎯','目标拆解'],['habits','✅','习惯养成'],['timer','🍅','心流计时'],['journal','📖','时光札记'],['study','📘','学业精进']];
 var CORE_MODULES={};for(var _ci=0;_ci<CORE_ITEMS.length;_ci++){CORE_MODULES[CORE_ITEMS[_ci][0]]=1;}
 function isCore(v){return !!CORE_MODULES[v];}
-/* 果核延伸 · 内容库：栖匣独有的「方法+攻略」深度内容板——竞品多为空壳工具，这几块直接给你方法与资料，
+/* 主线延伸 · 内容库：栖匣独有的「方法+攻略」深度内容板——竞品多为空壳工具，这几块直接给你方法与资料，
    属差异化护城河，故作为第二固定群常显（仍可用 isContent 感知，区别于自选与核心）。 */
 var CONTENT_ITEMS=[['exam','⏳','考试规划'],['contest','🏆','竞赛科研'],['paper','📝','论文写作'],['tools','🛠','高效方法'],['reslib','📦','资源宝库']];
 var CONTENT_MODULES={};for(var _ct=0;_ct<CONTENT_ITEMS.length;_ct++){CONTENT_MODULES[CONTENT_ITEMS[_ct][0]]=1;}
@@ -2906,26 +2906,26 @@ function renderFocus(){
   var extraSel=[];for(var _x=0;_x<sel.length;_x++){if(!isCore(sel[_x])&&!isContent(sel[_x]))extraSel.push(sel[_x]);}
   var html='';
   html+='<div class="focus-toolbar">'
-    +'<span class="ft-label">'+(favOnly?'「果核 · 成长中枢」已固定，另加 '+extraSel.length+' 个你感兴趣的':'从毕业目标一步步安放进今天 · 先看果核，更多板块可展开')+'</span>'
+    +'<span class="ft-label">'+(favOnly?'「主线 · 今日安放」已固定，另加 '+extraSel.length+' 个你感兴趣的':'从毕业目标一步步安放进今天 · 先看主线，更多板块可展开')+'</span>'
     +'<span class="ft-btns">';
   if(favOnly){ html+='<button class="ft-btn" onclick="focusModeAll()">显示全部板块</button>'; }
   else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看我的关注</button>'; }
   html+='<button class="ft-btn ghost" onclick="openModulePick()">'+(favOnly?'调整我的关注':'挑我感兴趣的')+'</button>';
   html+='</span></div>';
 
-  /* ① 果核 · 成长中枢（固定，贯穿毕业到今日） */
+  /* ① 主线 · 今日安放（固定，贯穿毕业到今日） */
   html+='<div class="focus-group open">'
     +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
-    +'<span class="fg-caret">–</span><span class="fg-name">果核 · 成长中枢</span>'
+    +'<span class="fg-caret">–</span><span class="fg-name">主线 · 今日安放</span>'
     +'<span class="fg-count">'+CORE_ITEMS.length+' 个 · 贯穿毕业到今日</span></button>'
     +'<div class="fg-body"><div class="focus-grid">';
   for(var _c=0;_c<CORE_ITEMS.length;_c++){ html+=focusBoardHTML(CORE_ITEMS[_c][0]); }
   html+='</div></div></div>';
 
-  /* ② 果核延伸 · 内容库（固定第二群：栖匣独有的方法+攻略深度，展示内容护城河） */
+  /* ② 主线延伸 · 内容库（固定第二群：栖匣独有的方法+攻略深度，展示内容护城河） */
   html+='<div class="focus-group open">'
     +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
-    +'<span class="fg-caret">–</span><span class="fg-name">果核延伸 · 内容库</span>'
+    +'<span class="fg-caret">–</span><span class="fg-name">主线延伸 · 内容库</span>'
     +'<span class="fg-count">'+CONTENT_ITEMS.length+' 个 · 方法与攻略已备好</span></button>'
     +'<div class="fg-body"><div class="focus-grid">';
   for(var _ct2=0;_ct2<CONTENT_ITEMS.length;_ct2++){ html+=focusBoardHTML(CONTENT_ITEMS[_ct2][0]); }
@@ -2998,7 +2998,7 @@ function openModulePick(){
       var _ic=navIconFor(it[0]);
       if(isCore2){
         /* 核心板块：固定常显，带“核心”徽章，不可取消 */
-        html+='<div class="mp-chip on core" data-core="1" data-v="'+it[0]+'" role="button" tabindex="0" style="cursor:default" title="果核板块：贯穿毕业到今日的下钻中枢，始终展示"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span><span class="mp-tag">果核</span></div>';
+        html+='<div class="mp-chip on core" data-core="1" data-v="'+it[0]+'" role="button" tabindex="0" style="cursor:default" title="主线板块：贯穿毕业到今日的下钻中枢，始终展示"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span><span class="mp-tag">主线</span></div>';
       }else{
         html+='<div class="mp-chip'+(on?' on':'')+'" data-v="'+it[0]+'" role="button" tabindex="0" onclick="mpChip(this)"><span class="mp-ic'+( _ic?' svg':'')+'">'+(_ic||it[1])+'</span><span class="mp-na">'+it[2]+'</span><span class="mp-tick">✓</span></div>';
       }
@@ -3022,7 +3022,7 @@ function mpConfirm(showAll){
   var sel=[];document.querySelectorAll('#modulePick .mp-chip.on:not(.core)').forEach(function(e){sel.push(e.getAttribute('data-v'));});
   savePref(sel, showAll?'all':'fav');
   closeModulePick(); renderFocus(); applySidebarFilter();
-  try{window.flash&&window.flash(showAll?'已展示全部板块':'「果核 · 成长中枢」已固定 · 已整理你感兴趣的板块');}catch(e){}
+  try{window.flash&&window.flash(showAll?'已展示全部板块':'「主线 · 今日安放」已固定 · 已整理你感兴趣的板块');}catch(e){}
 }
 /* 首页品牌主视觉区：可折叠（记住用户选择） */
 function heroCollapsed(){try{return localStorage.getItem('pp_hero_collapsed')==='1';}catch(e){return false;}}
@@ -8461,17 +8461,29 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       momRow+='<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:9px;font-size:13px;color:var(--text)">'+
         '<span style="font-size:14px">🎯</span><span style="color:var(--hint)">今天最该做的一件</span><b style="color:var(--primary);font-weight:600">'+tGoal.replace(/</g,'&lt;')+'</b></div>';
     }
-    /* 果核下钻导图头：毕业目标 → 最近硬仗 → 今天该做的一件（差异化·贯穿毕业到今日） */
+    /* 主线·今日安放下钻导图头：毕业目标 → 最近硬仗 → 自动给出"此刻建议"（打开即用，不用先写计划） */
     var gDone=0,gTot=0;try{var g100=(typeof DB!=='undefined'&&DB&&DB.get)?(DB.get('goal100',[])||[]):[];gTot=g100.length;for(var _gg=0;_gg<gTot;_gg++){if(g100[_gg]&&g100[_gg].done){gDone++;}}}catch(e){}
+    /* 自动"此刻建议"：读真实数据(ddl/目标)给出一件此刻就能做的事，用户不用主动写——低门槛差异化 */
+    var _nowTxt='';
+    try{
+      var _dueN='',_dueD=0;
+      for(var _di=0;_di<cds.length;_di++){ var _c=cds[_di]; if(_c&&_c.d&&_c.d>0){ if(!_dueD||_c.d<_dueD){_dueD=_c.d;_dueN=_c.n;} } }
+      if(_dueD&&_dueD<=14){ _nowTxt='距<b>「'+esc(_dueN)+'」</b>还有 '+_dueD+' 天，此刻最该为它推进一小步——先专注 25 分钟，比空想"该怎么做"更有效。'; }
+      else if(gTot&&gDone<gTot){ _nowTxt='先点亮一个目标的一小步：把它拆成「今天这一件」，做完即走，不求多。'; }
+      else { _nowTxt='此刻清空一下头脑：把最纠缠的一件事倒进匣子，一句话、一个字都算。'; }
+    }catch(_e){ _nowTxt='此刻，先做一件最轻的小事，给自己一个开始。'; }
     var drillHead='<div style="border-bottom:1px dashed var(--border);padding-bottom:9px;margin-bottom:11px">'+
-      '<div style="font-size:13px;font-weight:700;color:var(--head);letter-spacing:1px">果核 · 成长中枢</div>'+
-      '<div style="font-size:11.5px;color:var(--hint);margin:3px 0 9px">把毕业目标一步步安放进今天 · 方向比不断更重要</div>'+
+      '<div style="font-size:13px;font-weight:700;color:var(--head);letter-spacing:1px">主线 · 今日安放</div>'+
+      '<div style="font-size:11.5px;color:var(--hint);margin:3px 0 9px">不用先写计划：打开就有此刻该做的一件 · 按需使用，用不上随时收起</div>'+
       '<div style="display:flex;gap:6px;flex-wrap:wrap">'+
         '<span style="font-size:11px;color:var(--muted);padding:4px 9px;border-radius:8px;background:var(--bg)">🎓 人生目标'+(gTot?(' '+gDone+'/'+gTot+' 已点亮'):' · 去「目标拆解」点燃第一个')+'</span>'+
         '<span style="font-size:11px;color:var(--muted);padding:4px 9px;border-radius:8px;background:var(--bg)">⏳ 最近硬仗'+(cds.length?(' '+cds.length+' 场倒计时中'):' · 去「考试规划」添加')+'</span>'+
-        '<span style="font-size:11px;color:var(--primary);padding:4px 9px;border-radius:8px;background:var(--primary-light)">👇 今天该做的一件</span>'+
       '</div>'+
-      '<button type="button" onclick="try{var _i=document.getElementById(\'todayGoalInput\');if(_i){_i.focus();_i.scrollIntoView({behavior:\'smooth\',block:\'center\'});}}catch(e){}" style="margin-top:9px;width:100%;padding:9px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-strong));color:#fff;font-weight:600;font-size:13px;cursor:pointer">＋ 今天想安放哪一件？写下来就开始</button>'+
+      '<div style="margin:9px 0 0;padding:9px 10px;border-radius:10px;background:var(--primary-light);border:1px dashed var(--primary-mid);color:var(--primary-strong);font-size:12.5px;line-height:1.7">🔎 此刻·建议<br style="display:block;margin:2px 0">'+_nowTxt+'</div>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:9px">'+
+        '<button type="button" onclick="try{switchView(\'timer\');}catch(e){}" style="flex:1;min-width:150px;padding:9px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-strong));color:#fff;font-weight:600;font-size:13px;cursor:pointer">▶ 先专注这一件（一键开始）</button>'+
+        '<button type="button" onclick="try{var _i=document.getElementById(\'todayGoalInput\');if(_i){_i.focus();_i.scrollIntoView({behavior:\'smooth\',block:\'center\'});}}catch(e){}" style="flex:1;min-width:150px;padding:9px;border-radius:10px;background:transparent;border:1px solid var(--primary-mid);color:var(--primary-mid);font-weight:600;font-size:13px;cursor:pointer">＋ 或写一句今天想做的</button>'+
+      '</div>'+
       '</div>';
     host.innerHTML=
       drillHead+
