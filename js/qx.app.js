@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.70';
+window.__pageVersion='2026.09.18.71';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -7751,6 +7751,163 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
       // 重新走一遍切页重算钩子
       window.qxDrawChart();
     })();
+
+    /* 6) 成长自画像：把散落的数据聚成「你正在成为谁」+ 一张可保存/分享的卡片（只读，不造假） */
+    window.qxPortraitData=function(){
+      var ub=(typeof getUserBooks==='function'?getUserBooks():[])||[];
+      var notes=(typeof getBooks==='function'?getBooks():[])||[];
+      var pods=(typeof getPodcasts==='function'?getPodcasts():[])||[];
+      var journals=(typeof getJournals==='function'?getJournals():[])||[];
+      var tasks=(typeof getTasks==='function'?getTasks():[])||[];
+      var habits=(typeof getHabits==='function'?getHabits():[])||[];
+      var checkins=DB.get('checkins',{})||{};
+      var pomos=DB.get('pomoCount',{})||{};
+      var first=getFirstUseDate?getFirstUseDate():null;
+      var useDays=1;
+      if(first){try{var _s=new Date(String(first)+'T00:00:00');var _e=new Date();_e.setHours(0,0,0,0);useDays=Math.round((_e-_s)/86400000)+1;}catch(e){useDays=1;}}
+      var done=0;tasks.forEach(function(t){if(t&&t.done)done++;});
+      var maxStreak=0;habits.forEach(function(h){var s=longestStreakFromRecords((h&&h.records)||{});if(s>maxStreak)maxStreak=s;});
+      var totalPomo=0;Object.keys(pomos).forEach(function(k){totalPomo+=pomos[k]||0;});
+      var activeDays={};function ad(k){if(k)activeDays[k]=1;}
+      function addC(c){for(var k2 in c){var d2=c[k2];if(d2&&typeof d2==='object'){var n=0;for(var x in d2){if(d2[x])n++;}if(n>0)ad(k2);}else if(d2){ad(k2);}}}
+      addC(checkins);
+      var books=ub.length, bookNotes=notes.length, podcasts=pods.length, journalN=0;
+      if(journals&&typeof journals==='object'){journalN=Object.keys(journals).length;}
+      var cats={};ub.forEach(function(b){if(b&&b.cat){cats[b.cat]=(cats[b.cat]||0)+1;}});
+      var words=(typeof getWords==='function'?(getWords()||[]).length:0);
+      return {useDays:useDays,done:done,maxStreak:maxStreak,totalPomo:totalPomo,activeDays:activeDays,books:books,bookNotes:bookNotes,podcasts:podcasts,journals:journalN,cats:cats,words:words};
+    };
+    window.qxPortraitIdentity=function(s){
+      if(!s)return {label:'🌱 刚刚启程的探索者',text:'刚开始使用栖匣，先埋下一颗种子。去写一条日记、勾一个待办，让它陪你慢慢长大。'};
+      var cands=[];
+      if(s.maxStreak>=7)cands.push(['🔥 呼吸般坚持的自律者','最长连续打卡 '+s.maxStreak+' 天，习惯已经长成了本能。']);
+      if(s.totalPomo>=20)cands.push(['🍅 心流训练师','累计完成 '+s.totalPomo+' 个番茄，专注力在一次次重启中变强。']);
+      if(s.done>=20)cands.push(['✅ 靠谱的执行者','累计完成 '+s.done+' 项任务，说过要做的事，大多都落了地。']);
+      if(s.books>=3)cands.push(['📚 边走边读的积累者','书架里存了 '+s.books+' 本书，阅读正在悄悄拓宽你的视野。']);
+      if(s.journals>=5||s.podcasts>=3)cands.push(['✍️ 爱记录的思考者','有 '+s.journals+' 篇札记与 '+s.podcasts+' 份播客笔记，你愿意把想法写下来，这很珍贵。']);
+      if(cands.length){
+        var got=[];
+        if(s.maxStreak>0)got.push('能持续坚持 '+s.maxStreak+' 天');
+        if(s.totalPomo>0)got.push('完成 '+s.totalPomo+' 个番茄');
+        if(s.books>0)got.push('读起 '+s.books+' 本书');
+        return {label:cands[0][0],text:cands[0][1]+' 这一路你'+(got.length?(got.join('、')+'，'):'')+'——走走停停，但每一步都算数。'};
+      }
+      if(s.useDays>=2)return {label:'🌱 刚刚启程的探索者',text:'你已在栖匣留下 '+s.useDays+' 天印记，正在养成属于自己的节奏。再坚持一下，习惯会替你撑腰。'};
+      return {label:'🌱 刚刚启程的探索者',text:'刚开始使用栖匣，先埋下一颗种子。去写一条日记、勾一个待办，让它陪你慢慢长大。'};
+    };
+    /* 成长自画像卡片 · 注入成长档案页 */
+    (function portraitInject(){
+      var host=el('view-stats');if(!host||host.querySelector('[data-qxa]'))return;
+      var card=document.createElement('div');
+      card.setAttribute('data-qxa','1');card.className='card';card.id='qxPortraitCard';
+      card.style.marginTop='16px';
+      card.innerHTML='<h3>🔆 我的成长自画像</h3>'+
+        '<p style="font-size:12px;color:var(--hint);margin:2px 0 8px">把散落在各个板块的记录聚成一句话与一张卡。它不比较、不打分，只回答一个朴素的问题：<b>你正在成为谁？</b></p>'+
+        '<div id="qxPortraitBody" style="font-size:13.5px;line-height:1.9;color:var(--text)">正在生成…</div>'+
+        '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">'+
+        '<button class="btn btn-sm btn-primary" onclick="qxPortraitPNG()">🎨 生成自画像卡片（可保存/分享）</button>'+
+        '<button class="btn btn-sm" style="background:var(--bg);border:1px solid var(--border-strong);color:var(--text)" onclick="qxPortraitPNG()">📤 分享这张卡</button></div>';
+      var gi=el('growthInsight');
+      var anchor=gi?(gi.closest?gi.closest('.card')||gi:gi):null;
+      (anchor&&anchor.parentNode?anchor.parentNode:host).appendChild(card);
+      /* 延后渲染：等下方 qxRenderPortrait 等函数定义完成后再填充卡片，避免顺序执行未定义 */
+      try{ setTimeout(function(){ if(window.qxRenderPortrait) window.qxRenderPortrait(); },0); }catch(e){}
+    })();
+    window.qxRenderPortrait=function(){
+      var body=el('qxPortraitBody');if(!body)return;
+      var s=window.qxPortraitData();
+      var idn=window.qxPortraitIdentity(s);
+      var chips;
+      var catTop=Object.keys(s.cats).sort(function(a,b){return s.cats[b]-s.cats[a];}).slice(0,3);
+      var html='<div style="background:linear-gradient(135deg,#FBF3E2,#F5E9D2);border:1px solid #E8D6B0;border-radius:12px;padding:12px 14px;color:#523A26"><div style="font-weight:800;font-size:15px">'+idn.label+'</div><div style="font-size:12.5px;margin-top:4px;opacity:.92">'+idn.text+'</div></div>';
+      var stat=[
+        ['陪伴天数',s.useDays],['连续打卡',s.maxStreak],['番茄钟',s.totalPomo],['完成任务',s.done],['读过的书',s.books],['札记/笔记',s.journals]
+      ];
+      var chips2='<div style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px">'+
+        stat.map(function(c){return '<span style="background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:12px"><b style="color:var(--primary);font-size:14px;margin-right:3px">'+c[1]+'</b>'+c[0]+'</span>';}).join('')+
+        '</div>';
+      if(catTop.length){
+        chips2+='<div style="font-size:12px;color:var(--hint);margin-top:6px">阅读偏好：'+
+          catTop.map(function(c){return '<b style="color:var(--teal)">'+esc(c)+' × '+s.cats[c]+'</b>';}).join(' · ')+'</div>';
+      }else if(s.bookNotes>0){
+        chips2+='<div style="font-size:12px;color:var(--hint);margin-top:6px">已积累 <b style="color:var(--teal)">'+s.bookNotes+'</b> 条读书笔记 · 下次给看过的书也点个收藏</div>';
+      }
+      body.innerHTML=html+chips2;
+    };
+    window.qxPortraitPNG=function(){
+      var s=window.qxPortraitData?window.qxPortraitData():{};
+      var idn=window.qxPortraitIdentity(s);
+      var cw=document.createElement('canvas');cw.width=900;cw.height=1240;
+      var ctx=cw.getContext('2d');
+      function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+      function rrF(x,y,w,h,r){if(ctx.roundRect){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}else{rr(x,y,w,h,r);}ctx.fill();}
+      var g=ctx.createLinearGradient(0,0,0,1240);g.addColorStop(0,'#3F5C46');g.addColorStop(.5,'#2E4633');g.addColorStop(1,'#223527');
+      ctx.fillStyle=g;ctx.fillRect(0,0,900,1240);
+      ctx.textAlign='center';
+      ctx.fillStyle='#F5EFE0';ctx.font='bold 46px sans-serif';ctx.fillText('栖匣 · 成长自画像',450,92);
+      ctx.fillStyle='rgba(245,239,224,.72)';ctx.font='22px sans-serif';ctx.fillText('只和昨天的自己比 · '+new Date().getFullYear(),450,140);
+      /* 身份卡 */
+      ctx.fillStyle='rgba(255,255,255,.1)';ctx.fillStyle='#FFF7E6';rrF(90,180,720,150,18);
+      ctx.fillStyle='#523A26';ctx.font='bold 30px sans-serif';ctx.fillText(idn.label,450,238);
+      ctx.fillStyle='#6E5A3D';ctx.font='20px sans-serif';
+      var words=idn.text.split('');var lines=[];var cur='';
+      for(var i=0;i<words.length;i++){cur+=words[i];if((cur.replace(/[\u4e00-\u9fff]/g,'中').length)>=26||i===words.length-1){lines.push(cur);cur='';}}
+      lines.forEach(function(ln,idx){ctx.fillText(ln,450,278+idx*30);});
+      ctx.textAlign='center';
+      /* 统计卡 3x2 */
+      var stat=[['陪伴天数',s.useDays],['连续打卡',s.maxStreak],['番茄钟',s.totalPomo],['完成任务',s.done],['读过的书',s.books],['札记/笔记',s.journals]];
+      ctx.fillStyle='rgba(255,255,255,.12)';
+      var xs=[90,375,660],ys=[370,540];
+      stat.forEach(function(it,i){
+        var c=Math.floor(i/3),r2=i%3,px=xs[r2],py=ys[c];
+        rrF(px,py,200,140,16);
+        ctx.fillStyle='rgba(255,255,255,.62)';ctx.font='20px sans-serif';ctx.fillText(it[1],px+100,py+54);
+        ctx.fillStyle='#fff';ctx.font='bold 16px sans-serif';ctx.fillText(it[0],px+100,py+88);
+      });
+      /* 阅读偏好条形 */
+      ctx.fillStyle='#fff';ctx.font='bold 24px sans-serif';ctx.textAlign='left';ctx.fillText('读到过的领域',90,760);
+      var cats=Object.keys(s.cats);var max=1;cats.forEach(function(k){if(s.cats[k]>max)max=s.cats[k];});
+      if(cats.length){
+        cats.slice(0,4).forEach(function(k,idx){
+          ctx.textAlign='left';ctx.fillStyle='#F5EFE0';ctx.font='20px sans-serif';ctx.fillText(k,90,800+idx*58);
+          ctx.fillStyle='rgba(255,255,255,.15)';rrF(250,776+idx*58,480,24,8);
+          ctx.fillStyle='#E6C98A';rrF(250,776+idx*58,480*(s.cats[k]/max),24,8);
+          ctx.textAlign='right';ctx.fillStyle='#F5EFE0';ctx.font='18px sans-serif';ctx.fillText(s.cats[k],750,800+idx*58);
+        });
+      }else{
+        ctx.fillStyle='rgba(245,239,224,.65)';ctx.font='20px sans-serif';ctx.textAlign='left';ctx.fillText('还没有整理阅读偏好，从读完第一本书开始吧',90,810);
+      }
+      /* 金句 */
+      var quote=(s.maxStreak>=3)?'坚持不是每天都在用力，而是每天都在场。':'成长不怕慢，只怕站在自己的路口羡慕别人的路。';
+      ctx.textAlign='center';ctx.fillStyle='rgba(255,255,255,.8)';ctx.font='italic 22px sans-serif';ctx.fillText('“'+quote+'”',450,1120);
+      ctx.fillStyle='rgba(255,255,255,.5)';ctx.font='18px sans-serif';ctx.fillText('由栖匣自动生成 · 数据仅存于你的设备 · '+new Date().toLocaleDateString(),450,1160);
+      /* 全屏预览：保存/长按/分享，兼容微信 WebView */
+      try{
+        var imgData=cw.toDataURL('image/png');
+        var box=document.getElementById('qxpImgBox');
+        if(!box){
+          box=document.createElement('div');box.id='qxpImgBox';
+          box.style.cssText='position:fixed;inset:0;z-index:99999;background:rgba(24,16,10,.86);display:none;flex-direction:column;align-items:center;padding:14px 10px 22px;overflow:auto;-webkit-overflow-scrolling:touch';
+          box.innerHTML='<div style="width:100%;max-width:420px;display:flex;align-items:center;gap:10px;color:#fff;margin-bottom:10px"><b style="flex:1">🎨 你的成长自画像</b><button id="qxpClose" style="background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:9px;padding:7px 14px;font-size:13px;flex-shrink:0">关闭</button></div>'+
+            '<img id="qxpImg" alt="成长自画像" style="width:100%;max-width:400px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.45);pointer-events:none">'+
+            '<div style="width:100%;max-width:420px;margin-top:12px;display:flex;flex-direction:column;gap:9px">'+
+              '<button id="qxpDl" style="background:#fff;color:#223527;border:none;border-radius:11px;padding:12px;font-size:15px;font-weight:600">保存图片</button>'+
+              '<div style="color:rgba(255,255,255,.85);font-size:12.5px;text-align:center;line-height:1.7">若未自动下载，请<b>长按上方图片</b>选择「保存 / 分享」。</div>'+
+            '</div>';
+          document.body.appendChild(box);
+          box.addEventListener('click',function(e){if(e.target===box)box.style.display='none';});
+          document.getElementById('qxpClose').onclick=function(){box.style.display='none';};
+          var dl=document.getElementById('qxpDl');
+          dl.onclick=function(){
+            try{var a=document.createElement('a');a.href=imgData;a.download='栖匣-成长自画像-'+todayKey()+'.png';document.body.appendChild(a);a.click();setTimeout(function(){try{document.body.removeChild(a);}catch(e){}},300);flash('已尝试保存；若未下载，请长按预览图保存');}
+            catch(e){try{flash('请在预览中长按图片保存');}catch(e2){}}
+          };
+        }
+        var pi=document.getElementById('qxpImg');pi.src=imgData;pi.style.opacity='0';pi.onload=function(){pi.style.opacity='1';};
+        box.style.display='flex';box.scrollTop=0;
+        try{flash('自画像已生成，可长按图片保存或分享');}catch(e){}
+      }catch(e2){try{flash('自画像生成失败，请稍后再试');}catch(e3){}}
+    };
 
     /* 6) 历史打卡回看（只读） */
     window.qxOpenHistory=function(){
