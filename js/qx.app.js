@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.73';
+window.__pageVersion='2026.09.19.74';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -2901,54 +2901,56 @@ function focusBoardHTML(v,extraCls){
 function renderFocus(){
   var cont=document.getElementById('focusStart');if(!cont)return;
   var sel=prefModules(), done=prefDoneFlag(), mode=prefMode();
-  var favOnly=done && mode==='fav';   /* 进入“我的关注”模式即收拢：核心固定 + 自选，其余进“更多板块” */
+  var favOnly=done && mode==='fav';   /* 进入“我的关注”模式即收拢：主线固定 + 自选，其余进“更多板块” */
   /* 自选但非核心、非内容库的板块 = “我感兴趣” */
   var extraSel=[];for(var _x=0;_x<sel.length;_x++){if(!isCore(sel[_x])&&!isContent(sel[_x]))extraSel.push(sel[_x]);}
   var html='';
   html+='<div class="focus-toolbar">'
-    +'<span class="ft-label">'+(favOnly?'「主线 · 今日安放」已固定，另加 '+extraSel.length+' 个你感兴趣的':'从毕业目标一步步安放进今天 · 先看主线，更多板块可展开')+'</span>'
+    +'<span class="ft-label">'+(favOnly?'「主线 · 今日安放」已固定，另加 '+extraSel.length+' 个你感兴趣的':'全部板块 · 按领域分类，点开即达')+'</span>'
     +'<span class="ft-btns">';
   if(favOnly){ html+='<button class="ft-btn" onclick="focusModeAll()">显示全部板块</button>'; }
   else if(done){ html+='<button class="ft-btn" onclick="focusModeFav()">只看我的关注</button>'; }
   html+='<button class="ft-btn ghost" onclick="openModulePick()">'+(favOnly?'调整我的关注':'挑我感兴趣的')+'</button>';
   html+='</span></div>';
 
-  /* ① 主线 · 今日安放（固定，贯穿毕业到今日） */
-  html+='<div class="focus-group open">'
-    +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
-    +'<span class="fg-caret">–</span><span class="fg-name">主线 · 今日安放</span>'
-    +'<span class="fg-count">'+CORE_ITEMS.length+' 个 · 贯穿毕业到今日</span></button>'
-    +'<div class="fg-body"><div class="focus-grid">';
-  for(var _c=0;_c<CORE_ITEMS.length;_c++){ html+=focusBoardHTML(CORE_ITEMS[_c][0]); }
-  html+='</div></div></div>';
-
-  /* ② 主线延伸 · 内容库（固定第二群：栖匣独有的方法+攻略深度，展示内容护城河） */
-  html+='<div class="focus-group open">'
-    +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
-    +'<span class="fg-caret">–</span><span class="fg-name">主线延伸 · 内容库</span>'
-    +'<span class="fg-count">'+CONTENT_ITEMS.length+' 个 · 方法与攻略已备好</span></button>'
-    +'<div class="fg-body"><div class="focus-grid">';
-  for(var _ct2=0;_ct2<CONTENT_ITEMS.length;_ct2++){ html+=focusBoardHTML(CONTENT_ITEMS[_ct2][0]); }
-  html+='</div></div></div>';
-
-  /* ③ 我感兴趣的（仅“我的关注”模式，且确实有自选时） */
-  if(favOnly && extraSel.length>0){
+  if(favOnly){
+    /* ① 主线 · 今日安放（固定，贯穿毕业到今日） */
     html+='<div class="focus-group open">'
       +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
-      +'<span class="fg-caret">–</span><span class="fg-name">我感兴趣的</span>'
-      +'<span class="fg-count">'+extraSel.length+' 个</span></button>'
+      +'<span class="fg-caret">–</span><span class="fg-name">主线 · 今日安放</span>'
+      +'<span class="fg-count">'+CORE_ITEMS.length+' 个 · 贯穿毕业到今日</span></button>'
       +'<div class="fg-body"><div class="focus-grid">';
-    for(var _e=0;_e<extraSel.length;_e++){ html+=focusBoardHTML(extraSel[_e]); }
+    for(var _c=0;_c<CORE_ITEMS.length;_c++){ html+=focusBoardHTML(CORE_ITEMS[_c][0]); }
     html+='</div></div></div>';
-  }
 
-  /* ④ 更多板块：全量/未完成挑选时，展示全部内容分类（剔除核心与内容库项），折叠在最下 */
-  if(!favOnly){
+    /* ② 主线延伸 · 内容库（固定第二群：栖匣独有的方法+攻略深度，展示内容护城河） */
+    html+='<div class="focus-group open">'
+      +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
+      +'<span class="fg-caret">–</span><span class="fg-name">主线延伸 · 内容库</span>'
+      +'<span class="fg-count">'+CONTENT_ITEMS.length+' 个 · 方法与攻略已备好</span></button>'
+      +'<div class="fg-body"><div class="focus-grid">';
+    for(var _ct2=0;_ct2<CONTENT_ITEMS.length;_ct2++){ html+=focusBoardHTML(CONTENT_ITEMS[_ct2][0]); }
+    html+='</div></div></div>';
+
+    /* ③ 我感兴趣的（仅“我的关注”模式，且确实有自选时） */
+    if(extraSel.length>0){
+      html+='<div class="focus-group open">'
+        +'<button class="fg-head" role="button" aria-expanded="true" onclick="toggleFocusGroup(this)">'
+        +'<span class="fg-caret">–</span><span class="fg-name">我感兴趣的</span>'
+        +'<span class="fg-count">'+extraSel.length+' 个</span></button>'
+        +'<div class="fg-body"><div class="focus-grid">';
+      for(var _e=0;_e<extraSel.length;_e++){ html+=focusBoardHTML(extraSel[_e]); }
+      html+='</div></div></div>';
+    }
+    /* “我的关注”模式：给一个展开全部板块的便捷入口 */
+    html+='<div style="margin-top:14px;text-align:center;font-size:12px;color:var(--hint);line-height:1.8">其余板块已收进侧边栏「更多板块」，需要时点开即可，随时可回来调整。<br><button class="ft-btn ghost" style="margin-top:8px" onclick="openModulePick()">挑我感兴趣的板块</button></div>';
+  }else{
+    /* 显示全部板块：直接从各“匣”分类开场，核心/内容库板块回到它们原本所属的分类位置，不再单独成组 */
     for(var si=0;si<NAV_ALL.length;si++){
       var sec=NAV_ALL[si];
       var isSys=!!PREF_SYS[sec.items[0]&&sec.items[0][0]];
       if(isSys)continue;
-      var items=[];for(var k=0;k<sec.items.length;k++){ if(!isCore(sec.items[k][0])&&!isContent(sec.items[k][0]))items.push(sec.items[k]); }
+      var items=sec.items;
       if(items.length===0)continue;
       html+='<div class="focus-group'+(si===0?' open':'')+'">'
         +'<button class="fg-head" role="button" aria-expanded="'+(si===0?'true':'false')+'" onclick="toggleFocusGroup(this)">'
@@ -2960,9 +2962,6 @@ function renderFocus(){
       html+='</div></div></div>';
     }
     html+='<div style="margin-top:14px;text-align:center"><button class="ft-btn ghost" onclick="openModulePick()">挑出我感兴趣的，收起用不到的板块</button></div>';
-  }else{
-    /* “我的关注”模式：给一个展开全部板块的便捷入口 */
-    html+='<div style="margin-top:14px;text-align:center;font-size:12px;color:var(--hint);line-height:1.8">其余板块已收进侧边栏「更多板块」，需要时点开即可，随时可回来调整。<br><button class="ft-btn ghost" style="margin-top:8px" onclick="openModulePick()">挑我感兴趣的板块</button></div>';
   }
   cont.innerHTML=html;
   cont.style.display='block';
