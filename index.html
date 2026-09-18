@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.68"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.70"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}
     /* 关键决策(根治白屏)：正文 .app 永不在冷启动时隐藏。白屏的本质＝"内容被藏、等JS亮出"，
        网络/WebView 下 JS 迟来或出错就会卡在空白。现正文始终可见(首帧即有内容、反应更快)，
-       闪屏仅作全屏覆盖层，并用下方纯CSS动画自动淡出——不依赖任何 JS 也能亮出内容。 */
-    /* 闪屏纯CSS自动淡出：载入即盖住全屏，约1.3s无条件淡出(animation forwards)。
-       JS 就绪可提前结束，兜底效果一致。 */
-    #brandSplash{animation:qx_fade_splash .5s ease .8s forwards}
-    @keyframes qx_fade_splash{to{opacity:0;visibility:hidden}}
+       闪屏只做全屏覆盖层。 */
+    /* 顶栏/内容同步出现：闪屏淡出与"恢复顶栏"都由 JS 在同一时刻(dismiss)触发。
+       这里不再给闪屏单独加 CSS 自动淡出——CSS 提前淡出会与 JS 恢复顶栏错开，
+       造成"闪屏先消失、顶栏还没出来"的错位。 */
   </style>
   <!-- 返回恢复：若检测到「刚离开」的记录，则从首帧起隐藏整页，直到脚本把正确的板块与滚动位置就位后再显现。
        这样从外部链接/切走返回时不会闪现首页、也不会出现"从顶部往下滑"的滚动画，直接落在原位置。 -->
@@ -39,13 +38,16 @@
          只把“外层界面”藏到闪屏之后，杜绝“顶栏先于闪屏闪现、随后又消失再出现”的闪烁。 */
       try{ document.documentElement.classList.add('state-splash'); }catch(e){}
       try{ var __bsp=document.getElementById('brandSplash'); if(__bsp){__bsp.style.display='flex'; __bsp.style.animation='none'; void __bsp.offsetWidth; __bsp.style.animation='';} }catch(e){}
-      /* 极端兜底：若 CSS 动画/JS 均未淡出闪屏，最迟 2.4s 强制置空并隐藏，绝不留白屏(与上方动画一致)。 */
+      /* 极端兜底：若 JS 未能正常淡出闪屏/恢复界面，最迟 2.4s 强制一次性揭开——
+         恢复顶栏(state-splash)、清掉恢复遮罩、隐藏闪屏，绝不留"闪屏消失却无顶栏/永远盖住"的卡死态。 */
       setTimeout(function(){
         try{
+          document.documentElement.classList.remove('state-splash');
+          document.documentElement.style.visibility='';
           var __spp=document.getElementById('brandSplash');
-          if(!__spp){return;}
-          __spp.style.animation='none'; __spp.style.transition='opacity .25s'; __spp.style.opacity='0';
-          setTimeout(function(){ try{ __spp.style.visibility='hidden'; }catch(e){} },280);
+          if(__spp){ __spp.style.transition='opacity .3s'; __spp.style.opacity='0'; setTimeout(function(){ try{ __spp.style.visibility='hidden'; }catch(e){} },320); }
+          var __q=document.getElementById('qxShield'); if(__q){__q.style.display='none';}
+          try{ window.__qx_holdPos=false; }catch(e){}
         }catch(e){}
       },2400);
     }
@@ -307,7 +309,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 #view-timer,#view-habits{--m:#96764A;--m-deep:#6D5331;--m-soft:rgba(150,118,74,.14)}
 :root[data-theme="dark"] #view-timer,:root[data-theme="dark"] #view-habits{--m:#CFA97C;--m-deep:#A97F4F;--m-soft:rgba(207,169,124,.15)}
 /* 兜底：凡未被上表点名的视图（首页/总览/统计/帮助/关于等）用品牌核桃木 */
-#view-home,#view-quadrant,#view-stats,#view-help,#view-about,#view-settings,#view-changelog{--m:#6B4D33;--m-deep:#523A26;--m-soft:rgba(107,77,51,.11)}
+#view-home,#view-quadrant,#view-stats,#view-help,#view-about,#view-settings{--m:#6B4D33;--m-deep:#523A26;--m-soft:rgba(107,77,51,.11)}
 
 /* 版头：彩色引条 + 图标着色，让每个板块一眼可辨 */
 #view-home .page-head::before,
@@ -317,15 +319,15 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 #view-health .page-head::before,#view-mind .page-head::before,
 #view-finance .page-head::before,#view-save .page-head::before,#view-earn .page-head::before,#view-shop .page-head::before,#view-perk .page-head::before,
 #view-timer .page-head::before,
-#view-stats .page-head::before,#view-help .page-head::before,#view-about .page-head::before,#view-settings .page-head::before,#view-changelog .page-head::before{
+#view-stats .page-head::before,#view-help .page-head::before,#view-about .page-head::before,#view-settings .page-head::before{
   width:74px;height:4px;background:linear-gradient(90deg,var(--m),var(--m-deep));
 }
-#view-home .page-head h1,#view-quadrant .page-head h1,#view-career .page-head h1,#view-study .page-head h1,#view-exam .page-head h1,#view-paper .page-head h1,#view-contest .page-head h1,#view-plans .page-head h1,#view-goals .page-head h1,#view-college .page-head h1,#view-growth .page-head h1,#view-tpl .page-head h1,#view-tools .page-head h1,#view-ai .page-head h1,#view-agent .page-head h1,#view-creative .page-head h1,#view-campus .page-head h1,#view-party .page-head h1,#view-safety .page-head h1,#view-life .page-head h1,#view-habits .page-head h1,#view-shelf .page-head h1,#view-movie .page-head h1,#view-fun .page-head h1,#view-vision .page-head h1,#view-podcast .page-head h1,#view-journal .page-head h1,#view-health .page-head h1,#view-mind .page-head h1,#view-finance .page-head h1,#view-save .page-head h1,#view-earn .page-head h1,#view-shop .page-head h1,#view-perk .page-head h1,#view-timer .page-head h1,#view-stats .page-head h1,#view-help .page-head h1,#view-about .page-head h1,#view-settings .page-head h1,#view-changelog .page-head h1{position:relative;padding-left:16px}
-#view-home .page-head h1::before,#view-quadrant .page-head h1::before,#view-career .page-head h1::before,#view-study .page-head h1::before,#view-exam .page-head h1::before,#view-paper .page-head h1::before,#view-contest .page-head h1::before,#view-plans .page-head h1::before,#view-goals .page-head h1::before,#view-college .page-head h1::before,#view-growth .page-head h1::before,#view-tpl .page-head h1::before,#view-tools .page-head h1::before,#view-ai .page-head h1::before,#view-agent .page-head h1::before,#view-creative .page-head h1::before,#view-campus .page-head h1::before,#view-party .page-head h1::before,#view-safety .page-head h1::before,#view-life .page-head h1::before,#view-habits .page-head h1::before,#view-shelf .page-head h1::before,#view-movie .page-head h1::before,#view-fun .page-head h1::before,#view-vision .page-head h1::before,#view-podcast .page-head h1::before,#view-journal .page-head h1::before,#view-health .page-head h1::before,#view-mind .page-head h1::before,#view-finance .page-head h1::before,#view-save .page-head h1::before,#view-earn .page-head h1::before,#view-shop .page-head h1::before,#view-perk .page-head h1::before,#view-timer .page-head h1::before,#view-stats .page-head h1::before,#view-help .page-head h1::before,#view-about .page-head h1::before,#view-settings .page-head h1::before,#view-changelog .page-head h1::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:5px;border-radius:3px;background:var(--m)}
-#view-home .page-head h1 svg,#view-quadrant .page-head h1 svg,#view-career .page-head h1 svg,#view-study .page-head h1 svg,#view-exam .page-head h1 svg,#view-paper .page-head h1 svg,#view-contest .page-head h1 svg,#view-plans .page-head h1 svg,#view-goals .page-head h1 svg,#view-college .page-head h1 svg,#view-growth .page-head h1 svg,#view-tpl .page-head h1 svg,#view-tools .page-head h1 svg,#view-ai .page-head h1 svg,#view-agent .page-head h1 svg,#view-creative .page-head h1 svg,#view-campus .page-head h1 svg,#view-party .page-head h1 svg,#view-safety .page-head h1 svg,#view-life .page-head h1 svg,#view-habits .page-head h1 svg,#view-shelf .page-head h1 svg,#view-movie .page-head h1 svg,#view-fun .page-head h1 svg,#view-vision .page-head h1 svg,#view-podcast .page-head h1 svg,#view-journal .page-head h1 svg,#view-health .page-head h1 svg,#view-mind .page-head h1 svg,#view-finance .page-head h1 svg,#view-save .page-head h1 svg,#view-earn .page-head h1 svg,#view-shop .page-head h1 svg,#view-perk .page-head h1 svg,#view-timer .page-head h1 svg,#view-stats .page-head h1 svg,#view-help .page-head h1 svg,#view-about .page-head h1 svg,#view-settings .page-head h1 svg,#view-changelog .page-head h1 svg{color:var(--m)}
+#view-home .page-head h1,#view-quadrant .page-head h1,#view-career .page-head h1,#view-study .page-head h1,#view-exam .page-head h1,#view-paper .page-head h1,#view-contest .page-head h1,#view-plans .page-head h1,#view-goals .page-head h1,#view-college .page-head h1,#view-growth .page-head h1,#view-tpl .page-head h1,#view-tools .page-head h1,#view-ai .page-head h1,#view-agent .page-head h1,#view-creative .page-head h1,#view-campus .page-head h1,#view-party .page-head h1,#view-safety .page-head h1,#view-life .page-head h1,#view-habits .page-head h1,#view-shelf .page-head h1,#view-movie .page-head h1,#view-fun .page-head h1,#view-vision .page-head h1,#view-podcast .page-head h1,#view-journal .page-head h1,#view-health .page-head h1,#view-mind .page-head h1,#view-finance .page-head h1,#view-save .page-head h1,#view-earn .page-head h1,#view-shop .page-head h1,#view-perk .page-head h1,#view-timer .page-head h1,#view-stats .page-head h1,#view-help .page-head h1,#view-about .page-head h1,#view-settings .page-head h1 .page-head h1{position:relative;padding-left:16px}
+#view-home .page-head h1::before,#view-quadrant .page-head h1::before,#view-career .page-head h1::before,#view-study .page-head h1::before,#view-exam .page-head h1::before,#view-paper .page-head h1::before,#view-contest .page-head h1::before,#view-plans .page-head h1::before,#view-goals .page-head h1::before,#view-college .page-head h1::before,#view-growth .page-head h1::before,#view-tpl .page-head h1::before,#view-tools .page-head h1::before,#view-ai .page-head h1::before,#view-agent .page-head h1::before,#view-creative .page-head h1::before,#view-campus .page-head h1::before,#view-party .page-head h1::before,#view-safety .page-head h1::before,#view-life .page-head h1::before,#view-habits .page-head h1::before,#view-shelf .page-head h1::before,#view-movie .page-head h1::before,#view-fun .page-head h1::before,#view-vision .page-head h1::before,#view-podcast .page-head h1::before,#view-journal .page-head h1::before,#view-health .page-head h1::before,#view-mind .page-head h1::before,#view-finance .page-head h1::before,#view-save .page-head h1::before,#view-earn .page-head h1::before,#view-shop .page-head h1::before,#view-perk .page-head h1::before,#view-timer .page-head h1::before,#view-stats .page-head h1::before,#view-help .page-head h1::before,#view-about .page-head h1::before,#view-settings .page-head h1::before .page-head h1::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:5px;border-radius:3px;background:var(--m)}
+#view-home .page-head h1 svg,#view-quadrant .page-head h1 svg,#view-career .page-head h1 svg,#view-study .page-head h1 svg,#view-exam .page-head h1 svg,#view-paper .page-head h1 svg,#view-contest .page-head h1 svg,#view-plans .page-head h1 svg,#view-goals .page-head h1 svg,#view-college .page-head h1 svg,#view-growth .page-head h1 svg,#view-tpl .page-head h1 svg,#view-tools .page-head h1 svg,#view-ai .page-head h1 svg,#view-agent .page-head h1 svg,#view-creative .page-head h1 svg,#view-campus .page-head h1 svg,#view-party .page-head h1 svg,#view-safety .page-head h1 svg,#view-life .page-head h1 svg,#view-habits .page-head h1 svg,#view-shelf .page-head h1 svg,#view-movie .page-head h1 svg,#view-fun .page-head h1 svg,#view-vision .page-head h1 svg,#view-podcast .page-head h1 svg,#view-journal .page-head h1 svg,#view-health .page-head h1 svg,#view-mind .page-head h1 svg,#view-finance .page-head h1 svg,#view-save .page-head h1 svg,#view-earn .page-head h1 svg,#view-shop .page-head h1 svg,#view-perk .page-head h1 svg,#view-timer .page-head h1 svg,#view-stats .page-head h1 svg,#view-help .page-head h1 svg,#view-about .page-head h1 svg,#view-settings .page-head h1 svg .page-head h1 svg{color:var(--m)}
 
 /* 板块导语：色带导语卡，顶部清晰色块 —— 板块区分一眼可辨 */
-#view-home .section-intro,#view-quadrant .section-intro,#view-career .section-intro,#view-study .section-intro,#view-exam .section-intro,#view-paper .section-intro,#view-contest .section-intro,#view-plans .section-intro,#view-goals .section-intro,#view-college .section-intro,#view-growth .section-intro,#view-tpl .section-intro,#view-tools .section-intro,#view-ai .section-intro,#view-agent .section-intro,#view-creative .section-intro,#view-campus .section-intro,#view-party .section-intro,#view-safety .section-intro,#view-life .section-intro,#view-habits .section-intro,#view-shelf .section-intro,#view-movie .section-intro,#view-fun .section-intro,#view-vision .section-intro,#view-podcast .section-intro,#view-journal .section-intro,#view-health .section-intro,#view-mind .section-intro,#view-finance .section-intro,#view-save .section-intro,#view-earn .section-intro,#view-shop .section-intro,#view-perk .section-intro,#view-timer .section-intro,#view-stats .section-intro,#view-help .section-intro,#view-about .section-intro,#view-settings .section-intro,#view-changelog .section-intro{
+#view-home .section-intro,#view-quadrant .section-intro,#view-career .section-intro,#view-study .section-intro,#view-exam .section-intro,#view-paper .section-intro,#view-contest .section-intro,#view-plans .section-intro,#view-goals .section-intro,#view-college .section-intro,#view-growth .section-intro,#view-tpl .section-intro,#view-tools .section-intro,#view-ai .section-intro,#view-agent .section-intro,#view-creative .section-intro,#view-campus .section-intro,#view-party .section-intro,#view-safety .section-intro,#view-life .section-intro,#view-habits .section-intro,#view-shelf .section-intro,#view-movie .section-intro,#view-fun .section-intro,#view-vision .section-intro,#view-podcast .section-intro,#view-journal .section-intro,#view-health .section-intro,#view-mind .section-intro,#view-finance .section-intro,#view-save .section-intro,#view-earn .section-intro,#view-shop .section-intro,#view-perk .section-intro,#view-timer .section-intro,#view-stats .section-intro,#view-help .section-intro,#view-about .section-intro,#view-settings .section-intro .section-intro{
   position:relative;overflow:hidden;
   background:linear-gradient(90deg,color-mix(in srgb,var(--m-soft) 55%,transparent),transparent 82%);
   border-left:3px solid color-mix(in srgb,var(--m) 70%,transparent);
@@ -526,10 +528,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             系统设置
           </button>
-          <button class="tb-more-item" onclick="try{switchView(&apos;changelog&apos;)}catch(e){}toggleTbMore()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
-            更新日志
-          </button>
           <button class="tb-more-item" onclick="try{switchView(&apos;about&apos;)}catch(e){}toggleTbMore()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
             关于产品
@@ -683,9 +681,6 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
     </div>
     <div class="nav-item active" data-view="settings" onclick="switchView(&#39;settings&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置
-    </div>
-    <div class="nav-item" data-view="changelog" onclick="switchView(&#39;changelog&#39;)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>更新日志
     </div>
     <div class="nav-item" data-view="about" onclick="switchView(&#39;about&#39;)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品
@@ -2493,6 +2488,115 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
       <div class="callout callout-info"><strong>论文是什么：</strong>大学论文不是高中议论文。它是基于文献/数据的<strong>学术论证</strong>，要求有明确论点+严谨论证+规范引用。学业论文还要结合法条、案例、学说。本科四年你会写：课程论文、学年论文、毕业论文，每种字数2000-10000+不等。</div>
       <div class="callout callout-warn" data-nodismiss style="margin-top:8px"><strong>🎓 学术诚信提醒：</strong>请独立完成，<b>严禁抄袭、严禁代写、严禁伪造数据</b>。学术不端一经查实，轻则处分、重则取消学位甚至开除，无论找到几年级的"枪手"最后都要自己承担后果。本板块只提供方法与模板帮你写好，一切成果都应由你亲手完成。</div>
+
+      <!-- ═══ 论文进度追踪器(硬仗联动) · 七步法+倒排里程碑+进度条 ═══ -->
+      <div class="card" id="ppTracker" style="margin-top:16px;background:linear-gradient(150deg,#FFFBF3,var(--surface));border-color:var(--border-strong)">
+        <h3 style="color:var(--primary-strong)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;vertical-align:-3px"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 论文进度追踪 · 倒排不赶工</h3>
+        <p style="font-size:13px;color:var(--muted);margin:4px 0 10px">填上论文标题和截止日期，栖匣自动倒排出 5 个里程碑，并在首页替你盯着倒计时。勾一步，进度条走一步——看得见的推进，才不慌。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:4px">
+          <input id="ppTitle" placeholder="论文标题（如：正当防卫中'正在进行'的认定）" style="flex:2 1 200px;min-width:180px;padding:9px 12px;border:1px solid var(--border-strong);border-radius:9px;background:var(--surface);font-size:13.5px;color:var(--text)">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">截止日期
+            <input id="ppDue" type="date" style="padding:8px 10px;border:1px solid var(--border-strong);border-radius:9px;background:var(--surface);font-size:13.5px;color:var(--text)">
+          </label>
+          <button class="btn btn-primary btn-sm" onclick="ppPlan()">开始规划</button>
+          <button class="btn btn-sm" onclick="ppReset()" title="清空这篇论文的进度">重来</button>
+        </div>
+
+        <div id="ppResult" style="display:none;margin-top:14px">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;margin-bottom:8px">
+            <span style="font-weight:700;color:var(--primary-strong)" id="ppName"></span>
+            <span style="font-size:12.5px;color:var(--muted)" id="ppDueTxt"></span>
+            <span id="ppCountdown" style="font-weight:700"></span>
+          </div>
+          <div style="font-size:12px;color:var(--hint);margin-bottom:6px">整体进度</div>
+          <div style="background:var(--primary-light);border-radius:8px;height:10px;overflow:hidden">
+            <div id="ppBar" style="width:0%;height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:8px;transition:width .35s"></div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin:6px 0 2px" id="ppPct"></div>
+
+          <div class="callout" id="ppNext" style="margin:10px 0;background:var(--gold-light);border-color:#E6CFA3"></div>
+
+          <div style="font-size:12px;color:var(--hint);margin:12px 0 6px">倒排里程碑（相对截止日自动顺排）</div>
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+            <thead><tr><th style="text-align:left">里程碑</th><th style="text-align:left">日期</th><th style="text-align:left">该做的</th><th style="text-align:left">状态</th></tr></thead>
+            <tbody id="ppMilestones"></tbody>
+          </table>
+
+          <div style="font-size:12px;color:var(--hint);margin:14px 0 6px">写作七步法（勾一步存一步）</div>
+          <div id="ppSteps" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var K='qixia_paper_tracker_v1';
+        var STEP=[['选题小切口，论证X中的Y','🅐'],['查文献，先读10篇综述定范围','🅑'],['列大纲：引言-文献-主体-结论','🅒'],['写初稿，一气呵成不纠结措辞','🅓'],['改二稿：补论据、修逻辑、删废话','🅔'],['查重降重（本科要求<30%）','🅕'],['格式排版+规范引用+通读定稿','🅖']];
+        function load(){try{return JSON.parse(localStorage.getItem(K))||null;}catch(e){return null;}}
+        function save(o){try{localStorage.setItem(K,JSON.stringify(o));}catch(e){}}
+        function pad(n){return (n<10?'0':'')+n;}
+        function fmt(ms){var d=new Date(ms);return (d.getMonth()+1)+'月'+d.getDate()+'日('+'日一二三四五六'[d.getDay()]+')';}
+        function daysFromNow(ms){return Math.ceil((ms-Date.now())/86400000);}
+        window.ppPlan=function(){
+          var t=document.getElementById('ppTitle').value.trim();
+          var due=document.getElementById('ppDue').value;
+          if(!t){document.getElementById('ppTitle').focus();return;}
+          if(!due){document.getElementById('ppDue').focus();return;}
+          var dueMs=new Date(due+'T23:59:59').getTime();
+          save({title:t,due:due,done:[false,false,false,false,false,false,false]});
+          render(dueMs);
+        };
+        window.ppReset=function(){
+          try{localStorage.removeItem(K);}catch(e){}
+          var r=document.getElementById('ppResult');r.style.display='none';
+          document.getElementById('ppTitle').value='';document.getElementById('ppDue').value='';
+        };
+        function render(dueMs){
+          var o=load();if(!o)return;
+          var r=document.getElementById('ppResult');r.style.display='block';
+          document.getElementById('ppName').textContent=o.title;
+          document.getElementById('ppDueTxt').textContent='截止：'+fmt(dueMs);
+          var d=daysFromNow(dueMs);
+          var cd=document.getElementById('ppCountdown');
+          cd.textContent = d>1?'还有'+d+'天':(d===1?'明天截止':'已超期'+(-d)+'天');
+          cd.style.color = d<=7?(d<0?'#B34A3A':'#B07A2E'):'var(--green)';
+          /* 里程碑: 相对截止日前推的天数 */
+          var mile=[[8*7,'截止前8周','选题+查文献20篇，定大纲'],[6*7,'截止前6周','写引言+文献综述'],[4*7,'截止前4周','完成主体论证'],[14,'截止前2周','补论据+改逻辑+查重'],[7,'截止前1周','格式+引用+通读定稿']];
+          var tb=document.getElementById('ppMilestones');
+          tb.innerHTML=mile.map(function(m){
+            var ms=dueMs-m[0]*86400000,dd=daysFromNow(ms);
+            var st=dd<0?'over':(dd<=7?'soon':'ok');
+            var lab=st==='over'?'已过':'<span style="color:'+(st==='soon'?'#B07A2E':'var(--green)')+'">'+dd+'天内</span>';
+            return '<tr><td>'+m[1]+'</td><td>'+fmt(ms)+'</td><td>'+m[2]+'</td><td>'+lab+'</td></tr>';
+          }).join('');
+          /* 七步勾选 */
+          var sp=document.getElementById('ppSteps');
+          sp.innerHTML=STEP.map(function(s,i){
+            return '<label style="display:flex;align-items:center;gap:9px;padding:8px 11px;border:1px solid var(--border);border-radius:9px;background:var(--bg);cursor:pointer;font-size:13px"><input type="checkbox"'+(o.done[i]?' checked':'')+' onchange="ppToggle('+i+',this.checked)"><span>'+s[1]+'</span><span>'+(o.done[i]?'<s style="color:var(--hint)">'+s[0]+'</s>':s[0])+'</span></label>';
+          }).join('');
+          /* 进度 */
+          var done=o.done.filter(Boolean).length,pct=Math.round(done/7*100);
+          document.getElementById('ppBar').style.width=pct+'%';
+          document.getElementById('ppPct').textContent='已完成 '+done+'/7 步 · '+pct+'%';
+          /* 此刻建议: 找下一个未完成且知道要做什么的步骤, 结合时间压力 */
+          var nx=o.done.indexOf(false);
+          var nextEl=document.getElementById('ppNext');
+          if(done===7){nextEl.innerHTML='<b>🎉 七步全部完成！</b> 你已经走完了整条写作流，接下来专心格式核对与定稿。';}
+          else if(d<0){nextEl.innerHTML='<b>⏰ 已超期 '+(-d)+' 天。</b> 别慌，按'+(nx>=0?STEP[nx][0]:'校对')+'这一条先动笔 20 分钟，烂初稿好过没初稿。';}
+          else if(d<=7){nextEl.innerHTML='<b>🔥 只剩 '+d+' 天。</b> 此刻最该做的是：<b>'+(nx>=0?STEP[nx][0]:'查重与格式核对')+'</b>——先做这一步，其余交给倒排里程碑。';}
+          else{nextEl.innerHTML='<b style="color:var(--primary)">此刻建议：</b>下一步勾选 <b>'+(nx>=0?STEP[nx][0]:'流程完成')+'</b>，按倒排里程碑推进，每周能稳稳往前拱。';}
+        }
+        window.ppToggle=function(i,v){
+          var o=load();if(!o)return;o.done[i]=v;save(o);
+          render(new Date(o.due+'T23:59:59').getTime());
+        };
+        /* 恢复之前进度 */
+        var prev=load();
+        if(prev&&prev.title&&prev.due){
+          document.getElementById('ppTitle').value=prev.title;
+          document.getElementById('ppDue').value=prev.due;
+          render(new Date(prev.due+'T23:59:59').getTime());
+        }
+      })();
+      </script>
       <div class="grid grid-3">
         <div class="card">
           <h3>论文类型与字数</h3>
@@ -7016,19 +7120,19 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="grid grid-2" style="margin-top:8px">
           <div style="font-size:13px;color:var(--muted);line-height:1.9">
             <p><strong>❌ 误解："数据存在云端，安全吗？"</strong><br>
-            ✅ 实情：数据默认加密保存在本机，你可随时导出，也可选配云端同步备份；数据始终由你掌控。</p>
-            <p><strong>❌ 误解："要注册账号才能用"</strong><br>
-            ✅ 实情：无需单独注册即可开箱使用，数据私密保存在你的设备上，需要跨设备延续时可登录账号开启同步。</p>
-            <p><strong>❌ 误解："数据存在云端，安全吗？"</strong><br>
-            ✅ 实情：数据默认加密保存在本机；只有你主动配置坚果云同步后，才会以加密形式同步到你自己的云端，实现多端延续。</p>
+            ✅ 实情：栖匣没有账号、没有后端服务器——数据默认只存在你设备的浏览器本地（localStorage），<b>不到达网络</b>。你的日记、打卡、目标，作者和任何服务端都读不到。只有当你在「设置」里主动开启<b>坚果云同步</b>或<b>导出备份</b>，数据才会以你掌控的方式出现在你自己的云端/文件里，主动权 100% 在你。</p>
+            <p><strong>❌ 误解："多端同步 = 实时同步"</strong><br>
+            ✅ 实情：是<b>手动触发</b>的云端备份——点一下上传、点一下恢复，不是实时写云。这反而避免了多台设备同时修改、互相覆盖造成的混乱。</p>
+            <p><strong>❌ 误解："要注册账号才用得了"</strong><br>
+            ✅ 实情：开箱即用，<b>零注册、零登录</b>。数据私密存在本机；想换设备延续时，用「设置→导出/导入备份」一键搬家，或用可选同步，全程不用留任何手机号。</p>
           </div>
           <div style="font-size:13px;color:var(--muted);line-height:1.9">
-            <p><strong>❌ 误解："多端同步就是实时同步"</strong><br>
-            ✅ 实情：不是实时同步。是手动触发的云端备份——点一下上传，点一下恢复。避免多设备同时修改造成数据混乱。</p>
-            <p><strong>❌ 误解："免费的肯定有广告 / 卖数据"</strong><br>
-            ✅ 实情：没有广告，也不收集你的数据。作者是个人开发者，做这个产品是因为自己需要，顺便分享给更多人。</p>
-            <p><strong>❌ 误解："网页应用不稳定，容易丢数据"</strong><br>
-            ✅ 实情：只要你定期导出备份，数据就不会丢。而且栖匣还有每日自动备份，保留最近 7 天，给你双重保障。</p>
+            <p><strong>❌ 误解："免费的肯定有广告 / 拿数据卖钱"</strong><br>
+            ✅ 实情：无广告、无会员、无内购，也不收集或上传任何行为数据。作者是个人开发者，做它先因为自己用得到，再做干净分享出来——没有商业化动机去碰你的隐私。</p>
+            <p><strong>❌ 误解："网页应用一清缓存就全没了"</strong><br>
+            ✅ 实情：清缓存/无痕模式确会丢本地数据，所以要<b>定期导出备份</b>。栖匣还内置<b>每日自动备份、保留最近 7 天</b>，误清后可在「系统设置→从自动备份恢复」找回，双重保障。</p>
+            <p><strong>❌ 误解："它只是又一个好看的清单，帮不上忙"</strong><br>
+            ✅ 实情：栖匣的价值是<b>打开即把最近考试/作业的倒计时、目标进度、此刻该做的一件推到你眼前</b>，你连"该先写什么"都不用想；更内置了方法+内容+工具的完整知识体系（考研保研/竞赛/论文/四六级资料），不是空壳清单。</p>
           </div>
         </div>
       </div>
@@ -7054,107 +7158,122 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <section class="view" id="view-settings">
-<div class="section-intro">数据备份导入、主题切换、项目介绍、各项系统设置。</div>
+<div class="section-intro">数据备份与恢复、外观偏好、同步与导出等系统设置，按需展开，清爽不打扰。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置</h1>
-        <p>数据导出/导入/清空 · 跨设备同步说明</p>
+        <p>数据安全 · 外观偏好 · 同步与导出，全部本地、按需展开</p>
       </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>导出备份</h3>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:10px">把所有数据导出为 JSON 文件，建议每周备份一次</p>
-          <button class="btn btn-primary" onclick="exportAll()">导出全部数据</button>
-        </div>
-        <div class="card">
-          <h3>导入恢复</h3>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:10px">从备份 JSON 恢复数据（会覆盖当前数据）</p>
-          <label class="btn btn-primary" style="cursor:pointer">选择备份文件<input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display:none"></label>
-        </div>
-      </div>
-      <div class="card" style="margin-top:16px">
-        <h3>数据自检</h3>
-        <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px">每次打开时，系统会自动确认一下你的数据是否完整、有没有丢失的情况——全程只在你自己的浏览器里进行，绝不读取、上传任何个人内容。</p>
-        <div id="qxSelfReport" style="margin-top:12px;font-size:13.5px;color:var(--text);padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);line-height:1.7">正在自检…</div>
-        <div id="qxSystemMeta" style="margin-top:12px;font-size:12px;color:var(--hint);line-height:1.9"></div>
-      </div>
-      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#E2D8C4">
-        <h3 style="color:var(--teal)">🛟 自动保存 + 自动备份（防丢失保险）</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.85">你的每次输入都会<b>自动保存到本机</b>，无需手动点保存；同时会<b>每自然日自动备份一次</b>（保留最近 7 天），即使误清空或出现异常也能一键找回来。</p>
+
+      <div class="card" style="background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#E2D8C4">
+        <h3 style="color:var(--teal)">🛟 本地自动保存 + 每日自动备份</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.85">你的每次输入都会<b>自动保存到本机</b>，无需手动点保存；同时<b>每自然日自动备份一次</b>（保留最近 7 天），误清空或异常也能一键找回。</p>
         <div id="autoBackupInfo" style="font-size:12.5px;color:var(--teal);font-weight:600;margin-bottom:10px">正在检查自动备份状态…</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn btn-primary" onclick="performAutoBackup(true)">🔁 立即备份一次</button>
           <button class="btn" style="border-color:var(--teal);color:var(--teal);background:transparent" onclick="restoreAutoBackup()">♻️ 从最近自动备份恢复</button>
         </div>
-        <div style="margin-top:10px;padding:10px 12px;background:rgba(0,0,0,.03);border-radius:8px;font-size:12px;color:var(--muted);line-height:1.8">
-          <b style="color:var(--text)">💡 备份小知识：</b>自动备份每天只生成一份，覆盖7天前的旧备份。建议每周额外手动导出一次 JSON 文件，存在云盘里作为"异地备份"——双份备份比单份安全得多。
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>💾 数据导出 / 导入 / 清空</h3>
+        <div class="grid grid-2" style="margin-top:8px">
+          <div>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:10px">把全部数据导出为 JSON 文件，建议每周手动备份一次。</p>
+            <button class="btn btn-primary" onclick="exportAll()">导出全部数据</button>
+          </div>
+          <div>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:10px">从备份 JSON 恢复数据（会覆盖当前数据，导入前请先导出）。</p>
+            <label class="btn btn-primary" style="cursor:pointer">选择备份文件导入<input type="file" id="importFile" accept=".json" onchange="importAll(event)" style="display:none"></label>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding:11px 13px;background:#FFF5F0;border:1px solid #F5C6B0;border-radius:10px">
+          <div style="font-weight:700;color:var(--coral);font-size:13.5px">清空我的填写数据（危险操作）</div>
+          <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin:5px 0 8px">仅删除你填写的内容（任务/打卡/单词/笔记/记录/自定义项等），<strong>产品框架与预置板块全部保留</strong>。操作后刷新即恢复默认。建议先导出备份。</p>
+          <button class="btn" style="background:var(--coral-light);color:var(--coral);border-color:var(--coral)" onclick="uiConfirm(&#39;确认清空你填写的数据？产品框架与预置内容会保留，此操作仅删除你的输入记录。&#39;,clearAll)">确认清空</button>
         </div>
       </div>
-      <div class="card" style="margin-top:16px;background:#FFF5F0;border-color:#F5C6B0">
-        <h3 style="color:var(--coral)">清空我的填写数据（危险操作）</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">仅删除你填写的内容（任务/打卡/单词/笔记/记录/自定义项等），<strong>产品框架与预置板块全部保留</strong>，刷新后自动恢复默认示例。仍建议先导出备份。</p>
-        <button class="btn" style="background:var(--coral-light);color:var(--coral);border-color:var(--coral)" onclick="uiConfirm(&#39;确认清空你填写的数据？产品框架与预置内容会保留，此操作仅删除你的输入记录。&#39;,clearAll)">确认清空</button>
-      </div>
-      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#EFE8D8,#EFE8D8);border-color:#CFC9B8">
-        <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:7px"><path d="M6 9a6 6 0 0 1 12 0"></path><path d="M4 9h16l-1 10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 9z"></path><path d="M8 9V7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"></path><path d="M9 15h6"></path></svg>开学准备清单设置</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">入学后「开学准备」会自动收起归档。如果误收或还想再查看，点下面按钮重新开启（首页即可见）。</p>
-        <button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="restorePrepare()">重新开启开学准备清单</button>
-      </div>
-      <div class="card" style="margin-top:16px;background:linear-gradient(135deg,#F3EDDE,#F3EDDE);border-color:#E0D5BF">
-        <h3 style="color:var(--primary)">⭐ 挑我感兴趣的板块</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">首次进入时，带「主线」徽章的「今日安放」板块已自动固定：它把<b>毕业目标 → 硬仗倒计时 → 今天的一小步</b>一路下钻，且断了不丢人、不惩罚你。它是<b>按需主线</b>：用得上就多停留，用不上随时收起，绝不影响你用最有用的部分。其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏，随时可回来调整。</p>
+
+      <div class="card" style="margin-top:16px">
+        <h3>⭐ 我的板块偏好 · 外观</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.85">「今日安放」主线板块默认固定：它把<b>毕业目标 → 硬仗倒计时 → 今天的一小步</b>一路下钻，断了不丢人、不惩罚你。用得上就多停留，用不上随时收起，绝不影响你用最有用的部分。其余你挑中的板块会进首页优先展示，没挑的暂时收进侧边栏。</p>
         <div>
           <button class="btn btn-primary" onclick="openModulePick()">调整我感兴趣的板块</button>
           <span id="prefStatus" style="display:inline-block;font-size:12px;color:var(--hint);margin-left:10px;vertical-align:middle"></span>
         </div>
       </div>
-      <div class="card" style="margin-top:16px">
-        <h3>📊 周报 PNG 导出</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:10px">一键生成本周任务报告图片（PNG），可保存/分享到朋友圈、发给家人朋友看你的成长。</p>
-        <button class="btn btn-primary" onclick="exportWeekPNG()">生成本周报告 PNG</button>
-      </div>
-      <div class="card" style="margin-top:16px">
-        <h3>☁️ 多端同步 · 坚果云 WebDAV 配置指南</h3>
-        <p style="font-size:13px;color:var(--text);line-height:1.9">
-          <strong>先说清楚：</strong>栖匣以本地保存、隐私优先：记录默认只存在你的设备里，并提供导出与多端同步能力。想多设备共用数据，可以用下面两种方式：
-        </p>
-        <div style="margin-top:10px;display:grid;gap:10px">
-          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:12px 14px">
-            <div style="font-weight:700;color:var(--primary);margin-bottom:6px">方式一：手动导出/导入（最简单、零成本）</div>
-            <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin:0">
-              <b>操作步骤：</b><br>
-              ① 在旧设备：系统设置 → 导出全部数据 → 下载 JSON 文件<br>
-              ② 把文件传到新设备（微信文件传输助手、QQ、邮件都行）<br>
-              ③ 在新设备：系统设置 → 导入恢复 → 选择刚才的文件<br>
-              <b>适用场景：</b>偶尔换设备、或每周手动同步一次。<b>优点：</b>简单可靠，不会出错。
-            </p>
+
+      <div style="margin-top:16px;display:grid;gap:14px">
+        <details class="card" style="padding:0;overflow:hidden">
+          <summary style="cursor:pointer;padding:14px 16px;font-size:14px;font-weight:700;color:var(--primary);list-style:none">📊 数据自检 & 环境信息</summary>
+          <div style="padding:0 16px 16px;border-top:1px solid var(--border)">
+            <p style="font-size:12.5px;color:var(--muted);line-height:1.8;padding-top:10px">每次打开栖匣都会自动确认数据是否完整、有无丢失——全程只在你自己的浏览器里进行，绝不读取、上传任何个人内容。</p>
+            <div id="qxSelfReport" style="margin-top:12px;font-size:13.5px;color:var(--text);padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);line-height:1.7">正在自检…</div>
+            <div id="qxSystemMeta" style="margin-top:12px;font-size:12px;color:var(--hint);line-height:1.9"></div>
           </div>
-          <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:12px 14px">
-            <div style="font-weight:700;color:var(--primary);margin-bottom:6px">方式二：坚果云 WebDAV 自动云端备份（推荐常用）</div>
-            <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin:0">
-              <b>准备工作：</b><br>
-              ① 注册坚果云账号（免费版就够用，不用充会员）<br>
-              ② 坚果云网页版 → 右上角头像 → 「设置」→「安全选项」<br>
-              ③ 找到「第三方应用管理」→「添加应用」→ 应用名称填「栖匣」→ 生成密码<br>
-              ④ 保存好你的「坚果云账号邮箱」和「刚生成的应用密码」<br><br>
-              <b>在栖匣配置：</b><br>
-              ① 顶栏「更多 ⋯ → 多端同步」打开同步面板<br>
-              ② 同步服务器地址填：<code style="background:#F5EFE2;padding:1px 5px;border-radius:4px;font-size:11.5px">https://dav.jianguoyun.com/dav/</code><br>
-              ③ 同步口令：自己设一个<b>只有你知道</b>的密码（用于加密你的数据，<b>一定要记牢，丢了找不回</b>）<br>
-              ④ 点「立即同步」，提示「同步完成 ✅」就成功了<br><br>
-              <b>换设备/新设备：</b>重复上面步骤，填<b>相同的</b>坚果云账号和同步口令，点立即同步即可拉取数据。
-            </p>
+        </details>
+
+        <details class="card" style="padding:0;overflow:hidden">
+          <summary style="cursor:pointer;padding:14px 16px;font-size:14px;font-weight:700;color:var(--primary);list-style:none">📊 周报 PNG 导出</summary>
+          <div style="padding:0 16px 16px;border-top:1px solid var(--border)">
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;padding-top:10px;margin-bottom:10px">一键生成本周任务报告图片（PNG），可保存，也可分享到朋友圈、发给家人朋友看你的成长。</p>
+            <button class="btn btn-primary" onclick="exportWeekPNG()">生成本周报告 PNG</button>
           </div>
-        </div>
-        <div style="margin-top:12px;padding:10px 12px;background:#FFF5F0;border:1px solid #F5D8C8;border-radius:8px;font-size:12.5px;color:#8B4513;line-height:1.8">
-          <b>⚠️ 重要提醒：</b><br>
-          · 数据用你的口令<b>端到端加密</b>后才上传，坚果云看不到你的内容<br>
-          · <b>同步口令务必记好</b>，丢失无法找回，也无法重置<br>
-          · 建议以一台设备<b>为主编辑</b>，改完同步后再到另一台同步，避免多台同时修改产生冲突<br>
-          · 如果出现冲突，旧值会自动备份，不会丢失，可以点「查看冲突」找回
-        </div>
-        </p>
+        </details>
+
+        <details class="card" style="padding:0;overflow:hidden">
+          <summary style="cursor:pointer;padding:14px 16px;font-size:14px;font-weight:700;color:var(--primary);list-style:none">📆 开学准备清单 · 重新开启</summary>
+          <div style="padding:0 16px 16px;border-top:1px solid var(--border)">
+            <p style="font-size:13px;color:var(--muted);line-height:1.8;padding-top:10px;margin-bottom:10px">入学后「开学准备」会自动收起归档。如果误收或还想再查看，点下面按钮重新开启（首页即可见）。</p>
+            <button class="btn" style="border-color:var(--primary);color:var(--primary);background:transparent" onclick="restorePrepare()">重新开启开学准备清单</button>
+          </div>
+        </details>
+
+        <details class="card" style="padding:0;overflow:hidden">
+          <summary style="cursor:pointer;padding:14px 16px;font-size:14px;font-weight:700;color:var(--primary);list-style:none">☁️ 多端同步 · 坚果云 WebDAV 指南</summary>
+          <div style="padding:0 16px 16px;border-top:1px solid var(--border)">
+            <div style="font-size:13px;color:var(--text);line-height:1.9;padding-top:10px">
+              <strong>先说清楚：</strong>栖匣以本地保存、隐私优先：记录默认只存在你的设备里。想多设备共用数据，有两种方式。
+            </div>
+            <div style="margin-top:10px;display:grid;gap:10px">
+              <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:12px 14px">
+                <div style="font-weight:700;color:var(--primary);margin-bottom:6px">方式一：手动导出/导入（最简单、零成本）</div>
+                <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin:0">
+                  <b>操作步骤：</b><br>
+                  ① 在旧设备：系统设置 → 导出全部数据 → 下载 JSON 文件<br>
+                  ② 把文件传到新设备（微信文件传输助手、QQ、邮件都行）<br>
+                  ③ 在新设备：系统设置 → 导入恢复 → 选择刚才的文件<br>
+                  <b>适用场景：</b>偶尔换设备、或每周手动同步一次。<b>优点：</b>简单可靠，不会出错。
+                </p>
+              </div>
+              <div style="background:#FFFDF5;border:1px solid #E8DCC7;border-radius:10px;padding:12px 14px">
+                <div style="font-weight:700;color:var(--primary);margin-bottom:6px">方式二：坚果云 WebDAV 自动云端备份（推荐常用）</div>
+                <p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin:0">
+                  <b>准备工作：</b><br>
+                  ① 注册坚果云账号（免费版就够用，不用充会员）<br>
+                  ② 坚果云网页版 → 右上角头像 → 「设置」→「安全选项」<br>
+                  ③ 找到「第三方应用管理」→「添加应用」→ 应用名称填「栖匣」→ 生成密码<br>
+                  ④ 保存好你的「坚果云账号邮箱」和「刚生成的应用密码」<br><br>
+                  <b>在栖匣配置：</b><br>
+                  ① 顶栏「更多 ⋯ → 多端同步」打开同步面板<br>
+                  ② 同步服务器地址填：<code style="background:#F5EFE2;padding:1px 5px;border-radius:4px;font-size:11.5px">https://dav.jianguoyun.com/dav/</code><br>
+                  ③ 同步口令：自己设一个<b>只有你知道</b>的密码（用于加密你的数据，<b>一定要记牢，丢了找不回</b>）<br>
+                  ④ 点「立即同步」，提示「同步完成 ✅」就成功了<br><br>
+                  <b>换设备/新设备：</b>重复上面步骤，填<b>相同的</b>坚果云账号和同步口令，点立即同步即可拉取数据。
+                </p>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding:10px 12px;background:#FFF5F0;border:1px solid #F5D8C8;border-radius:8px;font-size:12.5px;color:#8B4513;line-height:1.8">
+              <b>⚠️ 重要提醒：</b><br>
+              · 数据用你的口令<b>端到端加密</b>后才上传，坚果云看不到你的内容<br>
+              · <b>同步口令务必记好</b>，丢失无法找回，也无法重置<br>
+              · 建议以一台设备<b>为主编辑</b>，改完同步后再到另一台同步，避免多台同时修改产生冲突<br>
+              · 如果出现冲突，旧值会自动备份，不会丢失，可以点「查看冲突」找回
+            </div>
+          </div>
+        </details>
       </div>
-            <div class="card" style="margin-top:16px">
+
+      <div class="card" style="margin-top:16px">
         <h3>用户反馈 · 直接告诉作者</h3>
         <p style="font-size:13px;color:var(--muted);line-height:1.85;margin-bottom:10px">用下来的真实感受如何？<strong>每一份留言作者都会逐条认真看</strong>（<strong>只你和他之间可见</strong>，不公开展示）。<strong>提交后自动发送到作者邮箱</strong>。可以从下面这些问题挑着回答，也可以自由写：</p>
         <div style="background:#EFE8D8;border-left:3px solid var(--primary);border-radius:8px;padding:11px 14px;margin-bottom:12px;font-size:13px;color:var(--text);line-height:1.9">
@@ -8507,22 +8626,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <div class="card" style="margin-top:16px">
       <h3>📈 成长洞察</h3>
       <div id="growthInsight" style="font-size:13px;color:var(--text);line-height:1.75"></div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════════════
-       新增板块：更新日志 / 版本自检 (changelog)
-       ════════════════════════════════════════════════════════════ -->
-  <section class="view" id="view-changelog">
-<div class="section-intro">这里记录栖匣每一次功能优化与问题修复，一点一点变得更好用、更顺手。</div>
-    <div class="page-head">
-      <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l2 2"></path><circle cx="12" cy="12" r="9"></circle></svg>更新日志 <span id="qxVersionChip" style="font-size:12px;font-weight:500;color:var(--hint);margin-left:6px">v2026.09.17.2</span></h1>
-      <p>每次迭代都如实记录 —— 下方内容按时间由新到旧排列。</p>
-    </div>
-
-    <div class="card">
-      <h3>📜 更新记录</h3>
-      <div id="qxChangelog" style="margin-top:8px"></div>
     </div>
   </section>
 
