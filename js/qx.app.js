@@ -1,5 +1,4 @@
-window.__pageVersion='2026.09.17.7';
-;
+window.__pageVersion='2026.09.18.54';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -340,7 +339,7 @@ window.__pageVersion='2026.09.17.7';
         var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
         var _rS=null;
         try{ var _rKey=window.SCROLL_RESTORE_KEY||'qixia_scroll_restore'; var _rRaw=sessionStorage.getItem(_rKey); if(!_rRaw){_rRaw=localStorage.getItem(_rKey);} if(_rRaw){_rS=JSON.parse(_rRaw);} }catch(_rE){}
-        var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
+        var _recent=_rS&&(Date.now()-_rS.ts)<=900000;
         var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
         /* 返回恢复（关键修复）：点外链/切走后回到「你离开时的板块」，并把滚动还原到你离开的位置，
            而不是停在板块顶部。此前用 !_hasHash 判定恢复，但应用内切换板块后地址栏随时带着
@@ -352,15 +351,19 @@ window.__pageVersion='2026.09.17.7';
            - 从外链返回同一板块：_rS.view === _view 且 scroll>0 → 精确回到离开时的位置 */
         var _restoreScroll=_recent&&_rS&&_rS.view===_view&&_rS.scroll>0;
         /* 恢复场景传 keepPos：禁止 switchView 先回顶（否则会"先闪顶部再跳目标位"）；
-           位置已在 dismiss 淡出前就位，此处用 auto 即时校一次，并留两次迟些的兜底校正 */
-        if(typeof switchView==='function'){ switchView(_view,_restoreScroll?{keepPos:1}:null); }
+           位置已在 dismiss 淡出前就位，此处用 auto 即时校一次，并留两次迟些的兜底校正。
+           自带 try 保护：switchView 链里个别视图增强(enhance*等)在早期 DOM 未就绪时可能抛错，
+           绝不能因此跳进下方 catch 把视图兜底成 home（那正是"恢复成功又被切回首页"的诱因）。 */
+        try{
+          if(typeof switchView==='function'){ switchView(_view,_restoreScroll?{keepPos:1}:null); }
+        }catch(_e){ try{ if(typeof switchView==='function')switchView(_view,{keepPos:1}); }catch(_e2){} }
         if(_restoreScroll){
           var _target=(_rS.scroll||0);
           _quickJump(_target);
           setTimeout(function(){_quickJump(_target);},80);
           setTimeout(function(){_quickJump(_target);},380);
         }
-      }catch(e){ try{if(typeof switchView==='function')switchView('home');}catch(e2){} }
+      }catch(e){ try{if(typeof switchView==='function')switchView(_view,{keepPos:1});}catch(e2){} }
     }
   }
   /* 返回恢复专用：快速即时定位（覆盖页面级 smooth，瞬间到位，不产生"从顶滑到目标"的动画） */
@@ -381,7 +384,7 @@ window.__pageVersion='2026.09.17.7';
       var _raw=sessionStorage.getItem(_key);
       try{ if(!_raw){_raw=localStorage.getItem(_key);} }catch(e){}
       if(_raw){_rS=JSON.parse(_raw);}
-      var _recent=_rS&&(Date.now()-_rS.ts)<=600000;
+      var _recent=_rS&&(Date.now()-_rS.ts)<=900000;
       var _hh=(''+(location.hash||'')).replace(/^#view-/,'');
       var _hasHash=_hh&&_hh!=='home'&&document.getElementById('view-'+_hh);
       var _view=_hasHash?_hh:(_recent&&_rS.view?_rS.view:'home');
@@ -406,25 +409,55 @@ window.__pageVersion='2026.09.17.7';
       if(_bootRestore&&_bootRestore.restore&&_bootRestore.scroll>0){
         var _bt=_bootRestore.scroll;
         var _released=false;
+        /* 揭罩：单次原子动作——先强制精确落位到目标，再一次性解除遮罩与隐藏并设 scrollBeh 为 auto，
+           保证揭罩后的第一帧就停在目标位，绝无"从别处滑过来"的画面。 */
         function _releaseHold(){
           if(_released)return; _released=true;
-          try{ document.documentElement.style.visibility=''; window.__qxReturnHold=false; }catch(_er){}
+          try{
+            _quickJump(_bt);
+            var _sd=document.getElementById('qxShield'); if(_sd) _sd.parentNode && _sd.parentNode.removeChild(_sd);
+            document.documentElement.style.visibility='';
+            document.body.style.overflow='';
+            window.__qxReturnHold=false;
+            /* 恢复闸门：路由回调(load/300ms/900ms)逃过恢复窗口后再放行"重复切同板块回顶"，避免误伤正常操作 */
+            try{ setTimeout(function(){ window.__qx_holdPos=false; },2500); }catch(_er){}
+          }catch(_er){}
         }
-        function _attempt(reached){
-          _quickJump(_bt);
-          try{ if(reached||window.scrollY>=_bt-4){ _releaseHold(); return true; } }catch(_er){ _releaseHold(); return true; }
-          return false;
+        /* 内容是否已高到可滚到目标位：目标板块内容(尤其长文/图片/tab)可能异步加载，
+           load 前文档高度不足，scrollTo 会被钳制在最大可滚值，此时揭罩必闪。需轮询等待足够高。 */
+        function _ready(){
+          try{ return document.documentElement&&(document.documentElement.scrollHeight||document.body&&document.body.scrollHeight)>=_bt+20; }catch(e){ return false; }
         }
-        var _dl=[0,80,200,400,700,1200,2200];
-        for(var _i=0;_i<_dl.length;_i++){(function(d){setTimeout(function(){ _attempt(_i===_dl.length-1); },d);})(_dl[_i]);}
-        try{ window.addEventListener('load',function(){ _attempt(true); setTimeout(function(){_quickJump(_bt);},200); }); }catch(_er){}
-        /* 兜底：最长约2.8秒内无论如何解除隐藏，避免永久白屏 */
-        setTimeout(function(){ _quickJump(_bt); _releaseHold(); },2800);
+        var _checked=0, _focusLost=false;
+        function _probe(){
+          _checked++;
+          try{ _quickJump(_bt); }catch(_er){}
+          /* 文档已高且(已 load 或轮询多次)可滚到位 → 揭罩 */
+          try{
+            if(_ready()&&_focusLost){ _releaseHold(); return; }
+          }catch(_er){}
+          try{ if(window.scrollY>=_bt-4&&_focusLost){ _releaseHold(); return; } }catch(_er){}
+          if(_checked<40) setTimeout(_probe,120);   /* 最长约4.8秒轮询等待内容成型 */
+        }
+        function _waitLoad(){ try{ _focusLost=true; _probe(); }catch(_er){ _releaseHold(); } }
+        /* load 事件：图片/嵌入等资源均就绪、高度稳定后再精确落位揭罩，是"零滑动直达"的主路径 */
+        try{
+          if(document.readyState==='complete'){ _waitLoad(); }
+          else{ window.addEventListener('load',_waitLoad); }
+        }catch(_er){ _waitLoad(); }
+        /* 极端兜底：load 若迟迟不触发(被个别资源拖住)，12 秒后无论如何精确落位并揭罩，避免永久白屏 */
+        setTimeout(function(){ try{ _focusLost=true; _probe(); }catch(_er){ _releaseHold(); } },12000);
+        /* 若此时焦点已回(页面已可见、非后台)，也立即尝试揭罩 */
+        try{ if(document.visibilityState==='visible'){ setTimeout(function(){ try{_focusLost=true;_probe();}catch(_er){} },300); } }catch(_er){}
       }
       return;
     }
-    /* 兜底：若 head 因残留记录设过整页隐藏却走了闪屏路径，立即解除，避免整页空白 */
-    try{ if(window.__qxReturnHold){document.documentElement.style.visibility='';window.__qxReturnHold=false;} }catch(_er){}
+    /* 兜底：若 head 因残留记录设过整页隐藏/遮罩却走了闪屏路径，立即解除，避免整页空白 */
+    try{
+      var _sd=document.getElementById('qxShield'); if(_sd&&_sd.parentNode) _sd.parentNode.removeChild(_sd);
+      if(window.__qxReturnHold){document.documentElement.style.visibility='';document.body.style.overflow='';window.__qxReturnHold=false;}
+      window.__qx_holdPos=false;
+    }catch(_er){}
     /* 品牌闪屏：每次冷启动优雅亮相约 1.8 秒（轻触可跳过）。
        闪屏期间用 state-splash + hidden 属性强隐顶栏/底栏/悬浮按钮，杜绝「顶栏底栏闪进闪屏」；
        结束后按首访与否决定弹产品导览或直接进产品。 */
@@ -821,8 +854,10 @@ function _scrollViewTop(){
 function switchView(name, opts){
   var keepPos=!!(opts&&opts.keepPos); /* 从外链/切走返回同一板块时置1：禁止回顶，直接保留/恢复原位置 */
   if(name===_curView){
-    /* 重复点击当前所在板块：仅回到顶部，不触发切换（keepPos 时则保持原位不动） */
-    if(!keepPos)_scrollViewTop();
+    /* 重复点击当前所在板块：仅回到顶部，不触发切换（keepPos 时则保持原位不动）。
+       恢复闸门：返回恢复刚落位后的 2.5 秒内（__qx_holdPos 为真），即使 routeHash 又因哈希回调
+       switchView(当前板块) 也不允许回顶，否则会把刚恢复好的位置再次顶到顶部（"多个页面闪过"的根因）。 */
+    if(!keepPos&&!window.__qx_holdPos)_scrollViewTop();
     return;
   }
   /* 切换板块：默认回到该板块顶部；keepPos 时例外（返回恢复场景），保持滚动位置 */
@@ -835,7 +870,7 @@ function switchView(name, opts){
   var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('show');
   var ov=document.getElementById('sidebarOverlay');if(ov)ov.classList.remove('show');
   if(name==='journal')loadJournal();
-  if(!keepPos)_scrollViewTop();
+  if(!keepPos&&!window.__qx_holdPos)_scrollViewTop();
   applyStoredTab(name);
   /* 重建当前板块的悬浮目录 */
   try{if(window.buildToc)buildToc(name);}catch(e){}
@@ -5276,8 +5311,9 @@ function setBottomActive(el){
 }
 /* 切换视图时同步底部导航 */
 var _origSwitchView=switchView;
-switchView=function(name){
-  _origSwitchView(name);
+switchView=function(name,opts){
+  var keepPos=!!(opts&&opts.keepPos); /* 透传 opts：从外链/切走返回恢复位置时必须保留原位 */
+  _origSwitchView(name,opts);
   /* 桌面端收起态下切换板块：自动展开侧边栏，保证当前板块高亮可见 */
   if(window.matchMedia&&window.matchMedia('(min-width:769px)').matches&&document.body.classList.contains('sidebar-collapsed')){
     document.body.classList.remove('sidebar-collapsed');
@@ -5286,9 +5322,12 @@ switchView=function(name){
   /* 同步底部导航 */
   var bv=document.querySelector('.bottom-nav-item[data-bv="'+name+'"]');
   if(bv)setBottomActive(bv);
-  /* 切换视图后回到顶部，避免内容停留在视口下方（"内容在下面"问题） */
-  try{ window.scrollTo(0,0); }catch(e){}
-  var main=document.querySelector('.main'); if(main)main.scrollTop=0;
+  /* 切换视图后回到顶部（仅普通切换；keepPos 恢复场景绝不回顶，否则刚恢复的位置又被顶掉）。
+     恢复闸门：返回恢复刚落位的 2.5 秒内，即使 routeHash 回呼 switchView 也保持原位，不回顶。 */
+  if(!keepPos && !window.__qx_holdPos){
+    try{ window.scrollTo(0,0); }catch(e){}
+    var main=document.querySelector('.main'); if(main)main.scrollTop=0;
+  }
   /* 成长档案：每次切进来都即时重算，数据不冻结 */
   if(name==='stats'){ try{ updateStats(); }catch(e){} }
 };
@@ -9119,6 +9158,42 @@ function maybeOpenPrefPick(){
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fillYear);
   else fillYear();
   window.addEventListener('pageshow',fillYear);
+})();
+
+/* ═══════════ bfcache 返回接管 ═══════════
+   「同页点外链→返回」若命中 bfcache（页面从缓存恢复、不重新加载脚本），head 的遮罩与
+   afterSplash 恢复逻辑都不会执行；而 head 已把 history.scrollRestoration 设为 manual，
+   浏览器不会自动还原滚动位置，导致返回后停错位置甚至"闪一下"。
+   这里在 pageshow(event.persisted=true) 时按当初离开记录，一次性瞬时落回目标板块与位置，
+   并短暂开启 __qx_holdPos 闸门，防 routeHash 随意回顶。 */
+(function(){
+  var KEY='qixia_scroll_restore';
+  function _sjq(y){
+    var de=document.documentElement,prev='';
+    try{prev=de.style.scrollBehavior;}catch(e){}
+    try{de.style.scrollBehavior='auto';}catch(e){}
+    try{window.scrollTo(0,y);}catch(e){}
+    try{window.scrollTo(0,y);}catch(e){}
+    try{de.style.scrollBehavior=prev;}catch(e){}
+  }
+  window.addEventListener('pageshow',function(ev){
+    if(!ev||!ev.persisted) return;
+    try{
+      var __r=null;
+      try{__r=sessionStorage.getItem(KEY);}catch(e){}
+      if(!__r){try{__r=localStorage.getItem(KEY);}catch(e){}}
+      if(__r){ var s=JSON.parse(__r);
+        if(s&&s.view&&typeof s.scroll==='number'&&s.scroll>0){
+          /* 先确保落在离开时的板块（keepPos：不回顶） */
+          try{ if(typeof switchView==='function'&&document.getElementById('view-'+s.view)){ switchView(s.view,{keepPos:1}); } }catch(e){}
+          _sjq(s.scroll);
+          /* 短闸门：防 routeHash/其他回呼把刚到位的位置顶回顶部 */
+          try{ window.__qx_holdPos=true; }catch(e){}
+          setTimeout(function(){ try{ window.__qx_holdPos=false; }catch(e){} },2000);
+        }
+      }
+    }catch(e){}
+  });
 })();
 
 ;document.addEventListener("DOMContentLoaded",function(){

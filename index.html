@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.17.7"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.54"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
   <style>html{background:#FEFBF4}html[data-theme="dark"]{background:#1C1815}</style>
   <!-- 返回恢复：若检测到「刚离开」的记录，则从首帧起隐藏整页，直到脚本把正确的板块与滚动位置就位后再显现。
        这样从外部链接/切走返回时不会闪现首页、也不会出现"从顶部往下滑"的滚动画，直接落在原位置。 -->
-  <script>(function(){var __r=false;function __ok(raw){if(!raw)return false;try{var __s=JSON.parse(raw);return !!(__s&&__s.view&&__s.scroll>0&&(Date.now()-__s.ts)<=600000);}catch(e){return false;}}try{__r=__ok(sessionStorage.getItem('qixia_scroll_restore'))||__ok(localStorage.getItem('qixia_scroll_restore'));}catch(e){}if(__r){document.documentElement.style.visibility='hidden';}window.__qxReturnHold=__r;})();</script>
+  <script>(function(){
+    /* 返回恢复·根治版：
+       ① 尽早把浏览器原生滚动恢复设为 manual，杜绝返回重载时浏览器自作主张的"从顶平滑滚到目标"动画；
+       ② 只要检测到「刚离开」的恢复记录，就同步注入一张不透明满屏遮罩(#qxShield)盖住整个视口，
+          它不依赖 visibility(个别 GPU/WebView 可能绕过 visibility:hidden 仍绘制)，任何情况下返回到位前都无任何画面；
+       ③ 再用 visibility:hidden 双保险。恢复到位后才由脚本揭罩。 */
+    var KEY='qixia_scroll_restore';
+    try{ if('scrollRestoration' in history){ history.scrollRestoration='manual'; } }catch(e){}
+    var __r=false;
+    function __ok(raw){ if(!raw)return false; try{ var __s=JSON.parse(raw); return !!(__s&&__s.view&&__s.scroll>0&&__s.ts&&(Date.now()-__s.ts)<=900000); }catch(e){return false;} }
+    try{ __r=__ok(sessionStorage.getItem(KEY))||__ok(localStorage.getItem(KEY)); }catch(e){}
+    window.__qxReturnHold=__r;
+    /* 恢复闸门：本页确认为「返回恢复」，落到目标位后的 2.5 秒内禁止任何"重复切当前板块→回顶"，
+       防止 routeHash 在 load/300ms/900ms 反复回调 switchView 把刚恢复的位置顶回顶部。 */
+    window.__qx_holdPos=!!__r;
+    if(__r){
+      if(!document.getElementById('qxShield')){
+        try{
+          var d=document.createElement('div');
+          d.id='qxShield';
+          d.setAttribute('aria-hidden','true');
+          d.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:2147483000;visibility:visible;background:var(--bg,#FEFBF4);';
+          (document.head||document.documentElement).appendChild(d);
+        }catch(e){}
+      }
+      try{ document.documentElement.style.visibility='hidden'; }catch(e){}
+    }
+  })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=46" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=54" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
@@ -357,7 +384,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=51"></script></head>
+<script defer src="js/qx.app.js?v=54"></script></head>
 <body>
 
 
