@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.60"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.61"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -56,7 +56,7 @@
     }
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=60" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=61" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
@@ -409,7 +409,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=60"></script></head>
+<script defer src="js/qx.app.js?v=61"></script></head>
 <body>
 
 
@@ -2650,6 +2650,129 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </div>
         </div>
         <div class="callout callout-warn" data-nodismiss style="margin-top:8px"><strong>引用规范（红线）：</strong>直接引用他人的原话，必须加引号 + 标注页码；间接引用（转述观点）也必须注明来源。规范格式示例（GB/T 7714）：<span style="font-family:monospace">张三，《X问题研究》，北京大学出版社2024年版，第25页。</span>宁愿多注，不要漏注。</div>
+      </div>
+      <div class="card qx-collapse" style="margin-top:16px">
+        <details class="qx-details">
+          <summary>📝 摘要＋关键词·四句式公式（全文写完再写摘要，照着填空即可）</summary>
+          <div style="padding-top:6px">
+            <p style="font-size:13px;color:var(--muted)">摘要 200~300 字、一段到底，不缩进、不编号。用下面 4 句搭骨架，把信息砍到最干。</p>
+            <div class="grid grid-2" style="margin-top:8px">
+              <div>
+                <h4 style="color:var(--primary)">四句话骨架</h4>
+                <ol class="essay-list">
+                  <li><strong>句1 背景+缺口：</strong>"近年来…日益受到关注，但既有研究多集中于…，对…关注不足。"</li>
+                  <li><strong>句2 切入点：</strong>"本文以…为对象/样本，从…角度出发。"</li>
+                  <li><strong>句3 方法+结论：</strong>"通过…（实证/规范/案例），本文发现/认为…，其关键在于…。"</li>
+                  <li><strong>句4 意义：</strong>"本研究对…具有一定的理论补充/实践参考意义。"</li>
+                </ol>
+              </div>
+              <div>
+                <h4 style="color:var(--teal)">完整示例（仅示范结构）</h4>
+                <p style="font-size:12.5px;line-height:1.85;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:10px">"碎片化学习已成为大学生主流学习方式，但既有研究多集中于设备依赖与专注度流失，对其与传统学习方法的结构互补关注不足。本文以某高校300名学生为样本，通过问卷与访谈相结合的实证方法，构建'碎片进、系统出'的学习转化模型。研究发现，……决定学习效能的不是单次碎片时长，而是碎片后是否完成了'归档—串联—输出'三步。本研究对提升碎片化学习效率、改进移动学习设计具有一定的实践参考意义。"</p>
+              </div>
+            </div>
+            <div class="callout callout-ok" style="margin-top:8px"><strong>关键词 3~5 个</strong>：从「研究对象 + 研究方法 + 核心结论」里抽高频词，例如：<span style="font-family:monospace">碎片化学习；学习迁移；实证研究；大学生</span>。别把题目拆碎硬凑，也别用"浅析""研究"这种无效词。</div>
+          </div>
+        </details>
+      </div>
+      <div class="card qx-collapse" style="margin-top:10px">
+        <details class="qx-details">
+          <summary>📖 参考文献 GB/T 7714-2015 · 五种开箱格式（直接套用，别再问引用怎么写）</summary>
+          <div style="padding-top:6px">
+            <table style="font-size:13px">
+              <thead><tr><th>文献类型</th><th>著录格式</th><th>示例</th></tr></thead>
+              <tbody>
+                <tr><td><strong>期刊</strong>[J]</td><td>作者.题名[J].刊名,年,卷(期):页码.</td><td>李四.无手机课堂的边界[J].教育与学,2024,12(3):66-70.</td></tr>
+                <tr><td><strong>专著/书</strong>[M]</td><td>作者.书名[M].出版地:出版社,年份:页码.</td><td>张三.学术写作导论[M].北京:高等教育出版社,2022:45-52.</td></tr>
+                <tr><td><strong>学位论文</strong>[D]</td><td>作者.论文题目[D].保存地:保存单位,年份.</td><td>王五.基于Y的X研究[D].上海:复旦大学,2023.</td></tr>
+                <tr><td><strong>电子/网页</strong>[EB/OL]</td><td>作者.题名[EB/OL].(发布日期)[引用日期].访问网址.</td><td>教育部.关于加强…的意见[EB/OL].(2024-05-01)[2026-09-18].https://www.moe.gov.cn/…</td></tr>
+                <tr><td><strong>报纸</strong>[N]</td><td>作者.标题[N].报纸名,出版日期(版次).</td><td>赵六.人工智能教育的边界[N].光明日报,2025-10-12(5).</td></tr>
+              </tbody>
+            </table>
+            <ul style="font-size:12.5px;color:var(--muted);line-height:1.85;margin-top:8px">
+              <li>正文里按首次出现顺序标 <span style="font-family:monospace">[1][2][3]…</span>，文末参考文献表按同一编号排列，先出现在先编号。</li>
+              <li>中文字段用中文标点；外文文献保留原语言与原名。</li>
+              <li>≤3 位作者全部列出，3 位以上写"前3位，等/et al"。</li>
+              <li>拿不准时，用文献管理工具（Zotero/知网研学）的一键生成，比自己手打更不容易错。</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="card qx-collapse" style="margin-top:10px">
+        <details class="qx-details">
+          <summary>📊 图表与体例速查（让版面像正式论文，不是期末作文）</summary>
+          <div style="padding-top:6px">
+            <div class="grid grid-2">
+              <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+                <li><strong>图表统一编号：</strong>正文顺序编"图1/表1"，<b>图题在图下方，表题在表上方</b>。</li>
+                <li><strong>自明原则：</strong>不看正文也能读懂这张图表——图例、单位、坐标名称都要全。</li>
+                <li><strong>三线表：</strong>数据表只用顶线、栏目线、底线三条线，别套花边框。</li>
+              </ul>
+              <ul style="font-size:13px;color:var(--muted);line-height:1.9">
+                <li><strong>表达：</strong>写"表1 显示…"，不用"如下表所示"这种空话。</li>
+                <li><strong>图片来源：</strong>引用他人图表必须标注出处并说明是否改编。</li>
+                <li><strong>清晰度：</strong>图用矢量或 300dpi 高清，避免放大后糊成马赛克。</li>
+              </ul>
+            </div>
+            <div class="callout callout-info" style="margin-top:8px">体例口诀：<b>图下题、表上题、编号顺序走；坐标有单位、图例要自明、来源必标注。</b></div>
+          </div>
+        </details>
+      </div>
+      <div class="card qx-collapse" style="margin-top:10px">
+        <details class="qx-details">
+          <summary>🎤 毕业答辩清单（从"交论文"到"顺利过审"的最后一公里）</summary>
+          <div style="padding-top:6px">
+            <div class="grid grid-2">
+              <div>
+                <h4 style="color:var(--primary)">答辩 PPT·5 分钟逻辑</h4>
+                <ol class="essay-list">
+                  <li>研究背景与问题是"为什么做这个题"</li>
+                  <li>方法与数据"怎么做的"</li>
+                  <li>核心结论"我发现了什么"</li>
+                  <li>创新点"和前人比新增了什么"</li>
+                  <li>不足与展望"我诚实知道局限"</li>
+                </ol>
+              </div>
+              <div>
+                <h4 style="color:var(--teal)">评委最爱问的 5 个问题</h4>
+                <ol class="essay-list">
+                  <li>为什么选这个题目？</li>
+                  <li>你的核心创新点是什么？</li>
+                  <li>用了什么方法，为什么选它，局限在哪？</li>
+                  <li>结论是怎么得到的，证据够不够？</li>
+                  <li>最大的不足 / 未来还能怎么做？</li>
+                </ol>
+              </div>
+            </div>
+            <ul style="font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:8px">
+              <li><b>把论文目录当答辩逻辑线索</b>，每一页 PPT 只放一个核心观点，讲不清的术语别放上台。</li>
+              <li>提前彩排 2~3 遍并计时，做到"脱稿看提纲"即可，不用背稿。</li>
+              <li>被问到不会的，诚实说"这块我研究得还不够，感谢老师提醒，我会继续补充"，切忌现场硬编。</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>🧪 论文写作 · 蒸馏知识库（即取即用 · 资源已核实）</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">一条从读到写到答辩的浓缩路径 + 官方/权威工具直达。以下链接均为真实可用入口，宿舍与校园网都能开。</p>
+        <div class="callout callout-info"><strong>一页速查：</strong>动笔前·选题五问→20篇文献→搭大纲；动笔时·先写最会的→每天500字→烂初稿好过没初稿；打磨期·中心句串联自查→删口水→改语序拆长句；收尾·GB/T 7714 引用→图表编号→答辩5分钟PPT。铁律：独立完成、引用必注、AI 只辅助不代写、交前先自查重。</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+          <div class="res-link" style="cursor:default"><div class="ico">🔎</div><div class="info"><div class="name">文献检索库（中文/外文/预印本）</div><div class="desc">知网·学校IP免费下载｜万方｜维普期刊｜Web of Science｜arXiv；在校外可走学校 VPN/CARSI 认证</div></div></div>
+          <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">中文学术文献第一大库</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">期刊 / 学位论文 / 会议文库</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://qikan.cqvip.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">维普期刊服务平台</div><div class="desc">中文期刊检索·引文脉络</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://www.webofscience.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Web of Science</div><div class="desc">国际核心期刊索引·被引追踪</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">arXiv 预印本</div><div class="desc">前沿论文免费开放获取（理工为主）</div></div><div class="arrow">↗</div></a>
+          <div class="res-link" style="cursor:default"><div class="ico">🧰</div><div class="info"><div class="name">文献管理与一键引用</div><div class="desc">自动抓取书目 → 整理笔记 → Word 里一键插引用，内置 GB/T 7714 / APA 等样式</div></div></div>
+          <a class="res-link" href="https://www.zotero.org/download" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg></div><div class="info"><div class="name">Zotero（免费文献管理）</div><div class="desc">官方免费下载 · 支持 Word/浏览器抓取</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://www.zotero.org/download/connectors" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path><path d="M2 12h20"></path></svg></div><div class="info"><div class="name">Zotero 浏览器抓取插件</div><div class="desc">逛网页一键存文献 · 免费</div></div><div class="arrow">↗</div></a>
+          <div class="res-link" style="cursor:default"><div class="ico">📐</div><div class="info"><div class="name">格式与引用规范</div><div class="desc">参考文献写不对全看这里</div></div></div>
+          <a class="res-link" href="https://library.fudan.edu.cn/infoliteracy/rhsxgfdckwxw/list.htm" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div class="info"><div class="name">复旦大学图书馆·如何书写规范的参考文献</div><div class="desc">GB/T 7714 讲解 · 含示例</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="http://www.las.cas.cn/yjsjy2021/pyyxw/xwglgd2021/202112/t20211229_6329144.html" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div class="info"><div class="name">中国科学院大学·学位论文撰写规范指导意见</div><div class="desc">GB/T 7714 全文体例参考</div></div><div class="arrow">↗</div></a>
+          <div class="res-link" style="cursor:default"><div class="ico">🛡️</div><div class="info"><div class="name">查重自查与投稿</div><div class="desc">交前先自查，别等系统揭发</div></div></div>
+          <a class="res-link" href="https://www.paperpass.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="info"><div class="name">PaperPass 预查重</div><div class="desc">提交前自助降重对比</div></div><div class="arrow">↗</div></a>
+        </div>
+        <div class="callout callout-warn" data-nodismiss style="margin-top:10px"><strong>再次提醒：</strong>优先用<b>学校提供的查重系统</b>（多数每年有免费次数）；外部查重平台结果与学校系统可能不一致，仅作参考。期刊投稿请从知网/官方渠道核对期刊真实性与版面费政策，谨防山寨投稿网站。</div>
       </div>
     </section>
 

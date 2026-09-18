@@ -1615,3 +1615,9 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .dismiss-x{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;border:0;background:var(--border);color:var(--muted);font-size:10px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;opacity:.75;transition:all .15s;padding:0}
 .dismiss-x:hover{opacity:1;color:#fff;background:var(--coral)}
 [data-removable],.callout[data-removable]{padding-right:34px}
+/* ── 论文知识库折叠块：原生 details，主题一致（日/夜通用） ── */
+.qx-collapse>.qx-details>summary,.qx-details>summary{list-style:none;cursor:pointer;font-weight:600;color:var(--head);display:flex;align-items:center;gap:8px;padding:2px 0}
+.qx-details>summary::-webkit-details-marker{display:none}
+.qx-details>summary::before{content:"▸";color:var(--gold);transition:transform .18s;flex:none;font-size:12px}
+.qx-details[open]>summary::before{transform:rotate(90deg)}
+.qx-details{color:var(--text)}
