@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.18.55';
+window.__pageVersion='2026.09.18.56';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -401,6 +401,9 @@ window.__pageVersion='2026.09.18.55';
     _bootRestore=firstVisit()?null:_detectBoot();
     var e=(_bootRestore&&_bootRestore.restore)?null:bs();
     if(!e){
+      /* 返回恢复/直达：head 已把整页用 visibility 隐藏（含闪屏），这里必须在揭罩前保证闪屏
+         display:none，否则揭罩 visibility 恢复时闪屏会残留可见叠在页面上。 */
+      try{ var _fs=bs(); if(_fs){_fs.style.display='none';} }catch(_er2){}
       chrome(false);
       afterSplash();
       /* 返回免闪屏直达：head 里已把整页用 visibility:hidden 藏住（__qxReturnHold）。
