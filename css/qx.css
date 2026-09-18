@@ -1621,3 +1621,6 @@ a[href^="http"]:hover{color:var(--primary,#6B5747)!important;text-decoration:und
 .qx-details>summary::before{content:"▸";color:var(--gold);transition:transform .18s;flex:none;font-size:12px}
 .qx-details[open]>summary::before{transform:rotate(90deg)}
 .qx-details{color:var(--text)}
+/* ── 修复卡片标题截断：允许长标题自然换行，杜绝“××资源E…”，日/夜通用 ── */
+.card h3,.card>h3{white-space:normal;flex-wrap:wrap;line-height:1.45}
+@media(max-width:700px){.card h3{font-size:14.5px}}

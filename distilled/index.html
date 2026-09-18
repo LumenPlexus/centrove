@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#6B4A2C">
-<title>资源蒸馏库 · 栖匣</title>
+<title>干货匣 · 栖匣</title>
 <style>*{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#F7F2E8;--bg-soft:#EFE7D6;--card:#FFFFFF;--card-soft:#FDFBF4;
@@ -81,11 +81,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC"
 <body>
 <div class="header">
   <a class="back-btn" href="../index_preview.html" title="返回栖匣">←</a>
-  <div class="title">资源蒸馏库</div>
+  <div class="title">干货匣</div>
 </div>
 <div class="container">
   <div class="hero">
-    <h1>📚 <span class="hl">资源蒸馏库</span></h1>
+    <h1>📚 <span class="hl">干货匣</span></h1>
     <p class="subtitle">精选 <b>优质</b> 学习资源 · 结构化整理 · <b>勾选自测</b> · 点开就能用</p>
   </div>
   <div class="search-box">
@@ -182,7 +182,7 @@ window.addEventListener('scroll', function(){
 /* 记录「来源页」：从首页/外部进入后，返回键能回到进入前的位置 */
 try{ sessionStorage.setItem('distilled_from','1'); }catch(e){}
 
-/* 返回蒸馏库页时，若从详情页 back 回来，恢复之前的分类、搜索和滚动位置 */
+/* 返回干货匣页时，若从详情页 back 回来，恢复之前的分类、搜索和滚动位置 */
 var DL_KEY='distilled_state_v1';
 function saveDLState(){
   try{
@@ -213,7 +213,7 @@ function applyDLScroll(scrollTop){
 }
 window.addEventListener('scroll', function(){ saveDLState(); });
 
-/* 记录离开蒸馏库时的状态（点击卡片进详情前），供返回时恢复 */
+/* 记录离开干货匣时的状态（点击卡片进详情前），供返回时恢复 */
 function beforeEnterDetail(){
   saveDLState();
 }

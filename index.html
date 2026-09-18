@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.62"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.18.63"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -56,7 +56,7 @@
     }
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
-  <link rel="stylesheet" href="css/qx.css?v=62" media="all">
+  <link rel="stylesheet" href="css/qx.css?v=63" media="all">
 <link rel="preload" href="css/upgrade.css" as="style">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
@@ -409,7 +409,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.js?v=62"></script></head>
+<script defer src="js/qx.app.js?v=63"></script></head>
 <body>
 
 
@@ -2515,12 +2515,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           </ul>
         </div>
       </div>
-      <div class="card">
-          <h3>权威资源入口</h3>
-          <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">最大中文学术库，学校IP免费下载</div></div><div class="arrow">↗</div></a>
-          <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">期刊/学位论文/会议</div></div><div class="arrow">↗</div></a>
-          <a class="res-link" href="https://cn.bing.com/search?q=Google%20Scholar%20%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE%E6%A3%80%E7%B4%A2" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Google Scholar</div><div class="desc">外文文献检索 · 一键搜索直达</div></div><div class="arrow">↗</div></a>
-        </div>
       <div style="margin-top:16px"></div>
       <div class="card">
           <h3>论文写作避坑</h3>
@@ -2753,26 +2747,30 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </details>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3>🧪 论文写作 · 蒸馏知识库（即取即用 · 资源已核实）</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">一条从读到写到答辩的浓缩路径 + 官方/权威工具直达。以下链接均为真实可用入口，宿舍与校园网都能开。</p>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>干货匣 · 论文写作</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">人肉精选、只上有用的：从"检索→阅读→管理→写作→引用→查重→投稿"全流程，链接均为真实可用官方入口（宿舍/校园网都能开），无广告废话。</p>
         <div class="callout callout-info"><strong>一页速查：</strong>动笔前·选题五问→20篇文献→搭大纲；动笔时·先写最会的→每天500字→烂初稿好过没初稿；打磨期·中心句串联自查→删口水→改语序拆长句；收尾·GB/T 7714 引用→图表编号→答辩5分钟PPT。铁律：独立完成、引用必注、AI 只辅助不代写、交前先自查重。</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
-          <div class="res-link" style="cursor:default"><div class="ico">🔎</div><div class="info"><div class="name">文献检索库（中文/外文/预印本）</div><div class="desc">知网·学校IP免费下载｜万方｜维普期刊｜Web of Science｜arXiv；在校外可走学校 VPN/CARSI 认证</div></div></div>
-          <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">中文学术文献第一大库</div></div><div class="arrow">↗</div></a>
-          <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">期刊 / 学位论文 / 会议文库</div></div><div class="arrow">↗</div></a>
-          <a class="res-link" href="https://qikan.cqvip.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">维普期刊服务平台</div><div class="desc">中文期刊检索·引文脉络</div></div><div class="arrow">↗</div></a>
-          <a class="res-link" href="https://www.webofscience.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Web of Science</div><div class="desc">国际核心期刊索引·被引追踪</div></div><div class="arrow">↗</div></a>
+
+        <div class="res-link" style="cursor:default;margin-top:10px"><div class="ico">📚</div><div class="info"><div class="name">① 检索与拿全文（先这篇，看方法再点链接）</div><div class="desc">检索三步：知网/万方先查"关键词+年份"的综述 → 顺着综述参考文献"滚雪球"找源头 → 外文先 Google Scholar（免登录、可导出引用）。拿全文三步：校园网/学校 IP 直接下载 → 校外用学校 VPN 或 CARSI 一键登录（多数学校免费）→ 还没有就走图书馆"文献传递/馆际互借"，别用盗版灰色渠道（涉侵权风险）。</div></div></div>
+          <a class="res-link" href="https://www.cnki.net/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">中国知网 CNKI</div><div class="desc">中文学术第一大库 · 校园网免费下载</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://www.wanfangdata.com.cn/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">万方数据</div><div class="desc">期刊/学位论文/会议</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://qikan.cqvip.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">维普期刊</div><div class="desc">中文期刊检索·引文脉络</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Google Scholar 谷歌学术</div><div class="desc">外文检索首选 · 免登录可导出引用</div></div><div class="arrow">↗</div></a>
+          <a class="res-link" href="https://www.webofscience.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">Web of Science</div><div class="desc">国际核心期刊索引 · 被引追踪</div></div><div class="arrow">↗</div></a>
           <a class="res-link" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="info"><div class="name">arXiv 预印本</div><div class="desc">前沿论文免费开放获取（理工为主）</div></div><div class="arrow">↗</div></a>
-          <div class="res-link" style="cursor:default"><div class="ico">🧰</div><div class="info"><div class="name">文献管理与一键引用</div><div class="desc">自动抓取书目 → 整理笔记 → Word 里一键插引用，内置 GB/T 7714 / APA 等样式</div></div></div>
+
+        <div class="res-link" style="cursor:default;margin-top:8px"><div class="ico">🧰</div><div class="info"><div class="name">② 管理文献与一键引用（学会 3 步省一半时间）</div><div class="desc">装 Zotero（免费）→ 浏览器插件逛页点一下自动存书目 → Word 里写时点"Add Citation"自动插编号，样式选 GB/T 7714；举一反三改 APA/MLA 只需换样式，不用手打一条。</div></div></div>
           <a class="res-link" href="https://www.zotero.org/download" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg></div><div class="info"><div class="name">Zotero（免费文献管理）</div><div class="desc">官方免费下载 · 支持 Word/浏览器抓取</div></div><div class="arrow">↗</div></a>
           <a class="res-link" href="https://www.zotero.org/download/connectors" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path><path d="M2 12h20"></path></svg></div><div class="info"><div class="name">Zotero 浏览器抓取插件</div><div class="desc">逛网页一键存文献 · 免费</div></div><div class="arrow">↗</div></a>
-          <div class="res-link" style="cursor:default"><div class="ico">📐</div><div class="info"><div class="name">格式与引用规范</div><div class="desc">参考文献写不对全看这里</div></div></div>
+
+        <div class="res-link" style="cursor:default;margin-top:8px"><div class="ico">📐</div><div class="info"><div class="name">③ 格式与引用规范（GB/T 7714）</div><div class="desc">五种常见类型的写法在上方"参考文献·开箱格式"卡片里可以直接抄；下面两份官方/权威文档给你"全文体例"做兜底。</div></div></div>
           <a class="res-link" href="https://library.fudan.edu.cn/infoliteracy/rhsxgfdckwxw/list.htm" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div class="info"><div class="name">复旦大学图书馆·如何书写规范的参考文献</div><div class="desc">GB/T 7714 讲解 · 含示例</div></div><div class="arrow">↗</div></a>
           <a class="res-link" href="http://www.las.cas.cn/yjsjy2021/pyyxw/xwglgd2021/202112/t20211229_6329144.html" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div class="info"><div class="name">中国科学院大学·学位论文撰写规范指导意见</div><div class="desc">GB/T 7714 全文体例参考</div></div><div class="arrow">↗</div></a>
-          <div class="res-link" style="cursor:default"><div class="ico">🛡️</div><div class="info"><div class="name">查重自查与投稿</div><div class="desc">交前先自查，别等系统揭发</div></div></div>
-          <a class="res-link" href="https://www.paperpass.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="info"><div class="name">PaperPass 预查重</div><div class="desc">提交前自助降重对比</div></div><div class="arrow">↗</div></a>
-        </div>
-        <div class="callout callout-warn" data-nodismiss style="margin-top:10px"><strong>再次提醒：</strong>优先用<b>学校提供的查重系统</b>（多数每年有免费次数）；外部查重平台结果与学校系统可能不一致，仅作参考。期刊投稿请从知网/官方渠道核对期刊真实性与版面费政策，谨防山寨投稿网站。</div>
+
+        <div class="res-link" style="cursor:default;margin-top:8px"><div class="ico">🛡️</div><div class="info"><div class="name">④ 查重自查与学术诚信（两条红线）</div><div class="desc">优先用学校系统（多数每年有免费次数）预查；外部平台库不全，仅作参考。红线①：代写/大篇幅照抄/伪造数据/整篇 AI 生成提交→处分甚至撤学位；红线②：直接引用他人原话必须加引号标页码，转述观点也要注来源。</div></div></div>
+          <a class="res-link" href="https://www.paperpass.com/" target="_blank" rel="noopener noreferrer"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="info"><div class="name">PaperPass 预查重</div><div class="desc">提交前自助降重对比（以学校系统为准）</div></div><div class="arrow">↗</div></a>
+
+        <div class="res-link" style="cursor:default;margin-top:8px"><div class="ico">✍️</div><div class="info"><div class="name">⑤ 写作到投稿（想发小论文再看这段）</div><div class="desc">先去目标期刊官网看《投稿须知》与栏目方向再投；投稿系统认期刊官网，别从中介提交。核验期刊真伪：在"国家新闻出版署·期刊查询"输入刊号/刊名，查不到就是高风险。版面费/审稿费只走期刊官方账户和官方渠道，凡"包发、加急、传真刊号、微信直接转账给个人"一律警惕。</div></div></div>
       </div>
     </section>
 
@@ -3158,14 +3156,14 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p>学习 · 科研 · 效率 · 设计 · 文档 · 升学 · 公众号，100+ 精选资源一触即达</p>
       </div>
 
-      <!-- 资源蒸馏库：作为资源宝库的精品入口，放在分类之上，任何分类下都常驻可见 -->
+      <!-- 干货匣：作为资源宝库的精品入口，放在分类之上，任何分类下都常驻可见 -->
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 15px;border-radius:13px;background:linear-gradient(135deg,#EFE6D2,#E9DFC8);border:1px solid var(--primary-mid);margin-bottom:8px">
         <div style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--card,#FFFDF8);border:1px solid var(--border);font-size:20px;flex-shrink:0">📖</div>
         <div style="flex:1;min-width:0">
-          <div style="font-weight:700;color:var(--primary);font-size:13.5px">资源蒸馏库</div>
-          <div style="font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.5">不是一堆链接，是蒸馏好的精华。学习方法、科研技巧、求职攻略，点开就能学。</div>
+          <div style="font-weight:700;color:var(--primary);font-size:13.5px">干货匣</div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.5">不是一堆链接，是淘成干货的精华。学习方法、科研技巧、求职攻略，点开就能学。</div>
         </div>
-        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;display:inline-block;padding:8px 15px;background:var(--primary);color:#fff;border-radius:9px;font-size:12.5px;font-weight:600;text-decoration:none;box-shadow:0 2px 8px rgba(74,58,40,.18)">进入蒸馏库 →</a>
+        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;display:inline-block;padding:8px 15px;background:var(--primary);color:#fff;border-radius:9px;font-size:12.5px;font-weight:600;text-decoration:none;box-shadow:0 2px 8px rgba(74,58,40,.18)">进入干货匣 →</a>
       </div>
 
       <!-- 分类标签 -->
@@ -5259,9 +5257,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       </div>
 
       <div class="card" style="margin-top:16px;background:linear-gradient(135deg,var(--primary-light),var(--card));border-color:var(--primary-mid)">
-        <h3>📦 知识蒸馏库</h3>
-        <p style="font-size:13px;color:var(--muted);margin:6px 0 12px">把散落各处的学习方法、科研技巧、求职攻略蒸馏成结构化知识卡片，一页一篇、点开即学。</p>
-        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:8px 18px;background:var(--primary);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">进入蒸馏库 →</a>
+        <h3>📦 干货匣</h3>
+        <p style="font-size:13px;color:var(--muted);margin:6px 0 12px">把散落各处的学习方法、科研技巧、求职攻略整理成结构化干货卡片，一页一篇、点开即学。</p>
+        <a href="https://lumenplexus.github.io/centrove/distilled/index.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:8px 18px;background:var(--primary);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">进入干货匣 →</a>
       </div>
 
     </section>
@@ -7990,7 +7988,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       
     </div>
     <div class="card" style="margin-top:16px">
-      <h3>🧪 考试规划 · 蒸馏知识库（官方报名直达 · 入口已核实）</h3>
+      <h3>🧪 考试规划 · 干货匣（官方报名直达 · 入口已核实）</h3>
       <p style="font-size:13px;color:var(--muted);margin-bottom:8px">别在百度搜"XX考试报名"，极易点进山寨缴费页。以下均为教育部/国家部委官方指定入口，报名与缴费一律认官网与学校通知。</p>
       <div class="callout callout-warn" data-nodismiss><strong>反诈铁律：</strong>凡"先缴费再看题""包过""内部渠道改分"的，一律是坑。系统开放时间与费用，以本校及官网当年最新公告为准。</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
@@ -8150,7 +8148,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       
     </div>
     <div class="card" style="margin-top:16px">
-      <h3>🧪 竞赛科研 · 蒸馏知识库（官方报名直达 · 入口已核实）</h3>
+      <h3>🧪 竞赛科研 · 干货匣（官方报名直达 · 入口已核实）</h3>
       <p style="font-size:13px;color:var(--muted);margin-bottom:8px">参赛通知以学校教务处/团委转发为准；报名与论文提交走赛事官网与官方系统，别走野路子代报名。</p>
       <div class="callout callout-info"><strong>冲奖打法：</strong>大一大二先用校赛、大英赛等低门槛赛练手攒经验，大二大三挑 1~2 个有把握的 A 类赛（数模/挑战杯/蓝桥杯）重点冲奖；组队时补齐"建模/编程/写作"分工，比单打独斗胜率高得多。赛后把赛题、作品、答辩经验归档进栖匣，就是你的硬履历。</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
@@ -8778,8 +8776,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <div class="pano-note">栖匣 —— 愿你把每一天，都过出掌控感</div>
 
   </div>
-</div>
-
 </div>
 
 
