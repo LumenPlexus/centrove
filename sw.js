@@ -12,7 +12,7 @@
    - version.txt / sw.js：永远网络，绝不缓存
    - activate：清空ALL旧缓存
    - skipWaiting + clients.claim：新SW立即接管 */
-var VERSION = '2026.09.19.v75';
+var VERSION = '2026.09.19.v76';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -20,7 +20,7 @@ var PRECACHE_URLS = [
   './',
   './index.html',
   './share.html',
-  './css/upgrade.css',
+  './css/upgrade.css?v=76',
   './css/qx.css?v=75',
   './js/upgrade.js',
   './js/qx.app.min.js?v=75',
