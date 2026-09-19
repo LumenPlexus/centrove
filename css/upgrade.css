@@ -1742,6 +1742,54 @@ span[data-pp-err],
 }
 /* 条目文字垂直居中、图标文字对齐 */
 .nav-item{ line-height:1.4; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   分屏适配 · 修复桌面/平板/手机三端布局 (v74.1)
+    1) 桌面正文左侧被遮挡：app 还原为块级，.main 按侧栏宽度留出左边距，
+       内容不再顶到/盖到固定侧栏下方（此前 upgrade.css 把 app 变成纵列flex、
+       .main 用 flex:1 无左偏移，导致正文落在侧栏下面被裁掉）。
+    2) 右侧目录上下空白/与内容重叠：目录改为顶部对齐、紧凑、仅在足够宽
+       的屏幕上作为右栏出现；出现时给主内容预留右槽，绝不悬浮在正文之上、
+       也不再竖向居中造成上下大片空白。
+    3) 三端舒适：手机全宽+底栏留白，平板左栏190全宽，桌面内容居中留呼吸。
+   ═══════════════════════════════════════════════════════════════════════════ */
+.app{display:block;}
+
+/* —— 手机 (<769px)：全宽内容，为底栏留出安全空间；隐藏右栏目录 —— */
+@media(max-width:768px){
+  .main{margin-left:0;padding:16px 12px calc(96px + env(safe-area-inset-bottom, 0px));}
+  .view{max-width:100%;}
+  .toc-float{display:none!important;}
+}
+/* —— 平板 (769–1023px)：左栏190px，内容全宽舒展 —— */
+@media(min-width:769px) and (max-width:1023px){
+  .sidebar{width:190px;}
+  .main{margin-left:190px;padding:24px 24px 64px;}
+  .view{max-width:100%;}
+  .toc-float{display:none!important;}
+}
+/* —— 桌面 (≥1024px)：左栏固定，内容居中留呼吸 —— */
+@media(min-width:1024px){
+  .main{margin-left:190px;padding:26px 36px 64px;}
+  .view{max-width:min(1180px,100%);margin:0 auto;}
+}
+/* 桌面宽屏：侧栏加宽至210，主区左偏移同步 */
+@media(min-width:1240px){
+  .sidebar{width:210px;}
+  .main{margin-left:210px;padding:26px 36px 64px;}
+}
+/* 中等桌面(1240–1499)：无足够右槽，右侧目录不悬浮，避免盖住正文 */
+@media(min-width:1240px) and (max-width:1499px){
+  .toc-float{display:none!important;}
+}
+/* 大桌面(≥1500px)：右侧目录改为顶部对齐的右栏；出现时主内容让出右槽，绝不重合、不竖向空悬 */
+@media(min-width:1500px){
+  .toc-float{top:88px;transform:none;right:20px;width:166px;padding:12px;max-height:calc(100vh - 124px);}
+  .app:has(.toc-float.show) .main{padding-right:200px;}
+  .app:has(.toc-float.show) .view{max-width:min(1120px,100%);}
+}
+/* 桌面端也隐藏过宽导致的横向滚动条：内容列不会超越可视宽 */
+@media(min-width:1024px){ html,body{overflow-x:hidden;} }
 /* 移动端：长菜单名自动换行，侧边栏不横向溢出、滑动顺畅 */
 @media (max-width:768px){
   .sidebar{ overflow-x:hidden; }
