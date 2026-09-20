@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.20.83';
+window.__pageVersion='2026.09.20.84';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -5070,7 +5070,7 @@ function delMovie(i){var ms=getMovies();ms.splice(i,1);saveMovies(ms);renderMovi
 
 /* ═══════════ 豆瓣高分电影推荐 ═══════════ */
 var DOUBAN_MOVIES=[
-  {n:'肖申克的救赎',r:'9.7',g:['犯罪','剧情'],y:'1994',c:'美国',cat:['growth'],insight:'体制化是温水煮青蛙，真正的自由靠每一天挖一铲子',plat:{'爱奇艺':'https://www.iqiyi.com/v_19rra0h3wg.html','哔哩哔哩':'https://search.bilibili.com/all?keyword=%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E','优酷':'https://so.youku.com/search_video/q_%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E'}},
+  {n:'肖申克的救赎',r:'9.7',g:['犯罪','剧情'],y:'1994',c:'美国',cat:['growth'],insight:'体制化是温水煮青蛙，真正的自由靠每一天挖一铲子',plat:{'爱奇艺':'https://m.iqiyi.com/lib/m_200069614.html','哔哩哔哩':'https://search.bilibili.com/all?keyword=%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E','优酷':'https://so.youku.com/search_video/q_%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E'}},
   {n:'霸王别姬',r:'9.6',g:['剧情','爱情'],y:'1993',c:'中国',cat:['cn','life'],insight:'一生只做一件事，做到极致便是尊严',plat:{'哔哩哔哩':'https://search.bilibili.com/all?keyword=%E9%9C%B8%E7%8E%8B%E5%88%AB%E5%A7%AC','1905电影网':'https://www.1905.com/search/?q=%E9%9C%B8%E7%8E%8B%E5%88%AB%E5%A7%AC','优酷':'https://so.youku.com/search_video/q_%E9%9C%B8%E7%8E%8B%E5%88%AB%E5%A7%AC'}},
   {n:'阿甘正传',r:'9.5',g:['剧情','爱情'],y:'1994',c:'美国',cat:['growth'],insight:'跑起来，别想太多，傻人有傻福是真的',plat:{'爱奇艺':'https://www.iqiyi.com/v_19rrk3u264.html','哔哩哔哩':'https://search.bilibili.com/all?keyword=%E9%98%BF%E7%94%98%E6%AD%A3%E4%BC%A0','腾讯视频':'https://v.qq.com/x/search/?searchid=%E9%98%BF%E7%94%98%E6%AD%A3%E4%BC%A0'}},
   {n:'泰坦尼克号',r:'9.5',g:['剧情','爱情'],y:'1997',c:'美国',cat:['love'],insight:'爱是让对方活下来，哪怕自己沉入海底',plat:{'爱奇艺':'https://www.iqiyi.com/v_19rrny4w8w.html','优酷':'https://so.youku.com/search_video/q_%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7','腾讯视频':'https://v.qq.com/x/search/?searchid=%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7'}},
