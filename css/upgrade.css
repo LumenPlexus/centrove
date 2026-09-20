@@ -456,6 +456,43 @@ img[alt="栖匣"] { color: transparent; }
   padding: 14px 0 0;
 }
 
+/* ── 6b. 统一折叠卡片 .qx-coll（电影卡/推荐卡/示范笔记）──
+   可靠性保障：`data-collapse` 事件委托由 qx.app.js 统一接管；
+   这里只负责「大点击热区 + 无障碍焦点 + 箭头语义」。
+   .collapse-body 默认隐藏；.qx-open 展开(与 JS 内联 display 双保险)。 */
+.collapse-body { display: none; }
+.collapse-body.qx-open { display: block; }
+.qx-coll {
+  min-height: 48px;          /* 移动端触控最小热区 */
+  padding: 10px 6px;
+  margin-bottom: 6px;
+  border-radius: var(--radius-sm, 10px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.qx-coll:hover { background: rgba(110,79,55,.06); }
+.qx-coll:active { background: rgba(110,79,55,.10); }
+.qx-coll:focus-visible {
+  outline: 2px solid var(--primary, #6B4D33);
+  outline-offset: 2px;
+}
+.qx-coll .collapse-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(110,79,55,.08);
+  color: var(--primary, #6B4D33);
+  font-size: 12px;
+  transition: transform .3s ease, background .2s ease;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+.qx-coll:hover .collapse-arrow { background: rgba(110,79,55,.15); }
+
 /* ── 7. Toast 提示 ── */
 .cu-toast {
   position: fixed;

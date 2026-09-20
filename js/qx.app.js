@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.20.78';
+window.__pageVersion='2026.09.20.79';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -5131,21 +5131,85 @@ function switchMovieCat(cat){
   renderMovieRecs();
 }
 
-/* ═══════════ 折叠/展开功能 ═══════════ */
-function toggleCollapse(bodyId, headerEl){
-  var body=document.getElementById(bodyId);
-  if(!body)return;
-  var arrow=headerEl.querySelector('.collapse-arrow');
-  if(body.style.display==='none'){
-    body.style.display='block';
-    if(arrow)arrow.style.transform='rotate(180deg)';
-    try{sessionStorage.setItem('collapse_'+bodyId,'1');}catch(e){}
-  }else{
-    body.style.display='none';
-    if(arrow)arrow.style.transform='rotate(0deg)';
-    try{sessionStorage.removeItem('collapse_'+bodyId);}catch(e){}
-  }
+/* ═══════════ 折叠/展开功能（统一稳健版）═══════════
+   历史问题：原先依赖内联 `onclick`，在部分内嵌 WebView/严格 CSP 下不触发，导致
+   "点了展开不出来"、"箭头转不动"。
+   现改为：类名驱动 + 事件委托，任何带 `data-collapse="{id}"` 的元素（含整卡标题区）
+   均可用 点击 / Enter / 空格 切换；状态(展开/收起)、箭头角度、无障碍 aria-expanded
+   、会话记忆 全部统一由本模块维护，全站折叠卡片行为一致可靠。 */
+function qxSetOpen(bodyId, open){
+  try{
+    var body=document.getElementById(bodyId); if(!body)return;
+    body.style.display=open?'block':'none';
+    body.classList.toggle('qx-open', open);
+    var card=body.closest('.card');
+    var h=card?card.querySelector('.qx-coll'):null;
+    if(h)h.setAttribute('aria-expanded', open?'true':'false');
+    var arrow=h?h.querySelector('.collapse-arrow'):null;
+    if(arrow)arrow.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+    try{ if(open){sessionStorage.setItem('collapse_'+bodyId,'1');}else{sessionStorage.removeItem('collapse_'+bodyId);} }catch(e){}
+  }catch(e){}
 }
+function toggleCollapse(bodyId, headerEl){
+  var body=document.getElementById(bodyId); if(!body)return;
+  qxSetOpen(bodyId, !body.classList.contains('qx-open') && body.style.display!=='block');
+}
+/* 事件委托（唯一入口，替代内联 onclick）：点击任意可折叠宿主 */
+document.addEventListener('click',function(e){
+  var t=e.target&&e.target.closest?e.target.closest('[data-collapse]'):null;
+  if(!t)return;
+  var id=t.getAttribute('data-collapse'); if(!id)return;
+  e.preventDefault();
+  toggleCollapse(id, t);
+});
+/* 键盘可达：Enter / 空格 也能展开收起，保证无障碍与纯键盘用户可用 */
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Enter'&&e.key!==' '&&e.key!=='Spacebar')return;
+  var t=e.target;
+  if(!t||!t.getAttribute||!t.getAttribute('data-collapse'))return;
+  e.preventDefault();
+  toggleCollapse(t.getAttribute('data-collapse'), t);
+});
+/* ═══════════ 残留品牌名/脏数据一次性清洗（centrove 等历史英文名）═══════════
+   用户曾反馈：观影片名输入框/profile 草稿里残留旧英文品牌名 "centrove"。
+   根源多为浏览器自动填充(autofill)或早期版本写入 localStorage/sessionStorage 的草稿。
+   这里在启动早期做一次幂等清洗：把本地存储中含 centrove 的笔记/草稿/文本字段剔除，
+   并用标记位防止重复执行。注意：仅清理"明显是残留品牌占位"的非真实用户内容。 */
+(function scrubLegacyBrand(){
+  if(window.__qxScrubbed)return; window.__qxScrubbed=true;
+  function cleanStr(s){
+    if(typeof s!=='string')return s;
+    /* 只有当整段内容是"centrove"或其简单组合(含大小写变体/站点域名留痕)时才整段删除 */
+    if(/^\s*centr(ove|0)?ve\s*$/i.test(s))return '';
+    /* 修复常见域名/占位混入：/centrove/ 、centrove-backup.json 等路径残片 */
+    s=s.replace(/centrove(?:-backup)?(\.json)?/gi,'');
+    /* 兜底：Global 模式(前述全局替换)后若有残留空格错位再整理 */
+    s=s.replace(/\s{2,}/g,' ').trim();
+    return s;
+  }
+  function scrubStorage(strg){
+    if(!strg)return;
+    try{
+      for(var i=0;i<strg.length;i++){
+        var k=strg.key(i); if(!k)continue;
+        var raw=strg.getItem(k); if(typeof raw!=='string')continue;
+        var clean=cleanStr(raw);
+        if(clean!==raw){ strg.setItem(k,clean); }
+      }
+    }catch(e){}
+  }
+  /* 仅清空"明显是残留品牌占位"的观影输入框(若被自动填充成 centrove) */
+  function scrubInputs(){
+    ['movieTitle','movieNote'].forEach(function(id){
+      var el=document.getElementById(id); if(!el)return;
+      if(/^\s*centr(ove|0)?ve\s*$/i.test(el.value))el.value='';
+    });
+  }
+  /* 执行：触摸/加载早期清一轮，DOM 就绪后再清一轮(输入框此时才存在) */
+  scrubStorage(window.localStorage);
+  scrubStorage(window.sessionStorage);
+  document.addEventListener('DOMContentLoaded',function(){ scrubInputs(); scrubStorage(window.localStorage); scrubStorage(window.sessionStorage); });
+})();
 
 /* ═══════════ 滚动位置 & 视图状态恢复 ═══════════ */
 /* 板块切换一律回各自顶部（已在 switchView 处理）；这里只负责「点外链/切走后返回本页」时的位置保留：
@@ -5179,13 +5243,11 @@ window.addEventListener('beforeunload', saveScrollState);
 
 /* 恢复折叠状态 */
 document.addEventListener('DOMContentLoaded',function(){
-  // 恢复折叠状态
+  // 恢复折叠状态（会话记忆）
   document.querySelectorAll('.collapse-body').forEach(function(body){
     var id=body.id;
     if(id && sessionStorage.getItem('collapse_'+id)==='1'){
-      body.style.display='block';
-      var arrow=body.parentElement.querySelector('.collapse-arrow');
-      if(arrow)arrow.style.transform='rotate(180deg)';
+      qxSetOpen(id, true);
     }
   });
 

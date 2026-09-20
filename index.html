@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.20.78"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.20.79"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -94,8 +94,8 @@
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
   <link rel="stylesheet" href="css/qx.css?v=75" media="all">
-  <link rel="preload" href="css/upgrade.css?v=78" as="style">
-  <link rel="preload" href="js/qx.app.min.js?v=78" as="script">
+  <link rel="preload" href="css/upgrade.css?v=79" as="style">
+  <link rel="preload" href="js/qx.app.min.js?v=79" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
@@ -443,11 +443,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .ref-zone{background:linear-gradient(180deg,#221E18,transparent)}
 [data-theme="dark"] .ref-head,[data-theme="dark"] .qx-coll-h{background:#211C16;color:#B8A68C}
 </style>
-  <link rel="stylesheet" href="css/upgrade.css?v=78" media="all">
+  <link rel="stylesheet" href="css/upgrade.css?v=79" media="all">
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
        切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
-<script defer src="js/qx.app.min.js?v=78"></script></head>
+<script defer src="js/qx.app.min.js?v=79"></script></head>
 <body>
 
 
@@ -3425,9 +3425,9 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <div class="ico">📈</div>
               <div class="info"><div class="name">SPSSAU</div><div class="desc">在线数据分析，不用装SPSS</div></div><div class="arrow">↗</div>
             </a>
-            <a class="res-link" href="https://www.sci-hub.ru/" target="_blank" rel="noopener noreferrer">
-              <div class="ico">🔓</div>
-              <div class="info"><div class="name">Sci-Hub</div><div class="desc">免费下载外文论文（注意版权）</div></div><div class="arrow">↗</div>
+            <a class="res-link" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">
+              <div class="ico">🎓</div>
+              <div class="info"><div class="name">谷歌学术</div><div class="desc">免费检索外文文献摘要与引文（正版渠道）</div></div><div class="arrow">↗</div>
             </a>
             <a class="res-link" href="https://endnote.com/" target="_blank" rel="noopener noreferrer">
               <div class="ico">📑</div>
@@ -7664,7 +7664,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <p style="text-align:center;font-size:11px;color:var(--hint);margin-top:8px">每日轮换 · 出处 + 解读 + 生活应用</p>
       </div>
       <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#F5EDE0,#EDE0CC);border:1px solid #D4C4A8">
-        <h3 style="color:var(--primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('movieRecBody',this)">
+        <h3 class="qx-coll" data-collapse="movieRecBody" role="button" tabindex="0" aria-expanded="false" aria-controls="movieRecBody" style="color:var(--primary);display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none">
           <span style="display:flex;align-items:center;flex:1;min-width:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;vertical-align:-3px;margin-right:4px;flex-shrink:0"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"></path></svg><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">豆瓣高分电影推荐</span>&nbsp;<span style="font-size:12px;color:var(--muted);font-weight:400;flex-shrink:0">· 点击观看</span></span>
           <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
         </h3>
@@ -7685,7 +7685,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
       <div class="card" style="margin-bottom:16px">
-        <h3 style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('noteShawshank',this)">
+        <h3 class="qx-coll" data-collapse="noteShawshank" role="button" tabindex="0" aria-expanded="false" aria-controls="noteShawshank" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none">
           <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">示范笔记：《肖申克的救赎》——自由是挖出来的</span>
           <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
         </h3>
@@ -7717,7 +7717,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
       <div class="card" style="margin-bottom:16px">
-        <h3 style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('noteSuzuka',this)">
+        <h3 class="qx-coll" data-collapse="noteSuzuka" role="button" tabindex="0" aria-expanded="false" aria-controls="noteSuzuka" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none">
           <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">示范笔记：《垫底辣妹》——逆袭是拆解出来的</span>
           <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
         </h3>
@@ -7748,7 +7748,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         </div>
       </div>
       <div class="card" style="margin-bottom:16px">
-        <h3 style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" onclick="toggleCollapse('noteHappyness',this)">
+        <h3 class="qx-coll" data-collapse="noteHappyness" role="button" tabindex="0" aria-expanded="false" aria-controls="noteHappyness" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none">
           <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">示范笔记：《当幸福来敲门》——守住你的能力锤子</span>
           <span class="collapse-arrow" style="font-size:14px;transition:transform .3s;flex-shrink:0;margin-left:8px">▼</span>
         </h3>
@@ -7781,8 +7781,10 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
       <div class="card">
         <h3>我的观影笔记（随手记 · 自动保存）</h3>
         <p style="font-size:12px;color:var(--hint);margin-bottom:10px">格式参考：片名+角色 → 经典台词 → 启发感悟 → 我能用在哪个场景</p>
-        <input id="movieTitle" placeholder="电影/剧名 + 单集" style="margin-bottom:8px">
-        <textarea id="movieNote" placeholder="经典台词 / 启发感悟 / 应用到生活的具体场景" style="min-height:100px"></textarea>
+        <label for="movieTitle" style="font-size:12px;color:var(--muted);display:block;margin-bottom:6px">片名 / 剧名 + 单集</label>
+        <input id="movieTitle" name="qixia-movie" type="text" placeholder="电影/剧名 + 单集" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="margin-bottom:8px">
+        <label for="movieNote" style="font-size:12px;color:var(--muted);display:block;margin-bottom:6px">台词 / 感悟 / 应用场景</label>
+        <textarea id="movieNote" name="qixia-movie-note" placeholder="经典台词 / 启发感悟 / 应用到生活的具体场景" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="min-height:110px"></textarea>
         <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="addMovie()">保存笔记</button>
         <div id="movieNoteList" style="margin-top:12px"><p style="color:var(--hint);font-size:13px">还没有观影笔记 · 看完一部电影或剧，用三栏写一篇</p></div>
       </div>
