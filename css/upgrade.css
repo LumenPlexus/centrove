@@ -1785,25 +1785,25 @@ span[data-pp-err],
 /* 大桌面(≥1500px)：右侧目录改为顶部对齐的右栏；出现时主内容让出右槽，绝不重合、不竖向空悬 */
 @media(min-width:1500px){
   .toc-float{top:88px;transform:none;right:20px;width:166px;padding:12px;max-height:calc(100vh - 124px);}
-  .app:has(.toc-float.show) .main{padding-right:200px;}
-  .app:has(.toc-float.show) .view{max-width:min(1120px,100%);}
+  body:has(.toc-float.show) .main{padding-right:200px;}
+  body:has(.toc-float.show) .view{max-width:min(1120px,100%);}
 }
 /* 桌面端也隐藏过宽导致的横向滚动条：内容列不会超越可视宽 */
 @media(min-width:1024px){ html,body{overflow-x:hidden;} }
 /* ═══ 目录控件按端分流（根治「电脑端滑不动 + 左下按钮没反应」）═══
-   左下角圆形「目录」按钮(toc-btn)是移动端控件：它在桌面端被全局 .show 规则
-   误显示了出来，点击走「底部抽屉」，而抽屉仅移动端 display:block、桌面端不可见，
-   但 toggleTocDrawer 仍会给 body 加 overflow:hidden → 页面看似没反应却被锁死滚动。
-   现锁定：≥769px(平板/桌面)一律不显示左下按钮与底部抽屉；桌面右侧悬浮目录
-   (toc-float)在 ≥1500px 作为右栏提供。另加滚动锁安全兜底，杜绝任何残留锁死。 */
+   底部抽屉为移动端专属：桌面段彻底不渲染/不出现，杜绝“点了没反应＋整页滚动被锁”。
+   左下角圆形「目录」按钮在平板/桌面恢复可用：点击右侧展开/收起悬浮目录面板，
+   该面板不锁 body 滚动、不遮挡正文（正文在展开时让出右槽）。 */
 @media(min-width:769px){
-  .toc-btn{display:none!important;opacity:0!important;pointer-events:none!important;visibility:hidden!important;}
   .toc-drawer{display:none!important;}
   .toc-drawer-overlay{display:none!important;pointer-events:none!important;}
+  .toc-btn{display:flex;bottom:96px;left:18px;z-index:901;}
+  .toc-float{display:none!important;top:88px;right:20px;width:210px;transform:none;max-height:calc(100vh - 150px);overflow-y:auto;padding:12px;}
+  .toc-float.show{display:block!important;}
+  body:has(.toc-float.show) .main{padding-right:222px;}
 } 
-/* 滚动锁安全兜底：绝不让任何"高度/overflow"规则把整页卡到无法滚动；
-   正常弹窗(挑板块/设置)会对称地加锁再解锁，这里只杜绝"高度塌陷/压死"造成的假死，
-   不再针对 overflow 强解（避免误伤真正需要锁背景的弹窗）。 */
+/* 滚动锁安全兜底：绝不让任何"高度/scroll"规则把整页卡到无法滚动；
+   真正需要锁背景的弹窗(挑板块/设置/导览)由 JS 看门狗按“是否真有浮层在屏”维持锁定。 */
 html body{max-height:none!important;height:auto!important;}
 /* 移动端：长菜单名自动换行，侧边栏不横向溢出、滑动顺畅 */
 @media (max-width:768px){

@@ -5852,6 +5852,15 @@ function hideToc(){
 
 function toggleTocDrawer(){
   try{
+    /* 平板/桌面端：左侧「目录」按钮 → 右上角展开/收起悬浮目录面板。
+       绝不再动 body 的 overflow —— 从根上杜绝“点了没反应 + 整页滚动被锁死”。 */
+    if(window.innerWidth>=769){
+      var f=document.getElementById('tocFloat');
+      if(f)f.classList.toggle('show');
+      closeTocDrawer(); /* 顺带清掉可能残留的底部抽屉状态与滚动锁，确保干净 */
+      return;
+    }
+    /* 移动端：底部抽屉（原逻辑，仅小屏） */
     var d=document.getElementById('tocDrawer');
     var o=document.getElementById('tocDrawerOverlay');
     if(!d||!o)return;
@@ -5864,6 +5873,33 @@ function toggleTocDrawer(){
     }
   }catch(e){}
 }
+
+/* ═══ 滚动锁自愈看门狗（根治「电脑端上下滑不动」）═══
+   全局不变量：body 的 overflow 只允许在一个"真正可见"的遮罩/浮层弹窗打开时保持 hidden。
+   任何流程（导览 #pano / 挑板块浮层 / 底栏抽屉 / 设置弹窗 等）一旦关闭，都立即自动解锁；
+   即便某条分支漏解了锁，本看门狗也会在 ≤2s 内纠正，保证桌面端与移动端永不被锁死。
+   仅当确有弹窗在屏时保持锁定，绝不影响正常弹窗的"背景不滚动"。 */
+(function watchScrollLock(){
+  var OPEN_SELECTORS=['#pano.show','#panoMask.show','#modulePick.show','#modulePickMask.show','#tour.show','#tocDrawer.show','#tocDrawerOverlay.show'];
+  function overlayShown(){
+    try{
+      for(var i=0;i<OPEN_SELECTORS.length;i++){ if(document.querySelector(OPEN_SELECTORS[i]))return true; }
+      var mo=document.getElementById('modal-overlay'); if(mo&&getComputedStyle(mo).display!=='none')return true;
+      var pp=document.getElementById('pdfPreview'); if(pp&&getComputedStyle(pp).display!=='none')return true;
+    }catch(e){}
+    return false;
+  }
+  function heal(){
+    try{
+      if(!document.body||document.body.style.overflow!=='hidden')return;
+      if(!overlayShown())document.body.style.overflow='';
+    }catch(e){}
+  }
+  window.addEventListener('load',heal);
+  document.addEventListener('visibilitychange',heal);
+  setTimeout(heal,800);setTimeout(heal,1600);setTimeout(heal,3000);setTimeout(heal,6000);
+  setInterval(heal,2000);
+})();
 
 function closeTocDrawer(){
   try{
