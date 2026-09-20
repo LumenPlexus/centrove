@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.20.79';
+window.__pageVersion='2026.09.20.80';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -9462,7 +9462,7 @@ function maybeOpenPrefPick(){
       if(card.closest('[data-nofold]')||card.getAttribute('data-nofold')==='')continue;
       if(card.classList.contains('qx-fold'))continue;                        /* 系统自带折叠的卡不重复处理 */
       if(card.querySelector('.ai-grid,.res-list'))continue;                  /* 直达宫格/资源列不折 */
-      if(card.querySelector('.qx-foldbtn,.fold-toggle,.fold-bar'))continue;  /* 已有折叠控件的不重复 */
+      if(card.querySelector('.qx-foldbtn,.fold-toggle,.fold-bar,.qx-coll,.collapse-body,[data-collapse]'))continue;  /* 已有手动折叠控件的不重复（含栖匣 .qx-coll 卡），避免两套折叠互相干扰导致"点了没反应" */
       if(card.querySelector('.editable-table,[contenteditable="true"]'))continue; /* 可编辑表格/内容不折，避免藏住编辑入口 */
       /* 嵌套在其它卡片内部的卡不折，统一交给最外层卡片 */
       if(card.parentNode&&card.parentNode.closest&&card.parentNode.closest('.view .card'))continue;
