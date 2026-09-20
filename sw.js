@@ -12,7 +12,7 @@
    - version.txt / sw.js：永远网络，绝不缓存
    - activate：清空ALL旧缓存
    - skipWaiting + clients.claim：新SW立即接管 */
-var VERSION = '2026.09.20.v77';
+var VERSION = '2026.09.20.v78';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -20,10 +20,10 @@ var PRECACHE_URLS = [
   './',
   './index.html',
   './share.html',
-  './css/upgrade.css?v=77',
+  './css/upgrade.css?v=78',
   './css/qx.css?v=75',
   './js/upgrade.js',
-  './js/qx.app.min.js?v=77',
+  './js/qx.app.min.js?v=78',
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',
@@ -57,7 +57,18 @@ self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.map(function (k) { return caches.delete(k); }));
-    }).then(function () { return self.clients.claim(); })
+    }).then(function () {
+      return self.clients.claim();
+    }).then(function () {
+      /* 版本升级后，强制所有受控的旧窗口重载一次，避免继续跑在旧 JS/CSS 上
+         （旧版曾把 body 锁死导致“划不动”，必须立刻切到新代码）。 */
+      return self.clients.matchAll({ type: 'window', includeUncontrolled: true })
+        .then(function (ws) {
+          ws.forEach(function (c) {
+            try { c.navigate(c.url); } catch (e) {}
+          });
+        });
+    })
   );
 });
 

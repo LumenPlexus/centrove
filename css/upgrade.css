@@ -1805,6 +1805,20 @@ span[data-pp-err],
 /* 滚动锁安全兜底：绝不让任何"高度/scroll"规则把整页卡到无法滚动；
    真正需要锁背景的弹窗(挑板块/设置/导览)由 JS 看门狗按“是否真有浮层在屏”维持锁定。 */
 html body{max-height:none!important;height:auto!important;}
+/* ═══ 整页“永久可滚”终极兜底（v78）═══
+   问题复现：旧版 JS 一旦给 body 写了内联 `overflow:hidden`（且弹窗已关闭/看门狗未命中时），
+   body 高被裁成视口高 → 电脑端整页划不动。
+   解法：`!important` 高于内联 style（非 important）。强制 html 作为唯一滚动容器、
+   body 永不裁剪、永不锁死。任何旧版脚本都无法再通过改 body 内联样式把页面卡住。
+   说明：全屏弹窗(导览/挑板块/设置)都是 position:fixed + 自带 overflow:auto，
+   天然挡住背景并内部滚动，不再依赖“锁 body”。 */
+html{overflow-y:auto!important;height:auto!important;}
+body{overflow:visible!important;height:auto!important;min-height:100vh!important;}
+/* 兜底：全屏浮层元素永远自备内部滚动，绝不依赖锁 body 背景 */
+#pano,#panoMask,#tour,#modulePick,#modulePickMask,#modal-overlay,#pdfPreview{overflow-y:auto!important;}
+@media(max-width:768px){
+  #pano{overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;}
+}
 /* 移动端：长菜单名自动换行，侧边栏不横向溢出、滑动顺畅 */
 @media (max-width:768px){
   .sidebar{ overflow-x:hidden; }
