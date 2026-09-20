@@ -1,4 +1,4 @@
-window.__pageVersion='2026.09.20.80';
+window.__pageVersion='2026.09.20.81';
     /* ── 首屏同步定主题：在 CSS 首次绘制前就设置 data-theme，杜绝日/夜加载时的闪白/蓝块 ── */
     (function(){
       var t=null;
@@ -2952,9 +2952,13 @@ function renderFocus(){
       if(isSys)continue;
       var items=sec.items;
       if(items.length===0)continue;
-      html+='<div class="focus-group'+(si===0?' open':'')+'">'
-        +'<button class="fg-head" role="button" aria-expanded="'+(si===0?'true':'false')+'" onclick="toggleFocusGroup(this)">'
-        +'<span class="fg-caret">'+(si===0?'–':'+')+'</span>'
+      /* 每个分类可独立展开/收起并记住各自状态：点击展开某类时，其余已展开的分类保持展开，
+         只有用户主动点击该分类的收起按钮才收起，且刷新后仍记住。 */
+      var _st=focusGroupState();
+      var gOpen=(sec.g in _st)?!!_st[sec.g]:(si===0);
+      html+='<div class="focus-group'+(gOpen?' open':'')+'" data-gname="'+sec.g+'">'
+        +'<button class="fg-head" role="button" aria-expanded="'+(gOpen?'true':'false')+'" onclick="toggleFocusGroup(this)">'
+        +'<span class="fg-caret">'+(gOpen?'–':'+')+'</span>'
         +'<span class="fg-name">'+sec.g+'</span>'
         +'<span class="fg-count">'+items.length+' 个板块</span></button>'
         +'<div class="fg-body"><div class="focus-grid">';
@@ -3064,21 +3068,25 @@ function applySidebarFilter(){
     }
   }catch(e){}
 }
-/* 手风琴：点大板块展开/收起其细分板块（同一时间只开一个，聚焦不铺开） */
+/* 多开模式：多个分类可同时展开互不自动收起（仅用户主动点击才收起），
+     且每个分类各自持久化记住展开/收起状态。 */
+function focusGroupState(){try{return JSON.parse(localStorage.getItem('pp_focus_open')||'{}');}catch(e){return {};}}
+function setFocusGroupState(name,open){
+  if(!name)return;
+  var s=focusGroupState(); s[name]=!!open;
+  try{localStorage.setItem('pp_focus_open',JSON.stringify(s));}catch(e){}
+}
+/* 点击分类头：只切换当前这一个分类（多开模式）。
+   其余已展开的分类保持展开，除非用户主动点它收起。 */
 function toggleFocusGroup(btn){
   var grp=btn.parentNode;
+  var name=grp.getAttribute('data-gname')||'';
   var wasOpen=grp.classList.contains('open');
-  var all=document.querySelectorAll('#focusStart .focus-group');
-  for(var i=0;i<all.length;i++){
-    all[i].classList.remove('open');
-    var h=all[i].querySelector('.fg-head');
-    if(h){h.setAttribute('aria-expanded','false');var ca=h.querySelector('.fg-caret');if(ca)ca.textContent='+';}
-  }
-  if(!wasOpen){
-    grp.classList.add('open');
-    btn.setAttribute('aria-expanded','true');
-    var care=btn.querySelector('.fg-caret');if(care)care.textContent='–';
-  }
+  var aria=wasOpen?'false':'true';
+  grp.classList.toggle('open', !wasOpen);
+  btn.setAttribute('aria-expanded', aria);
+  var ca=btn.querySelector('.fg-caret');if(ca)ca.textContent=(!wasOpen?'–':'+');
+  setFocusGroupState(name, !wasOpen);
 }
 /* 事件委托：保证「轻松上手」板块卡片在移动端/触摸下也能稳定跳转（不依赖内联 onclick） */
 (function(){
