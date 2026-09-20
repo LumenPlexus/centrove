@@ -10,9 +10,9 @@
    - 导航请求：stale-while-revalidate（有缓存秒开，后台更新）
    - 静态资源：stale-while-revalidate
    - version.txt / sw.js：永远网络，绝不缓存
-   - activate：清空ALL旧缓存
+   - activate：仅清除旧版本缓存（保留本次刚预缓存好的资源，加快二次打开）
    - skipWaiting + clients.claim：新SW立即接管 */
-var VERSION = '2026.09.20.v82';
+var VERSION = '2026.09.20.v83';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
@@ -20,10 +20,10 @@ var PRECACHE_URLS = [
   './',
   './index.html',
   './share.html',
-  './css/upgrade.css?v=78',
+  './css/upgrade.css?v=83',
   './css/qx.css?v=75',
   './js/upgrade.js',
-  './js/qx.app.min.js?v=78',
+  './js/qx.app.min.js?v=83',
   './app/pp-sync.js',
   './pwa/manifest.json',
   './pwa/version.txt',
@@ -56,7 +56,15 @@ self.addEventListener('install', function (e) {
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
-      return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+      /* 重要修复：只清除「旧版本」的缓存，必须保留本次刚预缓存好的 PRE 与运行缓存 RUN。
+         旧版逻辑在这里把 ALL 缓存全删了，等于每次部署都把自己刚建好的预缓存删掉，
+         导致每次更新后整站冷加载、第一次打开特别慢。改为按版本号精准清理。 */
+      return Promise.all(keys.map(function (k) {
+        if (k.indexOf('centrove-') === 0 && k !== PRE && k !== RUN) {
+          return caches.delete(k);
+        }
+        return null;
+      }));
     }).then(function () {
       return self.clients.claim();
     }).then(function () {
