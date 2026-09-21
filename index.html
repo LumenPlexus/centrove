@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.21.85"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.21.87"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -94,7 +94,7 @@
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
   <link rel="stylesheet" href="css/qx.css?v=75" media="all">
-  <link rel="preload" href="css/upgrade.css?v=86" as="style">
+  <link rel="preload" href="css/upgrade.css?v=87" as="style">
   <link rel="preload" href="js/qx.app.min.js?v=86" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
@@ -443,7 +443,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .ref-zone{background:linear-gradient(180deg,#221E18,transparent)}
 [data-theme="dark"] .ref-head,[data-theme="dark"] .qx-coll-h{background:#211C16;color:#B8A68C}
 </style>
-  <link rel="stylesheet" href="css/upgrade.css?v=86" media="all">
+  <link rel="stylesheet" href="css/upgrade.css?v=87" media="all">
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
         切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
@@ -732,13 +732,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
             <button id="heroToggle" type="button" onclick="toggleHeroCollapse()" title="折叠/展开品牌介绍" aria-expanded="true" style="padding:3px 9px;border:1px solid rgba(74,59,46,.25);border-radius:8px;background:rgba(255,255,255,.55);color:var(--primary);font-size:11px;line-height:1.6;cursor:pointer;white-space:nowrap">▾ 收起</button>
           </div>
         </div>
-        <div id="heroBody">
-        <p style="margin-top:14px;font-size:13.5px;line-height:2;color:var(--text)">
-          <em style="font-style:normal;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:15.5px;color:var(--primary);letter-spacing:1px">把每一天好好安放，心有所栖，万象入匣。</em><br>
-          一段漫长的大学旅程，会生出数不清的目标、计划与期待。<b style="color:var(--primary)">学业备考 · 竞赛科研 · 实习求职 · 复盘感悟 · 理财规划</b>——栖匣便是属于你的一方园地，帮你把一路重要的成长印记一一承载。<br>
-          不必让繁多的任务与计划日复一日盘旋在脑海。将各项规划妥善收纳，卸下内心重担，从容前行。<br>
-          <span style="color:var(--primary-mid)">打开栖匣，就可以立刻开始规划与执行</span>——目标拆解、备考路线、时间安排、复盘总结，各归其位。<br>
-          即开即用，数据私密保存，支持导出与多端同步。<em style="font-style:normal;color:var(--gold)">心有所栖，匣纳成长。</em>
+        <div id="heroBody" style="margin-top:12px">
+        <p style="font-size:13.5px;line-height:1.9;color:var(--text)">
+          <em style="font-style:normal;font-family:'Noto Serif SC','Songti SC','STSong',serif;font-size:15.5px;color:var(--primary);letter-spacing:1px">心有所栖，匣纳成长。</em><br>
+          学业备考 · 竞赛科研 · 实习求职 · 复盘感悟 · 理财规划——把大学里每一个重要目标都好好安放，卸下重担，从容前行。<br>
+          <span style="color:var(--primary-mid)">即开即用，数据私密保存，支持导出与多端同步。</span>
         </p>
         </div>
       </div>
@@ -7367,19 +7365,6 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <span id="journalSaveHint" style="font-size:12px;color:var(--teal);margin-left:10px"></span>
       </div>
       <div class="card" style="margin-top:16px">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>一份结构模板 · 照着填就不会空</h3>
-        <div style="background:var(--bg);padding:16px;border-radius:10px;font-size:13px;line-height:1.9">
-          <p style="color:var(--primary);font-weight:600">今天完成了什么 —— 写一件真正做成的事</p>
-          <p style="color:var(--muted)">结果越具体越好，例如：完成了＿＿＿＿＿＿</p>
-          <p style="color:var(--teal);font-weight:600;margin-top:10px">今天学到了什么 —— 一个能用的知识点或方法</p>
-          <p style="color:var(--muted)">记下一个下次真能用上的东西：＿＿＿＿＿＿</p>
-          <p style="color:var(--coral);font-weight:600;margin-top:10px">哪里没做好 / 可以改进 —— 诚实记一条，不批判</p>
-          <p style="color:var(--muted)">只描述事实，想一句下次换种做法：＿＿＿＿＿＿</p>
-          <p style="color:var(--primary);font-weight:600;margin-top:10px">明天最重要的 3 件事</p>
-          <p style="color:var(--muted)">写下 3 件明天最想推进的事：1. ＿＿＿ 2. ＿＿＿ 3. ＿＿＿</p>
-        </div>
-        <div class="callout callout-info" style="margin-top:8px"><strong>为什么复盘有用：</strong>每天几分钟，把「做过什么、学到什么、下次怎么改」记下来，过段时间回看，就能清晰看到自己的成长轨迹。所有记录仅存在你自己的设备里，可从「系统设置」导出备份。</div>
-      </div>      <div class="card" style="margin-top:16px">
         <h3>历史记录</h3>
         <div id="journalHistory"></div>
       </div>
@@ -7860,16 +7845,12 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <button class="btn btn-primary btn-sm" onclick="addNote()">贴一张</button>
         </div>
       </div>
-      <div class="card" style="margin-top:16px;background:#FFF8EF;border-color:#F2DDB8">
-        <h3 style="color:var(--gold)">关于这个板块</h3>
-        <p style="font-size:13px;color:var(--muted);line-height:1.9">大学不只是卷。累了、丧了、想摆烂一下，都正常。这个板块就是给你喘口气的地方——不打卡、不排行、不制造焦虑。放松完，愿意动的时候再动就好。</p>
-      </div>
     </section>
 
 
     <!-- ═══════ 心灵成长（全年龄通用） ═══════ -->
     <section class="view" id="view-mind">
-<div class="section-intro">情绪和心态没有对错。把起伏如实记下，照顾好自己，比什么都重要。💡 记录情绪不是为了"消灭负面情绪"，而是为了看见它、理解它。情绪上来时，先写下来，再想想为什么。</div>
+<div class="section-intro">情绪没有对错，把起伏如实记下，照顾好自己。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>心灵成长</h1>
         <p>情绪管理 · 压力缓解 · 自我关怀 · 关系沟通 · 心理急救箱</p>

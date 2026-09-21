@@ -2028,13 +2028,16 @@ body{overflow:visible!important;height:auto!important;min-height:100vh!important
 
   /* ② 悬浮反馈（仅支持 hover 的设备） */
   @media (hover:hover){
-    .card{ transition:transform .3s var(--qx-ease), box-shadow .3s var(--qx-ease), border-color .25s }
-    .card:hover{ transform:translateY(-2px); box-shadow:0 10px 26px -10px rgba(90,72,48,.28) }
+    .card{ transition:transform .3s var(--qx-ease), box-shadow .3s var(--qx-ease), border-color .28s, background-color .28s }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px -12px rgba(90,72,48,.34); border-color:rgba(179,133,70,.5) }
     .btn,.mind-refresh,.k-tab,.mtab-btn,.b3d-chip,.tab-pill,.pill{
       transition:transform .22s var(--qx-ease), background-color .2s, box-shadow .22s var(--qx-ease) }
     .btn:not(:active):hover,.mind-refresh:hover,.k-tab:hover,.mtab-btn:hover,.b3d-chip:hover,.tab-pill:hover,.pill:hover{
       transform:translateY(-1px) }
     nav a,.pages a,.toc a,.mnav-link{ transition:background-color .2s,color .2s,opacity .2s }
+
+    /* 收藏/资源/导航等可点条目的优雅高亮 */
+    .res-link:hover,.ai-tile:hover,.hab-item:hover,.countdown-item:hover{ border-color:rgba(179,133,70,.45); transform:translateY(-1px) }
   }
 
   /* ③ 点击反馈（全设备可感知） */
