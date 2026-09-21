@@ -1962,3 +1962,51 @@ body{overflow:visible!important;height:auto!important;min-height:100vh!important
   .b3d-cell{inset:16px 8px}
   .b3d-stage,.b3d-panel{min-width:100%}
 }
+
+/* ═══════════ 全局动效层 v80 ═══════════
+   目标：好看 · 高级 · 克制。只改 transform / opacity（不触发布局与重排），手机低端机也流畅。
+   三档递进：
+   ① 视图进入：切换到某板块时，主标题 / 引言 / 卡片依次淡入上浮，形成"开卷"手感；
+   ② 悬浮反馈：支持 hover 的设备上，卡片 / 按钮 / 导航轻微抬升、阴影柔和过渡；
+   ③ 点击反馈：可点元素按下瞬时微缩，触屏同样可感知。
+   尊重 prefers-reduced-motion：用户系统要求减少动画时，以上全部关闭，保证可读与顺畅。 */
+:root{
+  --qx-ease:cubic-bezier(.22,.61,.36,1);
+  --qx-t:.45s;
+}
+@media (prefers-reduced-motion:no-preference){
+
+  /* ① 视图进入入场 */
+  @keyframes qxRise{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+  @keyframes qxFade{ from{opacity:0} to{opacity:1} }
+
+  .view.active{ animation:qxFade .34s var(--qx-ease) both }
+  .view.active .page-head{ animation:qxRise .5s var(--qx-ease) .02s both }
+  .view.active .section-intro{ animation:qxRise .5s var(--qx-ease) .05s both }
+  .view.active .callout{ animation:qxRise .5s var(--qx-ease) .08s both }
+  .view.active .card{ animation:qxRise .5s var(--qx-ease) .11s both }
+  .view.active .card:nth-of-type(4){ animation-delay:.15s }
+  .view.active .card:nth-of-type(5){ animation-delay:.19s }
+  .view.active .card:nth-of-type(6){ animation-delay:.23s }
+
+  /* 宫格 / 直达项：逐格轻微错落，视觉节奏不生硬 */
+  .view.active .row-inline>*{ animation:qxRise .5s var(--qx-ease) both }
+  .view.active .row-inline>*:nth-child(2){ animation-delay:.05s }
+  .view.active .row-inline>*:nth-child(3){ animation-delay:.10s }
+  .view.active .row-inline>*:nth-child(4){ animation-delay:.15s }
+
+  /* ② 悬浮反馈（仅支持 hover 的设备） */
+  @media (hover:hover){
+    .card{ transition:transform .3s var(--qx-ease), box-shadow .3s var(--qx-ease), border-color .25s }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 10px 26px -10px rgba(90,72,48,.28) }
+    .btn,.mind-refresh,.k-tab,.mtab-btn,.b3d-chip,.tab-pill,.pill{
+      transition:transform .22s var(--qx-ease), background-color .2s, box-shadow .22s var(--qx-ease) }
+    .btn:not(:active):hover,.mind-refresh:hover,.k-tab:hover,.mtab-btn:hover,.b3d-chip:hover,.tab-pill:hover,.pill:hover{
+      transform:translateY(-1px) }
+    nav a,.pages a,.toc a,.mnav-link{ transition:background-color .2s,color .2s,opacity .2s }
+  }
+
+  /* ③ 点击反馈（全设备可感知） */
+  .btn:active,.mind-refresh:active{ transform:scale(.96) }
+  .k-tab:active,.mtab-btn:active,.b3d-chip:active,.tab-pill:active,.pill:active{ transform:scale(.94) }
+}

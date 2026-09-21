@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.20.84"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN" data-app="centrove" data-author="尹平平" data-ver="2026.09.21.85"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- 版本号标记（Service Worker 负责后台自动更新，无需页面主动刷新） -->
   
   <!-- 关键内联CSS：在主样式表解析前立即设置背景色，杜绝打开瞬间的白屏/黑屏 -->
@@ -94,8 +94,8 @@
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
   <link rel="stylesheet" href="css/qx.css?v=75" media="all">
-  <link rel="preload" href="css/upgrade.css?v=84" as="style">
-  <link rel="preload" href="js/qx.app.min.js?v=84" as="script">
+  <link rel="preload" href="css/upgrade.css?v=85" as="style">
+  <link rel="preload" href="js/qx.app.min.js?v=85" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
@@ -443,11 +443,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .ref-zone{background:linear-gradient(180deg,#221E18,transparent)}
 [data-theme="dark"] .ref-head,[data-theme="dark"] .qx-coll-h{background:#211C16;color:#B8A68C}
 </style>
-  <link rel="stylesheet" href="css/upgrade.css?v=84" media="all">
+  <link rel="stylesheet" href="css/upgrade.css?v=85" media="all">
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
         切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
- <script defer src="js/qx.app.min.js?v=84"></script></head>
+ <script defer src="js/qx.app.min.js?v=85"></script></head>
 <body>
 
 
@@ -762,14 +762,14 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
       <div class="card" data-goalcard style="margin-bottom:16px;background:linear-gradient(135deg,#F8F2E4 0%,#F1E7D2 55%,#EBDDC0 100%);border:1px solid rgba(139,105,20,.16);border-left:4px solid #B08A54">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
           <div style="flex:1;min-width:200px">
-            <div style="font-size:12px;color:#7A6E5C;line-height:1.9">今日<br>不必给自己安排满满当当的任务。挑好一件今天最要紧的小事，踏实做完，今天便已经足够好了。</div>
+            <div style="font-size:12px;color:#7A6E5C;line-height:1.9">今天不必排满，只挑一件最要紧的小事做完，便已足够。</div>
             <div style="font-size:14px;color:var(--primary);font-weight:600;margin-top:8px">🎯 今天，你最想优先完成的一件事</div>
             <input id="todayGoalInput" placeholder="写下来，比如：背完 50 个单词" style="width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:15px;color:var(--text);background:var(--card);outline:none" onkeydown="if(event.key===&#39;Enter&#39;)saveTodayGoal()">
           </div>
           <button class="btn btn-primary btn-sm" style="font-size:14px;padding:10px 18px" onclick="saveTodayGoal()">定下今天的目标</button>
         </div>
         <div id="todayGoalShow" style="margin-top:10px;font-size:14px;color:#5C4A3A;display:none"></div>
-        <div data-qxd="goalAsk" style="position:relative;margin-top:10px;font-size:12px;color:#7A6E5C;line-height:1.7;padding-right:18px">💡 小提醒：目标别写太多，<b style="color:var(--primary)">只安放一件最要紧的</b>便好。完成了，今天就算安放妥当。<br>📌 <b>为什么只设一件？</b>目标太多反而容易焦虑、一件都做不完。把最重要的那一件做好，今天就不算白过——这比列 10 件事却只完成 2 件，心态上好太多了。<span onclick="qxdismiss('goalAsk')" title="不再显示这条说明" style="position:absolute;top:-2px;right:0;cursor:pointer;opacity:.5;font-size:13px;line-height:1">✕</span></div>
+        <div data-qxd="goalAsk" style="position:relative;margin-top:10px;font-size:12px;color:#7A6E5C;line-height:1.7;padding-right:18px">💡 小提醒：目标只安放<b style="color:var(--primary)">一件最要紧的</b>，完成了今天就不算白过。目标太多反而都做不完。<span onclick="qxdismiss('goalAsk')" title="不再显示这条说明" style="position:absolute;top:-2px;right:0;cursor:pointer;opacity:.5;font-size:13px;line-height:1">✕</span></div>
       </div>
       <!-- 删除六个功能直达卡：与底栏/侧边栏重复，全部并入导航，避免冗余 -->
 
@@ -888,7 +888,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 
     <!-- 学业精进 -->
     <section class="view" id="view-study">
-<div class="section-intro">四六级、考研、法考、教资、各类证书的备考都在这里留档。资讯仅供参考，请以学校与国家官方最新通知为准。💡 备考建议：先定目标分数 → 拆解到每个月/每周的任务 → 每周复盘调整。不要一上来就刷题，先搞清楚考什么、怎么考。</div>
+<div class="section-intro">四六级、考研、法考、教资……各类备考，全部留档。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>学业精进</h1>
         <p>绩点 · 英语 · 数学 · 专业课 · 保研考研，循序渐进、学有章法</p>
@@ -1910,7 +1910,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 职业发展 -->
     <section class="view" id="view-career">
-<div class="section-intro">实习投递、简历打磨、技能学习、行业方向探索。提前一点点布局，慢慢搭建属于自己未来的职业竞争力。</div>
+<div class="section-intro">实习、简历、技能、行业方向，提前一点点布局。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>职业发展</h1>
         <p>方向 · 简历 · 面试 · 投递 · 谈薪，一站到底</p>
@@ -2502,7 +2502,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 论文写作 -->
     <section class="view" id="view-paper">
-<div class="section-intro">论文与写作不必一次求成。把选题、框架、素材一步步收好，落笔会顺畅很多。资讯仅供参考，请以学校与国家官方最新通知为准。</div>
+<div class="section-intro">论文写作：选题、框架、素材，一步步收好。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>论文写作</h1>
         <p>从读到写 · 大学论文全流程 · 学业论文专项</p>
@@ -2916,7 +2916,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 搞钱启蒙 -->
     <section class="view" id="view-earn">
-<div class="section-intro">副业信息仅供参考，请以官方平台与学校政策为准。先看风险，再谈回报。精力和学业永远优先。</div>
+<div class="section-intro">副业有风险：先看风险，再看回报，学业优先。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="18"></line></svg>搞钱启蒙</h1>
         <p>适合学生的合法赚钱途径 · 网购平台省钱心法</p>
@@ -3051,7 +3051,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 个人提升 -->
     <section class="view" id="view-growth">
-<div class="section-intro">把散落的日子串成一份成长档案。回看时你会发现，原来一路走了这么远。📊 这里自动统计你的打卡、专注、任务完成、阅读等数据，都是你自己一点一滴攒出来的成果。</div>
+<div class="section-intro">把日子串成成长档案，自动统计你的打卡与成果。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83.83-2.5 2.5-2.5 4a2.5 2.5 0 1 0 5 0c0-1.5-1.67-3.17-2.5-4z"></path><path d="M12 2v6m0 0L8 4m4 4l4-4"></path></svg>个人提升</h1>
         <p>执行力 · 作息矫正 · 技能成长，平心笃行</p>
@@ -3198,7 +3198,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 时间管理方法 -->
     <section class="view" id="view-tools">
-<div class="section-intro">拿来即用的效率方法，省去你重复摸索的时间。</div><div class="page-head">
+<div class="section-intro">拿来即用的效率方法。</div><div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>高效方法</h1>
         <p>14 大高效工作法 · 选 1-2 个先练起来，专治"效率低、总拖延"</p>
       </div>
@@ -3290,7 +3290,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
     <!-- 资源宝库 -->
     <section class="view" id="view-reslib">
-<div class="section-intro">精选大学生真正用得上的网站、工具、平台，分好类、点一下就直达。省得你自己瞎找、收藏了再也不看。</div>
+<div class="section-intro">精选实用网站与工具，点一下就直达。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>资源宝库</h1>
         <p>学习 · 科研 · 效率 · 设计 · 文档 · 升学 · 公众号，100+ 精选资源一触即达</p>
@@ -3885,7 +3885,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 理财管理 -->
     <section class="view" id="view-finance">
-<div class="section-intro">收支记账、存款规划、省钱方案、副业信息参考。慢慢建立适合大学生自己的金钱管理习惯。💡 先从「每天记账」开始，坚持一个月后你会惊讶于钱都花去哪了。</div>
+<div class="section-intro">记账、存款、省钱、副业参考，慢慢建立理财习惯。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>理财管理</h1>
         <p>资金配置 · 不亏损优先 · 财富自由测算</p>
@@ -4010,7 +4010,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 省钱技巧 -->
     <section class="view" id="view-save">
-<div class="section-intro">省钱不是抠门，是更清醒地知道钱花在了哪里。把方法一条条收好，慢慢变成习惯。💡 新手入门：先记录一周开销，看看钱都花在哪了，再从最大的那一项开始优化。</div>
+<div class="section-intro">省钱不是抠门，是清醒地知道钱花在哪。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>省钱技巧</h1>
         <p>学生党月省500+ · 不降低生活质量 · 12个实用渠道</p>
@@ -4241,7 +4241,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 运动健康 -->
     <section class="view" id="view-health">
-<div class="section-intro">作息、运动、身心状态，生活琐事清单。关照好自己的身体与情绪，经营一份松弛稳定的校园日常。💡 不用样样都顾，先选一项你最想改善的（比如早睡），坚持两周再加下一项。</div>
+<div class="section-intro">作息、运动、身心状态，关照好自己。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>运动健康</h1>
         <p>当前→目标（点击填写） · 可持续跟练 · 饮食红绿灯</p>
@@ -4702,7 +4702,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 校园生活 -->
     <section class="view" id="view-campus">
-<div class="section-intro">课程、社团、校园手续、生活琐事，都收在这里，不用再来回找。个别政策类资讯仅供参考，请以学校与国家官方最新通知为准。</div><div class="page-head">
+<div class="section-intro">课程、社团、校园手续、生活琐事，都收在这里。</div><div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>校园生活</h1>
         <p>入学准备 · 课程表 · 社团选择 · 室友公约 · 节假日规划 · 实习日历 · 自动保存</p>
       </div>
@@ -5149,7 +5149,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- AI工具选型 -->
     <section class="view" id="view-ai">
-<div class="section-intro">用合适的工具，把重复的活儿交出去，把精力留给真正重要的事。</div>      <div class="page-head">
+<div class="section-intro">把重复的活儿交给工具，把精力留给重要的事。</div>      <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"></path></svg>智造工坊</h1>
         <p>不是"哪个最强"，而是"哪个帮我把事做成" · 步骤 + 场景 + 提示词，照抄就能用</p>
       </div>
@@ -5406,7 +5406,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 平安护航 -->
     <section class="view" id="view-safety">
-<div class="section-intro">把出行、财产、健康防护这些底线的知识收好，安心生活。</div>
+<div class="section-intro">出行、财产、健康防护的底线知识，安心生活。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>平安护航</h1>
         <p>防骗反诈 · 人身与财产 · 求助通道——把风险挡在校门之外</p>
@@ -5945,7 +5945,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 生涯蓝图 -->
     <section class="view" id="view-life">
-<div class="section-intro">证书、职业、人生阶段——把长线的规划放进时间线，走得再远也看得见方向。</div>
+<div class="section-intro">证书、职业、人生阶段，长线规划放进时间线。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>生涯蓝图</h1>
         <p>证书时间线 · 人生阶段 · 复盘 · 读书 · 播客 · 不设限</p>
@@ -6099,7 +6099,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 播客精读 -->
     <section class="view" id="view-podcast">
-<div class="section-intro">把听过的声音、记下的观点留存下来，时间久了自有回甘。</div>
+<div class="section-intro">把听过的声音、记下的观点留存下来。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path></svg>耳畔星河</h1>
         <p>一档节目一档笔记 · 四栏笔记法 · 带示范笔记</p>
@@ -6223,7 +6223,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 番茄专注 -->
     <section class="view" id="view-timer">
-<div class="section-intro">专注不用靠硬撑，用对节奏即可。时间是你自己的，慢慢用。💡 经典番茄工作法：25 分钟专注 + 5 分钟休息，每 4 个番茄后休息 15-30 分钟。一开始坐不住没关系，从 15 分钟开始也可以。</div>
+<div class="section-intro">专注不用硬撑，用对节奏即可。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3L2 6"></path><path d="M22 6l-3-3"></path></svg>心流计时</h1>
         <p>25 分钟深度专注 + 5 分钟休息 · 中断原因记录生成饼图 · 今日累计番茄数</p>
@@ -6277,7 +6277,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 灵感看板 -->
     <section class="view" id="view-creative">
-<div class="section-intro">读书笔记、碎片灵感、兴趣收获、休闲时刻的所思所想。把一闪而过、不想遗失的想法妥善留存下来。💡 好灵感往往稍纵即逝——想到就立刻记下来，哪怕只有一句话。过段时间回看，你会发现很多宝藏。</div>
+<div class="section-intro">读书笔记、碎片灵感、兴趣收获，都存下来。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path></svg>灵感看板</h1>
         <p>灵感收集器 · 决策日记 · 感恩日记 · 人生100个目标</p>
@@ -6341,7 +6341,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 书海·金句笔记 -->
     <section class="view" id="view-shelf">
-<div class="section-intro">把读过的书、想读的书、触动你的句子都收进来，慢慢攒成你自己的书房。💡 建议：每读完一本，花 5 分钟写几句读后感；不用追求数量，真正有收获的一本胜过翻完的十本。</div>
+<div class="section-intro">把读过的书和触动你的句子，收进自己的书房。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>书海拾贝</h1>
         <p>精选书库 · 点击封面看金句和读书笔记 · 今日金句 · 可自主添加</p>
@@ -6440,7 +6440,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <!-- 数据设置 -->
 
     <section class="view" id="view-tpl">
-<div class="section-intro">拿来即用的专项模板，省去你重复制作表格的时间。直接填、随时改，都是你自己的积累。</div>
+<div class="section-intro">拿来即用的专项模板，直接填、随时改。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>专项模板</h1>
         <p>考研 / 考公 / 法考 · 阶段计划 + 每日任务 + 复盘表</p>
@@ -6868,7 +6868,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <section class="view" id="view-help">
-<div class="section-intro">新手怎么用 · 当作 App · 常见问题与排查 —— 在这里一站式解决。</div>
+<div class="section-intro">新手怎么用 · 当作 App · 常见问题与排查。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>帮助中心</h1>
         <p>从打开到上手、安装到排查，一步步带你走通栖匣。</p>
@@ -7047,7 +7047,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <section class="view" id="view-about">
-<div class="section-intro">关于栖匣·产品介绍·隐私与服务说明。</div>
+<div class="section-intro">关于栖匣 · 产品介绍 · 隐私与服务。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>关于产品</h1>
         <p>它是什么 · 能帮你什么 · 怎么用</p>
@@ -7179,7 +7179,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     </section>
 
     <section class="view" id="view-settings">
-<div class="section-intro">数据备份与恢复、外观偏好、同步与导出等系统设置，按需展开，清爽不打扰。</div>
+<div class="section-intro">数据备份、外观偏好、同步与导出设置。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>系统设置</h1>
         <p>数据安全 · 外观偏好 · 同步与导出，全部本地、按需展开</p>
@@ -7332,7 +7332,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- 每日记录 -->
     <section class="view" id="view-journal">
-<div class="section-intro">写下日常的感悟、成长当中的得失，记录一路的变化。这里没有评判标准，你可以安心记录所有真实的心情。不知道写什么？试试从「今天最开心的一件事」「今天学到的一个道理」「今天想感谢的一个人」开始。</div>
+<div class="section-intro">写下日常感悟与得失，记录自己的变化。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>时光札记</h1>
         <p>复盘 · 随笔 · 随想，所有记录仅存在本地，随时可回看</p>
@@ -7387,7 +7387,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 每日四象限 ═══════ -->
     <section class="view" id="view-quadrant">
-<div class="section-intro">把事情按「重要 / 紧急」分成四类，先做重要又紧急的，重点投入重要不紧急的——大多数人真正的差距就在这一块。💡 建议每天早上花 3 分钟，把今天要做的事往四个格子里摆一摆，优先级立刻就清晰了。</div>
+<div class="section-intro">按重要 / 紧急分四类，优先做重要的事。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>轻重缓急</h1>
         <p>重要·紧急矩阵 — 把精力放在「重要不紧急」（Q2）才是长期赢家</p>
@@ -7457,7 +7457,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 计划表 ═══════ -->
     <section class="view" id="view-plans">
-<div class="section-intro">把考试、项目、日程等各类计划收在这里，有条理地推进，不再手忙脚乱。</div>
+<div class="section-intro">考试、项目、日程等计划，收在这里，不手忙脚乱。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>行进罗盘</h1>
         <p>年 / 月 / 周 / 日 目标拆解 + 一周时间表（可标色）</p>
@@ -7507,7 +7507,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 目标拆解 ═══════ -->
     <section class="view" id="view-goals">
-<div class="section-intro">用来存放你长线的理想、阶段性目标和一步步拆解下来的行动。不必逼迫自己马上抵达终点，慢慢往前走就好，随时回头都能看见自己走过的轨迹。💡 方法：大目标 → 拆成 3-5 个里程碑 → 每个里程碑拆成具体可执行的小任务。</div>
+<div class="section-intro">存放长线理想、阶段目标与拆解后的行动。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>目标拆解</h1>
         <p>人生目标 · 里程碑进度可视化，勾选即更新进度条</p>
@@ -7551,7 +7551,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
     <!-- ═══════ 眼界珍藏 · 拓宽认知的视野（读观思，见更广的世界） ═══════ -->
     <section class="view" id="view-vision">
-<div class="section-intro">涉猎的宽度，决定你看到的世界有多大。这里不功利地输入：纪录片、演讲、跨领域书、新鲜见闻——把认知边界一点点撑大。</div>
+<div class="section-intro">纪录片、演讲、跨领域书，撑大认知边界。</div>
       <div class="page-head">
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>眼界珍藏</h1>
         <p>视野六个方向直达资源 · 纪录片与演讲清单 · 跨领域书单 · 我的视野札记</p>
@@ -7656,7 +7656,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>幕间观澜</h1>
         <p>每日影视金句 · 豆瓣高分推荐 · 示范笔记 · 我的观影笔记</p>
       </div>
-      <div class="callout callout-info"><strong>为什么看电影也能成长：</strong>好电影是浓缩的人生样本——用2小时看完别人一生的选择、困境与觉醒。收集经典台词、提炼启发、迁移到自己的生活场景，观影就从"消遣"变成"输入"。</div>
+      <div class="callout callout-info"><strong>为什么要记影评：</strong>好电影是浓缩的人生样本，收集台词、提炼启发、迁移到生活，观影就从"消遣"变"输入"。</div>
 
       <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#4A342710,#A87F3C10);border:1px solid var(--primary-mid)">
         <h3 style="color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>每日影视金句 <button class="btn btn-sm" style="float:right" onclick="nextMovieQuote()">换一句</button></h3>

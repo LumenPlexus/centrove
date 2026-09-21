@@ -12,7 +12,7 @@
    - version.txt / sw.js：永远网络，绝不缓存
    - activate：仅清除旧版本缓存（保留本次刚预缓存好的资源，加快二次打开）
    - skipWaiting + clients.claim：新SW立即接管 */
-var VERSION = '2026.09.20.v84';
+var VERSION = '2026.09.21.v85';
 var PRE = 'centrove-pre-' + VERSION;
 var RUN = 'centrove-run-' + VERSION;
 
