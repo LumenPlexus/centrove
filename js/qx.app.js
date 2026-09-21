@@ -854,6 +854,35 @@ function _scrollViewTop(){
   try{window.scrollTo(0,0);}catch(e){}
   try{de.style.scrollBehavior=prev;}catch(e){}
 }
+/* ── 入场动效 · qxReveal（JS 统一驱动，保证"看得见"）──
+   旧版用纯 CSS 的 .view.active 入场，但首开时被闪屏盖住、根本看不出效果；
+   现改为：首开闪屏揭开、每次切换板块、弹出板块选择时，都由这里给可视卡片
+   加 .qx-pre →(.qx-in 过渡)→ 错落入场。仅用 transform/opacity，手机低端机也流畅。
+   用户系统开启"减少动态效果"时自动跳过，保证可读与顺畅。 */
+function qxReveal(scope){
+  try{
+    if(!window.matchMedia||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    if(!scope)return;
+    if(scope.getAttribute&&scope.getAttribute('data-qx-enter')==='1')return; /* 已在入场，防重复 */
+    var els=scope.querySelectorAll('.card,.callout,.page-head,.section-intro,.hero-block,.knowledge-card,.mind-card,.res-item,.row-inline>*');
+    if(!els.length)return;
+    scope.setAttribute('data-qx-enter','1');
+    var i,n=els.length;
+    for(i=0;i<n;i++){els[i].classList.remove('qx-in');els[i].classList.add('qx-pre');}
+    void scope.offsetWidth; /* 强制重排，保证过渡真正可播（杜绝"切换了却看不见动画"） */
+    var d=0;
+    for(i=0;i<n;i++){
+      var dl=d; d=Math.min(d+45,480);
+      (function(el,dl){ window.setTimeout(function(){ el.classList.add('qx-in'); },dl); })(els[i],dl);
+    }
+    /* 全部入场完成后释放标记，允许下次切换再播 */
+    window.setTimeout(function(){ scope.removeAttribute('data-qx-enter'); }, 520+n*45+600);
+  }catch(e){}
+}
+function qxRevealActive(){
+  try{ qxReveal(document.querySelector('.view.active')); }catch(e){}
+}
+/* ═══════════ 板块切换 ═══════════ */
 function switchView(name, opts){
   var keepPos=!!(opts&&opts.keepPos); /* 从外链/切走返回同一板块时置1：禁止回顶，直接保留/恢复原位置 */
   if(name===_curView){
@@ -886,6 +915,8 @@ function switchView(name, opts){
       else{ location.hash=want; }
     }
   }catch(e){}
+  /* 切换完成后再做一次入场动效，保证新板块的卡片/标题错落浮现（真正"看得见"） */
+  try{ if(typeof qxRevealActive==='function') qxRevealActive(); }catch(e){}
 }
 /* ─── Hash 路由统一接管：浏览器后退/前进、或直接打开带 #view-… 的链接时能正确切换板块 ─── */
 function routeHash(){

@@ -950,6 +950,143 @@
     } catch (e) {}
   }
 
+  /* ============================================================
+     全景导览 #pano：滚动显现动效（首次打开“看得见”的入场动画）
+     - 导览是长页：纯 CSS 入场会在打开瞬间播完、下滑时早已静止，用户根本看不出来。
+     - 这里改为随滚动进入视口才淡入上浮；板块内部卡片再错落其中，形成高级“翻页”手感。
+     - 配一条顶部阅读进度条 + 底部下滑引导；尊重 prefers-reduced-motion。
+     - 关键兜底：只有在加入 .pn-anim（JS 明确启用）时才隐藏内容，
+       若 JS 未运行 / 异常，内容照常可见，绝不白屏或永久隐藏。
+     ============================================================ */
+  function initPanoMotion() {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var pano = document.getElementById('pano');
+      if (!pano || pano.getAttribute('data-qx-pano-m') === '1') return;
+      pano.setAttribute('data-qx-pano-m', '1');
+      pano.classList.add('pn-anim');
+      var nodes = [].slice.call(pano.querySelectorAll('.pano-inner>section:not(.pano-hero), .pano-inner>.pano-quote, .pano-inner>.pano-cta'));
+      if (!nodes.length) return;
+      /* 顶部阅读进度条 */
+      if (!pano.querySelector('.pn-progress')) {
+        var bar = document.createElement('div'); bar.className = 'pn-progress';
+        pano.insertBefore(bar, pano.firstChild);
+      }
+      /* 底部“下滑引导” */
+      if (!pano.querySelector('.pn-cue')) {
+        var cue = document.createElement('div'); cue.className = 'pn-cue';
+        cue.innerHTML = '<b><span>继续下滑，探索栖匣</span><span class="arr">▾</span></b>';
+        pano.appendChild(cue);
+      }
+      pano.classList.add('pn-top');
+      function onScroll() {
+        try {
+          var bar = pano.querySelector('.pn-progress');
+          var total = pano.scrollHeight - pano.clientHeight;
+          var pr = total > 0 ? Math.min(1, pano.scrollTop / total) : 0;
+          if (bar) bar.style.transform = 'scaleX(' + pr.toFixed(3) + ')';
+          pano.classList.toggle('pn-top', pano.scrollTop <= 140);
+        } catch (e) {}
+      }
+      pano.addEventListener('scroll', onScroll, { passive: true });
+      if (!('IntersectionObserver' in window)) {
+        nodes.forEach(function (n) { n.classList.add('pn-seen'); });
+        return;
+      }
+      /* 稍作延迟再观察：先让首屏 hero 入场，避免与导览淡入“抢镜” */
+      setTimeout(function () {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('pn-seen'); obs.unobserve(en.target); }
+          });
+        }, { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+        nodes.forEach(function (n) { obs.observe(n); });
+      }, 450);
+    } catch (e) {}
+  }
+
+  /* 板块选择弹窗动效增强：openModulePick 会整体重建卡片 DOM。
+     我们用 MutationObserver 监听 #modulePickBody，无论卡片何时/由谁渲染，
+     都给每张卡片注入行内序号 --i（每个 .mp-grid 内部从 0 重计，避免后排延迟失控），
+     使 CSS 弹性能顺序错落进入；同时保持元素默认第 0 号同入，绝不藏卡。
+     同时包裹 openModulePick，进一步保证时序（双保险）。 */
+  function patchModulePickMotion() {
+    function stamp(wrapBody) {
+      if (!wrapBody) return;
+      var groups = wrapBody.querySelectorAll('.mp-grid');
+      for (var g = 0; g < groups.length; g++) {
+        var cards = groups[g].querySelectorAll('.mp-chip');
+        for (var i = 0; i < cards.length; i++) cards[i].style.setProperty('--i', i);
+      }
+    }
+    try { // 包裹 openModulePick（若已存在）
+      var orig = window.openModulePick;
+      if (typeof orig === 'function') {
+        window.openModulePick = function () {
+          var r = orig.apply(this, arguments);
+          try { stamp(document.getElementById('modulePickBody')); } catch (e) {}
+          return r;
+        };
+      }
+    } catch (e) {}
+    try { // MutationObserver 兜底：任何时刻弹窗内容发生变化都重算序号
+      if (!('MutationObserver' in window)) return;
+      var body = document.getElementById('modulePickBody');
+      if (!body) return;
+      var obs = new MutationObserver(function () { stamp(body); });
+      obs.observe(body, { childList: true, subtree: true });
+    } catch (e) {}
+  }
+
+  /* 首页首屏卡片顺序入场：区块偏好弹窗首开时会盖住首页，
+     待其关闭/首次渲染气泡结束后，再让首页卡片轻盈错落浮现，形成明显可感的入场节奏。
+     用标记避免重复播放；后续返回不打扰。 */
+  function homeEntranceMotion() {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var home = document.getElementById('view-home');
+      if (!home || home.getAttribute('data-qx-home-m') === '1') return;
+      var cards = [].slice.call(home.children).filter(function (n) { return n.classList.contains('card'); });
+      if (!cards.length) return;
+      cards.forEach(function (c) { c.style.setProperty('--i', cards.indexOf(c)); });
+      /* 等待首屏主脚本首次渲染（渲染今日概览等）完成后再动，避免抢镜 */
+      setTimeout(function () {
+        home.classList.add('home-ready');
+        /* 动画结束后移除标记，避免未来 switch 回首页时副效应残留 */
+        setTimeout(function () { home.classList.remove('home-ready'); }, 3600);
+      }, 60);
+      home.setAttribute('data-qx-home-m', '1');
+    } catch (e) {}
+  }
+
+  /* 首页首屏入场调度：若首次弹了板块选择，等它关掉再放卡片入场；
+      否则在页面渲染完成后直接放。 */
+  function wireHomeEntrance() {
+    try {
+      var isFirst = true;
+      try { isFirst = localStorage.getItem('pp_pref_done') !== '1'; } catch (e) {}
+      if (!isFirst) {
+        setTimeout(homeEntranceMotion, 350);
+        return;
+      }
+      /* 首次打开：先等待板块选择弹窗真正出现，再等它关闭后放卡片入场；
+         若超过 4s 仍未出现（如配置异常），直接放，绝不阻塞内容可见。 */
+      var appeared = false;
+      var t = setTimeout(homeEntranceMotion, 1400); // 兜底：未及时出现也放
+      var timer = setInterval(function () {
+        var mp = document.getElementById('modulePick');
+        if (!mp) { return; }
+        if (mp.classList.contains('show') && !appeared) { appeared = true; return; }
+        /* 出现过一次后再次变为隐藏，即用户已处理，立刻放卡片入场 */
+        if (appeared && !mp.classList.contains('show')) {
+          clearInterval(timer); clearTimeout(t); homeEntranceMotion();
+        }
+      }, 180);
+      /* 兜底：最多等待 4s 强制结束 */
+      setTimeout(function () { clearInterval(timer); clearTimeout(t); }, 4000);
+    } catch (e) {}
+  }
+
   function boot() {    // 首次打开不再注入任何示例数据：各板块留空，由用户填写真实内容
     seedDemoData();
     // 运行时动态填充页面中标注 data-qx-year 的年份（杜绝写死年份）
@@ -973,6 +1110,9 @@
     patchPrivacyText();
     patchWebDAVPrivacy();
     injectSnapshotEntry();
+    initPanoMotion();   // 全景导览滚动显现动效
+    patchModulePickMotion(); // 板块选择弹窗：卡片按顺序弹性入场（--i 序号）
+    wireHomeEntrance(); // 首页首屏卡片错落入场（避开首开弹窗遮挡）
     // 添加帮助视图容器（如果不存在）
     if (!document.getElementById('view-help')) {
       var sec = el('section', 'view');

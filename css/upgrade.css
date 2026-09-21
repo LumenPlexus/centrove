@@ -1976,24 +1976,55 @@ body{overflow:visible!important;height:auto!important;min-height:100vh!important
 }
 @media (prefers-reduced-motion:no-preference){
 
-  /* ① 视图进入入场 */
-  @keyframes qxRise{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+  /* ① 视图 / 弹窗入场 —— 统一驱动，保证"看得见"：
+       首开时的闪屏会盖住纯 CSS 的 .view 入场（这正是旧版"看不出效果"的根因），
+       现改由 JS 在闪屏揭开/切换板块/弹出板块选择时主动触发（见 js/qx.app.js 的 qxReveal）。
+       元素先置 .qx-pre（隐藏+上移），JS 再错落加 .qx-in 触发过渡，柔和上升入场。 */
+  @keyframes qxRise{ from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+  @keyframes qxRiseUp{ from{opacity:0;transform:translateY(26px) scale(.985)} to{opacity:1;transform:none} }
   @keyframes qxFade{ from{opacity:0} to{opacity:1} }
+  @keyframes qxMaskFade{ from{opacity:0} to{opacity:1} }
+  @keyframes qxModalIn{
+    from{opacity:0;transform:translateY(28px) scale(.97)}
+    to{opacity:1;transform:none} }
+  @keyframes qxPop{
+    0%{opacity:0;transform:translateY(18px) scale(.92)}
+    60%{opacity:1;transform:translateY(-3px) scale(1.02)}
+    100%{opacity:1;transform:none} }
 
-  .view.active{ animation:qxFade .34s var(--qx-ease) both }
-  .view.active .page-head{ animation:qxRise .5s var(--qx-ease) .02s both }
-  .view.active .section-intro{ animation:qxRise .5s var(--qx-ease) .05s both }
-  .view.active .callout{ animation:qxRise .5s var(--qx-ease) .08s both }
-  .view.active .card{ animation:qxRise .5s var(--qx-ease) .11s both }
-  .view.active .card:nth-of-type(4){ animation-delay:.15s }
-  .view.active .card:nth-of-type(5){ animation-delay:.19s }
-  .view.active .card:nth-of-type(6){ animation-delay:.23s }
+  .qx-pre{opacity:0;transform:translateY(16px);transform-origin:top center}
+  .qx-in{opacity:1;transform:none;transition:opacity .55s var(--qx-ease), transform .55s var(--qx-ease)}
 
-  /* 宫格 / 直达项：逐格轻微错落，视觉节奏不生硬 */
-  .view.active .row-inline>*{ animation:qxRise .5s var(--qx-ease) both }
-  .view.active .row-inline>*:nth-child(2){ animation-delay:.05s }
-  .view.active .row-inline>*:nth-child(3){ animation-delay:.10s }
-  .view.active .row-inline>*:nth-child(4){ animation-delay:.15s }
+  /* 板块选择弹窗（首次开出的"很多卡片"）：
+     遮罩虚化淡入 → 整窗上浮轻聚 → 标题回落 → 每个板块组淡入 →
+     卡片按自然顺序逐一“弹性上浮”（JS 注入 --i 序号，默认第0号同入，绝不藏卡）。
+     一步入、一步留：观感清晰有节奏，不会一闪而过。 */
+  #modulePickMask.show{ animation:qxMaskFade .32s ease both }
+  #modulePick.show .mp-inner{ animation:qxModalIn .55s var(--qx-ease) both }
+  #modulePick.show .mp-head{ animation:qxRise .5s var(--qx-ease) .12s both }
+  #modulePick.show .mp-sub{ animation:qxFade .45s ease .20s both }
+  #modulePick.show .mp-foot{ animation:qxRise .5s var(--qx-ease) .34s both }
+  #modulePick.show .mp-group{ animation:qxFade .5s ease .24s both }
+  #modulePick.show .mp-chip{ animation:qxPop .5s cubic-bezier(.2,.9,.28,1.18) both; animation-delay:calc(var(--i,0)*38ms + .28s) }
+  #modulePick.show .mp-chip.core{ animation-delay:calc(var(--i,0)*38ms + .28s) }
+  #modulePick.show .mp-chip:hover{ animation-play-state:running }
+
+  /* 首页各视图首屏标题：柔和回落，打开即可见 */
+  .view .page-head{ animation:qxRise .5s var(--qx-ease) .08s both }
+
+  /* 首页首屏主要卡片：按 DOM 顺序逐一“弹起”入场（--i 序号由 JS 注入；
+     默认第 0 号同时入，异常时内容照常可见，绝不藏内容）。
+     只在 .view 刚激活的首答画面触发，用户已有滚动记忆时不重放。 */
+  #view-home.home-ready > .card:not(.prep-clear){ animation:qxPop .55s cubic-bezier(.2,.9,.28,1.16) both; animation-delay:calc(var(--i,0)*70ms + .1s) }
+  #view-home.home-ready > .page-head{ animation:qxRise .5s var(--qx-ease) .02s both }
+
+  /* 导览浮层（#pano）卡片：随内容显现轻错落 */
+  #pano.show .pano-ft,#pano.show .pano-card,#pano.show .pano-hb,#pano.show .pano-cv{
+    animation:qxRise .55s var(--qx-ease) both }
+  #pano.show .pano-feat>*{ animation-delay:.06s }
+  #pano.show .pano-grid>*{ animation-delay:.12s }
+  #pano.show .pano-habit>*{ animation-delay:.18s }
+  #pano.show .pano-concept>*{ animation-delay:.10s }
 
   /* ② 悬浮反馈（仅支持 hover 的设备） */
   @media (hover:hover){
@@ -2009,4 +2040,80 @@ body{overflow:visible!important;height:auto!important;min-height:100vh!important
   /* ③ 点击反馈（全设备可感知） */
   .btn:active,.mind-refresh:active{ transform:scale(.96) }
   .k-tab:active,.mtab-btn:active,.b3d-chip:active,.tab-pill:active,.pill:active{ transform:scale(.94) }
+}
+
+/* ═══════════ 全景导览 #pano：滚动显现动效 + 阅读进度 + 下滑引导 ═══════════
+   让“首次打开”的卡片弹窗动效真正看得见：
+   导览是长页，纯 CSS 入场会在打开瞬间播完、下滑时早已静止 → 改成随滚动进入视口才淡入上浮，
+   板块内部卡片再错落其中，形成高级“翻页”手感。
+   尊重 prefers-reduced-motion；且仅当 JS 加入 .pn-anim 时才隐藏内容，
+   JS 未启用/异常时内容照常可见，绝不白屏或永久隐藏。 */
+#pano .pn-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;pointer-events:none;
+  background:linear-gradient(90deg,rgba(176,138,68,0),rgba(176,138,68,.9));
+  transform-origin:left center;transform:scaleX(0);border-radius:0 3px 3px 0;opacity:0;transition:opacity .35s ease}
+#pano.show .pn-progress{opacity:.75}
+#pano .pn-cue{position:fixed;left:0;right:0;bottom:20px;z-index:30;display:flex;justify-content:center;pointer-events:none;
+  opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+#pano.pn-top .pn-cue{opacity:1;transform:none}
+#pano .pn-cue b{font-weight:500;font-size:12.5px;color:#8A6A2D;background:rgba(255,252,242,.92);border:1px solid rgba(176,138,68,.5);
+  padding:8px 16px;border-radius:999px;box-shadow:0 8px 22px rgba(80,75,55,.12);letter-spacing:.08em;display:inline-flex;align-items:center;gap:8px}
+#pano .pn-cue .arr{animation:pnBounce 1.8s ease-in-out infinite;font-size:11px}
+@keyframes pnBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+@media (prefers-reduced-motion:no-preference){
+  #pano.pn-anim .pano-inner>section:not(.pano-hero),
+  #pano.pn-anim .pano-inner>.pano-quote,
+  #pano.pn-anim .pano-inner>.pano-cta{
+    opacity:0;transform:translateY(26px);will-change:opacity,transform}
+  #pano.pn-anim .pano-inner>section:not(.pano-hero).pn-seen,
+  #pano.pn-anim .pano-inner>.pano-quote.pn-seen,
+  #pano.pn-anim .pano-inner>.pano-cta.pn-seen{
+    opacity:1;transform:none;transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+
+  /* 板块内部卡片：随板块显现错落入场 */
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-feat>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-compare>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-steps>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-nolist>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-habit>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-concept>*,
+  #pano.pn-anim .pano-sec.pn-seen .pano-who>*{
+    animation:panoCardIn .6s cubic-bezier(.22,.61,.36,1) both}
+  @keyframes panoCardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  #pano.pn-anim .pano-sec.pn-seen .pano-feat>*:nth-child(1){animation-delay:.06s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-feat>*:nth-child(2){animation-delay:.13s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-feat>*:nth-child(3){animation-delay:.20s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-feat>*:nth-child(4){animation-delay:.27s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(1){animation-delay:.06s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(2){animation-delay:.12s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(3){animation-delay:.18s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(4){animation-delay:.24s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(5){animation-delay:.30s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(6){animation-delay:.36s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(7){animation-delay:.42s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-grid>*:nth-child(8){animation-delay:.48s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-habit>*:nth-child(1){animation-delay:.06s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-habit>*:nth-child(2){animation-delay:.12s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-habit>*:nth-child(3){animation-delay:.18s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-habit>*:nth-child(4){animation-delay:.24s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-concept>*:nth-child(1){animation-delay:.06s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-concept>*:nth-child(2){animation-delay:.13s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-compare>*:nth-child(1){animation-delay:.08s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-compare>*:nth-child(2){animation-delay:.20s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-steps>*:nth-child(1){animation-delay:.07s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-steps>*:nth-child(2){animation-delay:.15s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-steps>*:nth-child(3){animation-delay:.23s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-nolist>*:nth-child(1){animation-delay:.06s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-nolist>*:nth-child(2){animation-delay:.12s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-nolist>*:nth-child(3){animation-delay:.18s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-nolist>*:nth-child(4){animation-delay:.24s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-who>*:nth-child(1){animation-delay:.08s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-who>*:nth-child(2){animation-delay:.16s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-who>*:nth-child(3){animation-delay:.24s}
+  #pano.pn-anim .pano-sec.pn-seen .pano-who>*:nth-child(4){animation-delay:.32s}
+
+  /* 引述语：稍晚显现，营造停顿气息 */
+  #pano.pn-anim .pano-inner>.pano-quote.pn-seen{transition:opacity 1s ease,transform 1s cubic-bezier(.22,.61,.36,1)}
 }

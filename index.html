@@ -94,8 +94,8 @@
   })();</script>
   <!-- 预加载关键资源：让浏览器在解析HTML的同时并行下载CSS和logo，不串行等待 -->
   <link rel="stylesheet" href="css/qx.css?v=75" media="all">
-  <link rel="preload" href="css/upgrade.css?v=85" as="style">
-  <link rel="preload" href="js/qx.app.min.js?v=85" as="script">
+  <link rel="preload" href="css/upgrade.css?v=86" as="style">
+  <link rel="preload" href="js/qx.app.min.js?v=86" as="script">
   <link rel="preload" href="pwa/logo-chest20260912.png" as="image">
 <!-- 栖匣 —— 原创作品，作者：尹平平。整体架构、界面、内容均受《中华人民共和国著作权法》保护；未获书面授权，禁止整站复制、二次开发后冒名发布或用于牟利。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="plBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4A3427"/><stop offset="100%" stop-color="#33291F"/></linearGradient><radialGradient id="plSun" cx="45%" cy="35%" r="80%"><stop offset="0%" stop-color="#FFF7E2"/><stop offset="60%" stop-color="#F6CF72"/><stop offset="100%" stop-color="#EFAD46"/></radialGradient></defs></svg>
@@ -443,11 +443,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--primary);background:#
 [data-theme="dark"] .ref-zone{background:linear-gradient(180deg,#221E18,transparent)}
 [data-theme="dark"] .ref-head,[data-theme="dark"] .qx-coll-h{background:#211C16;color:#B8A68C}
 </style>
-  <link rel="stylesheet" href="css/upgrade.css?v=85" media="all">
+  <link rel="stylesheet" href="css/upgrade.css?v=86" media="all">
   <!-- 全局默认滚动设为立即到位（覆盖 upgrade.css 里的 smooth）：
         切换板块必须瞬间到顶，杜绝"从下往上滑"；需要平滑回顶/锚点的功能都显式传 behavior:'smooth'，不受影响 -->
   
- <script defer src="js/qx.app.min.js?v=85"></script></head>
+ <script defer src="js/qx.app.min.js?v=86"></script></head>
 <body>
 
 
@@ -3207,7 +3207,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
         <div class="card" style="border-top:3px solid var(--coral)">
           <h3 style="color:var(--coral)">1. 番茄工作法（25+5）</h3>
           <p style="font-size:14px"><strong>怎么做：</strong>① 写下这一番茄要做什么 → ② 设25分钟倒计时（用右侧/「心流计时」板块的番茄钟）→ ③ 25分钟内只做这一件事，手机静音 → ④ 响了休息5分钟（站起来/喝水/远眺，不刷手机）→ ⑤ 4个番茄后休息15-30分钟。</p>
-          <div class="callout callout-warn" style="margin-top:8px"><strong>关键：</strong>番茄内被打断，把念头写纸上继续；番茄断了不懊恼，下一个继续。</div>
+          <div class="callout callout-warn" style="margin-top:8px"><strong>关键：</strong>番茄被打断时，先把手头念头写进「草稿」，回来接着这 25 分钟继续。一次分心只是插曲，不会推倒今天的专注。</div>
         </div>
         <div class="card" style="border-top:3px solid var(--primary)">
           <h3 style="color:var(--primary)">2. 艾森豪威尔四象限</h3>
@@ -5913,7 +5913,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <ul style="font-size:13px;line-height:1.9">
               <li>第一时间拨打 <strong>96110</strong>（反诈专线）或 <strong>110</strong>，越早越可能止付追回</li>
               <li>保留聊天/转账记录配合警方；下载"国家反诈中心"App并开启来电预警</li>
-              <li>别因为"丢人"而瞒着——骗子最爱利用羞耻心拖住你</li>
+              <li>第一时间如实报警、主动联系银行与学校求助，越早行动越可能止付追回</li>
             </ul>
           </div>
         </div>
@@ -6257,7 +6257,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
             <input id="pomoBreakCustom" placeholder="自定义原因（如：家人来电）" onkeydown="if(event.key===&#39;Enter&#39;)pomoBreakCustom()">
             <button class="btn btn-sm btn-primary" onclick="pomoBreakCustom()">记录</button>
           </div>
-          <div class="callout callout-warn" style="margin-top:6px;font-size:12px"><strong>诚实提醒：</strong>如果不小心点错了、实际没有中断，可以删除该条记录；如果确实中断了、只是碍于面子不想承认——请保留它，直面中断原因才是提升专注的第一步。</div>
+          <div class="callout callout-warn" style="margin-top:6px;font-size:12px"><strong>诚实提醒：</strong>如果不小心点错了、实际没有中断，可以删除该条记录；如果确实中断了，也请保留它，如实记录是提升专注的第一步。</div>
           <svg id="pomoChart" width="100%" height="180" viewBox="0 0 320 180" style="display:block;margin-top:8px"><text x="160" y="90" text-anchor="middle" fill="#6B7267" font-size="12">暂无中断记录 · 开始第一个番茄</text></svg>
           <div id="pomoBreaks" style="color:var(--muted);font-size:13px;margin-top:8px"></div>
           <button class="btn btn-sm" onclick="pomoClearBreaks()" style="margin-top:8px;color:var(--hint)" title="一键清空所有中断记录">清空全部中断记录</button>
@@ -6270,7 +6270,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
           <li><strong>启动时</strong>：在心里默念"接下来25分钟只做这一件事"，输入命令即开始</li>
           <li><strong>专注中</strong>：被任何念头打断（想起要买东西/要回消息），写在旁边的便签上，不分心处理</li>
           <li><strong>休息时</strong>：站起来走动、喝水、远眺窗外，<strong>不刷手机</strong>——刷手机不叫休息叫换种方式消耗</li>
-          <li><strong>中断后</strong>：不责备自己，记录原因，下一个番茄继续。番茄断了一天不亏，断了一周才亏</li>
+          <li><strong>中断后</strong>：不苛责自己，记下原因，下一个番茄继续。</li>
         </ul>
       </div>
     </section>
@@ -6472,7 +6472,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <li>❌ 不要"收藏即学会"：资料存了10个G，一个没看完=0</li>
               <li>❌ 不要比进度：别人二轮了不用慌，按自己节奏来</li>
               <li>❌ 不要三天打鱼：宁可每天6小时雷打不动，也别一天12小时歇三天</li>
-              <li>✅ 英语单词每天不能断，断了就断崖</li>
+              <li>✅ 英语单词尽量每天坚持，偶尔中断也别慌，第二天补上就好</li>
               <li>✅ 数学真题至少刷2遍，错题本比新题重要</li>
               <li>✅ 每周日留半天复盘+休息，防 burnout</li>
             </ul>
@@ -7530,7 +7530,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
               <li><strong>设进度条：</strong>下方每个目标卡都能勾里程碑，勾满=完成</li>
               <li><strong>每周复盘：</strong>周日晚花5分钟看进度，卡住就拆小一步</li>
               <li><strong>公开承诺：</strong>告诉一个会追问你的人</li>
-              <li><strong>允许休息：</strong>断一天不亏，断一周才亏——明天继续就行</li>
+              <li><strong>允许休息：</strong>偶尔中断很正常，明天按节奏继续就好</li>
             </ul>
           </div>
         </div>
@@ -8325,7 +8325,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
        按「所对应的真实需要」引导选择：保住学籍 → 生活保障 → 自食其力 → 学业优秀 → 能力认可 → 日常权益
        ════════════════════════════════════════════════════════════ -->
   <section class="view view-new" id="view-perk">
-<div class="section-intro">助学帮扶信息仅供参考，请以学校与国家官方最新通知为准。该申请的帮助，别不好意思要。</div>
+<div class="section-intro">助学帮扶信息仅供参考，请以学校与国家官方最新通知为准。经济上有需要，申请本无可厚非，大方去问、去申请就好。</div>
     <div class="page-head">
       <h1><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4-7 4-7-4 7-4z"></path><path d="M5 10v6c0 1.5 3 3 7 3s7-1.5 7-3v-6"></path><path d="M5 16v4c0 1.5 3 3 7 3s7-1.5 7-3v-4"></path></svg>助学帮扶</h1>
       <p>奖助学金 · 助学贷款 · 困难帮扶 · 学生权益——先看清标准与门槛，按真实需求、如实申报；符合就勇敢申请，不符合也不勉强</p>
@@ -8975,7 +8975,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
 
 
 
-<script src="js/upgrade.js" defer></script>
+<script src="js/upgrade.js?v=86" defer></script>
 
 
 
@@ -8992,7 +8992,7 @@ Only through the joint efforts of [主体] can we [升华]. As a college student
     <button class="mp-close" onclick="closeModulePick()" title="关闭">✕</button>
     <div class="mp-head">
       <h2>挑出你感兴趣的板块</h2>
-      <p>带「主线」徽章的「今日安放」板块已为你固定好——它是一条贯穿<b>毕业目标 → 硬仗倒计时 → 今天能落地的一小步 → 专注执行 → 晚间复盘</b>的下钻主线，而且是<b>免罚的</b>：断了不丢人，方向比不断更重要。这条线<b>按需</b>：需要就常驻眼前，不需要时随时收起，你永远只面对对你有用的部分。其余板块按你的兴趣自由增选：选中的会进首页，未选会暂时收进侧边栏，随时可回来调整。</p>
+      <p>「主线」板块已为你固定好，贯通<b>毕业目标 → 倒计时 → 今日行动 → 专注执行 → 晚间复盘</b>，需要时展开，不需要时随时收起。其余板块按兴趣自由增选：选中的进入首页，未选的暂入侧边栏，随时可回来调整。</p>
     </div>
     <div class="mp-sub">
       <span>已选 <b id="modulePickCount">0</b> 个你感兴趣的</span>
